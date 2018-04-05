@@ -157,3 +157,8 @@ texinfo_documents = [
 import f5_sphinx_theme
 html_theme = 'f5_sphinx_theme'
 html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html']}
+
+html_theme_options = {
+                        'site_name': 'Cloud Edition Lab Guide',     
+                        'next_prev_link': True
+                     }
