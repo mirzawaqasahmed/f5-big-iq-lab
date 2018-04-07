@@ -1,0 +1,14 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+
+     "Description" : "This Cloud Formation Template creates a VPN between the AWS lab environment and UDF for the F5 Cloud Edition Lab (CEL) **WARNING** You will be billed for the AWS resources used if you create a stack from this template. This template is supplied with no warranty or support.",
+    "Description" : "This Cloud Formation Template creates the lab environment for the F5 Cloud Edition lab  **WARNING**  You will be billed for the AWS resources used if you create a stack from this template. This template is supplied with no warranty or support.",
+    "Parameters": {
+
+    },
+    "Resources": {
+    },
+    "Outputs": {
+
+    }
+}
