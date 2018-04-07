@@ -29,9 +29,21 @@
       "Properties": {
         "Parameters": {
         },
-        "TemplateURL": "https://raw.githubusercontent.com/nmenant/f5-cloud-edition-lab/develop/Lab/AWS-CFT/Setup-VPC.template"
+        "TemplateURL": "https://s3.eu-west-3.amazonaws.com/nmenant-public/Setup-VPC.template"
       }
-    }
+    },
+    "Server1Stack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "Parameters": {
+          "VPC" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.VpcId" ] },
+          "InstanceType": { "Ref": "InstanceType" },
+          "KeyName": { "Ref": "KeyName" },
+          "InternalSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.InternalSubnetId" ]}
+        },
+        "TemplateURL": "https://s3.eu-west-3.amazonaws.com/nmenant-public/Setup-VPC.template"
+      }
+    },
   },
   "Outputs": {
     "VpcId" : {
@@ -40,11 +52,11 @@
     },
     "InternalSubnetId" : {
       "Description" : "Internal Subnet ID",
-      "Value" : {"Ref": "InternalSubnet"}
+      "Value" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.InternalSubnetId" ] }
     },
     "ExternalSubnetId" : {
       "Description" : "External Subnet ID",
-      "Value" : {"Ref": "ExternalSubnet"}
+      "Value" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.ExternalSubnetId" ] }
     },
     "Region": {
       "Description": "AWS Region",
