@@ -14,7 +14,6 @@
       "AllowedValues": [
         "t2.medium",
         "m3.medium",
-        "m3.large"
       ],
       "ConstraintDescription": "must be a valid EC2 instance type."
     },
@@ -30,38 +29,7 @@
       "Properties": {
         "Parameters": {
         },
-        "TemplateURL": "https://s3.us-east-2.amazonaws.com/hpatel/class1_topology.template"
-      }
-    },
-    "JumpHostStack": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "Parameters": {
-          "UserIP": { "Ref": "UserIP" },
-          "VPC": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.VpcId" ] },
-          "InstanceType": { "Ref": "InstanceType" },
-          "KeyName": { "Ref": "KeyName" },
-          "ManagementSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.ManagementSubnetId" ]},
-          "AccessSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.AccessSubnetId" ]},
-          "ExternalSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.ExternalSubnetId" ]},
-          "IngressSG": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.IngressSGId" ]},
-          "RepoBranch": { "Ref": "Branch" }
-        },
-        "TemplateURL": "https://s3.us-east-2.amazonaws.com/hpatel/snops_jumphost.template"
-      }
-    },
-    "ServerStack": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "Parameters": {
-          "VPC": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.VpcId" ] },
-          "InstanceType": "t2.small",
-          "KeyName": { "Ref": "KeyName" },
-          "ManagementSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.ManagementSubnetId" ]},
-          "InternalSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.InternalSubnetId" ]},
-          "RepoBranch": { "Ref": "Branch" }
-        },
-        "TemplateURL": "https://s3.us-east-2.amazonaws.com/hpatel/snops_server.template"
+        "TemplateURL": "https://raw.githubusercontent.com/nmenant/f5-cloud-edition-lab/develop/Lab/AWS-CFT/Setup-VPC.template"
       }
     }
   },
@@ -70,21 +38,13 @@
       "Description" : "VPC ID",
       "Value" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.VpcId" ] }
     },
-    "ManagementSubnetId" : {
-      "Description" : "Management Subnet ID",
-      "Value" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.ManagementSubnetId" ] }
-    },
     "InternalSubnetId" : {
       "Description" : "Internal Subnet ID",
-      "Value" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.InternalSubnetId" ]}
+      "Value" : {"Ref": "InternalSubnet"}
     },
     "ExternalSubnetId" : {
       "Description" : "External Subnet ID",
-      "Value" : { "Fn::GetAtt" : [ "TopologyStack", "Outputs.ExternalSubnetId" ] }
-    },
-    "JumpHostPublicIP" : {
-      "Description" : "Jump Host Public IP (SSH & RDP)",
-      "Value" : { "Fn::GetAtt" : [ "JumpHostStack", "Outputs.JumpHostPublicIP" ] }
+      "Value" : {"Ref": "ExternalSubnet"}
     },
     "Region": {
       "Description": "AWS Region",
