@@ -46,7 +46,7 @@
       "Properties": {
         "Parameters": {
           "VPC" : { "Fn::GetAtt" : [ "CELTopologyStack", "Outputs.VpcId" ] },
-          "BlueprintIP" : { "ref" : "BlueprintIP"}
+          "BlueprintIP" : { "Ref" : "BlueprintIP"}
         },
         "TemplateURL": "https://s3.eu-west-3.amazonaws.com/nmenant-public/Setup-VPN.template"
       }

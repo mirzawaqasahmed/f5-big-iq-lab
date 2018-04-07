@@ -102,7 +102,7 @@
             "commands" : {
               "a_update_etc_hosts": { "command": "sh -c 'sudo echo \"10.1.10.15 ip-10-1-10-15\" >> /etc/hosts'"},
               "b_update_apt": { "command": "apt-get -y update" },
-              "c_install_git": { "command": "apt-get -y install git" },
+              "c_install_git": { "command": "apt-get -y install apache2" },
             }
           }
         }
