@@ -4,7 +4,10 @@
   "Description": "This will deploy the Ubuntu HTTP server instances to use lab. The instance deployed is a Ubuntu 16.04 LTS - Xenial HVM; please MAKE SURE YOU ACCEPTED THE TERMS FOR THIS INSTANCE BEFORE LAUNCHING THIS STACK ",
 
   "Parameters": {
-    "VPC" : {  "Fn::GetAtt" : [ "CEL-VPC-Stack", "Outputs.VpcId" ] 
+    "VPC": {
+      "Description": "Existing VPC to use",
+      "Type": "AWS::EC2::VPC::Id",
+      "ConstraintDescription": "must be the name of an existing VPC."
     },
     "InstanceType": {
       "Description": "Ubuntu instance type",
@@ -97,7 +100,7 @@
         "AWS::CloudFormation::Init" : {
           "config": {
             "commands" : {
-              "a_update_etc_hosts": { "command": "sh -c 'sudo echo \"10.1.2.15 ip-10-1-2-15\" >> /etc/hosts'"},
+              "a_update_etc_hosts": { "command": "sh -c 'sudo echo \"10.1.10.15 ip-10-1-10-15\" >> /etc/hosts'"},
               "b_update_apt": { "command": "apt-get -y update" },
               "c_install_git": { "command": "apt-get -y install git" },
             }
@@ -179,7 +182,7 @@
             },
             "PrivateIpAddresses": [
               {
-                "PrivateIpAddress": "10.1.2.15",
+                "PrivateIpAddress": "10.1.10.15",
                 "Primary": "true"
               }
             ]
