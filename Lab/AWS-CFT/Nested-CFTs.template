@@ -41,7 +41,7 @@
           "KeyName": { "Ref": "KeyName" },
           "InternalSubnet": { "Fn::GetAtt" : [ "TopologyStack", "Outputs.InternalSubnetId" ]}
         },
-        "TemplateURL": "https://s3.eu-west-3.amazonaws.com/nmenant-public/Setup-VPC.template"
+        "TemplateURL": "https://s3.eu-west-3.amazonaws.com/nmenant-public/Servers-Setup.template"
       }
     },
   },
