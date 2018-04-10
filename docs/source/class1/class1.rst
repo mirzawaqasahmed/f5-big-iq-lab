@@ -3,7 +3,7 @@ Class 1: Application
 
 This introductory class covers the following topics:
 
-Salutations
+Salutations Roman
 
 .. toctree::
    :maxdepth: 1
