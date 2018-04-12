@@ -1,2 +1,2 @@
-Lab 2.1: Built-in templates
+Lab 3.1: Built-in templates
 ---------------------------
