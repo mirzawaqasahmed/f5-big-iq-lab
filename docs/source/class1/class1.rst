@@ -1,9 +1,7 @@
-Class 1: Application
-====================
+Class 1: Application Creation (without Service Scaling Group)
+=============================================================
 
 This introductory class covers the following topics:
-
-Salutations Roman
 
 .. toctree::
    :maxdepth: 1

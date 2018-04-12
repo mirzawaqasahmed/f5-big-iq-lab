@@ -1,5 +1,7 @@
-Module 1: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-========================================
+Module 1: Role-Based Access Control (RBAC)
+==========================================
+
+
 
 .. toctree::
    :maxdepth: 1
