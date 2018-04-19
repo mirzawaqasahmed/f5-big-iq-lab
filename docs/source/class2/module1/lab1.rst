@@ -44,7 +44,7 @@ For our lab, we will need two IP pools:
 
 Go to *Devices* > *IP POOLS*, Click on *Create*
 
-.. warning:: Setup the IP Pools according to the final Blueprint 
+.. warning:: Setup the IP Pools according to the final Blueprint
 
 Device Template Setup
 *********************
@@ -58,7 +58,6 @@ you should see this:
   :align: center
   :scale: 50%
 
-|
 |
 
 Click on the button *Add/remove* to select the configuration items you want to
