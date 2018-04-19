@@ -20,7 +20,7 @@ Click on the *Create* button:
 
 * Name: VMWareCloudProvider
 * Provider Type: select *VMWARE*
-* vCenter Hostname: 10.255.250.5
+* vCenter Hostname: 10.1.1.90
 * Super User: administrator@vsphere.local
 
 .. image:: ../pictures/module1/img_module1_lab2_2.png
