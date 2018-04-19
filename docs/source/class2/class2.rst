@@ -1,5 +1,7 @@
-Class 2: Deployment with autoscale
-==================================
+Class 2: Deployment with auto-scale
+===================================
+
+In this class, we will review the auto-scale feature available with BIG-IQ 6.0
 
 Definition of Cloud Auto-scaling
 --------------------------------
