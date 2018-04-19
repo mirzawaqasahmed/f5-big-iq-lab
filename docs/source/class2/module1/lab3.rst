@@ -7,13 +7,25 @@ Before setting up our SSG and deploy it, do the following:
 
 * On the first SSH session, run the following command:
 
-  ``tail -f /var/log/restjavad.0.log | grep SSGClass2``
+  ``tail -f /var/log/restjavad.0.log | grep vmware``
 
 * On the second SSH session, run the following command:
 
-  ``tail -f /var/log/orchestrator.log | grep SSGClass2``
+  ``tail -f /var/log/orchestrator.log``
 
 Keep those sessions open until the end of the class.
+
+Launch vCenter also with the following credentials:
+
+* login: administrator@vsphere.local
+* password: Purpl3$lab
+
+.. image:: ../pictures/module1/img_module1_lab3_4.png
+    :align: center
+    :scale: 50%
+
+|
+
 
 Service Scaling Group Setup
 ***************************
@@ -83,3 +95,8 @@ evolves after a scale-in scale-out event.
 
 Click on *Save & Close* and your SSG will start being provisioned.
 Go to the next lab to see how to troubleshoot/monitor your SSG Deployment.
+
+.. note::
+
+  You may need to go to another page on your BIG-IQ interface and come back to
+  the SSG page to see your SSG appear

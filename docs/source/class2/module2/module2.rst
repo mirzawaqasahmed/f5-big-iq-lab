@@ -1,5 +1,6 @@
-Module 1: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+Module 2: Deploy an application on a SSG
 ========================================
+
 
 .. toctree::
    :maxdepth: 1
