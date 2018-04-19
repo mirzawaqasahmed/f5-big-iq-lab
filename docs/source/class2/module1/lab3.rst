@@ -3,7 +3,8 @@ Lab 1.3: Deploy your Service Scaling Group
 
 Before setting up our SSG and deploy it, do the following:
 
-* Open **2** putty session with your BIG-IQ.
+* Open **2** putty sessions with your BIG-IQ.
+
 * On the first SSH session, run the following command:
 
   ``tail -f /var/log/restjavad.0.log | grep SSGClass2``
