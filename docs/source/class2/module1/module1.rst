@@ -104,7 +104,7 @@ deployed in a certain manner:
 
 .. warning:: Need a schema of the app setup on SSG for AWS
 
-
+In this lab, we will create a ``Service Scaling Group`` in a VMWare environment
 
 .. toctree::
    :maxdepth: 1
