@@ -1,4 +1,9 @@
-Lab 3.2: Create custom security policies
-----------------------------------------
+Lab 3.2: Create custom security policies & Application Service Template
+-----------------------------------------------------------------------
+Connect as **Larry**
 
- ASM/AFM/DDOS
+Creation of the ASM and DDOS policies
+
+Connect as **Marco**
+
+Creation of the custom WAF

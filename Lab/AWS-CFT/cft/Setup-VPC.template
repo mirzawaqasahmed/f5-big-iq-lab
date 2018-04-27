@@ -1,22 +1,63 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-
-     "Description" : "This Cloud Formation Template creates a lab environment for the F5 Cloud Edition Lab (CEL) **WARNING** This template creates Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template. This template is supplied with no warranty or support.",
     "Description" : "This Cloud Formation Template creates the lab environment for the F5 Cloud Edition lab  **WARNING** This template creates Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template. This template is supplied with no warranty or support.",
-    "Parameters": {
+    "Parameters": { 
+        "VPCNAME": {
+            "Type": "String"
+        },
+        "VPCCIDRBLOCK": {
+            "Type": "String"
+        },
+        "REGION": {
+            "Type": "String"
+        },
+        "SN1NAME": {
+            "Type": "String"
+        },
+        "SN1AZ": {
+            "Type": "String"
+        },
+        "SN1CIDRBLOCK": {
+            "Type": "String"
+        },
+        "SN2NAME": {
+            "Type": "String"
+        },
+        "SN2CIDRBLOCK": {
+            "Type": "String"
+        },
+        "SN2AZ": {
+            "Type": "String"
+        },
+        "IGWNAME": {
+            "Type": "String"
+        },
+        "RT1NAME": {
+            "Type": "String"
+        },
+        "RT2NAME": {
+            "Type": "String"
+        },
+        "ELBNAME": {
+            "Type": "String"
+        }
     },
     "Resources": {
         "VPC": {
             "Type": "AWS::EC2::VPC",
             "Properties": {
-                "CidrBlock": "10.1.0.0/16",
+                "CidrBlock": {
+                    "Ref": "VPCCIDRBLOCK"
+                },
                 "InstanceTenancy": "default",
                 "EnableDnsSupport": "true",
                 "EnableDnsHostnames": "false",
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "CEL-VPC"
+                        "Value": {
+                            "Ref": "VPCNAME"
+                        }
                     }
                 ]
             }
@@ -24,17 +65,21 @@
         "ExternalSubnet": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.1.2.0/24",
+                "CidrBlock": {
+                    "Ref": "SN1CIDRBLOCK"
+                },
                 "VpcId": {
                     "Ref": "VPC"
                 },
                 "AvailabilityZone" : {
-                    "Fn::Select" : [ "0", { "Fn::GetAZs" : "" } ]
+                    "Ref": "SN1AZ"
                 },
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "CLE-ExternalSubnet"
+                        "Value": {
+                            "Ref": "SN1NAME"
+                        }
                     }
                 ]
             }
@@ -42,17 +87,21 @@
         "InternalSubnet": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.1.10.0/24",
+                "CidrBlock": {
+                    "Ref": "SN2CIDRBLOCK"
+                },
                 "VpcId": {
                     "Ref": "VPC"
                 },
                 "AvailabilityZone" : {
-                    "Fn::Select" : [ "0", { "Fn::GetAZs" : "" } ]
+                    "Ref": "SN2AZ"
                 },
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "CLE-InternalSubnet"
+                        "Value": {
+                            "Ref": "SN2NAME"
+                        }
                     }
                 ]
             }
@@ -66,7 +115,9 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "CLE-RouteInternal"
+                        "Value": {
+                            "Ref": "RT1NAME"
+                        }
                     }
                 ]
             }
@@ -80,7 +131,9 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "CLE-RouteExternal"
+                        "Value": {
+                            "Ref": "RT2NAME"
+                        }
                     }
                 ]
             }
@@ -107,38 +160,21 @@
                 }
             }
         },
-        "NatEIP": {
-            "Type": "AWS::EC2::EIP",
-            "Properties": {
-                "Domain":"vpc"
-            }
-
-        },
+        
         "IGW": {
             "Type": "AWS::EC2::InternetGateway",
             "Properties": {
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "CLE-IG"
+                        "Value": {
+                            "Ref": "IGWNAME"
+                        }
                     }
                 ]
             }
         },
-        "NatGW": {
-            "Type": "AWS::EC2::NatGateway",
-            "Properties": {
-                "AllocationId": {
-                    "Fn::GetAtt": [
-                        "NatEIP",
-                        "AllocationId"
-                    ]
-                },
-                "SubnetId": {
-                    "Ref": "ExternalSubnet"
-                }
-            }
-        },
+        
         "IGWAttachment": {
             "Type": "AWS::EC2::VPCGatewayAttachment",
             "Properties": {
@@ -157,8 +193,8 @@
                 "RouteTableId": {
                     "Ref": "RouteTableInternal"
                 },
-                "NatGatewayId": {
-                    "Ref": "NatGW"
+                "GatewayId": {
+                    "Ref": "IGW"
                 }
             }
         },
@@ -183,8 +219,46 @@
                 }
             }
         },
-    },
+        "SecurityGroup": {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "GroupName" : "test-sg",
+                "GroupDescription" : "test-sg",                
+                "VpcId" : {
+                    "Ref": "VPC"
+                }
+            }   
+        },
+        "ClassicELB": {
+            "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+            "Properties": {               
+                "SecurityGroups": [ { "Ref": "SecurityGroup" } ],                                
+                "HealthCheck" : {
+                    "HealthyThreshold" : "10",
+                    "Interval" : "30",
+                    "Target" : "TCP:22",
+                    "Timeout" : "5",
+                    "UnhealthyThreshold" : "2"
+                },
+                "Listeners": [
+                    {
+                      "LoadBalancerPort": "80",
+                      "InstancePort": "80",
+                      "Protocol": "TCP",
+                      "InstanceProtocol" : "TCP"
+                    }
+                ],
+                "LoadBalancerName" : { "Ref": "ELBNAME" },              
+                "Scheme" : "internal",                
+                "Subnets" : [ { "Ref": "InternalSubnet" }, { "Ref": "ExternalSubnet" } ]                
+            }
+        }
+    },    
     "Outputs": {
+        "ElbId": {
+            "Description": "ELB ID",
+            "Value": { "Ref": "ClassicELB" }
+        },
         "VpcId" : {
           "Description" : "VPC ID",
           "Value" : {"Ref": "VPC"}

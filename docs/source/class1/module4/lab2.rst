@@ -1,2 +1,3 @@
-Lab 4.2: Create Application via API
+Lab 4.2: Delete Application via API
 -----------------------------------
+Connect as **David**

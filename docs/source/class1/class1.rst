@@ -1,7 +1,7 @@
 Class 1: Application Creation (without Service Scaling Group)
 =============================================================
 
-This introductory class covers the following topics:
+In this class, we will review the application creation feature available with BIG-IQ 6.0.
 
 .. toctree::
    :maxdepth: 1
