@@ -1,9 +1,23 @@
-Lab 3.2: Create custom security policies & Application Service Template
------------------------------------------------------------------------
-Connect as **Larry**
+Lab 3.2: Delete Application via API
+-----------------------------------
+In this lab, we are going to delete an application using Ansible.
 
-Creation of the ASM and DDOS policies
+Connect as **David**
 
-Connect as **Marco**
+Open a SSH session to *Ubuntu Lamp Server, LDAP and DHCP* in UDF.
 
-Creation of the custom WAF
+Make sure you run Ansible 2.6 release::
+
+  # ansible --version
+
+Create your playbook as follow::
+
+  Playbook content
+
+.. warning:: PENDING ANSIBLE MODULES AVAILBILITY
+
+Execute your playbook::
+
+    # ansible playbook.yml
+
+Check on BIG-IQ the application has been correclty deleted.

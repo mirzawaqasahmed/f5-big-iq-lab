@@ -1,8 +1,6 @@
 Lab 1.2: Creation of each personas in BIG-IQ
 --------------------------------------------
 
-The first thing to setup the different personas.
-
 Connect to your BIG-IQ as admin and go to : *System* > *Users Management* > *Users*
 and click on *Add*
 
@@ -47,3 +45,7 @@ Click on *Add*
 - *Role* = Application Manager
 
 Click on *Save & Close*
+
+.. image:: ../pictures/module1/img_module1_lab2_1.png
+  :align: center
+  :scale: 50%

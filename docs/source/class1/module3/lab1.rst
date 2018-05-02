@@ -1,15 +1,32 @@
-Lab 3.1: Built-in templates
----------------------------
-BIG-IQ will be delivered with default built-in templates. Those templates cannot be modified but they can be cloned (see Lab 2.3).
-They can be used to depoy various type of application. The default templates will be display only after at
-least 1 BIG-IP device is managed by BIG-IQ.
+Lab 3.1: Create Application via API
+-----------------------------------
+In this lab, we are going to deploy a WAF application using Ansible.
 
-Below defaultsecured built-in template:
+Connect as **David**
 
-- Default-f5-HTTPS-WAF-lb-template: For load balancing an HTTPS application on port 443 with a Web Application Firewall using an ASM Rapid Deployment policy.
-- Default-f5-HTTPS-offload-lb-template: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP.
+Open a SSH session to *Ubuntu Lamp Server, LDAP and DHCP* in UDF.
 
-Go to *Applications* > *SERVICE CATALOG*, :
+Make sure you run Ansible 2.6 release::
 
-.. image:: ../pictures/module2/img_module2_lab1_1.png
+  # ansible --version
+
+Create your playbook as follow::
+
+  Playbook content
+
+- Application Name: ``site22.example.com``
+- Name Virtual Server: ``vs_site22.example.com``
+- Destination Address: ``10.1.10.122``
+- Service Port: ``80``
+- Pool Members: ``10.1.20.122``
+
+.. warning:: PENDING ANSIBLE MODULES AVAILBILITY
+
+Execute your playbook::
+
+    # ansible playbook.yml
+
+Check on BIG-IQ the application has been correclty created:
+
+.. image:: ../pictures/module3/img_module3_lab1_1.png
   :align: center
