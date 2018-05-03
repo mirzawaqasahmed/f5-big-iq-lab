@@ -20,14 +20,14 @@ The policy is imported in Transparent mode.
   :align: center
   :scale: 50%
 
-Edit the Policy and make available in Application Templates.
+Edit the Policy, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``. Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
   :scale: 50%
 
-Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, create.
-Then enter the name of your policy: ``f5-afm-policy1``. Make sure to check the box ``Make available in Application Templates``. Save & Close.
+Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, Create.
+Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_5.png
   :align: center
