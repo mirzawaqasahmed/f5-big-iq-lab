@@ -1,5 +1,5 @@
-Module 1: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-========================================
+Module 2: Service Scaling Groups Analytics
+==========================================
 
 .. toctree::
    :maxdepth: 1

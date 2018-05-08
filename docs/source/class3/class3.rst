@@ -1,9 +1,7 @@
 Class 3: Analytics
 ==================
 
-This introductory class covers the following topics:
-
-
+In this class, we will review the various analytics available for the applications and Service Scaling Group objects in BIG-IQ 6.0.
 
 .. toctree::
    :maxdepth: 1

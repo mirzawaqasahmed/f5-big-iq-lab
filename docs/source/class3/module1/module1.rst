@@ -1,5 +1,5 @@
-Module 1: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-========================================
+Module 1: Applications Analytics
+================================
 
 .. toctree::
    :maxdepth: 1
