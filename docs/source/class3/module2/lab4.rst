@@ -1,5 +1,7 @@
-Lab 1.3: Miscellaneous
+Lab 2.4: Miscellaneous
 ----------------------
+Connect as **Paula**.
+Go to *Applications* > *APPLICATIONS*:
 
 Get user familiar with using timescales, drill downs, how to stop real time display and log correlation/overlay.
 Toggle filters for category and Log Level

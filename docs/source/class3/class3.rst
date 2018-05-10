@@ -6,5 +6,6 @@ In this class, we will review the various analytics available for the applicatio
 .. toctree::
    :maxdepth: 1
    :glob:
-
+   
+   intro
    module*/module*

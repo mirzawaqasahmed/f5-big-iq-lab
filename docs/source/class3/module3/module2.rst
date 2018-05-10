@@ -1,4 +1,4 @@
-Module 2: Service Scaling Groups Analytics
+Module 3: Service Scaling Groups Analytics
 ==========================================
 
 .. toctree::

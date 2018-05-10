@@ -131,6 +131,7 @@ Create your virtual server with the following parameters:
 - Name Virtual Server: ``vs_site16.example.com``
 - Source Address: ``0.0.0.0/0``
 - Destination Address: ``10.1.10.116``
+- Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
 - Protocol Profile (Client): ``/Common/f5-tcp-wan``
 - Protocol Profile (Server): ``/Common/f5-tcp-lan``
@@ -139,6 +140,8 @@ Create your virtual server with the following parameters:
 - Default Pool: ``# /Common/f5-HTTP-lb-custom-template_MyPool``
 
 .. note:: Do not apply the default ASM Policy.
+
+.. warning:: If the Application is created on AWS, Destination Address and Network Mask needs to be set to 0.0.0.0
 
 .. image:: ../pictures/module4/img_module4_lab1_11.png
   :align: center

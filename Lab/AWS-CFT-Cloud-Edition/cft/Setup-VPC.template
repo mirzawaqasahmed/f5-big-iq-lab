@@ -40,6 +40,9 @@
         },
         "ELBNAME": {
             "Type": "String"
+        },
+        "ELBSCHEME": {
+            "Type": "String"
         }
     },
     "Resources": {
@@ -222,8 +225,8 @@
         "SecurityGroup": {
             "Type" : "AWS::EC2::SecurityGroup",
             "Properties" : {
-                "GroupName" : "test-sg",
-                "GroupDescription" : "test-sg",                
+                "GroupName" : "VPCNAME",
+                "GroupDescription" : "VPCNAME",                
                 "VpcId" : {
                     "Ref": "VPC"
                 }
@@ -249,7 +252,7 @@
                     }
                 ],
                 "LoadBalancerName" : { "Ref": "ELBNAME" },              
-                "Scheme" : "internal",                
+                "Scheme" : { "Ref": "ELBSCHEME" },                
                 "Subnets" : [ { "Ref": "InternalSubnet" }, { "Ref": "ExternalSubnet" } ]                
             }
         }
@@ -259,15 +262,23 @@
             "Description": "ELB ID",
             "Value": { "Ref": "ClassicELB" }
         },
-        "VpcId" : {
+        "VPCId" : {
           "Description" : "VPC ID",
           "Value" : {"Ref": "VPC"}
         },
-        "InternalSubnetId" : {
+        "RT1Id" : {
+          "Description" : "Route Subnet ID",
+          "Value" : {"Ref": "RouteTableInternal"}
+        },
+        "RT2Id" : {
+          "Description" : "Route Subnet ID",
+          "Value" : {"Ref": "RouteTableExternal"}
+        },
+        "InternalSubnet" : {
           "Description" : "Internal Subnet ID",
           "Value" : {"Ref": "InternalSubnet"}
         },
-        "ExternalSubnetId" : {
+        "ExternalSubnet" : {
           "Description" : "External Subnet ID",
           "Value" : {"Ref": "ExternalSubnet"}
         }

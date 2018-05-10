@@ -3,7 +3,7 @@
 - name: Deploy prerequisite infrastructure for SSG to AWS
   hosts: localhost
   vars_files: 
-    - ../config.yml  
+    - ./config.yml  
   tasks:              
     - name: Set AWS Region
       command: aws configure set default.region {{DEFAULT_REGION}}
@@ -19,8 +19,8 @@
 
     - name: Build VPC CloudFormation
       cloudformation:
-        stack_name: "{{PREFIX}}-cf-stack"
-        template: ../cf/Setup-VPC.template
+        stack_name: "{{PREFIX}}-vpc-elb-cf-stack"
+        template: ./cft/Setup-VPC.template
         template_parameters: 
           VPCNAME: "{{PREFIX}}-vpc"
           VPCCIDRBLOCK: "{{VPC_CIDR_BLOCK}}"
@@ -34,9 +34,25 @@
           IGWNAME: "{{PREFIX}}-igw"
           RT1NAME: "{{PREFIX}}-rt-1"
           RT2NAME: "{{PREFIX}}-rt-2"
-          ELBNAME: "{{ELB_NAME}}"
-      register: cf_result
+          ELBNAME: "{{PREFIX}}-elb"
+          ELBSCHEME: "{{ELB_SCHEME}}"
+      register: vpc_stack
 
     - name: Remove ELB Listener
-      command: aws elb delete-load-balancer-listeners --load-balancer-name {{ELB_NAME}} --load-balancer-ports 80
+      command: aws elb delete-load-balancer-listeners --load-balancer-name {{PREFIX}}-elb --load-balancer-ports 80
+
+    - name: Creates directory
+      file: path=./cache/{{PREFIX}} state=directory
+
+    - name: Create resource file
+      copy:
+        content: |
+          ---        
+          AWS_VPC: "{{vpc_stack.stack_outputs.VPCId}}"
+          RT1Id: "{{vpc_stack.stack_outputs.RT1Id}}"
+          RT2Id: "{{vpc_stack.stack_outputs.RT2Id}}"
+          AWS_SUBNET_1A: "{{vpc_stack.stack_outputs.ExternalSubnet}}"
+          AWS_SUBNET_1B: "{{vpc_stack.stack_outputs.InternalSubnet}}"
+        dest: ./cache/{{PREFIX}}/1-vpc.yml
+
 ...

@@ -33,11 +33,15 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 
 - Name Virtual Server: ``vs_site18.example.com_https``
 - Destination Address: ``10.1.10.118``
+- Destination Network Mask: ``255.255.255.255``
 - Service Port: ``443``
 
 - Name Virtual Server: ``vs_site18.example.com_redirect``
 - Destination Address: ``10.1.10.118``
+- Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
+
+.. warning:: If the Application is created on AWS, Destination Address and Network Mask needs to be set to 0.0.0.0
 
 It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
 If you want to append this prefix to the names of the objects that this application creates, keep Apply Prefix To Names selected.
