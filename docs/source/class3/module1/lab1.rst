@@ -80,6 +80,10 @@ Click the arrow tab to the right of the chart to expand the dimensions area.
 To filter data in charts and dimensions, expand the dimensions to select specific objects listed.
 Note: Certain dimensions list aggregated data. Click Enhanced Analytics to enable object data for these dimensions.
 
+Take the time to naviate in all the different charts.
+
+.. note:: When using the filters, do not enter the first ``/`` in your query.
+
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
   :scale: 50%
@@ -87,6 +91,8 @@ Note: Certain dimensions list aggregated data. Click Enhanced Analytics to enabl
 **Configuration Tab**
 
 Click CONFIGURATION to view and evaluate the settings for application properties. The Application owner can easily update the BIG-IP configuration (Virtual Server, Node, etc..).
+
+Take the time to naviate in all the different menu.
 
 .. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center

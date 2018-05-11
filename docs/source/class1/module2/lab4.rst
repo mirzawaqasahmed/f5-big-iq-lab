@@ -42,3 +42,7 @@ Connect as **Larry**
 1. Check ASM type of attacks
 
 Monitoring > EVENTS > Web Application Security > Events Logs > Events
+
+.. image:: ../pictures/module2/img_module2_lab4_6.png
+  :align: center
+  :scale: 50%

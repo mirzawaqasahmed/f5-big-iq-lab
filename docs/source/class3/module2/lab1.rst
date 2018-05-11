@@ -3,6 +3,18 @@ Lab 2.1: Troubleshooting 404
 Connect as **Paula**.
 Go to *Applications* > *APPLICATIONS*:
 
+Select one of the application and turn on Enhanced Analytics, at the top right of the screen.
+
+The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
+Note: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list.
+
+.. image:: ../pictures/module2/img_module2_lab1_1.png
+  :align: center
+  :scale: 50%
+
+
+User Filter comparaison to show wich pool member is troughing the 404.
+
 Page Load Time is dependent on CPSM (Client side Perf Monitoring javascript injection).
 Note it is not there with default HTTP profile.
 Create an App the removes Accept-Encoding header so CPSM will work. Note that page load time now works.

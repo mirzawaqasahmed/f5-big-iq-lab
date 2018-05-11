@@ -1,6 +1,5 @@
 Introduction
 ============
-
 A data collection device (DCD) is a specially provisioned BIG-IQ system that you use to manage and store alerts,
 events, and statistical data from one or more BIG-IP systems.
 

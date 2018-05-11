@@ -22,47 +22,6 @@ Finally, we will simulate "bad" traffic to show the security policy blocking it.
 
 .. note:: A traffic generator located on the *Ubuntu Lamp Server, LDAP and DHCP* server, can be launched manually to send bad traffic to the virtual servers.
 
-Below Virtual Servers and Pool Members can be used in the context of the UDF lab.
-
-- **vLab Test Web Site 16:**
-
-=======================================  =========== ==== ============================
-Test Website                             VIP         Port Members
-=======================================  =========== ==== ============================
-site16.example.com *(used in module 4)*  10.1.10.116 80   10.1.20.116 and 10.1.20.117
-site16.example.com                       10.1.10.116 443  10.1.20.116 and 10.1.20.117
-site16port8081.example.com               10.1.10.116 8081 10.1.20.116 and 10.1.20.117
-=======================================  =========== ==== ============================
-
-- **vLab Test Web Site 18:**
-
-=======================================  =========== ==== ============================
-Test Website                             VIP         Port Members
-=======================================  =========== ==== ============================
-site18.example.com *(used in module 2)*  10.1.10.118 80   10.1.20.118 and 10.1.20.119
-site18.example.com *(used in module 2)*  10.1.10.118 443  10.1.20.118 and 10.1.20.119
-site18port8081.example.com               10.1.10.118 8081 10.1.20.118 and 10.1.20.119
-=======================================  =========== ==== ============================
-
-- **vLab Test Web Site 20:**
-
-==========================  =========== ==== ============================
-Test Website                VIP         Port Members
-==========================  =========== ==== ============================
-site20.example.com          10.1.10.120 80   10.1.20.120 and 10.1.20.121
-site20.example.com          10.1.10.120 443  10.1.20.120 and 10.1.20.121
-site20port8081.example.com  10.1.10.120 8081 10.1.20.120 and 10.1.20.121
-==========================  =========== ==== ============================
-
-- **Hackazon Test Web Site 22:**
-
-=======================================  =========== ==== ============================
-Test Website                             VIP         Port Members
-=======================================  =========== ==== ============================
-site22.example.com *(used in module 3)*  10.1.10.122 80   10.1.20.122
-=======================================  =========== ==== ============================
-
-
 .. toctree::
    :maxdepth: 1
    :glob:
