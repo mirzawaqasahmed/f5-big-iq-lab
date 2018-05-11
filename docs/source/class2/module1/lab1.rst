@@ -25,10 +25,13 @@ Your BIG-IQ should already have a license pool setup.
 
 Connect to your BIG-IQ and go to : *Devices* > *License Management* > *Licenses*
 
-Here you should see a license pool called
+Here you should see a license pool called ``byol-pool``
 
-.. warning:: specify the license pool already setup in the blueprint and provide
- also a screenshot of it
+.. image:: ../pictures/module1/img_module1_lab1_9.png
+  :align: center
+  :scale: 50%
+
+|
 
 IP Pools Setup
 **************
@@ -42,9 +45,16 @@ For our lab, we will need two IP pools:
 * One for the network between Tier1 and Tier2
 * One for the servers network
 
-Go to *Devices* > *IP POOLS*, Click on *Create*
+Go to *Devices* > *IP POOLS*, you should see two already defined ``IP Pool``:
 
-.. warning:: Setup the IP Pools according to the final Blueprint
+* external
+* internal
+
+.. image:: ../pictures/module1/img_module1_lab1_10.png
+  :align: center
+  :scale: 50%
+
+|
 
 Device Template Setup
 *********************
@@ -102,11 +112,12 @@ Setup the configuration tab like this:
 
 * Hostname Components:
 
+  * Default Route: LEAVE EMPTY
+  * Management port: 443
   * Check *Text (prefix)* and put: SSGClass2
   * Check *Serial Number*
   * Check *Text (suffix)* and put: .f5demo.local
-  * Default route: LEAVE EMPTY
-  * Management port: 443
+
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
@@ -116,18 +127,21 @@ Setup the configuration tab like this:
 
 Click on the *License* tab and setup the following:
 
-* License Type : Select *Purchase Pool*
-* License Name:
+* License Type : Select *Purchased Pool*
+* License Name: Select *byol-pool*
 
-.. warning:: Setup the License pool name based on what is in UDF and add a
-  screenshot
+.. image:: ../pictures/module1/img_module1_lab1_12.png
+  :align: center
+  :scale: 50%
+
 
 |
 
 Click on the *Provisioning* tab,
 
-* Select the module *Local Traffic Manager (LTM)*
-* Set LTM to a level *Nominal*
+* Select the module *Local Traffic Manager (LTM)* and set it to *Nominal*
+* Select the module *Application Visibility and Reporting* and set it to *Minimum*
+
 
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
@@ -147,17 +161,52 @@ Click on the *DNS & NTP* tab and setup the following:
 
 |
 
-Click on the *VLANs* tab and click the *Add* button.
+Click on the *VLANs* tab. You should see a vlan defined by default: *external*.
 
-.. warning:: setup the right VLANs and do the appropriate screenshot
+Click on the *Add* button:
+
+* Name: internal
+* Tag: EMPTY
+* Interface: 1.2
+
+
+.. image:: ../pictures/module1/img_module1_lab1_13.png
+  :align: center
+  :scale: 50%
+
+Click on the *Save and Close* button
 
 |
 
-Click on the *Self IP's* tab and click on the *Add* button
+Click on the *Self IP's* tab. You should see a Self IP defined called *external*.
+Click on the *Add* button:
 
-.. warning:: setup the right Self IPs and do the appropriate screenshot
+* Name: internal
+* IP Address: IP Pool > Select *internal*
+* VLAN: internal
+* Port lockdown: Allow None
 
-Click on the User Accounts tab and click the *Add* button.
+.. image:: ../pictures/module1/img_module1_lab1_14.png
+  :align: center
+  :scale: 50%
+
+|
+
+Click on the *Save and Close* button. Click on the *external* self ip to set it up
+
+* Name: internal
+* IP Address: IP Pool > Select *external*
+* VLAN: external
+* Port lockdown: Allow None
+
+.. image:: ../pictures/module1/img_module1_lab1_15.png
+  :align: center
+  :scale: 50%
+
+|
+
+Click on the User Accounts tab. You will see the admin user. Click on the *Admin*
+user.
 
 * Role: select *Administrator*
 * Username: admin
