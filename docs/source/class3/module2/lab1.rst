@@ -33,3 +33,5 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 .. image:: ../pictures/module2/img_module2_lab1_4.png
   :align: center
   :scale: 50%
+
+5. Add self IP in the pool.
