@@ -15,11 +15,11 @@ To help identify this application when you want to use it later, in the Descript
 
 Type  the domain of your application (this will be used by the ASM policy to enforce the policy on the domain later on)
 
-- Domain Names: ``example.com``
+- Domain Names: ``site18.example.com``
 
 For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
 
-- BIG-IP: Select ``BOS-vBIGIP02.termmarc.com`` and check ``Collect HTTP Statistics``
+- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
   :align: center
@@ -80,7 +80,7 @@ Click on the Application and check the details (alarms, security enabled, config
   :align: center
   :scale: 50%
 
-.. note:: A traffic generator located on the *Ubuntu Lamp Server, LDAP and DHCP* server, is sending good traffic every minutes to the virtual servers.
+.. note:: A traffic generator located on the *Ubuntu Lamp Server* server, is sending good traffic every minutes to the virtual servers.
 
 Paula can update Application Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.
 

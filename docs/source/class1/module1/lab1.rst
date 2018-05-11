@@ -32,7 +32,7 @@ and click on *Add*
 
 **1. Marco: Full Administrator**
 
-- *User Name* = Marco
+- *User Name* = marco
 - *Full Name* = Full Administrator
 - *Password* = marco
 - *Role* = Administrator Role
@@ -43,7 +43,7 @@ Click on *Save & Close*
 
 Click on *Add*
 
-- *User Name* = David
+- *User Name* = david
 - *Full Name* = Super-NetOps
 - *Password* = david
 - *Role* = Application Manager
@@ -54,7 +54,7 @@ Click on *Save & Close*
 
 Click on *Add*
 
-- *User Name* = Larry
+- *User Name* = larry
 - *Full Name* = Application Security Manager
 - *Password* = larry
 - *Role* = Security Manager
@@ -65,7 +65,7 @@ Click on *Save & Close*
 
 Click on *Add*
 
-- *User Name* = Paula
+- *User Name* = paula
 - *Full Name* = Application Manager
 - *Password* = paula
 - *Role* = Application Manager

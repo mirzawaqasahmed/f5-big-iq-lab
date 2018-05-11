@@ -31,7 +31,7 @@ Connect as **Paula**
   :align: center
   :scale: 50%
 
-2. Let's generate some bad traffic, connect on the *Ubuntu Lamp Server, LDAP and DHCP* server and launch the following script:
+2. Let's generate some bad traffic, connect on the *Ubuntu Lamp Server* server and launch the following script:
 
 ``# /home/f5/scripts/generate_bad_traffic.sh``
 
