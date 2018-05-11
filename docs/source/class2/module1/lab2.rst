@@ -8,7 +8,7 @@ leverage a VMWare infrastructure
 Cloud Provider Setup
 ********************
 
-In your BIG-IQ interface, go to *Applications* > *Cloud* > *Cloud Providers*
+In your BIG-IQ interface, go to *Applications* > *Environments* > *Cloud Providers*
 
 .. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center
@@ -21,7 +21,7 @@ Click on the *Create* button:
 * Name: VMWareCloudProvider
 * Provider Type: select *VMWARE*
 * vCenter Hostname: 10.1.1.90
-* Super User: administrator@vsphere.local
+
 
 .. image:: ../pictures/module1/img_module1_lab2_2.png
   :align: center
@@ -30,7 +30,7 @@ Click on the *Create* button:
 |
 
 Click *Save & Close*. Now that your Cloud provider is setup, we can define your
-``Cloud Environments``. Go to *Applications* > *Cloud* > *Cloud Environments*
+``Cloud Environments``. Go to *Applications* > *Environments* > *Cloud Environments*
 and click on the *Create* button
 
 General Properties:
@@ -44,21 +44,17 @@ VMWare Properties:
 * DeployTo: Select *ESXi Hostname* and type: 10.1.1.9
 * Datacenter: UDF
 * Folder: Purple
-* Disk Size in GB: 82
-* Datastore Name: datastore
-* Number of CPUs: 2
-* Memory in MB: 4096
 * User: administrator@vsphere.local
 * Password: Purpl3$lab
-* VM Image:bigip14template1920
+* VM Image: BIGIP-13.1.0.5-0.0.5.ALL_1SLOT_ASM_template
 * Network Interface Mappings
 
   ========================== ===================
       Network Interface            Network
   ========================== ===================
           nic0                    VM Network
-          nic1                      internal
-          nic2                      external
+          nic1                      external
+          nic2                      internal
           nic3                        HA
   ========================== ===================
 
