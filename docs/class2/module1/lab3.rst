@@ -74,6 +74,13 @@ our SSGs:
 * Disk size and datastore used by this SSG
 
 
+.. image:: ../pictures/module1/img_module1_lab3_8.png
+    :align: center
+    :scale: 50%
+
+|
+
+
 
 Service Scaling Group Setup
 ***************************
