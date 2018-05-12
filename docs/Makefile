@@ -4,9 +4,9 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = CloudEditionLabGuide
-SOURCEDIR     = source
-BUILDDIR      = build
+SPHINXPROJ    = F5AgilityLabs
+SOURCEDIR     = .
+BUILDDIR      = _build
 
 # Put it first so that "make" without argument is like "make help".
 help:

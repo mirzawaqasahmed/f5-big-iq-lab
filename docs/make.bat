@@ -7,9 +7,9 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set SOURCEDIR=source
-set BUILDDIR=build
-set SPHINXPROJ=CloudEditionLabGuide
+set SOURCEDIR=.
+set BUILDDIR=_build
+set SPHINXPROJ=F5AgilityLabs
 
 if "%1" == "" goto help
 
