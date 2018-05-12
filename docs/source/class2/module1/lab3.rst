@@ -13,9 +13,35 @@ Before setting up our SSG and deploy it, do the following:
 
   ``tail -f /var/log/orchestrator.log``
 
-Keep those sessions open until the end of the class.
+.. note:: Keep those sessions open until the end of the class.
 
-Launch vCenter also with the following credentials:
+Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
+in our ESXi). To do this, in your UDF deployment, click on the *Access* button
+of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH WIN7*
+
+.. image:: ../pictures/module1/img_module1_lab3_5.png
+    :align: center
+    :scale: 50%
+
+|
+
+here is the credentials to use:
+
+* login: IEUser
+* Password: P@ssw0rd1
+
+.. note:: You will have a QWERTY keyboard for the password, keep this in mind
+
+Launch Chrome and click on the *vSphere Web Client* bookmark.
+
+.. image:: ../pictures/module1/img_module1_lab3_6.png
+    :align: center
+    :scale: 50%
+
+|
+
+
+Use the following credentials:
 
 * login: administrator@vsphere.local
 * password: Purpl3$lab
@@ -25,6 +51,28 @@ Launch vCenter also with the following credentials:
     :scale: 50%
 
 |
+
+.. note:: the login/authentication takes a bit of time.
+
+Once logged in, click on the *VMs and Templates* button to see the list of VMs
+and folder.
+
+.. image:: ../pictures/module1/img_module1_lab3_7.png
+    :align: center
+    :scale: 50%
+
+|
+
+In the previous lab, in our Cloud environment, we specified a VM template called
+*BIGIP-13.1.0.5-0.0.5.ALL_1SLOT_ASM_template*. You can see that it is listed here.
+
+This template will give us the required information to deploy the VE related to
+our SSGs:
+
+* Nb of vCPUs
+* Amount of memory allocated
+* Disk size and datastore used by this SSG
+
 
 
 Service Scaling Group Setup
@@ -70,28 +118,27 @@ Let's review those parameters.
 
 Load-Balancer:
 
-* Devices: Select the already discovered BIG-IP *ip-10-1-1-8.us-west2.compute*
-  Òthat has 10.1.1.8 as an IP Address
+* Devices: Select the already discovered BIG-IPs *BOS-vBIGIP01.termmarc.com* and
+  *BOS-vBIGIP02.termmarc.com*
 
-.. warning:: Add a screenshot of the Tier1 BIG-IP
+  .. image:: ../pictures/module1/img_module1_lab3_3.png
+      :align: center
+      :scale: 50%
 
-The device(s) we select here, we behave as our Tier1 devices. They will load
+  |
+
+
+The device(s) we select here will behave as our Tier1 devices. They will load
 balance the traffic aimed at this SSG.
 
 Scaling Rules:
 
-* Scale-Out: Select *Throughput(In)* Greater than 5 (Mbps)
-* Scale-In: Select *Troughput(In)* Less than 2 (Mbps)
+* Scale-Out: Select *Throughput(In)* Greater than 20 Mbps
+* Scale-In: Select *Troughput(In)* Less than 5 Mbps
 
-
-
-Here we define our threshold to scale-in/scale-out. Here it will be based on the
-**aggregated** throughput they receive. The ``cooldown period`` mentions an
-interval where we don't do any scaling. The idea is to see how the situation
-evolves after a scale-in scale-out event.
-
-.. warning:: We NEED TO MAKE sure that the throughput scale changed from Gb to
-  Mb
+Here we define our threshold to scale-in/scale-out.The ``cooldown period``
+mentions an interval where we don't do any scaling. The idea is to see how
+the situation evolves after a scale-in scale-out event.
 
 Click on *Save & Close* and your SSG will start being provisioned.
 Go to the next lab to see how to troubleshoot/monitor your SSG Deployment.
