@@ -125,7 +125,7 @@ master_doc = 'index'
 # General information about the project.
 project = classname
 copyright = u'2018, F5 Networks, Inc.'
-author = u'F5 Networks, Inc.'
+author = u'Kyle Oliver, Roman Jouhanet, Nicolas Menant@F5 Networks, Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -256,6 +256,3 @@ texinfo_documents = [
      author, classname, classname,
      'Training'),
 ]
-
-
-
