@@ -134,8 +134,9 @@ Click on the *License* tab and setup the following:
 Click on the *Provisioning* tab,
 
 * Select the module *Local Traffic Manager (LTM)* and set it to *Nominal*
-* Select the module *Application Visibility and Reporting* and set it to *Minimum*
-
+* Select the module *Application Visibility and Reporting* and set it to
+  *Minimum*
+* Select the module *Application Security (ASM)* and set it to *Nominal*
 
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
