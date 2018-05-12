@@ -55,7 +55,6 @@ VMWare Properties:
           nic0                    VM Network
           nic1                      external
           nic2                      internal
-          nic3                        HA
   ========================== ===================
 
 
@@ -66,6 +65,10 @@ VMWare Properties:
 |
 
 Click *Save & Close*
+
+.. note:: with the Liberty release, we have a 1:1 mapping between the cloud
+  provider and cloud environment. So a cloud provider can be used with only one
+  cloud environment. This restriction will be removed with 6.0.1
 
 We have setup all the different element defining our ``Service Scaling Group``
 and can trigger its deployment now

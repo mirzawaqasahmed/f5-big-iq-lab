@@ -71,17 +71,11 @@ you should see this:
 |
 
 Click on the button *Add/remove* to select the configuration items you want to
-enforce when deploy a new F5 virtual edition in your ``SSG``
+enforce when deploying a new F5 virtual edition in your ``SSG``
 
-Select:
-
-* configuration
-* License
-* Provisioning
-* DNS & NTP
-* VLANs
-* Self IP's
-* User accounts
+Here, for the *Provider Type*, select *VMWare*. It will automatically select
+all the required information related to a VMWAre environment (in regards to Using
+``Service Scaling Group``)
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -205,7 +199,16 @@ Click on the *Save and Close* button. Click on the *external* self ip to set it 
 
 |
 
-Click on the User Accounts tab. You will see the admin user. Click on the *Admin*
+Click on the *Root Account* tab. Specify a new password for the root account:
+*purple*
+
+.. image:: ../pictures/module1/img_module1_lab1_11.png
+  :align: center
+  :scale: 50%
+
+|
+
+Click on the *User Accounts* tab. You will see the admin user. Click on the *Admin*
 user.
 
 * Role: select *Administrator*
