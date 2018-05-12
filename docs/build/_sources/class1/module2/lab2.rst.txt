@@ -20,7 +20,7 @@ The policy is imported in Transparent mode.
   :align: center
   :scale: 50%
 
-Edit the Policy, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``. Save & Close.
+Edit the Policy, switch to ``Manual`` Learning Mode and select ``Make available in Application Templates``.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
