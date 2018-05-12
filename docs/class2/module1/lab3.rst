@@ -128,11 +128,11 @@ Load-Balancer:
 * Devices: Select the already discovered BIG-IPs *BOS-vBIGIP01.termmarc.com* and
   *BOS-vBIGIP02.termmarc.com*
 
-  .. image:: ../pictures/module1/img_module1_lab3_3.png
-      :align: center
-      :scale: 50%
+.. image:: ../pictures/module1/img_module1_lab3_3.png
+    :align: center
+    :scale: 50%
 
-  |
+|
 
 
 The device(s) we select here will behave as our Tier1 devices. They will load
@@ -143,14 +143,17 @@ Scaling Rules:
 * Scale-Out: Select *Throughput(In)* Greater than 20 Mbps
 * Scale-In: Select *Troughput(In)* Less than 5 Mbps
 
+.. image:: ../pictures/module1/img_module1_lab3_9.png
+    :align: center
+    :scale: 50%
+
+|
+
+
 Here we define our threshold to scale-in/scale-out.The ``cooldown period``
 mentions an interval where we don't do any scaling. The idea is to see how
 the situation evolves after a scale-in scale-out event.
 
 Click on *Save & Close* and your SSG will start being provisioned.
+
 Go to the next lab to see how to troubleshoot/monitor your SSG Deployment.
-
-.. note::
-
-  You may need to go to another page on your BIG-IQ interface and come back to
-  the SSG page to see your SSG appear

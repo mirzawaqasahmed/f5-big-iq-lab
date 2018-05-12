@@ -19,32 +19,31 @@ example of logs for ``tail -f /var/log/restjavad.0.log | grep vmware``
 
 .. code::
 
-  [INFO][19 Apr 2018 19:37:20 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Advancing from GET_PROVIDER to VALIDATE_SSG
-  [INFO][19 Apr 2018 19:37:20 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Advancing from VALIDATE_SSG to CREATE_ASM_KEYS
-  [INFO][19 Apr 2018 19:37:21 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Updated service scaling group 'SSGClass2'
-  [INFO][19 Apr 2018 19:37:21 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Advancing from CREATE_ASM_KEYS to ADD_DEVICE
-  [INFO][19 Apr 2018 19:37:21 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Starting scale-out for service scaling group 'SSGClass2'
-  [INFO][19 Apr 2018 19:37:21 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Advancing from GET_SSG to GET_ENVIRONMENT
-  [INFO][19 Apr 2018 19:37:21 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Advancing from GET_ENVIRONMENT to GET_PROVIDER
-  [INFO][19 Apr 2018 19:37:21 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Advancing from GET_PROVIDER to VALIDATE_SSG
-  [INFO][19 Apr 2018 19:37:22 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Advancing from VALIDATE_SSG to CREATE_GUEST
-  [INFO][19 Apr 2018 19:37:22 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Polling: /mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/240e36ea-c342-49c8-823f-b984723c57ed
+  [INFO][12 May 2018 07:17:32 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Advancing from GET_SSG to GET_ENVIRONMENT
+  [INFO][12 May 2018 07:17:32 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Advancing from GET_ENVIRONMENT to GET_PROVIDER
+  [INFO][12 May 2018 07:17:32 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Advancing from GET_PROVIDER to VALIDATE_SSG
+  [INFO][12 May 2018 07:17:32 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Advancing from VALIDATE_SSG to CREATE_ASM_KEYS
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Updated service scaling group 'SSGClass2'
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Advancing from CREATE_ASM_KEYS to ADD_DEVICE
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scaling/299bb73f-fe9f-449c-9e79-4a6ef4a8dd0f/worker VmwScalingTaskWorker] Starting scale-out for service scaling group 'SSGClass2'
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Advancing from GET_SSG to GET_ENVIRONMENT
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Advancing from GET_ENVIRONMENT to GET_PROVIDER
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Advancing from GET_PROVIDER to VALIDATE_SSG
+  [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Advancing from VALIDATE_SSG to CREATE_GUEST
+  [INFO][12 May 2018 07:17:34 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Polling: /mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/ad57d6e6-2a35-422e-8b90-f2d6108ee530
 
 example of logs for ``tail -f /var/log/orchestrator.log``
 
 
 .. code::
 
-  2018-04-19 07:33:47 PM Job "reapIt (trigger: interval[0:10:00], next run at: 2018-04-19 19:43:47 CEST)" executed successfully
-  2018-04-19 07:33:47 PM Running job "reapIt (trigger: interval[0:10:00], next run at: 2018-04-19 19:43:47 CEST)" (scheduled at 2018-04-19 19:33:47.845403+02:00)
-  2018-04-19 07:33:47 PM Job "reapIt (trigger: interval[0:10:00], next run at: 2018-04-19 19:43:47 CEST)" executed successfully
-  2018-04-19 07:37:22 PM Provisioning VM in VMWare...
-  2018-04-19 07:37:22 PM post_item_state({"status": "STARTED", "kind": "cm:cloud:orchestrator:vmware:tasks:create-vm:createvmtaskitemstate", "generation": 0, "lastUpdateMicros": 0, "environmentReference": {"link": "https://localhost/mgmt/cm/cloud/environments/3d906980-66a7-3d24-aff4-2029ced9f27b"}, "startDateTime": "2018-04-19T17:37:22+0000", "vmName": "SSGClass2-3f91f63b-6369-4edd-85c1-df229c8b4669", "id": "240e36ea-c342-49c8-823f-b984723c57ed", "selfLink": "https://localhost:8000/mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/240e36ea-c342-49c8-823f-b984723c57ed"})
-  2018-04-19 07:37:22 PM PID = 17699
-  2018-04-19 07:37:22 PM post_item_state({"status": "STARTED", "kind": "cm:cloud:orchestrator:vmware:tasks:create-vm:createvmtaskitemstate", "generation": 0, "lastUpdateMicros": 0, "pid": 17699, "environmentReference": {"link": "https://localhost/mgmt/cm/cloud/environments/3d906980-66a7-3d24-aff4-2029ced9f27b"}, "startDateTime": "2018-04-19T17:37:22+0000", "vmName": "SSGClass2-3f91f63b-6369-4edd-85c1-df229c8b4669", "id": "240e36ea-c342-49c8-823f-b984723c57ed", "selfLink": "https://localhost:8000/mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/240e36ea-c342-49c8-823f-b984723c57ed"})
-  2018-04-19 07:37:23 PM Fetching environment configuration from BIG-IQ
-  2018-04-19 07:37:23 PM Create VM on vCenter
-  2018-04-19 07:37:24 PM start task = TASK: Create VM
+  2018-05-12 07:17:33 AM Provisioning VM in VMware...
+  2018-05-12 07:17:33 AM post_item_state({"status": "STARTED", "kind": "cm:cloud:orchestrator:vmware:tasks:create-vm:createvmtaskitemstate", "generation": 0, "lastUpdateMicros": 0, "environmentReference": {"link": "https://localhost/mgmt/cm/cloud/environments/3d906980-66a7-3d24-aff4-2029ced9f27b"}, "startDateTime": "2018-05-12T14:17:33+0000", "vmName": "SSGClass2-b08ea97e-b2f1-4353-aace-11b150008341", "id": "ad57d6e6-2a35-422e-8b90-f2d6108ee530", "selfLink": "https://localhost:8000/mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/ad57d6e6-2a35-422e-8b90-f2d6108ee530"})
+  2018-05-12 07:17:34 AM PID = 12365
+  2018-05-12 07:17:34 AM post_item_state({"status": "STARTED", "kind": "cm:cloud:orchestrator:vmware:tasks:create-vm:createvmtaskitemstate", "generation": 0, "lastUpdateMicros": 0, "pid": 12365, "environmentReference": {"link": "https://localhost/mgmt/cm/cloud/environments/3d906980-66a7-3d24-aff4-2029ced9f27b"}, "startDateTime": "2018-05-12T14:17:33+0000", "vmName": "SSGClass2-b08ea97e-b2f1-4353-aace-11b150008341", "id": "ad57d6e6-2a35-422e-8b90-f2d6108ee530", "selfLink": "https://localhost:8000/mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/ad57d6e6-2a35-422e-8b90-f2d6108ee530"})
+  2018-05-12 07:17:39 AM Fetching environment configuration from BIG-IQ
+  2018-05-12 07:17:39 AM Create VM on vCenter
+  2018-05-12 07:17:42 AM start task = TASK: Create VM
 
 Here we can see that we are creating a VM. Go to your vCenter interface and
 check that a VM is getting cloned
@@ -54,8 +53,6 @@ check that a VM is getting cloned
 
 |
 
-.. warning:: potentially redo the screenshot once we have the right template name
-    and also take a screenshot of the provisioned VM in the purple folder
 
 .. note::
 
@@ -70,12 +67,11 @@ your ``orchestrator.log`` file
 
 .. code::
 
-  2018-04-19 07:48:14 PM Wait for management ip and retrieve vm info
-  2018-04-19 07:48:14 PM start task = TASK: Poll VM info for management IP
-  2018-04-19 07:48:16 PM Ansible task retry...
-  2018-04-19 07:48:28 PM Ansible task retry...
-  2018-04-19 07:48:40 PM Ansible task retry...
-  2018-04-19 07:48:53 PM Ansible task retry...
+  2018-05-12 07:18:14 AM Wait for management ip and retrieve vm info
+  2018-05-12 07:18:14 AM start task = TASK: Poll VM info for management IP
+  2018-05-12 07:18:17 AM Ansible task retry...
+  2018-05-12 07:18:31 AM Ansible task retry...
+  2018-05-12 07:18:44 AM Ansible task retry...
 
 Here your VM is starting and ansible waits for it to be up and that it retrieved
 a Management IP address (provided through ``DHCP``)
@@ -86,7 +82,7 @@ a Management IP address (provided through ``DHCP``)
     process
 
 Once your VM has a management IP address, Ansible will enforce the information
-that have been define in your device template.
+that have been defined in your device template.
 
 You should see this kind of log in your ``/var/log/restjavad.0.log`` file
 
