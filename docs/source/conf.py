@@ -153,12 +153,19 @@ texinfo_documents = [
      author, 'CloudEditionLabGuide', 'One line description of project.',
      'Miscellaneous'),
 ]
-
+import os
+import sys
+import time
+import re
+import pkgutil
+import string
+sys.path.insert(0, os.path.abspath('.'))
 import f5_sphinx_theme
+
 html_theme = 'f5_sphinx_theme'
 html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html']}
 
 html_theme_options = {
-                        'site_name': 'Cloud Edition Lab Guide',     
+                        'site_name': 'Cloud Edition Lab Guide',
                         'next_prev_link': True
                      }
