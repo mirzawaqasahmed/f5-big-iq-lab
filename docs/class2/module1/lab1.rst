@@ -108,14 +108,13 @@ Setup the configuration tab like this:
 
   * Default Route: LEAVE EMPTY
   * Management port: 443
-  * Check *Text (prefix)* and put: SSGClass2
+  * Check *Text (prefix)* and put: SSGClass2-
   * Check *Serial Number*
   * Check *Text (suffix)* and put: .f5demo.local
 
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
-  :scale: 50%
 
 |
 
@@ -164,12 +163,12 @@ Click on the *Add* button:
 * Tag: EMPTY
 * Interface: 1.2
 
+Click on the *Save and Close* button. Click on the external vlan and assign the
+interface 1.1 to it.
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
   :scale: 50%
-
-Click on the *Save and Close* button
 
 |
 
@@ -189,7 +188,7 @@ Click on the *Add* button:
 
 Click on the *Save and Close* button. Click on the *external* self ip to set it up
 
-* Name: internal
+* Name: external
 * IP Address: IP Pool > Select *external*
 * VLAN: external
 * Port lockdown: Allow None
@@ -203,9 +202,8 @@ Click on the *Save and Close* button. Click on the *external* self ip to set it 
 Click on the *Root Account* tab. Specify a new password for the root account:
 *purple*
 
-.. image:: ../pictures/module1/img_module1_lab1_11.png
+.. image:: ../pictures/module1/img_module1_lab1_16.png
   :align: center
-  :scale: 50%
 
 |
 
