@@ -30,7 +30,7 @@ Click on the *Create* button:
 |
 
 Click *Save & Close*. Now that your Cloud provider is setup, we can define your
-``Cloud Environments``. Go to *Applications* > *Environments* > *Cloud Environments*
+``Cloud Environment``. Go to *Applications* > *Environments* > *Cloud Environments*
 and click on the *Create* button
 
 General Properties:
