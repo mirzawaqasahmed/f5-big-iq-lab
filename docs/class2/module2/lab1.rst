@@ -86,4 +86,22 @@ Click on *Create*. You'll see your application being created
 
 |
 
+On the page *Applications* > *Applications*, you'll see this while the app is
+getting deployed:
+
+.. image:: ../pictures/module1/img_module2_lab1_7.png
+  :align: center
+  :scale: 50%
+
+|
+
+As soon as the app is configured, you'll see this:
+
+.. image:: ../pictures/module1/img_module2_lab1_8.png
+  :align: center
+  :scale: 50%
+
+|
+
+
 Next, we will review the configuration on our SSG devices and on our tier1 BIG-IPs
