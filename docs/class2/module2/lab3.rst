@@ -14,7 +14,7 @@ about their overall health, BIG-IP device performance and active alerts.
 Use this screen to create, delete, or oversee all of your SSGs.
 
 The ``Summary Bar`` provides summary information about your SSGs' overall health,
-active alerts and device performance. Click the elements in this area to filter 
+active alerts and device performance. Click the elements in this area to filter
 or sort the SSG list.
 
 .. image:: ../pictures/module1/img_module2_lab3_1.png
@@ -23,10 +23,10 @@ or sort the SSG list.
 
 |
 
-SSGs with Active AlertsLists the number of SSGs with either active warning or
-critical alerts.
+*SSGs with Active Alerts* lists the number of SSGs with either active warning or
+critical alerts. if you have alerts, click on this block to filter the involved SSGs.
 
-The screen lists all SSGs in either in a grid or tile mode. From here, you can
+Below the summary bar, the screen lists all SSGs in either in a grid or tile mode. From here, you can
 create, delete or monitor your SSGs.
 
 
@@ -59,10 +59,8 @@ Select specific entities within each dimension to adjust the data displayed
 in this tab. To view specific alert details, select an in-line notification,
 or choose one of the filters below each chart.
 
- Take the time to navigate in all the different charts.
+Take the time to navigate in all the different charts.
 
- .. image:: ../pictures/module1/img_module2_lab3_2.png
+.. image:: ../pictures/module1/img_module2_lab3_2.png
   :align: center
   :scale: 50%
-
- |
