@@ -33,7 +33,8 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
 .. note:: You'll need to setup the *Application Server Node* first to be able
   to select them as your pool members
 
-  * Application Server Pool:
+
+* Application Server Pool:
 
     * Name: pool_site30
     * Pool members:
@@ -44,7 +45,7 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
       * Port: 80
       * node: Select *# 10.1.20.131*
 
-  * Application Server Node
+* Application Server Node
 
     * Name: 10.1.20.130
     * Address: 10.1.20.130
@@ -71,6 +72,8 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
   * Destination Address: 10.1.10.130
   * Destination Network Mask: 255.255.255.255
   * Service Port: 80
+
+  |
 
   .. image:: ../pictures/module1/img_module2_lab1_5.png
     :align: center
