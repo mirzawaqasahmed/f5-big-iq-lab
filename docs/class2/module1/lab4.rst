@@ -180,8 +180,9 @@ their Management IP addresses.
 If you click on the ``management IP address`` of the devices. It will
 open a new tab to access its UI.
 
-.. note:: Here you'll need to connect to your BIG-IQ from the RDP session. In
-  Chrome, connect to your BIG-IQ (10.1.1.4 / admin - admin), go to *Applications*
+.. note:: Here you'll need to connect to your BIG-IQ from the RDP session. The
+  VEs in your SSG will not show up in UDF and have a mgmt IP in the subnet 10.1.1.0/24.
+  In Chrome, connect to your BIG-IQ (10.1.1.4 / admin - admin), go to *Applications*
   > *Environments* > *Service Scaling Groups*, click on *SSGClass2*, go to
   *Configuration*, click on *Devices* and click on one of the management IP address.
 
