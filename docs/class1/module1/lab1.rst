@@ -27,14 +27,15 @@ Paul is in Paula's team and will manage only a subset of applications.
 Automate common network patterns that the other teams can consume.
 Automate existing environment management and troubleshooting tasks.
 
-Connect to your BIG-IQ as admin and go to : *System* > *Users Management* > *Users*
+Connect to your BIG-IQ as **admin** and go to : *System* > *Users Management* > *Users*
 and click on *Add*
 
 **1. Marco: Full Administrator**
 
+- *Auth Provider* = Radius
 - *User Name* = marco
 - *Full Name* = Full Administrator
-- *Password* = marco
+- (*Password stored in Radius server* = marco)
 - *Role* = Administrator Role
 
 Click on *Save & Close*
@@ -43,9 +44,10 @@ Click on *Save & Close*
 
 Click on *Add*
 
+- *Auth Provider* = Radius
 - *User Name* = david
 - *Full Name* = Super-NetOps
-- *Password* = david
+- (*Password stored in Radius server* = david)
 - *Role* = Application Manager
 
 Click on *Save & Close*
@@ -54,9 +56,10 @@ Click on *Save & Close*
 
 Click on *Add*
 
+- *Auth Provider* = Radius
 - *User Name* = larry
 - *Full Name* = Application Security Manager
-- *Password* = larry
+- (*Password stored in Radius server* = larry)
 - *Role* = Security Manager
 
 Click on *Save & Close*
@@ -65,9 +68,10 @@ Click on *Save & Close*
 
 Click on *Add*
 
+- *Auth Provider* = Radius
 - *User Name* = paula
 - *Full Name* = Application Manager
-- *Password* = paula
+- (*Password stored in Radius server* = paula)
 - *Role* = Application Manager
 
 Click on *Save & Close*

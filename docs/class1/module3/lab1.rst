@@ -2,7 +2,7 @@ Lab 3.1: Create Application via API
 -----------------------------------
 In this lab, we are going to deploy a WAF application using Ansible.
 
-Connect as **David**
+Connect as **david**
 
 Open a SSH session to *Ubuntu Lamp Server, LDAP and DHCP* in UDF.
 

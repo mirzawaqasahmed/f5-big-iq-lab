@@ -4,7 +4,7 @@ Lab 2.4: Security workflows
 - larry enforing the policy, learning etc ...
 - paul turn blocking on the app
 
-Connect as **Larry**
+Connect as **larry**
 
 1. Larry check the Firewall policy
 
@@ -19,7 +19,7 @@ Monitoring > REPORTS > Security > Network Security > Rule statistics
 Configuration > SECURITY > Web Application Security > Policies
 
 
-Connect as **Paula**
+Connect as **paula**
 
 1. Paula enforce the policy
 
@@ -37,7 +37,7 @@ Connect as **Paula**
 
 3. In Application Dashboard, navigate to the Security Statistics.
 
-Connect as **Larry**
+Connect as **larry**
 
 1. Check ASM type of attacks
 

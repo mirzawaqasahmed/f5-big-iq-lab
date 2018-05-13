@@ -14,7 +14,7 @@ When you define the application, you can omit or include these objects. Paramete
 as not visible are included using the default values specified in the application template.
 This allows you to maintain a consistent environment. Parameters that you define as editable are visible and can be revised.
 
-Connect as **Marco** to create a Custom Service Template, go to *Applications* > *SERVICE CATALOG*, click on *Create*.
+Connect as **marco** to create a Custom Service Template, go to *Applications* > *SERVICE CATALOG*, click on *Create*.
 
 1. In the Name field, type in a name for the application template you are creating.
 In the Description field (optional), type in a brief description for the application template you are creating to help identify it when you want to use it later.

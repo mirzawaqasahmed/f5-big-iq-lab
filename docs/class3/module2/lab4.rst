@@ -1,6 +1,6 @@
 Lab 2.4: Miscellaneous
 ----------------------
-Connect as **Paula**.
+Connect as **paula**.
 Go to *Applications* > *APPLICATIONS*:
 
 Get user familiar with using timescales, drill downs, how to stop real time display and log correlation/overlay.

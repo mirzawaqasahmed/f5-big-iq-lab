@@ -1,6 +1,6 @@
 Lab 2.2: Create custom security policies & Application Service Template
 -----------------------------------------------------------------------
-Connect as **Larry** to create the custom ASM policy, go to *Configuration* > *SECURITY* > *Web Application Security* > *policies*.
+Connect as **larry** to create the custom ASM policy, go to *Configuration* > *SECURITY* > *Web Application Security* > *policies*.
 
 .. image:: ../pictures/module2/img_module2_lab2_1.png
   :align: center
@@ -26,6 +26,8 @@ Edit the Policy, switch to ``Manual`` Learning Mode and ``Make available in Appl
   :align: center
   :scale: 50%
 
+In addition, go to *POLICY BUILDING* > *Settings* and Policy Building Mode to ``Central``. Save & Close.
+
 Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, Create.
 Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Save & Close.
 
@@ -39,7 +41,7 @@ Create a Rules, set the destination ports to ``443`` and ``80``, Protocol to ``t
   :align: center
   :scale: 50%
 
-Connect as **Marco** to create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
+Connect as **marco** to create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
 Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 .. image:: ../pictures/module2/img_module2_lab2_7.png
