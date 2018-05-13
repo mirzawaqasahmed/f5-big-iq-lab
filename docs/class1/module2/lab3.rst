@@ -3,7 +3,7 @@ Lab 2.3: Create Application
 
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
 
-Connect as **Paula** to create a new application, go to *Applications* > *APPLICATIONS*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
+Connect as **paula** to create a new application, go to *Applications* > *APPLICATIONS*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
 
 Type in a Name for the application you are creating.
 

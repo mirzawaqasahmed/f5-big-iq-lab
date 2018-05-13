@@ -1,6 +1,6 @@
 Lab 2.2: Troubleshooting Pool Member
 ------------------------------------
-Connect as **Paula**.
+Connect as **paula**.
 Go to *Applications* > *APPLICATIONS*:
 
 1. Select one of the application ``site42.example.com``.
