@@ -79,3 +79,5 @@ address 10.1.10.130
   :scale: 50%
 
 |
+
+Next we can review the different analytics data available for your SSG *SSGClass2*
