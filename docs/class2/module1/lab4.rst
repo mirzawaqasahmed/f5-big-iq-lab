@@ -127,9 +127,6 @@ You should see this kind of log in your ``/var/log/orchestrator.log`` file
 Once this VM is fully onboarded, you will be able to see that we will start
 provisioning another VM to reach our target of 2 devices for our SSG
 
-.. warning:: take a screenshot of our vmware console where the second instance
-    get cloned
-
 We will know your SSG is done being deployed when you'll see such log files in
 ``/var/log/restjavad.0.log``
 
@@ -141,13 +138,8 @@ We will know your SSG is done being deployed when you'll see such log files in
   [INFO][19 Apr 2018 20:11:52 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Finished scaling task for service scaling group 'SSGClass2' to create 2 and remove 0 device(s)
 
 At this stage, if you check the status of your SSG in your BIG-IQ (Go to
-*Applications* > *Service Scaling Groups*), you will see this:
-
-.. image:: ../pictures/module1/img_module1_lab4_2.png
-    :align: center
-    :scale: 50%
-
-|
+*Applications* > *Environments* > *Service Scaling Groups*), you will see your
+SSG being provisioned with a gray Health.
 
 Once it is fully deployed, you'll see this:
 
@@ -161,9 +153,7 @@ Once it is fully deployed, you'll see this:
   provisioned VEs and the max number of VEs that you're allowed to deploy in this
   SSG
 
-While our SSG finish to be provisioned, go to *Applications* > *Service Scaling
-Groups* and click on your SSG (``SSGClass2``)
-
+ Click on your SSG (``SSGClass2``)
 
 
 .. image:: ../pictures/module1/img_module1_lab4_3.png
@@ -178,8 +168,8 @@ on *Configuration*
 The properties page will give you access to the previously defined parameters
 related to your SSG
 
-If you click on *Devices*, You'll be able to review the devices deployed and their Management
-IP address.
+If you click on *Devices*, You'll be able to review the devices deployed and
+their Management IP addresses.
 
 .. image:: ../pictures/module1/img_module1_lab4_5.png
      :align: center
@@ -188,7 +178,12 @@ IP address.
 |
 
 If you click on the ``management IP address`` of the devices. It will
-open a new tab to access its UI. Do it and connect to the BIG-IP.
+open a new tab to access its UI.
+
+.. note:: Here you'll need to connect to your BIG-IQ from the RDP session. In
+  Chrome, connect to your BIG-IQ (10.1.1.4 / admin - admin), go to *Applications*
+  > *Environments* > *Service Scaling Groups*, click on *SSGClass2*, go to
+  *Configuration*, click on *Devices* and click on one of the management IP address.
 
 .. note::
 
@@ -208,10 +203,11 @@ pushed:
 * VLANs
 * Self-IPs
 
-.. warning::
+.. note::
 
-  review if the DHCP in UDF push a DNS server. it would overwrite the device
-  template
+  If you pay attention to the DNS setup, you should realize that the DNS setup
+  on your BIG-IP is not the one from your device template. This got overwritten
+  by the DHCP server (which is setup to push 8.8.8.8 as a DNS server)
 
 .. note::
 
