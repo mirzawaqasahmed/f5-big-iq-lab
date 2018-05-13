@@ -1,2 +1,2 @@
-Lab 1.1: KKKKKKKKKKK
---------------------
+Lab 1.1: Deploy an application
+------------------------------
