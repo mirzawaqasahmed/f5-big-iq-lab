@@ -14,8 +14,8 @@ about their overall health, BIG-IP device performance and active alerts.
 Use this screen to create, delete, or oversee all of your SSGs.
 
 The ``Summary Bar`` provides summary information about your SSGs' overall health,
-active alerts and device performance. Click the elements in this area to filter
- or sort the SSG list.
+active alerts and device performance. Click the elements in this area to filter 
+or sort the SSG list.
 
 .. image:: ../pictures/module1/img_module2_lab3_1.png
  :align: center
