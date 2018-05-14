@@ -2,9 +2,9 @@ Lab 1.2: Review our application deployment
 ------------------------------------------
 
 Now that our application is deployed, we can review the configuration of our
-BIG-IPs in the ``Service Scaling Group`` and in our Tier1 cluster
+``BIG-IP``s in the ``Service Scaling Group`` and in our Tier1 cluster
 
-If you go in your SSG *SSGClass2*, click on *Configuration* and then on *Applications*,
+If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on *Applications*,
 you'll see our application listed here
 
 .. image:: ../pictures/module1/img_module2_lab2_1.png
@@ -16,12 +16,12 @@ you'll see our application listed here
 SSG Setup for our Application
 *****************************
 
-Use again the RDP session to have access to your BIG-IPs in your SSG *SSGClass2*
+Use again the RDP session to have access to your ``BIG-IP``s in your ``SSG`` *SSGClass2*
 
-.. note:: you can review their IP address by going in your SSG, Click on
+.. note:: you can review their IP address by going in your ``SSG``, Click on
   *Configuration* and then *Devices*
 
-On each BIG-IP in your SSG, you should have an identical setup:
+On each ``BIG-IP`` in your ``SSG``, you should have an identical setup:
 
 .. image:: ../pictures/module1/img_module2_lab2_2.png
   :align: center
@@ -42,12 +42,12 @@ On each BIG-IP in your SSG, you should have an identical setup:
 |
 
 .. note:: we disable ARP on the Virtual Address since the same VS IP is used on
-  all our SSG BIG-IPs
+  all our ``SSG`` devices
 
 Tier1 Setup for our Application
 *******************************
 
-Connect to your BIG-IPs used for Tier1: *BOS-vBIGIP01.termmarc.com* and
+Connect to your ``BIG-IP`` used for Tier1: *BOS-vBIGIP01.termmarc.com* and
 *BOS-vBIGIP02.termmarc.com*
 
 Here you should see this setup:

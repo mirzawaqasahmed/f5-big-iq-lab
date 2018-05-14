@@ -4,7 +4,7 @@ Lab 1.1: Deploy an application
 We will deploy an application via the app template feature on our ``SSG`` called
 *SSGClass2*
 
-On your BIG-IQ, go to *Applications* > *Applications*
+On your ``BIG-IQ``, go to *Applications* > *Applications*
 
 .. image:: ../pictures/module1/img_module2_lab1_1.png
     :align: center
@@ -106,5 +106,14 @@ As soon as the app is configured, you'll see this:
 
 |
 
+You can access your app from the **RDP session**. You should see this:
 
-Next, we will review the configuration on our SSG devices and on our tier1 BIG-IPs
+.. image:: ../pictures/module1/img_module2_lab1_9.png
+  :align: center
+  :scale: 50%
+
+|
+
+
+Next, we will review the configuration on our ``SSG`` devices and on our tier1
+``BIG-IPs``
