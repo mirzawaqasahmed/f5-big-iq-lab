@@ -75,14 +75,8 @@ deployed in a certain manner:
 
       * address translation will be disabled
       * the pool members for this app will be the Tier2 BIG-IP Self-IPs
-      * the pool monitor will be **XXXXXXXXXXXXXXXXX**
+      * the pool monitor will be based on the app specifications
 
-.. warning:: we need to update this base on the discussion that will happen
-    with PM/PD this week
-
-
-
-.. warning:: Need a schema of the app setup on SSG for VMWARE
 
 Application deployment in a SSG - AWS
 -------------------------------------
@@ -90,7 +84,16 @@ Application deployment in a SSG - AWS
 To ensure the traffic goes through the SSG as expected, application will be
 deployed in a certain manner:
 
-.. warning:: Need a schema of the app setup on SSG for AWS
+* You will need dedicated ``Classic Load Balancer``(AKA ELB previously) per
+  application. The reason is that each ``ELB`` has one public IP/DNS Name
+  (ie you can't have 2 app runnings on port 443/HTTPS on a ``ELB``)
+* When the app is deployed from BIG-IQ, we will specify a VS IP that will be 0.0.0.0.
+  This is because ELB can only send traffic to the first nic of an instance and
+  therefore we will deploy 1nic VE in AWS. So traffic and everything will be sent
+  to the nic Self IP.
+* This VS IP will be configured on all Tier 2 VEs. This IP will be used to
+  setup the relevant ADC config on all the Virtual edition sitting on tier2.
+  They will have have an **identical** Setup
 
 In this lab, we will create a ``Service Scaling Group`` in a VMWare environment
 
