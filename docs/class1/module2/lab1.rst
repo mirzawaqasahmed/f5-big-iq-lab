@@ -13,6 +13,8 @@ Below default built-in templates delivered with BIG-IQ 6.0:
 - ``Default-f5-HTTPS-WAF-lb-template``: For load balancing an HTTPS application on port 443 with a Web Application Firewall using an ASM Rapid Deployment policy.
 - ``Default-f5-HTTPS-offload-lb-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP.
 
+.. warning:: Templates with virtual servers without a HTTP profiles can not be depoyed to a Service Scaling Group
+
 Connect as **marco**.
 Go to *Applications* > *SERVICE CATALOG*:
 

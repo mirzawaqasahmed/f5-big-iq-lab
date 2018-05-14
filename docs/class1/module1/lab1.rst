@@ -1,5 +1,6 @@
 Lab 1: Creation of each personas in BIG-IQ
 --------------------------------------------
+.. note:: Marco, Paula and Larry are already created in the blueprint except David.
 
 We will be using 4 main personas for this lab:
 
@@ -43,13 +44,15 @@ Click on *Save & Close*
 
 Click on *Add*
 
-- *Auth Provider* = Radius
+- *Auth Provider* = local
 - *User Name* = david
 - *Full Name* = Super-NetOps
 - (*Password stored in Radius server* = david)
 - *Role* = Application Manager
 
 Click on *Save & Close*
+
+.. warning:: Only local users are supported to execute Ansible playbook
 
 **3. Larry: Application Security Manager**
 

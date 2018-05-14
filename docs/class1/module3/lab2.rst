@@ -2,18 +2,19 @@ Lab 3.2: Delete Application via API
 -----------------------------------
 In this lab, we are going to delete an application using Ansible.
 
-Connect as **david**
-
 Open a SSH session to *Ubuntu Lamp Server, LDAP and DHCP* in UDF.
 
-Create your playbook as follow::
+Update the f5-ansible module to the latest versions::
 
-  Playbook content
+    # cd /home/f5/f5-ansible; git pull
 
-.. warning:: PENDING ANSIBLE MODULES AVAILBILITY
+**david** user is used to execute the playbook:
 
-Execute your playbook::
+Execute the playbook::
 
-    # ansible playbook.yml
+    # cd /home/f5/f5-ansible-demo
+    # ansible-playbook -i notahost, delete_http_app.yaml -vvvv
 
 Check on BIG-IQ the application has been correclty deleted.
+
+.. note :: If you have time, you can try to deploy another application type (e.g. WAG, HTTPS, TCP)
