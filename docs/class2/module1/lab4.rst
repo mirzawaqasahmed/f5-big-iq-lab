@@ -149,11 +149,12 @@ Once it is fully deployed, you'll see this:
 
 |
 
-.. note:: Here you can see for the devices: 2/3 - you see the number of
-  provisioned VEs and the max number of VEs that you're allowed to deploy in this
-  SSG
+.. note::
 
- Click on your SSG (``SSGClass2``)
+  Here you can see for the devices: 2/3 - you see the number of provisioned
+  VEs and the max number of VEs that you're allowed to deploy in this SSG
+
+Click on your SSG (``SSGClass2``)
 
 
 .. image:: ../pictures/module1/img_module1_lab4_3.png
@@ -213,4 +214,4 @@ pushed:
 .. note::
 
   if you go to your ``BIG-IQ`` UI and go to *Devices* > *BIG-IP Devices* , you will
-  not be able to see your ``SSG`` devices. They won't be listed here.
+  not be able to see your ``SSG` devices. They won't be listed here.
