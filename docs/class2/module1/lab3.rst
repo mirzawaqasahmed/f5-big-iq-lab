@@ -29,17 +29,12 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
   then run the command:
 
-  .. code::
-
-    f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server start
-    isc-dhcp-server start/running, process 22720
+  ``sudo service isc-dhcp-server start``
 
   otherwise (to be safe), run the command:
 
-  .. code::
+  ``sudo service isc-dhcp-server force-reload``
 
-    f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server force-reload
-    
 Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
 in our ESXi). To do this, in your UDF deployment, click on the *Access* button
 of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH WIN7*
