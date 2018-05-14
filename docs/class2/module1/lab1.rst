@@ -16,7 +16,7 @@ on a newly provisioned F5 Virtual edition:
 * Self-IPs
 * User accounts
 
-In this lab, we will create a device template that will be used for our SSG
+In this lab, we will create a device template that will be used for our ``SSG``
 
 License Pool Setup
 ******************
@@ -38,7 +38,7 @@ IP Pools Setup
 
 When you provision dynamically new F5 virtual edition, you need to be able to
 automatically assign Self IPs to this instance. To do that, we will rely on
-the ``IP Pool`` feature of BIG-IQ
+the ``IP Pool`` feature of ``BIG-IQ`
 
 For our lab, we will need two IP pools:
 
@@ -198,6 +198,13 @@ Click on the *Save and Close* button. Click on the *external* self ip to set it 
   :scale: 50%
 
 |
+
+.. note::
+
+  The ``external`` self IP is important because this is the self IP we will use
+  to LB traffic between our tier1 and tier2 BIG-IPs. You need to use it as is.
+  if you don't use a ``external`` self IP on your tier2 device, ``BIG-IQ`` won't
+  know which interface to use
 
 Click on the *Root Account* tab. Specify a new password for the root account:
 *purple*
