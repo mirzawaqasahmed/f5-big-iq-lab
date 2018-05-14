@@ -1,7 +1,7 @@
 Lab 4.1: Custom Service Template
 --------------------------------
 An application template allows you to specify a set of objects that define
-an application that can you can then deploy to your BIG-IP devices.
+an application that you can then deploy to your BIG-IP device(s).
 
 You can think of the objects in an application template as a baseline
 that serves as a starting place for creating a new application.

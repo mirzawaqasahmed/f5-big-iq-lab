@@ -26,7 +26,7 @@ Edit the Policy, switch to ``Manual`` Learning Mode and ``Make available in Appl
   :align: center
   :scale: 50%
 
-In addition, go to *POLICY BUILDING* > *Settings* and Policy Building Mode to ``Central``. Save & Close.
+In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central``. Save & Close.
 
 Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, Create.
 Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Save & Close.

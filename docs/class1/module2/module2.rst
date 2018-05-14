@@ -8,7 +8,7 @@ Once the template is ready with all the necessary information, it will be ready 
 
 **paula** need to deploy an application, she has multiple Application servers. At this time, she needs to test
 the performance of her application, she also wants to make her application secure before staging it to production.
-She connects to the BIG-IQ and as access to her Application Dashboard.
+She connects to the BIG-IQ and has access to her Application Dashboard.
 **paula** use the application template created by Marco to deploy her Application.
 
 After a week of testing her application (in the class ~5 min), she will reach to **larry** to fine tune and validate

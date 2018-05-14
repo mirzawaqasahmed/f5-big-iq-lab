@@ -8,7 +8,9 @@ Connect as **larry**
 
 1. Larry check the Firewall policy
 
-Monitoring > REPORTS > Security > Network Security > Rule statistics
+Monitoring > REPORTS > Security > Network Security > Rule statistics and select
+*vs_site18.example.com_https* BOS BIG-IP2 (because it should be the active one. If
+not, select the other)
 
 .. image:: ../pictures/module2/img_module2_lab4_1.png
   :align: center
