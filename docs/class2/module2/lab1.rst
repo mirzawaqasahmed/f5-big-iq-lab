@@ -92,7 +92,7 @@ Click on *Create*. You'll see your application being created
 |
 
 On the page *Applications* > *Applications*, you'll see this while the app is
-getting deployed:
+getting deployed (Tile view):
 
 .. image:: ../pictures/module1/img_module2_lab1_7.png
   :align: center
