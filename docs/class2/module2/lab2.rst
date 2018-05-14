@@ -2,7 +2,7 @@ Lab 1.2: Review our application deployment
 ------------------------------------------
 
 Now that our application is deployed, we can review the configuration of our
-``BIG-IP``s in the ``Service Scaling Group`` and in our Tier1 cluster
+``BIG-IPs`` in the ``Service Scaling Group`` and in our Tier1 cluster
 
 If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on *Applications*,
 you'll see our application listed here
@@ -68,10 +68,10 @@ Here you should see this setup:
 
 .. note:: we don't do Source IP translation and if you switch to *advanced view*,
   you'll see that *Address Translation* and *Port Translation* are disabled.
-  This means that your Tier1 BIG-IP and BIG-IPs in your SSG must be able to communicate
+  This means that your Tier1 ``BIG-IP`` and ``BIG-IPs`` in your ``SSG`` must be able to communicate
   via L2.
 
-For the pool setup, you can see that we use our BIG-IP Self-IPs and not the VS
+For the pool setup, you can see that we use our ``BIG-IP`` Self-IPs and not the VS
 address 10.1.10.130
 
 .. image:: ../pictures/module1/img_module2_lab2_7.png
@@ -80,4 +80,4 @@ address 10.1.10.130
 
 |
 
-Next we can review the different analytics data available for your SSG *SSGClass2*
+Next we can review the different analytics data available for your ``SSG`` *SSGClass2*
