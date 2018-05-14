@@ -1,20 +1,45 @@
 Lab 1.3: Deploy your Service Scaling Group
 ------------------------------------------
 
-Before setting up our SSG and deploy it, do the following:
+Before setting up our ``SSG`` and deploy it, do the following:
 
-* Open **2** putty sessions with your BIG-IQ.
+* Open **2** putty sessions on your ``BIG-IQ``.
 
-* On the first SSH session, run the following command:
+* On the first ``SSH`` session, run the following command:
 
   ``tail -f /var/log/restjavad.0.log | grep vmware``
 
-* On the second SSH session, run the following command:
+* On the second ``SSH`` session, run the following command:
 
   ``tail -f /var/log/orchestrator.log``
 
 .. note:: Keep those sessions open until the end of the class.
 
+* Connect via ``SSH`` to the system *Ubuntu 14.04 Lamp Server, Radius and DHCP*
+  and run the command:
+
+  ``sudo service isc-dhcp-server status``
+
+  if you see something like this:
+
+  .. code::
+
+    f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server status
+    isc-dhcp-server stop/waiting
+
+  then run the command:
+
+  .. code::
+
+    f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server start
+    isc-dhcp-server start/running, process 22720
+
+  otherwise (to be safe), run the command:
+
+  .. code::
+
+    f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server force-reload
+    
 Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
 in our ESXi). To do this, in your UDF deployment, click on the *Access* button
 of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH WIN7*
@@ -66,13 +91,14 @@ and folder.
 In the previous lab, in our Cloud environment, we specified a VM template called
 *BIGIP-13.1.0.5-0.0.5.ALL_1SLOT_ASM_template*. You can see that it is listed here.
 
-This template will give us the required information to deploy the VE related to
-our SSGs:
+This template will give us the required information to deploy the VEs related to
+our ``SSG``:
 
 * Nb of vCPUs
 * Amount of memory allocated
-* Disk size and datastore used by this SSG
+* Disk size and datastore used by this ``SSG``
 
+|
 
 .. image:: ../pictures/module1/img_module1_lab3_8.png
     :align: center
@@ -86,7 +112,7 @@ Service Scaling Group Setup
 ***************************
 
 To deploy your ``Service Scaling Group`` (SSG), go to *Applications* >
-*Service Scaling Groups* and click the *Create* button
+*Environments* > *Service Scaling Groups* and click the *Create* button
 
 .. image:: ../pictures/module1/img_module1_lab3_1.png
     :align: center
@@ -111,14 +137,14 @@ Service Scaling Group Properties:
 
 Let's review those parameters.
 
-* Minimum Device(s) Required : this specify how many BIG-IP VE(s) should always
+* Minimum Device(s) Required : specify how many BIG-IP VE(s) should always
   be available at any time
-* Desired Number of Device(s): this specify the ideal number of BIG-IP VE(s)
+* Desired Number of Device(s): specify the ideal number of BIG-IP VE(s)
   should be available when no scale-out scenario is triggered
-* Maximum Device(s) Required: this specify the maximum number of BIG-IP VE(s)
+* Maximum Device(s) Required: specify the maximum number of BIG-IP VE(s)
   that can be created in this SSG. The purpose is to make sure that under some
   scenarios (like being DDOS), we won't add constantly new devices
-* Maximum Application(s) Allowed: This specify how many applications we will
+* Maximum Application(s) Allowed: specify how many applications we will
   be able to deploy on top of this SSG. The idea is to ensure that if we use a
   Cloud edition VE, we won't try to go over the license limit
 

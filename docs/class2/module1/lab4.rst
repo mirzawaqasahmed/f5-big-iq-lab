@@ -1,19 +1,19 @@
 Lab 1.4: Troubleshoot a SSG
 ---------------------------
 
-In this lab, we will show you how to monitor/troubleshoot your SSG.
+In this lab, we will show you how to monitor/troubleshoot your ``SSG``.
 
-To track the activities related to your SSG (deployment, scale-in, scale-out,
+To track the activities related to your ``SSG`` (deployment, scale-in, scale-out,
 delete), you can track two files on your BIG-IQ:
 
 * ``/var/log/restjavad.0.log`` : in this file, you will be able to review and
-  track all the actions done between BIG-IQ and your Cloud Provider (here VMWare)
+  track all the actions done between ``BIG-IQ`` and your Cloud Provider (here VMWare)
 
 * ``/var/log/orchestrator.log`` : in this file, you will be able to review and
-  track all the actions done via ansible to deploy your SSG
+  track all the actions done via ansible to deploy your ``SSG``
 
 Since we launched our SSG in the previous lab, you should start seeing logs in
-your two SSH sessions (opened during the previous lab)
+your two ``SSH`` sessions (opened during the previous lab)
 
 example of logs for ``tail -f /var/log/restjavad.0.log | grep vmware``
 
@@ -79,7 +79,7 @@ a Management IP address (provided through ``DHCP``)
 .. note::
 
   You can open a VMWare console of your new VM instance to track its booting
-    process
+  progress
 
 Once your VM has a management IP address, Ansible will enforce the information
 that have been defined in your device template.
@@ -125,7 +125,7 @@ You should see this kind of log in your ``/var/log/orchestrator.log`` file
 
 
 Once this VM is fully onboarded, you will be able to see that we will start
-provisioning another VM to reach our target of 2 devices for our SSG
+provisioning another VM to reach our target of 2 devices for our ``SSG``
 
 We will know your SSG is done being deployed when you'll see such log files in
 ``/var/log/restjavad.0.log``
@@ -137,7 +137,7 @@ We will know your SSG is done being deployed when you'll see such log files in
   [INFO][19 Apr 2018 20:11:52 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Updated service scaling group 'SSGClass2'
   [INFO][19 Apr 2018 20:11:52 CEST][/cm/cloud/tasks/vmware/scaling/3de355e4-ea9f-46a6-8d0d-e02fb99e4c21/worker VmwScalingTaskWorker] Finished scaling task for service scaling group 'SSGClass2' to create 2 and remove 0 device(s)
 
-At this stage, if you check the status of your SSG in your BIG-IQ (Go to
+At this stage, if you check the status of your ``SSG`` in your ``BIG-IQ`` (Go to
 *Applications* > *Environments* > *Service Scaling Groups*), you will see your
 SSG being provisioned with a gray Health.
 
@@ -162,11 +162,11 @@ Once it is fully deployed, you'll see this:
 
 |
 
-This is the interface to monitor the status and performance of your SSG. Click
+This is the interface to monitor the status and performance of your ``SSG``. Click
 on *Configuration*
 
 The properties page will give you access to the previously defined parameters
-related to your SSG
+related to your ``SSG``
 
 If you click on *Devices*, You'll be able to review the devices deployed and
 their Management IP addresses.
@@ -180,9 +180,9 @@ their Management IP addresses.
 If you click on the ``management IP address`` of the devices. It will
 open a new tab to access its UI.
 
-.. note:: Here you'll need to connect to your BIG-IQ from the RDP session. The
-  VEs in your SSG will not show up in UDF and have a mgmt IP in the subnet 10.1.1.0/24.
-  In Chrome, connect to your BIG-IQ (10.1.1.4 / admin - admin), go to *Applications*
+.. note:: Here you'll need to connect to your ``BIG-IQ`` from the RDP session. The
+  VEs in your ``SSG`` will not show up in UDF and have a mgmt IP in the subnet 10.1.1.0/24.
+  In Chrome, connect to your ``BIG-IQ`` (10.1.1.4 / admin - admin), go to *Applications*
   > *Environments* > *Service Scaling Groups*, click on *SSGClass2*, go to
   *Configuration*, click on *Devices* and click on one of the management IP address.
 
@@ -196,7 +196,7 @@ open a new tab to access its UI.
 
 |
 
-Browse through the BIG-IP UI to review the configuration that should have been
+Browse through the ``BIG-IP`` UI to review the configuration that should have been
 pushed:
 
 * DNS & NTP
@@ -207,10 +207,10 @@ pushed:
 .. note::
 
   If you pay attention to the DNS setup, you should realize that the DNS setup
-  on your BIG-IP is not the one from your device template. This got overwritten
+  on your ``BIG-IP`` is not the one from your device template. This got overwritten
   by the DHCP server (which is setup to push 8.8.8.8 as a DNS server)
 
 .. note::
 
-  if you go to your BIG-IQ UI and go to *Devices* > *BIG-IP Devices* , you will
-  not be able to see your SSG devices. They won't be listed here.
+  if you go to your ``BIG-IQ`` UI and go to *Devices* > *BIG-IP Devices* , you will
+  not be able to see your ``SSG`` devices. They won't be listed here.

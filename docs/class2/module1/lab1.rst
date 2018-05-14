@@ -23,7 +23,7 @@ License Pool Setup
 
 Your BIG-IQ should already have a license pool setup.
 
-Connect to your BIG-IQ and go to : *Devices* > *License Management* > *Licenses*
+Connect to your BIG-IQ (as *admin*)and go to : *Devices* > *License Management* > *Licenses*
 
 Here you should see a license pool called ``byol-pool``
 

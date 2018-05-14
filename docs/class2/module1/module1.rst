@@ -58,19 +58,21 @@ different components:
 
   * `F5 cloud libs <https://github.com/F5Networks/f5-cloud-libs>`_
 
+.. note:: We will review this in more details in lab4
+
 Application deployment in a SSG - VMWARE
 ----------------------------------------
 
-To ensure the traffic goes through the SSG as expected, application will be
+To ensure the traffic goes through the ``SSG`` as expected, application will be
 deployed in a certain manner:
 
-* When the app is deployed from BIG-IQ, it will receive a Virtual server IP.
+* When the app is deployed from ``BIG-IQ``, it will receive a Virtual server IP.
 * This VS IP will be configured:
 
   * On all Tier 2 VEs. This IP will be used to setup the relevant ADC config
     on all the Virtual edition sitting on tier2. They will have have an
     **identical** Setup
-  * On the tier 1 cluster. BIG-IQ will setup a virtual server with the same IP
+  * On the tier 1 cluster. ``BIG-IQ`` will setup a virtual server with the same IP
     and the following configuration
 
       * address translation will be disabled
