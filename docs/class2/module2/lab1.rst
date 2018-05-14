@@ -66,6 +66,8 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
   * Destination Network Mask: 255.255.255.255
   * Service Port: 443
 
+|
+
 * HTTP Redirect:
 
   * Name: site30_redirect_vs80
@@ -115,5 +117,4 @@ You can access your app from the **RDP session**. You should see this:
 |
 
 
-Next, we will review the configuration on our ``SSG`` devices and on our tier1
-``BIG-IPs``
+Next, we will review the configuration on our ``SSG`` devices and on our tier1 ``BIG-IPs`
