@@ -1,8 +1,8 @@
 Lab 1.3: Review our SSG Analytics
 ---------------------------------
 
-Our ``SSG`` host a service and we send some traffic through it. We can now review
-the kind of data that is available to us regarding our ``SSG`` *SSGClass2*
+Our ``SSG`` host a service and we sent some traffic through it. We can now review
+the kind of data that is available to us
 
 Overall SSGs Analytics
 **********************
@@ -11,7 +11,7 @@ Go to *Applications* > *Environments* > *Service Scaling Groups*
 
 The screen lists all of your ``service scaling groups`` (``SSG``) and current summary data
 about their overall health, ``BIG-IP`` device performance and active alerts.
-Use this screen to create, delete, or oversee all of your SSGs.
+Use this screen to create, delete or oversee all of your SSGs.
 
 The ``Summary Bar`` provides summary information about your SSGs' overall health,
 active alerts and device performance. Click the elements in this area to filter
@@ -25,10 +25,10 @@ or sort the ``SSG`` list.
 
 *SSGs with Active Alerts* lists the number of ``SSGs`` with either active warning or
 critical alerts. if you have alerts, click on this block to filter the involved
-``SSGs.```
+``SSGs``
 
-Below the summary bar, the screen lists all ``SSGs`` in either in a grid or tile mode. From here, you can
-create, delete or monitor your ``SSGs``.
+Below the summary bar, the screen lists all ``SSGs`` in either in a grid or tile mode.
+From here, you can create, delete or monitor your ``SSGs``.
 
 
 Use one of the screen's filter and sort settings to isolate information of

@@ -16,7 +16,7 @@ you'll see our application listed here
 SSG Setup for our Application
 *****************************
 
-Use again the RDP session to have access to your ``BIG-IP``s in your ``SSG`` *SSGClass2*
+Use again the **RDP session** to have access to your ``BIG-IP``s in your ``SSG`` *SSGClass2*
 
 .. note:: you can review their IP address by going in your ``SSG``, Click on
   *Configuration* and then *Devices*
@@ -47,7 +47,7 @@ On each ``BIG-IP`` in your ``SSG``, you should have an identical setup:
 Tier1 Setup for our Application
 *******************************
 
-Connect to your ``BIG-IP`` used for Tier1: *BOS-vBIGIP01.termmarc.com* and
+Connect to your ``BIG-IPs`` used for Tier1: *BOS-vBIGIP01.termmarc.com* and
 *BOS-vBIGIP02.termmarc.com*
 
 Here you should see this setup:
@@ -58,7 +58,7 @@ Here you should see this setup:
 
 |
 
-.. note:: we do L4 LB so we use FastL4 VS.
+.. note:: we do L4 LB, so we use FastL4 VS.
 
 .. image:: ../pictures/module1/img_module2_lab2_6.png
   :align: center
