@@ -21,16 +21,6 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
    VMWARE        F5 ADC       F5 VE
 ============= =========== ==============
 
-Here is an example of topology of SSD deployment on top of VMWare:
-
-.. image:: ../pictures/module1/img_module1.png
-  :align: center
-  :scale: 50%
-
-.. warning:: We need a topology schema for VMWare and ELB. The reason is that
-    with AWS, our VE will be deployed as a single nic interface and it may not
-    be the case with VMWare
-
 Tier1 management - how does this work ?
 ---------------------------------------
 
@@ -47,8 +37,6 @@ upfront by the administrator. It means that:
 .. note:: with BIG-IQ 6.0, we only support F5 Virtual edition for tier1.
   With BIG-IQ 6.0.1, we will support F5 HW also.
 
-.. warning:: Depending on the exec commit of 6.1, it would be good to say whether
-  6.1 will automate tier1 deployment or not
 
 Tier2 management - how does this work ?
 ---------------------------------------
@@ -68,7 +56,7 @@ different components:
 
 * f5 cloud libs
 
-  * ` F5 cloud libs <https://github.com/F5Networks/f5-cloud-libs>`_
+  * `F5 cloud libs <https://github.com/F5Networks/f5-cloud-libs>`_
 
 Application deployment in a SSG - VMWARE
 ----------------------------------------
