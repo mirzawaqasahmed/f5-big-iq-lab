@@ -14,6 +14,11 @@ On your ``BIG-IQ``, go to *Applications* > *Applications*
 
 Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-template*
 
+.. note::
+
+  A SSG will only support applications with a HTTP profile attached to it. If you
+  try without assigning a HTTP Profile, it will return an explicit error message
+
 * Name : site30.example.com
 * Environment: *Select Service Scaling Group*
 * Service Scaling Group: Select *SSGClass2*
