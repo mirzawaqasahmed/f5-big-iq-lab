@@ -71,8 +71,12 @@ Here you should see this setup:
   This means that your Tier1 ``BIG-IP`` and ``BIG-IPs`` in your ``SSG`` must be able to communicate
   via L2.
 
-For the pool setup, you can see that we use our ``BIG-IP`` Self-IPs and not the VS
+For the pool setup, you can see that we use our ``BIG-IPs`` Self-IPs and not the VS
 address 10.1.10.130
+
+.. note::
+
+  Remember that ``BIG-IQ`` will use the Self IP called *external*  as pool member
 
 .. image:: ../pictures/module1/img_module2_lab2_7.png
   :align: center
