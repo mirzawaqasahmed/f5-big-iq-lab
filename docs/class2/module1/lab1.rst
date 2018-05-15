@@ -74,7 +74,7 @@ Click on the button *Add/remove* to select the configuration items you want to
 enforce when deploying a new F5 virtual edition in your ``SSG``
 
 Here, for the *Provider Type*, select *VMWare*. It will automatically select
-all the required information related to a VMWAre environment (in regards to Using
+all the required information related to a VMWare environment (in regards to Using
 ``Service Scaling Group``)
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
