@@ -214,4 +214,4 @@ pushed:
 .. note::
 
   if you go to your ``BIG-IQ`` UI and go to *Devices* > *BIG-IP Devices* , you will
-  not be able to see your ``SSG` devices. They won't be listed here.
+  not be able to see your ``SSG`` devices. They won't be listed here.
