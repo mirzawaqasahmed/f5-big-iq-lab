@@ -34,7 +34,9 @@ upfront by the administrator. It means that:
   handled by BIG-IQ
 
 
-.. note:: with BIG-IQ 6.0, we only support F5 Virtual edition for tier1.
+.. note::
+
+  With BIG-IQ 6.0, we only support F5 Virtual edition for tier1 in a VMWare env.
   With BIG-IQ 6.0.1, we will support F5 HW also.
 
 
