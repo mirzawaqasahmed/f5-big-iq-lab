@@ -6,7 +6,7 @@ Connect as **larry** to create the custom ASM policy, go to *Configuration* > *S
   :align: center
   :scale: 50%
 
-Edit the Policy  ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``. click Save & Close.
+Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``. click Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
