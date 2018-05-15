@@ -1,9 +1,10 @@
-Lab 3.2: Delete Application via API (Python)
+Lab 3.2: Create Application via API (Python)
 --------------------------------------------
 In this lab, we are going to create an application using Python script and BIG-IQ API.
 
 On BIG-IQ, connect as **david** to create a new application, go to *Applications* > *APPLICATIONS*, select the template previously created ``Default-f5-HTTP-lb-template``.
 
+- BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
 - Application Name: ``site20.example.com``
 - Destination Address: ``10.1.10.120``
 - Destination Network Mask: ``255.255.255.255``
@@ -17,9 +18,11 @@ Do click on Create but on **View Sample API Request** at the top right corner.
   :align: center
   :scale: 50%
 
+|
+
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Edit the file /home/f5/class1mod3.py
+Edit the file ``/home/f5/class1mod3.py``
 
 - Set application name: APP_NAME = "``site20.example.com``"
 - Confirm the correct template name is configured in ``templates`` variable (e.g. Default-f5-HTTP-lb-template)

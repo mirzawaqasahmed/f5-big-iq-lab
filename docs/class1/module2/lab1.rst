@@ -21,4 +21,6 @@ Go to *Applications* > *SERVICE CATALOG*:
 .. image:: ../pictures/module2/img_module2_lab1_1.png
   :align: center
 
+|
+
 .. warning:: There will be no default AFM or DoS policies delivered in BIG-IQ 6.0. **Larry** will need to manually define them and link them to the custom templates.

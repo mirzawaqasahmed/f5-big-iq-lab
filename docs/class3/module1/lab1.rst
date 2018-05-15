@@ -18,11 +18,15 @@ Use one of the screen's filter and sort settings to isolate an application of in
   :align: center
   :scale: 50%
 
+|
+
 Filter on Not Protected Applications:
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
   :scale: 50%
+
+|
 
 Select the application name to redirect you to a more detailed dashboard.
 
@@ -32,6 +36,8 @@ Use this screen to detect application trends, to identify issues that can affect
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
   :scale: 50%
+
+|
 
 The summary bar at the top of the screen provides information about the application's health, traffic performance, security status, and alerts.
 The Health area indicates the application's health status.
@@ -56,6 +62,8 @@ The application configuration map directly below the summary bar provides inform
   :align: center
   :scale: 50%
 
+|
+
 **Analytics Tab**
 
 The ANALYTICS area displays the application's traffic data trends and events and alerts, within a selected time period.
@@ -65,6 +73,8 @@ The ANALYTICS area displays the application's traffic data trends and events and
 .. image:: ../pictures/module1/img_module1_lab1_6.png
   :align: center
   :scale: 50%
+
+|
 
 You can use the time settings above the chart to focus the data to a specific time period. You can also control the data refresh period and events in the charts.
 
@@ -87,6 +97,8 @@ Take the time to naviate in all the different charts.
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
   :scale: 50%
+
+|
 
 **Configuration Tab**
 

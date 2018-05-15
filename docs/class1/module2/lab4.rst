@@ -11,6 +11,8 @@ Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and s
   :align: center
   :scale: 50%
 
+|
+
 2. Larry check the Web Application Security for ``viol_subviol`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies
@@ -21,11 +23,15 @@ Accept the Learning.
   :align: center
   :scale: 50%
 
+|
+
 3. Update the Enforcement Mode to ``Blocking``.
 
 .. image:: ../pictures/module2/img_module2_lab4_4.png
   :align: center
   :scale: 50%
+
+|
 
 Connect as **paula**
 Go to *Applications* > *APPLICATIONS*:
@@ -38,9 +44,13 @@ Select ``site18.example.com``
   :align: center
   :scale: 50%
 
+|
+
 .. image:: ../pictures/module2/img_module2_lab4_6.png
   :align: center
   :scale: 50%
+
+|
 
 2. Let's generate some bad traffic, connect on the *Ubuntu Lamp Server* server and launch the following script:
 

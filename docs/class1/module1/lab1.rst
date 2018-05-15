@@ -1,6 +1,6 @@
 Lab 1: Creation of each personas in BIG-IQ
 --------------------------------------------
-.. note:: Marco, Paula and Larry are already created in the blueprint except David.
+.. note:: Marco, Paula and Larry are already created in the blueprint except **David**.
 
 We will be using 4 main personas for this lab:
 
@@ -40,7 +40,31 @@ and click on *Add*
 
 Click on *Save & Close*
 
-**2. David: Super-NetOps**
+**2. Larry: Application Security Manager**
+
+Click on *Add*
+
+- *Auth Provider* = Radius
+- *User Name* = larry
+- *Full Name* = Application Security Manager
+- (*Password stored in Radius server* = larry)
+- *Role* = Security Manager
+
+Click on *Save & Close*
+
+**3. Paula: Application Manager**
+
+Click on *Add*
+
+- *Auth Provider* = Radius
+- *User Name* = paula
+- *Full Name* = Application Manager
+- (*Password stored in Radius server* = paula)
+- *Role* = Application Manager
+
+Click on *Save & Close*
+
+**4. David: Super-NetOps**
 
 Click on *Add*
 
@@ -53,30 +77,6 @@ Click on *Add*
 Click on *Save & Close*
 
 .. warning:: Only local users are supported to execute Ansible playbook
-
-**3. Larry: Application Security Manager**
-
-Click on *Add*
-
-- *Auth Provider* = Radius
-- *User Name* = larry
-- *Full Name* = Application Security Manager
-- (*Password stored in Radius server* = larry)
-- *Role* = Security Manager
-
-Click on *Save & Close*
-
-**4. Paula: Application Manager**
-
-Click on *Add*
-
-- *Auth Provider* = Radius
-- *User Name* = paula
-- *Full Name* = Application Manager
-- (*Password stored in Radius server* = paula)
-- *Role* = Application Manager
-
-Click on *Save & Close*
 
 .. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center

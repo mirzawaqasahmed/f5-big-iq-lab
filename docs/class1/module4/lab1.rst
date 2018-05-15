@@ -26,6 +26,8 @@ In the Description field (optional), type in a brief description for the applica
   :align: center
   :scale: 50%
 
+|
+
 2. Save the template, click *Save*
 
 3. Now, define the default objects for this template.
@@ -39,6 +41,8 @@ Click *Create*. The screen you use to define the selected object type (for examp
   :align: center
   :scale: 50%
 
+|
+
 Create your nodes with the following parameters:
 
 - Prompt: ``Server``
@@ -49,6 +53,8 @@ Create your nodes with the following parameters:
   :align: center
   :scale: 50%
 
+|
+
 Repeat the same with the 2nd node:
 
 - Prompt: ``Server``
@@ -58,6 +64,8 @@ Repeat the same with the 2nd node:
 .. image:: ../pictures/module4/img_module4_lab1_4.png
   :align: center
   :scale: 50%
+
+|
 
 If you want applications created with this template to be able to include more than one
 copy of the object you adding, select Enabled for Allow Multiple Instances.
@@ -71,6 +79,8 @@ Click *Create*. The screen you use to define the selected object type (for examp
   :align: center
   :scale: 50%
 
+|
+
 Create your pool with the following parameters:
 
 - Prompt: ``Pool``
@@ -81,6 +91,8 @@ Create your pool with the following parameters:
   :align: center
   :scale: 50%
 
+|
+
 7. Save the template, click *Save*
 
 Add the nodes previously created to the pool template:
@@ -88,6 +100,8 @@ Add the nodes previously created to the pool template:
 .. image:: ../pictures/module4/img_module4_lab1_7.png
   :align: center
   :scale: 50%
+
+|
 
 Node 1:
 
@@ -105,11 +119,15 @@ Node 2:
   :align: center
   :scale: 50%
 
+|
+
 Once both nodes are added to the Pool template, you should see both nodes attached to the pool template.
 
 .. image:: ../pictures/module4/img_module4_lab1_9.png
   :align: center
   :scale: 50%
+
+|
 
 8. Save the template, click *Save & Close*
 
@@ -119,6 +137,8 @@ Click *Create*. The screen you use to define the selected object type (for examp
 .. image:: ../pictures/module4/img_module4_lab1_10.png
   :align: center
   :scale: 50%
+
+|
 
 In the Prompt box, type the text string that you want to display for this object when
 someone uses this template to create a new application.
@@ -147,6 +167,8 @@ Create your virtual server with the following parameters:
   :align: center
   :scale: 50%
 
+|
+
 Specify all of the default parameters that you want to define for this object.
 Before you can add an object to the template, you must specify at least the required parameters for that object type.
 
@@ -164,6 +186,8 @@ right corner to see what the user interface will look like when someone uses thi
   :align: center
   :scale: 50%
 
+|
+
 9. Save the template, click *Save & Close*
 
 Your custom template is now showing in the Service Catalog.
@@ -171,6 +195,8 @@ Your custom template is now showing in the Service Catalog.
 .. image:: ../pictures/module4/img_module4_lab1_13.png
   :align: center
   :scale: 50%
+
+|
 
 When you finish specifying parameters for this object, click Save & Close.
 BIG-IQ adds the object you defined to the list of objects in this template.

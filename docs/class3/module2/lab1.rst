@@ -12,11 +12,15 @@ Note: When this option is enabled, a banner appears at the top of the screen and
   :align: center
   :scale: 50%
 
+|
+
 2. Notice the current traffic only returns 200 OK.
 
 .. image:: ../pictures/module2/img_module2_lab1_2.png
   :align: center
   :scale: 50%
+
+|
 
 3. Let's generate some 404 error, connect on the *Ubuntu Lamp Server* server and launch the following command:
 
@@ -27,6 +31,8 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 .. image:: ../pictures/module2/img_module2_lab1_3.png
   :align: center
   :scale: 50%
+
+|
 
  Filter on 404 errors on right panel, this should give you only the URL that is missing as well as the pool member which is missing the content.
 
