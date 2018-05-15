@@ -1,5 +1,5 @@
-Lab 3.1: Create Application via API
------------------------------------
+Lab 3.1: Create Application via API (Ansible)
+--------------------------------------------
 In this lab, we are going to deploy a basci HTTP application using Ansible.
 
 The following parameters are filled in the playbook ``create_http_app.yaml``.
@@ -10,13 +10,11 @@ The following parameters are filled in the playbook ``create_http_app.yaml``.
 - Service Port: ``80``
 - Pool Members: ``10.1.20.122``
 
-Open a SSH session to *Ubuntu Lamp Server, LDAP and DHCP* in UDF.
+Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
 Update the f5-ansible module to the latest versions::
 
     # cd /home/f5/f5-ansible; git pull
-
-**david** user is used to execute the playbook:
 
 Execute the playbook::
 

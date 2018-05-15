@@ -25,8 +25,10 @@ You should see a *Deploying application changes...* yellow banner indicating the
 
 4. An alarm is raised showing the wrong pool member.
 
-.. note:: The monitors for the default templates are set to 1 min in order to reducing the probability that with a network issue
+.. note:: The monitors for the default templates are set to 1 minute in order to reducing the probability that with a network issue
+
+.. image:: ../pictures/module2/img_module2_lab2_4.png
+  :align: center
+  :scale: 50%
 
 5. Delete the wrong pool member to clear the alarm.
-
-6. Slow pool member => check with Rob

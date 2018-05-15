@@ -1,8 +1,8 @@
-Lab 3.2: Delete Application via API
------------------------------------
+Lab 3.2: Delete Application via API  (Ansible)
+----------------------------------------------
 In this lab, we are going to delete an application using Ansible.
 
-Open a SSH session to *Ubuntu Lamp Server, LDAP and DHCP* in UDF.
+Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
 Update the f5-ansible module to the latest versions::
 
