@@ -30,7 +30,9 @@ In order to test it quickly, let's manually set in the HTTP profile attached to 
   :align: center
   :scale: 50%
 
-.. note :: Other way could be to create a clone of a default template and change the parameter Request Header Erase within the template. Note we cannot modify the default templates.
+|
+
+.. note :: Other way could be to create a clone of a default template and change the parameter Request Header Erase within the template. Note we cannot modify the default built-in templates.
 
 Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
 in our ESXi). To do this, in your UDF deployment, click on the *Access* button
@@ -40,17 +42,23 @@ of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH WIN7*
     :align: center
     :scale: 50%
 
-Open Chrome and navigate on the website http://site42.example.com. If you open the developer scripts, you can see the F5 CSPM javascript added to the page.
+|
+
+Open Chrome and navigate on the website http://site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab4_2.png
   :align: center
   :scale: 50%
+
+|
 
 Go back on the BIG-IQ and check you can see now the Page Load Time.
 
 .. image:: ../pictures/module2/img_module2_lab4_3.png
   :align: center
   :scale: 50%
+
+|
 
 2. Differences when Enhanced Analytics are enabled or disable on the HTTP Analytics profile
 Login to BIG-IP, go to ``SEA-vBIGIP01.termmarc.com`` BIG-IP, Local Traffic > Profiles > Analytics > HTTP Analytics.
@@ -59,9 +67,13 @@ Login to BIG-IP, go to ``SEA-vBIGIP01.termmarc.com`` BIG-IP, Local Traffic > Pro
   :align: center
   :scale: 50%
 
+|
+
 .. image:: ../pictures/module2/img_module2_lab4_5.png
   :align: center
   :scale: 50%
+
+|
 
 3. Compare two or more items in the detailed right hand panel. i.e. compare pool members and URLs.
 
@@ -69,8 +81,12 @@ Login to BIG-IP, go to ``SEA-vBIGIP01.termmarc.com`` BIG-IP, Local Traffic > Pro
   :align: center
   :scale: 50%
 
+|
+
 Select different metric:
 
 .. image:: ../pictures/module2/img_module2_lab4_7.png
   :align: center
   :scale: 50%
+
+|

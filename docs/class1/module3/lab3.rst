@@ -17,6 +17,8 @@ Do click on Create but on **View Sample API Request** at the top right corner.
   :align: center
   :scale: 50%
 
+|
+
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
 Edit the file /home/f5/class1mod3.py

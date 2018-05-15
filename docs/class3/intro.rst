@@ -12,6 +12,8 @@ configure) retrieves those statistics from your devices, and then processes and 
   :align: center
   :scale: 50%
 
+|
+
 With BIG-IP Cloud Edition starting release 13.1.0.5 and above, the Analytics are being pushed from the BIG-IP to the DCDs.
 Therefore, the communication between the BIG-IP and DCD needs to be bi-directional (e.g. if your BIG-IQ/DCD are on premises
 the BIG-IP VE are in the public cloud such as AWS or Azure, you will need a VPN between you Datacenter and your public cloud network).
