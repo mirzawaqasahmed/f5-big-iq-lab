@@ -8,7 +8,7 @@ Connect as **larry** to create the custom ASM policy, go to *Configuration* > *S
 
 |
 
-Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``. click Save & Close.
+Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
@@ -16,7 +16,11 @@ Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make 
 
 |
 
-In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central``. click Save & Close.
+In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode click Save & Close.
+
+.. image:: ../pictures/module2/img_module2_lab2_4b.png
+  :align: center
+  :scale: 50%
 
 Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
 Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save & Close.

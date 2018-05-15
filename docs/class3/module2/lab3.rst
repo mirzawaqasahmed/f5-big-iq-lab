@@ -8,7 +8,7 @@ Go to Configuration > SECURITY > Web Application Security > Policies
 
 Accept the Learning.
 
-.. image:: ../../class1/pictures/module2/img_module2_lab4_3.png
+.. image:: ../pictures/module2/img_module2_lab3_1.png
   :align: center
   :scale: 50%
 
@@ -16,7 +16,7 @@ Accept the Learning.
 
 3. Update the Enforcement Mode to ``Blocking``.
 
-.. image:: ../../class1/pictures/module2/img_module2_lab4_4.png
+.. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
   :scale: 50%
 
@@ -29,7 +29,7 @@ Select ``site36.example.com``
 
 1. Paula enforce the policy: APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
 
-.. image:: ../../class1/pictures/module2/img_module2_lab4_5.png
+.. image:: ../pictures/module2/img_module2_lab3_3.png
   :align: center
   :scale: 50%
 

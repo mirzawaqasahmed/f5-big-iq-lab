@@ -18,7 +18,7 @@ Type  the domain of your application (this will be used by the ASM policy to enf
 
 For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
 
-- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
+- BIG-IP: Select ``SEA-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
   :align: center
@@ -67,7 +67,7 @@ The Application is deployed.
 
 |
 
-.. note:: In case the Application fails, Larry can go to Applications > Application Deployments
+.. note:: In case the Application fails, connect as **Marco** and go to Applications > Application Deployments to have more details on the failure. You try retry in case of failure.
 
 In Paula's Dashboard, she can see her Application.
 
