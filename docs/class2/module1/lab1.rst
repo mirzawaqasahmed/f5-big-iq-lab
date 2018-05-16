@@ -38,11 +38,11 @@ IP Pools Setup
 
 When you provision dynamically new F5 virtual edition, you need to be able to
 automatically assign Self IPs to this instance. To do that, we will rely on
-the ``IP Pool`` feature of ``BIG-IQ`
+the ``IP Pool`` feature of ``BIG-IQ``
 
 For our lab, we will need two IP pools:
 
-* One for the network between Tier1 and Tier2
+* One for the network between Tier1 (``load balancer``) and Tier2 (``SSG``)
 * One for the servers network
 
 Go to *Devices* > *IP POOLS*, you should see two already defined ``IP Pool``:
@@ -160,7 +160,7 @@ Click on the *VLANs* tab. You should see a vlan defined by default: *external*.
 .. note::
 
   When you create/update a VLAN, you'll see the interface 1.1 being pre-populated.
-  In fact it's light greyed because it is showed as an example. You need to type
+  In fact, it is showed as an example. You need to type
   the interface yourself -ie 1.1 / 1.2 / ...
 
 Click on the *Add* button:
