@@ -152,7 +152,7 @@ Once it is fully deployed, you'll see this:
 .. note::
 
   Here you can see for the devices: 2/3 - you see the number of provisioned
-  VEs and the max number of VEs that you're allowed to deploy in this SSG
+  VEs and the max number of VEs that you're allowed to deployed in this SSG
 
 Click on your SSG (``SSGClass2``)
 
