@@ -124,6 +124,12 @@ Service Scaling Group Properties:
 * Maximum Device(s) Required : 3
 * Maximum Application(s) Allowed: 3
 
+.. note::
+
+    In UDF, the provisioning of a SSG VE may take up to 10 min. So it may takes
+    up to 20 min to build those 2 devices. If you are short on time, it may be
+    better to specify 1 minimum device and 1 desired device instead of 2. 
+
 .. image:: ../pictures/module1/img_module1_lab3_2.png
     :align: center
     :scale: 50%
