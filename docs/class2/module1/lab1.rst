@@ -157,6 +157,12 @@ Click on the *DNS & NTP* tab and setup the following:
 
 Click on the *VLANs* tab. You should see a vlan defined by default: *external*.
 
+.. note::
+
+  When you create/update a VLAN, you'll see the interface 1.1 being pre-populated.
+  In fact it's light greyed because it is showed as an example. You need to type
+  the interface yourself -ie 1.1 / 1.2 / ...
+
 Click on the *Add* button:
 
 * Name: internal
@@ -165,6 +171,8 @@ Click on the *Add* button:
 
 Click on the *Save and Close* button. Click on the external vlan and assign the
 interface 1.1 to it.
+
+
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
@@ -202,9 +210,9 @@ Click on the *Save and Close* button. Click on the *external* self ip to set it 
 .. note::
 
   The ``external`` self IP is important because this is the self IP we will use
-  to LB traffic between our tier1 and tier2 BIG-IPs. You need to use it as is.
-  if you don't use a ``external`` self IP on your tier2 device, ``BIG-IQ`` won't
-  know which interface to use
+  to LB traffic between our tier1 (``load balancer``) and tier2 BIG-IPs (``SSG``).
+  You need to use it as is. if you don't use a ``external`` self IP on your
+  tier2 device, ``BIG-IQ`` won't know which interface to use
 
 Click on the *Root Account* tab. Specify a new password for the root account:
 *purple*

@@ -156,8 +156,8 @@ Load-Balancer:
 |
 
 
-The device(s) we select here will behave as our Tier1 devices. They will load
-balance the traffic aimed at this SSG.
+The device(s) we select here will behave as our ``load balancer`` devices. They will load
+balance the traffic aimed at this ``SSG``.
 
 Scaling Rules:
 

@@ -1,6 +1,8 @@
 Introduction
 ============
 
+.. note:: On this page there is no actions to be done here regarding the lab itself
+
 
 Definition of Cloud Auto-scaling
 ********************************

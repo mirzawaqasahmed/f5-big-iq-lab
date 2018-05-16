@@ -2,7 +2,8 @@ Lab 1.2: Review our application deployment
 ------------------------------------------
 
 Now that our application is deployed, we can review the configuration of our
-``BIG-IPs`` in the ``Service Scaling Group`` and in our Tier1 cluster
+``BIG-IPs`` in the ``Service Scaling Group`` and in our ``load balancer``
+cluster
 
 If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on *Applications*,
 you'll see our application listed here
@@ -44,10 +45,10 @@ On each ``BIG-IP`` in your ``SSG``, you should have an identical setup:
 .. note:: we disable ARP on the Virtual Address since the same VS IP is used on
   all our ``SSG`` devices
 
-Tier1 Setup for our Application
-*******************************
+``load balancer`` Setup for our Application
+*******************************************
 
-Connect to your ``BIG-IPs`` used for Tier1: *BOS-vBIGIP01.termmarc.com* and
+Connect to your ``BIG-IPs`` used as ``load balancer``: *BOS-vBIGIP01.termmarc.com* and
 *BOS-vBIGIP02.termmarc.com*
 
 Here you should see this setup:
@@ -68,8 +69,8 @@ Here you should see this setup:
 
 .. note:: we don't do Source IP translation and if you switch to *advanced view*,
   you'll see that *Address Translation* and *Port Translation* are disabled.
-  This means that your Tier1 ``BIG-IP`` and ``BIG-IPs`` in your ``SSG`` must be able to communicate
-  via L2.
+  This means that your ``load balancer`` ``BIG-IP`` and ``BIG-IPs`` in your
+  ``SSG`` must be able to communicate via L2.
 
 For the pool setup, you can see that we use our ``BIG-IPs`` Self-IPs and not the VS
 address 10.1.10.130

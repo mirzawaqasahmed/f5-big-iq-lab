@@ -1,6 +1,9 @@
 Module 1: Setup a Service scaling group (SSG)
 =============================================
 
+.. note:: On this page there is no actions to be done here regarding the lab itself
+
+
 In this module, we will learn about the ``Service Scaling Group`` (SSG) feature
 provided with BIG-IQ 6.0
 
@@ -14,14 +17,14 @@ With BIG-IQ 6.0, the ``Service Scaling Group`` is composed of 2 tiers of ADCs.
 Depending on the environment, the implementation of the ``Service Scaling Group``
 (SSG) will differ.
 
-============= =========== ==============
- Environment     Tier1         Tier2
-============= =========== ==============
-   AWS            ELB         F5 VE
-   VMWARE        F5 ADC       F5 VE
-============= =========== ==============
+============= ===================================== ============================
+ Environment     Tier1 (called ``Load Balancer``)      Tier2 (called ``SSG``)
+============= ===================================== ============================
+   AWS                       ELB                                 F5 VE
+   VMWARE                   F5 ADC                               F5 VE
+============= ===================================== ============================
 
-Tier1 management - how does this work ?
+Tier1/``load balancer`` management - how does this work ?
 ---------------------------------------
 
 With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
@@ -36,14 +39,15 @@ upfront by the administrator. It means that:
 
 .. note::
 
-  With BIG-IQ 6.0, we only support F5 Virtual edition for tier1 in a VMWare env.
+  With BIG-IQ 6.0, we only support F5 Virtual edition as ``load balancer`` in
+  a VMWare env.
   With BIG-IQ 6.0.1, we will support F5 HW also.
 
 
-Tier2 management - how does this work ?
+Tier2/``SSG`` management - how does this work ?
 ---------------------------------------
 
-With BIG-IQ 6.0, the provisioning of tier2 BIG-IPs is fully automated. You
+With BIG-IQ 6.0, the provisioning of ``SSG`` BIG-IPs is fully automated. You
 don't have to setup anything upfront but licenses for BIG-IQ to assign to the
 dynamically provisioned BIG-IPs
 
@@ -71,14 +75,14 @@ deployed in a certain manner:
 * When the app is deployed from ``BIG-IQ``, it will receive a Virtual server IP.
 * This VS IP will be configured:
 
-  * On all Tier 2 VEs. This IP will be used to setup the relevant ADC config
-    on all the Virtual edition sitting on tier2. They will have have an
+  * On all VEs part of the ``SSG``. This IP will be used to setup the relevant
+    All the Virtual editions part of the ``SSG`` will have have an
     **identical** Setup
-  * On the tier 1 cluster. ``BIG-IQ`` will setup a virtual server with the same IP
+  * On the tier 1/``load balancer`` cluster. ``BIG-IQ`` will setup a virtual server with the same IP
     and the following configuration
 
       * address translation will be disabled
-      * the pool members for this app will be the Tier2 BIG-IP Self-IPs
+      * the pool members for this app will be the ``SSG`` Self-IPs
       * the pool monitor will be based on the app specifications
 
 
@@ -95,8 +99,7 @@ deployed in a certain manner:
   This is because ELB can only send traffic to the first nic of an instance and
   therefore we will deploy 1nic VE in AWS. So traffic and everything will be sent
   to the nic Self IP.
-* This VS IP will be configured on all Tier 2 VEs. This IP will be used to
-  setup the relevant ADC config on all the Virtual edition sitting on tier2.
+* This config will be configured on all ``SSG`` VEs.
   They will have have an **identical** Setup
 
 In this lab, we will create a ``Service Scaling Group`` in a VMWare environment

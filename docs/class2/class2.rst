@@ -1,6 +1,8 @@
 Class 2: Deployment with auto-scale
 ===================================
 
+.. note:: On this page there is no actions to be done here regarding the lab itself
+
 In this class, we will review the auto-scale feature available with BIG-IQ 6.0
 called ``Service Scaling Groups`` (SSG)
 
