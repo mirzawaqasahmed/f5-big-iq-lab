@@ -5,8 +5,8 @@ Now that our application is deployed, we can review the configuration of our
 ``BIG-IPs`` in the ``Service Scaling Group`` and in our ``load balancer``
 cluster
 
-If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on *Applications*,
-you'll see our application listed here
+If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on
+*Applications*. You'll see our application listed here
 
 .. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
@@ -14,10 +14,11 @@ you'll see our application listed here
 
 |
 
-SSG Setup for our Application
-*****************************
+``SSG`` Setup for our Application
+*********************************
 
-Use again the **RDP session** to have access to your ``BIG-IP``s in your ``SSG`` *SSGClass2*
+Use again the **RDP session** to have access to your ``BIG-IPs`` in your ``SSG``
+*SSGClass2*
 
 .. note:: you can review their IP address by going in your ``SSG``, Click on
   *Configuration* and then *Devices*
