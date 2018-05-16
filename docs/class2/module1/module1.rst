@@ -92,9 +92,9 @@ Application deployment in a SSG - AWS
 To ensure the traffic goes through the SSG as expected, application will be
 deployed in a certain manner:
 
-* You will need dedicated ``Classic Load Balancer``(AKA ELB previously) per
+* You will need dedicated ``Classic Load Balancer`` (AKA ELB previously) per
   application. The reason is that each ``ELB`` has one public IP/DNS Name
-  (ie you can't have 2 app runnings on port 443/HTTPS on a ``ELB``)
+  (ie you can't have 2 app runnings on port 443/HTTPS on a ``ELB`` )
 * When the app is deployed from BIG-IQ, we will specify a VS IP that will be 0.0.0.0.
   This is because ELB can only send traffic to the first nic of an instance and
   therefore we will deploy 1nic VE in AWS. So traffic and everything will be sent
