@@ -4,10 +4,6 @@ In this lab, we are going to delete an application using Ansible.
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Update the f5-ansible module to the latest versions::
-
-    # cd /home/f5/f5-ansible; git pull
-
 **david** user is used to execute the playbook:
 
 Execute the playbook::
@@ -17,4 +13,4 @@ Execute the playbook::
 
 Check on BIG-IQ the application has been correclty deleted.
 
-.. note :: If you have time, you can try to deploy another application type (e.g. WAG, HTTPS, TCP)
+.. note :: If you have time, you can try to deploy another application type using other Ansible modules (e.g. bigiq_application_fasthttp, bigiq_application_fastl4_tcp, bigiq_application_https_offload, bigiq_application_https_waf)

@@ -22,18 +22,26 @@ Do click on Create but on **View Sample API Request** at the top right corner.
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Edit the file ``/home/f5/class1mod3.py``
+Look the file ``/home/f5/class1mod3.py``
 
-- Set application name: APP_NAME = "``site20.example.com``"
-- Confirm the correct template name is configured in ``templates`` variable (e.g. Default-f5-HTTP-lb-template)
-- Check the BIG-IP management IP used to filter the device where the app will be deployed in variable ``device`` (e.g. 10.1.1.7)
-- Replace the API Sample Request generated from BIG-IQ UI in the script in the ``post_body`` variable (only until ``addAnalytics`` line)
+- The application name was set: APP_NAME = "``site20.example.com``"
+- Template name configured in ``templates`` variable (e.g. Default-f5-HTTP-lb-template)
+- BIG-IP management IP is used to filter the device where the app will be deployed in variable ``device`` (e.g. 10.1.1.7 for SEA-vBIGIP01.termmarc.com)
+- The API Sample Request generated previously from BIG-IQ UI was inserted in the script in the ``post_body`` variable (only until ``addAnalytics`` line)
 
 Execute the Python script::
 
-    # cd /home/f5/
-    # python3 class1mod3.py
+    # /home/f5/class1mod3.py
 
-.. warning:: Due to python dependancy issue, the script cannot be executed on the Lamp server at the moment.
+Output::
+
+    u'Polling task, Status: STARTED'
+    u'Polling task, Status: STARTED'
+    ....
+    u'Polling task, Status: STARTED'
+    u'Polling task, Status: STARTED'
+    u'Polling task, Status: FINISHED'
+
+.. note :: **david** is used to execute Ansible playbooks, make sure it has the correct permission (c.f. Class 1 Module 1)
 
 Check on BIG-IQ the application has been correclty created.
