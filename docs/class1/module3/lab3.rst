@@ -1,5 +1,7 @@
-Lab 3.2: Create Application via API (Python)
+Lab 3.3: Create Application via API (Python)
 --------------------------------------------
+.. note :: This is an optional lab.
+
 In this lab, we are going to create an application using Python script and BIG-IQ API.
 
 On BIG-IQ, connect as **david** to create a new application, click on **Create**, select the template previously created ``Default-f5-HTTP-lb-template``.
