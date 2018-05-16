@@ -1,7 +1,6 @@
 Lab 1.1: General Views and Configuration Applications
 -----------------------------------------------------
 Connect as **paula**.
-Go to *Applications* > *APPLICATIONS*:
 
 The screen lists all of your applications and current summary data about health, traffic performance and security. Use this screen to create, delete, deploy and oversee all of your applications.
 
@@ -20,7 +19,7 @@ Use one of the screen's filter and sort settings to isolate an application of in
 
 |
 
-Filter on Not Protected Applications:
+Filter on **Not Protected** Applications:
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -54,9 +53,8 @@ Click the icon to view, or edit, the application health alert rules.
   :align: center
   :scale: 50%
 
-The application configuration map directly below the summary bar provides information about your application's properties, client types, network and device configuration, F5 application services, and server configuration. You can click the icons to display detailed information in the ANALYTICS and CONFIGURATION areas.
-
-.. note:: The Environment area is available only to users with administrative access.
+The application configuration map directly below the summary bar provides information about your application's properties, client types,
+network and device configuration, F5 application services, and server configuration. You can click the icons to display detailed information in the ANALYTICS and CONFIGURATION areas.
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center

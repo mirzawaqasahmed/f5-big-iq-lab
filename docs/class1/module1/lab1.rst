@@ -74,7 +74,7 @@ Click on *Add*
 - (*Password stored in Radius server* = david)
 - *Role* = Application Manager
 
-Click on *Save & Close*
+Click on *Save & Close*`
 
 .. warning:: Only local users are supported to execute Ansible playbook
 

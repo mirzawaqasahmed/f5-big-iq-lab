@@ -6,7 +6,7 @@ Connect as **larry**
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
-Accept the Learning.
+Click the box to select all suggestions and **Accept** the learning.
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
   :align: center
@@ -14,7 +14,7 @@ Accept the Learning.
 
 |
 
-3. Update the Enforcement Mode to ``Blocking``.
+3. Update the Enforcement Mode to ``Blocking``, Save and Close.
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
@@ -23,7 +23,6 @@ Accept the Learning.
 |
 
 Connect as **paula**
-Go to *Applications* > *APPLICATIONS*:
 
 Select ``site36.example.com``
 

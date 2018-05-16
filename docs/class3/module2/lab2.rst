@@ -1,7 +1,6 @@
 Lab 2.2: Troubleshooting Pool Member
 ------------------------------------
 Connect as **paula**.
-Go to *Applications* > *APPLICATIONS*:
 
 1. Select one of the application ``site42.example.com``.
 
@@ -39,4 +38,4 @@ You should see a *Deploying application changes...* yellow banner indicating the
 
 |
 
-5. Delete the wrong pool member to clear the alarm.
+5. Delete the pool member previously created during step 3. to clear the alarm.

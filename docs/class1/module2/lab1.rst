@@ -15,8 +15,7 @@ Below default built-in templates delivered with BIG-IQ 6.0:
 
 .. warning:: Templates with virtual servers without a HTTP profiles can not be depoyed to a Service Scaling Group
 
-Connect as **marco**.
-Go to *Applications* > *SERVICE CATALOG*:
+Connect as **marco**, go to *Applications* > *SERVICE CATALOG*:
 
 .. image:: ../pictures/module2/img_module2_lab1_1.png
   :align: center

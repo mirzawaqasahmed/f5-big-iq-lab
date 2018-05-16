@@ -34,7 +34,6 @@ Accept the Learning.
 |
 
 Connect as **paula**
-Go to *Applications* > *APPLICATIONS*:
 
 Select ``site18.example.com``
 

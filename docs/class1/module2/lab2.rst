@@ -8,7 +8,7 @@ Connect as **larry** to create the custom ASM policy, go to *Configuration* > *S
 
 |
 
-Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``.
+Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
@@ -16,14 +16,14 @@ Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make 
 
 |
 
-In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode click Save & Close.
+In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode, click Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_4b.png
   :align: center
   :scale: 50%
 
 Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
-Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save & Close.
+Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save.
 
 .. image:: ../pictures/module2/img_module2_lab2_5.png
   :align: center
@@ -31,7 +31,12 @@ Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make
 
 |
 
-Create a Rule, set the destination ports to ``443`` and ``80``, Protocol to ``tcp`` and click Save & Close.
+Create 2 Rules:
+
+- rule 1: set the destination ports to ``443`` and ``80``, Protocol to ``tcp``
+- rule 2: set action to ``reject`` and log to ``true``
+
+Click Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_6.png
   :align: center
