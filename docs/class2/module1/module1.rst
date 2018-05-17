@@ -18,13 +18,13 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
 (SSG) will differ.
 
 ============= ===================================== ============================
- Environment     Tier1 (called ``Load Balancer``)      Tier2 (called ``SSG``)
+ Environment     Tier1 (called ``Service Scaler``)      Tier2 (called ``SSG``)
 ============= ===================================== ============================
    AWS                       ELB                                 F5 VE
    VMWARE                   F5 ADC                               F5 VE
 ============= ===================================== ============================
 
-Tier1/``load balancer`` management - how does this work ?
+Tier1/``Service Scaler`` management - how does this work ?
 ---------------------------------------
 
 With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
@@ -39,7 +39,7 @@ upfront by the administrator. It means that:
 
 .. note::
 
-  With BIG-IQ 6.0, we only support F5 Virtual edition as ``load balancer`` in
+  With BIG-IQ 6.0, we only support F5 Virtual edition as ``Service Scaler`` in
   a VMWare env.
   With BIG-IQ 6.0.1, we will support F5 HW also.
 
@@ -78,7 +78,7 @@ deployed in a certain manner:
   * On all VEs part of the ``SSG``. This IP will be used to setup the relevant
     All the Virtual editions part of the ``SSG`` will have have an
     **identical** Setup
-  * On the tier 1/``load balancer`` cluster. ``BIG-IQ`` will setup a virtual server with the same IP
+  * On the tier 1/``Service Scaler`` cluster. ``BIG-IQ`` will setup a virtual server with the same IP
     and the following configuration
 
       * address translation will be disabled

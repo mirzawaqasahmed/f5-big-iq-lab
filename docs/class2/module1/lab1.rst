@@ -42,7 +42,7 @@ the ``IP Pool`` feature of ``BIG-IQ``
 
 For our lab, we will need two IP pools:
 
-* One for the network between Tier1 (``load balancer``) and Tier2 (``SSG``)
+* One for the network between Tier1 (``Service Scaler``) and Tier2 (``SSG``)
 * One for the servers network
 
 Go to *Devices* > *IP POOLS*, you should see two already defined ``IP Pool``:
@@ -210,7 +210,7 @@ Click on the *Save and Close* button. Click on the *external* self ip to set it 
 .. note::
 
   The ``external`` self IP is important because this is the self IP we will use
-  to LB traffic between our tier1 (``load balancer``) and tier2 BIG-IPs (``SSG``).
+  to LB traffic between our tier1 (``Service Scaler``) and tier2 BIG-IPs (``SSG``).
   You need to use it as is. if you don't use a ``external`` self IP on your
   tier2 device, ``BIG-IQ`` won't know which interface to use
 

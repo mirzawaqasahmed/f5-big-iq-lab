@@ -162,7 +162,7 @@ Load-Balancer:
 |
 
 
-The device(s) we select here will behave as our ``load balancer`` devices. They will load
+The device(s) we select here will behave as our ``Service Scaler`` devices. They will load
 balance the traffic aimed at this ``SSG``.
 
 Scaling Rules:
