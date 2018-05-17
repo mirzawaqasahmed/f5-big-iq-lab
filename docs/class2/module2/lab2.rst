@@ -75,7 +75,7 @@ Here you should see this setup:
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png
   :align: center
-  
+
 |
 
 
@@ -96,11 +96,10 @@ For the pool monitor, we created a custom http monitor with the following settin
 
 .. image:: ../pictures/module2/img_module2_lab2_9.png
   :align: center
-  :scale: 50%
 
 |
 
-We have enabled the ``transparent``option and setup the Alias address (ie send the monitor to this destination IP 
+We have enabled the ``transparent`` option and setup the ``Alias address`` (ie send the monitor to this destination IP 
 *through* the ``Alias Address`` specified)
 
 Next we can review the different analytics data available for your ``SSG`` *SSGClass2*
