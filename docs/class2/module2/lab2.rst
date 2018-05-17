@@ -75,8 +75,7 @@ Here you should see this setup:
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png
   :align: center
-  :scale: 50%
-
+  
 |
 
 
