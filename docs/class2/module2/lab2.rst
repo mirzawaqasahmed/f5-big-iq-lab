@@ -84,7 +84,7 @@ address 10.1.10.130
 
 .. note::
 
-  Remember that ``BIG-IQ`` will use the Self IP called *external*  as pool member
+  Remember that ``BIG-IQ`` will use the SSG Device Self IP called *external* as pool member
 
 .. image:: ../pictures/module2/img_module2_lab2_7.png
   :align: center
