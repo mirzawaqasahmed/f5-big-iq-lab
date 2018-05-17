@@ -71,7 +71,7 @@ Click on *Add*
 - *Auth Provider* = local
 - *User Name* = david
 - *Full Name* = Super-NetOps
-- (*Password stored in Radius server* = david)
+- *Password* = david
 - *Role* = Application Manager
 
 Click on *Save & Close*`
