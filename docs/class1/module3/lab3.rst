@@ -14,7 +14,7 @@ On BIG-IQ, connect as **david** to create a new application, click on **Create**
 - Pool Members: ``10.1.20.120``
 - Pool Members: ``10.1.20.121``
 
-Do click on Create but on **View Sample API Request** at the top right corner.
+**Do NOT click on Create** but on **View Sample API Request** at the top right corner.
 
 .. image:: ../pictures/module3/img_module3_lab3_1.png
   :align: center
