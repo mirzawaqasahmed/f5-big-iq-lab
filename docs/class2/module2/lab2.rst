@@ -2,7 +2,7 @@ Lab 1.2: Review our application deployment
 ------------------------------------------
 
 Now that our application is deployed, we can review the configuration of our
-``BIG-IPs`` in the ``Service Scaling Group`` and in our ``load balancer``
+``BIG-IPs`` in the ``Service Scaling Group`` and in our ``Service Scaler``
 cluster
 
 If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on
@@ -46,10 +46,10 @@ On each ``BIG-IP`` in your ``SSG``, you should have an identical setup:
 .. note:: we disable ARP on the Virtual Address since the same VS IP is used on
   all our ``SSG`` devices
 
-``load balancer`` Setup for our Application
+``Service Scaler`` Setup for our Application
 *******************************************
 
-Connect to your ``BIG-IPs`` used as ``load balancer``: *BOS-vBIGIP01.termmarc.com* and
+Connect to your ``BIG-IPs`` used as ``Service Scaler``: *BOS-vBIGIP01.termmarc.com* and
 *BOS-vBIGIP02.termmarc.com*
 
 Here you should see this setup:
@@ -70,7 +70,7 @@ Here you should see this setup:
 
 .. note:: we don't do Source IP translation and if you switch to *advanced view*,
   you'll see that *Address Translation* and *Port Translation* are disabled.
-  This means that your ``load balancer`` ``BIG-IP`` and ``BIG-IPs`` in your
+  This means that your ``Service Scaler`` ``BIG-IP`` and ``BIG-IPs`` in your
   ``SSG`` must be able to communicate via L2.
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png

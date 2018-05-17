@@ -127,4 +127,4 @@ You can access your app from the **RDP session**. You should see this:
 
 
 Next, we will review the configuration on our ``SSG`` devices and on our
-``load balancer`` devices
+``Service Scaler`` devices
