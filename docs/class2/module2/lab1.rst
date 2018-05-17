@@ -6,7 +6,7 @@ We will deploy an application via the app template feature on our ``SSG`` called
 
 On your ``BIG-IQ``, go to *Applications* > *Applications*
 
-.. image:: ../pictures/module1/img_module2_lab1_1.png
+.. image:: ../pictures/module2/img_module2_lab1_1.png
     :align: center
     :scale: 50%
 
@@ -23,7 +23,7 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
 * Environment: *Select Service Scaling Group*
 * Service Scaling Group: Select *SSGClass2*
 
-.. image:: ../pictures/module1/img_module2_lab1_2.png
+.. image:: ../pictures/module2/img_module2_lab1_2.png
     :align: center
     :scale: 50%
 
@@ -31,7 +31,7 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
 
 * Servers : Click on the advanced view
 
-.. image:: ../pictures/module1/img_module2_lab1_3.png
+.. image:: ../pictures/module2/img_module2_lab1_3.png
     :align: center
 |
 
@@ -41,7 +41,7 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
   may be easier to click on the drop down list and type the beginning of the
   node name (ie 10.1.20.130 or 10.1.20.131)
 
-.. image:: ../pictures/module1/img_module2_lab1_4.png
+.. image:: ../pictures/module2/img_module2_lab1_4.png
   :align: center
   :scale: 50%
 
@@ -86,7 +86,7 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
 
   |
 
-  .. image:: ../pictures/module1/img_module2_lab1_5.png
+  .. image:: ../pictures/module2/img_module2_lab1_5.png
     :align: center
     :scale: 50%
 
@@ -94,7 +94,7 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
 
 Click on *Create*. You'll see your application being created
 
-.. image:: ../pictures/module1/img_module2_lab1_6.png
+.. image:: ../pictures/module2/img_module2_lab1_6.png
   :align: center
   :scale: 50%
 
@@ -103,7 +103,7 @@ Click on *Create*. You'll see your application being created
 On the page *Applications* > *Applications*, you'll see this while the app is
 getting deployed (Tile view):
 
-.. image:: ../pictures/module1/img_module2_lab1_7.png
+.. image:: ../pictures/module2/img_module2_lab1_7.png
   :align: center
   :scale: 50%
 
@@ -111,7 +111,7 @@ getting deployed (Tile view):
 
 As soon as the app is configured, you'll see this:
 
-.. image:: ../pictures/module1/img_module2_lab1_8.png
+.. image:: ../pictures/module2/img_module2_lab1_8.png
   :align: center
   :scale: 50%
 
@@ -119,7 +119,7 @@ As soon as the app is configured, you'll see this:
 
 You can access your app from the **RDP session**. You should see this:
 
-.. image:: ../pictures/module1/img_module2_lab1_9.png
+.. image:: ../pictures/module2/img_module2_lab1_9.png
   :align: center
   :scale: 50%
 

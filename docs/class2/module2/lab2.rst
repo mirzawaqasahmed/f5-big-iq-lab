@@ -8,7 +8,7 @@ cluster
 If you go in your ``SSG`` *SSGClass2*, click on *Configuration* and then on
 *Applications*. You'll see our application listed here
 
-.. image:: ../pictures/module1/img_module2_lab2_1.png
+.. image:: ../pictures/module2/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
@@ -25,19 +25,19 @@ Use again the **RDP session** to have access to your ``BIG-IPs`` in your ``SSG``
 
 On each ``BIG-IP`` in your ``SSG``, you should have an identical setup:
 
-.. image:: ../pictures/module1/img_module2_lab2_2.png
+.. image:: ../pictures/module2/img_module2_lab2_2.png
   :align: center
   :scale: 50%
 
 |
 
-.. image:: ../pictures/module1/img_module2_lab2_3.png
+.. image:: ../pictures/module2/img_module2_lab2_3.png
   :align: center
   :scale: 50%
 
 |
 
-.. image:: ../pictures/module1/img_module2_lab2_4.png
+.. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
   :scale: 50%
 
@@ -54,7 +54,7 @@ Connect to your ``BIG-IPs`` used as ``load balancer``: *BOS-vBIGIP01.termmarc.co
 
 Here you should see this setup:
 
-.. image:: ../pictures/module1/img_module2_lab2_5.png
+.. image:: ../pictures/module2/img_module2_lab2_5.png
   :align: center
   :scale: 50%
 
@@ -62,7 +62,7 @@ Here you should see this setup:
 
 .. note:: we do L4 LB, so we use FastL4 VS.
 
-.. image:: ../pictures/module1/img_module2_lab2_6.png
+.. image:: ../pictures/module2/img_module2_lab2_6.png
   :align: center
   :scale: 50%
 
@@ -73,6 +73,13 @@ Here you should see this setup:
   This means that your ``load balancer`` ``BIG-IP`` and ``BIG-IPs`` in your
   ``SSG`` must be able to communicate via L2.
 
+.. image:: ../pictures/module2/img_module2_lab2_8.png
+  :align: center
+  :scale: 50%
+
+|
+
+
 For the pool setup, you can see that we use our ``BIG-IPs`` Self-IPs and not the VS
 address 10.1.10.130
 
@@ -80,10 +87,21 @@ address 10.1.10.130
 
   Remember that ``BIG-IQ`` will use the Self IP called *external*  as pool member
 
-.. image:: ../pictures/module1/img_module2_lab2_7.png
+.. image:: ../pictures/module2/img_module2_lab2_7.png
   :align: center
   :scale: 50%
 
 |
+
+For the pool monitor, we created a custom http monitor with the following settings: 
+
+.. image:: ../pictures/module2/img_module2_lab2_9.png
+  :align: center
+  :scale: 50%
+
+|
+
+We have enabled the ``transparent``option and setup the Alias address (ie send the monitor to this destination IP 
+*through* the ``Alias Address`` specified)
 
 Next we can review the different analytics data available for your ``SSG`` *SSGClass2*

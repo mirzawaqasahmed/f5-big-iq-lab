@@ -17,7 +17,7 @@ The ``Summary Bar`` provides summary information about your SSGs' overall health
 active alerts and device performance. Click the elements in this area to filter
 or sort the ``SSG`` list.
 
-.. image:: ../pictures/module1/img_module2_lab3_1.png
+.. image:: ../pictures/module2/img_module2_lab3_1.png
  :align: center
  :scale: 50%
 
@@ -43,7 +43,7 @@ Click on our ``SSG`` *SSGClass2*, this will redirect us to a dashboard specific 
 At the top you get another Summary bar related to your ``SSG``: Health, Active Alerts,
 Alert History, Average CPU Usage, Throughput (IN/OUT)
 
-.. image:: ../pictures/module1/img_module2_lab3_3.png
+.. image:: ../pictures/module2/img_module2_lab3_3.png
  :align: center
  :scale: 50%
 
@@ -62,6 +62,6 @@ or choose one of the filters below each chart.
 
 Take the time to navigate in all the different charts.
 
-.. image:: ../pictures/module1/img_module2_lab3_2.png
+.. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
   :scale: 50%
