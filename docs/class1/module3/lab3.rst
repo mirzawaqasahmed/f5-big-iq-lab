@@ -24,7 +24,7 @@ On BIG-IQ, connect as **david** to create a new application, click on **Create**
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Look the file ``/home/f5/class1mod3.py``
+Look at the file ``/home/f5/class1mod3.py``
 
 - The application name was set: APP_NAME = "``site20.example.com``"
 - Template name configured in ``templates`` variable (e.g. Default-f5-HTTP-lb-template)
