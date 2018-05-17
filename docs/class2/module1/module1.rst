@@ -57,8 +57,8 @@ different components:
 * ansible playbooks to handle the provisioning of our F5 virtual edition
 * our F5 cloud deployment templates
 
-  * `F5 Vmware template <https://github.com/F5Networks/f5-aws-cloudformation>`_
-  * `F5 AWS template <https://github.com/F5Networks/f5-vmware-vcenter-templates>`_
+  * `F5 AWS template <https://github.com/F5Networks/f5-aws-cloudformation>`_
+  * `F5 VMWare template <https://github.com/F5Networks/f5-vmware-vcenter-templates>`_
 
 * f5 cloud libs
 
