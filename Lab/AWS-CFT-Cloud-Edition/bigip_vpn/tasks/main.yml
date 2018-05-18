@@ -100,7 +100,7 @@
     merge_content: |
        net tunnels tunnel /Common/aws_conn_tun_{{ idx + 1 }} {
          local-address {{ ExternalInterfacePrivateIp }}
-         mtu 1399
+         mtu 1398
          profile /Common/aws_conn_tun_{{ idx + 1 }}_profile
          remote-address "{{ item['vpn_gateway']['tunnel_outside_address']['ip_address'] }}"
        }

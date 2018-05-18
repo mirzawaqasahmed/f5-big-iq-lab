@@ -145,8 +145,8 @@
                 {
                     "alertTypeId": "device-cpu",
                     "alertRuleType": "nested-metric",
-                    "warningThreshold": 80,
-                    "errorThreshold": 80,
+                    "warningThreshold": 3,
+                    "errorThreshold": 5,
                     "unit": "percent",
                     "operator": "less-than",
                     "enabled": true
@@ -154,9 +154,9 @@
                 {
                     "alertTypeId": "device-throughput-in",
                     "alertRuleType": "nested-metric",
-                    "warningThreshold": 2,
-                    "errorThreshold": 2,
-                    "unit": "Gbps",
+                    "warningThreshold": 5,
+                    "errorThreshold": 10,
+                    "unit": "Mbps",
                     "operator": "greater-than",
                     "enabled": true
                 }],
@@ -233,8 +233,8 @@
                 {
                   "alertRuleType": "nested-metric",
                   "alertTypeId": "device-cpu",
-                  "warningThreshold": 99,
-                  "errorThreshold": 99,
+                  "warningThreshold": 65,
+                  "errorThreshold": 75,
                   "unit": "percent",
                   "operator": "greater-than",
                   "enabled": true
@@ -242,9 +242,9 @@
                 {
                   "alertRuleType": "nested-metric",
                   "alertTypeId": "device-throughput-in",
-                  "warningThreshold": 999,
-                  "errorThreshold": 999,
-                  "unit": "K",
+                  "warningThreshold": 20,
+                  "errorThreshold": 25,
+                  "unit": "M",
                   "operator": "greater-than",
                   "enabled": true
                 }
@@ -341,8 +341,8 @@
                   "unit": "percent",
                   "operator": "greater-than",
                   "enabled": true,
-                  "warningThreshold": 98,
-                  "errorThreshold": 99
+                  "warningThreshold": 65,
+                  "errorThreshold": 75
                 }
               ]
             }        

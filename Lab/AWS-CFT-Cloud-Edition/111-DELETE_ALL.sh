@@ -10,12 +10,18 @@ function pause(){
 
 clear
 
-echo -e "\n\n/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG? /!\ \n"
+echo -e "\n\n/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AWS SSG BEFORE PROCEEDING\n\n"
 
 pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
-ansible-playbook $DEBUG_arg 09-delete-aws-ssg-resources.yml -i ansible2.cfg
+echo -e "\n\n/!\ HAVE YOU DELETED THE SSG CREATED FROM BIG-IQ? /!\ \n"
+echo -e "IF YOU HAVE NOT, PLEASE DELETE THE AWS SSG BEFORE PROCEEDING\n\n"
+
+#ansible-playbook $DEBUG_arg 09-delete-aws-ssg-resources.yml -i ansible2.cfg
+#AWS SSG MUST BE DELETED MANUALLY FOR NOW
+
+pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 echo -e "/!\ IS YOUR SSG COMPLETLY REMOVED FROM YOUR AWS ACCOUNT? /!\ \n"
 echo -e "MAKE SURE THE AWS SSG HAS BEEN REMOVED COMPLETLY BEFORE PROCEEDING\n"

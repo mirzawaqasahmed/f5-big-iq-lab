@@ -71,11 +71,11 @@ HTTP_PROFILE: http
 LOOKUP_SERVER_LIST: '"8.8.8.8"'
 NTP_SERVER: time.google.com
 
-SSG_NAME:               "{{PREFIX}}-scaling-group"
+SSG_NAME:               "{{PREFIX}}-aws-ssg"
 CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-aws-environment"
 CLOUD_PROVIDER_NAME:    "{{PREFIX}}-aws-provider"
-DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-device-template"
-TEMPLATE_NODE_NAME:     "{{PREFIX}}-service-node"
-TEMPLATE_POOL_NAME:     "{{PREFIX}}-pool"
-SERVICE_CATALOG_NAME:   "{{PREFIX}}-service-catalog"
-LTM_RESOURCE_NAME:      "{{PREFIX}}-resource-name"
+DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-aws-device-template"
+TEMPLATE_NODE_NAME:     "{{PREFIX}}-aws-service-node"
+TEMPLATE_POOL_NAME:     "{{PREFIX}}-aws-pool"
+SERVICE_CATALOG_NAME:   "{{PREFIX}}-aws-service-catalog"
+LTM_RESOURCE_NAME:      "{{PREFIX}}-aws-resource-name"
