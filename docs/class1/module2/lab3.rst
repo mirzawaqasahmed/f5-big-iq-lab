@@ -1,6 +1,6 @@
 Lab 2.3: Create Application
 ---------------------------
-Connect as **paula** to create a new application, Click on *Create*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
+Connect as **paula** to create a new application, and click on *Create*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
 
 Type in a Name for the application you are creating.
 
