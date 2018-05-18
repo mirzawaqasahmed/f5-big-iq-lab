@@ -1,7 +1,7 @@
 Lab 2.1: Built-in templates
 ---------------------------
 BIG-IQ will be delivered with default built-in templates. Those templates cannot be modified but they can be cloned.
-They can be used to deploy various type of application. The default templates will be displayed only after at
+They can be used to deploy various type of applications. The default templates will be displayed only after at
 least 1 BIG-IP device is managed by BIG-IQ.
 
 Below default built-in templates delivered with BIG-IQ 6.0:

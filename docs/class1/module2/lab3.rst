@@ -30,15 +30,15 @@ To create additional copies of any of the objects defined in this template, clic
 
 In the example, fill out the Server's IP addresses/ports (nodes) and virtual servers names, IPs and ports.
 
-- Pool Members: ``10.1.20.118`` and ``10.1.20.119``
+- Servers (Pool Member): ``10.1.20.118`` and ``10.1.20.119``
 - Service Port: ``80``
 
-- Name Virtual Server: ``vs_site18.example.com_https``
+- Name WAF & LB (Virtual Server): ``vs_site18.example.com_https``
 - Destination Address: ``10.1.10.118``
 - Destination Network Mask: ``255.255.255.255``
 - Service Port: ``443``
 
-- Name Virtual Server: ``vs_site18.example.com_redirect``
+- Name HTTP Redirect (Virtual Server): ``vs_site18.example.com_redirect``
 - Destination Address: ``10.1.10.118``
 - Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
@@ -46,9 +46,6 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 .. warning:: If the Application is created on AWS, Destination Address and Network Mask needs to be set to 0.0.0.0
 
 It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
-If you want to append this prefix to the names of the objects that this application creates, keep Apply Prefix To Names selected.
-Appending the prefix to the objects in this application makes these objects easier to find using search filters.
-
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
@@ -67,6 +64,8 @@ The Application is deployed.
 
 .. note:: In case the Application fails, connect as **Marco** and go to Applications > Application Deployments to have more details on the failure. You try retry in case of failure.
 
+.. note:: You can tail the logs: /var/log/restjavad.0.log
+
 In Paula's Dashboard, she can see her Application.
 
 .. image:: ../pictures/module2/img_module2_lab3_4.png
@@ -82,6 +81,8 @@ Click on the Application and check the details (alarms, security enabled, config
   :scale: 50%
 
 |
+
+Click on Traffic Management > Configuration
 
 .. image:: ../pictures/module2/img_module2_lab3_6.png
   :align: center

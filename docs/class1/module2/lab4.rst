@@ -5,7 +5,7 @@ Connect as **larry**
 1. Larry check the Firewall policy.
 
 Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and select
-*vs_site18.example.com_https* BOS-vBIGIP01.termmarc.com (or BOS-vBIGIP02.termmarc.com if active)
+*vs_site18.example.com_https* SEA-vBIGIP01.termmarc.com
 
 .. image:: ../pictures/module2/img_module2_lab4_1.png
   :align: center
@@ -17,7 +17,7 @@ Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and s
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
-Accept the Learning.
+Click  on Suggestions, then Accept the Learning.
 
 .. image:: ../pictures/module2/img_module2_lab4_3.png
   :align: center

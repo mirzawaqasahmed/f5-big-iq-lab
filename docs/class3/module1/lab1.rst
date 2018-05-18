@@ -27,7 +27,7 @@ Filter on **Not Protected** Applications:
 
 |
 
-Select the application name to redirect you to a more detailed dashboard.
+Select an application name to redirect you to a more detailed dashboard.
 
 This screen displays the current health, traffic performance, security, and configuration details for an application.
 Use this screen to detect application trends, to identify issues that can affect performance, and to adjust application configuration settings.
@@ -76,10 +76,10 @@ The ANALYTICS area displays the application's traffic data trends and events and
 
 You can use the time settings above the chart to focus the data to a specific time period. You can also control the data refresh period and events in the charts.
 
-.. note:: To view events and alerts in charts, ensure that theEvents button is set to ON.
+.. note:: To view events and alerts in charts, ensure that the Events button is set to ON.
 
 The charts display interactive information about the application's traffic connections, latency times, and response outcomes.
-Click the menu to the left to navigate among the charts. Take the time to naviate through the different graphs.
+Click the menu to the left to navigate among the charts. Take the time to navigate through the different graphs.
 
 The events and alerts are displayed as numbered icons within the charts. You can click these icons to display an information table below the chart.
 You can click rows within the table to view detailed information. Click the buttons below the chart area to filter out displayed events and alerts by Category or Log Level.
@@ -88,7 +88,7 @@ Click the arrow tab to the right of the chart to expand the dimensions area.
 To filter data in charts and dimensions, expand the dimensions to select specific objects listed.
 Note: Certain dimensions list aggregated data. Click Enhanced Analytics to enable object data for these dimensions.
 
-Take the time to naviate in all the different charts.
+Take the time to navigate in all the different charts.
 
 .. note:: When using the filters, do not enter the first ``/`` in your query.
 
@@ -102,7 +102,7 @@ Take the time to naviate in all the different charts.
 
 Click CONFIGURATION to view and evaluate the settings for application properties. The Application owner can easily update the BIG-IP configuration (Virtual Server, Node, etc..).
 
-Take the time to naviate in all the different menu.
+Take the time to navigate in all the different menu.
 
 .. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center

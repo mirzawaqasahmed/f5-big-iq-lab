@@ -16,7 +16,7 @@ the learning done by the Application Firewall (BIG-IP ASM).
 
 .. note:: A traffic generator located on the *Ubuntu Lamp Server, LDAP and DHCP* server, is sending good traffic every minutes to the virtual servers.
 
-Once the security policy is tunned and validated, **paula** will enforce it by enableling herself the blocking mode in the policy.
+Once the security policy is tuned and validated, **paula** will enforce it by enableling herself the blocking mode in the policy.
 
 Finally, we will simulate "bad" traffic to show the security policy blocking it.
 
