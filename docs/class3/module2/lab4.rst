@@ -3,7 +3,7 @@ Lab 2.4: Miscellaneous
 Connect as **paula**.
 Open ``site42.example.com``.
 
-1. **Page Load Time** is dependent on CPSM (Client side Perf Monitoring javascript injection).
+1. **Page Load Time** is dependent on CSPM (Client side Perf Monitoring javascript injection).
 
 An HTTP response is eligible for CSPM injection under the following conditions:
 
@@ -20,7 +20,7 @@ Navigation Timing is currently supported by the following browsers:
 For a response containing the CSPM injection to generate results, the client browser must support the Navigation Timing API (window.performance.timing).
 https://support.f5.com/csp/article/K13849
 
-In orde to get the page load time, there are 2 things:
+In order to get the page load time, there are 2 things:
 - ``Page Load Time`` parameter in the HTTP Analytics profile attached to the virtual server needs to be enabled
 - The ``Request Header Erase`` needs to be set to ``Accept-Encoding``
 
