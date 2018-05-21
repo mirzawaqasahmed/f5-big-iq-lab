@@ -41,7 +41,7 @@ upfront by the administrator. It means that:
 
   With BIG-IQ 6.0, we only support F5 Virtual edition as ``Service Scaler`` in
   a VMWare env.
-  With BIG-IQ 6.0.1, we will support F5 HW also.
+  With BIG-IQ 6.0.1, we will support F5 HW also
 
 
 Tier2/``SSG`` management - how does this work ?
