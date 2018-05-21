@@ -102,7 +102,7 @@ deployed in a certain manner:
 * This config will be configured on all ``SSG`` VEs.
   They will have have an **identical** Setup
 
-In this lab, we will create a ``Service Scaling Group`` in a VMWare environment
+In this lab, we will create a ``Service Scaling Group`` in a VMWare environment.
 
 .. toctree::
    :maxdepth: 1
