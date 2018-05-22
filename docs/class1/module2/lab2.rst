@@ -8,7 +8,7 @@ Connect as **larry** to create the custom ASM policy, go to *Configuration* > *S
 
 |
 
-Select the ``viol_subviol`` ASM policy from the list and look through it’s settings. Notice the policy is in Transparent mode.
+Select the ``viol_subviol`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
 
 Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
 
