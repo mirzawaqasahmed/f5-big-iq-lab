@@ -90,7 +90,7 @@ Click on Traffic Management > Configuration
 
 |
 
-.. note:: A traffic generator located on the *Ubuntu Lamp Server* server, is sending good traffic every minutes to the virtual servers.
+.. note:: A traffic generator located on the *Ubuntu Lamp Server* server, is sending good traffic every minute to the virtual servers.
 
 Paula can update Application Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.
 
