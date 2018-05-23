@@ -1,6 +1,8 @@
 Class 3: Analytics
 ==================
 
+.. note:: On this page there is no actions to be done here regarding the lab itself
+
 In this class, we will review the various analytics available for the applications and Service Scaling Group objects in BIG-IQ 6.0.
 
 Below Virtual Servers and Pool Members can be used in the context of the  (`UDF lab`_) for this class.

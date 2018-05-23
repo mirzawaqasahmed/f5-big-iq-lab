@@ -7,7 +7,7 @@ We will be using 4 main personas for this lab:
 1. **Marco**: Full Administrator
 2. **David**: Super-NetOps
 3. **Larry**: Application Security Manager
-4. **Paula**: Application Manager, Paul: Application Owner
+4. **Paula**: Application Manager
 
 **Marco** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
 He will provide the access to David, Larry and Paula. He will also manage the Service Scaline Group (SSG)
@@ -51,7 +51,7 @@ and verify each user & role below and change where needed.
 - *User Name* = paula
 - *Full Name* = Application Manager
 - (*Password stored in Radius server* = paula)
-- *Role* = Application Manager
+- *Role* = Application Editor
 
 **4. David: Super-NetOps**
 
@@ -61,7 +61,7 @@ Click on *Add*
 - *User Name* = david
 - *Full Name* = Super-NetOps
 - *Password* = david
-- *Role* = Application Manager
+- *Role* = Application Editor
 
 Click on *Save & Close*`
 
