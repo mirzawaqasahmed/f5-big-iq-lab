@@ -61,7 +61,7 @@ Connect as **larry**
 
 1. Check ASM type of attacks
 
-Monitoring > EVENTS > Web Application Security > Events Logs > Events
+Monitoring > EVENTS > Web Application Security > Event Logs > Events
 
 .. image:: ../pictures/module2/img_module2_lab4_7.png
   :align: center

@@ -25,4 +25,8 @@ Execute the playbook::
     # cd /home/f5/f5-ansible-demo
     # ansible-playbook -i notahost, create_http_app.yaml -vvvv
 
+.. warning :: If the ansible playbook run successfully but the app doesn't show up, please, review david's role.
+
+.. note :: If you prefer not to wait until the app is created, you can switch the variable ``wait`` to ``no`` in the playbook.
+
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
