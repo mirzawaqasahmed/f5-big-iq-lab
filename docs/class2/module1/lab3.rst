@@ -3,6 +3,8 @@ Lab 1.3: Deploy your Service Scaling Group
 
 Before setting up our ``SSG`` and deploy it, do the following:
 
+.. note:: it is recommended to launch your ``SSH`` sessions from the UDF portal. 
+
 * Open **2** ``SSH`` sessions on your ``BIG-IQ``.
 
 * On the first ``SSH`` session, run the following command:
