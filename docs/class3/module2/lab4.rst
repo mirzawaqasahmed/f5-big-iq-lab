@@ -52,7 +52,7 @@ Open Chrome and navigate on the website http://site42.example.com. If you open t
 
 |
 
-Go back on the BIG-IQ and check you can see now the Page Load Time.
+Go back on the BIG-IQ, expand the right-edge of the analytics pane and check you can see now the Page Load Time.
 
 .. image:: ../pictures/module2/img_module2_lab4_3.png
   :align: center

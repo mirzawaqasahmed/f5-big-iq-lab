@@ -43,3 +43,5 @@ Select ``site36.example.com``
 .. image:: ../pictures/module2/img_module2_lab3_4.png
   :align: center
   :scale: 50%
+
+4. Stop the bad traffic script, connect on the *Ubuntu Lamp Server* server and ``CTRL+C``.

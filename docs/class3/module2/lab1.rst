@@ -13,7 +13,7 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 
 |
 
-2. Notice the current traffic only returns 200 OK.
+2. Expand the right-edge of the analytics pane to get the response code filter. Notice the current traffic only returns 200 OK.
 
 .. image:: ../pictures/module2/img_module2_lab1_2.png
   :align: center
@@ -23,7 +23,7 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 
 3. Let's generate some 404 error, connect on the *Ubuntu Lamp Server* server and launch the following command:
 
-``# for i in {1..10}; do /usr/local/bin/curl -k -s -m 4 -o /dev/null -w '404demo.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' https://site40.example.com/404demo.php; done``
+``# for i in {1..10}; do curl -k -s -m 4 -o /dev/null -w '404demo.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' https://site40.example.com/404demo.php; done``
 
 4. After few seconds, the 10 404 errors are showing on the chart.
 

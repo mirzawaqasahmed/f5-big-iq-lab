@@ -43,7 +43,9 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 - Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
 
-.. warning:: If the Application is created on AWS, Destination Address and Network Mask needs to be set to 0.0.0.0
+.. warning:: If the Application is created on AWS, Destination Address and Network Mask needs to be set to 0.0.0.0.
+
+.. warning:: If the Application is created on AWS and the per App VE license is used, only one Virtual Server is supported on the BIG-IP so delete the HTTP Redirect server.
 
 It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
 

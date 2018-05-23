@@ -67,8 +67,7 @@ Repeat the same with the 2nd node:
 
 |
 
-If you want applications created with this template to be able to include more than one
-copy of the object you adding, select Enabled for Allow Multiple Instances.
+If you want applications created with this template to be able to include more than one copy of the object you are adding, select Enabled for Allow Multiple Instances.
 
 5. Save the template, click *Save*
 
