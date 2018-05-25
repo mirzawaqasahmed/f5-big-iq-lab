@@ -35,7 +35,7 @@ Test Website         VIP         Port     Server                       Port
 site20.example.com   10.1.10.120 443/80   10.1.20.120 and 10.1.20.121  80/8081
 ==================  ============ ======== ============================ =======
 
-- **vLab Test Test Web Site 22:** *(used in module 3)*
+- **vLab Test Web Site 22:** *(used in module 3)*
 
 ==================  ============ ======== ============================ =======
 Test Website         VIP         Port     Server                       Port
