@@ -68,7 +68,7 @@ Here you should see this setup:
 
 |
 
-.. note:: we don't do Source IP translation and if you switch to *advanced view*,
+.. note:: we don't do Destination IP translation and if you switch to *advanced view*,
   you'll see that *Address Translation* and *Port Translation* are disabled.
   This means that your ``Service Scaler`` ``BIG-IP`` and ``BIG-IPs`` in your
   ``SSG`` must be able to communicate via L2.
