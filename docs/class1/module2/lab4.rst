@@ -17,7 +17,7 @@ Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and s
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
-Click  on Suggestions, then Accept the Learning.
+Click on Suggestions, then Accept the Learning.
 
 .. image:: ../pictures/module2/img_module2_lab4_3.png
   :align: center
@@ -25,7 +25,17 @@ Click  on Suggestions, then Accept the Learning.
 
 |
 
-3. Update the Enforcement Mode to ``Blocking``.
+3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security > Policies
+
+Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP01.termmarc.com, click on **Create**.
+
+.. image:: ../pictures/module2/img_module2_lab4_3b.png
+  :align: center
+  :scale: 50%
+
+|
+
+4. Update the Enforcement Mode to ``Blocking``.
 
 .. image:: ../pictures/module2/img_module2_lab4_4.png
   :align: center
