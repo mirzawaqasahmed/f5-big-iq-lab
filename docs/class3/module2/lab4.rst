@@ -1,7 +1,7 @@
 Lab 2.4: Miscellaneous
 ----------------------
 Connect as **paula**.
-Open ``site42.example.com``.
+Open ``site36.example.com``.
 
 1. **Page Load Time** is dependent on CSPM (Client side Perf Monitoring javascript injection).
 
@@ -24,7 +24,7 @@ In order to get the page load time, there are 2 things:
 - ``Page Load Time`` parameter in the HTTP Analytics profile attached to the virtual server needs to be enabled
 - The ``Request Header Erase`` needs to be set to ``Accept-Encoding``
 
-In order to test it quickly, let's manually set in the HTTP profile attached to ``site42.example.com`` on the ``BIG-IP SEA-vBIGIP01.termmarc.com``
+In order to test it quickly, let's manually set in the HTTP profile attached to ``site42.example.com`` on the BIG-IP ``SEA-vBIGIP01.termmarc.com``
 
 .. image:: ../pictures/module2/img_module2_lab4_1.png
   :align: center
