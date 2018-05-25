@@ -61,7 +61,7 @@ Click on *Add*
 - *User Name* = david
 - *Full Name* = Super-NetOps
 - *Password* = david
-- *Role* = Application Editor
+- *Role* = Administrator Role
 
 Click on *Save & Close*`
 
