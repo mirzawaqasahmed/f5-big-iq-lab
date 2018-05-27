@@ -1,13 +1,13 @@
 Lab 3.2: Upgrade and scale-up our SSG
 -------------------------------------
 
-In the previous lab, we have updated our ``Cloud Environment``. We can now start to update 
+In the previous lab, we have updated our ``Cloud Environment``. We can now replace 
 the instances running in our ``SSG`` **SSGClass2**. 
 
 In the ``BIG-IQ`` UI, go to *Applications* > *Environments* > *Service Scaling Groups* and 
 click on your ``SSG`` **SSGClass2**.
 
-Here, Click on the *Configuration* tab, and then *Devices*. This is where you can review 
+Click on the *Configuration* tab, and then *Devices*. This is where you can review 
 the ``SSG`` devices that has been deployed. 
 
 .. image:: ../pictures/module3/img_module3_lab2_1.png
@@ -15,8 +15,6 @@ the ``SSG`` devices that has been deployed.
  :scale: 50%
 
 |
-
-We will work on upgrading one device at a time. 
 
 .. warning:: we recommend to change one device at a time for such process
 
@@ -28,7 +26,7 @@ Select the device called **SSGClass2-1.f5demo.local** and click on the *Replace*
 
 |
 
-As soon as you'll do this, you'll trigger the replacement of this device by another using 
+As soon as you do this, you'll trigger the replacement of this device by another using 
 our updated *Cloud Environment*. You'll see a yellow alert at the top that will look like 
 this
 
@@ -39,8 +37,8 @@ this
 |
 
 .. note:: the replacement process is not restricted by the *Maximum Devices(s) Required* 
-    limit you have setup for a ``SSG``. It you were already at the maximum capacity of your 
-    ``SSG`` the replacement would still be happen
+    limit you have defined in your ``SSG``. It you were already at the maximum capacity of your 
+    ``SSG`` the replacement would still happen
 
 You can monitor the deployment of the new instance : 
 
