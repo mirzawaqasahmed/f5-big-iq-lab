@@ -4,7 +4,7 @@ Lab 3.1: Update our Cloud Environment
 When we deploy or scale-out a ``SSG``. The provisioned instances will rely on the 
 information specified in the ``Cloud Environment``to know what it needs to deploy. 
 
-In the `Lab 1.2: Define your Cloud Environment`_, we had defined the ``Cloud Environment`` 
+In the **(Module1)Lab 1.2: Define your Cloud Environment**, we defined the ``Cloud Environment`` 
 used by our ``SSG`` **SSGClass2** 
 
 This cloud environment specifies a few information:
