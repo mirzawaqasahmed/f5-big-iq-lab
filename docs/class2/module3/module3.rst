@@ -8,7 +8,7 @@ In the cloud today, it is fairly easy,cheap and fast to deploy a new server. We 
 deploy/delete whatever instance in a matter of minutes instead of days with physical servers. 
 
 Being able to deploy with ease new instances allowed administrator to shift from a 
-``mutable infrastructure``to an ``immutable infrastructure``. Instead of having to do config update, 
+``mutable infrastructure`` to an ``immutable infrastructure``. Instead of having to do config update, 
 upgrade or add more ressources to an existing server, we simply deploy a new instance with 
 all the changes. We don't change anything on a already deployed server. This is called 
 ``immutable infrastructure``.
@@ -30,7 +30,7 @@ For the following use cases, we will deploy new Virtual Editions to replace exis
 * Upgrade the version used by the ``SSG``
 
 The process is pretty straightforward: we simply need to reference a new VMWare template 
-for the Cloud Environment used by the ``SSG``.  
+for the *Cloud Environment* used by the ``SSG``.  
 
 .. toctree::
    :maxdepth: 1
