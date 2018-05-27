@@ -2,7 +2,7 @@ Lab 2.3: Troubleshooting Security
 ---------------------------------
 Connect as **larry**
 
-2. Larry check the Web Application Security for ``templates-default`` ASM Policy.
+1. Larry check the Web Application Security for ``templates-default`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
@@ -14,7 +14,19 @@ Click the box to select all suggestions and **Accept** the learning.
 
 |
 
-3. Update the Enforcement Mode to ``Blocking``, Save and Close.
+2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security > Policies
+
+Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, click on **Create**.
+
+.. image:: ../pictures/module2/img_module2_lab3_2a.png
+  :align: center
+  :scale: 50%
+
+|
+
+4. Go back to Configuration > SECURITY > Web Application Security > Policies
+
+Update the Enforcement Mode to ``Blocking``, Save and Close.
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center

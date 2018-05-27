@@ -7,11 +7,11 @@ AWS_SECRET_ACCESS_KEY:
 
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (e.g. yourName-aws-ssg).
-PREFIX: udf-f5-demo
+PREFIX: udf-f5-demo-<name>
 DEFAULT_REGION: us-east-1
 AWS_US_EAST_1A: us-east-1a
 AWS_US_EAST_1B: us-east-1b
-AWS_SSH_KEY: nameoftheawskey
+AWS_SSH_KEY: <nameoftheawskey>
 
 # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
 # Fill the IP address returned by the nslookup here
@@ -50,7 +50,7 @@ bigip_rest_password: "admin"
 
 # BIG-IQ SSG CONFIG
 BIGIP_USER: admin
-BIGIP_PWD: admin
+BIGIP_PWD: tier2purple
 
 BIGIQ_HOST: localhost:8100
 BIGIQ_URI: http://{{BIGIQ_HOST}}

@@ -1,7 +1,7 @@
 Lab 2.4: Miscellaneous
 ----------------------
 Connect as **paula**.
-Open ``site36.example.com``.
+Open ``site42.example.com``.
 
 1. **Page Load Time** is dependent on CSPM (Client side Perf Monitoring javascript injection).
 

@@ -10,7 +10,7 @@ To help identify this application when you want to use it later, in the Descript
 
 - Description: ``My First Application on F5 Cloud Edition``
 
-Type  the domain of your application (this will be used by the ASM policy to enforce the policy on the domain later on)
+Type  the domain of your application (then the ASM policy will always be transparent for this domain)
 
 - Domain Names: ``site18.example.com``
 
