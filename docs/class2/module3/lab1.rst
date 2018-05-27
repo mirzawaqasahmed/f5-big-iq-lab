@@ -7,7 +7,7 @@ information specified in the ``Cloud Environment``to know what it needs to deplo
 In the **(Module1)Lab 1.2: Define your Cloud Environment**, we defined the ``Cloud Environment`` 
 used by our ``SSG`` **SSGClass2** 
 
-This cloud environment specifies a few information:
+This ``Cloud Environment`` specifies a few information:
 
 * vCenter credentials
 * VMWare specific information like Datacenter name, resource pool, folder, ...
@@ -41,6 +41,8 @@ If we need to upgrade AND/OR scale-up our ``SSG``, we just need to do the follow
 * Deploy a new F5 Virtual Edition image as a template with the relevant version
 * Update (or not) the resources allocated to it if we want to scale up (more vCPUs, memory)
 
+.. note:: we could also scale down a SSG if we realized we allocated too much compute to it
+
 In this lab, we already have another VM template available to test this: 
 BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template
 
@@ -54,7 +56,7 @@ We can review the configuration of this VM template:
 
 * 4 vCPUs 
 * 8 Gb of Memory 
-* version 13.1.0.7
+* BIG-IP version 13.1.0.7
 
 .. image:: ../pictures/module3/img_module3_lab1_3.png
  :align: center
@@ -65,7 +67,7 @@ We can review the configuration of this VM template:
 So if we switch from our previous template to this one, we will UPGRADE our environment AND SCALE-UP: 
 
 * upgrade from 13.1.0.5 to 13.1.0.7
-* add more vCPUs to the instance (2 -> 4 vCPUs)
+* add more vCPUs to the instances (2 -> 4 vCPUs)
 
 In your ``BIG-IQ`` UI, Go to *Applications* > *Environments* > *Cloud Environments*, Select 
 **SSGClass2VMWareEnvironment** to edit it. 
