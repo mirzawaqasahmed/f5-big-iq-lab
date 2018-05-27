@@ -1,4 +1,4 @@
-Lab 1.1: Deploy an application
+Lab 2.1: Deploy an application
 ------------------------------
 
 We will deploy an application via the app template feature on our ``SSG`` called
