@@ -1,7 +1,7 @@
 #!/bin/bash
-# Uncomment set command below for code debuging bash
+# Uncomment set command below for code debugging bash
 #set -x
-# Uncomment set command below for code debuging ansible
+# Uncomment set command below for code debugging ansible
 #DEBUG_arg="-vvvv"
 
 function pause(){
@@ -9,74 +9,72 @@ function pause(){
 }
 
 c=$(grep '0.0.0.0' ./config.yml | wc -l)
-if [  $c == 1 ]; then
-       echo -e "\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)\n"
-	exit 1
+c2=$(grep '<name>' ./config.yml | wc -l)
+c3=$(grep '<nameoftheawskey>' ./config.yml | wc -l)
+
+if [[ $c == 1 || $c2  == 1 || $c3  == 1 ]]; then
+       echo -e "\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)\n"
+       exit 1
 fi
+
 
 clear
 
+## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
+
 ansible-playbook $DEBUG_arg 00-install.yml
 
-pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 01-vpc-elb.yml
 
-pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 02-vpn.yml
 
 ./03-customerGatewayConfigExport.sh
 
-pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 04-configure-bigip.yml
 
-pause 'Press [Enter] key to continue... CTRL+C to Cancel'
-
-echo "Wait 30 seconds"
-sleep 30
+echo "Wait 10 seconds"
+sleep 10
 
 ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml
 
-echo "Wait 30 seconds"
-sleep 30
+echo "Wait 20 seconds"
+sleep 20
 
 # WA Tunnel
 ssh admin@10.1.1.7 tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1397
 ssh admin@10.1.1.7 tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1397
 
-echo "Wait 30 seconds"
-sleep 30
-
-echo -e "ipsec logs on the BIG-IP"
-pause 'Press [Enter] key to continue...'
-ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
-
-echo "Wait 30 seconds"
-sleep 30
-
-ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
-
-aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
-
-echo -e "If the VPN is not UP (open a new putty window), try restart again the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
-echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n"
-
-pause 'If the VPN is UP, Press [Enter] key to continue... CTRL+C to Cancel'
-
-# Add route to access AWS VPC
+# Add route to access AWS VPC from the Lamp server
 sudo route add -net 172.17.0.0/16 gw 10.1.10.7
 
 ansible-playbook $DEBUG_arg 06-ubuntu-apache2.yml
 
-pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+#[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
-ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i ansible2.cfg
+# Not needed, this playbook creates a service catalog template (custom)
+#ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i ansible2.cfg
 
-pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+echo -e "IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com"
+ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
+
+echo "Wait 60 seconds"
+sleep 60
+aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
+
+echo -e "If the VPN is not UP, try restart again the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
+echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n\n"
+
+[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
+
+echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in BIG-IQ: /var/log/restjavad.0.log and /var/log/orchestrator.log\n\n"
 
 echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n # ./111-DELETE_ALL.sh\n\n"
 

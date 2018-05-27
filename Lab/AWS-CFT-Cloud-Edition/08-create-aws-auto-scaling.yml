@@ -18,12 +18,6 @@
                 "timeZone": "UTC",
                 "ntpServerList": [ "{{NTP_SERVER}}" ],
                 "lookupServerList": [{{LOOKUP_SERVER_LIST}}],
-                "provisionedModuleList": [
-                    {
-                    "module": "LTM",
-                    "level": "NOMINAL"
-                    }
-                ],
                 "userAccountList": [
                     {
                         "username": "{{BIGIP_USER}}",
@@ -73,7 +67,7 @@
                     "subnets": [ "{{AWS_SUBNET_1A}}", "{{AWS_SUBNET_1B}}" ],
                     "restrictedSourceAddress": "0.0.0.0/0",
                     "sshKeyName": "{{AWS_SSH_KEY}}",
-                    "moduleSelection": "LTM",
+                    "moduleSelection": "WAF",
                     "licenseType": "BYOL",
                     "imageId": "{{BYOL_BIGIP_AMI}}",
                     "instanceType": "m4.xlarge",
