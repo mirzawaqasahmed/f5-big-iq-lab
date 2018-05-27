@@ -1,4 +1,4 @@
-Module 2: Upgrade - Scaling up a SSG
+Module 3: Upgrade - Scaling up a SSG
 ====================================
 
 In this module, we will see how we can scale up and upgrade our ``Service Scaling Groups``
