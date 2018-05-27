@@ -78,4 +78,4 @@ Update the *VM Image* field to use the new VM Template: BIGIP-13.1.0.7-0.0.1.ALL
 
 |
 
-Click *Save & Close*. Now that our ``Cloud Environment``is updated, we can upgrade our SSG. 
+Click *Save & Close*. Now that our ``Cloud Environment`` is updated, we can upgrade our SSG. 
