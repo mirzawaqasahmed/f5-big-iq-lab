@@ -18,7 +18,7 @@ Click the box to select all suggestions and **Accept** the learning.
 
 2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
-Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
+Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
 
 .. image:: ../pictures/module2/img_module2_lab3_2a.png
   :align: center

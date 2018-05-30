@@ -13,7 +13,9 @@ c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<nameoftheawskey>' ./config.yml | wc -l)
 
 if [[ $c == 1 || $c2  == 1 || $c3  == 1 ]]; then
-       echo -e "\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)\n"
+       echo -e "\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)\n\n"
+	   echo -e "\nOption to run the script:\n- 000-RUN_ALL.sh lab (this will not create the SSG objects in BIG-IQ)"
+	   echo -e "- 000-RUN_ALL.sh nopause (no pause will happen during the execution of the script)\n\n"
        exit 1
 fi
 
@@ -24,17 +26,17 @@ clear
 
 ansible-playbook $DEBUG_arg 00-install.yml
 
-[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 01-vpc-elb.yml
 
-[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 02-vpn.yml
 
 ./03-customerGatewayConfigExport.sh
 
-[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 04-configure-bigip.yml
 
@@ -55,7 +57,7 @@ sudo route add -net 172.17.0.0/16 gw 10.1.10.7
 
 ansible-playbook $DEBUG_arg 06-ubuntu-apache2.yml
 
-#[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+#[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 # Not needed, this playbook creates a service catalog template (custom)
 #ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i ansible2.cfg
@@ -70,9 +72,9 @@ aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
 echo -e "If the VPN is not UP, try restart again the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
 echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n\n"
 
-[[ -z $1 ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
-ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
+[[ $1 != "lab" ]] && ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
 
 echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in BIG-IQ: /var/log/restjavad.0.log and /var/log/orchestrator.log\n\n"
 
