@@ -10,9 +10,9 @@ Connect as **larry**
 
 |
 
-Select the ``viol_subviol`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
+Select the ``f5-asm-policy1`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
 
-Edit the Policy ``viol_subviol``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
+Edit the Policy ``f5-asm-policy1``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
@@ -27,6 +27,8 @@ In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode*
   :scale: 50%
 
 .. note:: If you want to use learning/blocking mode, you will need a dedicated app template per application.
+
+.. warning:: Ignore the unauthorized error when saving the policy.
 
 2. Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
 Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save.
@@ -61,7 +63,7 @@ Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 |
 
-2. Then select the ASM policy ``viol_subviol``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
+2. Then select the ASM policy ``f5-asm-policy1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png
   :align: center

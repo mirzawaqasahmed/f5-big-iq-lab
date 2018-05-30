@@ -18,7 +18,7 @@ Click the box to select all suggestions and **Accept** the learning.
 
 2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
-Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deplot immediatly**, then click on **Create**.
+Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
 
 .. image:: ../pictures/module2/img_module2_lab3_2a.png
   :align: center
@@ -47,6 +47,12 @@ Select ``site36.example.com``
   :scale: 50%
 
 |
+
+.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy to enforce it (or not)
+
+.. image:: ../pictures/module2/img_module2_lab3_3a.png
+  :align: center
+  :scale: 50%
 
 2. Connect on the *Ubuntu Lamp Server* server and launch the following command:
 
