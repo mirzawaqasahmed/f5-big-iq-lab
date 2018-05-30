@@ -12,11 +12,13 @@ Click the box to select all suggestions and **Accept** the learning.
   :align: center
   :scale: 50%
 
+.. note:: If you want to use learning/blocking mode, you will need a dedicated app template per application, unless you want to share the learning amongs the applications using the same ASM policy.
+
 |
 
-2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security > Policies
+2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
-Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, click on **Create**.
+Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deplot immediatly**, then click on **Create**.
 
 .. image:: ../pictures/module2/img_module2_lab3_2a.png
   :align: center
@@ -24,7 +26,7 @@ Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP0
 
 |
 
-4. Go back to Configuration > SECURITY > Web Application Security > Policies
+3. Go back to Configuration > SECURITY > Web Application Security > Policies
 
 Update the Enforcement Mode to ``Blocking``, Save and Close.
 

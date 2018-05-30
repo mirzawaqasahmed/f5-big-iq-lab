@@ -25,9 +25,9 @@ Click on Suggestions, then Accept the Learning.
 
 |
 
-3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security > Policies
+3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
-Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP01.termmarc.com, click on **Create**.
+Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP01.termmarc.com, choose method **Deplot immediatly**, then click on **Create**.
 
 .. image:: ../pictures/module2/img_module2_lab4_3b.png
   :align: center

@@ -1,6 +1,8 @@
 Lab 2.2: Create custom security policies & Application Service Template
 -----------------------------------------------------------------------
-Connect as **larry** to create the custom ASM policy, go to *Configuration* > *SECURITY* > *Web Application Security* > *policies*.
+Connect as **larry**
+
+1. Create the custom ASM policy, go to *Configuration* > *SECURITY* > *Web Application Security* > *policies*.
 
 .. image:: ../pictures/module2/img_module2_lab2_1.png
   :align: center
@@ -24,7 +26,9 @@ In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode*
   :align: center
   :scale: 50%
 
-Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
+.. note:: If you want to use learning/blocking mode, you will need a dedicated app template per application.
+
+2. Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
 Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save.
 
 .. image:: ../pictures/module2/img_module2_lab2_5.png
@@ -46,7 +50,9 @@ Click Save & Close.
 
 |
 
-Connect as **marco** to create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
+Connect as **marco**
+
+1. Create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
 Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 .. image:: ../pictures/module2/img_module2_lab2_7.png
@@ -55,7 +61,7 @@ Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 |
 
-Then select the ASM policy ``viol_subviol``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
+2. Then select the ASM policy ``viol_subviol``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png
   :align: center
