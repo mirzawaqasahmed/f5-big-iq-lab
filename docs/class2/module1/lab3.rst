@@ -52,7 +52,7 @@ here is the credentials to use:
 * login: IEUser
 * Password: P@ssw0rd1
 
-.. note:: You will have a QWERTY keyboard for the password, keep this in mind
+.. note:: You may have a QWERTY keyboard for the password, keep this in mind
 
 Launch Chrome and click on the *vSphere Web Client* bookmark.
 
