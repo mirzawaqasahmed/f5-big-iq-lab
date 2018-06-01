@@ -39,6 +39,8 @@ General Properties:
 * Device Template: Select your previously created device template *SSGSetupClass2*
 * Cloud Provider: Select your previously created Cloud provider *VMWareCloudProvider*
 
+.. warning:: Careful everything is **case sensitive** here
+
 VMWare Properties:
 
 * DeployTo: Select *ESXi Hostname* and type: 10.1.1.9

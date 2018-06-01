@@ -13,7 +13,7 @@ Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and s
 
 |
 
-2. Larry check the Web Application Security for ``viol_subviol`` ASM Policy.
+2. Larry check the Web Application Security for ``f5-asm-policy1`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
@@ -27,7 +27,7 @@ Click on Suggestions, then Accept the Learning.
 
 3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
-Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP01.termmarc.com, choose method **Deplot immediatly**, then click on **Create**.
+Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
 
 .. image:: ../pictures/module2/img_module2_lab4_3b.png
   :align: center
@@ -58,6 +58,14 @@ Select ``site18.example.com``
 |
 
 .. image:: ../pictures/module2/img_module2_lab4_6.png
+  :align: center
+  :scale: 50%
+
+|
+
+.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy to enforce it (or not)
+
+.. image:: ../pictures/module2/img_module2_lab4_6a.png
   :align: center
   :scale: 50%
 
