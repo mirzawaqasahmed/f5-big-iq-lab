@@ -6,7 +6,9 @@
 # -c concurrency  Number of multiple requests to make
 
 if [[ -z $1 ]]; then
-        echo "no FQDN specified. e.g. site30.example.com"
+        echo -e "Usage:"
+		echo -e "# ./ssg-ab-throughput.sh site30.example.com (using http)"
+		echo -e "# ./ssg-ab-throughput.sh site30.example.com https (using https)"
         exit 1;
 fi
 
