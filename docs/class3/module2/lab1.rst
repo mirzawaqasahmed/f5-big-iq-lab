@@ -1,15 +1,5 @@
 Lab 2.1: Troubleshooting 404
 ----------------------------
-Connect as **marco**, and go to : *System* > *Users Management* > *Users*
-
-Assign the site36, site40, site42 Manager roles to Paula.
-
-.. image:: ../pictures/module2/img_module2_lab1_0.png
-  :align: center
-  :scale: 50%
-
-|
-
 Connect as **paula**.
 
 1. Select one of the application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.

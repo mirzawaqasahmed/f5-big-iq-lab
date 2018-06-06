@@ -1,5 +1,5 @@
-Class 1: Application Creation
-=============================
+Class 1: BIG-IQ Application Creation
+====================================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 

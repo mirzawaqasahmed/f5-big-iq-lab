@@ -10,9 +10,10 @@ function pause(){
 
 c=$(grep '0.0.0.0' ./config.yml | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
-c3=$(grep '<nameoftheawskey>' ./config.yml | wc -l)
+c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
+c4=$(grep '<key_id>' ./config.yml | wc -l)
 
-if [[ $c == 1 || $c2  == 1 || $c3  == 1 ]]; then
+if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        echo -e "\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)\n\n"
 	   echo -e "\nOption to run the script:\n# ./000-RUN_ALL.sh lab (this will not create the SSG objects in BIG-IQ)"
 	   echo -e "# ./000-RUN_ALL.sh nopause (the script will be executed with no breaks between the steps)\n\n"
