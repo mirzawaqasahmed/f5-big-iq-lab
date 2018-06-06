@@ -2,25 +2,39 @@
 ###########################         UPDATE VARIABLE BELOW          ###############################
 ##################################################################################################
 
-AWS_ACCESS_KEY_ID: 
-AWS_SECRET_ACCESS_KEY: 
+AWS_ACCESS_KEY_ID: <key_id>
+AWS_SECRET_ACCESS_KEY: <key_secret>
 
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (e.g. yourName-aws-ssg).
-PREFIX: udf-f5-demo-<name>
+PREFIX: <name>
+
+# Select on of  the region below (default US EST N. Virginia)
+#us-east-1
+#us-east-2
+#us-west-1
+#us-west-2
+#eu-central-1
+#eu-west-1
+#eu-west-2
+#us-west-3
+#ap-southeast-1
+#ap-northeast-2
 DEFAULT_REGION: us-east-1
 AWS_US_EAST_1A: us-east-1a
 AWS_US_EAST_1B: us-east-1b
-AWS_SSH_KEY: <nameoftheawskey>
+
+# Update your AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
+AWS_SSH_KEY: <name_of_the_aws_key>
 
 # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
 # Fill the IP address returned by the nslookup here
 CUSTOMER_GATEWAY_IP: 0.0.0.0
 
 # F5 Networks BYOL BIGIP-13.1.0.5-0.0.5 - Best - Mar 27 2018 8_21_31
-# Oregon: ami-105b3b68
-# Virginia: ami-8fe13ff0
-# Frankfurt: ami-c94d1522
+# Oregon eu-west-2: ami-105b3b68
+# Virginia us-east-1: ami-8fe13ff0
+# Frankfurt eu-central-1: ami-c94d1522
 # Adjust the AMI based on your region (EC2 > IMAGES > AMIs > Public Images
 BYOL_BIGIP_AMI: ami-8fe13ff0
 

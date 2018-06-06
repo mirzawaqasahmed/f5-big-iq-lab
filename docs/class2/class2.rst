@@ -1,5 +1,5 @@
-Class 2: Deployment with auto-scale
-===================================
+Class 2: BIG-IQ Deployment with auto-scale
+==========================================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 

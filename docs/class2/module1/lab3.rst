@@ -3,7 +3,7 @@ Lab 1.3: Deploy your Service Scaling Group
 
 Before setting up our ``SSG`` and deploy it, do the following:
 
-.. note:: it is recommended to launch your ``SSH`` sessions from the UDF portal. 
+.. note:: it is recommended to launch your ``SSH`` sessions from the UDF portal.
 
 * Open **2** ``SSH`` sessions on your ``BIG-IQ``.
 
@@ -47,10 +47,14 @@ of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH WIN7*
 
 |
 
-here is the credentials to use:
+Here is the credentials to use:
 
-* login: IEUser
-* Password: P@ssw0rd1
+* login: ubuntu
+* Password: default
+
+.. image:: ../pictures/module1/img_module1_lab3_5b.png
+    :align: center
+    :scale: 50%
 
 .. note:: You may have a QWERTY keyboard for the password, keep this in mind
 
@@ -61,7 +65,6 @@ Launch Chrome and click on the *vSphere Web Client* bookmark.
     :scale: 50%
 
 |
-
 
 Use the following credentials:
 
@@ -130,7 +133,7 @@ Service Scaling Group Properties:
 
     In UDF, the provisioning of a SSG VE may take up to 10 min. So it may takes
     up to 20 min to build those 2 devices. If you are short on time, it may be
-    better to specify 1 minimum device and 1 desired device instead of 2. 
+    better to specify 1 minimum device and 1 desired device instead of 2.
 
 .. image:: ../pictures/module1/img_module1_lab3_2.png
     :align: center
@@ -184,5 +187,8 @@ mentions an interval where we don't do any scaling. The idea is to see how
 the situation evolves after a scale-in scale-out event.
 
 Click on *Save & Close* and your SSG will start being provisioned.
+
+In order to restrict the SSG previously created to Paula, go to : *System* > *Role Management* > *Roles*
+and select *CUSTOM ROLES* > *Application Roles* > *Application Creator* role (already assigned to Paula). Select the Service Scaling Groups *SSGClass2*, drag it to the right. Click on *Save & Close*
 
 Go to the next lab to see how to troubleshoot/monitor your SSG Deployment.
