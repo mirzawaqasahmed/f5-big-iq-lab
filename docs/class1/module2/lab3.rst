@@ -35,12 +35,12 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 
 - Name WAF & LB (Virtual Server): ``vs_site18.example.com_https``
 - Destination Address: ``10.1.10.118``
-- Destination Network Mask: ``/32``
+- Destination Network Mask: ``255.255.255.255``
 - Service Port: ``443``
 
 - Name HTTP Redirect (Virtual Server): ``vs_site18.example.com_redirect``
 - Destination Address: ``10.1.10.118``
-- Destination Network Mask: ``/32``
+- Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
 
 It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
