@@ -181,14 +181,21 @@ Scaling Rules:
 
 |
 
-
 Here we define our threshold to scale-in/scale-out.The ``cooldown period``
 mentions an interval where we don't do any scaling. The idea is to see how
 the situation evolves after a scale-in scale-out event.
 
 Click on *Save & Close* and your SSG will start being provisioned.
 
-In order to restrict the SSG previously created to Paula, go to : *System* > *Role Management* > *Roles*
-and select *CUSTOM ROLES* > *Application Roles* > *Application Creator* role (already assigned to Paula). Select the Service Scaling Groups *SSGClass2*, drag it to the right. Click on *Save & Close*
+In order to allow Paula to use the SSG previously created, go to : *System* > *Role Management* > *Roles*
+and select *CUSTOM ROLES* > *Application Roles* > *Application Creator* role (already assigned to Paula). Select the Service Scaling Groups *SSGClass2*, drag it to the right.
+
+.. image:: ../pictures/module1/img_module1_lab3_10.png
+    :align: center
+    :scale: 50%
+
+|
+
+Click on *Save & Close*
 
 Go to the next lab to see how to troubleshoot/monitor your SSG Deployment.
