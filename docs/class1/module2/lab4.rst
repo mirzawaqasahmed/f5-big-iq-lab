@@ -13,7 +13,7 @@ Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and s
 
 |
 
-2. Larry check the Web Application Security for ``f5-asm-policy1`` ASM Policy.
+2. Larry check the Web Application Security for ``test-asm-policy_1`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
