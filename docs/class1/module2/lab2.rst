@@ -10,9 +10,9 @@ Connect as **larry**
 
 |
 
-Select the ``f5-asm-policy1`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
+Select the ``test-asm-policy_1`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
 
-Edit the Policy ``f5-asm-policy1``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
+Edit the Policy ``test-asm-policy_1``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
@@ -63,7 +63,7 @@ Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 |
 
-2. Then select the ASM policy ``f5-asm-policy1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
+2. Then select the ASM policy ``test-asm-policy_1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png
   :align: center
