@@ -26,7 +26,10 @@ In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode*
   :align: center
   :scale: 50%
 
-.. note:: If you want to use learning/blocking mode, you will need a dedicated app template per application.
+.. note::
+
+.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications.
+For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy. However, if you want to use learning/blocking mode, you will need a dedicated app template per application.
 
 .. warning:: Ignore the unauthorized error when saving the policy.
 
