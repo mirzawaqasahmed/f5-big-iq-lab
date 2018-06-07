@@ -23,7 +23,7 @@ Keeping up to date on threats, determining their potential impact, and mitigatin
 Maximizing value of app through capabilities design, adoption, and usage.
 Ensuring that the app fits within the rest of the organization’s app portfolio strategy.
 
-**David** and **Olivia** will try automating whenever possible, to enable efficiency and ability to solve problems at scale.
+**David** will try automating whenever possible, to enable efficiency and ability to solve problems at scale.
 Automate common network patterns that the other teams can consume.
 Automate existing environment management and troubleshooting tasks.
 

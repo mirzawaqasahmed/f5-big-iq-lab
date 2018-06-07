@@ -1,6 +1,6 @@
 Lab 2.1: Troubleshooting 404
 ----------------------------
-Connect as **paula**.
+Connect as **paul**.
 
 1. Select one of the application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
 
