@@ -2,39 +2,38 @@ Lab 2.3: Troubleshooting Security
 ---------------------------------
 Connect as **larry**
 
-1. Larry check the Web Application Security for ``templates-default`` ASM Policy.
+1. Larry disable the Web Application Security for ``templates-default`` ASM Policy.
 
-Go to Configuration > SECURITY > Web Application Security > Policies
+Go to Configuration > SECURITY > Web Application Security > Policies, select ``templates-default`` ASM Policy.
 
-Click the box to select all suggestions and **Accept** the learning.
+Go to POLICY PROPERTIES > General Properties and **Disable** the Learning Mode.
 
-.. image:: ../pictures/module2/img_module2_lab3_1.png
+.. image:: ../pictures/module2/img_module2_lab3_1a.png
   :align: center
   :scale: 50%
 
-.. note:: If you want to use learning/blocking mode, you will need a dedicated app template per application, unless you want to share the learning amongs the applications using the same ASM policy.
+Go to POLICY BUILDING > Settings and **Disable** the Learning Mode. Answer **Ok** to the question
 
-|
-
-2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
-
-Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
-
-.. image:: ../pictures/module2/img_module2_lab3_2a.png
+.. image:: ../pictures/module2/img_module2_lab3_1b.png
   :align: center
   :scale: 50%
 
+.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications.
+For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy.
+
 |
 
-3. Go back to Configuration > SECURITY > Web Application Security > Policies
+2. Update the Enforcement Mode to ``Blocking``
 
-Update the Enforcement Mode to ``Blocking``, Save and Close.
+Go to POLICY PROPERTIES > General Properties
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
   :scale: 50%
 
 |
+
+Save and Close.
 
 Connect as **paula**
 
