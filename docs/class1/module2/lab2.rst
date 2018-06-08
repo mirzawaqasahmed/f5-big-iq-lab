@@ -81,6 +81,17 @@ Save & Close
 
 |
 
+3. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
+and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTPS-WAF-lb-template-custom1*, drag it to the right.
+
+.. image:: ../pictures/module2/img_module2_lab2_10.png
+    :align: center
+    :scale: 50%
+
+|
+
+Click on *Save & Close*
+
 .. note:: A DoS Profile could also be assign to the template but we are not using it for this lab.
 
 .. warning:: Application DOS is only supported on Standalone device. The Network DOS is supported on Standalone and Tier 1 device (in a context of SSG)
