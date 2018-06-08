@@ -11,7 +11,7 @@ We will be using 4 main personas for this lab:
 5. **David**: Super-NetOps
 
 **Marco** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
-He will provide the access to David, Larry and Paula. He will also manage the Service Scaline Group (SSG)
+He will provide the access to David, Larry and Paula. He will also manage the Service Scaling Group (SSG)
 and application templates.
 
 **Larry** will manage the Web Application Firewall (WAF) policies. He will work with Paula's team
