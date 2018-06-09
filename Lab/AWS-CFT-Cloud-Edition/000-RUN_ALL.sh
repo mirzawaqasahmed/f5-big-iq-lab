@@ -25,8 +25,8 @@ clear
 
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
 
-echo -e "Did you subscribed and agreed to the software terms in AWS Marketplace?"
-echo -e "https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP"
+echo -e "\nDid you subscribed and agreed to the software terms in AWS Marketplace?\n\n"
+echo -e "https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP\n\n"
 
 pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 

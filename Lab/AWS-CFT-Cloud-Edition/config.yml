@@ -6,7 +6,7 @@ AWS_ACCESS_KEY_ID: <key_id>
 AWS_SECRET_ACCESS_KEY: <key_secret>
 
 # A unique searchable prefix to all resources which are created
-# Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERES replacing <name> below
+# Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
 PREFIX: udf-<name>
 
 # Select on of  the region below (default US EST N. Virginia)
