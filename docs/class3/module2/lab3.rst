@@ -18,8 +18,7 @@ Go to POLICY BUILDING > Settings and **Disable** the Learning Mode. Answer **Ok*
   :align: center
   :scale: 50%
 
-.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications.
-For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy.
+.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy.
 
 |
 

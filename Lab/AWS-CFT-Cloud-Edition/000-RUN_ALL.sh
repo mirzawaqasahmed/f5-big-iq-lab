@@ -8,7 +8,7 @@ function pause(){
    read -p "$*"
 }
 
-c=$(grep '0.0.0.0' ./config.yml | wc -l)
+c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
@@ -24,6 +24,11 @@ fi
 clear
 
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
+
+echo -e "Did you subscribed and agreed to the software terms in AWS Marketplace?"
+echo -e "https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP"
+
+pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 ansible-playbook $DEBUG_arg 00-install.yml
 
@@ -77,8 +82,12 @@ echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /
 
 [[ $1 != "lab" ]] && ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
 
-echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in BIG-IQ: /var/log/restjavad.0.log and /var/log/orchestrator.log\n\n"
+echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in BIG-IQ: /var/log/restjavad.0.log and /var/log/orchestrator.log\n"
 
 echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n # ./111-DELETE_ALL.sh\n\n"
+
+echo -e "NEXT STEPS ON BIG-IQ:\n\n1. Allow Paul to use the AWS SSG previously created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator AWS role.\n  - Select the Service Scaling Groups udf-<yourname>-aws-ssg, drag it to the right\n  - Save & Close.\n"
+
+echo -e "2. Create an Application:\n  Once the AWS SSG is ready (showing green in the UI), connect as paul (password paul) in BIG-IQ and\n  go to Application > Applications, click on Create and select the template Default-AWS-f5-HTTPS-WAF-lb-template.\n  - Set App name\n  - Set ELB FQDN in Domain Names\n  - Select the AWS SSG udf-<yourname>-aws-ssg\n  - Set ELB name udf-<yourname>-elb\n  - Create 2 listeners:\n     TCP 443 - TCP 443\n     TCP 80  - TCP 80\n  - Application Server: 172.17.2.50\n\n"
 
 exit 0
