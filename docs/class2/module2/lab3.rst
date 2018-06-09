@@ -1,4 +1,4 @@
-Lab 1.3: Review our SSG Analytics
+Lab 2.3: Review our SSG Analytics
 ---------------------------------
 
 Our ``SSG`` host a service and we sent some traffic through it. We can now review
