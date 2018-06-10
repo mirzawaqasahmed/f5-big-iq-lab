@@ -68,7 +68,8 @@ Here are the settings you will need to change to deploy everything successfully:
 
 * AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous lab (IAM section).
 * AWS_SECRET_ACCESS_KEY: Use the ``AWS Secret Access Key`` you retrieve from the previous lab (IAM section).
-* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use your NAME. 
+* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use
+    **udf-<your NAME>**. For example: **udf-MENANT** 
 
   .. warning:: 
         DO NOT PUT a ``-`` at the end or your deployment will fail. 
@@ -77,7 +78,11 @@ Here are the settings you will need to change to deploy everything successfully:
         other student's env. If your name is 'common', pick something else that should be unique or append 
         your first name to it. 
 
+        Use udf- in the prefix or your ``SSG`` deployment will fail
+        
         Remember that the PREFIX must be 10 CHARACTERS MAX
+
+        
 
 * AWS_SSH_KEY: Use the ``AWS Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
     but yours should have a different name.
@@ -98,7 +103,7 @@ Here is an example of the updated **config.yml** file:
 
     # A unique searchable prefix to all resources which are created
     # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
-    PREFIX: MENANT
+    PREFIX: udf-MENANT
 
     # Select on of  the region below (default US EST N. Virginia)
     #us-east-1
