@@ -1,4 +1,4 @@
-Module 1: Setup a Service scaling group (SSG) in AWS
+Module 4: Setup a Service scaling group (SSG) in AWS
 ====================================================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself

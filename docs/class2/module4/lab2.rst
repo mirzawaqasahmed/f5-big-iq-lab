@@ -17,7 +17,7 @@ and click on **Access** > **TMUI**. It will open a new tab in your browser to ac
 
 Here copy the ``hostname`` you see in your browser : 
 
-.. image:: ../pictures/module1/img_module4_lab1_2.png
+.. image:: ../pictures/module4/img_module4_lab1_2.png
   :align: center
   :scale: 50%
 
@@ -38,10 +38,10 @@ In the example above, we can see that our public IP is **129.146.155.127**.
 Launch our ``SSG`` - Access our orchestrator
 ********************************************
 
-To setup ``BIG-IQ`` and ``AWS``automatically, open a ``SSH`` connection on the UDF system 
-called: ** Ubuntu 16.04 Lamp Server, Radius and DHCP **
+To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the UDF system 
+called: **Ubuntu 16.04 Lamp Server, Radius and DHCP**
 
-.. image:: ../pictures/module1/img_module4_lab1_1.png
+.. image:: ../pictures/module4/img_module4_lab1_1.png
   :align: center
   :scale: 50%
 
