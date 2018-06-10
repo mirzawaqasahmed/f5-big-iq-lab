@@ -1,5 +1,5 @@
-Lab 4.2: Deploy our ``SSG`` in AWS 
-----------------------------------
+Lab 4.2: Deploy our ``SSG`` in ``AWS`` 
+--------------------------------------
 
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
 we will automatically deploy it and review its configuration. 
@@ -8,16 +8,14 @@ Retrieve our BIG-IP SEA Public IP
 *********************************
 
 We will establish a ``VPN`` connection between our ``UDF`` environment and ``AWS``. This will be 
-setup automatically. 
-
-We will use our BIG-IP SEA as one of the ``VPN endpoint``. 
+setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
 
 In your ``UDF`` blueprint, find your BIG-IP called **SEA-vBIGIP01.termmarc.com.v13.1.0.5 (VPN)** 
 and click on **Access** > **TMUI**. It will open a new tab in your browser to access its GUI. 
 
 Here copy the ``hostname`` you see in your browser : 
 
-.. image:: ../pictures/module4/img_module4_lab1_2.png
+.. image:: ../pictures/module4/img_module4_lab2_2.png
   :align: center
   :scale: 50%
 
@@ -41,7 +39,7 @@ Launch our ``SSG`` - Access our orchestrator
 To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the UDF system 
 called: **Ubuntu 16.04 Lamp Server, Radius and DHCP**
 
-.. image:: ../pictures/module4/img_module4_lab1_1.png
+.. image:: ../pictures/module4/img_module4_lab2_1.png
   :align: center
   :scale: 50%
 
