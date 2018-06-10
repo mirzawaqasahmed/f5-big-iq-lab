@@ -11,7 +11,7 @@ The ``Service Scaling Group`` (SSG) gives us the capability to setup a cluster o
 that will scale based on criterias defined by the administrator.
 
 Topology of Service Scaling Group
----------------------------------
+*********************************
 
 With BIG-IQ 6.0, the ``Service Scaling Group`` is composed of 2 tiers of ADCs.
 Depending on the environment, the implementation of the ``Service Scaling Group``
@@ -25,7 +25,7 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
 ============= ===================================== ============================
 
 Tier1/``Service Scaler`` management - how does this work ?
-----------------------------------------------------------
+**********************************************************
 
 With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
 upfront by the administrator. It means that:
@@ -45,7 +45,7 @@ upfront by the administrator. It means that:
 
 
 Tier2/``SSG`` management - how does this work ?
------------------------------------------------
+***********************************************
 
 With BIG-IQ 6.0, the provisioning of ``SSG`` BIG-IPs is fully automated. You
 don't have to setup anything upfront but licenses for BIG-IQ to assign to the
@@ -67,7 +67,7 @@ different components:
 .. note:: We will review this in more details in lab4
 
 Application deployment in a ``SSG`` - VMWARE
---------------------------------------------
+********************************************
 
 To ensure the traffic goes through the ``SSG`` as expected, application will be
 deployed in a certain manner:
@@ -87,7 +87,7 @@ deployed in a certain manner:
 
 
 Application deployment in a ``SSG`` - AWS
------------------------------------------
+*****************************************
 
 To ensure the traffic goes through the ``SSG`` as expected, application will be
 deployed in a certain manner:
