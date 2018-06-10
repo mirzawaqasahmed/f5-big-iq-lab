@@ -35,7 +35,7 @@ Once this is done, we will be able to deploy our ``SSG``. We will rely on some a
 Create a new ``IAM`` Resource
 *****************************
 
-To create a new ``IAM`` in ``AWS``, go to **Services** > **IAM**
+To create a new ``IAM`` in ``AWS``, go to your ``AWS Console`` and go to **Services** > **IAM**
 
 .. image:: ../pictures/module4/img_module4_lab1_1.png
   :align: center
@@ -53,8 +53,11 @@ Click on **Users** > **Add user**
 
 Set the following information: 
 
-* User Name: BIG-IQ-AWS-API
+* User Name: CE-Lab-IAM-<YOUR NAME>. For example: **CE-Lab-IAM-MENANT**
 * Access type: Check **Programmatic access** 
+
+.. warning:: we need something unique for the User name since other student will do the lab and you may use 
+  same AWS corporate account. 
 
 .. image:: ../pictures/module4/img_module4_lab1_3.png
   :align: center
@@ -72,7 +75,7 @@ On the Permissions page, click on the button **Create group**
 
 |
 
-* Group name: BIG-IQ-LAB-Admin-GRP
+* Group name: CE-Lab-MENANT-Admin-GRP
 * Policy : Check the box for **Administrator Access**
 
 .. image:: ../pictures/module4/img_module4_lab1_5.png
@@ -81,7 +84,7 @@ On the Permissions page, click on the button **Create group**
 
 |
 
-Click on **Create group**. 
+Click on **Create group**. You will be back on the **Add user** page. 
 
 .. note:: this is not the best suited group for BIG-IQ access but this lab is not about covering ``IAM`` 
   setup. We could just create a policy that allows us to run CFT, Setup VPC/VPN and launch EC2 instances
@@ -114,11 +117,11 @@ Click on the button **Create user**.
 
 You need to store your ``Access key ID`` and your ``Secret Access key``. 2 methods: 
 
-* You click on the button **download .csv** 
-* You click on **show** in the ``Secret Access key`` column and then you store yourself somewhere 
+* You click on the button **Download .csv** 
+* You click on **Show** in the ``Secret Access key`` column and then you store yourself somewhere 
   your ``Access key ID`` and your ``Secret Access key``
 
-Click on the **Close** button once you've save your credentials. 
+Click on the **Close** button once you've saved your credentials. 
 
 .. image:: ../pictures/module4/img_module4_lab1_9.png
   :align: center
@@ -132,7 +135,7 @@ Create a new AWS ``key pair``
 *****************************
 
 Before creating our ``key pair``, we need to select a region where we will deploy our ``SSG``. 
-For this lab, we will use the region ``us-east``. 
+For this lab, we will use the region ``US-East``. 
 
 In the ``AWS UI``, click on **Services** > **EC2**
 
@@ -161,9 +164,12 @@ Go to **Network & Security** , **Key Pairs**.
 
 |
 
-Click on **Create Key Pair**
+Click on **Create Key Pair**. The Key Pair has to be unique for this lab so use ``CE-Lab-<YOURNAME>``
 
-* Key pair name: BIG-IQ-SSG 
+For example: **CE-Lab-MENANT**
+
+  .. warning:: whatever you pick for the key pair name, make sure it will be fairly unique so that it doesn't 
+    overlap with another student's lab. 
 
 .. image:: ../pictures/module4/img_module4_lab1_13.png
   :align: center
