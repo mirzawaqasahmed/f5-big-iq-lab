@@ -93,8 +93,8 @@ Here is an example of the updated **config.yml** file:
     ###########################         UPDATE VARIABLE BELOW          ###############################
     ##################################################################################################
 
-    AWS_ACCESS_KEY_ID: A****************
-    AWS_SECRET_ACCESS_KEY: xwKkSBZF*****************
+    AWS_ACCESS_KEY_ID: *****************
+    AWS_SECRET_ACCESS_KEY: *********************
 
     # A unique searchable prefix to all resources which are created
     # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
