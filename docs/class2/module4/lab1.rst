@@ -6,10 +6,10 @@ In module1/Lab 1.1, we saw the different components to setup a SSG:
 * ``License Pool`` 
 * ``IP Pools``
 * ``Device Template``
-* ``Cloud Provider```
-* ``Cloud Environment```
+* ``Cloud Provider``
+* ``Cloud Environment``
 
-When you want to deploy a ``SSG``in ``AWS``, you don't need to provide the same amount of information:
+When you want to deploy a ``SSG`` in ``AWS``, you don't need to provide the same amount of information:
 
 * A ``License Pool`` is not mandatory. We are free to use ``Utility Billing`` (pay-per-use) in ``AWS``
 * ``IP Pools`` are not needed. When we deploy a ``SSG`` in ``AWS``, the deployed ``Virtual Edition(s)`` 
