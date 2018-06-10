@@ -68,18 +68,65 @@ Here are the settings you will need to change to deploy everything successfully:
 
 * AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous lab (IAM section).
 * AWS_SECRET_ACCESS_KEY: Use the ``AWS Secret Access Key`` you retrieve from the previous lab (IAM section).
-* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use **UDF-LAB-** 
-  AND your **NAME**. Example: **UDF-LAB-MENANT**. 
+* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use your NAME. 
 
-  .. warning:: DO NOT PUT a ``-`` at the end or your deployment will fail 
+  .. warning:: 
+        DO NOT PUT a ``-`` at the end or your deployment will fail. 
+        
         We need you to put something so that your PREFIX will be UNIQUE to you or it will overlap with 
         other student's env. If your name is 'common', pick something else that should be unique or append 
         your first name to it. 
 
-* AWS_SSH_KEY: Use the ``AWS Key Pair`` we created in the previous lab: **BIG-IQ-SSG**
+        Remember that the PREFIX must be 10 CHARACTERS MAX
+
+* AWS_SSH_KEY: Use the ``AWS Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
+    but yours should have a different name.
 * CUSTOMER_GATEWAY_IP: Use the Public IP Address of our **SEA BIG-IP** you retrieved earlier. 
 
 Save the config file. 
+
+Here is an example of the updated **config.yml** file:
+
+.. code::
+
+    ##################################################################################################
+    ###########################         UPDATE VARIABLE BELOW          ###############################
+    ##################################################################################################
+
+    AWS_ACCESS_KEY_ID: AKIAJH7MSFJYYVFUW5IQ
+    AWS_SECRET_ACCESS_KEY: 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
+
+    # A unique searchable prefix to all resources which are created
+    # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
+    PREFIX: MENANT
+
+    # Select on of  the region below (default US EST N. Virginia)
+    #us-east-1
+    #us-east-2
+    #us-west-1
+    #us-west-2
+    #eu-central-1
+    #eu-west-1
+    #eu-west-2
+    #us-west-3
+    #ap-southeast-1
+    #ap-northeast-2
+    DEFAULT_REGION: us-east-1
+    AWS_US_EAST_1A: us-east-1a
+    AWS_US_EAST_1B: us-east-1b
+
+    # Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
+    AWS_SSH_KEY: CE-Lab-MENANT
+
+    # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
+    # Fill the IP address returned by the nslookup here
+    # /!\ IF THE IP ADDRESS ENDS WITH A x.x.x.0 (e.g. 129.43.54.0), DELETE YOUR DEPLOYMENT AND RESTART A NEW ONE.
+    CUSTOMER_GATEWAY_IP: 129.146.19.143
+
+    # F5 Networks BYOL BIGIP-13.1.0.5-0.0.5 - Best - Mar 27 2018 8_21_31
+    # Oregon eu-west-2: ami-105b3b68
+    # Virginia us-east-1: ami-8fe13ff0
+
 
 .. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Region
 
@@ -179,4 +226,79 @@ To trigger the deployment, run the following command:
 
  ``./000-RUN_ALL.sh nopause``
 
+It will ask you to press Enter to confirm that you subscribed and agreed to the EULA in the marketplace. 
+Press enter to start the deployment. 
+
+You should see something like this: 
+
+.. code::
+
+    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ ./000-RUN_ALL.sh nopause
+
+    Did you subscribed and agreed to the software terms in AWS Marketplace?
+
+
+    https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP
+
+
+    Press [Enter] key to continue... CTRL+C to Cancel
+    [DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
+    instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+    PLAY [Install and configure dependencies and verify environment] ************************************************************************************************************************
+
+    TASK [Gathering Facts] ******************************************************************************************************************************************************************
+    ok: [localhost]
+
+    TASK [command] **************************************************************************************************************************************************************************
+    changed: [localhost]
+
+    TASK [command] **************************************************************************************************************************************************************************
+    changed: [localhost]
+
+    TASK [command] **************************************************************************************************************************************************************************
+    changed: [localhost]
+
+    TASK [command] **************************************************************************************************************************************************************************
+    changed: [localhost]
+
+    TASK [command] **************************************************************************************************************************************************************************
+    changed: [localhost]
+
+    PLAY RECAP ******************************************************************************************************************************************************************************
+    localhost                  : ok=6    changed=5    unreachable=0    failed=0
+
+    [DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
+    instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+    PLAY [Deploy prerequisite infrastructure for SSG to AWS] ********************************************************************************************************************************
+
+    TASK [Gathering Facts] ******************************************************************************************************************************************************************
+    ok: [localhost]
+
+    TASK [Set AWS Region] *******************************************************************************************************************************************************************
+    changed: [localhost]
+
+    TASK [Retrieve available subnets] *******************************************************************************************************************************************************
+    ok: [localhost]
+
+    TASK [Fail if there aren't enough availability zones] ***********************************************************************************************************************************
+    skipping: [localhost]
+
+    TASK [Build VPC CloudFormation] *********************************************************************************************************************************************************
+
+At this stage, we should start deploying your environment in ``AWS``. In your ``AWS Console``, go to 
+**Services** > **CloudFormation**. 
+
+.. image:: ../pictures/module4/img_module4_lab2_3.png
+  :align: center
+  :scale: 50%
+
+|
+
+Here we can see that ``CloudFormation Stacks`` are being deployed with the prefix **MENANT** as mentioned in 
+**config.yml** file (prefix attribute)
+
 In the next lab, we will review what has been setup on ``BIG-IQ`` and what was deployed in our ``AWS VPC``.
+
+
