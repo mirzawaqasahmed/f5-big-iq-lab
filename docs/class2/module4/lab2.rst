@@ -174,7 +174,7 @@ Look for this section in the file:
                 }]
             }
 
-Change the **minSize** from 1 to 2 : 
+Change the **minSize** and **desiredSize** from 1 to 2 : 
 
 .. code::
 
@@ -192,7 +192,7 @@ Change the **minSize** from 1 to 2 :
                 "minSize": 2,
                 "maxSize": 3,
                 "maxSupportedApplications": 3,
-                "desiredSize": 1,
+                "desiredSize": 2,
                 "postDeviceCreationUserScriptReference": null,
                 "preDeviceDeletionUserScriptReference": null,
                 "scalingPolicies": [
