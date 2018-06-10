@@ -13,13 +13,13 @@ When you want to deploy a ``SSG`` in ``AWS``, you don't need to provide the same
 
 * A ``License Pool`` is not mandatory. We are free to use ``Utility Billing`` (pay-per-use) in ``AWS``
 * ``IP Pools`` are not needed. When we deploy a ``SSG`` in ``AWS``, the deployed ``Virtual Edition(s)`` 
-  we be using our single NIC deployment. It means that we use one interface for management and traffic 
-  processing. In this case, the IP Address assigned to the device will be picked automatically by ``AWS```
+  will be using our single NIC deployment. It means that we use one interface for management and traffic 
+  processing. In this case, the IP Address assigned to the device will be picked automatically by ``AWS``
 
 
-To deploy our ``SSG``in ``AWS``, we will need to do a few things: 
+To deploy our ``SSG`` in ``AWS``, we will need to do a few things: 
 
-* Pick a ``AWS Region``
+* Pick an ``AWS Region``
 * Setup an ``IAM`` resource (Identity and Access Management) that will allow us to setup our ``SSG`` via 
   the ``AWS`` API
 * Setup a ``Key Pair`` in the selected ``AWS Region``

@@ -66,8 +66,8 @@ different components:
 
 .. note:: We will review this in more details in lab4
 
-Application deployment in a SSG - VMWARE
-----------------------------------------
+Application deployment in a ``SSG`` - VMWARE
+--------------------------------------------
 
 To ensure the traffic goes through the ``SSG`` as expected, application will be
 deployed in a certain manner:
@@ -86,10 +86,10 @@ deployed in a certain manner:
       * the pool monitor will be based on the app specifications
 
 
-Application deployment in a SSG - AWS
--------------------------------------
+Application deployment in a ``SSG`` - VMWare
+--------------------------------------------
 
-To ensure the traffic goes through the SSG as expected, application will be
+To ensure the traffic goes through the ``SSG`` as expected, application will be
 deployed in a certain manner:
 
 * You will need dedicated ``Classic Load Balancer`` (AKA ELB previously) per
@@ -102,7 +102,7 @@ deployed in a certain manner:
 * This config will be configured on all ``SSG`` VEs.
   They will have have an **identical** Setup
 
-In this lab, we will create a ``Service Scaling Group`` in a VMWare environment.
+In this lab, we will create a ``Service Scaling Group`` in a ``VMWare`` environment.
 
 .. toctree::
    :maxdepth: 1

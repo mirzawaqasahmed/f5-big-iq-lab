@@ -70,9 +70,13 @@ Here are the settings you will need to change to deploy everything successfully:
 
 * AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous lab (IAM section).
 * AWS_SECRET_ACCESS_KEY: Use the ``AWS Secret Access Key`` you retrieve from the previous lab (IAM section).
-* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use **UDF-LAB**
+* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use **UDF-LAB-** 
+  AND your **NAME**. Example: **UDF-LAB-MENANT**. 
 
   .. warning:: DO NOT PUT a ``-`` at the end or your deployment will fail 
+        We need you to put something so that your PREFIX will be UNIQUE to you or it will overlap with 
+        other student's env. If your name is 'common', pick something else that should be unique or append 
+        your first name to it. 
 
 * AWS_SSH_KEY: Use the ``AWS Key Pair`` we created in the previous lab: **BIG-IQ-SSG**
 * CUSTOMER_GATEWAY_IP: Use the Public IP Address of our **SEA BIG-IP** you retrieved earlier. 
