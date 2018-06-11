@@ -7,8 +7,8 @@ we will automatically deploy it and review its configuration.
 Retrieve our BIG-IP SEA Public IP 
 *********************************
 
-We will establish a ``VPN`` connection between our ``UDF`` environment and ``AWS``. This will be 
-setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
+We will establish a ``VPN`` connection between our ``UDF`` environment and ``AWS``. 
+This will be setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
 
 In your ``UDF`` blueprint, find your BIG-IP called **SEA-vBIGIP01.termmarc.com.v13.1.0.5 (VPN)** 
 and click on **Access** > **TMUI**. It will open a new tab in your browser to access its GUI. 
@@ -36,8 +36,8 @@ In the example above, we can see that our public IP is **129.146.155.127**.
 Launch our ``SSG`` - Access our orchestrator
 ********************************************
 
-To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the UDF system 
-called: **Ubuntu 16.04 Lamp Server, Radius and DHCP**
+To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the 
+UDF system called: **Ubuntu 16.04 Lamp Server, Radius and DHCP**
 
 .. image:: ../pictures/module4/img_module4_lab2_1.png
   :align: center
@@ -51,10 +51,11 @@ Once connected via ``SSH``, go into the folder: **AWS-CFT-Cloud-Edition**:
 
 we will need to edit the following files: 
 
-* **config.yml**: This file will contains all the information needed to deploy the ``AWS`` environment 
-  successfully. 
-* **08-create-aws-auto-scaling.yml**: we will change the setup of the default ``SSG`` that gets deployed. 
-  we want to deploy 2 instances to review how it is setup as part of a ``SSG`` group. 
+* **config.yml**: This file will contains all the information needed to 
+    deploy the ``AWS`` environment successfully. 
+* **08-create-aws-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
+    that gets deployed. we want to deploy 2 instances to review how it is setup as 
+    part of a ``SSG`` group. 
 
 
 Launch our ``SSG`` - Update config.yml
@@ -66,10 +67,12 @@ Use your favorite editor to update this file.
 
 Here are the settings you will need to change to deploy everything successfully: 
 
-* AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous lab (IAM section).
-* AWS_SECRET_ACCESS_KEY: Use the ``AWS Secret Access Key`` you retrieve from the previous lab (IAM section).
-* PREFIX: Specify a ``prefix`` that will be used on each object automatically created. we will use
-    **udf-<your NAME>**. For example: **udf-MENANT** 
+* AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous 
+    lab (IAM section).
+* AWS_SECRET_ACCESS_KEY: Use the ``AWS Secret Access Key`` you retrieve from the 
+    previous lab (IAM section).
+* PREFIX: Specify a ``prefix`` that will be used on each object automatically 
+    created. we will use **udf-<your NAME>**. For example: **udf-MENANT** 
 
   .. warning:: 
         DO NOT PUT a ``-`` at the end or your deployment will fail. 
@@ -86,7 +89,7 @@ Here are the settings you will need to change to deploy everything successfully:
 
 * AWS_SSH_KEY: Use the ``AWS Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
     but yours should have a different name.
-* CUSTOMER_GATEWAY_IP: Use the Public IP Address of our **SEA BIG-IP** you retrieved earlier. 
+* CUSTOMER_GATEWAY_IP: Use the Public IP Address of your BIG-IP **SEA BIG-IP** that you retrieved earlier. 
 
 Save the config file. 
 
@@ -218,10 +221,6 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
             }
 
 
-**minSize** specified how many BIG-IP VE instances we should deploy in our ``SSG``. Here, we changed the 
-default configuration that would deploy a single instance. This will allow us to see how multiple VEs in 
-a ``SSG`` deployed in ``AWS`` are setup. 
-
 Launch our ``SSG`` - Trigger the deployment 
 *******************************************
 
@@ -231,8 +230,8 @@ To trigger the deployment, run the following command:
 
  ``./000-RUN_ALL.sh nopause``
 
-It will ask you to press Enter to confirm that you subscribed and agreed to the EULA in the marketplace. 
-Press enter to start the deployment. 
+It will ask you to press Enter to confirm that you subscribed and agreed to 
+the EULA in the marketplace. Press enter to start the deployment. 
 
 You should see something like this: 
 
@@ -292,8 +291,8 @@ You should see something like this:
 
     TASK [Build VPC CloudFormation] *********************************************************************************************************************************************************
 
-At this stage, we should start deploying your environment in ``AWS``. In your ``AWS Console``, go to 
-**Services** > **CloudFormation**. 
+At this stage, we should start deploying your environment in ``AWS``. 
+In your ``AWS Console``, go to **Services** > **CloudFormation**. 
 
 .. image:: ../pictures/module4/img_module4_lab2_3.png
   :align: center
@@ -301,9 +300,10 @@ At this stage, we should start deploying your environment in ``AWS``. In your ``
 
 |
 
-Here we can see that ``CloudFormation Stacks`` are being deployed with the prefix **MENANT** as mentioned in 
-**config.yml** file (prefix attribute)
+Here we can see that ``CloudFormation Stacks`` are being deployed with the prefix 
+**udf-MENANT** as mentioned in **config.yml** file (prefix attribute)
 
-In the next lab, we will review what has been setup on ``BIG-IQ`` and what was deployed in our ``AWS VPC``.
+In the next lab, we will review what has been setup on ``BIG-IQ`` and what was 
+deployed in our ``AWS VPC``.
 
 
