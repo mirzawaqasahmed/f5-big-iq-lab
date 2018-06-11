@@ -42,10 +42,10 @@ AWS ELB settings:
 
 * Name of Classic Load Balancer: **<YOUR PREFIX>-elb**
 
-    .. note:: You can retrieve the name of your ``AWS ELB``by going to your ``AWS Console```
+    .. note:: You can retrieve the name of your ``AWS ELB`` by going to your ``AWS Console``
         and go to **Services** > **EC2** > **Load Balancing** > **Load Balancer**
 
-        .. image:: ../pictures/module4/img_module4_lab4_1.png
+        .. image:: ../pictures/module4/img_module4_lab4_2.png
             :align: center
             :scale: 50%
 
@@ -104,7 +104,7 @@ Review your ``SSG`` devices setup
 To review the app configuration on the ``SSG`` devices, in your ``BIG-IQ UI``, go to 
 **Applications** > **Environments** > **Service SCaling Groups**. 
 
-Click on your ``SSG``and then go to **Configuration** > **Devices**. Here you can click 
+Click on your ``SSG`` and then go to **Configuration** > **Devices**. Here you can click 
 on the Address of one of your devices. 
 
 .. image:: ../pictures/module4/img_module4_lab3_8.png
@@ -150,4 +150,6 @@ Open a new tab in your browser and go to this DNS name (https)
   :scale: 50%
 
 |
+
+Your application is deployed successfully. 
 
