@@ -149,8 +149,8 @@ Password: tier2purple
 
 Once you're logged in your ``BIG-IP``, you can see a few things: 
 
-* it's offically managed by ``BIG-IQ```
-* it's in SYNC. Our ``BIG-IPs``part of a ``SSG`` deployed in ``AWS`` will be setup as a cluster
+* it's offically managed by ``BIG-IQ``
+* it's in SYNC. Our ``BIG-IPs`` part of a ``SSG`` deployed in ``AWS`` will be setup as a cluster
 
 .. image:: ../pictures/module4/img_module4_lab3_10.png
   :align: center
