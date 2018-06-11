@@ -1,4 +1,4 @@
-Lab 4.2: Deploy our ``SSG`` in ``AWS`` 
+Lab 4.2: Deploy our ``SSG`` in ``AWS``
 --------------------------------------
 
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
