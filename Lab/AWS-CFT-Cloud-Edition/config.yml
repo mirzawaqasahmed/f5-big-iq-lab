@@ -41,7 +41,7 @@ CUSTOMER_GATEWAY_IP: 0.0.0.0
 BYOL_BIGIP_AMI: ami-8fe13ff0
 
 ##################################################################################################
-############### DO NOT EDIT BEFORE THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING ##################
+###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
 ##################################################################################################
 
 # VPC cidr block should encompass the subnets you specify
@@ -66,7 +66,7 @@ bigip_rest_password: "admin"
 
 # BIG-IQ SSG CONFIG
 BIGIP_USER: admin
-BIGIP_PWD: tier2purple
+BIGIP_PWD: 74ZEws7axzWdKBap3DkQ
 
 BIGIQ_HOST: localhost:8100
 BIGIQ_URI: http://{{BIGIQ_HOST}}

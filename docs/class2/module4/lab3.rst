@@ -63,7 +63,7 @@ You should see a new device template called <your PREFIX>-aws-device-template
 Click on this new device template to review its configuration. You'll see that 
 only **DNS & NTP** and **User Accounts** have been setup. 
 
-.. note:: the admin password used here is **tier2purple**
+.. note:: the admin password used here is **74ZEws7axzWdKBap3DkQ**
 
 .. image:: ../pictures/module4/img_module4_lab3_2.png
   :align: center
@@ -142,7 +142,7 @@ Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 |
 
 Login: admin
-Password: tier2purple
+Password: 74ZEws7axzWdKBap3DkQ
 
 ``SSG BIG-IP`` configuration review
 ***********************************

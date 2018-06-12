@@ -115,7 +115,7 @@ on the Address of one of your devices.
 
 .. note:: 
     Login: admin
-    Password: tier2purple
+    Password: 74ZEws7axzWdKBap3DkQ
 
 .. image:: ../pictures/module4/img_module4_lab4_9.png
   :align: center
