@@ -4,6 +4,9 @@ Lab 4.5: Cleanup the environment (AWS)
 Once you are done with your demo/training/testing, you will want to cleanup your 
 environment. 
 
+.. warning:: REMEMBER that this lab has a cost in AWS. You must make sure to tear down 
+  your environment as soon as you're done with it
+
 To do this, please proceed this way: Connect to your system called 
 **Ubuntu 16.04 Lamp Server, Radius and DHCP**
 
