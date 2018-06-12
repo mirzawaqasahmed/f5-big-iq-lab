@@ -34,7 +34,7 @@
 
   "Mappings": {
     "AWSInstanceType2Arch" : {
-      "t2.micro" : {"Arch" : "64" },
+      "t2.small" : {"Arch" : "64" },
     },
     "AWSRegionArch2AMI" : {
       "us-east-1" : {"64" : "ami-43a15f3e"},
@@ -165,9 +165,8 @@
               }
             ],
             "Description": "Server:Internal",
-            "AssociatePublicIpAddress": "false",
+            "AssociatePublicIpAddress": "true",
             "DeviceIndex": "0",
-            "AssociatePublicIpAddress" : "True",
             "DeleteOnTermination": "true",
             "SubnetId": {
               "Ref": "INTERNALSUB"
