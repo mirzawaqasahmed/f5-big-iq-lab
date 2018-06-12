@@ -142,7 +142,7 @@ Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 |
 
 Login: admin
-Password: 74ZEws7axzWdKBap3DkQ
+Password: <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
 ``SSG BIG-IP`` configuration review
 ***********************************

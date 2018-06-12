@@ -115,7 +115,7 @@ on the Address of one of your devices.
 
 .. note:: 
     Login: admin
-    Password: 74ZEws7axzWdKBap3DkQ
+    Password: <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
 .. image:: ../pictures/module4/img_module4_lab4_9.png
   :align: center
