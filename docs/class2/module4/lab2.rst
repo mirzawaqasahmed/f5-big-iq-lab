@@ -138,6 +138,18 @@ Here is an example of the updated **config.yml** file:
 
 .. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Region
 
+.. warning:: in your **config.yml** file, you have the default password that will be used for the admin user 
+    This password will be enforced on all the VEs deployed in your ``SSG``. 
+
+    .. code:: 
+        
+        # BIG-IQ SSG CONFIG
+        BIGIP_USER: admin
+        BIGIP_PWD: **************
+
+    MAKE SURE TO NOTE IT SOMEWHERE
+
+
 Launch our ``SSG`` - Update our SSG configuration
 *************************************************
 
