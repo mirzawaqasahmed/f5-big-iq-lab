@@ -13,8 +13,8 @@ BIG-IQ 6.0 will offer the below Ansible module available in Ansible (for info `A
 - Create a new Application from Default-f5-HTTPS-offload-lb-template **(SSG and BIG-IP Standalone)**
 - Create a new Application from Default-f5-HTTPS-WAF-lb-template **(SSG and BIG-IP Standalone)**
 - Remove an Application
-- Manual Scale-Out / Manual Scale-In on AWS SSG
-- Manual Scale-Out / Manual Scale-In on VMware SSG
+- Manual Scale-Out / Manual Scale-In on AWS SSG **(to come)**
+- Manual Scale-Out / Manual Scale-In on VMware SSG **(to come)**
 
 In this module, we will learn how to see create and delete an application using Ansible Playbook, also look at an example of straight API payload from BIG-IQ UI.
 

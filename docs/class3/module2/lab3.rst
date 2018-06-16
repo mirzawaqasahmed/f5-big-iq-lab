@@ -6,19 +6,52 @@ Connect as **larry**
 
 Go to Configuration > SECURITY > Web Application Security > Policies, select ``templates-default`` ASM Policy.
 
-Go to POLICY PROPERTIES > General Properties and **Disable** the Learning Mode.
+Go to POLICY PROPERTIES > General Properties and **Manual** the Learning Mode.
 
 .. image:: ../pictures/module2/img_module2_lab3_1a.png
   :align: center
   :scale: 50%
 
-Go to POLICY BUILDING > Settings and **Disable** the Learning Mode. Answer **Ok** to the question
+Go to POLICY BUILDING > Settings and **Manual** the Learning Mode. Answer **Ok** to the question
 
 .. image:: ../pictures/module2/img_module2_lab3_1b.png
   :align: center
   :scale: 50%
 
 .. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy.
+
+.. list-table:: Default ASM Policy details ``templates-default``
+   :header-rows: 0
+
+   * - Data Guard:
+		      * Protect credit card numbers
+		      * Protect U.S. Social Security numbers
+		      * Mask sensitive data
+   * - Brute Force Attack Prevention:
+		      * default policy
+   * - Headers:
+      		* methods allow GET/HEAD/POST
+      		* HTTP headers */authorization/referer check signatures, referer Perform Normalization
+      		* Cookies * allow
+      		* Redirection Protection allow
+      		* Character Set (list of allow/disallow)
+   * - URLs:
+      		* HTTP * allow
+      		* Web Sockets * allow
+      		* Character Set (list of allow/disallow)
+   * - FILE TYPES:
+      		* Allow file types *
+      		* Disallowed file types => list (e.g. bak, bat, bkp ...)
+   * - CONTENT PROFILES:
+      		* JSON (list of allow/disallow)
+      		* Plain Text (list of allow/disallow)
+      		* XML (list of allow/disallow)
+   * - PARAMETERS:
+      		* Parameters: * user inputs Attack Signatures enabled
+      		* SensitiveParameters: password
+   * - Attack Signatures Configuration: enabled
+   * - Attack Signatures: numbers enabled
+   * - Sessions and logins: disabled
 
 |
 
