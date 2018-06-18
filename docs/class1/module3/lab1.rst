@@ -16,10 +16,6 @@ The following parameters are filled in the playbook ``create_http_app.yaml``.
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Update the f5-ansible module to the latest versions::
-
-    # cd /home/f5/f5-ansible; git pull
-
 Execute the playbook::
 
     # cd /home/f5/f5-ansible-demo
