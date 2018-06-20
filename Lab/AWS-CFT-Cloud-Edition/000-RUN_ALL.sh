@@ -115,7 +115,7 @@ echo -e "\nTIME: $(date +"%H:%M")"
 
 # add ab in crontab to simulate traffic
 echo -e "\nAdding traffic generator in crontab.\n App URL: $ELB_DNS"
-PREFIX="$(head -10 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')"
 if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
    ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
    (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$ELB_DNS/" ) | crontab -

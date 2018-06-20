@@ -5,12 +5,15 @@ import pprint
 import yaml
 with open('config.yml', 'r') as f:
     doc = yaml.load(f)
-NODE_ADDRESS = doc["NODE_ADDRESS"]
 PREFIX = doc["PREFIX"]
-SSG_NAME = PREFIX + '-aws-ssg'
-ELB_NAME = PREFIX + '-elb'
+SSG_NAME = doc["SSG_NAME"]
+ELB_NAME = doc["ELB_NAME"]
+APP_NAME = doc["APP_NAME"]
+NODE_ADDRESS = doc["NODE_ADDRESS"]
 #print PREFIX
 #print SSG_NAME
+#print ELB_NAME
+#print APP_NAME
 #print NODE_ADDRESS
 
 with open('cache/%s/1-vpc.yml' % PREFIX, 'r') as f:
@@ -24,7 +27,6 @@ SSG_URL = '/mgmt/cm/cloud/service-scaling-groups' # lists SSG
 
 # Change as needed
 HOST = 'https://10.1.1.4'
-APP_NAME = ELB_NAME
 
 pretty_print = pprint.PrettyPrinter(indent=2, depth=4).pprint
 

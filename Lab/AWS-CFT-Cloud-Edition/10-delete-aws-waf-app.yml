@@ -13,7 +13,7 @@
           user: admin
           password: admin
           validate_certs: no
-        name: "{{ELB_NAME}}"
+        name: "{{APP_NAME}}"
         wait: yes
         state: absent
       delegate_to: localhost

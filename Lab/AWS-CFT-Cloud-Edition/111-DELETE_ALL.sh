@@ -16,7 +16,7 @@ clear
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
 echo -e "TIME: $(date +"%H:%M")"
-ansible-playbook -i notahost, 10-delete-aws-waf-app.yml
+ansible-playbook -i notahost, 10-delete-aws-waf-app.yml -i ansible2.cfg
 echo -e "\nTIME: $(date +"%H:%M")"
 
 echo -e "\n\n/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"

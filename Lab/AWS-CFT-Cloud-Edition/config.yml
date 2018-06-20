@@ -59,7 +59,8 @@ POOL_MEMBER_PORT: 80
 
 # ELB SCHEME (internet-facing or internal)
 ELB_SCHEME: internet-facing
-ELB_NAME: "{{PREFIX}}-elb-aws"
+ELB_NAME: "{{PREFIX}}-elb"
+APP_NAME: "{{PREFIX}}-app-aws"
 
 # BIG-IP Customer Gateway Config
 ansible_ssh_user: "admin"
