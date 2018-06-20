@@ -2,6 +2,9 @@
 ###########################         UPDATE VARIABLE BELOW          ###############################
 ##################################################################################################
 
+## Did you subscribed and agreed to the software terms for F5 BIG-IP Virtual Edition - BEST - (BYOL) in AWS Marketplace?
+## https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP
+
 AWS_ACCESS_KEY_ID: <key_id>
 AWS_SECRET_ACCESS_KEY: <key_secret>
 
@@ -56,6 +59,7 @@ POOL_MEMBER_PORT: 80
 
 # ELB SCHEME (internet-facing or internal)
 ELB_SCHEME: internet-facing
+ELB_NAME: "{{PREFIX}}-elb-aws"
 
 # BIG-IP Customer Gateway Config
 ansible_ssh_user: "admin"
@@ -78,7 +82,8 @@ BIGIQ_PWD: admin
 BYOL_BIGIQ_HOST: 10.1.10.4
 BYOL_BIGIQ_USER: admin
 BYOL_BIGIQ_PWD: admin
-BYOL_POOL_NAME: byol-pool
+#BYOL_POOL_NAME: byol-pool
+BYOL_POOL_NAME: byol-pool-perAppVE
 
 PROTOCOL_PROFILE_CLIENT: tcp-lan-optimized
 PROTOCOL_PROFILE_SERVER: tcp-lan-optimized

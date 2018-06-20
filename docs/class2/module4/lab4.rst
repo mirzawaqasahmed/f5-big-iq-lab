@@ -1,11 +1,13 @@
 Lab 4.4: Deploy an application (AWS)
 ------------------------------------
 
-Deploy your application 
-***********************
+.. warning:: An default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the AWS SSG (udf-<your name>-elb).
 
-In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on the 
-**Create** button. 
+Deploy your application (optional)
+**********************************
+
+In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on the
+**Create** button.
 
 .. image:: ../pictures/module4/img_module4_lab4_1.png
   :align: center
@@ -15,7 +17,7 @@ In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on t
 
 Select the template called **Default-AWS-f5-HTTPS-WAF-lb-template**.
 
-General properties: 
+General properties:
 
 * Name: **site-aws.example.com**
 * Domain Names: **site-aws.example.com**
@@ -26,7 +28,7 @@ General properties:
 
 |
 
-Select a Traffic Service Environment: 
+Select a Traffic Service Environment:
 
 * Environment: Select **Service Scaling Group**
 * Service Scaling Group: Select **<YOUR PREFIX>-aws-ssg**
@@ -38,7 +40,7 @@ Select a Traffic Service Environment:
 |
 
 
-AWS ELB settings: 
+AWS ELB settings:
 
 * Name of Classic Load Balancer: **<YOUR PREFIX>-elb**
 
@@ -49,15 +51,17 @@ AWS ELB settings:
             :align: center
             :scale: 50%
 
-    .. note:: Remember that we don't create the ``AWS ELB`` here. It has to exist before 
-        deploying an App. 
+    .. note:: Remember that we don't create the ``AWS ELB`` here. It has to exist before
+        deploying an App.
 
-* Listeners: 
+* Listeners:
 
     ==================  ============ ======================= ==================
-       LB Protocol        LB Port       Instance protocol       Instance Port 
+       LB Protocol        LB Port       Instance protocol       Instance Port
     ==================  ============ ======================= ==================
            TCP              443               TCP                   443
+    ==================  ============ ======================= ==================
+           TCP               80               TCP                    80
     ==================  ============ ======================= ==================
 
 .. image:: ../pictures/module4/img_module4_lab4_5.png
@@ -67,7 +71,7 @@ AWS ELB settings:
 |
 
 
-Servers: 
+Servers:
 
 * Servers: 172.17.2.50 / Port 80
 
@@ -78,7 +82,7 @@ Servers:
 |
 
 
-Web Application Firewall & Load Balancer: 
+Web Application Firewall & Load Balancer:
 
 * Name: default_vs
 
@@ -88,9 +92,9 @@ Web Application Firewall & Load Balancer:
 
 |
 
-Click on the **Create** button. 
+Click on the **Create** button.
 
-After some time, you should see this: 
+After some time, you should see this:
 
 .. image:: ../pictures/module4/img_module4_lab4_8.png
   :align: center
@@ -101,11 +105,11 @@ After some time, you should see this:
 Review your ``SSG`` devices setup
 *********************************
 
-To review the app configuration on the ``SSG`` devices, in your ``BIG-IQ UI``, go to 
-**Applications** > **Environments** > **Service SCaling Groups**. 
+To review the app configuration on the ``SSG`` devices, in your ``BIG-IQ UI``, go to
+**Applications** > **Environments** > **Service SCaling Groups**.
 
-Click on your ``SSG`` and then go to **Configuration** > **Devices**. Here you can click 
-on the Address of one of your devices. 
+Click on your ``SSG`` and then go to **Configuration** > **Devices**. Here you can click
+on the Address of one of your devices.
 
 .. image:: ../pictures/module4/img_module4_lab3_8.png
   :align: center
@@ -113,8 +117,8 @@ on the Address of one of your devices.
 
 |
 
-.. note:: 
-    
+.. note::
+
     * Login: admin
     * Password: <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
@@ -124,19 +128,19 @@ on the Address of one of your devices.
 
 |
 
-.. note:: Keep in mind that because we deploy single nic ``BIG-IPs``, all the VS will 
+.. note:: Keep in mind that because we deploy single nic ``BIG-IPs``, all the VS will
     rely on the self-IP address. Therefore the virtual address we use is 0.0.0.0
 
-Spend some time reviewing your app configuration on your ``SSG Devices``. 
+Spend some time reviewing your app configuration on your ``SSG Devices``.
 
 Review your ``AWS ELB`` setup
 *****************************
 
-In your ``AWS Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**. 
+In your ``AWS Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**.
 
 Click on the ``AWS ELB`` we specified in the app settings (**<YOUR PREFIX>-elb**)
 
-Retrieve the DNS Name tied to this ELB: 
+Retrieve the DNS Name tied to this ELB:
 
 .. image:: ../pictures/module4/img_module4_lab4_10.png
   :align: center
@@ -152,5 +156,4 @@ Open a new tab in your browser and go to this DNS name (https)
 
 |
 
-Your application is deployed successfully. 
-
+Your application is deployed successfully.

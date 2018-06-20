@@ -8,6 +8,8 @@ BIG-IQ 6.0 will offer the below Ansible module available in Ansible 2.6 (for inf
 
 .. _experimental F5 Modules: http://clouddocs.f5.com/products/orchestration/ansible/devel/usage/installing-modules.html
 
+.. warning:: Ansible 2.6 only support App deployment on VMware environement. Anisble support for AWS to come in the future.
+
 - Create a new Application from Default-f5-FastL4-TCP-lb-template **(BIG-IP Standalone only)**
 - Create a new Application from Default-f5-HTTP-lb-template **(SSG and BIG-IP Standalone)**
 - Create a new Application from Default-f5-HTTPS-offload-lb-template **(SSG and BIG-IP Standalone)**

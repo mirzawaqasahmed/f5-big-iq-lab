@@ -1,0 +1,19 @@
+---
+- name: Delete the application
+  hosts: all
+  vars_files:
+    - ./config.yml
+  connection: local
+
+  tasks:
+    - name: Remove application
+      bigiq_application_https_waf:
+        provider:
+          server: 10.1.1.4
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "{{ELB_NAME}}"
+        wait: yes
+        state: absent
+      delegate_to: localhost

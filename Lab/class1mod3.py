@@ -144,8 +144,7 @@ link = apply_template_task['selfLink']
 while apply_template_task['status'] not in ['FINISHED', 'FAILED', 'CANCELED']:
     apply_template_task = session.get(link.replace('https://localhost', HOST)).json()
     pretty_print('Polling task, Status: %s' % apply_template_task['status'])
-    time.sleep(2)
+    time.sleep(10)
 
 if apply_template_task['status'] == 'FAILED':
     pretty_print('Task Failed: %s' % apply_template_task['errorMessage'])
-
