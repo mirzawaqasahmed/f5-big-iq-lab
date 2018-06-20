@@ -6,10 +6,10 @@ import yaml
 with open('config.yml', 'r') as f:
     doc = yaml.load(f)
 PREFIX = doc["PREFIX"]
-SSG_NAME = doc["SSG_NAME"]
-ELB_NAME = doc["ELB_NAME"]
-APP_NAME = doc["APP_NAME"]
 NODE_ADDRESS = doc["NODE_ADDRESS"]
+ELB_NAME = PREFIX + '-elb'
+APP_NAME = PREFIX + '-app-aws'
+SSG_NAME = PREFIX + '-aws-ssg'
 #print PREFIX
 #print SSG_NAME
 #print ELB_NAME

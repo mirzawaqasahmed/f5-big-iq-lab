@@ -16,14 +16,11 @@ clear
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
 echo -e "TIME: $(date +"%H:%M")"
-ansible-playbook -i notahost, 10-delete-aws-waf-app.yml -i ansible2.cfg
+ansible-playbook $DEBUG_arg -i notahost, 10-delete-aws-waf-app.yml
 echo -e "\nTIME: $(date +"%H:%M")"
 
 echo -e "\n\n/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AWS SSG BEFORE PROCEEDING\n\n"
-
-# Need to add an sleep of 2 min before attempting SSG deletion
-#[[ $1 != "nopause" ]] && sleep 120
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
