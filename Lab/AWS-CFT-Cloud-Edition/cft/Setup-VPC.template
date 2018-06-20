@@ -1,7 +1,7 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description" : "This Cloud Formation Template creates the lab environment for the F5 Cloud Edition lab  **WARNING** This template creates Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template. This template is supplied with no warranty or support.",
-    "Parameters": { 
+    "Parameters": {
         "VPCNAME": {
             "Type": "String"
         },
@@ -163,7 +163,7 @@
                 }
             }
         },
-        
+
         "IGW": {
             "Type": "AWS::EC2::InternetGateway",
             "Properties": {
@@ -177,7 +177,7 @@
                 ]
             }
         },
-        
+
         "IGWAttachment": {
             "Type": "AWS::EC2::VPCGatewayAttachment",
             "Properties": {
@@ -226,16 +226,16 @@
             "Type" : "AWS::EC2::SecurityGroup",
             "Properties" : {
                 "GroupName" : "VPCNAME",
-                "GroupDescription" : "VPCNAME",                
+                "GroupDescription" : "VPCNAME",
                 "VpcId" : {
                     "Ref": "VPC"
                 }
-            }   
+            }
         },
         "ClassicELB": {
             "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
-            "Properties": {               
-                "SecurityGroups": [ { "Ref": "SecurityGroup" } ],                                
+            "Properties": {
+                "SecurityGroups": [ { "Ref": "SecurityGroup" } ],
                 "HealthCheck" : {
                     "HealthyThreshold" : "10",
                     "Interval" : "30",
@@ -251,12 +251,12 @@
                       "InstanceProtocol" : "TCP"
                     }
                 ],
-                "LoadBalancerName" : { "Ref": "ELBNAME" },              
-                "Scheme" : { "Ref": "ELBSCHEME" },                
-                "Subnets" : [ { "Ref": "InternalSubnet" }, { "Ref": "ExternalSubnet" } ]                
+                "LoadBalancerName" : { "Ref": "ELBNAME" },
+                "Scheme" : { "Ref": "ELBSCHEME" },
+                "Subnets" : [ { "Ref": "InternalSubnet" }, { "Ref": "ExternalSubnet" } ]
             }
         }
-    },    
+    },
     "Outputs": {
         "ElbId": {
             "Description": "ELB ID",

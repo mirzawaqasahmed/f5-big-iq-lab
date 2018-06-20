@@ -6,7 +6,7 @@ Lab 3.3: Create Application via API (Python)
 
 In this lab, we are going to create an application using Python script and BIG-IQ API.
 
-On BIG-IQ, connect as **david** to create a new application, click on **Create**, select the template previously created ``Default-f5-HTTP-lb-template``.
+On BIG-IQ, connect as **david** (select Auth Provider local) to create a new application, click on **Create**, select the template previously created ``Default-f5-HTTP-lb-template``.
 
 - BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
 - Application Name: ``site20.example.com``
@@ -45,4 +45,4 @@ Output::
     u'Polling task, Status: STARTED'
     u'Polling task, Status: FINISHED'
 
-Connect as **paula** and check on BIG-IQ the application has been correctly created.
+Connect as **david** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.

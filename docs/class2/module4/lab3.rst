@@ -1,10 +1,10 @@
-Lab 4.3: Review our ``SSG`` deployment in ``AWS`` 
+Lab 4.3: Review our ``SSG`` deployment in ``AWS``
 -------------------------------------------------
 
 ``AWS`` configuration review
 ****************************
 
-Connect to your ``AWS Console`` to review what has been created already. 
+Connect to your ``AWS Console`` to review what has been created already.
 
 Go to **Services** > **CloudFormation**
 
@@ -14,21 +14,21 @@ Go to **Services** > **CloudFormation**
 
 |
 
-Here you can see that 4 ``AWS Stacks`` have been deployed: 
+Here you can see that 4 ``AWS Stacks`` have been deployed:
 
-* <YOUR PREFIX>-vpc-elb-cf-stack : This stack deploys a new VPC called **<YOUR PREFIX>-vpc**. 
-    We use this new VPC to avoid any conflict and ensure we won't disrupt anything. We will 
-    create the subnets, security groups and an ELB called **<YOUR PREFIX>-elb that can be used 
-    to deploy an App later 
-* <YOUR PREFIX>-vpn-cf-stack : This stack depoys the ``VPN`` configuration in ``AWS``. We 
+* <YOUR PREFIX>-vpc-elb-cf-stack : This stack deploys a new VPC called **<YOUR PREFIX>-vpc**.
+    We use this new VPC to avoid any conflict and ensure we won't disrupt anything. We will
+    create the subnets, security groups and an ELB called **<YOUR PREFIX>-elb that can be used
+    to deploy an App later
+* <YOUR PREFIX>-vpn-cf-stack : This stack depoys the ``VPN`` configuration in ``AWS``. We
     use this ``VPN`` to send data back to ``BIG-IQ DCDs``.
-* <YOUR PREFIX>-ubuntu-cf-stack : This stack deploys an ubuntu instance that will behave 
-    as our app 
-* <YOUR PREFIX>-aws-ssg : this will create the ``AWS autoscale`` deployment : launch 
+* <YOUR PREFIX>-ubuntu-cf-stack : This stack deploys an ubuntu instance that will behave
+    as our app
+* <YOUR PREFIX>-aws-ssg : this will create the ``AWS autoscale`` deployment : launch
     configuration, auto scaling groups, ...
 
 Those stacks were deployed from our system called **Ubuntu 16.04 Lamp Server, Radius and DHCP**.
-If you want to review those stacks, connect to this system and go to : 
+If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
@@ -37,14 +37,13 @@ If you want to review those stacks, connect to this system and go to :
     total 44
     drwxr-xr-x 2 f5 f5 4096 Jun 11 00:27 ./
     drwxr-xr-x 9 f5 f5 4096 Jun 11 02:29 ../
-    -rw-r--r-- 1 f5 f5 3041 May  3 06:49 Nested-CFTs.template
     -rw-r--r-- 1 f5 f5 7148 May  3 06:49 Servers-Setup.template
     -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
     -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template
     -rw-r--r-- 1 f5 f5 2642 May  9 08:33 Setup-VPN.template
     f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition/cft$
 
-Take some time to review the different things setup in your own VPC. 
+Take some time to review the different things setup in your own VPC.
 
 
 
@@ -60,8 +59,8 @@ You should see a new device template called <your PREFIX>-aws-device-template
 
 |
 
-Click on this new device template to review its configuration. You'll see that 
-only **DNS & NTP** and **User Accounts** have been setup. 
+Click on this new device template to review its configuration. You'll see that
+only **DNS & NTP** and **User Accounts** have been setup.
 
 .. note:: the admin password used here is **74ZEws7axzWdKBap3DkQ**
 
@@ -71,7 +70,7 @@ only **DNS & NTP** and **User Accounts** have been setup.
 
 |
 
-Next, you may go to **Applications** > **Environments** > **Cloud Providers**. 
+Next, you may go to **Applications** > **Environments** > **Cloud Providers**.
 You will see a new Cloud Providers called **<YOUR prefix>-aws-provider**:
 
 .. image:: ../pictures/module4/img_module4_lab3_3.png
@@ -80,10 +79,10 @@ You will see a new Cloud Providers called **<YOUR prefix>-aws-provider**:
 
 |
 
-Click on this new cloud provider. You'll see that it contains your ``AWS Access Key`` 
-and your ``AWS Secret Access Key``. 
+Click on this new cloud provider. You'll see that it contains your ``AWS Access Key``
+and your ``AWS Secret Access Key``.
 
-Click on the **Test** button when you need to make sure your credentials are fine. 
+Click on the **Test** button when you need to make sure your credentials are fine.
 
 .. image:: ../pictures/module4/img_module4_lab3_4.png
   :align: center
@@ -91,7 +90,7 @@ Click on the **Test** button when you need to make sure your credentials are fin
 
 |
 
-Go to **Applications** > **Environments** > **Cloud Environments**. Click on your cloud 
+Go to **Applications** > **Environments** > **Cloud Environments**. Click on your cloud
 environment called **<YOUR PREFIX>-aws-environment**
 
 .. image:: ../pictures/module4/img_module4_lab3_5.png
@@ -100,7 +99,7 @@ environment called **<YOUR PREFIX>-aws-environment**
 
 |
 
-You will be able to retrieve a lot of the information that were defined in the **config.yml** file: 
+You will be able to retrieve a lot of the information that were defined in the **config.yml** file:
 
 * Region
 * AZ
@@ -116,7 +115,7 @@ You will be able to retrieve a lot of the information that were defined in the *
 
 |
 
-Go to **Applications** > **Environments** > **Service Scaling Groups**. Click on your ``SSG`` 
+Go to **Applications** > **Environments** > **Service Scaling Groups**. Click on your ``SSG``
 called **<YOUR PREFIX>-MENANT-aws-ssg**
 
 .. image:: ../pictures/module4/img_module4_lab3_7.png
@@ -133,7 +132,7 @@ Go to **Configuration** > **Devices**. You'll be able to see your two provisione
 
 |
 
-Click on one of your ``BIG-IP`` to open its GUI in a new tab. 
+Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 
 .. image:: ../pictures/module4/img_module4_lab3_9.png
   :align: center
@@ -147,7 +146,7 @@ Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 ``SSG BIG-IP`` configuration review
 ***********************************
 
-Once you're logged in your ``BIG-IP``, you can see a few things: 
+Once you're logged in your ``BIG-IP``, you can see a few things:
 
 * it's offically managed by ``BIG-IQ``
 * it's in SYNC. Our ``BIG-IPs`` part of a ``SSG`` deployed in ``AWS`` will be setup as a cluster
@@ -166,7 +165,7 @@ Go to **Device Management** > Overview
 
 |
 
-You can see that **Auto Sync** is enabled for a Device Group called **autoscale-group**. 
+You can see that **Auto Sync** is enabled for a Device Group called **autoscale-group**.
 
-Let's deploy an application to see how it is setup on our different components (``AWS ELB``, 
-``BIG-IPs`` in the ``SSG``). 
+Let's deploy an application to see how it is setup on our different components (``AWS ELB``,
+``BIG-IPs`` in the ``SSG``).

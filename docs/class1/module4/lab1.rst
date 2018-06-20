@@ -200,3 +200,14 @@ Your custom template is now showing in the Service Catalog.
 When you finish specifying parameters for this object, click Save & Close.
 BIG-IQ adds the object you defined to the list of objects in this template.
 When you finish adding an object to a template, you can use it to create an application.
+
+10. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
+and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTP-lb-custom-template*, drag it to the right.
+
+.. image::  ../pictures/module4/img_module4_lab1_14.png
+    :align: center
+    :scale: 50%
+
+|
+
+Click on *Save & Close*

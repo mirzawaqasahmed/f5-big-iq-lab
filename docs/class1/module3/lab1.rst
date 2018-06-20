@@ -16,10 +16,6 @@ The following parameters are filled in the playbook ``create_http_app.yaml``.
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Update the f5-ansible module to the latest versions::
-
-    # cd /home/f5/f5-ansible; git pull
-
 Execute the playbook::
 
     # cd /home/f5/f5-ansible-demo
@@ -29,4 +25,4 @@ Execute the playbook::
 
 .. note :: If you prefer not to wait until the app is created, you can switch the variable ``wait`` to ``no`` in the playbook.
 
-Connect as **paula** and check on BIG-IQ the application has been correctly created.
+Connect as **david** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.
