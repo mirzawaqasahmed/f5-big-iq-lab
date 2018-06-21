@@ -6,13 +6,13 @@ Connect as **larry**
 
 Go to Configuration > SECURITY > Web Application Security > Policies, select ``templates-default`` ASM Policy.
 
-Go to POLICY PROPERTIES > General Properties and **Manual** the Learning Mode.
+Go to POLICY PROPERTIES > General Properties and check **Automatic** is set for the Learning Mode.
 
 .. image:: ../pictures/module2/img_module2_lab3_1a.png
   :align: center
   :scale: 50%
 
-Go to POLICY BUILDING > Settings and **Manual** the Learning Mode. Answer **Ok** to the question
+Go to POLICY BUILDING > Settings and check **Automatic** is set for the Learning Mode, and Auto-Deploy Policy set to **Real Time**.
 
 .. image:: ../pictures/module2/img_module2_lab3_1b.png
   :align: center
