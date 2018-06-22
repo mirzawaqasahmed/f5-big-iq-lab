@@ -5,10 +5,10 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "F5 Cloud edition training"
+classname = "F5 Cloud Edition Training"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
-github_repo = "https://github.com/nmenant/f5-cloud-edition-lab"
+github_repo = "https://github.com/f5devcentral/f5-big-iq-6.0.0-lab"
 
 # OPTIONAL: Google Analytics
 # googleanalytics_id = 'UA-85156643-4'
