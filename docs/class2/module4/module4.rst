@@ -66,26 +66,6 @@ different components:
 
 .. note:: We will review this in more details in lab4
 
-Application deployment in a ``SSG`` - VMWARE
-********************************************
-
-To ensure the traffic goes through the ``SSG`` as expected, application will be
-deployed in a certain manner:
-
-* When the app is deployed from ``BIG-IQ``, it will receive a Virtual server IP.
-* This VS IP will be configured:
-
-  * On all VEs part of the ``SSG``. This IP will be used to setup the relevant
-    All the Virtual editions part of the ``SSG`` will have have an
-    **identical** Setup
-  * On the tier 1/``Service Scaler`` cluster. ``BIG-IQ`` will setup a virtual server with the same IP
-    and the following configuration
-
-      * address translation will be disabled
-      * the pool members for this app will be the ``SSG`` Self-IPs
-      * the pool monitor will be based on the app specifications
-
-
 Application deployment in a ``SSG`` - AWS
 *****************************************
 
