@@ -15,9 +15,9 @@
           body: > 
             {
                 "name": "{{DEVICE_TEMPLATE_NAME}}",
+                "type": "AWS",
                 "timeZone": "UTC",
                 "ntpServerList": [ "{{NTP_SERVER}}" ],
-                "lookupServerList": [{{LOOKUP_SERVER_LIST}}],
                 "userAccountList": [
                     {
                         "username": "{{BIGIP_USER}}",
