@@ -1,7 +1,7 @@
 Class 11: BIG-IQ DNS
 ===================
 
-.. note:: New 6.0
+.. note:: New 6.0.1 test
 
 In this class, we will
 
