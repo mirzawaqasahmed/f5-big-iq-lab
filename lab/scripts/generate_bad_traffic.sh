@@ -8,40 +8,29 @@ if [  $already -gt 3 ]; then
     exit 1
 fi
 
-# Test Websites
-sitefqdn[1]="site4.example.com"
-siteport[1]="80"
-sitepages[1]="%windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme"
-sitefqdn[2]="site1.example.com"
-siteport[2]="80"
-sitepages[2]="privatedata.html badlinks.html calc.exe %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme"
-sitefqdn[3]="site1.example.com"
-siteport[3]="443"
-sitepages[3]="${sitepages[2]}"
-sitefqdn[4]="site1.example.com"
-siteport[4]="8081"
-sitepages[4]="${sitepages[2]}"
-sitefqdn[5]="site2.example.com"
-siteport[5]="80"
-sitepages[5]="${sitepages[2]}"
-sitefqdn[6]="site2.example.com"
-siteport[6]="443"
-sitepages[6]="${sitepages[2]}"
-sitefqdn[7]="site2.example.com"
-siteport[7]="8081"
-sitepages[7]="${sitepages[2]}"
-sitefqdn[8]="site3.example.com"
-siteport[8]="80"
-sitepages[8]="${sitepages[2]}"
-sitefqdn[9]="site3.example.com"
-siteport[9]="443"
-sitepages[9]="${sitepages[2]}"
-sitefqdn[10]="site3.example.com"
-siteport[10]="8081"
-sitepages[10]="${sitepages[2]}"
+sitefqdn[1]="site10.example.com"
+sitefqdn[2]="site12.example.com"
+sitefqdn[3]="site14.example.com"
+sitefqdn[4]="site15.example.com"
+sitefqdn[5]="site16.example.com"
+sitefqdn[6]="site18.example.com"
+sitefqdn[7]="site20.example.com"
+sitefqdn[8]="site22.example.com"
+sitefqdn[9]="site26.example.com"
+sitefqdn[10]="site28.example.com"
+sitefqdn[11]="site28.example.com"
+sitefqdn[12]="site30.example.com"
+sitefqdn[13]="site32.example.com"
+sitefqdn[14]="site36.example.com"
+sitefqdn[15]="site38.example.com"
+sitefqdn[16]="site40.example.com"
+sitefqdn[17]="site42.example.com"
+sitepages="privatedata.html badlinks.html calc.exe %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme"
+
 
 # get length of the array
 arraylength=${#sitefqdn[@]}
+
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
@@ -71,51 +60,65 @@ arraylengthbrowser=${#sitefqdn[@]}
 
 for (( i=1; i<${arraylength}+1; i++ ));
 do
-  if [ ! -z "${sitefqdn[$i]}" ]; then
-	# Only generat traffic on alive VIP
-	ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
-	timeout 1 bash -c "cat < /dev/null > /dev/tcp/${ip:1:-1}/${siteport[$i]}"
-	if [  $? == 0 ]; then
-				
-		echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen (${sitepages[$i]})"
-		
-		# add random number for loop
-		r=`shuf -i 20-80 -n 1`;
-		for k in `seq 1 $r`; do
-			for j in ${sitepages[$i]}; do
-		
-				#Randome IP
-				source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-				source_ip_address2=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-				
-				# add random number for browsers
-				rb=`shuf -i 1-$arraylengthbrowser -n 1`;
-					
-				echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
-				if [  ${siteport[$i]} == 443 ]; then
-					/usr/local/bin/curl -k -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" https://${sitefqdn[$i]}/$j
-				else
-					/usr/local/bin/curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://${sitefqdn[$i]}/$j
-				fi
-				echo "-X GET \"http://${sitefqdn[$i]}:${siteport[$i]}/$j\"" >> /home/f5/scripts/curl$i.txt
-				echo "-X FETCH \"http://${sitefqdn[$i]}:${siteport[$i]}/$j\"" >> /home/f5/scripts/curl$i.txt
-				echo "-X PATCH \"http://${sitefqdn[$i]}:${siteport[$i]}/$j\"" >> /home/f5/scripts/curl$i.txt
-				echo "-X POST \"http://${sitefqdn[$i]}:${siteport[$i]}/$j\"" >> /home/f5/scripts/curl$i.txt
-			done	
-		done
+    if [ ! -z "${sitefqdn[$i]}" ]; then
+        # Only generat traffic on alive VIP
+        ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
+        timeout 1 bash -c "cat < /dev/null > /dev/tcp/${ip:1:-1}/443"
+        if [  $? == 0 ]; then
+		# Port 443 open
+		port=443
+        else
+                # If 443 not anwser, trying port 80
+                timeout 1 bash -c "cat < /dev/null > /dev/tcp/${ip:1:-1}/80"
+                if [  $? == 0 ]; then
+                        # Port 80 open
+                        port=80
+                else
+                      port=0
+                fi
+        fi
+        if [  $port == 443 || $port == 80 ]; then
 
-		# cpbNorEaster.py script
-		/home/f5/scripts/cpbNorEaster.py -v ${sitefqdn[$i]}:${siteport[$i]} -f /home/f5/scripts/curl$i.txt
-		rm -f /home/f5/scripts/curl*.txt
+                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen (${sitepages[$i]})"
 
-		echo -e "\n# site $i ${sitefqdn[$i]} nmap"
-		
-		/usr/bin/nmap --system-dns -p ${siteport[$i]} -script http-sql-injection -T5 -Pn ${sitefqdn[$i]}
-		/usr/bin/nmap --system-dns -p ${siteport[$i]} -script http-waf-detect -T4 -Pn ${sitefqdn[$i]}
-		/usr/bin/nmap --system-dns -p ${siteport[$i]} -script http-enum -T5 -Pn ${sitefqdn[$i]}
-		/usr/bin/nmap --system-dns -p ${siteport[$i]} -script http-generator -T4 -Pn ${sitefqdn[$i]}
-		
-	fi
-  fi
+                # add random number for loop
+                r=`shuf -i 20-80 -n 1`;
+                for k in `seq 1 $r`; do
+                        for j in ${sitepages[$i]}; do
+
+                                #Randome IP
+                                source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                                source_ip_address2=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+
+                                # add random number for browsers
+                                rb=`shuf -i 1-$arraylengthbrowser -n 1`;
+
+                                echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
+                                if [  $port == 443 ]; then
+                                        /usr/local/bin/curl -k -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" https://${sitefqdn[$i]}/$j
+                                else
+                                        /usr/local/bin/curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://${sitefqdn[$i]}/$j
+                                fi
+                                echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
+                                echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
+                                echo "-X PATCH \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
+                                echo "-X POST \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
+                        done
+                done
+
+                # cpbNorEaster.py script
+                /home/f5/scripts/cpbNorEaster.py -v ${sitefqdn[$i]}:$port -f /home/f5/scripts/curl$i.txt
+                rm -f /home/f5/scripts/curl*.txt
+
+                echo -e "\n# site $i ${sitefqdn[$i]} nmap"
+
+                /usr/bin/nmap --system-dns -p $port -script http-sql-injection -T5 -Pn ${sitefqdn[$i]}
+                /usr/bin/nmap --system-dns -p $port -script http-waf-detect -T4 -Pn ${sitefqdn[$i]}
+                /usr/bin/nmap --system-dns -p $port -script http-enum -T5 -Pn ${sitefqdn[$i]}
+                /usr/bin/nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]}
+
+        else
+                echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
+        fi
+   fi
 done
-

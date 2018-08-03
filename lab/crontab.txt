@@ -1,0 +1,8 @@
+## Traffic Generator (HTTP/HTTPS)
+* * * * * /home/f5/scripts/generate_clean_traffic.sh > /dev/null
+## DNS Traffic
+*/2 * * * * /home/f5/bigip_setup/cron_dns_traffic_gen.sh > /dev/null
+## Access Traffic
+45 10 * * * /home/f5/bigip_setup/cron_daily_report_gen.sh > /dev/null
+2,17,32,47 * * * *  /home/f5/bigip_setup/cron_report_data.sh  > /dev/null
+2,17,32,47 * * * *  /home/f5/bigip_setup/cron_access_data.sh  > /dev/null

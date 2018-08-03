@@ -1,0 +1,4 @@
+www.example.com A
+app2.example.com A
+app1.example.com A
+notthere.example.com A
