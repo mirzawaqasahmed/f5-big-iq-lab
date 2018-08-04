@@ -122,5 +122,3 @@ do
         fi
    fi
 done
-
-rm -rf /home/f5/scripts/cur*.txt

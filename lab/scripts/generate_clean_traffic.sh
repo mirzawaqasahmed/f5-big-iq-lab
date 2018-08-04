@@ -98,10 +98,6 @@ do
                                 else
                                         curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://${sitefqdn[$i]}/$j
                                 fi
-                                echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
-                                echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
-                                echo "-X PATCH \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
-                                echo "-X POST \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
                         done
                 done
 
