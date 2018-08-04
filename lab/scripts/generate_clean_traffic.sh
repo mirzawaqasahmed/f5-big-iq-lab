@@ -81,7 +81,7 @@ do
         
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
                 # add random number for loop
-                r=`shuf -i 20-80 -n 1`;
+                r=`shuf -i 2-6 -n 1`;
                 for k in `seq 1 $r`; do
                         for j in $sitepages; do
 

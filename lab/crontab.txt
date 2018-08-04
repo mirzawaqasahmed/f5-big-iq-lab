@@ -1,5 +1,7 @@
 ## Traffic Generator (HTTP/HTTPS)
 * * * * * /home/f5/scripts/generate_clean_traffic.sh > /dev/null
+0 6 * * * perl -le 'sleep rand 9000' && /home/f5/scripts/generate_bad_traffic.sh
+0 12 * * * perl -le 'sleep rand 9000' && /home/f5/scripts/generate_bad_traffic.sh
 ## DNS Traffic
 */2 * * * * /home/f5/bigip_setup/cron_dns_traffic_gen.sh > /dev/null
 ## Access Traffic
