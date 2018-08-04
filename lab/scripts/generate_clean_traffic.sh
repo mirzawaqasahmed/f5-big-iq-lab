@@ -77,9 +77,9 @@ do
                       port=0
                 fi
         fi
-        if [  $port == 443 || $port == 80 ]; then
+        if [[  $port == 443 || $port == 80 ]]; then
+        
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
-
                 # add random number for loop
                 r=`shuf -i 20-80 -n 1`;
                 for k in `seq 1 $r`; do
@@ -94,9 +94,9 @@ do
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
                                 if [  $port == 443 ]; then
-                                        /usr/local/bin/curl -k -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" https://${sitefqdn[$i]}/$j
+                                        curl -k -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" https://${sitefqdn[$i]}/$j
                                 else
-                                        /usr/local/bin/curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://${sitefqdn[$i]}/$j
+                                        curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://${sitefqdn[$i]}/$j
                                 fi
                                 echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
                                 echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
