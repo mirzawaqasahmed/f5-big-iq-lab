@@ -105,16 +105,16 @@ do
                         done
                 done
 
-                # cpbNorEaster.py script
-                /home/f5/scripts/cpbNorEaster.py -v ${sitefqdn[$i]}:$port -f /home/f5/scripts/curl$i.txt
-                rm -f /home/f5/scripts/curl*.txt
-
-                echo -e "\n# site $i ${sitefqdn[$i]} nmap"
-
-                /usr/bin/nmap --system-dns -p $port -script http-sql-injection -T5 -Pn ${sitefqdn[$i]}
-                /usr/bin/nmap --system-dns -p $port -script http-waf-detect -T4 -Pn ${sitefqdn[$i]}
-                /usr/bin/nmap --system-dns -p $port -script http-enum -T5 -Pn ${sitefqdn[$i]}
-                /usr/bin/nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]}
+                echo -e "\n# site $i ab traffic gen"
+                if [  $port == 443 ]; then
+                       count=`shuf -i 11-40 -n 1`;
+                       conc=`shuf -i 1-10 -n 1`;
+                       /usr/bin/ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
+                else
+                       count=`shuf -i 11-40 -n 1`;
+                       conc=`shuf -i 1-10 -n 1`;
+                       /usr/bin/ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
+                fi
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi
