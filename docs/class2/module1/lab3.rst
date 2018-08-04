@@ -39,7 +39,7 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
 Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
 in our ESXi). To do this, in your UDF deployment, click on the *Access* button
-of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH UBUNTU*
+of the *Ubuntu 18.04 Lamp Server, RDP, Radius, Docker* system and select *XRDP*
 
 .. image:: ../pictures/module1/img_module1_lab3_5.png
     :align: center

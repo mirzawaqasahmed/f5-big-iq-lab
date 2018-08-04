@@ -72,7 +72,7 @@ Click on *Add*
 - *Password* = david
 - *Role* = Application Creator VMware (custom role with ALL default templates)
 
-Click on *Save & Close*`
+Click on *Save & Close*
 
 .. warning:: Only local users are supported to execute Ansible playbook
 

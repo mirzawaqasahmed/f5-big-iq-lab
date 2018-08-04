@@ -81,7 +81,13 @@ Save & Close
 
 |
 
-3. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
+3. **[New 6.0.1]** Publish your custom template after creation.
+
+.. image:: ../pictures/module2/img_module2_lab2_9b.png
+  :align: center
+  :scale: 50%
+
+4. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
 and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTPS-WAF-lb-template-custom1*, drag it to the right.
 
 .. image:: ../pictures/module2/img_module2_lab2_10.png

@@ -14,13 +14,13 @@ She connects to the BIG-IQ and has access to her Application Dashboard.
 After a week of testing her application (in the class ~5 min), she will ask **larry** to fine tune and validate
 the learning done by the Application Firewall (BIG-IP ASM).
 
-.. note:: A traffic generator located on the *Ubuntu Lamp Server, LDAP and DHCP* server, is sending good traffic every minute to the virtual servers.
+.. note:: A traffic generator located on the *Ubuntu Lamp Server*, is sending good traffic every minute to the virtual servers.
 
 Once the security policy is tuned and validated, **paula** will enforce blocking mode in the policy.
 
 Finally, we will simulate "bad" traffic to show the security policy blocking it.
 
-.. note:: A traffic generator located on the *Ubuntu Lamp Server, LDAP and DHCP* server, can be launched manually to send bad traffic to the virtual servers.
+.. note:: A traffic generator located on the *Ubuntu Lamp Server*, can be launched manually to send bad traffic to the virtual servers.
 
 .. toctree::
    :maxdepth: 1
