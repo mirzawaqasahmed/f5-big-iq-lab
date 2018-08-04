@@ -25,7 +25,7 @@ sitefqdn[14]="site36.example.com"
 sitefqdn[15]="site38.example.com"
 sitefqdn[16]="site40.example.com"
 sitefqdn[17]="site42.example.com"
-sitepages="index.php welcome.php lorax.php HealthCheck.html lorax.php?var=1 lorax.php?var=2 lorax.php?var=3 lorax.php?var=4 lorax.php?var=5 lorax.php?var=6 lorax.php?var=6 lorax.php?var=7 lorax.php?var=8"
+sitepages="index.php index.php index.php setup.php setup.php instructions.php instructions.php about.php about.php about.php"
 
 
 # get length of the array
@@ -78,12 +78,12 @@ do
                 fi
         fi
         if [  $port == 443 || $port == 80 ]; then
-                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen (${sitepages[$i]})"
+                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
 
                 # add random number for loop
                 r=`shuf -i 20-80 -n 1`;
                 for k in `seq 1 $r`; do
-                        for j in ${sitepages[$i]}; do
+                        for j in $sitepages; do
 
                                 #Randome IP
                                 source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')

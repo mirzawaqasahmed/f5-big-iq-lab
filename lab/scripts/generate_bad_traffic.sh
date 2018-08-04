@@ -79,12 +79,12 @@ do
         fi
         if [  $port == 443 || $port == 80 ]; then
 
-                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen (${sitepages[$i]})"
+                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
 
                 # add random number for loop
                 r=`shuf -i 20-80 -n 1`;
                 for k in `seq 1 $r`; do
-                        for j in ${sitepages[$i]}; do
+                        for j in $sitepages; do
 
                                 #Randome IP
                                 source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
