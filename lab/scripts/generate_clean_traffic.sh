@@ -3,7 +3,7 @@
 # set -x
 
 already=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
-if [  $already -gt 3 ]; then
+if [  $already -gt 5 ]; then
     echo "The script is already running $already time."
     exit 1
 fi
