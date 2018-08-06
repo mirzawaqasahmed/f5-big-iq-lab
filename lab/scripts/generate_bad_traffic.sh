@@ -85,7 +85,7 @@ do
                 r=`shuf -i 2-6 -n 1`;
                 for k in `seq 1 $r`; do
                         for j in $sitepages; do
-
+                                echo "Loop $k"
                                 #Randome IP
                                 source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
                                 source_ip_address2=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
@@ -95,9 +95,9 @@ do
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
                                 if [  $port == 443 ]; then
-                                        curl -k -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" https://${sitefqdn[$i]}/$j
+                                        curl -k -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
                                 else
-                                        curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://${sitefqdn[$i]}/$j
+                                        curl -s -m 4 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
                                 fi
                                 echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
                                 echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> /home/f5/scripts/curl$i.txt
