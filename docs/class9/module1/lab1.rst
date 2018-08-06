@@ -7,7 +7,9 @@ They can be used to deploy various type of applications. These default templates
 - ``Default-f5-HTTPS-offload-lb-Access-LDAP-Authentication-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP and securing application Access using LDAP authentication.
 - ``Default-f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP and securing application Access using RADIUS authentication.
 
-.. warning:: access templates cannot be used as is and need to be cloned. Next chapter will show the workflow.
+.. note:: access templates cannot be used as is and need to be cloned. Next chapter will show the workflow.
+
+.. warning:: Those templates cannot be used in AWS due to technical constraints, BIG-IP APM do not support HA in Active-Active mode. and there are no AMIs with APM pre-provision.
 
 Connect as **marco**, go to *Applications* > *SERVICE CATALOG*:
 
