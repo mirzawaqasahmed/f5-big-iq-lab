@@ -42,9 +42,12 @@ Test Website         VIP         Port     Server                       Ports
 site32.example.com   10.1.10.132 80       10.1.20.132                  80/8080/8081
 ==================  ============ ======== ============================ ============
 
-- Port 80: web-dvwa application
-- Port 8080: f5-hello-world application
-- Port 8081: f5-demo-httpd application
+- Port 80: hackazon application
+- Port 8080: web-dvwa application
+- Port 8081: f5-hello-world application
+- Port 8082: f5-demo-httpd application
+- Port 8083: f5-demo-httpd frontend application
+- Port 8084: f5-demo-httpd backend application
 
 .. toctree::
    :maxdepth: 1

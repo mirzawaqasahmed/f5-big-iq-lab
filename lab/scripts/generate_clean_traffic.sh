@@ -25,7 +25,8 @@ sitefqdn[14]="site36.example.com"
 sitefqdn[15]="site38.example.com"
 sitefqdn[16]="site40.example.com"
 sitefqdn[17]="site42.example.com"
-sitepages="index.php index.php index.php setup.php setup.php instructions.php instructions.php about.php about.php about.php"
+# for hackazon app on port 80 in a docker
+sitepages="index.php faq contact wishlist user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=64 product/view?id=72 product/view?id=78 product/view?id=81 product/view?id=101 product/view?id=112 product/view?id=113 product/view?id=130 product/view?id=141 product/view?id=142 product/view?id=150 product/view?id=169 product/view?id=191"
 
 
 # get length of the array
