@@ -1,5 +1,5 @@
 ---
-- name: Delete the application
+- name: Delete applications UDF blueprint
   hosts: all
   connection: local
 

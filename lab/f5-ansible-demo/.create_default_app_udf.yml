@@ -1,5 +1,5 @@
 ---
-- name: Create the applications UDF blueprint
+- name: Create applications UDF blueprint
   hosts: all
   connection: local
 
