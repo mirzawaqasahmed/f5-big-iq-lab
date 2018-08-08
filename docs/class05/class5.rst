@@ -1,7 +1,9 @@
 Class 5: BIG-IQ Device Management
 =================================
 
-In this class, we will
+.. image:: ../pictures/under-construction-02.jpg
+  :align: center
+  :scale: 50%
 
 .. toctree::
    :maxdepth: 1

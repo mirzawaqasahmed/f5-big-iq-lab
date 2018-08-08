@@ -1,7 +1,9 @@
 Class 6: BIG-IQ ADC Management
 ==============================
 
-In this class, we will
+.. image:: ../pictures/under-construction-01.jpg
+  :align: center
+  :scale: 50%
 
 .. toctree::
    :maxdepth: 1
