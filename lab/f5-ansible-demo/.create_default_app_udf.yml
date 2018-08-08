@@ -80,3 +80,26 @@
           netmask: 255.255.255.255
           port: 80
       delegate_to: localhost
+
+    - name: site38.example.com
+      bigiq_application_http:
+        provider:
+          server: 10.1.1.4
+          user: olivia
+          password: olivia
+          validate_certs: no
+        name: "site38.example.com"
+        wait: no
+        description: Load balance HTTP BIG-IP 12.1
+        service_environment: "TLV-vBIGIP01.termmarc.com"
+        add_analytics: yes
+        servers:
+          - address: 10.1.20.138
+            port: 80
+          - address: 10.1.20.139
+            port: 80
+        inbound_virtual:
+          address: 10.1.10.138
+          netmask: 255.255.255.255
+          port: 80
+      delegate_to: localhost

@@ -39,3 +39,15 @@
         wait: no
         state: absent
       delegate_to: localhost
+
+    - name: site38.example.com
+      bigiq_application_http:
+        provider:
+          server: 10.1.1.4
+          user: olivia
+          password: olivia
+          validate_certs: no
+        name: "site38.example.com"
+        wait: no
+        state: absent
+      delegate_to: localhost
