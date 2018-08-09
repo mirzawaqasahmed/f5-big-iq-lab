@@ -14,7 +14,7 @@ Below Virtual Servers and Pool Members can be used in the context of the  (UDF l
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
 
 ================================  =======
-Test ListenerS                    Ports
+Test Listeners                    Ports
 ================================  =======
 10.1.10.203 *(used in module 1)*  53
 10.1.10.204                       53
