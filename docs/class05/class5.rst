@@ -6,7 +6,7 @@ Showing a BIG-IQ in UDF managing BIG-IPs in Azure and Google Cloud, for example.
 
 .. image:: ../pictures/under-construction-02.jpg
   :align: center
-  :scale: 30%
+  :scale: 20%
 
 .. toctree::
    :maxdepth: 1
