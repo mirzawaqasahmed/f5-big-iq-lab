@@ -18,14 +18,14 @@ This lab environment is designed to allow for quick and easy demos of a signific
   :align: center
   :scale: 50%
 
-List of instances:
+**List of instances**:
 
 - BIGIQ <> DCD
-- 3x BIG-IP 13.1.0.5 / 1 standalone, 1 cluster
-- 1x BIG-IP 12.1.0 / 1 standalone
+- 3x BIG-IP 13.1.0.5 / 1 standalone (Seattle), 1 cluster (Boston)
+- 1x BIG-IP 12.1.0 / 1 standalone (Tel Aviv)
 - LAMP Server - Radius, DHCP, RDP, Application Server, Traffic Generator (HTTP, ACCESS, DNS, SECURITY).
 
-Components available:
+**Components available**:
 
 - "System" - Manage all aspects for BIG-IQ, 
 - "Device"  - Discover, Import and manage BIGIP devices. (ADC scale target 400 devices per BIGIQ instance with the min required resources for virtual), 
