@@ -1,7 +1,9 @@
 Class 10: BIG-IQ DNS
 ====================
 
-.. note:: New 6.0.1
+.. image:: ../pictures/under-construction-01.jpg
+  :align: center
+  :scale: 20%
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
