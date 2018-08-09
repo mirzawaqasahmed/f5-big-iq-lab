@@ -13,13 +13,12 @@ Below Virtual Servers and Pool Members can be used in the context of the  (UDF l
 
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
 
-================================  =======
-Test Listeners                    Ports
-================================  =======
-10.1.10.203 *(used in module 1)*  53
-10.1.10.204                       53
-10.1.10.205                       53
-================================  =======
+==================================  ===========
+Test Listeners                      Ports
+==================================  ===========
+10.1.10.203 *(Boston Cluster)*      53 UDP/TCP
+10.1.10.204 *(Seattle Standalone)*  53 UDP
+==================================  ===========
 
 .. toctree::
    :maxdepth: 1

@@ -1,4 +1,6 @@
-www.example.com A
-app2.example.com A
-app1.example.com A
+site36.example.com A
+f5.udf.example.com A
 notthere.example.com A
+site40.example.com A
+site42.example.com A
+site38.example.com A
