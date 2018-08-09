@@ -3,7 +3,7 @@ Class 8: BIG-IQ Application Security Manager (ASM)
 
 .. image:: ../pictures/under-construction-01.jpg
   :align: center
-  :scale: 50%
+  :scale: 30%
 
 .. toctree::
    :maxdepth: 1

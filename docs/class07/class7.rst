@@ -3,7 +3,7 @@ Class 7: BIG-IQ Application Firewall Manager (AFM)
 
 .. image:: ../pictures/under-construction-02.jpg
   :align: center
-  :scale: 50%
+  :scale: 30%
 
 .. toctree::
    :maxdepth: 1

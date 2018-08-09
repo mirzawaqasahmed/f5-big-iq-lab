@@ -2,4 +2,6 @@ www.google.com A
 www.yahoo.com A
 www.cnn.com A
 www.cbs.com A
+www.bing.com A
+www.f5.com A
 ww.notthere2345234.com A
