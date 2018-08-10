@@ -6,6 +6,6 @@
 ## DNS Traffic
 */5 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null
 ## Access Traffic
-*/15  * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null
+*/30  * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null
 ## FPS Traffic
 45 10 * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null
