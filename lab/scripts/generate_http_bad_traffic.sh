@@ -4,9 +4,9 @@
 
 home="/home/f5/scripts"
 
-already=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
-if [  $already -gt 3 ]; then
-    echo "The script is already running $already time."
+already4=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
+if [  $already4 -gt 3 ]; then
+    echo "The script is already running $already4 time."
     exit 1
 fi
 

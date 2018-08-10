@@ -2,9 +2,9 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
-already=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
-if [  $already -gt 5 ]; then
-    echo "The script is already running $already time."
+already5=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
+if [  $already5 -gt 5 ]; then
+    echo "The script is already running $already5 time."
     exit 1
 fi
 

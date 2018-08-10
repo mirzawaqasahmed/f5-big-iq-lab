@@ -7,9 +7,9 @@ dcdip="10.1.1.6"
 #dcdip="10.192.75.181" # SJC
 #dcdip="10.11.150.16" # SEA
 
-already=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
-if [  $already -gt 1 ]; then
-    echo "The script is already running $already time."
+already1=$(ps -ef | grep $0 | grep bash | grep -v grep | wc -l)
+if [  $already1 -gt 1 ]; then
+    echo "The script is already running $already1 time."
     exit 1
 fi
 
