@@ -20,6 +20,7 @@ count=`shuf -i 1-3 -n 1`;
 count=`shuf -i 1-5 -n 1`;
 ./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 
+cd $home/access
 count=`shuf -i 1-100 -n 1`;
 ./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP01.termmarc.com $count
 count=`shuf -i 1-100 -n 1`;
@@ -27,6 +28,7 @@ count=`shuf -i 1-100 -n 1`;
 cd /home/f5/bigip_setup
 ./rate-ht-sender.py --log-iq $dcdip
 
+cd $home/access
 count=`shuf -i 1-150 -n 1`;
 ./generate_data.sh 10.1.10.222 access $count
 #count=`shuf -i 1-150 -n 1`;

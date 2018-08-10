@@ -13,6 +13,8 @@ rm -rf AWS-CFT-Cloud-Edition-6.0.0
 mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
 echo "Fixing permissions..."
 chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py
+# Cleanup AWS credentials
+rm -f /home/f5student/.aws/*
 
 # for SCJ - DCD IP
 #sed -i 's/10.1.1.6/10.192.75.181/g' /home/f5/scripts/*sh
