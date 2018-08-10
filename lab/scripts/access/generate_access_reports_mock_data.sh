@@ -25,8 +25,6 @@ if [ -z "$SESSIONS_COUNT" ]
 	SESSIONS_COUNT=50
 fi
 
-export PATH="$PATH:/usr/lib/jvm/jre/bin/"
-
 echo "Generating Access Mock Data"
 java -jar resources/accessreports_mockdata.jar $BIG_IQ $BIG_IP_HOSTNAME $SESSIONS_COUNT
 echo "Completed generating data generation for reports"

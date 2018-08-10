@@ -3,7 +3,7 @@
 0 6 * * * perl -le 'sleep rand 9000' && /home/f5/scripts/generate_http_bad_traffic.sh
 0 12 * * * perl -le 'sleep rand 9000' && /home/f5/scripts/generate_http_bad_traffic.sh
 ## DNS Traffic
-*/15 * * * * /home/f5/scripts/generate_dos_afm_fake.sh> /dev/null
+*/15 * * * * /home/f5/scripts/generate_dos_afm_fake.sh > /dev/null
 ## DOS and AFM fake data
 */16 * * * * /home/f5/scripts/generate_dns_traffic.sh > /dev/null
 ## Access Traffic
