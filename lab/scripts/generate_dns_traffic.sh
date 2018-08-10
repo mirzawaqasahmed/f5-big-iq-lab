@@ -43,8 +43,8 @@ do
                 dig @${sitelistener[$i]} $wip
             done
             echo -e "\n# site $i ${sitelistener[$i]} dnsperf"
-            count=`shuf -i 1-100 -n 1`;
-            conc=`shuf -i 1-10 -n 1`; 
+            count=`shuf -i 1-500 -n 1`;
+            conc=`shuf -i 1-50 -n 1`; 
             dnsperf -s ${sitelistener[$i]} -d $home/dnstargets.txt -c $conc -n $count
         else
             echo "SKIP ${sitelistener[$i]} - not answering on port 53"

@@ -4,6 +4,6 @@
 ## DOS and AFM fake data
 */10 * * * * /home/f5/scripts/generate_dos_afm_fake.sh > /dev/null
 ## DNS Traffic
-*/5 * * * * /home/f5/scripts/generate_dns_traffic.sh > /dev/null
+*/5 * * * * perl -le 'sleep rand 120' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null
 ## Access Traffic
 */15  * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null
