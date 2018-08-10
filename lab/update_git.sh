@@ -7,6 +7,9 @@ echo "Install new scripts..."
 git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
 mv /home/f5/f5-big-iq-lab/lab/* /home/f5
 rm -rf /home/f5/f5-big-iq-lab
+# delete AWS 6.0.0
+rm -rf AWS-CFT-Cloud-Edition-6.0.0
+mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
 echo "Fixing permissions..."
 chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py
 
