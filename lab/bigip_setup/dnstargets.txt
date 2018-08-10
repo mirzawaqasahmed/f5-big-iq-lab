@@ -1,6 +1,0 @@
-site36.example.com A
-f5.udf.example.com A
-notthere.example.com A
-site40.example.com A
-site42.example.com A
-site38.example.com A

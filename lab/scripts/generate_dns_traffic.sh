@@ -19,6 +19,10 @@ widip[3]="notthere.example.com A"
 widip[4]="site40.example.com A"
 widip[5]="site42.example.com A"
 widip[6]="site38.example.com A"
+widip[7]="site36.example.com A"
+widip[8]="www.abc.com CNAME"
+widip[9]="www.google.com MX"
+widip[10]="www.yahoo.com TXT"
 
 # get length of the array
 arraylength=${#sitelistener[@]}
@@ -27,32 +31,23 @@ arraylength2=${#widip[@]}
 for (( i=1; i<${arraylength}+1; i++ ));
 do
     if [ ! -z "${sitelistener[$i]}" ]; then
-        # Only generat traffic on alive VIP
-        ip=${sitelistener[$i]}
-        timeout 1 bash -c "cat < /dev/null > /dev/udp/${ip:1:-1}/53"
+        # test of listener is responding
+        dig @${sitelistener[$i]}
         if [  $? == 0 ]; then
-		    # Port 53 open
-		    port=53
-        else
-            port=0
-        fi
-
-        if [[  $port == 53 ]]; then
-            # Build dns target file and do dig
-            for (( i=1; i<${arraylength2}+1; i++ ));
+             # Build dns target file and do dig
+            for (( j=1; j<${arraylength2}+1; j++ ));
             do
-                echo "Loop $k"
-                echo ${widip[$i]} >> $home/dnstargets.txt
-                wip=$(echo ${widip[$i]} | awk '{print $1}')
+                echo -e "\n# site $i ${sitelistener[$i]} ${widip[$j]} dnstargets.txt"
+                echo ${widip[$j]} >> $home/dnstargets.txt
+                wip=$(echo ${widip[$j]} | awk '{print $1}')
                 dig @${sitelistener[$i]} $wip
             done
             echo -e "\n# site $i ${sitelistener[$i]} dnsperf"
             count=`shuf -i 1-100 -n 1`;
             conc=`shuf -i 1-10 -n 1`; 
             dnsperf -s ${sitelistener[$i]} -d $home/dnstargets.txt -c $conc -n $count
-            
         else
-                echo "SKIP ${sitelistener[$i]} not answering on port 53"
+            echo "SKIP ${sitelistener[$i]} - not answering on port 53"
         fi
    fi
 done
