@@ -64,25 +64,25 @@ APP_NAME: "{{PREFIX}}-app-aws"
 
 # BIG-IP Customer Gateway Config
 ansible_ssh_user: "admin"
-ansible_ssh_pass: "admin"
+ansible_ssh_pass: "purPl3f5@rk"
 
 bigip_rest_user: "admin"
-bigip_rest_password: "admin"
+bigip_rest_password: "purPl3f5@rk"
 
 # BIG-IQ SSG CONFIG
 BIGIP_USER: admin
-BIGIP_PWD: 74ZEws7axzWdKBap3DkQ
+BIGIP_PWD: "74ZEws7axzWdKBap3DkQ"
 
 BIGIQ_HOST: localhost:8100
 BIGIQ_URI: http://{{BIGIQ_HOST}}
 BIGIQ_USER: admin
-BIGIQ_PWD: admin
+BIGIQ_PWD: "purPl3f5@rk"
 
 # IP Address of BIG IQ setup as license provider
 # This BIQ must have netowrk access to the VPC in which the BIG-IP VE will be created
 BYOL_BIGIQ_HOST: 10.1.10.4
 BYOL_BIGIQ_USER: admin
-BYOL_BIGIQ_PWD: admin
+BYOL_BIGIQ_PWD: "purPl3f5@rk"
 #BYOL_POOL_NAME: byol-pool
 BYOL_POOL_NAME: byol-pool-perAppVE
 
