@@ -2,8 +2,8 @@
 
 cd /home/f5
 
-if [ -f udf_auto_update_git]; then
-    echo "In order to force the updates, delete udf_auto_update_git and re-run update_git.sh"
+if [ -f ~/udf_auto_update_git ]; then
+    echo -e "\n\nIn order to force the updates, delete udf_auto_update_git and re-run update_git.sh\n\n"
 else
     echo "Cleanup previous scripts..."
     rm -rf AWS* f5-ansi* scripts* class1* Common* crontab* f5-big-iq-lab
@@ -29,5 +29,5 @@ else
 
     touch udf_auto_update_git
     rm -f last_update_*
-    touch last_update_$(date +%Y-%m-%d)
+    touch last_update_$(date +%Y-%m-%d_%k-%M)
 fi
