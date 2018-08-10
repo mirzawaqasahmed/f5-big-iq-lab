@@ -1,4 +1,4 @@
-Module 1: Customisation
+Module 1: Customization
 =======================
 
 
