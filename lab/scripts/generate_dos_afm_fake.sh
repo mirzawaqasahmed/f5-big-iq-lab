@@ -3,7 +3,7 @@
 # set -x
 
 home="/home/f5/scripts"
-dcdip="10.1.1.6"
+dcdip="10.1.10.6"
 #dcdip="10.192.75.181" # SJC
 #dcdip="10.11.150.16" # SEA
 
