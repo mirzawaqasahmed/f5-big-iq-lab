@@ -30,7 +30,7 @@ fi
 
 if [ -z "$ACCESS_SESSIONS_COUNT" ]
 	then 
-	ACCESS_SESSIONS_COUNT=100
+	ACCESS_SESSIONS_COUNT=8
 fi
 
 export PATH="$PATH:/usr/lib/jvm/jre/bin/"

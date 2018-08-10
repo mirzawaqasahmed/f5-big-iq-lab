@@ -47,14 +47,14 @@ echo "count: $runCount"
        if [ "$CONFIGURATION_TYPE" == "all" ] || [ "$CONFIGURATION_TYPE" == "access" ] || [ "$CONFIGURATION_TYPE" == "accesssessions" ]
 	then
 		echo "Generating Access Sessions in BIG-IP"
-	        count=$[1 + $RANDOM % 10 ]
+	        count=$[1 + $RANDOM % 8 ]
 	        echo "Number of Sessions: $count"
 		java -jar resources/access_reports_data_generator.jar --host $VIRTUAL_IP --sessions $count
 	fi
 
 	if [ "$CONFIGURATION_TYPE" == "all" ] || [ "$CONFIGURATION_TYPE" == "accessmock" ] || [ "$CONFIGURATION_TYPE" == "access" ] 
 	then
-		count=$[2 + $RANDOM % 50 ]
+		count=$[2 + $RANDOM % 8 ]
 		echo "Generating Access mock sessions: $count"
 		java -cp resources/access_reports_data_generator.jar eventlogs.DemoAccessEventLogsGenerator $LOGIQ_SELFIP $BIGIP_HOSTNAME $count
 	fi

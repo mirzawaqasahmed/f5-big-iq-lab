@@ -22,7 +22,7 @@ SESSIONS_COUNT="$3"
 
 if [ -z "$SESSIONS_COUNT" ]
 	then 
-	SESSIONS_COUNT=50
+	SESSIONS_COUNT=8
 fi
 
 echo "Generating Access Mock Data"
