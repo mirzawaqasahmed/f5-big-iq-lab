@@ -21,3 +21,6 @@ rm -f /home/f5student/.aws/*
 
 # for SEA - DCD IP
 #sed -i 's/10.1.1.6/10.11.150.16/g' /home/f5/scripts/*sh
+
+rm -f last_update_*
+touch last_update_$(date +%Y-%m-%d)

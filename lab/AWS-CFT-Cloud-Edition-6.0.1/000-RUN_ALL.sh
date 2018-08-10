@@ -67,9 +67,6 @@ sleep 20
 ssh admin@10.1.1.7 tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1398
 ssh admin@10.1.1.7 tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1398
 
-# Add route to access AWS VPC from the Lamp server
-sudo route add -net 172.17.0.0/16 gw 10.1.10.7
-
 echo -e "\nTIME: $(date +"%H:%M")"
 ansible-playbook $DEBUG_arg 06-ubuntu-apache2.yml
 echo -e "\nTIME: $(date +"%H:%M")"
