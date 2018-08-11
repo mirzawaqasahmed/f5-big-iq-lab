@@ -30,3 +30,4 @@ else
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%k-%M)
+fi
