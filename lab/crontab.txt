@@ -1,3 +1,4 @@
+# m h  dom mon dow   command
 ## Traffic Generator (HTTP)
 */3 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
@@ -6,8 +7,8 @@
 ## DNS Traffic
 */5 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null
 ## Access Traffic
-*/20  * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null
+*/15 * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null
 ## FPS Traffic
 45 10 * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
-@reboot ssh admin@10.1.1.10 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg
+@reboot ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg

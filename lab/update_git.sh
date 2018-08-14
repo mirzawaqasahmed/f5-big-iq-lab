@@ -18,6 +18,8 @@ else
     mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
     echo "Fixing permissions..."
     chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py
+    echo "Installing new crontab"
+    crontab < crontab.txt
     # Cleanup AWS credentials
     rm -f /home/f5student/.aws/*
 
@@ -29,5 +31,5 @@ else
 
     touch udf_auto_update_git
     rm -f last_update_*
-    touch last_update_$(date +%Y-%m-%d_%k-%M)
+    touch last_update_$(date +%Y-%m-%d_%H-%M)
 fi
