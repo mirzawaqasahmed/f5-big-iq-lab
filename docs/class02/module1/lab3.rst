@@ -17,7 +17,7 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
 .. note:: Keep those sessions open until the end of the class.
 
-* Connect via ``SSH`` to the system *Ubuntu 14.04 Lamp Server, Radius and DHCP*
+* Connect via ``SSH`` to the system *Ubuntu Lamp Server*
   and run the command:
 
   ``sudo service isc-dhcp-server status``
@@ -39,7 +39,7 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
 Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
 in our ESXi). To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu 18.04 Lamp Server, RDP, Radius, Docker* system and select *XRDP*
+of the *Ubuntu Lamp Server* system and select *XRDP*
 
 .. image:: ../pictures/module1/img_module1_lab3_5.png
     :align: center

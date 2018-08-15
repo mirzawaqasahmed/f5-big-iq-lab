@@ -42,9 +42,7 @@ this
 
 You can monitor the deployment of the new instance : 
 
-
 * via the log files *orchestrator.log* and *restjavad.0.log* on ``BIG-IQ``
-
 * via the alerts available in the ``BIG-IQ`` UI
 * monitor the vCenter interface (here you can also check that it has 4 vCPUs instead of 2)
 

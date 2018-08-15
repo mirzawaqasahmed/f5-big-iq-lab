@@ -60,9 +60,11 @@ You should see a new device template called <your PREFIX>-aws-device-template
 |
 
 Click on this new device template to review its configuration. You'll see that
-only **DNS & NTP** and **User Accounts** have been setup.
+only **NTP** and **User Accounts** have been setup.
 
 .. note:: the admin password used here is **74ZEws7axzWdKBap3DkQ**
+
+.. note:: **[New 6.0.1]** DNS server shouldn't be set in the device template
 
 .. image:: ../pictures/module4/img_module4_lab3_2.png
   :align: center

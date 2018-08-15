@@ -8,14 +8,14 @@ environment.
   your environment as soon as you're done with it
 
 To do this, please proceed this way: Connect to your system called
-**Ubuntu 16.04 Lamp Server, Radius and DHCP**
+**Ubuntu Lamp Server**
 
 Do the following:
 
 .. code::
 
     f5@03a920f8b4c0410d8f:~$ cd AWS-CFT-Cloud-Edition/
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ ./111-DELETE_ALL.sh
+    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ ./111-DELETE_ALL.sh nopause
 
 Follow all the steps as explained:
 

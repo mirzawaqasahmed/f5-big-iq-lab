@@ -4,13 +4,12 @@ Lab 3.4: Automation Demo with Postman
 
 .. warning :: **david** is used to do the API calls, make sure it has the correct permission and is a LOCAL user (c.f. Class 1 Module 1)
 
-Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
-in our ESXi). To do this, in your UDF deployment, click on the *Access* button
-of the *ESXi 6.5.0 + vCenter* system and select *VCENTER THROUGH UBUNTU*
+Launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *XRDP*
 
-.. image:: ../pictures/module3/img_module3_lab3_2.png
-  :align: center
-  :scale: 50%
+.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
+    :align: center
+    :scale: 50%
 
 |
 

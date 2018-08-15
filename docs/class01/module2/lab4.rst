@@ -13,6 +13,8 @@ Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and s
 
 |
 
+.. note :: Set ``Trust XFF Header`` to ``Yes`` if you want the client IP/Country visible in the Security Analytics
+
 2. Larry check the Web Application Security for ``f5-asm-policy1`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies
@@ -24,6 +26,8 @@ Click on Suggestions, then **Accept** the Learning.
   :scale: 50%
 
 |
+
+.. note :: in case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
 
 3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 

@@ -59,6 +59,7 @@ VMWare Properties:
           nic2                      internal
   ========================== ===================
 
+.. note :: **[New 6.0.1]** the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
 
 .. image:: ../pictures/module1/img_module1_lab2_3.png
     :align: center
@@ -70,7 +71,7 @@ Click *Save & Close*
 
 .. note:: with the Liberty release, we have a 1:1 mapping between the cloud
   provider and cloud environment. So a cloud provider can be used with only one
-  cloud environment. This restriction will be removed with 6.0.1
+  cloud environment.
 
 We have setup all the different element defining our ``Service Scaling Group``
 and can trigger its deployment now

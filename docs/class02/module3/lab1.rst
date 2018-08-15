@@ -36,6 +36,14 @@ Here we can see that we use:
 * 8 Gb of Memory
 * BIG-IP version 13.1.0.5
 
+**[New 6.0.1]** you can also check the BIG-IP version by selecting the device part of the SSG.
+
+.. image:: ../pictures/module3/img_module3_lab1_4b.png
+ :align: center
+ :scale: 50%
+
+|
+
 If we need to upgrade AND/OR scale-up our ``SSG``, we just need to do the following: 
 
 * Deploy a new F5 Virtual Edition image as a template with the relevant version
@@ -45,6 +53,8 @@ If we need to upgrade AND/OR scale-up our ``SSG``, we just need to do the follow
 
 In this lab, we already have another VM template available to test this: 
 BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template
+
+.. note:: **[New 6.0.1]** BIGIP-13.1.1-0.0.4.ALL_1SLOT_ASM_template was added in vCenter.
 
 .. image:: ../pictures/module3/img_module3_lab1_1.png
  :align: center
@@ -66,13 +76,13 @@ We can review the configuration of this VM template:
 
 So if we switch from our previous template to this one, we will UPGRADE our environment AND SCALE-UP: 
 
-* upgrade from 13.1.0.5 to 13.1.0.7
+* upgrade from 13.1.0.5 to 13.1.0.7 or 13.1.1
 * add more vCPUs to the instances (2 -> 4 vCPUs)
 
 In your ``BIG-IQ`` UI, Go to *Applications* > *Environments* > *Cloud Environments*, Select 
 **SSGClass2VMWareEnvironment** to edit it. 
 
-Update the *VM Image* field to use the new VM Template: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template
+Update the *VM Image* field to use the new VM Template: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template or BIGIP-13.1.1-0.0.4.ALL_1SLOT_ASM_template
 
 .. image:: ../pictures/module3/img_module3_lab1_2.png
  :align: center
