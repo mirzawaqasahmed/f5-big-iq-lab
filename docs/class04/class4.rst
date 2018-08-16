@@ -70,7 +70,7 @@ This area allows for management of local users and groups, as well as integratio
 
 See `Class 1 Module 1`_ for description of the different personas.
 
-.. _Class 1 Module 1: ../class01/module1/module1.html
+.. _Class 1 Module 1: ../class01/module1/lab1.html
 
 **USER PREFERENCES**
 
@@ -80,7 +80,7 @@ This area allows the user to specify preferences, including UI idle timeout, def
 
 * Context Sensitive Online Help
 
-Click the ? in the upper right hand corner of the UI to get help specific to the page that you are on.
+Click the ``?`` in the upper right hand corner of the UI to get help specific to the page that you are on.
 
 .. image:: ./pictures/img_module1_2.png
   :align: center
