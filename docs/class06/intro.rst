@@ -1,3 +1,3 @@
 Introduction
 ============
-This class will cover BIG-IQ Platform topics.
+This class will cover BIG-IQ Application Delivery Controller topics.

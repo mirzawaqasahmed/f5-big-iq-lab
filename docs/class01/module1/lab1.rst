@@ -80,6 +80,8 @@ Click on *Save & Close*
   :align: center
   :scale: 50%
 
+|
+
 Application Creator VMware custom role:
 
 .. image:: ../pictures/module1/img_module1_lab2_2.png
