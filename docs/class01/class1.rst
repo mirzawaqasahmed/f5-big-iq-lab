@@ -1,5 +1,5 @@
-Class 1: BIG-IQ Application Creation
-====================================
+Class 1: BIG-IQ Application Creation (Cloud Edition)
+====================================================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 

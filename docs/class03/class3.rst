@@ -1,5 +1,5 @@
-Class 3:  BIG-IQ Analytics
-==========================
+Class 3:  BIG-IQ Analytics (Cloud Edition)
+==========================================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
