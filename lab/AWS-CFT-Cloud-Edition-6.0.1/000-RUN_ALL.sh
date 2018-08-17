@@ -24,7 +24,7 @@ clear
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
 
 echo -e "\nDid you subscribed and agreed to the software terms for F5 BIG-IP Virtual Edition - BEST - (BYOL) in AWS Marketplace?\n\n"
-echo -e "https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP\n\n"
+echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT/\n\n"
 
 echo -e "EXPECTED TIME: ~45 min\n\n"
 
@@ -100,7 +100,7 @@ aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
 echo -e "\nIf the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
 echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n\n"
 
-echo -e "Note: if the SSG fails, check if the VPN is up (aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry).\nAlso check if your S3 bucket does not contain a license file form previous attempt."
+echo -e "Note: if the SSG fails, check if the VPN is up (aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry)."
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
