@@ -88,7 +88,7 @@ This lab environment `UDF Lab`_ (internal) is designed to allow for quick and ea
 .. toctree::
    :maxdepth: 2
    :numbered:
-   :caption: Contents:
+   :caption: **Contents/Lab**:
    :glob:
 
    class*/class*
