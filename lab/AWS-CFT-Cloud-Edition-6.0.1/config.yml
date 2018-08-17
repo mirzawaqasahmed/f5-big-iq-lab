@@ -3,7 +3,7 @@
 ##################################################################################################
 
 ## Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?
-## https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
+## https://aws.amazon.com/marketplace/pp/B07G5MT2KT
 
 AWS_ACCESS_KEY_ID: <key_id>
 AWS_SECRET_ACCESS_KEY: <key_secret>
