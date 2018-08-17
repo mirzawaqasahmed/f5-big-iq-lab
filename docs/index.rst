@@ -34,15 +34,6 @@ This lab environment `UDF Lab`_ (internal) is designed to allow for quick and ea
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 - "Application" - Application Management (Cloud Edition)
 
-.. warning:: When using the `UDF Lab`_, make sure:
-
-  1. STOP the ESXi if you do not plan to demo VMware SSG.
-  2. STOP your deployment at the end of your demo.
-  3. Do not forget to tear down your AWS SSG if any.
-  4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get go performance.
-
-.. _UDF Lab: https://udf.f5.com/b/ffc0a2a4-7953-473a-8ecb-4a5e9e8f0eee#documentation
-
 **Documentations**:
 
 - `BIG-IP Cloud Edition Knowledge Center`_
@@ -84,6 +75,15 @@ This lab environment `UDF Lab`_ (internal) is designed to allow for quick and ea
 .. _BIG-IP 6.0 Application Service Catalog - Automation Demo with Postman: https://github.com/codygreen/BIG-IQ-Automation-Application-Service-Catalog 
 .. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start 
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
+
+.. warning:: When using the `UDF Lab`_, make sure:
+
+  1. STOP the ESXi if you do not plan to demo VMware SSG.
+  2. STOP your deployment at the end of your demo.
+  3. Do not forget to tear down your AWS SSG if any.
+  4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get go performance.
+
+.. _UDF Lab: https://udf.f5.com/b/ffc0a2a4-7953-473a-8ecb-4a5e9e8f0eee#documentation
 
 .. toctree::
    :maxdepth: 2
