@@ -1,10 +1,11 @@
 Module 2:
 ========================================================
+``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
-BIQSEC-1306 Multi Device Packet Tester
-BIQSEC-588 Support AFM log aggregation and Visibility
-BIQSEC-1688 Ability to rename an object related to firewall
-BIQSEC-1290 GUI support device dos multi-editing function
+- Multi Device Packet Tester
+- Support AFM log aggregation and Visibility
+- Ability to rename an object related to firewall
+- GUI support device dos multi-editing function
 
 
 .. toctree::

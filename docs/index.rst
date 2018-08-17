@@ -23,7 +23,7 @@ This lab environment `UDF Lab`_ (internal) is designed to allow for quick and ea
 - BIGIQ <> DCD
 - 3x BIG-IP 13.1.0.5 / 1 standalone (Seattle), 1 cluster (Boston)
 - 1x BIG-IP 12.1.0 / 1 standalone (Tel Aviv)
-- LAMP Server - Radius, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, ACCESS, DNS, SECURITY).
+- LAMP Server - Radius, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 
 **Components available**:
 
