@@ -100,7 +100,7 @@ aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
 echo -e "\nIf the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
 echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n\n"
 
-echo -e "Note: if the SSG fails, check if the VPN is up (aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry)."
+echo -e "Note: if the SSG fails, check if the VPN is up (./check_vpn_aws.sh)."
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
