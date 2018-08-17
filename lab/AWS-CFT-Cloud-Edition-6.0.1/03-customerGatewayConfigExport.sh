@@ -2,8 +2,8 @@
 # Uncomment set command below for code debuging bash
 #set -x
 
-PREFIX="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')"
-PREFIXVPN="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')-vpn"
+PREFIX="$(head -50 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIXVPN="$(head -50 config.yml | grep PREFIX | awk '{ print $2}')-vpn"
 
 aws ec2 describe-vpn-connections --query 'VpnConnections[*].{ID:CustomerGatewayConfiguration}' --filters Name=tag:Name,Values=$PREFIXVPN --output text > ./cache/$PREFIX/3-customer_gateway_configuration.xml
 
