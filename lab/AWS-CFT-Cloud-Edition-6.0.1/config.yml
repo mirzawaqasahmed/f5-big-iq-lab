@@ -2,8 +2,8 @@
 ###########################         UPDATE VARIABLE BELOW          ###############################
 ##################################################################################################
 
-## Did you subscribed and agreed to the software terms for F5 BIG-IP Virtual Edition - BEST - (BYOL) in AWS Marketplace?
-## https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP
+## Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?
+## https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
 
 AWS_ACCESS_KEY_ID: <key_id>
 AWS_SECRET_ACCESS_KEY: <key_secret>

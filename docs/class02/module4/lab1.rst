@@ -187,7 +187,7 @@ Before being able to deploy an instance in ``AWS``, you'll have to **subscribe**
 
 Go here to **subscribe** to right F5 instance we will use in this lab: 
 
-`F5 BIG-IP Virtual Edi  on - BEST - (BYOL) <https://aws.amazon.com/marketplace/pp/B00KXHNAPW?qid=1528627067862&sr=0-1&ref_=srh_res_product_title>`_
+`F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) <https://aws.amazon.com/marketplace/pp/B07G5MT2KT/>`_
 
 Once you've subscribed, you should see something like this: 
 

@@ -109,16 +109,6 @@ Here is an example of the updated **config.yml** file:
     PREFIX: udf-MENANT
 
     # Select on of  the region below (default US EST N. Virginia)
-    #us-east-1
-    #us-east-2
-    #us-west-1
-    #us-west-2
-    #eu-central-1
-    #eu-west-1
-    #eu-west-2
-    #us-west-3
-    #ap-southeast-1
-    #ap-northeast-2
     DEFAULT_REGION: us-east-1
     AWS_US_EAST_1A: us-east-1a
     AWS_US_EAST_1B: us-east-1b
@@ -131,9 +121,7 @@ Here is an example of the updated **config.yml** file:
     # /!\ IF THE IP ADDRESS ENDS WITH A x.x.x.0 (e.g. 129.43.54.0), DELETE YOUR DEPLOYMENT AND RESTART A NEW ONE.
     CUSTOMER_GATEWAY_IP: 129.146.19.143
 
-    # F5 Networks BYOL BIGIP-13.1.0.5-0.0.5 - Best - Mar 27 2018 8_21_31
-    # Oregon eu-west-2: ami-105b3b68
-    # Virginia us-east-1: ami-8fe13ff0
+    BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
 
 
 .. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Region
@@ -249,12 +237,12 @@ You should see something like this:
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ ./000-RUN_ALL.sh nopause
+    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ nohup ./000-RUN_ALL.sh nopause &
+    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ tail -f nohup.out
 
     Did you subscribed and agreed to the software terms in AWS Marketplace?
 
-
-    https://aws.amazon.com/marketplace/search/results?page=1&filters=pricing_plan_attributes&pricing_plan_attributes=BYOL&searchTerms=F5+BIG-IP
+    https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
 
 
     Press [Enter] key to continue... CTRL+C to Cancel

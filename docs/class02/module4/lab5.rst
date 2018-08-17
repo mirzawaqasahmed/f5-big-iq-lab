@@ -15,7 +15,8 @@ Do the following:
 .. code::
 
     f5@03a920f8b4c0410d8f:~$ cd AWS-CFT-Cloud-Edition/
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ ./111-DELETE_ALL.sh nopause
+    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ nohup ./111-DELETE_ALL.sh nopause &
+    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ tail -f nohup.out
 
 Follow all the steps as explained:
 
