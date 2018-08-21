@@ -21,7 +21,7 @@ else
     rm -rf AWS-CFT-Cloud-Edition-6.0.0
     mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
     echo "Fixing permissions..."
-    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh vmware-ansible/*py
+    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh
     echo "Installing new crontab"
     crontab < crontab.txt
     # Cleanup AWS credentials
