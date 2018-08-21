@@ -33,6 +33,9 @@ else
     # for SEA - DCD IP
     #sed -i 's/10.1.10.6/10.11.150.16/g' /home/f5/scripts/*sh
 
+    ## WA docker hackazon processes not starting sometimes
+    sudo docker restart 5096d1a9a688
+
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)
