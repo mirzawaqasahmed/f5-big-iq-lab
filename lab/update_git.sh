@@ -48,4 +48,4 @@ fi
 sudo docker restart 2e4fc9adf5be
 
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
-/home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
+sleep 300 && /home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
