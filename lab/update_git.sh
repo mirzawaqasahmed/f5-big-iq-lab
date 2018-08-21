@@ -34,7 +34,7 @@ else
     #sed -i 's/10.1.10.6/10.11.150.16/g' /home/f5/scripts/*sh
 
     ## WA docker hackazon processes not starting sometimes (fix to re-install the docker => next publication)
-    sudo docker restart 5096d1a9a688
+    sudo docker restart 2e4fc9adf5be
     ## WA restart xrdp as sometime the process dies
     sudo /etc/init.d/xrdp restart
 
