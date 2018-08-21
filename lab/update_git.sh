@@ -33,10 +33,18 @@ else
     # for SEA - DCD IP
     #sed -i 's/10.1.10.6/10.11.150.16/g' /home/f5/scripts/*sh
 
-    ## WA docker hackazon processes not starting sometimes
+    ## WA docker hackazon processes not starting sometimes (fix to re-install the docker => next publication)
     sudo docker restart 5096d1a9a688
+    ## WA restart xrdp as sometime the process dies
+    sudo /etc/init.d/xrdp restart
+
+    # Temporart package to install for vmware script
+    sudo apt-get install jq -y
 
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)
 fi
+
+# Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
+/home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &

@@ -16,9 +16,9 @@
     delegate_to: localhost
     register: vmfacts
 
-  - debug: msg="{{vmfacts.virtual_machines}}"
-    with_items:
-      - "{{vmfacts.virtual_machines.items}}"
+#  - debug: msg="{{vmfacts.virtual_machines}}"
+#    with_items:
+#      - "{{vmfacts.virtual_machines.items}}"
 
   - name: Create resource file
     copy: content="{{vmfacts}}" dest=./vmfact.json
