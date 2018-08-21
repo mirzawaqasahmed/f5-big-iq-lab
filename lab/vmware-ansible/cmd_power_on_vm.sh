@@ -1,1 +1,1 @@
-ansible-playbook -i notahost, power_on_vm.yaml
+ansible-playbook -i vmware_inventory.py power_on_vm.yaml
