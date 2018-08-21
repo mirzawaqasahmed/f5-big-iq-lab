@@ -21,4 +21,4 @@
       - "{{vmfacts.virtual_machines.items}}"
 
   - name: Create resource file
-    copy: content="{{vmfacts.virtual_machines.items}}" dest=.vmfact.json
+    copy: content="{{vmfacts}}" dest=./vmfact.json

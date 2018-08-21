@@ -13,7 +13,7 @@
       password: "Purpl3$lab"
       validate_certs: no
       folder: /vm
-      name: vmware-ssg*
+      uuid: "{{ uuid }}"
       state: powered-on
     delegate_to: localhost
     register: deploy
