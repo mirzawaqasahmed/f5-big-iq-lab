@@ -3,6 +3,8 @@
 # Uncomment set command below for code debuging bash
 #set -x
 
+echo -e "\nTIME: $(date +"%H:%M")"
+
 cd /home/f5/vmware-ansible
 
 ansible-playbook -i notahost, get_status_vm.yaml
@@ -18,7 +20,7 @@ if [ "$n" -gt "1" ]; then
         ansible-playbook -i notahost, power_on_vm.yaml --extra-vars "uuid=$uuid"
     done < uuid.txt
 else
-    echo "No SSG VM to power on."
+    echo "No SSG VM(s) to power on."
 fi
 
 rm -f vmfact.json uuid.txt
