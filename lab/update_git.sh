@@ -42,4 +42,4 @@ fi
 #sudo /etc/init.d/xrdp restart
 
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
-sleep 300 && /home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
+/home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &

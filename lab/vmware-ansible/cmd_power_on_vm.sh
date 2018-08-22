@@ -1,9 +1,11 @@
-
 #!/bin/bash
 # Uncomment set command below for code debuging bash
 #set -x
 
 echo -e "\nTIME: $(date +"%H:%M")"
+
+# wait 10 min for ESX to boot
+sleep 600
 
 cd /home/f5/vmware-ansible
 
