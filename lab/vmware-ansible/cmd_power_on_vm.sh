@@ -4,9 +4,6 @@
 
 echo -e "\nTIME: $(date +"%H:%M")"
 
-# wait 10 min for ESX to boot
-sleep 600
-
 cd /home/f5/vmware-ansible
 
 # Get list of VMs in the vCenter

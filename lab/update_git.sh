@@ -39,8 +39,9 @@ else
 fi
 
 ## WA restart xrdp as sometime the process dies
-sudo /etc/init.d/xrdp status
-#sudo /etc/init.d/xrdp restart
+echo "xRDP status: (if failed, run sudo /etc/init.d/xrdp restart)"
+sudo /etc/init.d/xrdp status | grep Active
 
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
-/home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
+# wait 10 min for ESX to boot
+sleep 600 && /home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
