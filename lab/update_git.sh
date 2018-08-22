@@ -38,10 +38,6 @@ else
     touch last_update_$(date +%Y-%m-%d_%H-%M)
 fi
 
-## WA restart xrdp as sometime the process dies
-echo "xRDP status: (if failed, run sudo /etc/init.d/xrdp restart)"
-sudo /etc/init.d/xrdp status | grep Active
-
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
 # wait 10 min for ESX to boot
 sleep 900 && /home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
