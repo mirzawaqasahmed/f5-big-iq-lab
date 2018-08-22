@@ -39,6 +39,7 @@ else
 fi
 
 ## WA restart xrdp as sometime the process dies
+sudo /etc/init.d/xrdp status
 #sudo /etc/init.d/xrdp restart
 
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
