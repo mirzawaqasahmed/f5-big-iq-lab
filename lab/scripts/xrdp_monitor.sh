@@ -4,4 +4,4 @@
 
 STATUS=$(/etc/init.d/xrdp status | grep Active | awk '{print $2}')
 # Most services will return something like "OK" if they are in fact "OK"
-test "$STATUS" = "active" || /etc/init.d/xrdp restart
+test "$STATUS" = "active" || sudo /etc/init.d/xrdp restart
