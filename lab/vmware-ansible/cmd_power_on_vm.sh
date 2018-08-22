@@ -15,8 +15,14 @@ jq '.virtual_machines' vmfact.json | grep uuid | awk -F: '{print $2}' | sed -n '
 # count number of VMs
 n=$(wc -l uuid.txt | awk '{ print $1 }')
 
+# parse JSON and filter only the poweredOff
+jq '.virtual_machines' vmfact.json | grep poweredOff | awk -F: '{print $2}' | sed -n 's/^.*"\(.*\)".*$/\1/p' > poweredOff.txt
+
+# count number of VMs poweredOff
+p=$(wc -l poweredOff.txt | awk '{ print $1 }')
+
 # if VM = 1, it means there is only the vCenter running so no need to run the power on playbook.
-if [ "$n" -gt "1" ]; then
+if [ "$n" -gt "1" ] && [ "$p" -gt "0" ]; then
     while IFS= read -r uuid
     do
         echo -e "\n#### $uuid"
@@ -27,4 +33,4 @@ else
     echo "No SSG VM(s) to power on."
 fi
 
-rm -f vmfact.json uuid.txt
+rm -f vmfact.json uuid.txt poweredOff.txt
