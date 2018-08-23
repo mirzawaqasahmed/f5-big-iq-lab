@@ -41,4 +41,4 @@ fi
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
 # wait 15 min for ESX to boot
 sleep 900 && /home/f5student/vmware-ansible/cmd_power_on_vm.sh > /home/f5student/vmware-ansible/cmd_power_on_vm.log &
-sudo chown -R f5student:f5student /home/f5student 2> /dev/null
+sudo chown -R f5student:f5student /home/f5student/vmware-ansible/cmd_power_on_vm.log 2> /dev/null
