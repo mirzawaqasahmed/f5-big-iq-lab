@@ -16,7 +16,7 @@ This lab environment `UDF Lab`_ (internal) is designed to allow for quick and ea
 
 .. image:: ./pictures/diagram_udf.png
   :align: center
-  :scale: 50%
+  :scale: 30%
 
 **List of instances**:
 
