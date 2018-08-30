@@ -50,4 +50,4 @@ fi
 # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
 # wait 15 min for ESX to boot
 sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log &
-sleep 1100 sudo chown -R $user:$user /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null
+sleep 1100 && sudo chown -R $user:$user /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null
