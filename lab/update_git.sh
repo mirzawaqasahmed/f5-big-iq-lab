@@ -27,7 +27,12 @@ else
     echo "Fixing permissions..."
     chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh
     echo "Installing new crontab"
-    sudo su - $user -c "crontab < crontab.txt"
+    if [ "$(whoami)" == "$user" ]; then
+        crontab < crontab.txt
+    else
+        # as root
+        su - $user -c "crontab < crontab.txt"
+    fi
     # Cleanup AWS credentials
     rm -f /home/$user/.aws/*
 
