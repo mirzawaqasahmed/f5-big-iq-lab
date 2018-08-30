@@ -1,10 +1,10 @@
-F5 Cloud Edition / BIG-IQ Lab - Index
-=====================================
+F5 BIG-IQ & Cloud Edition Lab
+=============================
 
 Welcome
 -------
 
-Welcome to the |classbold| lab - |year|
+Welcome to the |classbold| - |year|
 
 |repoinfo|
 

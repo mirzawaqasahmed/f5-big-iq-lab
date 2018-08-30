@@ -77,7 +77,7 @@ Select ``site18.example.com``
 
 2. Let's generate some bad traffic, connect on the *Ubuntu Lamp Server* server and launch the following script:
 
-``# /home/f5/scripts/generate_bad_traffic.sh``
+``# /home/f5/scripts/generate_http_bad_traffic``
 
 3. In Application Dashboard, navigate to the Security Statistics and notice the Malicious Transactions.
 

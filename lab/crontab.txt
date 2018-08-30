@@ -1,18 +1,18 @@
 # m h  dom mon dow   command
 ## Traffic Generator (HTTP)
-*/3 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null
+*/3 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
 ## DOS and AFM fake data
-*/10 * * * * /home/f5/scripts/generate_dos_afm_fake.sh > /dev/null
+*/10 * * * * /home/f5/scripts/generate_dos_afm_fake.sh > /dev/null 2>&1
 ## DNS Traffic
-*/5 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null
+*/5 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null 2>&1
 ## Access Traffic
-*/15 * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null
+*/15 * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1
 ## FPS Traffic
-45 10 * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null
+45 10 * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
 @reboot ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg
 
 ## WA reboot xrdp if dead
-*/5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null
+*/5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1

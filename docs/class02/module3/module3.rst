@@ -1,5 +1,5 @@
-Module 3: Upgrade - Scaling up a SSG
-====================================
+Module 3: Upgrade - Scaling up a SSG (VMWare)
+=============================================
 
 In this module, we will see how we can scale up and upgrade our ``Service Scaling Groups``
 called *SSGClass2*.
@@ -30,7 +30,9 @@ For the following use cases, we will deploy new Virtual Editions to replace exis
 * Upgrade the version used by the ``SSG``
 
 The process is pretty straightforward: we simply need to reference a new VMWare template 
-for the *Cloud Environment* used by the ``SSG``.  
+for the *Cloud Environment* used by the ``SSG``. 
+
+.. note:: the concept and steps are the same for AWS SSG, update the *AMI Image* instead of the *VM Image*.
 
 .. toctree::
    :maxdepth: 1
