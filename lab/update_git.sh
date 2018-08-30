@@ -18,7 +18,7 @@ else
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
-    mv /home/$user/f5-big-iq-lab/lab/* /home/f5
+    mv /home/$user/f5-big-iq-lab/lab/* /home/$user
     rm -rf /home/$user/f5-big-iq-lab
     # delete AWS 6.0.0
     echo "AWS scripts"
@@ -27,7 +27,7 @@ else
     echo "Fixing permissions..."
     chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh
     echo "Installing new crontab"
-    su - $user -c "crontab < crontab.txt"
+    sudo su - $user -c "crontab < crontab.txt"
     # Cleanup AWS credentials
     rm -f /home/$user/.aws/*
 
