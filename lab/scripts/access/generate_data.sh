@@ -22,7 +22,7 @@ if [ -z "$CONFIGURATION_TYPE" ]
 	CONFIGURATION_TYPE="all"
 fi
 
-if  [ "$CONFIGURATION_TYPE" == "all" ] || ["$CONFIGURATION_TYPE" == "access" ]  || ["$CONFIGURATION_TYPE" == "swg" ]
+if  [ "$CONFIGURATION_TYPE" == "all" ] || [ "$CONFIGURATION_TYPE" == "access" ]  || ["$CONFIGURATION_TYPE" == "swg" ]
 then
 	echo "setting default value for configuration type as all"
 	CONFIGURATION_TYPE="all"

@@ -19,6 +19,8 @@ count=`shuf -i 1-3 -n 1`;
 ./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 count=`shuf -i 1-3 -n 1`;
 ./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+count=`shuf -i 1-1 -n 1`;
+./generate_access_reports_data.sh access 10.1.10.117 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 
 echo "# generate_access_reports_mock_data.sh"
 cd $home/access

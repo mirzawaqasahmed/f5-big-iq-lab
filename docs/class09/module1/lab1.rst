@@ -20,4 +20,6 @@ Look through the different default templates.
 
 |
 
-.. warning:: There will be no default AFM or DoS policies delivered in BIG-IQ 6.0. **Larry** will need to manually define them and link them to the custom templates.
+Inactivity Timeout	120 seconds
+Access Policy Timeout	60 seconds
+Maximum Session Timeout	180 seconds
