@@ -27,9 +27,9 @@ count=`shuf -i 1-2 -n 1`;
 count=`shuf -i 1-2 -n 1`;
 ./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP02.termmarc.com $count
 
-echo "# rate-ht-sender.py"
-cd $home/access
-./rate-ht-sender.py --log-iq $dcdip
+#echo "# rate-ht-sender.py"
+#cd $home/access
+#./rate-ht-sender.py --log-iq $dcdip
 
 #echo "# generate_data.sh"
 #cd $home/access
