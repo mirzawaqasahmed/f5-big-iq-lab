@@ -20,6 +20,8 @@ Look through the different default templates.
 
 |
 
-Inactivity Timeout	120 seconds
-Access Policy Timeout	60 seconds
-Maximum Session Timeout	180 seconds
+.. note:: The timeout on the access policy were updated for the purpose of this lab:
+
+  - Inactivity Timeout: ``120 seconds``
+  - Access Policy Timeout:	``60 seconds``
+  - Maximum Session Timeout:	``180 seconds``
