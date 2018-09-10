@@ -91,8 +91,8 @@ echo -e "\nTIME: $(date +"%H:%M")"
 
 echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log\n"
 
-echo -e "\nSleep 30 seconds"
-sleep 30
+echo -e "\nSleep 60 seconds"
+sleep 60
 
 echo -e "\nVPN status:\n"
 aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
