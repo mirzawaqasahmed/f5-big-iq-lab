@@ -1,8 +1,3 @@
 Lab 2.1: SAML
 --------------------------------------------------------
-
-.. note:: New 6.0
-
-.. image:: ../pictures/under-construction-01.jpg
-  :align: center
-  :scale: 50%
+``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``

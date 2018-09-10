@@ -2,96 +2,51 @@ Lab 2.2: Create custom security policies & Application Service Template
 -----------------------------------------------------------------------
 Connect as **larry**
 
-1. Create the custom ASM policy, go to *Configuration* > *SECURITY* > *Web Application Security* > *policies*.
+1. Clone an access policy from the default-access-group. Go to *Configuration* > *ACCESS* > *Access Groups* > *default-access-group*.
 
-.. image:: ../pictures/module2/img_module2_lab2_1.png
+Before you can clone policies, you must have an Access group configured for your Service Scaling Group.
+Important: Do not edit access policies or configurations in the default Access group.
+You clone a default access policy to create a starting point for defining access policies for an Access group.
+
+.. note:: Do not edit default access policy templates. Clone a policy, then make any required edits in the cloned policy.
+
+- Click Configuration > ACCESS > Access Groups. The Access Groups screen opens.
+
+.. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
-|
+- Click default-access-group. The default-access-group General Properties screen opens.
 
-Select the ``f5-asm-policy1`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
-
-Edit the Policy ``f5-asm-policy1``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
-
-.. image:: ../pictures/module2/img_module2_lab2_4.png
+.. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
-|
+- On the left, click Per-Session Policies. The Per-Session Policies (Shared) screen opens.
 
-In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode, click Save & Close.
-
-.. image:: ../pictures/module2/img_module2_lab2_4b.png
+.. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
-.. note::
+- Select the check box next to an access policy to clone, and click More > Clone .
 
-.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy. However, if you want to use learning/blocking mode, you will need a dedicated app template per application.
-
-.. warning:: Ignore the unauthorized error when saving the policy.
-
-2. Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
-Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save.
-
-.. image:: ../pictures/module2/img_module2_lab2_5.png
+.. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
-|
+- In the Clone Policy dialog box that opens, select the target Access group, and select whether to reuse existing objects from the target Access group,then click Clone.
 
-Create 2 Rules:
-
-- rule 1: set the destination ports to ``443`` and ``80``, Protocol to ``tcp``
-- rule 2: set action to ``reject`` and log to ``true``
-
-Click Save & Close.
-
-.. image:: ../pictures/module2/img_module2_lab2_6.png
+.. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
-|
+- Check the target Access group to see that the target policy has been cloned.
 
-Connect as **marco**
-
-1. Create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
-Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
-
-.. image:: ../pictures/module2/img_module2_lab2_7.png
+.. image:: ../pictures/module1/img_module2_lab2_1.png
   :align: center
   :scale: 50%
 
-|
+Now you can edit the access policy, and the related objects created to support it on the target access group.
 
-2. Then select the ASM policy ``test-asm-policy_1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
+2. Review and edit resources associated with an access policy
 
-.. image:: ../pictures/module2/img_module2_lab2_8.png
-  :align: center
-  :scale: 50%
-
-|
-
-Save & Close
-
-.. image:: ../pictures/module2/img_module2_lab2_9.png
-  :align: center
-  :scale: 50%
-
-|
-
-3. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
-and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTPS-WAF-lb-template-custom1*, drag it to the right.
-
-.. image:: ../pictures/module2/img_module2_lab2_10.png
-    :align: center
-    :scale: 50%
-
-|
-
-Click on *Save & Close*
-
-.. note:: A DoS Profile could also be assign to the template but we are not using it for this lab.
-
-.. warning:: Application DOS is only supported on Standalone device. The Network DOS is supported on Standalone and Tier 1 device (in a context of SSG)

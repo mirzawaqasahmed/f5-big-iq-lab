@@ -43,6 +43,9 @@ echo -e "\nTIME: $(date +"%H:%M")"
 ansible-playbook $DEBUG_arg 12-teardown-aws-vpn-vpc-ubuntu.yml -i ansible2.cfg
 echo -e "\nTIME: $(date +"%H:%M")"
 
+echo -e "Clear cache directory and *retry"
+rm -rf cache *.retry
+
 echo -e "\n/!\ DOUBLE CHECK IN YOUR AWS ACCOUNT ALL THE RESOURCES CREATED FOR YOUR DEMO HAVE BEEN DELETED  /!\ \n"
 
 exit 0

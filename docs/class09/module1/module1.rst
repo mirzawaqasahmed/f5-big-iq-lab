@@ -1,18 +1,10 @@
-Module 1: Application Templates & Deployment
-============================================
-In this module, we will learn how to use Application Templates and how to deploy an **Application**.
+Module 1: Securing Application Access using AD/Radius/LDAP authentication
+=========================================================================
+In this module, we will learn how to deploy an **Secured Application** using the default access templates.
 
-The Application Templates will be created by **marco**, the Administrator.
-**larry** will create the security policies and let Marco know about the ones to associate with the templates.
-Once the template is ready with all the necessary information, it will be ready to use by the Application owner.
+More information in Knowledge Center > `BIG-IQ Centralized Management: Access Manage Access Groups`_.
 
-**paula** needs to deploy an application, she has multiple Application servers. At this time, she needs to test
-the performance of her application, she also wants to make her application secure before staging it to production.
-She connects to the BIG-IQ and has access to her Application Dashboard.
-**paula** uses the application template created by Marco to deploy her Application.
-
-After a week of testing her application (in the class ~5 min), she will ask **larry** to fine tune and validate
-the learning done by the Application Firewall (BIG-IP ASM).
+.. _`BIG-IQ Centralized Management: Access Manage Access Groups`: https://support.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-access-6-0-1/03.html
 
 .. toctree::
    :maxdepth: 1

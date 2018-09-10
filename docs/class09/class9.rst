@@ -1,13 +1,9 @@
 Class 9: BIG-IQ Access Policy Manager (APM)
 ===========================================
 
-.. image:: ../pictures/under-construction-03.jpg
-  :align: center
-  :scale: 20%
-
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
-In this class, we will review the access management and access application creation (only from 6.0.1) feature available with BIG-IQ 6.0.
+In this class, we will review the access management and access application creation feature available with BIG-IQ 6.0.1.
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 

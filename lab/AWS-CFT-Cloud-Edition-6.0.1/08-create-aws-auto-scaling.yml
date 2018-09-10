@@ -63,7 +63,7 @@
                 "awsProperties": {
                     "region": "{{DEFAULT_REGION}}",
                     "vpc": "{{AWS_VPC}}",
-                    "availabilityZones": [ "{{AWS_US_EAST_1A}}", "{{AWS_US_EAST_1B}}" ],
+                    "availabilityZones": [ "{{AWS_US_AZ_1A}}", "{{AWS_US_AZ_1B}}" ],
                     "subnets": [ "{{AWS_SUBNET_1A}}", "{{AWS_SUBNET_1B}}" ],
                     "restrictedSourceAddress": "0.0.0.0/0",
                     "sshKeyName": "{{AWS_SSH_KEY}}",
