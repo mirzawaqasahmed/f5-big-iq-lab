@@ -76,10 +76,19 @@ echo -e "\nTIME: $(date +"%H:%M")"
 # Not needed, this playbook creates a service catalog template (custom)
 #ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i ansible2.cfg
 
+echo -e "\nSleep 3 min (to allow time for the VPN to come up)"
+sleep 180
+
+echo -e "\nVPN status:\n"
+aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
+
 echo -e "\nIPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com"
 ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
 
-aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
+echo -e "\nIf the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
+echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n\n"
+
+echo -e "Note: check if the VPN is up (./check_vpn_aws.sh)."
 
 echo -e "\nTIME: $(date +"%H:%M")"
 
@@ -90,17 +99,6 @@ ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
 echo -e "\nTIME: $(date +"%H:%M")"
 
 echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log\n"
-
-echo -e "\nSleep 60 seconds"
-sleep 60
-
-echo -e "\nVPN status:\n"
-aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
-
-echo -e "\nIf the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
-echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log\n\n"
-
-echo -e "Note: if the SSG fails, check if the VPN is up (./check_vpn_aws.sh)."
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
