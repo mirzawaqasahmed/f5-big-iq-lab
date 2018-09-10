@@ -70,7 +70,7 @@
                     "moduleSelection": "WAF",
                     "licenseType": "BYOL",
                     "imageId": "{{BYOL_BIGIP_AMI}}",
-                    "instanceType": "m4.xlarge",
+                    "instanceType": "m4.2xlarge",
                     "byolLicenseInformation": {
                         "bigiqAddress": "{{BYOL_BIGIQ_HOST}}",
                         "bigiqUser": "{{BYOL_BIGIQ_USER}}",

@@ -104,16 +104,17 @@ echo -e "\nIn order to follow the AWS SSG creation, tail the following logs in B
 
 echo -e "\nTIME: $(date +"%H:%M")"
 
-echo -e "\nApplication Creation:\n"
+echo -e "\nApplication Creation: (it will start once AWS SSG creation is completed)\n"
 python 09-create-aws-waf-app.py
 echo -e "\nTIME: $(date +"%H:%M")"
 
 # add ab in crontab to simulate traffic
-echo -e "\nAdding traffic generator in crontab.\n App URL: $ELB_DNS"
+echo -e "\nAdding traffic generator in crontab."
 PREFIX="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')"
 if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
    ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
    (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$ELB_DNS/" ) | crontab -
+   echo -e "\nAplication URL: $ELB_DNS"
 else
    echo "Something wrong happen, no ./cache/$PREFIX/1-vpc.yml"
 fi
