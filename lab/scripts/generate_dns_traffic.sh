@@ -47,7 +47,7 @@ do
             conc=`shuf -i 50-100 -n 1`;
             sec=`shuf -i 20-60 -n 1`;
             queries=`shuf -i 20-60 -n 1`;
-            dnsperf -s ${sitelistener[$i]} -d $home/dnstargets.txt -l $sec -c $conc -Q $queries -n $count
+            /usr/local/bin/dnsperf -s ${sitelistener[$i]} -d $home/dnstargets.txt -l $sec -c $conc -Q $queries -n $count
         else
             echo "SKIP ${sitelistener[$i]} - not answering on port 53"
         fi
