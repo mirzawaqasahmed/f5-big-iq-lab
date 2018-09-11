@@ -74,7 +74,7 @@ Click on *Add*
 
 Click on *Save & Close*
 
-.. warning:: Only local users are supported to execute Ansible playbook
+.. warning:: Only local users are supported to execute Ansible playbook until Ansible 2.7. It will be possible to use auth_provider in release 2.8.
 
 .. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center

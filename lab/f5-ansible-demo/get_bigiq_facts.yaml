@@ -10,7 +10,7 @@
           server: 10.1.1.4
           user: marco
           password: marco
-          auth_provider: radius
+          auth_provider: RadiusServer
           validate_certs: no
         gather_subset: all
       delegate_to: localhost
