@@ -110,8 +110,8 @@ Here is an example of the updated **config.yml** file:
 
     # Select on of  the region below (default US EST N. Virginia)
     DEFAULT_REGION: us-east-1
-    AWS_US_EAST_1A: us-east-1a
-    AWS_US_EAST_1B: us-east-1b
+    AWS_AZ_1A: us-east-1a
+    AWS_AZ_1B: us-east-1b
 
     # Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
     AWS_SSH_KEY: CE-Lab-MENANT

@@ -22,7 +22,6 @@ else
     rm -rf /home/$user/f5-big-iq-lab
     # delete AWS 6.0.0
     echo "AWS scripts"
-    rm -rf AWS-CFT-Cloud-Edition-6.0.0
     mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
     echo "Fixing permissions..."
     chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh

@@ -34,44 +34,7 @@ In the Description field (optional), type in a brief description for the applica
 You can either create these objects manually, or you can import objects that already exist on this BIG-IQ.
 On the left, under Properties, expand Local Traffic and then select the object type you want to define.
 
-4. To add a default nodes, you would expand Local Traffic, and then click Nodes.
-Click *Create*. The screen you use to define the selected object type (for example New Node) displays.
-
-.. image:: ../pictures/module4/img_module4_lab1_2.png
-  :align: center
-  :scale: 50%
-
-|
-
-Create your nodes with the following parameters:
-
-- Prompt: ``Server``
-- Allow Multiple Instances: ``Enable``
-- Name and Address: ``10.1.20.116``
-
-.. image:: ../pictures/module4/img_module4_lab1_3.png
-  :align: center
-  :scale: 50%
-
-|
-
-Repeat the same with the 2nd node:
-
-- Prompt: ``Server``
-- Allow Multiple Instances: ``Enable``
-- Name and Address: ``10.1.20.117``
-
-.. image:: ../pictures/module4/img_module4_lab1_4.png
-  :align: center
-  :scale: 50%
-
-|
-
-If you want applications created with this template to be able to include more than one copy of the object you are adding, select Enabled for Allow Multiple Instances.
-
-5. Save the template, click *Save*
-
-6. To add a default pool, you would expand Local Traffic, and then click Pools.
+4. To add a default pool, you would expand Local Traffic, and then click Pools.
 Click *Create*. The screen you use to define the selected object type (for example New Pool) displays.
 
 .. image:: ../pictures/module4/img_module4_lab1_5.png
@@ -92,9 +55,7 @@ Create your pool with the following parameters:
 
 |
 
-7. Save the template, click *Save*
-
-Add the nodes previously created to the pool template:
+5. Save the template, click *Save*
 
 .. image:: ../pictures/module4/img_module4_lab1_7.png
   :align: center
@@ -102,23 +63,27 @@ Add the nodes previously created to the pool template:
 
 |
 
-Node 1:
+6. Create your nodes with the following parameters:
 
-- Note Type: ``Existing Node``
-- Node: ``# /f5-HTTP-lb-custom-template_10.1.20.116``
-- Port: ``80``
-
-Node 2:
-
-- Note Type: ``Existing Node``
-- Node: ``# /f5-HTTP-lb-custom-template_10.1.20.117``
-- Port: ``80``
+- Prompt: ``Server``
+- Allow Multiple Instances: ``Enable``
+- Name and Address: ``10.1.20.116``
 
 .. image:: ../pictures/module4/img_module4_lab1_8.png
   :align: center
   :scale: 50%
 
 |
+
+Repeat the same with the 2nd node:
+
+- Prompt: ``Server``
+- Allow Multiple Instances: ``Enable``
+- Name and Address: ``10.1.20.117``
+
+If you want applications created with this template to be able to include more than one copy of the object you are adding, select Enabled for Allow Multiple Instances.
+
+7. Save the template, click *Save*
 
 Once both nodes are added to the Pool template, you should see both nodes attached to the pool template.
 
@@ -193,7 +158,7 @@ Your custom template is now showing in the Service Catalog.
 
 .. image:: ../pictures/module4/img_module4_lab1_13.png
   :align: center
-  :scale: 50%
+  :scale: 30%
 
 |
 
@@ -203,7 +168,7 @@ When you finish adding an object to a template, you can use it to create an appl
 
 11. **[New 6.0.1]** Publish your custom template after creation.
 
-.. image:: ../pictures/module2/img_module4_lab1_13b.png
+.. image:: ../pictures/module4/img_module4_lab1_13b.png
   :align: center
   :scale: 50%
 
