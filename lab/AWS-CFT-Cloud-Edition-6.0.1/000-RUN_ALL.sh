@@ -107,7 +107,7 @@ echo -e "\n${RED}In order to follow the AWS SSG creation, tail the following log
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
-echo -e "\n${RED}Sleep 5 min (to allow ${BLUE}TIME: for the SSG to come up)${NC}"
+echo -e "\n${RED}Sleep 5 min (to allow time for the SSG to come up)${NC}"
 sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
