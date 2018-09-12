@@ -20,7 +20,6 @@ else
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
     rm -rf /home/$user/f5-big-iq-lab
-    # delete AWS 6.0.0
     echo "AWS scripts"
     mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
     echo "Fixing permissions..."
