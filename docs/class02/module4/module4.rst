@@ -21,7 +21,6 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
  Environment     Tier1 (called ``Service Scaler``)      Tier2 (called ``SSG``)
 ============= ===================================== ============================
    AWS                       ELB                                 F5 VE
-   VMWARE                   F5 ADC                               F5 VE
 ============= ===================================== ============================
 
 Tier1/``Service Scaler`` management - how does this work ?
@@ -31,18 +30,10 @@ With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
 upfront by the administrator. It means that:
 
 
-* The F5 platform (or AWS ELB) will have to be provisioned, licensed (for F5 VE)
+* The AWS ELB will have to be provisioned, licensed (for F5 VE)
   and its networking configuration done
 * Once the platform is ready. everything related to app deployment will be
   handled by BIG-IQ
-
-
-.. note::
-
-  With BIG-IQ 6.0, we only support F5 Virtual edition as ``Service Scaler`` in
-  a VMWare env.
-  With BIG-IQ 6.0.1, we will support F5 HW also
-
 
 Tier2/``SSG`` management - how does this work ?
 ***********************************************

@@ -3,7 +3,6 @@ Module 1: Setup a Service scaling group (SSG) in VMWARE
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
-
 In this module, we will learn about the ``Service Scaling Group`` (SSG) feature
 provided with BIG-IQ 6.0 in a ``VMWare``environment
 
@@ -20,7 +19,6 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
 ============= ===================================== ============================
  Environment     Tier1 (called ``Service Scaler``)      Tier2 (called ``SSG``)
 ============= ===================================== ============================
-   AWS                       ELB                                 F5 VE
    VMWARE                   F5 ADC                               F5 VE
 ============= ===================================== ============================
 
@@ -31,17 +29,10 @@ With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
 upfront by the administrator. It means that:
 
 
-* The F5 platform (or AWS ELB) will have to be provisioned, licensed (for F5 VE)
+* The F5 platform will have to be provisioned, licensed (for F5 VE)
   and its networking configuration done
 * Once the platform is ready. everything related to app deployment will be
   handled by BIG-IQ
-
-
-.. note::
-
-  With BIG-IQ 6.0, we only support F5 Virtual edition as ``Service Scaler`` in
-  a VMWare env.
-  With BIG-IQ 6.0.1, we will support F5 HW also
 
 
 Tier2/``SSG`` management - how does this work ?
@@ -85,24 +76,13 @@ deployed in a certain manner:
       * the pool members for this app will be the ``SSG`` Self-IPs
       * the pool monitor will be based on the app specifications
 
-
-Application deployment in a ``SSG`` - VMWare
---------------------------------------------
-
-To ensure the traffic goes through the ``SSG`` as expected, application will be
-deployed in a certain manner:
-
-* You will need dedicated ``Classic Load Balancer`` (AKA ELB previously) per
-  application. The reason is that each ``ELB`` has one public IP/DNS Name
-  (ie you can't have 2 app runnings on port 443/HTTPS on a ``ELB`` )
-* When the app is deployed from BIG-IQ, we will specify a VS IP that will be 0.0.0.0.
-  This is because ELB can only send traffic to the first nic of an instance and
-  therefore we will deploy 1nic VE in AWS. So traffic and everything will be sent
-  to the nic Self IP.
-* This config will be configured on all ``SSG`` VEs.
-  They will have have an **identical** Setup
-
 In this lab, we will create a ``Service Scaling Group`` in a ``VMWare`` environment.
+
+
+.. note::
+
+  The VMs in vSphere aren't restarted automatically in case the deployment is stop/start in UDF.
+  There is a script which restart the powerOff VMs after 15min the deployment is started ``~/vmware-ansible/cmd_power_on_vm.sh``
 
 .. toctree::
    :maxdepth: 1
