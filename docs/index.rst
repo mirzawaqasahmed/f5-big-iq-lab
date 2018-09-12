@@ -75,7 +75,7 @@ This lab environment UDF Lab (internal) or Ravello (external) is designed to all
 .. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start 
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 
-.. warning:: When using the `UDF Lab`_, make sure:
+.. warning:: When using the UDF or Ravello Lab, make sure:
 
   1. STOP the ESXi if you do not plan to demo VMware SSG.
   2. STOP your deployment at the end of your demo.
