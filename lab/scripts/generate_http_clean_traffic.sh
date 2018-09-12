@@ -82,7 +82,7 @@ do
         
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
                 # add random number for loop
-                r=`shuf -i 2-6 -n 1`;
+                r=`shuf -i 1-3 -n 1`;
                 for k in `seq 1 $r`; do
                         for j in $sitepages; do
                                 echo "Loop $k"
@@ -104,11 +104,11 @@ do
 
                 echo -e "\n# site $i ab traffic gen"
                 if [  $port == 443 ]; then
-                       count=`shuf -i 11-40 -n 1`;
+                       count=`shuf -i 11-30 -n 1`;
                        conc=`shuf -i 1-10 -n 1`;
                        ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
                 else
-                       count=`shuf -i 11-40 -n 1`;
+                       count=`shuf -i 11-30 -n 1`;
                        conc=`shuf -i 1-10 -n 1`;
                        ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
                 fi

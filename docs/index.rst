@@ -37,12 +37,12 @@ This lab environment is designed to allow for quick and easy demos of a signific
 
 **Documentations**:
 
-- `BIG-IP Cloud Edition Knowledge Center`_
+- `BIG-IQ Knowledge Center`_
 - `F5 BIG-IQ API`_
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 
-.. _BIG-IP Cloud Edition Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20Cloud%20Edition 
+.. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270?tag=big-iq
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373

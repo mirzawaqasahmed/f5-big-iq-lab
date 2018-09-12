@@ -7,9 +7,9 @@
 ## DNS Traffic
 */3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null 2>&1
 ## Access Traffic
-*/10 * * * *  /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1
+*/10 * * * * /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1
 ## FPS Traffic
-45 10 * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null 2>&1
+*/30 * * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
 @reboot ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg
