@@ -10,7 +10,7 @@ Welcome to the |classbold| - |year|
 
 There is lab environment available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
-This lab environment `UDF Lab`_ (internal) is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product.
+This lab environment UDF Lab (internal) or Ravello (external) is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product.
 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
 
@@ -81,8 +81,6 @@ This lab environment `UDF Lab`_ (internal) is designed to allow for quick and ea
   2. STOP your deployment at the end of your demo.
   3. Do not forget to tear down your AWS SSG if any.
   4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get go performance.
-
-.. _UDF Lab: https://udf.f5.com/b/ffc0a2a4-7953-473a-8ecb-4a5e9e8f0eee#documentation
 
 .. toctree::
    :maxdepth: 2
