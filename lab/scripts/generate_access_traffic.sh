@@ -13,11 +13,11 @@ fi
 
 echo "# generate_access_reports_data.sh"
 cd $home/access
-count=`shuf -i 1-3 -n 1`;
+count=`shuf -i 1-2 -n 1`;
 ./generate_access_reports_data.sh accessmock 1.1.1.1 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-count=`shuf -i 1-3 -n 1`;
+count=`shuf -i 1-2 -n 1`;
 ./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-count=`shuf -i 1-3 -n 1`;
+count=`shuf -i 1-2 -n 1`;
 ./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 count=`shuf -i 1-1 -n 1`;
 ./generate_access_reports_data.sh access 10.1.10.117 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
