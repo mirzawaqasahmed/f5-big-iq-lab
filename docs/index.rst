@@ -82,6 +82,8 @@ This lab environment is designed to allow for quick and easy demos of a signific
   3. Do not forget to tear down your AWS SSG if any.
   4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
+.. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
+
 .. toctree::
    :maxdepth: 2
    :numbered:

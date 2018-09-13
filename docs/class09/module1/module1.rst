@@ -1,5 +1,5 @@
-Module 1: Securing Application Access using AD/Radius/LDAP authentication
-=========================================================================
+Module 1: Securing Application Access using Radius authentication
+=================================================================
 In this module, we will learn how to deploy an **Secured Application** using the default access templates.
 
 More information in Knowledge Center > `BIG-IQ Centralized Management: Access Manage Access Groups`_.
