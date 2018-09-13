@@ -20,7 +20,7 @@ find '/var/lib/docker/volumes/' -mindepth 1 -maxdepth 1 -type d | grep -vFf <(
 
 # remove unused data
 docker system prune -af
-docker system prune --volumes
+docker system prune --volumes -f
 
 # after
 df -i

@@ -8,7 +8,7 @@ You can clone these service templates and edit the cloned templates to add acces
 - ``Default-f5-HTTPS-offload-lb-Access-LDAP-Authentication-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP and securing application Access using LDAP authentication.
 - ``Default-f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP and securing application Access using RADIUS authentication.
 
-.. warning:: You currently cannot deploy service templates with Amazon Web Services (AWS).
+.. warning:: You currently cannot deploy access service templates with Amazon Web Services (AWS) SSG but only on VMware SSG and cluster/standalone BIG-IP
 
 Connect as **marco**, go to *Applications* > *SERVICE CATALOG*:
 
