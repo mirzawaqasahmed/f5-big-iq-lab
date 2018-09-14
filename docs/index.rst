@@ -10,6 +10,10 @@ Welcome to the |classbold| - |year|
 
 There is lab environment available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
+A draft version of this lab guide can be found `here`_.
+
+.. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/
+
 This lab environment is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product.
 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
