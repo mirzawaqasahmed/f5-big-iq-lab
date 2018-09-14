@@ -47,7 +47,7 @@ fi
 
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
-if [[  $currentuser == $user ]]; then
+if [[  $currentuser == "root" ]]; then
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
     # wait 15 min for ESX to boot
     sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
