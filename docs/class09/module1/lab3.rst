@@ -18,7 +18,7 @@ For Device, select the name of the device you want to deploy this application to
 
 - BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
 
-.. image:: ../pictures/module1/img_module2_lab3_1.png
+.. image:: ../pictures/module1/img_module1_lab3_1.png
   :align: center
   :scale: 50%
 
@@ -33,19 +33,21 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 - Servers (Pool Member): ``10.1.20.125`` and ``10.1.20.133``
 - Service Port: ``8081``
 
-- Name LB (Virtual Server): ``vs_site18.example.com_https``
+LB (Virtual Server):
+
 - Destination Address: ``10.1.10.119``
 - Destination Network Mask: ``255.255.255.255``
 - Service Port: ``443``
 
-- Name HTTP Redirect (Virtual Server): ``vs_site18.example.com_redirect``
+HTTP Redirect (Virtual Server):
+
 - Destination Address: ``10.1.10.119``
 - Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
 
 It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
 
-.. image:: ../pictures/module1/img_module2_lab3_2.png
+.. image:: ../pictures/module1/img_module1_lab3_2.png
   :align: center
   :scale: 50%
 
@@ -54,7 +56,7 @@ It is good practice to type the Prefix that you want the system to use to make c
 Then Click on Create (bottom right of the window).
 The Application is deployed.
 
-.. image:: ../pictures/module1/img_module2_lab3_3.png
+.. image:: ../pictures/module1/img_module1_lab3_3.png
   :align: center
   :scale: 50%
 
@@ -66,7 +68,7 @@ The Application is deployed.
 
 In Paula's Dashboard, she can see her Application.
 
-.. image:: ../pictures/module1/img_module2_lab3_4.png
+.. image:: ../pictures/module1/img_module1_lab3_4.png
   :align: center
   :scale: 50%
 
@@ -82,7 +84,7 @@ Click on the Application and check the details (alarms, security enabled, config
 
 Click on Traffic Management > Configuration
 
-.. image:: ../pictures/module1/img_module2_lab3_6.png
+.. image:: ../pictures/module1/img_module1_lab3_6.png
   :align: center
   :scale: 50%
 

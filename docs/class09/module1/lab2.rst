@@ -12,7 +12,7 @@ You clone a default access policy to create a starting point for defining access
 
 - Click Configuration > ACCESS > Access Groups. The Access Groups screen opens.
 
-.. image:: ../pictures/module1/img_module2_lab2_1.png
+.. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center
   :scale: 50%
 
@@ -20,25 +20,25 @@ You clone a default access policy to create a starting point for defining access
 - On the left, click Per-Session Policies. The Per-Session Policies (Shared) screen opens.
 - Select the check box next to an access policy to clone, and click More > Clone .
 
-.. image:: ../pictures/module1/img_module2_lab2_2.png
+.. image:: ../pictures/module1/img_module1_lab2_2.png
   :align: center
   :scale: 50%
 
 - In the Clone Policy dialog box that opens, select the target Access group, and select whether to reuse existing objects from the target Access group, then click Clone.
 
-.. image:: ../pictures/module1/img_module2_lab2_3.png
+.. image:: ../pictures/module1/img_module1_lab2_3.png
   :align: center
   :scale: 50%
 
 - Check the target Access group to see that the target policy has been cloned.
 
-.. image:: ../pictures/module1/img_module2_lab2_4.png
+.. image:: ../pictures/module1/img_module1_lab2_4.png
   :align: center
   :scale: 50%
 
   |
 
-.. image:: ../pictures/module1/img_module2_lab2_5.png
+.. image:: ../pictures/module1/img_module1_lab2_5.png
   :align: center
   :scale: 50%
 
@@ -50,7 +50,7 @@ When you clone an access policy, the associated resources are also cloned. You c
 
 - Under ACCESS POLICIES > Per-Session Policies, click on ``default_radius_auth_policy``.
 
-.. image:: ../pictures/module1/img_module2_lab2_6.png
+.. image:: ../pictures/module1/img_module1_lab2_6.png
   :align: center
   :scale: 50%
 
@@ -61,7 +61,7 @@ When you clone an access policy, the associated resources are also cloned. You c
   - Server Address: ``10.1.1.5``
   - Secret: ``default``
 
-.. image:: ../pictures/module1/img_module2_lab2_7.png
+.. image:: ../pictures/module1/img_module1_lab2_7.png
   :align: center
   :scale: 50%
 
@@ -74,7 +74,7 @@ Under ACCESS POLICIES > Per-Session Policies, click on ``default_radius_auth_pol
 
 If set to No, click on More, and click select *Make Available in Templates*.
 
-.. image:: ../pictures/module1/img_module2_lab2_8.png
+.. image:: ../pictures/module1/img_module1_lab2_8.png
   :align: center
   :scale: 50%
 
@@ -83,7 +83,7 @@ If set to No, click on More, and click select *Make Available in Templates*.
 
 Click Applications SERVICE CATALOG, select Default-f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template, click More > Clone .
 
-.. image:: ../pictures/module1/img_module2_lab2_9.png
+.. image:: ../pictures/module1/img_module1_lab2_9.png
   :align: center
   :scale: 50%
 
@@ -91,7 +91,7 @@ In the dialog box that opens, type the name for the cloned service template, ``f
 
 The Edit Template screen opens. 
 
-.. image:: ../pictures/module1/img_module2_lab2_10.png
+.. image:: ../pictures/module1/img_module1_lab2_10.png
   :align: center
   :scale: 50%
 
@@ -100,7 +100,7 @@ Select the Access group to which you cloned default access policies.
 In the Virtual Server area, for the virtual server providing the access service, from the Type list select Access Profile.
 From the APM Policy/Profile list select the access policy you created.
 
-.. image:: ../pictures/module1/img_module2_lab2_11.png
+.. image:: ../pictures/module1/img_module1_lab2_11.png
   :align: center
   :scale: 50%
 
@@ -112,7 +112,7 @@ The Service Catalog screen opens.
 
 Select the check box next to the service template you created, and click Publish.
 
-.. image:: ../pictures/module1/img_module2_lab2_12.png
+.. image:: ../pictures/module1/img_module1_lab2_12.png
   :align: center
   :scale: 50%
 
@@ -121,7 +121,7 @@ You can now use the published template to create applications.
 5. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
 and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1*, drag it to the right.
 
-.. image::  ../pictures/module4/img_module2_lab2_13.png
+.. image::  ../pictures/module4/img_module1_lab2_13.png
     :align: center
     :scale: 50%
 
