@@ -67,7 +67,7 @@ Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 2. Then select the ASM policy ``test-asm-policy_1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
 
-.. warning:: **[New 6.0.1]** no ASM policy can be attached to the 2nd virtual server (redirect), make sure you set to ``none`` the logging profiles for the 2nd virtual server.
+.. warning:: The virtual servers within the same application have to use the same ASM policies. Therefore, the ASM policy attached to the 1st virtual server will apply to ALL the virtual servers automatically. 
 
 .. image:: ../pictures/module2/img_module2_lab2_8.png
   :align: center
