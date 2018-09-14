@@ -74,17 +74,34 @@ In Paula's Dashboard, she can see her Application.
 
 |
 
-Click on the Application and check the details (alarms, security enabled, configuration, ...)
+Launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *XRDP*
 
-.. image:: ../pictures/module1/img_module2_lab3_5.png
+.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
+    :align: center
+    :scale: 50%
+
+|
+
+Open Chrome and navigate on the website https://site19auth.example.com. 
+
+.. image:: ../pictures/module1/img_module1_lab3_5.png
   :align: center
   :scale: 50%
 
 |
 
-Click on Traffic Management > Configuration
+Fill in user/password to authenticate to the application: ``paula``/``paula``
 
 .. image:: ../pictures/module1/img_module1_lab3_6.png
+  :align: center
+  :scale: 50%
+
+|
+
+Back on BIG-IQ, click on the Application and check the Analytics coming in.
+
+.. image:: ../pictures/module1/img_module1_lab3_7.png
   :align: center
   :scale: 50%
 
