@@ -12,7 +12,7 @@
 */30 * * * * /home/f5/scripts/generate_fps_traffic.sh > /dev/null 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
-@reboot ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /tmp/config-sync.log
+@reboot /usr/bin/perl -le sleep 300 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /tmp/config-sync.log
 
 ## WA reboot xrdp if dead
 */5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
