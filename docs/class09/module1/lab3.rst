@@ -106,3 +106,9 @@ Back on BIG-IQ, click on the Application and check the Analytics coming in.
   :scale: 50%
 
 |
+
+.. note:: The timeout on the access policy were updated for the purpose of this lab:
+
+  - Inactivity Timeout: ``120 seconds``
+  - Access Policy Timeout:	``60 seconds``
+  - Maximum Session Timeout:	``180 seconds``
