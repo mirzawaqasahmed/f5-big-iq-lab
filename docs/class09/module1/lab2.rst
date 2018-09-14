@@ -117,3 +117,14 @@ Select the check box next to the service template you created, and click Publish
   :scale: 50%
 
 You can now use the published template to create applications.
+
+5. In order to allow Paula to use the custom application template, go to : *System* > *Role Management* > *Roles*
+and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1*, drag it to the right.
+
+.. image::  ../pictures/module4/img_module2_lab2_13.png
+    :align: center
+    :scale: 50%
+
+|
+
+Click on *Save & Close*
