@@ -1,5 +1,5 @@
-Module 5: Operation
-===================
+Module 6: Managing an BIG-IP in Public Cloud
+============================================
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 

@@ -1,7 +1,12 @@
-Lab 2.1: Creating a WIP for GSLB
----------------------------------
+Lab 1.1: Adding a BIG-IP DNS device to existing Sync Group
+-----------------------------------------------------------
+In order for a BIG-IP DNS to be added to a sync group, the following objects must first be created on each device:
 
-In this lab, we will create a basic WIP
+* Data Center
+* Server Object
+* Listener 
+
+In this lab, we will create necessary objects for a DNS Sync Group
 
 Data Center setup
 ******************

@@ -8,13 +8,20 @@ Welcome to the |classbold| - |year|
 
 |repoinfo|
 
+This document details the lab exercises and demonstrations that comprise
+the hands-on component of the BIG-IQ v6.0. The environment is setup with
+basic configuration and associated traffic generation to populate
+dashboards for easy demos. Additional configuration can be added to
+support items that are not currently covered.
+
+This lab environment is designed to allow for quick and easy demos of a
+significant portion of the BIG-IQ product. The Linux box in the
+environment has multiple cron jobs that are generating traffic that
+populates the monitoring tab.
+
 There is lab environment available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
-A draft version of this lab guide can be found `here`_.
-
 .. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/
-
-This lab environment is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product.
 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
 
@@ -95,3 +102,6 @@ This lab environment is designed to allow for quick and easy demos of a signific
    :glob:
 
    class*/class*
+
+
+.. note:: A draft version of this lab guide can be found `here`_.

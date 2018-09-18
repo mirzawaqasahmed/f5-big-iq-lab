@@ -1,6 +1,11 @@
-Module 3: License Management
-============================
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Module 3: Automate device backups and archiving
+================================================
+
+BIG-IQ provides the ability to backup individual or groups of managed
+devices on an ad-hoc or a scheduled basis. The admin can decide how long
+to retain the backups on BIG-IQ and has the option of archiving a copy
+of the UCS backup off to an external device for DR or deeper storage
+purposes.
 
 
 .. toctree::
