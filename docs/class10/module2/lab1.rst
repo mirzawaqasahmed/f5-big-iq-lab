@@ -6,7 +6,7 @@ In order for a BIG-IP DNS to be added to a sync group, the following objects mus
 * Server Object
 * Listener 
 
-In this lab, we will create necessary objects for a DNS Sync Group
+In this lab, we will create necessary objects for a DNS Sync Group test
 
 Data Center setup
 ******************
