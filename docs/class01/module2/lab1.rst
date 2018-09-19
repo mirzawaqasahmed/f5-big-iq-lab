@@ -12,9 +12,9 @@ They can be used to deploy various type of applications. These default templates
 
 .. warning:: 
     Cannot use default AWS templates to have BIG-IQ manage BIG-IP systems running 13.1.0.5 through 13.1.0.8.
-    Use the following AWS templates: 
-      - Default-AWS-f5-HTTPS-WAF-lb-template
-      - Default-AWS-f5-HTTPS-offload-lb-template
+
+    Use the following AWS templates: ``Default-AWS-f5-HTTPS-WAF-lb-template`` or ``Default-AWS-f5-HTTPS-offload-lb-template``
+    
     For these two templates, ports 443 and 80 (for HTTP redirect) are hard-coded in an iRule, which enable this functionality.
 
 Connect as **marco**, go to *Applications* > *SERVICE CATALOG*:
