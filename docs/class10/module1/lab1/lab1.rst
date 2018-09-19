@@ -12,7 +12,7 @@ relies on complete alignment of a variety of device configuration
 elements. Using BIG-IQ simplifies the process of determining the health
 of your DNS sync groups.
 
-At the top of the screen, click Devices.
+At the top of the screen > click Devices.
 
 On the left, click BIG-IP CLUSTERS > DNS Sync Groups.
 
