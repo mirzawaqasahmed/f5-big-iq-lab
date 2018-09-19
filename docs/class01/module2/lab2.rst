@@ -20,13 +20,13 @@ Edit the Policy ``f5-asm-policy1``, switch to ``Manual`` Learning Mode and ``Mak
 
 |
 
+.. note:: Set ``Trust XFF Header`` to ``Yes`` if you want the client IP/Country visible in the Security Analytics
+
 In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode, click Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_4b.png
   :align: center
   :scale: 50%
-
-.. note:: Set ``Trust XFF Header`` to ``Yes`` if you want the client IP/Country visible in the Security Analytics
 
 .. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy. However, if you want to use learning/blocking mode, you will need a dedicated app template per application.
 

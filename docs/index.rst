@@ -78,13 +78,14 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 **Tools**:
 
+- `BIG-IP Cloud Edition AWS trial`_ (see `internal video`_)
 - `BIG-IP 6.0 Application Service Catalog - Automation Demo with Postman`_
-- `BIG-IP Cloud Edition AWS trial`_
 - `BIG-IQ PM team GitHub (various automation tools)`_
 
+.. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _BIG-IP 6.0 Application Service Catalog - Automation Demo with Postman: https://github.com/codygreen/BIG-IQ-Automation-Application-Service-Catalog 
-.. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start 
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
+.. _internal video: https://web.microsoftstream.com/video/e36b28df-3c4c-44e9-b0ab-fd961617ca1b 
 
 .. warning:: When using the UDF or Ravello Lab, make sure:
 

@@ -85,7 +85,7 @@ echo -e "\n${RED}Sleep 3 min (to allow TIME: for the VPN to come up)${NC}"
 sleep 180
 
 echo -e "\n${RED}VPN status:${NC}\n"
-aws ec2 describe-vpn-connections | grep -A 15 VgwTelemetry
+./check_vpn_aws.sh
 
 echo -e "\n${RED}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
 ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
@@ -93,11 +93,24 @@ ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
 echo -e "\n${RED}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
 echo -e "You can check also the BIG-IP logs:\n\n# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log${NC}\n\n"
 
-echo -e "${RED}Note: check if the VPN is up (./check_vpn_aws.sh).${NC}"
+echo -e "${RED}Note: check if the VPN is up (# ./check_vpn_aws.sh).${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+
+echo "
+#!/bin/bash
+echo -e '\nCFT SSG status:'
+aws cloudformation describe-stack-events --stack-name $PREFIX-aws-ssg  --query 'StackEvents[*].[ResourceStatus,LogicalResourceId,ResourceType,Timestamp]' --output text |  sort -k4r |  perl -ane 'print if !\$seen{\$F[1]}++'
+echo -e '\n\nAuto Scaling Group status:'
+aws autoscaling describe-auto-scaling-instances --output text
+echo -e '\n\nEC2 status:'
+aws ec2 describe-instances --query 'Reservations[].Instances[].[PrivateIpAddress,Tags[?Key==\`Name\`].Value[]]' --output text | sed '\$!N;s/\n/ /'
+echo
+exit 0" > check_cft_ec2_aws.sh
+chmod +x check_cft_ec2_aws.sh
+echo "${RED}Check the CFT status by running this script on a separate terminal: # watch -n 2 './check_cft_ec2_aws.sh' ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg

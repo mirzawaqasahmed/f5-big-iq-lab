@@ -1,14 +1,13 @@
 Lab 1: Creation of each persona in BIG-IQ
 -----------------------------------------
-.. note:: Marco, Paula, Paul and Larry are already created in the blueprint,so only the **david** user needs to be created.
+.. note:: Marco, Paula, Paul, Olivia and Larry are already created in the blueprint, so only the **david** user needs to be created.
 
 We will be using 4 main personas for this lab:
 
 1. **Marco**: Full Administrator
 2. **Larry**: Security Manager
-3. **Paula**: Application Manager VMware
-4. **Paul**: Application Manager AWS
-5. **David**: Super-NetOps
+3. **Paula** & **Paul**: Application Manager
+4. **David** & **Olivia**: Super-NetOps
 
 **Marco** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
 He will provide the access to David, Larry and Paula. He will also manage the Service Scaling Group (SSG)
@@ -23,7 +22,7 @@ Keeping up to date on threats, determining their potential impact, and mitigatin
 Maximizing value of app through capabilities design, adoption, and usage.
 Ensuring that the app fits within the rest of the organization’s app portfolio strategy.
 
-**David** will try automating whenever possible, to enable efficiency and ability to solve problems at scale.
+**David** and **Olivia** will try automating whenever possible, to enable efficiency and ability to solve problems at scale.
 Automate common network patterns that the other teams can consume.
 Automate existing environment management and troubleshooting tasks.
 
