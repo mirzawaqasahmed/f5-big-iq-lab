@@ -30,4 +30,5 @@ Tasks:
    :maxdepth: 1
    :glob:
 
-   lab*/lab*
+   lab*
+
