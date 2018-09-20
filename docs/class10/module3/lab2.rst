@@ -8,8 +8,8 @@ In order for a BIG-IP DNS to be added to a sync group, the following objects mus
 
 In this lab, we will create necessary objects for a DNS Sync Group
 
-	Adding Seattle DC
-		=> create DC, server in Seattle BIG-IP and add it to BOSTON sync group
+  Adding Seattle DC
+    => create DC, server in Seattle BIG-IP and add it to BOSTON sync group
 
 Data Center setup
 ******************
@@ -20,13 +20,25 @@ Data center failover is the process of changing the IP addresses that the wide I
 
 All BIG-IP DNS systems in a configuration synchronization (ConfigSync) group receive requests for DNS name resolution; however, when responding to DNS name resolution requests, the wide IP uses only the IP addresses of primary and available pools.
 
-To create your Data Center(s) go to *xxx* > *xxx*, it should look like this:
+To create your Data Center(s) go to *Configuration* > *DNS* > *GSLB* > *Data centers*, it should look like this:
 
-.. image:: ../pictures/module1/img_module1_lab11_x.png
+.. image:: ../pictures/module3/Create_DC_step1.png
   :align: center
   :scale: 50%
 
 |
+
+Click *Create* and fill out the details of the Seattle Data Center
+
+.. image:: ../pictures/module3/Create_DC_step2.png
+  :align: center
+  :scale: 50%
+
+Deploy the Data Center configuration to all of the BIG-IPs
+
+.. image:: ../pictures/module3/Create_DC_step3.png
+  :align: center
+  :scale: 50%
 
 Server Object setup
 ********************
@@ -44,7 +56,6 @@ To create your Server Objects go to *xxx* *xxx*, it should look like this:
   :align: center
   :scale: 50%
 
-
 Listener Object creation
 *************************
 
@@ -59,7 +70,6 @@ you should see this:
   :scale: 50%
 
 |
-
 
 Click on the button *Save & Close*, Click on the button *Save & Close* again
 
