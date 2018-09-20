@@ -34,7 +34,7 @@ Click *Create* and fill out the details of the Seattle Data Center
   :align: center
   :scale: 50%
 
-Deploy the Data Center configuration to all of the BIG-IPs
+Deploy the Data Center configuration to all of the BIG-IPs (must choose sync group and deploy to both)
 
 .. image:: ../pictures/module3/Create_DC_step3.png
   :align: center
@@ -43,16 +43,27 @@ Deploy the Data Center configuration to all of the BIG-IPs
 Server Object setup
 ********************
 
-Blurb about Server object 
+In order for the newly created Data Center to become active, a Server objects must be created. A Server object must exist for every BIG-IP DNS you wish to add to a sync group. 
 
-For our lab, we will need two BIG-IP DNS devices:
+For our lab, we will be adding SEA-vBIGIP01.termmarc.com to the BosSeaDNS sync group. *Note*.. All devices need to be on the same software version.
 
-To create your Server Objects go to *xxx* *xxx*, it should look like this:
+Because SEA-vBIGIP01.termmarc.com doesn't currently have a server object, one must be created on the box itself. 
+To create your Server Objects go to *DNS* > *GSLB* > *Servers* > *Servers List Create*, it should look like this:
 
-* BIG-IPDNS01
-* BIG-IPDNS02
+.. image:: ../pictures/module3/Create_Server_step4.png
+  :align: center
+  :scale: 50%
 
-.. image:: ../pictures/module1/img_module1_lab11_xx.png
+To create the Server object on the BosSeaDNS sync group, go to *Configuration* > *GSLB* > *Servers* > *Create New Server Device*, and add in the information for SEA-vBIGIP01.termmarc.com.
+It should look like this:
+
+.. image:: ../pictures/module3/Create_Server_step1.png
+  :align: center
+  :scale: 50%
+
+Next, add the Server object to the BoSeaDNS sync group under Properties.  It should look like this:
+
+.. image:: ../pictures/module3/Create_Server_step2.png
   :align: center
   :scale: 50%
 
