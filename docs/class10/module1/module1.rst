@@ -16,16 +16,6 @@ configured for the DNS sync groups you manage. You can view and modify
 the properties for existing DNS profiles. You can also manage
 permissions for DNS GSLB objects.
 
-Tasks:
-
-6.1: Check DNS Sync Group Health
-
-6.2: Managing DNS Profiles
-
-6.3: Managing DNS Listeners
-
-6.4: Managing permissions for GSLB Objects
-
 .. toctree::
    :maxdepth: 1
    :glob:
