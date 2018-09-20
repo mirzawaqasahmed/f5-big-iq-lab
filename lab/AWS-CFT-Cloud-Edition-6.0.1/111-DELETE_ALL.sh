@@ -9,6 +9,9 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+ANSIBLE_PATH="/usr/local/bin"
+PYTHON_PATH="/usr/bin/python"
+
 function pause(){
    read -p "$*"
 }
@@ -25,7 +28,7 @@ if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        exit 1
 fi
 
-/usr/bin/wall "/!\ DELETION OF ALL AWS OBJECTS IN 1 MIN /!\  To stop it: # kill -9 $$"
+/usr/bin/wall "/!\ DELETION OF ALL AWS OBJECTS IN 1 MIN /!\  To stop it: # kill -9 $$" 2> /dev/null
 
 sleep 60
 
@@ -38,7 +41,7 @@ clear
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
 echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg -i notahost, 10-delete-aws-waf-app.yml
+$ANSIBLE_PATH/ansible-playbook $DEBUG_arg -i notahost, 10-delete-aws-waf-app.yml
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
@@ -47,11 +50,11 @@ echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AWS S
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 11-delete-aws-ssg-resources.yml -i ansible2.cfg
+$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-aws-ssg-resources.yml -i ansible2.cfg
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-python 11-delete-aws-ssg-resources-check.py
+$PYTHON_PATH/python 11-delete-aws-ssg-resources-check.py
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
@@ -62,7 +65,7 @@ echo -e "MAKE SURE THE AWS SSG HAS BEEN REMOVED COMPLETLY BEFORE PROCEEDING${NC}
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+X to Cancel'
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 12-teardown-aws-vpn-vpc-ubuntu.yml -i ansible2.cfg
+$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 12-teardown-aws-vpn-vpc-ubuntu.yml -i ansible2.cfg
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "Clear cache directory and *retry"
