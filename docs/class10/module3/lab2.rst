@@ -34,7 +34,7 @@ Click *Create* and fill out the details of the Seattle Data Center
   :align: center
   :scale: 50%
 
-Deploy the Data Center configuration to all of the BIG-IPs (must choose sync group and deploy to both)
+Deploy the Data Center configuration to all of the BIG-IPs (must choose sync group and deploy to both). Repeat this process to create a Data center "BostonDC" and push it only to SEA-vBIGIP01.termmarc.com  
 
 .. image:: ../pictures/module3/Create_DC_step3.png
   :align: center
@@ -47,10 +47,16 @@ In order for the newly created Data Center to become active, a Server objects mu
 
 For our lab, we will be adding SEA-vBIGIP01.termmarc.com to the BosSeaDNS sync group. *Note*.. All devices need to be on the same software version.
 
-Because SEA-vBIGIP01.termmarc.com doesn't currently have a server object, one must be created on the box itself. 
+Because SEA-vBIGIP01.termmarc.com doesn't currently have a server object, they must be created on the box itself. 
 To create your Server Objects go to *DNS* > *GSLB* > *Servers* > *Servers List Create*, it should look like this:
 
 .. image:: ../pictures/module3/Create_Server_step4.png
+  :align: center
+  :scale: 50%
+
+Create a cerver object for the boston servers as well. Here is an example of the BOS-vBIGIP01.termmarc.com BIG-IP. Repeat this for the BOS-vBIGIP01.termmarc.com server.
+
+.. image:: ../pictures/module3/Server_BOS1.png
   :align: center
   :scale: 50%
 
@@ -67,21 +73,39 @@ Next, add the Server object to the BoSeaDNS sync group under Properties.  It sho
   :align: center
   :scale: 50%
 
-Listener Object creation
-*************************
+To complete the addition of SEA-vBIGIP01.termmarc.com, you must run the gtm_add script directly on the device. Open the CLI and type in the command: tmsh gtm run gtm_add. You will be prompted for the IP address of the BIGIP you would like to get your config from. Type in the self IP for BOS-vBIGIP01.termmarc.com "10.1.1.8". When the script is done running, SEA-vBIGIP01.termmarc.com will be joined to the BosSeaDNS sync group.  See the example below.
 
-Blurb about listeners 
-
-To create your Listeners, go to *xxx* > *xxx* and click on *xxx*
-
-you should see this:
-
-.. image:: ../pictures/module1/img_module1_lab11_xxx.png
+.. image:: ../pictures/module3/GTM_add.png
   :align: center
   :scale: 50%
 
-|
+Becuase we had to complete some of the steps on the BIG-IPs themself, we must rediscover and re-import the configurations.
 
-Click on the button *Save & Close*, Click on the button *Save & Close* again
+.. image:: ../pictures/module3/Rediscover.png
+  :align: center
+  :scale: 50%
 
-You should see your ``XXX`` available now.
+If the steps have been done correctly, you should see all three BIG-IPs with their status as green
+
+.. image:: ../pictures/module3/sync_complete.png
+  :align: center
+  :scale: 50%
+
+Listener Object creation
+*************************
+
+To control how BIG-IP DNS handles network traffic, you configure one or more listeners. A listener is a specialized resource to which you assign a specific IP address and port 53, the DNS query port. When traffic is sent to that IP address, the listener alerts the DNS system, allowing it to either handle the traffic locally or forward the traffic to the appropriate resource. Because the SEA-vBIGIP01.termmarc.com does not have a listener yet, one must be created before it can handle DNS traffic. 
+
+To create your Listeners, go to *Configuration* > *DNS Listeners* > *Create New Listener*
+
+you should see this:
+
+.. image:: ../pictures/module3/Create_listener.png
+  :align: center
+  :scale: 50%
+
+Deploy your listener configuration and this lab is complete.
+
+.. image:: ../pictures/module3/deploy.png
+  :align: center
+  :scale: 50%
