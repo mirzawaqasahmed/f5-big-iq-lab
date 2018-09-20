@@ -7,6 +7,8 @@ environment.
 .. warning:: REMEMBER that this lab has a cost in AWS. You must make sure to tear down
   your environment as soon as you're done with it
 
+.. warning:: The SSG will be automatically delete 23h after the deployment was started.
+
 To do this, please proceed this way: Connect to your system called
 **Ubuntu Lamp Server**
 

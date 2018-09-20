@@ -4,14 +4,29 @@
 # Uncomment set command below for code debuging ansible
 #DEBUG_arg="-vvvv"
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
+RED='\033[0;91m'
+GREEN='\033[0;92m'
+BLUE='\033[0;96m'
 NC='\033[0m' # No Color
 
 function pause(){
    read -p "$*"
 }
+
+c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
+c2=$(grep '<name>' ./config.yml | wc -l)
+c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
+c4=$(grep '<key_id>' ./config.yml | wc -l)
+
+if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
+       echo -e "${RED}\nNo AWS SSG created, nothing to tear down."
+       exit 1
+fi
+
+/usr/bin/wall "/!\ DELETION OF ALL AWS OBJECTS IN 1 MIN /!\  To stop it: # kill -9 $$"
+
+sleep 60
+
 echo -e "\n\n${RED}/!\ DELETION OF ALL AWS OBJECTS (Application/SSG/VPN/VPC) /!\ ${NC} \n"
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
