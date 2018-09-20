@@ -13,6 +13,8 @@ function pause(){
    read -p "$*"
 }
 
+cd /home/f5/AWS-CFT-Cloud-Edition
+
 c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
