@@ -1,5 +1,3 @@
 Lab 2.1: Creating a WIP for GSLB
 ---------------------------------
-
-In this lab, we will create a basic WIP
-
+``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
