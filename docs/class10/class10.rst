@@ -17,7 +17,7 @@ Below Virtual Servers and Pool Members can be used in the context of the  (UDF l
 Test Listeners                      Ports
 ==================================  ===========
 10.1.10.203 *(Boston Cluster)*      53 UDP
-10.1.10.204 *(Seattle Standalone)*  53 UDP
+10.1.10.204                         53 UDP
 ==================================  ===========
 
 .. toctree::
