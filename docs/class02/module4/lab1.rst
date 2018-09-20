@@ -1,6 +1,8 @@
 Lab 4.1: Prepare our ``AWS`` deployment 
 ---------------------------------------
 
+.. warning:: The SSG will be automatically delete 23h after the deployment was started.
+
 In module1/Lab 1.1, we saw the different components to setup a SSG: 
 
 * ``License Pool`` 
