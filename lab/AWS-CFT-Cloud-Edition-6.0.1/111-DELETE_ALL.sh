@@ -4,9 +4,9 @@
 # Uncomment set command below for code debuging ansible
 #DEBUG_arg="-vvvv"
 
-RED='\033[0;91m'
-GREEN='\033[0;92m'
-BLUE='\033[0;96m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 function pause(){

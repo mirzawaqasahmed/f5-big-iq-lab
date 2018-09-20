@@ -4,9 +4,9 @@
 # Uncomment set command below for code debugging ansible
 #DEBUG_arg="-vvvv"
 
-RED='\033[0;91m'
-GREEN='\033[0;92m'
-BLUE='\033[0;96m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 function pause(){
@@ -21,7 +21,7 @@ c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 
 if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
-       echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS cGREENential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
+       echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
 	     echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
@@ -111,7 +111,7 @@ aws ec2 describe-instances --query 'Reservations[].Instances[].[PrivateIpAddress
 echo
 exit 0" > check_cft_ec2_aws.sh
 chmod +x check_cft_ec2_aws.sh
-echo "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# watch -n 2 './check_cft_ec2_aws.sh' ${NC}"
+echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# watch -n 2 './check_cft_ec2_aws.sh' ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
@@ -147,8 +147,8 @@ echo -e "\n${GREEN}NEXT STEPS ON BIG-IQ:\n\n1. Allow Paul to manage the Applicat
 
 echo -e "2. Allow Paul to use the AWS SSG previously  created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator AWS role.\n  - Select the Service Scaling Groups udf-<yourname>-aws-ssg, drag it to the right\n  - Save & Close.\n"
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh\n\n or\n\n# nohup ./111-DELETE_ALL.sh nopause &${NC}\n\n"
-echo -e "${RED}/!\ The SSG will be automatically delete 23h after the deployment was started. /!\ "
+echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh\n\n or\n\n# nohup ./111-DELETE_ALL.sh nopause &\n\n"
+echo -e "/!\ The SSG will be automatically delete 23h after the deployment was started. /!\ "
 
 echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
 
