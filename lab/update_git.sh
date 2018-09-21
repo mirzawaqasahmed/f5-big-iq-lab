@@ -42,10 +42,10 @@ else
     #sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
 
     # Add troubleshooting files into hackazon docker (to remove next blueprint version)
-    docker cp demo-app-troubleshooting/f5_browser_issue.php 414e9e028976:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5-logo-black-and-white.png 414e9e028976:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5-logo.png 414e9e028976:/var/www/hackazon/web
-    docker exec -i -t 414e9e028976 sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+    sudo docker cp demo-app-troubleshooting/f5_browser_issue.php 414e9e028976:/var/www/hackazon/web
+    sudo docker cp demo-app-troubleshooting/f5-logo-black-and-white.png 414e9e028976:/var/www/hackazon/web
+    sudo docker cp demo-app-troubleshooting/f5-logo.png 414e9e028976:/var/www/hackazon/web
+    sudo docker exec -i -t 414e9e028976 sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     touch udf_auto_update_git
     rm -f last_update_*
