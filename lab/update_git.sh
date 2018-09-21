@@ -23,7 +23,7 @@ else
     echo "AWS scripts"
     mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
     echo "Fixing permissions..."
-    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh
+    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh
     chown -R $user:$user .
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then
