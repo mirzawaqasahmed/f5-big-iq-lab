@@ -13,7 +13,7 @@ else
         url=$1
 fi
 
-echo -e "\nHTTPS app only:\nUsage: ./404.sh site40.example.com"
+echo -e "\nHTTPS app only.\nUsage: ./404.sh site40.example.com"
 
 echo -e "\nTarget:${GREEN} $url ${NC}\n"
 

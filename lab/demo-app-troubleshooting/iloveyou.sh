@@ -18,7 +18,7 @@ else
         client=$2
 fi
 
-echo -e "\nHTTPS app only:\nUsage: ./iloveyou.sh site40.example.com 213.187.116.138"
+echo -e "\nHTTPS app only.\nUsage: ./iloveyou.sh site40.example.com 213.187.116.138"
 
 echo -e "\nTarget:${GREEN} $url ${NC}- Source:${RED} $client ${NC}\n"
 
