@@ -4,6 +4,8 @@ Connect as **paul**.
 
 1. Select one of the application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
 
+.. note:: Enhanced Analytics might be already turn on for site40.example.com
+
 The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
 Note: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list.
 
