@@ -1,5 +1,5 @@
-Module 2: Applications Analytics
-================================
+Module 2: Applications Troubleshooting
+======================================
 
 .. toctree::
    :maxdepth: 1

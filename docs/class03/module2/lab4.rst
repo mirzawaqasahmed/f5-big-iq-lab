@@ -1,5 +1,5 @@
-Lab 2.4: Miscellaneous
-----------------------
+Lab 2.4: Page Load Time
+-----------------------
 Connect as **paula**.
 Open ``site42.example.com``.
 

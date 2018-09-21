@@ -41,12 +41,6 @@ else
     # for SEA - DCD lab IP
     #sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
 
-    # Add troubleshooting files into hackazon docker (to remove next blueprint version)
-    sudo docker cp demo-app-troubleshooting/f5_browser_issue.php 414e9e028976:/var/www/hackazon/web
-    sudo docker cp demo-app-troubleshooting/f5-logo-black-and-white.png 414e9e028976:/var/www/hackazon/web
-    sudo docker cp demo-app-troubleshooting/f5-logo.png 414e9e028976:/var/www/hackazon/web
-    sudo docker exec -i -t 414e9e028976 sh -c "chown -R www-data:www-data /var/www/hackazon/web"
-
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)
