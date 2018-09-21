@@ -26,7 +26,7 @@ sitefqdn[15]="site38.example.com"
 sitefqdn[16]="site40.example.com"
 sitefqdn[17]="site42.example.com"
 # for hackazon app on port 80 in a docker
-sitepages="index.php faq contact wishlist user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=64 product/view?id=72 product/view?id=78 product/view?id=81 product/view?id=101 product/view?id=112 product/view?id=113 product/view?id=130 product/view?id=141 product/view?id=142 product/view?id=150 product/view?id=169 product/view?id=191"
+sitepages="index.php f5_browser_issue.php faq contact wishlist user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=64 product/view?id=72 product/view?id=78 product/view?id=81 product/view?id=101 product/view?id=112 product/view?id=113 product/view?id=130 product/view?id=141 product/view?id=142 product/view?id=150 product/view?id=169 product/view?id=191"
 
 
 # get length of the array
@@ -56,7 +56,7 @@ browser[19]="Mozilla/5.0 (BlackBerry; U; BlackBerry 9320; en) AppleWebKit/534.11
 browser[20]="Opera/9.63 (X11; FreeBSD 7.1-RELEASE i386; U; en) Presto/2.1.1"
 browser[21]="Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 520) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537"
 
-arraylengthbrowser=${#sitefqdn[@]}
+arraylengthbrowser=${#browser[@]}
 
 
 for (( i=1; i<${arraylength}+1; i++ ));
