@@ -13,8 +13,8 @@ cd /home/$user
 if [ -f ~/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
-    echo "Cleanup previous scripts..."
-    rm -rf AWS* f5-ansi* scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible
+    echo "Cleanup previous files..."
+    rm -rf AWS* f5-ansi* scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -24,6 +24,7 @@ else
     mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
     echo "Fixing permissions..."
     chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh
+    chown -R $user:$user .
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then
         crontab < crontab.txt
@@ -41,9 +42,9 @@ else
     #sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
 
     # Add troubleshooting files into hackazon docker (to remove next blueprint version)
-    docker cp troubleshooting/f5_browser_issue.php 414e9e028976:/var/www/hackazon/web
-    docker cp troubleshooting/f5-logo-black-and-white.png 414e9e028976:/var/www/hackazon/web
-    docker cp troubleshooting/f5-logo.png 414e9e028976:/var/www/hackazon/web
+    docker cp demo-app-troubleshooting/f5_browser_issue.php 414e9e028976:/var/www/hackazon/web
+    docker cp demo-app-troubleshooting/f5-logo-black-and-white.png 414e9e028976:/var/www/hackazon/web
+    docker cp demo-app-troubleshooting/f5-logo.png 414e9e028976:/var/www/hackazon/web
     docker exec -i -t 414e9e028976 sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     touch udf_auto_update_git
