@@ -52,4 +52,10 @@ if [[  $currentuser == "root" ]]; then
     # wait 15 min for ESX to boot
     sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
     sleep 1100 && sudo chown -R $user:$user /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
+    
+    # Add troubleshooting files into hackazon docker (to remove next blueprint version)
+    docker cp troubleshooting/f5_browser_issue.php 414e9e028976:/var/www/hackazon/web
+    docker cp troubleshooting/f5-logo-black-and-white.png 414e9e028976:/var/www/hackazon/web
+    docker cp troubleshooting/f5-logo.png 414e9e028976:/var/www/hackazon/web
+    docker exec -i -t 414e9e028976 sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 fi
