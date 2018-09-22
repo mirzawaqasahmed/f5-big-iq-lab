@@ -25,7 +25,7 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 
 3. Let's generate some 404 error, connect on the *Ubuntu Lamp Server* server and launch the following command:
 
-``# for i in {1..10}; do curl -k -s -m 4 -o /dev/null -w '404demo.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' https://site40.example.com/404demo.php; done``
+``# /home/f5/demo-app-troubleshooting/404.sh``
 
 4. After few seconds, the 10 404 errors are showing on the chart.
 

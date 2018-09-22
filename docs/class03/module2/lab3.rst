@@ -1,63 +1,36 @@
-Lab 2.3: Troubleshooting Security
----------------------------------
-Connect as **larry**
+Lab 2.3: Troubleshooting Application Response Time Browser
+----------------------------------------------------------
+Connect as **paul**.
 
-1. Larry disable the Web Application Security for ``templates-default`` ASM Policy.
+1. Select one of the application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
 
-Go to Configuration > SECURITY > Web Application Security > Policies, select ``templates-default`` ASM Policy.
+.. note:: Enhanced Analytics might be already turn on for site40.example.com
 
-Go to POLICY PROPERTIES > General Properties and check **Automatic** is set for the Learning Mode.
+The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
+Note: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list.
 
-.. image:: ../pictures/module2/img_module2_lab3_1a.png
-  :align: center
-  :scale: 50%
+2. Launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *XRDP*
 
-Go to POLICY BUILDING > Settings and check **Automatic** is set for the Learning Mode, and Auto-Deploy Policy set to **Real Time**.
-
-.. image:: ../pictures/module2/img_module2_lab3_1b.png
-  :align: center
-  :scale: 50%
-
-.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy.
-
-.. list-table:: Default ASM Policy details ``templates-default``
-   :header-rows: 0
-
-   * - Data Guard:
-		      * Protect credit card numbers
-		      * Protect U.S. Social Security numbers
-		      * Mask sensitive data
-   * - Brute Force Attack Prevention:
-		      * default policy
-   * - Headers:
-      		* methods allow GET/HEAD/POST
-      		* HTTP headers */authorization/referer check signatures, referer Perform Normalization
-      		* Cookies * allow
-      		* Redirection Protection allow
-      		* Character Set (list of allow/disallow)
-   * - URLs:
-      		* HTTP * allow
-      		* Web Sockets * allow
-      		* Character Set (list of allow/disallow)
-   * - FILE TYPES:
-      		* Allow file types *
-      		* Disallowed file types => list (e.g. bak, bat, bkp ...)
-   * - CONTENT PROFILES:
-      		* JSON (list of allow/disallow)
-      		* Plain Text (list of allow/disallow)
-      		* XML (list of allow/disallow)
-   * - PARAMETERS:
-      		* Parameters: * user inputs Attack Signatures enabled
-      		* SensitiveParameters: password
-   * - Attack Signatures Configuration: enabled
-   * - Attack Signatures: numbers enabled
-   * - Sessions and logins: disabled
+.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
+    :align: center
+    :scale: 50%
 
 |
 
-2. Update the Enforcement Mode to ``Blocking``
+Open Chrome and Firefox and navigate on the website https://site40.example.com.
 
-Go to POLICY PROPERTIES > General Properties
+A page f5_browser_issue.php is behaving differenty on Chrome compare to other browsers.
+
+.. image:: ../pictures/module2/img_module2_lab3_1.png
+  :align: center
+  :scale: 50%
+
+|
+
+3. Back to BIG-IQ Application dashboard, open application ``site40.example.com`` and display the *Application Response Time* Analytics.
+
+Expand the right-edge of the analytics pane to get the URLs and Browser filters. Order the URLs by App Response Time Average.
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
@@ -65,34 +38,10 @@ Go to POLICY PROPERTIES > General Properties
 
 |
 
-Save and Close.
+Select the page f5_browser_issue.php, which has the highest value. Now all the values in all the other tables are about the page previously selected.
 
-Connect as **paula**
-
-Select ``site36.example.com``
-
-1. Paula enforce the policy: APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
+In the Browsers filter, notice the 30 sec Application Response Time for Chrome browser.
 
 .. image:: ../pictures/module2/img_module2_lab3_3.png
   :align: center
   :scale: 50%
-
-|
-
-.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy to enforce it (or not)
-
-.. image:: ../pictures/module2/img_module2_lab3_3a.png
-  :align: center
-  :scale: 50%
-
-2. Connect on the *Ubuntu Lamp Server* server and launch the following command:
-
-``# /home/f5/scripts/generate_bad_traffic.sh``
-
-3. Check the various Security Analytics: Illegal Transactions, All Transactions and Violations.
-
-.. image:: ../pictures/module2/img_module2_lab3_4.png
-  :align: center
-  :scale: 50%
-
-4. Stop the bad traffic script, connect on the *Ubuntu Lamp Server* server and ``CTRL+C``.

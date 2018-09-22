@@ -46,6 +46,23 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 - "Application" - Application Management (Cloud Edition)
 
+.. warning:: When using the UDF or Ravello Lab, make sure:
+
+  1. STOP the ESXi if you do not plan to demo VMware SSG.
+  2. STOP your deployment at the end of your demo.
+  3. Do not forget to tear down your AWS SSG if any.
+  4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
+
+.. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: Contents/Lab:
+   :glob:
+
+   class*/class*
+
 **Documentations**:
 
 - `BIG-IQ Knowledge Center`_
@@ -86,23 +103,5 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 .. _BIG-IP 6.0 Application Service Catalog - Automation Demo with Postman: https://github.com/codygreen/BIG-IQ-Automation-Application-Service-Catalog 
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 .. _internal video: https://web.microsoftstream.com/video/e36b28df-3c4c-44e9-b0ab-fd961617ca1b 
-
-.. warning:: When using the UDF or Ravello Lab, make sure:
-
-  1. STOP the ESXi if you do not plan to demo VMware SSG.
-  2. STOP your deployment at the end of your demo.
-  3. Do not forget to tear down your AWS SSG if any.
-  4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
-
-.. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: Contents/Lab:
-   :glob:
-
-   class*/class*
-
 
 .. note:: A draft version of this lab guide can be found `here`_.
