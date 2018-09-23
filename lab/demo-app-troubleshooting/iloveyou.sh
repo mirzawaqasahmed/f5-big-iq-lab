@@ -13,6 +13,7 @@ else
         url=$1
 fi
 if [ -z "$2" ]; then
+        # Russian IP
         client="213.187.116.138"
 else
         client=$2

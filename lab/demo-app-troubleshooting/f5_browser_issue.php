@@ -1,5 +1,5 @@
-<!-- Page to install in hackazon container under /var/www/hackazon -->
-<!-- f5-logo-black-and-white.png and f5-logo-black-and-white.png to be uploaded under /var/www/hackazon -->
+<!-- Page to install in hackazon container under /var/www/hackazon/web -->
+<!-- f5-logo-black-and-white.png and f5-logo-black-and-white.png to be also uploaded under /var/www/hackazon/web -->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -10,11 +10,12 @@
 <?php
 
 $browser = $_SERVER['HTTP_USER_AGENT'];
+$sleep = 30; # in seconds
 
 if (strpos($browser, 'Chrome') !== false) {
-	sleep(30);
+	sleep($sleep);
 	echo "<img src='f5-logo.png' alt='f5-logo.png' />";
-	echo "<p/>30s delay load page for Chrome browser only.";
+	echo "<p/>$sleep sec delay load page for Chrome browser only.";
 }else{
 	echo "<img src='f5-logo-black-and-white.png' alt='f5-logo-black-and-white.png' />";
 	echo "<p/>no delay for all other browsers.";
