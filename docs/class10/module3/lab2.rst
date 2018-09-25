@@ -45,7 +45,9 @@ Server Object setup
 
 In order for the newly created Data Center to become active, a Server objects must be created. A Server object must exist for every BIG-IP DNS you wish to add to a sync group. 
 
-For our lab, we will be adding SEA-vBIGIP01.termmarc.com to the BosSeaDNS sync group. *Note*.. All devices need to be on the same software version.
+For our lab, we will be adding SEA-vBIGIP01.termmarc.com to the BosSeaDNS sync group. 
+
+.. note:: All devices need to be on the same software version.
 
 Because SEA-vBIGIP01.termmarc.com doesn't currently have a server object, they must be created on the box itself. 
 To create your Server Objects go to *DNS* > *GSLB* > *Servers* > *Servers List Create*, it should look like this:
