@@ -1,7 +1,7 @@
 Lab 2.1: Built-in templates
 ---------------------------
 BIG-IQ v6.0 will have the default templates below built-in. These default templates cannot be modified but they can be cloned.
-They can be used to deploy various type of applications. These default templates are only displayed after BIG-IQ is managing a BIG-IP device.
+They can be used to deploy various type of applications. **These default templates are only displayed after BIG-IQ is managing a BIG-IP device.**
 
 - ``Default-f5-FastL4-TCP-lb-template``: For load balancing a TCP-based application with a FastL4 profile.
 - ``Default-f5-FastL4-UDP-lb-template``: For load balancing a UDP-based application with a FastL4 profile.
@@ -9,7 +9,6 @@ They can be used to deploy various type of applications. These default templates
 - ``Default-f5-fastHTTP-lb-template``: For load balancing an HTTP-based application, speeding up connections and reducing the number of connections to the back-end server.
 - ``Default-f5-HTTPS-WAF-lb-template``: For load balancing an HTTPS application on port 443 with a Web Application Firewall using an ASM Rapid Deployment policy.
 - ``Default-f5-HTTPS-offload-lb-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP.
-
 
 Connect as **marco**, go to *Applications* > *SERVICE CATALOG*:
 
