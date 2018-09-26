@@ -4,9 +4,6 @@ Mannually upgrading BIG-IP DNS systems require specific preparation and configur
 
 In this lab, we will be upgrading the members of the BosSeaDNS Sync Group from 13.1.0.5 to 14.0.0.1.  This image has already been uploaded to the BIG-IQ, so that precess can be skipped. 
 
-Step one:
-*********
-
 Navagate to *Devices* > *Software Installations* and click *New Managed Device Install*
 From here, select the BIGIP-14.0.0.1-0.0.2.iso image.  
 
