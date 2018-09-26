@@ -1,5 +1,5 @@
 Lab 3.1: Upgrade Sync Group
 ------------------------------------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Mannually upgrading BIG-IP DNS systems require specific preparation and configuration when upgrading from version 11.x, or later, to the new version software. BIG-IQ takes the complexity out of the upgrade process and does the Sync group preparation for you
 
-		use Boston to upgrade to 14.0
+In this lab, we will be upgrading the members of the BosSeaDNS Sync Group 
