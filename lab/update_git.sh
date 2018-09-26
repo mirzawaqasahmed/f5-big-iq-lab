@@ -10,7 +10,7 @@ user="f5student"
 
 cd /home/$user
 
-if [ -f ~/udf_auto_update_git ]; then
+if [ -f /home/$user/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
     echo "Cleanup previous files..."
