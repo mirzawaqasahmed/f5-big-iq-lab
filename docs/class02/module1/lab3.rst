@@ -37,20 +37,23 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
   ``sudo service isc-dhcp-server force-reload``
 
-Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
+From UDF, Launch a RDP session to have access to the vCenter webui (vCenter runs as an instance
 in our ESXi). To do this, in your UDF deployment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *XRDP*
 
-.. image:: ../pictures/module1/img_module1_lab3_5.png
+.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
     :align: center
     :scale: 50%
 
 |
 
-Here is the credentials to use:
+From Ravello, launch the console to have access to the Ubuntu Desktop.
 
-* login: ubuntu
-* Password: default
+.. image:: ../../class02/pictures/module1/img_module1_lab3_5a.png
+    :align: center
+    :scale: 50%
+
+|
 
 .. image:: ../pictures/module1/img_module1_lab3_5b.png
     :align: center
