@@ -44,6 +44,9 @@ else
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)
+
+    # WA Ravello netplan
+    sudo netplan apply
 fi
 
 # run only when server boots (through /etc/rc.local as root)
