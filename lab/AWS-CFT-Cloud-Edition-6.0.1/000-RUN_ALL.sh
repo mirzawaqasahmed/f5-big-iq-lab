@@ -19,6 +19,7 @@ c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
+PREFIX="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')"
 
 if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
@@ -132,7 +133,6 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # add ab in crontab to simulate traffic
 echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
-PREFIX="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')"
 if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
    ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
    (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$ELB_DNS/" ) | crontab -
