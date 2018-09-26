@@ -38,7 +38,7 @@ you time because you don't have to log on to individual BIG-IP devices
 to create, monitor, or deploy certificates.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :glob:
 
-   lab*/module*
+   lab*

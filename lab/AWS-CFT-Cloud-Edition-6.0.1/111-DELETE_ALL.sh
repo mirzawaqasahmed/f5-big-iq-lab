@@ -10,7 +10,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 ANSIBLE_PATH="/usr/local/bin"
-PYTHON_PATH="/usr/bin/python"
+PYTHON_PATH="/usr/bin"
 
 function pause(){
    read -p "$*"
