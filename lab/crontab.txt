@@ -21,4 +21,4 @@
 */5 * * * * /home/f5/scripts/eth0_lamp_monitor.sh > /dev/null 2>&1
 
 ## AUTOMATIC TEAR DOWN AWS SSG AFTER 23 HOURS
-@reboot sleep 82800 && /home/f5/AWS-CFT-Cloud-Edition/111-DELETE_ALL.sh nopause > /home/f5/AWS-CFT-Cloud-Edition/111-DELETE_ALL_crontab.log 2>&1
+@reboot sleep 82800 && /home/f5/AWS-CFT-Cloud-Edition/111-DELETE_ALL.sh nopause
