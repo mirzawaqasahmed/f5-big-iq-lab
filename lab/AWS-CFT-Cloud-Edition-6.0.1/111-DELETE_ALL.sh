@@ -24,7 +24,7 @@ c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 
 if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
-       echo -e "${RED}\nNo AWS SSG created, nothing to tear down.${NC}"
+       echo -e "${RED}\nNo AWS SSG created, nothing to tear down.\n${NC}"
        exit 1
 fi
 
