@@ -112,7 +112,7 @@ aws ec2 describe-instances --query 'Reservations[].Instances[].[PrivateIpAddress
 echo
 exit 0" > check_cft_ec2_aws.sh
 chmod +x check_cft_ec2_aws.sh
-echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# watch -n 2 './check_cft_ec2_aws.sh' ${NC}"
+echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# ./check_cft_ec2_aws.sh ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
