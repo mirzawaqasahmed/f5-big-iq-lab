@@ -1,5 +1,5 @@
-Module 1: Import BIG-IP devices for management and inventory
-============================================================
+Module 1: BIG-IP devices management and inventory
+=================================================
 
 To start managing a BIG-IP® device, you must add it to the BIG-IP Devices inventory list on the BIG-IQ® system.
 
