@@ -19,7 +19,7 @@ c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
-PREFIX="$(head -30 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 
 if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
