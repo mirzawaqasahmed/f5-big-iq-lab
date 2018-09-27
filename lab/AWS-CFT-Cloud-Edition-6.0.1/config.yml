@@ -27,8 +27,8 @@ AWS_SSH_KEY: <name_of_the_aws_key>
 CUSTOMER_GATEWAY_IP: 0.0.0.0
 
 # Adjust the AMI based on your region (EC2 > IMAGES > AMIs > Public Images)
-BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
-#BYOL_BIGIP_AMI: "ami-04e893bab1e8b9b10" # us-east-1 F5 Networks BIGIP-14.0.0.1-0.0.2 BYOL - All Modules 1 Boot Location
+#BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
+BYOL_BIGIP_AMI: "ami-04e893bab1e8b9b10" # us-east-1 F5 Networks BIGIP-14.0.0.1-0.0.2 BYOL - All Modules 1 Boot Location
 # See links for other AMI: https://github.com/F5Networks/f5-aws-cloudformation/tree/master/AMI%20Maps
 
 ##################################################################################################
