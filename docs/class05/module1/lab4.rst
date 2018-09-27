@@ -7,6 +7,8 @@ uploads can be performed ad-hoc or as part of a F5 support case. If a
 support case is specified in the upload job, the qkview(s) will
 automatically be associated/linked to the support case.
 
+.. warning:: Re-license BIG-IQ CM with an Eval License in order to run this lab.
+
 1. Navigate to **Monitoring** on the top menu bar and then to
    **REPORTS-> Device-> iHealth** -> **Configuration** on the left-hand
    menu\ **.**
