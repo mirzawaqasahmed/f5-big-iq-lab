@@ -1,5 +1,5 @@
-Module 2:
-========================================================
+Module 2: Network Tools and Logs
+================================
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 - Multi Device Packet Tester
