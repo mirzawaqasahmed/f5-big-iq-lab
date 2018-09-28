@@ -5,13 +5,14 @@ In this class, we will focus on the BIG-IQ and DCD plaforms.
 
 Let's have a look at the ``Configuration Tab`` in BIG-IQ.
 
-**LOCAL TRAFFIC**
-
 .. image:: ./pictures/img_module1_1.png
   :align: center
   :scale: 50%
 
 |
+
+**LOCAL TRAFFIC**
+
 -	Click on the virtual server menu.  Show the state and availability.  Show the ability to sort the column in the table.  Show the ability to search and filter the table.
 -	Click on a virtual server that is installed on the clustered BIG-IPs (01 and 02), like the HR virtual server.  Point out that the editing view is very similar to the view on the BIG-IP.  Change something like the port and save the change.  Point out that BIG-IQ has updated the staged configuration for the virtual server on both cluster devices.
 -	Show the ability to clone a virtual server to create one that is very similar to an existing one.  Cloned virtuals can be created on the same device/cluster or on a different device/cluster.  Note: with the service template feature, this feature may become less used/useful, as this only clones the virtual, not all of the application components.
@@ -45,6 +46,12 @@ Let's have a look at the ``Configuration Tab`` in BIG-IQ.
 
 
 Let's have a look at the ``Deployment Tab`` in BIG-IQ.
+
+.. image:: ./pictures/img_module1_2.png
+  :align: center
+  :scale: 50%
+
+|
 
 **DEPLOYMENT TRACKING**
 
