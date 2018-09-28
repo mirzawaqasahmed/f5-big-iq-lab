@@ -42,6 +42,8 @@ Let's have a look at the ``Configuration Tab`` in BIG-IQ.
 - Logs – This is where you can configure Log Filters, Log Publishers, and Log Destinations.  Some of these were available in Shared Security in prior releases, but have been moved to the LTM area in 5.4.
 - Pinning Policies – This is where you can manage what objects are pinned to a device for LTM.  Objects that are pinned will be pushed to a device or will remain installed on a device, even if they are not used/referenced in the configuration for that device.
 
+
+
 Let's have a look at the ``Deployment Tab`` in BIG-IQ.
 
 **DEPLOYMENT TRACKING**
