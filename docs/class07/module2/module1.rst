@@ -7,6 +7,9 @@ Module 2: Network Tools and Logs
 - Ability to rename an object related to firewall
 - GUI support device dos multi-editing function
 
+.. image:: ../../pictures/under-construction-03.jpg
+  :align: center
+  :scale: 10%
 
 .. toctree::
    :maxdepth: 1

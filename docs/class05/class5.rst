@@ -67,6 +67,15 @@ In this class, we will focus on the BIG-IQ Device Management. Let's have a look 
 - Install devices one at a time – If this option is chosen, the upgrades will happen serially, as opposed to in parallel.
 - Select devices and Target volume – Choose the devices you want to upgrade and select or create the target install volume.
 
+**AUDIT LOGS**
+
+The audit logs (in the Monitoring tab) show who made what change, when they made the change, the client IP that they logged in from to make the change, and what change did they make.  The changes can be exported to a text file or sent to a syslog server for external tracking.
+
+**DASHBOARDS**
+
+The dashboards (in the Monitoring tab) provide the visualization of the data that is collected on the BIG-IQ Data Collection Devices (DCDs).  This menu area will be blank if DCDs are not deployed or the statistics collection is failing.  
+
+
 .. toctree::
    :maxdepth: 1
    :glob:
