@@ -128,7 +128,10 @@ sleep 300
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Application Creation: (it will start once AWS SSG creation is completed)\n${NC}"
-python 09-create-aws-waf-app.py
+python 09a-create-aws-waf-app.py
+
+echo "${RED}In case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: # python 09b-create-aws-https-app.py ${NC}"
+
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # add ab in crontab to simulate traffic
