@@ -1,3 +1,12 @@
 Lab 5.2: AWS
 ------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+
+- `BIG-IQ Knowledge Center`_
+
+.. _BIG-IQ Knowledge Center: https://github.com/F5Networks/f5-aws-cloudformation
+
+.. image:: ../pictures/module1/img_module1_lab2_1.png
+  :align: center
+  :scale: 50%
+
+|
