@@ -41,7 +41,7 @@ else
 
     # Installing docker images
     sudo docker pull mutzel/all-in-one-hackazon:postinstall
-    sudo docker run --name hackazon -d -p 80:80 --restart=always mutzel/all-in-one-hackazon:postinstall supervisord -n
+    sudo docker run --name hackazon2 -d -p 80:80 --restart=always mutzel/all-in-one-hackazon:postinstall supervisord -n
     docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')
     sudo docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
     sudo docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
