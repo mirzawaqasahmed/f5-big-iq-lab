@@ -1,3 +1,5 @@
 Lab 5.1: Onboard BIG-IQ using Ansible Galaxy
 --------------------------------------------
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+
+https://galaxy.ansible.com/f5devcentral/bigiq_onboard

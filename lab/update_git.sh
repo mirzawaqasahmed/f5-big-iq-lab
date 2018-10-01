@@ -42,17 +42,19 @@ else
     # Installing docker images
     sudo docker pull mutzel/all-in-one-hackazon:postinstall
     sudo docker run --name hackazon -d -p 80:80 --restart=always mutzel/all-in-one-hackazon:postinstall supervisord -n
-    sudo docker run -dit -p 8080:80 --name dvwa --restart=always citizenstig/dvwa 
-
     docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')
     sudo docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
     sudo docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
     sudo docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     sudo docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+
+    sudo docker run -dit -p 8080:80 --name dvwa --restart=always citizenstig/dvwa 
     sudo docker run -dit -p 8081:8080 --restart=always f5devcentral/f5-hello-world
     sudo docker run -dit -p 8082:80 --restart=always -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     sudo docker run -dit -p 8083:80 --restart=always -e F5DEMO_APP=frontend f5devcentral/f5-demo-httpd
     sudo docker run -dit -p 8084:80 --restart=always -e F5DEMO_APP=backend f5devcentral/f5-demo-httpd
+
+    sudo docker ps
 
     # Cleanup AWS credentials
     rm -f /home/$user/.aws/*
