@@ -37,7 +37,7 @@ else
     sudo docker kill $(sudo docker ps -q)
     sudo docker rm $(sudo docker ps -a -q)
     sudo docker rmi $(sudo docker images -q) -f
-    sudo scripts/cleanup-docker.sh
+    sudo ./scripts/cleanup-docker.sh
 
     # Installing docker images
     sudo docker pull mutzel/all-in-one-hackazon:postinstall
