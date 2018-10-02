@@ -16,7 +16,7 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AZURE-ARM-Cloud-Edition
+cd /home/f5/AZURE-Cloud-Edition
 
 c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
