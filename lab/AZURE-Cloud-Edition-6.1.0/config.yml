@@ -7,7 +7,7 @@ AZURE_CLOUD: AzureCloud
 
 USERNAME: <username>
 PASSWORD: <password>
-# web browser and access token to sign in
+# web browser and access token to sign in (if set to yes, delete USERNAME AND PASSWORD variables)
 USE_TOKEN: no
 
 # A unique searchable prefix to all resources which are created
