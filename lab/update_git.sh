@@ -21,9 +21,11 @@ else
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
     rm -rf /home/$user/f5-big-iq-lab
     echo "AWS scripts"
-    mv AWS-CFT-Cloud-Edition-6.0.1 AWS-CFT-Cloud-Edition
+    mv AWS-Cloud-Edition-6.0.1 AWS-Cloud-Edition
+    echo "Azure scripts"
+    mv AZURE-Cloud-Edition-6.1.0 AZURE-Cloud-Edition
     echo "Fixing permissions..."
-    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh
+    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh *sh AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh
     chown -R $user:$user .
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then

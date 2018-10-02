@@ -32,8 +32,8 @@ If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd AWS-CFT-Cloud-Edition/cft/
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition/cft$ ll
+    f5@03a920f8b4c0410d8f:~$ cd AWS-Cloud-Edition/cft/
+    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition/cft$ ll
     total 44
     drwxr-xr-x 2 f5 f5 4096 Jun 11 00:27 ./
     drwxr-xr-x 9 f5 f5 4096 Jun 11 02:29 ../
@@ -41,7 +41,7 @@ If you want to review those stacks, connect to this system and go to :
     -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
     -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template
     -rw-r--r-- 1 f5 f5 2642 May  9 08:33 Setup-VPN.template
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition/cft$
+    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition/cft$
 
 Take some time to review the different things setup in your own VPC.
 

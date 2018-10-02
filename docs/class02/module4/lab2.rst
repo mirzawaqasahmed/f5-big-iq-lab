@@ -45,9 +45,9 @@ UDF system called: **Ubuntu 16.04 Lamp Server, Radius and DHCP**
 
 |
 
-Once connected via ``SSH``, go into the folder: **AWS-CFT-Cloud-Edition**: 
+Once connected via ``SSH``, go into the folder: **AWS-Cloud-Edition**: 
 
-    ``cd AWS-CFT-Cloud-Edition/``
+    ``cd AWS-Cloud-Edition/``
 
 we will need to edit the following files: 
 
@@ -237,8 +237,8 @@ You should see something like this:
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ nohup ./000-RUN_ALL.sh nopause &
-    f5@03a920f8b4c0410d8f:~/AWS-CFT-Cloud-Edition$ tail -f nohup.out
+    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition$ nohup ./000-RUN_ALL.sh nopause &
+    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition$ tail -f nohup.out
 
     Did you subscribed and agreed to the software terms in AWS Marketplace?
 

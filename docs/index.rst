@@ -29,6 +29,15 @@ There is lab environment (``version 11``) available in UDF and Ravello (Oracle P
   :align: center
   :scale: 30%
 
+**Networks**:
+
+- 10.1.1.0/24 UDF Management Network
+- 10.1.10.0/24 and 10.1.30.0/24 UDF external Network
+- 10.1.20.0/24 UDF internal Network
+- 172.17.0.0/16 UDF docker internal network
+- 172.100.0.0/16 AWS internal Network
+- 172.200.0.0/16 Azure internal Network - *coming soon*
+
 **List of instances**:
 
 - BIGIQ <> DCD 6.0.1 HF1

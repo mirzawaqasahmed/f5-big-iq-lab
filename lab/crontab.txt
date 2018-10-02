@@ -20,5 +20,6 @@
 ## WA ravello eth0 not set to 10.1.1.5
 */5 * * * * /home/f5/scripts/eth0_lamp_monitor.sh > /dev/null 2>&1
 
-## AUTOMATIC TEAR DOWN AWS SSG AFTER 23 HOURS
-@reboot sleep 82800 && /home/f5/AWS-CFT-Cloud-Edition/111-DELETE_ALL.sh nopause
+## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
+@reboot sleep 82800 && /home/f5/AWS-Cloud-Edition/111-DELETE_ALL.sh nopause
+@reboot sleep 82800 && /home/f5/AZURE-Cloud-Edition/111-DELETE_ALL.sh nopause

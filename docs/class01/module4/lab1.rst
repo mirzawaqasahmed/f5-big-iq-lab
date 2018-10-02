@@ -55,6 +55,8 @@ Create your pool with the following parameters:
 
 |
 
+.. note:: Nodes and pool members are “device specific objects”
+
 5. Save the template, click *Save*
 
 .. image:: ../pictures/module4/img_module4_lab1_7.png

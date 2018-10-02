@@ -1,7 +1,7 @@
 ---
 # Deploys SSG resources to BIG-IQ instance
 - name: Make BIG IQ Resources
-  hosts: bigiq_instance
+  hosts: bigiq-01
   vars_files: 
     - ./config.yml
   become: root

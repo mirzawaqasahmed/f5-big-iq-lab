@@ -1,7 +1,7 @@
 ---
 # Creates auto scaling resources on BIG-IQ
 - name: Make BIG IQ Auto Scaling Resources
-  hosts: bigiq_instance
+  hosts: bigiq-01
   vars_files:     
     - ./config.yml
     - ./cache/{{PREFIX}}/1-vpc.yml

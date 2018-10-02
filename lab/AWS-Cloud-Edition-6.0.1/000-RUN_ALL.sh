@@ -21,7 +21,7 @@ c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 
-if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
+if [[ $c == 1 || $c2 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
 	     echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
@@ -57,14 +57,14 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 04-configure-bigip.yml
+ansible-playbook $DEBUG_arg 04-configure-bigip.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\nSleep 10 seconds"
 sleep 10
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml
+ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\nSleep 20 seconds"
@@ -81,7 +81,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 #[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 # Not needed, this playbook creates a service catalog template (custom)
-#ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i ansible2.cfg
+#ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i inventory/hosts
 
 echo -e "\n${GREEN}Sleep 3 min (to allow TIME: for the VPN to come up)${NC}"
 sleep 180
@@ -115,7 +115,7 @@ chmod +x check_cft_ec2_aws.sh
 echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# ./check_cft_ec2_aws.sh ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i ansible2.cfg
+ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}In order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"

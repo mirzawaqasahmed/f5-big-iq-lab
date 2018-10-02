@@ -6,13 +6,13 @@
 
     - name: massage the variables names to better fit
       set_fact: 
-        ansible_ssh_host={{ hostvars[inventory_hostname].SETTINGS.bigip }}
+        ansible_ssh_host={{ hostvars[inventory_hostname].bigip }}
         ansible_ssh_user={{ ansible_ssh_user }}
         bigip_rest_user={{ bigip_rest_user }}
         bigip_rest_password={{ bigip_rest_password }}
-        DeviceName={{ hostvars[inventory_hostname].SETTINGS.hostname }}
-        ManagementInterfacePrivateIp={{ hostvars[inventory_hostname].SETTINGS.bigip }}
-        ManagementInterfacePublicIp={{ hostvars[inventory_hostname].SETTINGS.bigip }}
+        DeviceName={{ hostvars[inventory_hostname].hostname }}
+        ManagementInterfacePrivateIp={{ hostvars[inventory_hostname].bigip }}
+        ManagementInterfacePublicIp={{ hostvars[inventory_hostname].bigip }}
 
     - name: Restart ipsec service
       raw: tmsh restart sys service tmipsecd
