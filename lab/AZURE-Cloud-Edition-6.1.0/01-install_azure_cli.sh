@@ -2,10 +2,12 @@
 # Uncomment set command below for code debuging bash
 #set -x
 
-AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
 USE_TOKEN=$(grep USE_TOKEN ./config.yml | grep yes | wc -l)
-USERNAME="$(cat config.yml | grep USERNAME | awk '{ print $2}')"
-PASSWORD="$(cat config.yml | grep PASSWORD | awk '{ print $2}')"
+AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
+SUBSCRIPTION_ID=$(grep SUBSCRIPTION_ID ./config.yml | awk '{ print $2}')
+TENANT_ID=$(grep TENANT_ID ./config.yml | awk '{ print $2}')
+CLIENT_ID=$(grep CLIENT_ID ./config.yml | awk '{ print $2}')
+SERVICE_PRINCIPAL_SECRET=$(grep SERVICE_PRINCIPAL_SECRET ./config.yml | awk '{ print $2}')
 
 if [ ! -f /usr/bin/az ]; then
   # Update sources list:
@@ -17,8 +19,8 @@ if [ ! -f /usr/bin/az ]; then
   curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
   # Install the CLI:
-  apt-get update
-  apt-get install apt-transport-https azure-cli
+  sudo apt-get update
+  sudo apt-get install apt-transport-https azure-cli -y
 fi
 
 az cloud set --name $AZURE_CLOUD
@@ -26,9 +28,11 @@ az cloud set --name $AZURE_CLOUD
 if [[ $USE_TOKEN == 1 ]]; then
   az login
 else
-  az login -u $USERNAME -p $PASSWORD
+  az login --service-principal -u $CLIENT_ID --password $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID --subscription $SUBSCRIPTION_ID
+  az role assignment list --assignee $CLIENT_ID
 fi
 
+az account show
 az account list --all --output table
 az account list-locations --output table
 

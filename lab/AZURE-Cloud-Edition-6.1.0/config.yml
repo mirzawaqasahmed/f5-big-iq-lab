@@ -5,10 +5,12 @@
 # Select Azure Cloud: AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud
 AZURE_CLOUD: AzureCloud
 
-USERNAME: <username>
-PASSWORD: <password>
+SUBSCRIPTION_ID: <Subscription Id>
+TENANT_ID: <Tenant Id>
+CLIENT_ID: <Client Id>
+SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
 # web browser and access token to sign in (if set to yes, delete USERNAME AND PASSWORD variables)
-USE_TOKEN: no
+USE_TOKEN: yes
 
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
