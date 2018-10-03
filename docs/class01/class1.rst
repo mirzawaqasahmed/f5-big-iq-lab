@@ -17,7 +17,7 @@ Test Website         VIP         Ports    Servers                      Ports
 site16.example.com   10.1.10.116 443/80   10.1.20.116 and 10.1.20.117  80/8080/8081
 ==================  ============ ======== ============================ ============
 
-- **Test Web Site 18:** *(used in module 2)*
+- **Test Web Site 18:** *(used in module 2 and class 7)*
 
 ==================  ============ ======== ============================ ============
 Test Website         VIP         Ports    Servers                      Port
