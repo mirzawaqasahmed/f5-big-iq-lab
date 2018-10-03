@@ -2,6 +2,10 @@
 # Uncomment set command below for code debuging bash
 #set -x
 
+# https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli
+# https://docs.microsoft.com/en-us/azure/vpn-gateway/bgp-how-to-cli#crossprembgp
+# https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-azure-hybrid-cloud-deployment-how-to.html
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -16,14 +20,15 @@ SUBNET2_CIDR_BLOCK="$(cat config.yml | grep SUBNET2_CIDR_BLOCK | awk '{ print $2
 SUBNET3_CIDR_BLOCK="$(cat config.yml | grep SUBNET3_CIDR_BLOCK | awk '{ print $2}')"
 CUSTOMER_GATEWAY_IP="$(cat config.yml | grep CUSTOMER_GATEWAY_IP | awk '{ print $2}')"
 EXT_NETWORK_UDF_VPN="$(cat config.yml | grep EXT_NETWORK_UDF_VPN | awk '{ print $2}')"
+EXT_NETWORK_UDF_PEERING="$(cat config.yml | grep EXT_NETWORK_UDF_PEERING | awk '{ print $2}')"
 DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION | awk '{ print $2}')"
 LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{ print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{ print $2}')"
-
-# https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli
+ASN1="$(cat config.yml | grep ASN1 | awk '{ print $2}')"
+ASN2="$(cat config.yml | grep ASN2 | awk '{ print $2}')"
 
 echo -e "\n${GREEN}Create a resource group${NC}"
-az group create --name $PREFIX --location eastus
+az group create --name $PREFIX --location $DEFAULT_REGION
 
 echo -e "\n${GREEN}Create a virtual network and subnet 1${NC}"
 az network vnet create \
@@ -48,14 +53,6 @@ az network vnet subnet create \
   -g $PREFIX \
   --address-prefix $SUBNET3_CIDR_BLOCK
 
-echo -e "\n${GREEN}Create the local network gateway${NC}"
-az network local-gateway create \
-   --gateway-ip-address $CUSTOMER_GATEWAY_IP --name $LOCAL_GATEWAY --resource-group $PREFIX \
-   --local-address-prefixes $EXT_NETWORK_UDF_VPN
-
-# To modify the local network gateway 'gatewayIpAddress'
-# az network local-gateway update --gateway-ip-address 23.99.222.170 --name Site2 --resource-group TestRG1
-
 echo -e "\n${GREEN}View the subnets${NC}"
 az network vnet subnet list -g $PREFIX --vnet-name VNet1 --output table
 
@@ -65,17 +62,37 @@ az network public-ip create \
   -g $PREFIX \
   --allocation-method Dynamic 
 
+echo -e "\n${GREEN}View the public IP address${NC}"
+az network public-ip show \
+  --name VNet1GWIP \
+  --resource-group $PREFIX \
+  --output table
+
+publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
+publicIpAddress=${publicIpAddress:1:${#publicIpAddress}-2}
+echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}"
+
 echo -e "\n${GREEN}Create the VPN gateway${NC}"
 az network vnet-gateway create \
   -n VNet1GW \
-  -l eastus \
+  -l $DEFAULT_REGION \
   --public-ip-address VNet1GWIP \
   -g $PREFIX \
   --vnet VNet1 \
   --gateway-type Vpn \
   --sku VpnGw1 \
   --vpn-type RouteBased \
+  --asn $ASN1 \
+  --sku HighPerformance \
   --no-wait
+
+while [[ $provisioningState != "Succeeded" ]] 
+do
+    sleep 2
+    provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')
+    provisioningState=${provisioningState:1:${#provisioningState}-2}
+    echo -e "provisioningState =${RED} $provisioningState ${NC}"
+done
 
 echo -e "\n${GREEN}View the VPN gateway${NC}"
 az network vnet-gateway show \
@@ -83,16 +100,41 @@ az network vnet-gateway show \
   -g $PREFIX \
   --output table
 
-echo -e "\n${GREEN}View the public IP address${NC}"
-az network public-ip show \
-  --name VNet1GWIP \
-  --resource-group $PREFIX \
-  --output table
+bgpPeeringAddress=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.bgpSettings.bgpPeeringAddress')
+bgpPeeringAddress=${bgpPeeringAddress:1:${#bgpPeeringAddress}-2}
+echo -e "\nbgpPeeringAddress =${BLUE} $bgpPeeringAddress ${NC}"
+
+echo -e "\n${GREEN}Create the local network gateway${NC}"
+az network local-gateway create \
+   --gateway-ip-address $CUSTOMER_GATEWAY_IP \
+   --name $LOCAL_GATEWAY \
+   --resource-group $PREFIX \
+   --local-address-prefixes $EXT_NETWORK_UDF_VPN \
+   --bgp-peering-address $EXT_NETWORK_UDF_PEERING \
+   --asn $ASN2
+
+# To modify the local network gateway 'gatewayIpAddress'
+# az network local-gateway update --gateway-ip-address $CUSTOMER_GATEWAY_IP --name $LOCAL_GATEWAY --resource-group $PREFIX
 
 echo -e "\n${GREEN}Create the VPN connection${NC}"
-az network vpn-connection create --name $PREFIXVPN --resource-group $PREFIX --vnet-gateway1 VNet1GW -l $DEFAULT_REGION --shared-key $SHARED_KEY --local-gateway2 $LOCAL_GATEWAY --enable-bgp
+az network vpn-connection create \
+    --n $PREFIXVPN \
+    --resource-group $PREFIX \
+    --vnet-gateway1 VNet1GW \
+    -l $DEFAULT_REGION \
+    --shared-key $SHARED_KEY \
+    --local-gateway2 $LOCAL_GATEWAY \
+    --enable-bgp
 
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
+
+while [[ $connectionStatus != "Connected" ]] 
+do
+    sleep 5
+    connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
+    connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
+    echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+done
 
 exit 0

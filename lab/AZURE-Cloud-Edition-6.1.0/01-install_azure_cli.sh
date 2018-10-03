@@ -10,6 +10,7 @@ CLIENT_ID=$(grep CLIENT_ID ./config.yml | awk '{ print $2}')
 SERVICE_PRINCIPAL_SECRET=$(grep SERVICE_PRINCIPAL_SECRET ./config.yml | awk '{ print $2}')
 
 if [ ! -f /usr/bin/az ]; then
+  echo -e "\n${GREEN}Installation Azure CLI${NC}"
   # Update sources list:
   AZ_REPO=$(lsb_release -cs)
   echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
@@ -23,8 +24,10 @@ if [ ! -f /usr/bin/az ]; then
   sudo apt-get install apt-transport-https azure-cli -y
 fi
 
+echo -e "\n${GREEN}Set Cloud Name${NC}"
 az cloud set --name $AZURE_CLOUD
 
+echo -e "\n${GREEN}Login${NC}"
 if [[ $USE_TOKEN == 1 ]]; then
   az login
 else
@@ -33,8 +36,10 @@ else
 fi
 
 #az account show
+echo -e "\n${GREEN}Account list${NC}"
 az account list --all --output table
-echo
+
+echo -e "\n${GREEN}Account Location${NC}"
 az account list-locations --output table
 
 exit 0

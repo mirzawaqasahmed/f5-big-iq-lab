@@ -45,7 +45,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-02-create-vpn-azure_cli.sh
+./02-create-vpn-azure_cli.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
