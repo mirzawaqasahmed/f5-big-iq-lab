@@ -36,7 +36,7 @@ fi
 
 sleep 60
 
-echo -e "\n\n${RED}/!\ DELETION OF ALL AZURE OBJECTS (Application/SSG/VPN/VPC) /!\ ${NC} \n"
+echo -e "\n\n${RED}/!\ DELETION OF ALL AZURE OBJECTS (Application/SSG/VPN/VNET) /!\ ${NC} \n"
 
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 

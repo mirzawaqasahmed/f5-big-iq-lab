@@ -2,6 +2,11 @@
 # Uncomment set command below for code debuging bash
 #set -x
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
@@ -11,14 +16,15 @@ SUBNET2_CIDR_BLOCK="$(cat config.yml | grep SUBNET2_CIDR_BLOCK | awk '{ print $2
 SUBNET3_CIDR_BLOCK="$(cat config.yml | grep SUBNET3_CIDR_BLOCK | awk '{ print $2}')"
 CUSTOMER_GATEWAY_IP="$(cat config.yml | grep CUSTOMER_GATEWAY_IP | awk '{ print $2}')"
 EXT_NETWORK_UDF_VPN="$(cat config.yml | grep EXT_NETWORK_UDF_VPN | awk '{ print $2}')"
-DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION| awk '{ print $2}')"
+DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION | awk '{ print $2}')"
+LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{ print $2}')"
 
 # https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli
 
-# Create a resource group
+echo -e "\n${GREEN}Create a resource group${NC}"
 az group create --name $PREFIX --location eastus
 
-# Create a virtual network and subnet 1
+echo -e "\n${GREEN}Create a virtual network and subnet 1${NC}"
 az network vnet create \
   -n VNet1 \
   -g $PREFIX \
@@ -27,38 +33,38 @@ az network vnet create \
   --subnet-name Subnet1 \
   --subnet-prefix $SUBNET1_CIDR_BLOCK
 
-# Create subnet 2
+echo -e "\n${GREEN}Create subnet 2${NC}"
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n Subnet2 \
   -g $PREFIX \
   --address-prefix $SUBNET2_CIDR_BLOCK
 
-# Add a gateway subnet
+echo -e "\n${GREEN}Add a gateway subnet${NC}"
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g $PREFIX \
   --address-prefix $SUBNET3_CIDR_BLOCK
 
-# Create the local network gateway
+echo -e "\n${GREEN}Create the local network gateway${NC}"
 az network local-gateway create \
-   --gateway-ip-address $CUSTOMER_GATEWAY_IP --name UDF --resource-group $PREFIX \
+   --gateway-ip-address $CUSTOMER_GATEWAY_IP --name $LOCAL_GATEWAY --resource-group $PREFIX \
    --local-address-prefixes $EXT_NETWORK_UDF_VPN
 
 # To modify the local network gateway 'gatewayIpAddress'
 # az network local-gateway update --gateway-ip-address 23.99.222.170 --name Site2 --resource-group TestRG1
 
-# View the subnets
+echo -e "\n${GREEN}View the subnets${NC}"
 az network vnet subnet list -g $PREFIX --vnet-name VNet1 --output table
 
-# Request a public IP address
+echo -e "\n${GREEN}Request a public IP address${NC}"
 az network public-ip create \
   -n VNet1GWIP \
   -g $PREFIX \
   --allocation-method Dynamic 
 
-# Create the VPN gateway
+echo -e "\n${GREEN}Create the VPN gateway${NC}"
 az network vnet-gateway create \
   -n VNet1GW \
   -l eastus \
@@ -70,22 +76,22 @@ az network vnet-gateway create \
   --vpn-type RouteBased \
   --no-wait
 
-# View the VPN gateway
+echo -e "\n${GREEN}View the VPN gateway${NC}"
 az network vnet-gateway show \
   -n VNet1GW \
   -g $PREFIX \
   --output table
 
-# View the public IP address
+echo -e "\n${GREEN}View the public IP address${NC}"
 az network public-ip show \
   --name VNet1GWIP \
   --resource-group $PREFIX \
   --output table
 
-# Create the VPN connection
-az network vpn-connection create --name $PREFIXVPN -resource-group $PREFIX --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 UDF --enable-bgp
+echo -e "\n${GREEN}Create the VPN connection${NC}"
+az network vpn-connection create --name $PREFIXVPN --resource-group $PREFIX --vnet-gateway1 VNet1GW -l $DEFAULT_REGION --shared-key abc123 --local-gateway2 $LOCAL_GATEWAY --enable-bgp
 
-# Verify the VPN connection
+echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
 
 exit 0

@@ -32,8 +32,9 @@ else
   az role assignment list --assignee $CLIENT_ID
 fi
 
-az account show
+#az account show
 az account list --all --output table
+echo
 az account list-locations --output table
 
 exit 0
