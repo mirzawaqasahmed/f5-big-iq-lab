@@ -18,6 +18,7 @@ CUSTOMER_GATEWAY_IP="$(cat config.yml | grep CUSTOMER_GATEWAY_IP | awk '{ print 
 EXT_NETWORK_UDF_VPN="$(cat config.yml | grep EXT_NETWORK_UDF_VPN | awk '{ print $2}')"
 DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION | awk '{ print $2}')"
 LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{ print $2}')"
+SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{ print $2}')"
 
 # https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli
 
@@ -89,7 +90,7 @@ az network public-ip show \
   --output table
 
 echo -e "\n${GREEN}Create the VPN connection${NC}"
-az network vpn-connection create --name $PREFIXVPN --resource-group $PREFIX --vnet-gateway1 VNet1GW -l $DEFAULT_REGION --shared-key abc123 --local-gateway2 $LOCAL_GATEWAY --enable-bgp
+az network vpn-connection create --name $PREFIXVPN --resource-group $PREFIX --vnet-gateway1 VNet1GW -l $DEFAULT_REGION --shared-key $SHARED_KEY --local-gateway2 $LOCAL_GATEWAY --enable-bgp
 
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
