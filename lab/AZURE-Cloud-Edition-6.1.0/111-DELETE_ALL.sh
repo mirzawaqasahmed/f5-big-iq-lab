@@ -20,14 +20,13 @@ cd /home/f5/AZURE-Cloud-Edition
 
 c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
-c3=$(grep '<name_of_the_azure_key>' ./config.yml | wc -l)
 c4=$(grep '<Subscription Id>' ./config.yml | wc -l)
 c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
 c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 
-if [[ $c == 1 || $c  == 1 || $c3 == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
+if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nNo Azure SSG created, nothing to tear down.\n${NC}"
        exit 1
 fi

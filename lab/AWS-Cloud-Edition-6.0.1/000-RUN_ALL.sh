@@ -57,7 +57,8 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 04-configure-bigip.yml -i inventory/hosts
+./04a-configure-bigip.sh
+ansible-playbook $DEBUG_arg 04b-configure-bigip.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\nSleep 10 seconds"

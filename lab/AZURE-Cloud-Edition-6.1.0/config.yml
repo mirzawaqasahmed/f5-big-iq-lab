@@ -16,11 +16,9 @@ USE_TOKEN: yes
 # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
 PREFIX: udf-<name>
 
-# Select on of  the region below (default East US)
+# Select on of  the region below (default East US) - westus, westeurope, eastasia, brazilsouth ...
+# run az account list-locations --output table
 DEFAULT_REGION: eastus
-
-# Update your SSH azure KEY
-AZURE_SSH_KEY: <name_of_the_azure_key>
 
 # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
 # Fill the IP address returned by the nslookup here
@@ -43,6 +41,7 @@ SUBNET3_BGP_PEERING: 172.200.255.254
 
 EXT_NETWORK_UDF_VPN: 10.1.10.0/24
 EXT_NETWORK_UDF_PEERING: 10.1.10.7
+MGT_NETWORK_UDF: 10.1.1.7
 LOCAL_GATEWAY: UDF
 SHARED_KEY: 4UbtTd2CXf7PJxkt6qgz
 ASN1: 65010 #VPN gateway

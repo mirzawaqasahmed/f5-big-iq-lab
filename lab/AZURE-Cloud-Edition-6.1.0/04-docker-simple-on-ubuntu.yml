@@ -1,0 +1,17 @@
+---
+# This file establishes the necessary resources on AWS to create a Demo Webserver using Ubuntu
+- name: Create Ubuntu resources
+  hosts: localhost
+  vars_files:
+    - ./config.yml
+
+  tasks:
+    - name: Ensure the VM is deployed to Azure
+      azure_rm_deployment:
+        state: present
+        resource_group_name: "{{ PREFIX }}"
+        template: "{{ lookup('file', 'arm/docker-simple-on-ubuntu.json') }}"
+        parameters: "{{ (lookup('file', 'arn/docker-simple-on-ubuntu.parameters.json') | from_json).parameters }}"
+
+...
+

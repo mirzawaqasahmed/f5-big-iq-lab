@@ -36,8 +36,9 @@ echo -e "\n${GREEN}Login${NC}"
 if [[ $USE_TOKEN == 1 ]]; then
   az login
 else
-  az login --service-principal -u $CLIENT_ID --password $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID --subscription $SUBSCRIPTION_ID
-  az role assignment list --assignee $CLIENT_ID
+  az login --service-principal -u $CLIENT_ID --password $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID
+  az account set --subscription $SUBSCRIPTION_ID
+  az role assignment list --assignee $CLIENT_ID --output table
 fi
 
 #az account show
