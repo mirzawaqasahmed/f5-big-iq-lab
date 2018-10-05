@@ -62,16 +62,6 @@ az network public-ip create \
   -g $PREFIX \
   --allocation-method Dynamic 
 
-echo -e "\n${GREEN}View the public IP address${NC}"
-az network public-ip show \
-  --name VNet1GWIP \
-  --resource-group $PREFIX \
-  --output table
-
-publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
-publicIpAddress=${publicIpAddress:1:${#publicIpAddress}-2}
-echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}"
-
 echo -e "\n${GREEN}Create the VPN gateway${NC}"
 az network vnet-gateway create \
   -n VNet1GW \
@@ -88,11 +78,26 @@ az network vnet-gateway create \
 
 while [[ $provisioningState != "Succeeded" ]] 
 do
-    sleep 2
+    sleep 30
     provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')
     provisioningState=${provisioningState:1:${#provisioningState}-2}
     echo -e "provisioningState =${RED} $provisioningState ${NC}"
+    if [[ $provisioningState == "Succeeded" ]]; then
+      echo -e "provisioningState =${GREEN} $provisioningState ${NC}"
+    else
+      echo -e "provisioningState =${RED} $provisioningState ${NC}"
+    fi
 done
+
+echo -e "\n${GREEN}View the public IP address${NC}"
+az network public-ip show \
+  --name VNet1GWIP \
+  --resource-group $PREFIX \
+  --output table
+
+publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
+publicIpAddress=${publicIpAddress:1:${#publicIpAddress}-2}
+echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}"
 
 echo -e "\n${GREEN}View the VPN gateway${NC}"
 az network vnet-gateway show \
@@ -131,10 +136,14 @@ az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --outp
 
 while [[ $connectionStatus != "Connected" ]] 
 do
-    sleep 5
+    sleep 30
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
     connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
-    echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+    if [[ $connectionStatus == "Connected" ]]; then
+      echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
+    else
+      echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+    fi
 done
 
 exit 0

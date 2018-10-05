@@ -37,7 +37,7 @@ else
 
     # Cleanup AWS credentials
     rm -f /home/$user/.aws/*
-
+    rm -f /home/$user/.azure/*
     # for SCJ - DCD lab IP
     #sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
 

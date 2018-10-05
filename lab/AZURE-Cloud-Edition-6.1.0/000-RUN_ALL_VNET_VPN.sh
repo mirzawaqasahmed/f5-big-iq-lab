@@ -51,30 +51,16 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 [[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-#ansible-playbook $DEBUG_arg 04-configure-bigip.yml
+./03-configure-bigip.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-echo -e "\nSleep 10 seconds"
-sleep 10
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-#ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-echo -e "\nSleep 20 seconds"
-sleep 20
-
-echo -e "\n${GREEN}Sleep 3 min (to allow TIME: for the VPN to come up)${NC}"
-sleep 180
 
 echo -e "\n${GREEN}VPN status:${NC}\n"
 ./check_vpn_azure.sh
 
 echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
-ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
+ssh admin@10.1.1.7 tail -10 /var/log/ipsec.log
 
-echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
-echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log${NC}\n\n"
+echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@10.1.1.7 tail -100 /var/log/ipsec.log${NC}\n\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_azure..sh${NC}"
 

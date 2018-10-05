@@ -35,10 +35,20 @@ az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --outp
 
 while [[ $connectionStatus != "Connected" ]] 
 do
-    sleep 5
+    sleep 10
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
     connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
-    echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+    if [[ $connectionStatus != "Connected" ]]; then
+      echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
+    else
+      echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+    fi
 done
+
+echo -e "\n${GREEN}Verify the BGP peer status${NC}"
+az network vnet-gateway list-bgp-peer-status -g $PREFIX -n VNet1GW
+
+echo -e "\n${GREEN}Verify the Learned routes${NC}"
+az network vnet-gateway list-learned-routes -g  $PREFIX -n VNet1GW
 
 exit 0

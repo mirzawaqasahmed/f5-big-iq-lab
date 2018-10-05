@@ -2,6 +2,11 @@
 # Uncomment set command below for code debuging bash
 #set -x
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
 USE_TOKEN=$(grep USE_TOKEN ./config.yml | grep yes | wc -l)
 AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
 SUBSCRIPTION_ID=$(grep SUBSCRIPTION_ID ./config.yml | awk '{ print $2}')
@@ -24,7 +29,7 @@ if [ ! -f /usr/bin/az ]; then
   sudo apt-get install apt-transport-https azure-cli -y
 fi
 
-echo -e "\n${GREEN}Set Cloud Name${NC}"
+echo -e "\n${GREEN}Set Cloud Name to ${BLUE} $AZURE_CLOUD ${NC}"
 az cloud set --name $AZURE_CLOUD
 
 echo -e "\n${GREEN}Login${NC}"
@@ -39,7 +44,7 @@ fi
 echo -e "\n${GREEN}Account list${NC}"
 az account list --all --output table
 
-echo -e "\n${GREEN}Account Location${NC}"
-az account list-locations --output table
+#echo -e "\n${GREEN}Account Location${NC}"
+#az account list-locations --output table
 
 exit 0
