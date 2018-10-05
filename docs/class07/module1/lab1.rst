@@ -244,6 +244,30 @@ Complete the steps below logged in as *Marco*
   :scale: 50%
 
 
+Lab 1.6 Monitoring Firewall Logging On BIG-IQ:
+***********************************************
+In this exercise, we will generate some traffic to be processes by the firewall policy, and use BIG-IQ monitoring to examine the results.
+
+Complete the steps below logged in as *Larry*
+1. Under *Monitoring* > *Events* > *Network Security*, click *Firewall*
+2. View the current Firewall Event log, in filter box, enter ``site18`` to filter the log for our test application
+- At this point, you probably will not have any events in the log.
+3. From the ``Ubuntu 18.04 Lamp Server`` open an SSH session.
+4. From the SSH session, run the following command:
+.. code::cli
+sudo nmap -sS 10.1.10.118 -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
+
+This will use the nmap program to scan our test application using several different source addresses.  Our firewall policy will not allow all of the sources.
+
+5. Refresh the Firewall Event Log.  This time you should see a number of events in the firewall log.
+6. Click one of the events, and examine the details available
+
+.. image:: ../pictures/module1/firewall_log_drop.png
+  :align: center
+  :scale: 50%
+
+Why is the Firewall Event log not showing accepted connections, only drops?  <HINT: check the remote-afm-logging-profile>
+
 
 
 
