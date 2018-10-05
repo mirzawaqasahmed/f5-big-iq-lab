@@ -13,6 +13,11 @@ MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{ print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{ print $2}')"
 VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{ print $2}')"
 
+IPSEC_DESTINATION_NETWORK="169.254.12.32"
+IPSEC_DESTINATION_ADDRESS1="169.254.12.33"
+IPSEC_DESTINATION_ADDRESS2="169.254.12.34"
+IPSEC_DESTINATION_MASK="30"
+
 publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
 publicIpAddress=${publicIpAddress:1:${#publicIpAddress}-2}
 echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}"
@@ -32,7 +37,7 @@ echo -e "\n${GREEN}Setting ipsec policy${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ipsec-policy ipsec-policy-vpn-azure ike-phase2-auth-algorithm sha1 ike-phase2-encrypt-algorithm aes256 ike-phase2-lifetime 60 ike-phase2-perfect-forward-secrecy modp1024 mode interface
 
 echo -e "\n${GREEN}Setting ipsec traffic selector${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec traffic-selector selector-vpn-azure destination-address 169.254.12.32/30 ipsec-policy ipsec-policy-vpn-azuresource-address 169.254.12.32/30 
+ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec traffic-selector selector-vpn-azure destination-address $IPSEC_DESTINATION_NETWORK/$IPSEC_DESTINATION_MASK ipsec-policy ipsec-policy-vpn-azuresource-address $IPSEC_DESTINATION_NETWORK/$IPSEC_DESTINATION_MASK
 
 echo -e "\n${GREEN}Setting ipsec profile${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net tunnels ipsec profile-vpn-azure app-service none defaults-from ipsec traffic-selector selector-vpn-azure
@@ -41,10 +46,10 @@ echo -e "\n${GREEN}Setting ipsec tunnels${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net tunnels tunnel tunnel-azure local-address $EXT_NETWORK_UDF_PEERING mtu 1400 profile profile-vpn-azure remote-address $publicIpAddress
 
 echo -e "\n${GREEN}Setting ipsec self IP${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create net self 169.254.12.34  address 169.254.12.34/30 allow-service all traffic-group traffic-group-local-only vlan tunnel-vpn-azure
+ssh admin@$MGT_NETWORK_UDF tmsh create net self $IPSEC_DESTINATION_ADDRESS1 address $IPSEC_DESTINATION_ADDRESS1/$IPSEC_DESTINATION_MASK allow-service all traffic-group traffic-group-local-only vlan tunnel-vpn-azure
 
 echo -e "\n${GREEN}Setting ipsec pool${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create ltm pool keepalive-vpn-azure members add { 169.254.12.33:179 { address 169.254.12.33 } } monitor tcp_half_open and gateway_icmp
+ssh admin@$MGT_NETWORK_UDF tmsh create ltm pool keepalive-vpn-azure members add { $IPSEC_DESTINATION_ADDRESS2:179 { address $IPSEC_DESTINATION_ADDRESS2 } } monitor tcp_half_open and gateway_icmp
 
 echo -e "\n${GREEN}Setting ipsec virtual server${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 azure-vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
