@@ -33,9 +33,9 @@ echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}\n"
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
 
+echo -e "(refresh every 30 seconds)"
 while [[ $connectionStatus != "Connected" ]] 
 do
-    sleep 10
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
     connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
     if [[ $connectionStatus != "Connected" ]]; then
@@ -43,6 +43,7 @@ do
     else
       echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
     fi
+    sleep 30
 done
 
 echo -e "\n${GREEN}Verify the BGP peer status${NC}"

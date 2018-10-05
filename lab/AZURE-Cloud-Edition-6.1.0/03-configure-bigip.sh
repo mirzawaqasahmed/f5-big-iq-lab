@@ -13,9 +13,9 @@ MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{ print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{ print $2}')"
 VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{ print $2}')"
 
-IPSEC_DESTINATION_NETWORK="169.254.12.32"
-IPSEC_DESTINATION_ADDRESS1="169.254.12.33"
-IPSEC_DESTINATION_ADDRESS2="169.254.12.34"
+IPSEC_DESTINATION_NETWORK="169.253.1.32"
+IPSEC_DESTINATION_ADDRESS1="169.253.1.33"
+IPSEC_DESTINATION_ADDRESS2="169.253.1.34"
 IPSEC_DESTINATION_MASK="30"
 
 publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
@@ -27,8 +27,8 @@ ssh admin@$MGT_NETWORK_UDF tmsh modify sys db config.allow.rfc3927 { value "enab
 ssh admin@$MGT_NETWORK_UDF tmsh modify sys db ipsec.if.checkpolicy { value "disable" }
 ssh admin@$MGT_NETWORK_UDF tmsh modify sys db connection.vlankeyed { value "disable" }
 
-echo -e "\n${GREEN}Setting BGP${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh modify net route-domain 0 routing-protocol add { BGP }
+#echo -e "\n${GREEN}Setting BGP${NC}"
+#ssh admin@$MGT_NETWORK_UDF tmsh modify net route-domain 0 routing-protocol add { BGP }
 
 echo -e "\n${GREEN}Setting ipsec IKE Peer${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ike-peer peer-vpn-azure lifetime 480 my-id-type address my-id-value $EXT_NETWORK_UDF_PEERING peers-id-type address peers-id-value $publicIpAddress phase1-auth-method pre-shared-key phase1-encrypt-algorithm aes256 remote-address $publicIpAddress verify-cert true version add { v1 v2 } preshared-key $SHARED_KEY nat-traversal on

@@ -76,17 +76,17 @@ az network vnet-gateway create \
   --sku HighPerformance \
   --no-wait
 
+echo -e "(refresh every 1 min)"
 while [[ $provisioningState != "Succeeded" ]] 
 do
-    sleep 30
     provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')
     provisioningState=${provisioningState:1:${#provisioningState}-2}
-    echo -e "provisioningState =${RED} $provisioningState ${NC}"
     if [[ $provisioningState == "Succeeded" ]]; then
       echo -e "provisioningState =${GREEN} $provisioningState ${NC}"
     else
       echo -e "provisioningState =${RED} $provisioningState ${NC}"
     fi
+    sleep 60
 done
 
 echo -e "\n${GREEN}View the public IP address${NC}"
@@ -128,15 +128,15 @@ az network vpn-connection create \
     --vnet-gateway1 VNet1GW \
     -l $DEFAULT_REGION \
     --shared-key $SHARED_KEY \
-    --local-gateway2 $LOCAL_GATEWAY \
-    --enable-bgp
+    --local-gateway2 $LOCAL_GATEWAY #\
+    #--enable-bgp
 
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
 
+echo -e "(refresh every 1 min)"
 while [[ $connectionStatus != "Connected" ]] 
 do
-    sleep 30
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
     connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
     if [[ $connectionStatus == "Connected" ]]; then
@@ -144,6 +144,7 @@ do
     else
       echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
     fi
+    sleep 60
 done
 
 exit 0
