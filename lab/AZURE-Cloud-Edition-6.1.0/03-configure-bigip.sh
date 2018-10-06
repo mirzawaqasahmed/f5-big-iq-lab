@@ -55,4 +55,17 @@ echo -e "\n${GREEN}Setting ipsec virtual server${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 azure-vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual azure-vpn destination $VNET_CIDR_BLOCK:any ip-forward profiles add { azure-vpn }
 
+echo -e "(refresh every 1 min)"
+while [[ $connectionStatus != "Connected" ]] 
+do
+    connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
+    connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
+    if [[ $connectionStatus == "Connected" ]]; then
+      echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
+    else
+      echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+    fi
+    sleep 60
+done
+
 exit 0

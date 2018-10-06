@@ -134,17 +134,4 @@ az network vpn-connection create \
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
 
-echo -e "(refresh every 1 min)"
-while [[ $connectionStatus != "Connected" ]] 
-do
-    connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
-    connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
-    if [[ $connectionStatus == "Connected" ]]; then
-      echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
-    else
-      echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
-    fi
-    sleep 60
-done
-
 exit 0
