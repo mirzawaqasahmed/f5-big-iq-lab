@@ -11,21 +11,21 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -20 config.yml | grep PREFIX | awk '{print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
 VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{ print $2}')"
-SUBNET1_CIDR_BLOCK="$(cat config.yml | grep SUBNET1_CIDR_BLOCK | awk '{ print $2}')"
-SUBNET2_CIDR_BLOCK="$(cat config.yml | grep SUBNET2_CIDR_BLOCK | awk '{ print $2}')"
-SUBNET3_CIDR_BLOCK="$(cat config.yml | grep SUBNET3_CIDR_BLOCK | awk '{ print $2}')"
-CUSTOMER_GATEWAY_IP="$(cat config.yml | grep CUSTOMER_GATEWAY_IP | awk '{ print $2}')"
-EXT_NETWORK_UDF_VPN="$(cat config.yml | grep EXT_NETWORK_UDF_VPN | awk '{ print $2}')"
-EXT_NETWORK_UDF_PEERING="$(cat config.yml | grep EXT_NETWORK_UDF_PEERING | awk '{ print $2}')"
-DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION | awk '{ print $2}')"
-LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{ print $2}')"
-SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{ print $2}')"
-ASN1="$(cat config.yml | grep ASN1 | awk '{ print $2}')"
-ASN2="$(cat config.yml | grep ASN2 | awk '{ print $2}')"
+SUBNET1_CIDR_BLOCK="$(cat config.yml | grep SUBNET1_CIDR_BLOCK | awk '{print $2}')"
+SUBNET2_CIDR_BLOCK="$(cat config.yml | grep SUBNET2_CIDR_BLOCK | awk '{print $2}')"
+SUBNET3_CIDR_BLOCK="$(cat config.yml | grep SUBNET3_CIDR_BLOCK | awk '{print $2}')"
+CUSTOMER_GATEWAY_IP="$(cat config.yml | grep CUSTOMER_GATEWAY_IP | awk '{print $2}')"
+EXT_NETWORK_UDF_VPN="$(cat config.yml | grep EXT_NETWORK_UDF_VPN | awk '{print $2}')"
+EXT_NETWORK_UDF_PEERING="$(cat config.yml | grep EXT_NETWORK_UDF_PEERING | awk '{print $2}')"
+DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION | awk '{print $2}')"
+LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{print $2}')"
+SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{print $2}')"
+ASN1="$(cat config.yml | grep ASN1 | awk '{print $2}')"
+ASN2="$(cat config.yml | grep ASN2 | awk '{print $2}')"
 
 echo -e "\n${GREEN}Create a resource group${NC}"
 az group create --name $PREFIX --location $DEFAULT_REGION
@@ -76,7 +76,7 @@ az network vnet-gateway create \
   --sku HighPerformance \
   --no-wait
 
-echo -e "(refresh every 1 min)"
+echo -e "\n(refresh every 1 min)"
 while [[ $provisioningState != "Succeeded" ]] 
 do
     provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')

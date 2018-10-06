@@ -33,12 +33,12 @@ echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}\n"
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
 
-echo -e "(refresh every 30 seconds)"
+echo -e "\n(refresh every 30 seconds)"
 while [[ $connectionStatus != "Connected" ]] 
 do
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
     connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
-    if [[ $connectionStatus != "Connected" ]]; then
+    if [[ $connectionStatus == "Connected" ]]; then
       echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
     else
       echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
