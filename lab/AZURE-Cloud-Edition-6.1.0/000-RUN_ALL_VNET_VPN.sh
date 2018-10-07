@@ -22,10 +22,11 @@ c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
 c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
 if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credential\n - Azure Region\n - Prefix\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
-	     echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+	     echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VNET_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -57,9 +58,9 @@ echo -e "\n${GREEN}VPN status:${NC}\n"
 ./check_vpn_azure.sh
 
 echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
-ssh admin@10.1.1.7 tail -10 /var/log/ipsec.log
+ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/ipsec.log
 
-echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@10.1.1.7 tail -100 /var/log/ipsec.log${NC}\n\n"
+echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\n\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_azure..sh${NC}"
 

@@ -20,6 +20,7 @@ c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
 if [[ $c == 1 || $c2 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
@@ -72,8 +73,8 @@ echo -e "\nSleep 20 seconds"
 sleep 20
 
 # WA Tunnel
-ssh admin@10.1.1.7 tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1398
-ssh admin@10.1.1.7 tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1398
+ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1398
+ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1398
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 06-ubuntu-apache2.yml
@@ -91,10 +92,10 @@ echo -e "\n${GREEN}VPN status:${NC}\n"
 ./check_vpn_aws.sh
 
 echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
-ssh admin@10.1.1.7 tail -10 /var/log/racoon.log
+ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/racoon.log
 
 echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
-echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@10.1.1.7 tail -100 /var/log/racoon.log${NC}\n\n"
+echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/racoon.log${NC}\n\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_aws.sh${NC}"
 
