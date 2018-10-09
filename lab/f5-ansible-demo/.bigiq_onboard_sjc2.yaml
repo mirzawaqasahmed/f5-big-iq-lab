@@ -1,0 +1,14 @@
+---
+- name: Set up a DCD BIG-IQ
+  hosts: bigiq-dcd-01-sjc2
+  vars_files:
+    - bigiq_onboard_var/bigiq-dcd-01-sjc2.yml
+  roles:
+    - { role: f5devcentral.bigiq_onboard }
+
+- name: Set up a CM BIG-IQ
+  hosts: bigiq-cm-01-sjc2
+  vars_files:
+    - bigiq_onboard_var/bigiq-cm-01-sjc2.yml
+  roles:
+    - { role: f5devcentral.bigiq_onboard }
