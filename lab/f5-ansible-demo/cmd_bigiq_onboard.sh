@@ -11,7 +11,7 @@ ip_dcd1="$(cat bigiq_onboard_var/bigiq-dcd-01.yml| grep bigiq_onboard_server | a
 ssh root@$ip_cm1 set-basic-auth on
 ssh root@$ip_dcd1 set-basic-auth on
 
-ansible-galaxy install f5devcentral.bigiq_onboard
+ansible-galaxy install f5devcentral.bigiq_onboard --force
 
 ansible-playbook -i bigiq_onboard_var/hosts bigiq_onboard.yaml $DEBUG_arg
 
