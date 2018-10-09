@@ -14,3 +14,6 @@ ssh root@$ip_dcd1 set-basic-auth on
 ansible-galaxy install f5devcentral.bigiq_onboard
 
 ansible-playbook -i bigiq_onboard_var/hosts bigiq_onboard.yaml $DEBUG_arg
+
+# SJC lab 2
+# ansible-playbook -i bigiq_onboard_var/hosts .bigiq_onboard_sjc2.yaml $DEBUG_arg
