@@ -1,5 +1,0 @@
-[f5-test-bigiq]
-bigiq-cm-01 ansible_host=root@10.1.1.4 ansible_ssh_pass=default
-bigiq-dcd-01 ansible_host=root@10.1.1.6 ansible_ssh_pass=default
-bigiq-cm-01-sjc2 ansible_host=root@10.192.75.185 ansible_ssh_pass=default
-bigiq-dcd-01-sjc2 ansible_host=root@10.192.75.186 ansible_ssh_pass=default

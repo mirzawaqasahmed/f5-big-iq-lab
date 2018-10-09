@@ -1,5 +1,6 @@
-bigiq_onboard_server: 10.192.75.186
-bigiq_onboard_node_type: dcd
+bigiq_onboard_server: 10.192.75.185
+bigiq_onboard_hostname: big-iq-cm.lab.fp.f5net.com
+bigiq_onboard_node_type: cm
 bigiq_onboard_password: admin
 bigiq_onboard_new_root_password: admin
 bigiq_onboard_old_root_password: default
@@ -14,4 +15,4 @@ bigiq_onboard_dns_search:
 bigiq_onboard_ntp_servers:
   - time.f5net.com
 bigiq_onboard_timezone: America/Los_Angeles
-bigiq_onboard_license_key: M1844-306505-184-2111553-4760772
+bigiq_onboard_license_key: K4372-623623-631-1360496-5833418
