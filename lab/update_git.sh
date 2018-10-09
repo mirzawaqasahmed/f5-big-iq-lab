@@ -25,7 +25,7 @@ else
     echo "Azure scripts"
     mv AZURE-Cloud-Edition-6.1.0 AZURE-Cloud-Edition
     echo "Fixing permissions..."
-    chmod +x *py scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh f5-ansible-demo/*py *sh AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh
+    chmod +x *py *sh scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh
     chown -R $user:$user .
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then
