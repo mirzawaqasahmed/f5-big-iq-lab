@@ -4,9 +4,17 @@
 ## /home/f5student/update_git.sh > //home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
-# for SCJ & SEA lab
-#user="f5"
-user="f5student"
+env="udf"
+#env="sjc2"
+#env="sea"
+
+currentuser=$(whoami)
+if [[  $currentuser == "f5" ]]; then
+    # for SCJ & SEA lab
+    user="f5"
+else
+    user="f5student"
+fi
 
 cd /home/$user
 
@@ -37,12 +45,21 @@ else
 
     # Cleanup AWS credentials
     rm -f /home/$user/.aws/*
-    rm -f /home/$user/.azure/*
-    # for SCJ - DCD lab IP
-    #sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
+    rm -fr /home/$user/.azure/*
 
-    # for SEA - DCD lab IP
-    #sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
+    if [[  $env == "sjc" ]]; then
+        # for SCJ - DCD lab IP
+        sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
+    fi
+    if [[  $env == "sjc2" ]]; then
+        # for SCJ - DCD lab IP
+        sed -i 's/10.1.10.6/10.192.75.186/g' /home/$user/scripts/*sh
+    fi
+    if [[  $env == "sea" ]]; then
+        # for SEA - DCD lab IP
+        sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
+    fi
+    
 
     touch udf_auto_update_git
     rm -f last_update_*
