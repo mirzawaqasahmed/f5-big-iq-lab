@@ -13,10 +13,15 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-env="udf"
-#env="sjc"
-#env="sjc2"
-#env="sea"
+if [ "$1" == ""]; then
+  env="udf"
+else
+  #env="sjc"
+  #env="sjc2"
+  #env="sea"
+  env=$1
+fi
+
 
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
@@ -24,8 +29,8 @@ ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_se
 pwd_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
 
 for ip in $ip_cm1 $ip_dcd1; do
-  echo "Type $ip root password:"
-  ssh-copy-id root@$ip
+  echo "Type $ip root password."
+  ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
 ############### ONLY FOR PME LAB START
@@ -38,8 +43,10 @@ if [[  $env != "udf" ]]; then
   rm -f *iso* cookie activeVolume status
   ## download iso file
   # Corporate user/password to download the latest iso
-  f5user="user"
-  f5pass="password"
+  echo -e "Corporate F5 username:"
+  read f5user
+  echo -e "Corporate F5 password:"
+  read -s f5pass
   release="v6.1.0"
   curl "https://weblogin.f5net.com/sso/login.php?redir=https://nibs.f5net.com/build" -H "Connection: keep-alive" -H "Pragma: no-cache" -H "Cache-Control: no-cache" -H "Origin: https://weblogin.f5net.com" -H "Upgrade-Insecure-Requests: 1" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" -H "Referer: https://weblogin.f5net.com/sso/login.php?msg=Invalid%20Credentials&redir=https://nibs.f5net.com/build" -H "Accept-Encoding: gzip, deflate, br" -H "Accept-Language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7" --data "user=$f5user&pass=$f5pass&submit_form=Submit" --compressed -c ./cookie
   iso=$(curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | cut -b 7-41)
@@ -52,7 +59,11 @@ if [[  $env != "udf" ]]; then
       cat $iso.md5
       cat $iso.md5.verify
       exit 2;
+  else
+      echo "Iso is good"
+      ls -lrt $iso*
   fi
+  
   ############################# PART TO REMOVE IN PME SEATTLE LAB AS NO ACCESS TO BUILD SERVER
 
   if [ -f $iso ]; then
@@ -102,9 +113,9 @@ ansible-galaxy install f5devcentral.bigiq_onboard --force
 echo -e "\n${GREEN}Onboarding BIG-IQ CM and DCD${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 if [[  $env == "udf" ]]; then
-  ansible-playbook -i inventory/$env-hosts bigiq_onboard.yaml $DEBUG_arg
+  ansible-playbook -i inventory/$env-hosts bigiq_onboard.yml $DEBUG_arg
 else
-  ansible-playbook -i inventory/$env-hosts .bigiq_onboard_$env.yaml $DEBUG_arg
+  ansible-playbook -i inventory/$env-hosts .bigiq_onboard_$env.yml $DEBUG_arg
 fi
 
 echo -e "\n${GREEN}Add DCD to BIG-IQ CM${NC}"
@@ -134,5 +145,5 @@ echo -e "\n${GREEN}Create Applications${NC}"
 if [[  $env == "udf" ]]; then
   ansible-playbook -i notahost, create_default_apps.yml $DEBUG_arg
 else
-  ansible-playbook -i notahost, .create_default_apps_$env.yaml $DEBUG_arg
+  ansible-playbook -i notahost, .create_default_apps_$env.yml $DEBUG_arg
 fi

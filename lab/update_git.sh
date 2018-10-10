@@ -4,10 +4,14 @@
 ## /home/f5student/update_git.sh > //home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
-env="udf"
-#env="sjc"
-#env="sjc2"
-#env="sea"
+if [ "$1" == ""]; then
+  env="udf"
+else
+  #env="sjc"
+  #env="sjc2"
+  #env="sea"
+  env=$1
+fi
 
 currentuser=$(whoami)
 if [[  $currentuser == "f5" ]]; then
@@ -61,7 +65,6 @@ else
         sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
     fi
     
-
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)
