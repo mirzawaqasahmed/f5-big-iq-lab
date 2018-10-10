@@ -54,7 +54,8 @@ if [[  $env != "udf" ]]; then
   read -s f5pass
   release="v6.1.0"
   curl "https://weblogin.f5net.com/sso/login.php?redir=https://nibs.f5net.com/build" -H "Connection: keep-alive" -H "Pragma: no-cache" -H "Cache-Control: no-cache" -H "Origin: https://weblogin.f5net.com" -H "Upgrade-Insecure-Requests: 1" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" -H "Referer: https://weblogin.f5net.com/sso/login.php?msg=Invalid%20Credentials&redir=https://nibs.f5net.com/build" -H "Accept-Encoding: gzip, deflate, br" -H "Accept-Language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7" --data "user=$f5user&pass=$f5pass&submit_form=Submit" --compressed -c ./cookie
-  iso=$(curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | cut -b 7-41)
+  curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | cut -b 7-41 > iso.txt
+  iso=$(cat iso.txt)
   curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/$iso > $iso
   curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/$iso.md5 > $iso.md5
   md5sum $iso > $iso.md5.verify
@@ -98,13 +99,14 @@ if [[  $env != "udf" ]]; then
         while [[ $status != "complete" ]] 
           do
               ssh root@$ip tmsh show sys software status > status
-              status=$(cat status | grep yes | awk '{print $6}')
+              status=$(cat status | grep no | awk '{print $6}')
+              percentage=$(cat status | grep no | awk '{print $7 $8}')
               if [[ $status == "complete" ]]; then
-                echo -e "install status =${GREEN} $status ${NC}"
+                echo -e "install status =${GREEN} $status - $percentage ${NC}"
               else
-                echo -e "install status =${RED} $status ${NC}"
+                echo -e "install status =${RED} $status - $percentage ${NC}"
               fi
-              sleep 60
+              sleep 30
           done
         done
   fi
