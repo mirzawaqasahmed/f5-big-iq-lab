@@ -11,8 +11,8 @@ ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_serv
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
 # basic auth needs to be turn on on BIG-IQ.
-ssh root@$ip_cm1 set-basic-auth on
-ssh root@$ip_dcd1 set-basic-auth on
+#ssh root@$ip_cm1 set-basic-auth on
+#ssh root@$ip_dcd1 set-basic-auth on
 
 ansible-galaxy install f5devcentral.bigiq_onboard --force
 
@@ -26,8 +26,10 @@ curl https://s3.amazonaws.com/big-iq-quickstart-cf-templates-aws/6.0.1.1/scripts
 rm -rf scripts 
 tar --strip-components=1 -xPvzf scripts.tar.gz 2> /dev/null &
 
-echo "Type BIG-IQ root password:"
+echo "Type BIG-IQ CM root password:"
 ssh-copy-id root@$ip_cm1
+echo "Type BIG-IQ DCD root password:"
+ssh-copy-id root@$ip_dcd1
 
 scp -rp scripts root@$ip_cm1:/root
 ssh root@$ip_cm1 << EOF
