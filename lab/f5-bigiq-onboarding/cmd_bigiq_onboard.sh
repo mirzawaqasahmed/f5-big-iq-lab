@@ -32,6 +32,8 @@ done
 if [[  $env != "udf" ]]; then
   ############################# PART TO REMOVE IN PME SEATTLE LAB AS NO ACCESS TO BUILD SERVER
   ############## MANUALLY TRANSFER THE ISO FILE
+  echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
+  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
   ## Cleanup
   rm -f *iso* cookie activeVolume status
   ## download iso file
@@ -57,8 +59,12 @@ if [[  $env != "udf" ]]; then
       # loop around the BIG-IQ CM/DCD
       for ip in $ip_cm1 $ip_dcd1; do
         # transfer iso image
+        echo -e "\n${GREEN}Transfer iso${NC}"
+        [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         ssh root@$ip rm -f /shared/images/*.iso
         scp $iso root@$ip:/shared/images/
+        echo -e "\n${GREEN}Install on $ip ${NC}"
+        [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         # check active volum and install
         ssh root@$ip tmsh show sys software status > activeVolume
         activeVolume=$(cat activeVolume | grep yes | awk '{print $1}')

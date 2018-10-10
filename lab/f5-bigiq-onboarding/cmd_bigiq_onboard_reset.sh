@@ -30,8 +30,9 @@ fi
 echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # basic auth needs to be turn on on BIG-IQ.
-ssh root@$ip_cm1 clear-rest-storage -d
-ssh root@$ip_dcd1 clear-rest-storage -d
+for ip in $ip_cm1 $ip_dcd1; do
+  ssh root@$ip clear-rest-storage -d
+done
 
 echo -e "\n${RED}Un-install ansible-galaxy module${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
