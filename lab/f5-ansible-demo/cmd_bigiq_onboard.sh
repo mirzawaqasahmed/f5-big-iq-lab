@@ -10,16 +10,13 @@ env="udf"
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
-# basic auth needs to be turn on on BIG-IQ.
-#ssh root@$ip_cm1 set-basic-auth on
-#ssh root@$ip_dcd1 set-basic-auth on
-
 ansible-galaxy install f5devcentral.bigiq_onboard --force
 
-ansible-playbook -i inventory/$env-hosts bigiq_onboard.yaml $DEBUG_arg
-
-# SJC lab 2
-# ansible-playbook -i inventory/$env-hosts .bigiq_onboard_sjc2.yaml $DEBUG_arg
+if [[  $env == "udf" ]]; then
+  ansible-playbook -i inventory/$env-hosts bigiq_onboard.yaml $DEBUG_arg
+else
+  ansible-playbook -i inventory/$env-hosts .bigiq_onboard_$env.yaml $DEBUG_arg
+fi
 
 # Add DCD to CM
 curl https://s3.amazonaws.com/big-iq-quickstart-cf-templates-aws/6.0.1.1/scripts.tar.gz > scripts.tar.gz
@@ -34,7 +31,8 @@ ssh-copy-id root@$ip_dcd1
 scp -rp scripts root@$ip_cm1:/root
 ssh root@$ip_cm1 << EOF
   cd /root/scripts
-  /usr/local/bin/python2.7 ./add-dcd.py --DCD_IP_ADDRESS $ip_dcd1 --DCD_USERNAME admin
+  set-basic-auth on
+  /usr/local/bin/python2.7 ./add-dcd.py --DCD_IP_ADDRESS $ip_dcd1 --DCD_USERNAME admin --DCD_PWD admin 
   sleep 5
   /usr/local/bin/python2.7 ./activate-dcd-services.py --DCD_IP_ADDRESS $ip_dcd1 --LIST_SERVICES asm
   /usr/local/bin/python2.7 ./activate-dcd-services.py --DCD_IP_ADDRESS $ip_dcd1 --LIST_SERVICES access
