@@ -142,7 +142,11 @@ EOF
 echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Add devices
-perl ./bulkDiscovery.pl -c inventory/$env-bigip.csv -l -s -q admin:$pwd_cm1
+scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
+ssh root@$ip_cm1 << EOF
+  cd /root
+  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
+EOF
 
 echo -e "\n${GREEN}Create Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
