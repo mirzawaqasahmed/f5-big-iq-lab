@@ -13,15 +13,20 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-if [ "$1" == ""]; then
+## Usage:
+## ./cmd_bigiq_onboard.sh nopause sjc
+## ./cmd_bigiq_onboard.sh pause sjc
+
+if [ -z "$2" ]; then
   env="udf"
 else
   #env="sjc"
   #env="sjc2"
   #env="sea"
-  env=$1
+  env=$2
 fi
 
+echo -e "Environement:${RED} $env ${NC}"
 
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"

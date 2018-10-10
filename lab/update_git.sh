@@ -4,7 +4,12 @@
 ## /home/f5student/update_git.sh > //home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
-if [ "$1" == ""]; then
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+if [ -z "$1" ]; then
   env="udf"
 else
   #env="sjc"
@@ -12,6 +17,8 @@ else
   #env="sea"
   env=$1
 fi
+
+echo -e "Environement:${RED} $env ${NC}"
 
 currentuser=$(whoami)
 if [[  $currentuser == "f5" ]]; then
