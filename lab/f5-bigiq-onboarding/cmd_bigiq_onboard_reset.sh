@@ -41,7 +41,7 @@ fi
 
 echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD ${NC}"
 for ip in $ip_cm1 $ip_dcd1; do
-  echo -e "\n${RED} ---- $ip ----"
+  echo -e "\n${RED} ---- $ip ---- ${NC}"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
   ssh root@$ip clear-rest-storage -d
 done
