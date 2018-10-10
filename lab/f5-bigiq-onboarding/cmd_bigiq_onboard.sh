@@ -14,7 +14,9 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 env="udf"
+#env="sjc"
 #env="sjc2"
+#env="sea"
 
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
