@@ -12,7 +12,7 @@
           password: admin
           validate_certs: no
         name: "site20waf.example.com"
-        wait: no
+        wait: yes
         description: Load balance WAF
         service_environment: "bigip2tier1.lab.fp.f5net.com"
         domain_names: "site20.example.com"
@@ -40,7 +40,7 @@
           password: admin
           validate_certs: no
         name: "site22http.example.com"
-        wait: no
+        wait: yes
         description: Load balance HTTP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
         add_analytics: yes
@@ -61,7 +61,7 @@
           password: admin
           validate_certs: no
         name: "site26https.example.com"
-        wait: no
+        wait: yes
         description: Load balance HTTPS Offload
         service_environment: "bigip2tier1.lab.fp.f5net.com"
         add_analytics: yes
@@ -88,7 +88,7 @@
           password: admin
           validate_certs: no
         name: "site28fasthttp.example.com"
-        wait: no
+        wait: yes
         description: Load balance Fast HTTP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
         add_analytics: yes
@@ -111,7 +111,7 @@
           password: admin
           validate_certs: no
         name: "site30fasL4.example.com"
-        wait: no
+        wait: yes
         description: Load balance Fast L4 TCP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
         servers:
@@ -133,7 +133,7 @@
           password: admin
           validate_certs: no
         name: "site32udp.example.com"
-        wait: no
+        wait: yes
         description: Load balance Fast UDP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
         servers:

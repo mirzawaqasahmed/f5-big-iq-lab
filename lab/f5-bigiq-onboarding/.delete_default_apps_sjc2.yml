@@ -12,7 +12,7 @@
           password: admin
           validate_certs: no
         name: "site20waf.example.com"
-        wait: no
+        wait: yes
         state: absent
       delegate_to: localhost
 
@@ -24,7 +24,7 @@
           password: admin
           validate_certs: no
         name: "site22http.example.com"
-        wait: no
+        wait: yes
         state: absent
       delegate_to: localhost
 
@@ -36,7 +36,7 @@
           password: admin
           validate_certs: no
         name: "site14https.example.com"
-        wait: no
+        wait: yes
         state: absent
       delegate_to: localhost
 
@@ -48,7 +48,7 @@
           password: admin
           validate_certs: no
         name: "site26fasthttp.example.com"
-        wait: no
+        wait: yes
         state: absent
       delegate_to: localhost
 
@@ -60,7 +60,7 @@
           password: admin
           validate_certs: no
         name: "site28fasL4.example.com"
-        wait: no
+        wait: yes
         state: absent
       delegate_to: localhost
 
@@ -72,6 +72,6 @@
           password: admin
           validate_certs: no
         name: "site30udp.example.com"
-        wait: no
+        wait: yes
         state: absent
       delegate_to: localhost

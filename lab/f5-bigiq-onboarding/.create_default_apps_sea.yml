@@ -12,7 +12,7 @@
           password: admin
           validate_certs: no
         name: "site10waf.example.com"
-        wait: no
+        wait: yes
         description: Load balance WAF
         service_environment: "008-bigip-01.example.com"
         domain_names: "site10.example.com"
@@ -40,7 +40,7 @@
           password: admin
           validate_certs: no
         name: "site12http.example.com"
-        wait: no
+        wait: yes
         description: Load balance HTTP
         service_environment: "008-bigip-01.example.com"
         add_analytics: yes
@@ -61,7 +61,7 @@
           password: admin
           validate_certs: no
         name: "site14https.example.com"
-        wait: no
+        wait: yes
         description: Load balance HTTPS Offload
         service_environment: "008-bigip-01.example.com"
         add_analytics: yes
@@ -88,7 +88,7 @@
           password: admin
           validate_certs: no
         name: "site15fasthttp.example.com"
-        wait: no
+        wait: yes
         description: Load balance Fast HTTP
         service_environment: "008-bigip-01.example.com"
         add_analytics: yes
@@ -111,7 +111,7 @@
           password: admin
           validate_certs: no
         name: "site16fasL4.example.com"
-        wait: no
+        wait: yes
         description: Load balance Fast L4 TCP
         service_environment: "008-bigip-01.example.com"
         servers:
@@ -133,7 +133,7 @@
           password: admin
           validate_certs: no
         name: "site18udp.example.com"
-        wait: no
+        wait: yes
         description: Load balance Fast UDP
         service_environment: "008-bigip-01.example.com"
         servers:
