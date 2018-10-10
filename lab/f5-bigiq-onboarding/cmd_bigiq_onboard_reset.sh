@@ -39,14 +39,13 @@ else
   ansible-playbook -i notahost, .delete_default_apps_$env.yml $DEBUG_arg
 fi
 
-echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD${NC}"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-# basic auth needs to be turn on on BIG-IQ.
+echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD ${NC}"
 for ip in $ip_cm1 $ip_dcd1; do
   echo -e "\n${RED} ---- $ip ----"
+  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
   ssh root@$ip clear-rest-storage -d
 done
 
-echo -e "\n${RED}Uninstall ansible-galaxy module${NC}"
+echo -e "\n${RED}Uninstall ansible-galaxy module ${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ansible-galaxy remove f5devcentral.bigiq_onboard
