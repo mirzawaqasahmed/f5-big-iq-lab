@@ -34,7 +34,7 @@ ssh-copy-id root@$ip_dcd1
 scp -rp scripts root@$ip_cm1:/root
 ssh root@$ip_cm1 << EOF
   cd /root/scripts
-  /usr/local/bin/python2.7 ./add-dcd.py --DCD_IP_ADDRESS $ip_dcd1
+  /usr/local/bin/python2.7 ./add-dcd.py --DCD_IP_ADDRESS $ip_dcd1 --DCD_USERNAME admin
   sleep 5
   /usr/local/bin/python2.7 ./activate-dcd-services.py --DCD_IP_ADDRESS $ip_dcd1 --LIST_SERVICES asm
   /usr/local/bin/python2.7 ./activate-dcd-services.py --DCD_IP_ADDRESS $ip_dcd1 --LIST_SERVICES access
