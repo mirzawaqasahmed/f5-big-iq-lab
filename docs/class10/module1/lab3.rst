@@ -17,7 +17,7 @@ Click "Create".
 
 The New Profile screen opens.
 
-Type a Name for the DNS profile: **mydnsprofile**
+Type a Name for the DNS profile: **DNSprofile**
 
 Select a Parent Profile from which this profile inherits settings: **/Common/dns**
 
