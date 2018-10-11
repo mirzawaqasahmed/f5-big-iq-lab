@@ -12,7 +12,6 @@ EXT_NETWORK_UDF_PEERING="$(cat config.yml | grep EXT_NETWORK_UDF_PEERING | awk '
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{print $2}')"
 VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{print $2}')"
-VNET_CIDR_MASK="$(cat config.yml | grep VNET_CIDR_MASK | awk '{print $2}')"
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
@@ -55,9 +54,9 @@ echo -e "\n${GREEN}Setting ipsec pool${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm pool keepalive-vpn-azure members add { $IPSEC_DESTINATION_ADDRESS2:179 { address $IPSEC_DESTINATION_ADDRESS2 } } monitor tcp_half_open and gateway_icmp
 
 echo -e "\n${GREEN}Setting ipsec virtual server${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 azure-vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
+ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
 sleep 2
-ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual azure-vpn destination ${VNET_CIDR_BLOCK::-3}:any mask $VNET_CIDR_MASK ip-forward profiles add { azure-vpn }
+ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual vpn destination 0.0.0.0:any ip-forward profiles add { vpn }
 
 echo -e "\n${GREEN}Save config${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh save sys config
