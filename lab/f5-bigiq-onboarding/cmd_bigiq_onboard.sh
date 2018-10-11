@@ -14,7 +14,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED}./$0 <pause/nopause> <udf/sjc/sjc2/sea> <build number> <iso> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> <build number> <iso> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
