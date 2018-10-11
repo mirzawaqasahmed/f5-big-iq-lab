@@ -4,74 +4,74 @@
   connection: local
 
   tasks:
-    - name: site20waf.example.com
+    - name: site20waf.example2.com
       bigiq_application_https_waf:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site20waf.example.com"
+        name: "site20waf.example2.com"
         wait: yes
         state: absent
       delegate_to: localhost
 
-    - name: site22http.example.com
+    - name: site22http.example2.com
       bigiq_application_http:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site22http.example.com"
+        name: "site22http.example2.com"
         wait: yes
         state: absent
       delegate_to: localhost
 
-    - name: site26https.example.com
+    - name: site26https.example2.com
       bigiq_application_https_offload:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site14https.example.com"
+        name: "site14https.example2.com"
         wait: yes
         state: absent
       delegate_to: localhost
 
-    - name: site28fasthttp.example.com
+    - name: site28fasthttp.example2.com
       bigiq_application_fasthttp:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site26fasthttp.example.com"
+        name: "site26fasthttp.example2.com"
         wait: yes
         state: absent
       delegate_to: localhost
 
-    - name: site30fastL4tcp.example.com
+    - name: site30fastL4tcp.example2.com
       bigiq_application_fastl4_tcp:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site28fasL4.example.com"
+        name: "site28fasL4.example2.com"
         wait: yes
         state: absent
       delegate_to: localhost
 
-    - name: site32udp.example.com
+    - name: site32udp.example2.com
       bigiq_application_fastl4_udp:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site30udp.example.com"
+        name: "site30udp.example2.com"
         wait: yes
         state: absent
       delegate_to: localhost
