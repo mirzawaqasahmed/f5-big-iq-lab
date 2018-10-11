@@ -19,7 +19,8 @@ echo -e "\n${GREEN}Setting BGP${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh modify net route-domain 0 routing-protocol add { BGP }
 
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 aws-vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
-ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual azure-vpn destination $VPC_CIDR_BLOCK:any ip-forward profiles add { azure-vpn }
+sleep 5
+ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual azure-vpn destination $VPC_CIDR_BLOCK:any ip-forward profiles add { aws-vpn }
 
 echo -e "\n${GREEN}Setting ipsec policy${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ipsec-policy ipsec-policy-vpn-aws ike-phase2-auth-algorithm sha1 ike-phase2-encrypt-algorithm aes256 ike-phase2-lifetime 60 ike-phase2-perfect-forward-secrecy modp1024 mode interface
