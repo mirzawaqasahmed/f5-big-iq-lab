@@ -87,24 +87,31 @@ if [[  $env != "udf" ]]; then
         activeVolume=$(cat activeVolume | grep yes | awk '{print $1}')
         if [[  $activeVolume == "HD1.1" ]]; then
           ssh root@$ip tmsh delete sys software volume HD1.2
+          sleep 10
           ssh root@$ip tmsh modify sys db liveinstall.saveconfig value disable
+          sleep 5
           ssh root@$ip tmsh modify sys db liveinstall.moveconfig value disable
+          sleep 5
           ssh root@$ip tmsh install sys software image $iso volume HD1.2 create-volume reboot
         else
           ssh root@$ip tmsh delete sys software volume HD1.1
+          sleep 10
           ssh root@$ip tmsh modify sys db liveinstall.saveconfig value disable
+          sleep 5
           ssh root@$ip tmsh modify sys db liveinstall.moveconfig value disable
+          sleep 5
           ssh root@$ip tmsh install sys software image $iso volume HD1.1 create-volume reboot
         fi
+        status=""
         while [[ $status != "complete" ]] 
           do
               ssh root@$ip tmsh show sys software status > status
               status=$(cat status | grep no | awk '{print $6}')
               percentage=$(cat status | grep no | awk '{print $7 $8}')
               if [[ $status == "complete" ]]; then
-                echo -e "install status =${GREEN} $status - $percentage ${NC}"
+                echo -e "install status =${GREEN} $status $percentage ${NC}"
               else
-                echo -e "install status =${RED} $status - $percentage ${NC}"
+                echo -e "install status =${RED} $status $percentage ${NC}"
               fi
               sleep 30
           done
