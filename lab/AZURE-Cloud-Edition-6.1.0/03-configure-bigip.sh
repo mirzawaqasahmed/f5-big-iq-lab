@@ -56,6 +56,7 @@ ssh admin@$MGT_NETWORK_UDF tmsh create ltm pool keepalive-vpn-azure members add 
 
 echo -e "\n${GREEN}Setting ipsec virtual server${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 azure-vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
+sleep 2
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual azure-vpn destination ${VNET_CIDR_BLOCK::-3}:any mask $VNET_CIDR_MASK ip-forward profiles add { azure-vpn }
 
 echo -e "\n${GREEN}Save config${NC}"
