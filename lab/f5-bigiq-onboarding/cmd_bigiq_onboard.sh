@@ -13,9 +13,10 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-## Usage:
-## ./cmd_bigiq_onboard.sh nopause sjc
-## ./cmd_bigiq_onboard.sh pause sjc
+if [[ -z $1 ]]; then
+    echo -e "\nUsage: ${RED}./$0 <pause/nopause> <udf/sjc/sjc2/sea> <build number> <iso> ${NC} (1st parameter mandatory)\n"
+    exit 1;
+fi
 
 if [ -z "$2" ]; then
   env="udf"
@@ -42,38 +43,46 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ############### ONLY FOR PME LAB START
 if [[  $env != "udf" ]]; then
-  ############################# PART TO REMOVE IN PME SEATTLE LAB AS NO ACCESS TO BUILD SERVER
-  ############## MANUALLY TRANSFER THE ISO FILE
-  echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
-  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  ## Cleanup
-  rm -f *iso* cookie activeVolume status
-  ## download iso file
-  # Corporate user/password to download the latest iso
-  echo -e "Corporate F5 username:"
-  read f5user
-  echo -e "Corporate F5 password:"
-  read -s f5pass
-  release="v6.1.0"
-  curl "https://weblogin.f5net.com/sso/login.php?redir=https://nibs.f5net.com/build" -H "Connection: keep-alive" -H "Pragma: no-cache" -H "Cache-Control: no-cache" -H "Origin: https://weblogin.f5net.com" -H "Upgrade-Insecure-Requests: 1" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" -H "Referer: https://weblogin.f5net.com/sso/login.php?msg=Invalid%20Credentials&redir=https://nibs.f5net.com/build" -H "Accept-Encoding: gzip, deflate, br" -H "Accept-Language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7" --data "user=$f5user&pass=$f5pass&submit_form=Submit" --compressed -c ./cookie
-  curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | cut -b 7-41 > iso.txt
-  iso=$(cat iso.txt)
-  curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/$iso > $iso
-  curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/current/$iso.md5 > $iso.md5
-  md5sum $iso > $iso.md5.verify
-  DIFF=$(diff $iso.md5.verify $iso.md5) 
-  if [[  "$DIFF" != "" ]]; then
-      echo "The md5 is different."
-      cat $iso.md5
-      cat $iso.md5.verify
-      exit 2;
+  if [ -z "$4" ]; then
+    # if no iso specified download the image from build server  
+    echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
+    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    ## Cleanup
+    rm -f *iso* cookie activeVolume status
+    ## download iso file
+    # Corporate user/password to download the latest iso
+    echo -e "Corporate F5 username:"
+    read f5user
+    echo -e "Corporate F5 password:"
+    read -s f5pass
+    release="v6.1.0"
+    if [[ -z $3 ]]; then
+      build="current"
+    else
+      build="build$3.0"
+    fi
+    curl "https://weblogin.f5net.com/sso/login.php?redir=https://nibs.f5net.com/build" -H "Connection: keep-alive" -H "Pragma: no-cache" -H "Cache-Control: no-cache" -H "Origin: https://weblogin.f5net.com" -H "Upgrade-Insecure-Requests: 1" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" -H "Referer: https://weblogin.f5net.com/sso/login.php?msg=Invalid%20Credentials&redir=https://nibs.f5net.com/build" -H "Accept-Encoding: gzip, deflate, br" -H "Accept-Language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7" --data "user=$f5user&pass=$f5pass&submit_form=Submit" --compressed -c ./cookie
+    curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | cut -b 7-41 > iso.txt
+    iso=$(cat iso.txt)
+    curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/$iso > $iso
+    curl -b ./cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/$iso.md5 > $iso.md5
+    md5sum $iso > $iso.md5.verify
+    DIFF=$(diff $iso.md5.verify $iso.md5) 
+    if [[  "$DIFF" != "" ]]; then
+        echo "The md5 is different."
+        cat $iso.md5
+        cat $iso.md5.verify
+        exit 2;
+    else
+        echo -e "\nIso is good!\n"
+        ls -lrt $iso*
+    fi
   else
-      echo -e "\nIso is good!\n"
-      ls -lrt $iso*
+    # use the iso transfered on the lamp server in parameter 4
+    iso=$4
   fi
   
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  ############################# PART TO REMOVE IN PME SEATTLE LAB AS NO ACCESS TO BUILD SERVER
 
   if [ -f $iso ]; then
       # loop around the BIG-IQ CM/DCD
