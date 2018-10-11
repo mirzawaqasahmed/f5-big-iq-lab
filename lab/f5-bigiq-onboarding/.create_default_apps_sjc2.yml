@@ -53,14 +53,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site26https.example.com
+    - name: site26https.example2.com
       bigiq_application_https_offload:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site26https.example.com"
+        name: "site26https.example2.com"
         wait: yes
         description: Load balance HTTPS Offload
         service_environment: "bigip2tier1.lab.fp.f5net.com"
