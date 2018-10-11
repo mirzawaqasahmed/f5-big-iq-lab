@@ -135,9 +135,13 @@ else
   ansible-playbook -i inventory/$env-hosts .bigiq_onboard_$env.yml $DEBUG_arg
 fi
 
+# wait 2 min
+sleep 120
+
 echo -e "\n${GREEN}Add DCD to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Add DCD to CM
+## to be replace with Ansible Role.
 curl https://s3.amazonaws.com/big-iq-quickstart-cf-templates-aws/6.0.1.1/scripts.tar.gz > scripts.tar.gz
 rm -rf scripts 
 tar --strip-components=1 -xPvzf scripts.tar.gz 2> /dev/null &
@@ -168,3 +172,9 @@ if [[  $env == "udf" ]]; then
 else
   ansible-playbook -i notahost, .create_default_apps_$env.yml $DEBUG_arg
 fi
+
+### CUSTOMIZATION
+# loop around the BIG-IQ CM/DCD
+for ip in $ip_cm1 $ip_dcd1; do
+  ssh root@$ip tmsh modify auth user admin shell bash
+done
