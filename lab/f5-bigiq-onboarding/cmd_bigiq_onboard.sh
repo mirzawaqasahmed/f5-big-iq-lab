@@ -76,7 +76,7 @@ if [[  $env != "udf" ]]; then
       # loop around the BIG-IQ CM/DCD
       for ip in $ip_cm1 $ip_dcd1; do
         # transfer iso image
-        echo -e "\n${GREEN}Transfer iso${NC}"
+        echo -e "\n${GREEN}Transfer iso on $ip ${NC}"
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         ssh root@$ip rm -f /shared/images/*.iso
         scp $iso root@$ip:/shared/images/
@@ -94,7 +94,7 @@ if [[  $env != "udf" ]]; then
           ssh root@$ip tmsh delete sys software volume HD1.1
           ssh root@$ip tmsh modify sys db liveinstall.saveconfig value disable
           ssh root@$ip tmsh modify sys db liveinstall.moveconfig value disable
-          ssh root@$ip tmsh install sys software image $iso volume HD1.2 create-volume reboot
+          ssh root@$ip tmsh install sys software image $iso volume HD1.1 create-volume reboot
         fi
         while [[ $status != "complete" ]] 
           do
@@ -112,6 +112,9 @@ if [[  $env != "udf" ]]; then
   fi
 fi
 ############### ONLY FOR PME LAB END
+
+# wait 15 min
+sleep 900
 
 echo -e "\n${GREEN}Install ansible-galaxy module${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
