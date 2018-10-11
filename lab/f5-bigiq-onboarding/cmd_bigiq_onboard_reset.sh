@@ -29,6 +29,8 @@ echo -e "Environement:${RED} $env ${NC}"
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${RED}Delete Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
@@ -39,6 +41,8 @@ else
   ansible-playbook -i notahost, .delete_default_apps_$env.yml $DEBUG_arg
 fi
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD ${NC}"
 for ip in $ip_cm1 $ip_dcd1; do
   echo -e "\n${RED} ---- $ip ---- ${NC}"
@@ -46,6 +50,10 @@ for ip in $ip_cm1 $ip_dcd1; do
   ssh root@$ip clear-rest-storage -d
 done
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${RED}Uninstall ansible-galaxy module ${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ansible-galaxy remove f5devcentral.bigiq_onboard
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

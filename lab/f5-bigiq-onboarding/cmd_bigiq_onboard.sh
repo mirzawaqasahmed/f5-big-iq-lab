@@ -38,6 +38,8 @@ for ip in $ip_cm1 $ip_dcd1; do
   ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 ############### ONLY FOR PME LAB START
 if [[  $env != "udf" ]]; then
   ############################# PART TO REMOVE IN PME SEATTLE LAB AS NO ACCESS TO BUILD SERVER
@@ -66,10 +68,11 @@ if [[  $env != "udf" ]]; then
       cat $iso.md5.verify
       exit 2;
   else
-      echo "Iso is good"
+      echo -e "\nIso is good!\n"
       ls -lrt $iso*
   fi
   
+  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
   ############################# PART TO REMOVE IN PME SEATTLE LAB AS NO ACCESS TO BUILD SERVER
 
   if [ -f $iso ]; then
@@ -120,8 +123,12 @@ if [[  $env != "udf" ]]; then
 fi
 ############### ONLY FOR PME LAB END
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 # wait 15 min
 sleep 900
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Install ansible-galaxy module${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -135,8 +142,12 @@ else
   ansible-playbook -i inventory/$env-hosts .bigiq_onboard_$env.yml $DEBUG_arg
 fi
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 # wait 2 min
 sleep 120
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Add DCD to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -156,6 +167,8 @@ ssh root@$ip_cm1 << EOF
 EOF
 ## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Add devices
@@ -166,6 +179,8 @@ ssh root@$ip_cm1 << EOF
   perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
 EOF
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${GREEN}Create Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Create apps
@@ -174,6 +189,8 @@ if [[  $env == "udf" ]]; then
 else
   ansible-playbook -i notahost, .create_default_apps_$env.yml $DEBUG_arg
 fi
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ### CUSTOMIZATION
 # loop around the BIG-IQ CM/DCD
@@ -189,3 +206,5 @@ ssh root@$ip_cm1 << EOF
   cat /var/config/orchestrator/orchestrator.conf
   bigstart restart gunicorn
 EOF
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

@@ -36,10 +36,10 @@ echo -e "\n${GREEN}Setting ipsec policy${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ipsec-policy ipsec-policy-vpn-azure ike-phase2-auth-algorithm sha1 ike-phase2-encrypt-algorithm aes256 ike-phase2-lifetime 60 ike-phase2-perfect-forward-secrecy modp1024 mode interface
 
 echo -e "\n${GREEN}Setting ipsec traffic selector${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec traffic-selector selector-vpn-azure destination-address $IPSEC_DESTINATION_NETWORK/$IPSEC_DESTINATION_MASK ipsec-policy ipsec-policy-vpn-azure source-address $IPSEC_DESTINATION_NETWORK/$IPSEC_DESTINATION_MASK
+ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec traffic-selector selector-vpn-azure2 destination-address 0.0.0.0/0 ipsec-policy ipsec-policy-vpn-azure source-address 0.0.0.0/0
 
 echo -e "\n${GREEN}Setting ipsec IKE Peer${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ike-peer peer-vpn-azure lifetime 480 my-id-type address my-id-value $EXT_NETWORK_UDF_PEERING peers-id-type address peers-id-value $publicIpAddress phase1-hash-algorithm sha1 prf sha1 phase1-auth-method pre-shared-key phase1-encrypt-algorithm aes256 remote-address $publicIpAddress verify-cert true version add { v1 v2 } preshared-key $SHARED_KEY nat-traversal on traffic-selector add { selector-vpn-azure }
+ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ike-peer peer-vpn-azure lifetime 480 my-id-type address my-id-value $EXT_NETWORK_UDF_PEERING peers-id-type address peers-id-value $publicIpAddress phase1-hash-algorithm sha1 prf sha1 phase1-auth-method pre-shared-key phase1-encrypt-algorithm aes256 remote-address $publicIpAddress verify-cert true version add { v2 } preshared-key $SHARED_KEY nat-traversal on traffic-selector add { selector-vpn-azure }
 
 echo -e "\n${GREEN}Setting ipsec profile${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net tunnels ipsec profile-vpn-azure app-service none defaults-from ipsec traffic-selector selector-vpn-azure
@@ -57,6 +57,9 @@ echo -e "\n${GREEN}Setting ipsec virtual server${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm profile fastL4 vpn loose-close enabled loose-initialization enabled reset-on-timeout disabled
 sleep 2
 ssh admin@$MGT_NETWORK_UDF tmsh create ltm virtual vpn destination 0.0.0.0:any ip-forward profiles add { vpn }
+
+echo -e "\n${GREEN}Add route${NC}"
+ssh admin@$MGT_NETWORK_UDF tmsh create net route azure_subnet interface tunnel-vpn-azure network $VNET_CIDR_BLOCK
 
 echo -e "\n${GREEN}Save config${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh save sys config

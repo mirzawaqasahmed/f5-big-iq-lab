@@ -10,6 +10,8 @@ NC='\033[0m' # No Color
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
+echo -e "\n${BLUE}VPN Azure <-> UDF${NC}"
+
 echo -e "\n${GREEN}View the VPN gateway${NC}"
 az network vnet-gateway show \
   -n VNet1GW \
