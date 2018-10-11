@@ -27,7 +27,7 @@ There is lab environment (``version 11``) available in UDF and Ravello (Oracle P
 
 .. image:: ./pictures/diagram_udf.png
   :align: center
-  :scale: 30%
+  :scale: 50%
 
 **Networks**:
 
