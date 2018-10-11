@@ -73,8 +73,8 @@ echo -e "\nSleep 20 seconds"
 sleep 20
 
 # WA Tunnel
-ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1398
-ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1398
+ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1350
+ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1350
 
 echo -e "\n${GREEN}Sleep 3 min (to allow some time for the VPN to come up)${NC}"
 sleep 180
