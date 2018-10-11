@@ -8,8 +8,8 @@
       bigiq_application_http:
         provider:
           server: 10.1.1.4
-          user: admin
-          password: admin
+          user: olivia
+          password: olivia
           validate_certs: no
         name: "site40.example.com"
         wait: no
@@ -20,8 +20,8 @@
       bigiq_application_http:
         provider:
           server: 10.1.1.4
-          user: admin
-          password: admin
+          user: olivia
+          password: olivia
           validate_certs: no
         name: "site36.example.com"
         wait: no
@@ -32,8 +32,8 @@
       bigiq_application_http:
         provider:
           server: 10.1.1.4
-          user: admin
-          password: admin
+          user: olivia
+          password: olivia
           validate_certs: no
         name: "site42.example.com"
         wait: no
