@@ -39,13 +39,13 @@ echo -e "\n${GREEN}Setting ipsec traffic selector${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec traffic-selector selector-vpn-azure destination-address $IPSEC_DESTINATION_NETWORK/$IPSEC_DESTINATION_MASK ipsec-policy ipsec-policy-vpn-azure source-address $IPSEC_DESTINATION_NETWORK/$IPSEC_DESTINATION_MASK
 
 echo -e "\n${GREEN}Setting ipsec IKE Peer${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ike-peer peer-vpn-azure lifetime 480 my-id-type address my-id-value $EXT_NETWORK_UDF_PEERING peers-id-type address peers-id-value $publicIpAddress phase1-hash-algorithm sha1 phase1-auth-method pre-shared-key phase1-encrypt-algorithm aes256 remote-address $publicIpAddress verify-cert true version add { v1 v2 } preshared-key $SHARED_KEY nat-traversal on traffic-selector add { selector-vpn-azure }
+ssh admin@$MGT_NETWORK_UDF tmsh create net ipsec ike-peer peer-vpn-azure lifetime 480 my-id-type address my-id-value $EXT_NETWORK_UDF_PEERING peers-id-type address peers-id-value $publicIpAddress phase1-hash-algorithm sha1 prf sha1 phase1-auth-method pre-shared-key phase1-encrypt-algorithm aes256 remote-address $publicIpAddress verify-cert true version add { v1 v2 } preshared-key $SHARED_KEY nat-traversal on traffic-selector add { selector-vpn-azure }
 
 echo -e "\n${GREEN}Setting ipsec profile${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net tunnels ipsec profile-vpn-azure app-service none defaults-from ipsec traffic-selector selector-vpn-azure
 
 echo -e "\n${GREEN}Setting ipsec tunnels${NC}"
-ssh admin@$MGT_NETWORK_UDF tmsh create net tunnels tunnel tunnel-vpn-azure local-address $EXT_NETWORK_UDF_PEERING mtu 1400 profile profile-vpn-azure remote-address $publicIpAddress
+ssh admin@$MGT_NETWORK_UDF tmsh create net tunnels tunnel tunnel-vpn-azure local-address $EXT_NETWORK_UDF_PEERING mtu 1350 profile profile-vpn-azure remote-address $publicIpAddress
 
 echo -e "\n${GREEN}Setting ipsec self IP${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh create net self $IPSEC_DESTINATION_ADDRESS1 address $IPSEC_DESTINATION_ADDRESS1/$IPSEC_DESTINATION_MASK allow-service all traffic-group traffic-group-local-only vlan tunnel-vpn-azure
@@ -73,6 +73,7 @@ do
       echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
     else
       echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+      #ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/ipsec.log
     fi
     sleep 60
 done

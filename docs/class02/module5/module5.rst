@@ -1,10 +1,16 @@
-Module 4: Setup a Service scaling group (SSG) in AWS
-====================================================
+Module 5: Setup a Service scaling group (SSG) in AZURE
+======================================================
+
+.. image:: ../../pictures/under-construction-02.jpg
+  :align: center
+  :scale: 10%
+
+**[New 6.1.0]** 
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
 In this module, we will learn about the ``Service Scaling Group`` (SSG) feature
-provided with BIG-IQ 6.0 in a the ``AWS`` environment.
+provided with BIG-IQ 6.1 in a the ``AZURE`` environment.
 
 The ``Service Scaling Group`` (SSG) gives us the capability to setup a cluster of BIG-IPs
 that will scale based on criterias defined by the administrator.
@@ -12,28 +18,26 @@ that will scale based on criterias defined by the administrator.
 Topology of Service Scaling Group
 *********************************
 
-With BIG-IQ 6.0, the ``Service Scaling Group`` is composed of 2 tiers of ADCs.
+With BIG-IQ 6.1, the ``Service Scaling Group`` is composed of 2 tiers of ADCs.
 Depending on the environment, the implementation of the ``Service Scaling Group``
 (SSG) will differ.
 
 ============= ===================================== ============================
  Environment     Tier1 (called ``Service Scaler``)      Tier2 (called ``SSG``)
 ============= ===================================== ============================
-   AWS                       ELB                                 F5 VE
+   AZURE                     ALB                                 F5 VE
 ============= ===================================== ============================
 
 Tier1/``Service Scaler`` management - how does this work ?
 **********************************************************
 
-With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
-upfront by the administrator. It means that:
+With BIG-IQ 6.1, the provisioning and deployment of Tier1 is handle automatically by BIG-IQ.
 
-* The AWS ELB will have to be provisioned
 
 Tier2/``SSG`` management - how does this work ?
 ***********************************************
 
-With BIG-IQ 6.0, the provisioning of ``SSG`` BIG-IPs is fully automated. You
+With BIG-IQ 6.1, the provisioning of ``SSG`` BIG-IPs is fully automated. You
 don't have to setup anything upfront but licenses for BIG-IQ to assign to the
 dynamically provisioned BIG-IPs
 
@@ -42,7 +46,7 @@ different components:
 
 * our F5 cloud deployment templates
 
-  * `F5 AWS template <https://github.com/F5Networks/f5-aws-cloudformation>`_
+  * `F5 AZURE template <https://github.com/F5Networks/f5-azure-arm-templates>`_
 
 * f5 cloud libs
 
@@ -50,23 +54,23 @@ different components:
 
 .. note:: We will review this in more details in lab4
 
-Application deployment in a ``SSG`` - AWS
-*****************************************
+Application deployment in a ``SSG`` - AZURE
+*******************************************
 
 To ensure the traffic goes through the ``SSG`` as expected, application will be
 deployed in a certain manner:
 
-* You will need dedicated ``Classic Load Balancer`` (AKA ELB previously) per
-  application. The reason is that each ``ELB`` has one public IP/DNS Name
+* You will need dedicated ``Azure Load Balancer`` (AKA ALB previously) per
+  application. The reason is that each ``ALB`` has one public IP/DNS Name
   (ie you can't have 2 app runnings on port 443/HTTPS on a ``ELB`` )
 * When the app is deployed from BIG-IQ, we will specify a VS IP that will be 0.0.0.0.
   This is because ELB can only send traffic to the first nic of an instance and
-  therefore we will deploy 1nic VE in AWS. So traffic and everything will be sent
+  therefore we will deploy 1nic VE in AZURE. So traffic and everything will be sent
   to the nic Self IP.
 * This config will be configured on all ``SSG`` VEs.
   They will have have an **identical** Setup
 
-In this lab, we will create a ``Service Scaling Group`` in an ``AWS`` environment.
+In this lab, we will create a ``Service Scaling Group`` in an ``AZURE`` environment.
 
 .. toctree::
    :maxdepth: 1

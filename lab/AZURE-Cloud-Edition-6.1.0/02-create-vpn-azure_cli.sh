@@ -5,6 +5,7 @@
 # https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli
 # https://docs.microsoft.com/en-us/azure/vpn-gateway/bgp-how-to-cli#crossprembgp
 # https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-azure-hybrid-cloud-deployment-how-to.html
+# https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
