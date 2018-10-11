@@ -85,7 +85,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 # Not needed, this playbook creates a service catalog template (custom)
 #ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i inventory/hosts
 
-echo -e "\n${GREEN}Sleep 3 min (to allow TIME: for the VPN to come up)${NC}"
+echo -e "\n${GREEN}Sleep 3 min (to allow some time for the VPN to come up)${NC}"
 sleep 180
 
 echo -e "\n${GREEN}VPN status:${NC}\n"

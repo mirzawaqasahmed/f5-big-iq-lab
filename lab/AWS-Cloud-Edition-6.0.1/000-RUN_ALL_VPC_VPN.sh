@@ -76,7 +76,7 @@ sleep 20
 ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1398
 ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1398
 
-echo -e "\n${GREEN}Sleep 3 min (to allow TIME: for the VPN to come up)${NC}"
+echo -e "\n${GREEN}Sleep 3 min (to allow some time for the VPN to come up)${NC}"
 sleep 180
 
 echo -e "\n${GREEN}VPN status:${NC}\n"
