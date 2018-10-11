@@ -175,6 +175,15 @@ fi
 
 ### CUSTOMIZATION
 # loop around the BIG-IQ CM/DCD
+# enable ssh for admin
 for ip in $ip_cm1 $ip_dcd1; do
   ssh root@$ip tmsh modify auth user admin shell bash
 done
+
+# disable ssl check for VMware SSG
+ssh root@$ip_cm1 << EOF
+  echo >> /var/config/orchestrator/orchestrator.conf
+  echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
+  cat /var/config/orchestrator/orchestrator.conf
+  bigstart restart gunicorn
+EOF
