@@ -69,7 +69,7 @@ if [[  $env != "udf" ]]; then
     md5sum $iso > $iso.md5.verify
     DIFF=$(diff $iso.md5.verify $iso.md5) 
     if [[  "$DIFF" != "" ]]; then
-        echo "The md5 is different."
+        echo -e "The md5 is different."
         cat $iso.md5
         cat $iso.md5.verify
         exit 2;
@@ -134,8 +134,8 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-# wait 15 min
-sleep 900
+echo -e "\n${RED} Waiting 10 min ... ${NC}"
+sleep 600
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -153,8 +153,8 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-# wait 2 min
-sleep 120
+echo -e "\n${RED} Waiting 5 min ... ${NC}"
+sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -210,6 +210,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 # loop around the BIG-IQ CM/DCD
 # enable ssh for admin
 for ip in $ip_cm1 $ip_dcd1; do
+  echo -e "\n---- ${RED} $ip ${NC} ----"
   ssh root@$ip tmsh modify auth user admin shell bash
 done
 
