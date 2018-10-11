@@ -85,7 +85,7 @@ if [[  $env != "udf" ]]; then
         scp $iso root@$ip:/shared/images/
         echo -e "\n${GREEN}Install on $ip ${NC}"
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-        # check active volum and install
+        # check active volume and install
         ssh root@$ip tmsh show sys software status > activeVolume
         activeVolume=$(cat activeVolume | grep yes | awk '{print $1}')
         if [[  $activeVolume == "HD1.1" ]]; then
@@ -157,10 +157,15 @@ curl https://s3.amazonaws.com/big-iq-quickstart-cf-templates-aws/6.0.1.1/scripts
 rm -rf scripts 
 tar --strip-components=1 -xPvzf scripts.tar.gz 2> /dev/null &
 
+for ip in $ip_cm1 $ip_dcd1; do
+  echo "\nSet set-basic-auth on $ip"
+  ssh root@$ip set-basic-auth on
+done
+
+echo "\nAdd DCD to BIG-IQ CM"
 scp -rp scripts root@$ip_cm1:/root
 ssh root@$ip_cm1 << EOF
   cd /root/scripts
-  set-basic-auth on
   /usr/local/bin/python2.7 ./add-dcd.py --DCD_IP_ADDRESS $ip_dcd1 --DCD_USERNAME admin --DCD_PWD $pwd_dcd1
   sleep 5
   /usr/local/bin/python2.7 ./activate-dcd-services.py --DCD_IP_ADDRESS $ip_dcd1 --SERVICES asm access dos websafe ipsec afm
