@@ -87,7 +87,7 @@ Select ``site36.example.com``
 
 2. Connect on the *Ubuntu Lamp Server* server and launch the following command:
 
-``# /home/f5/scripts/generate_bad_traffic.sh``
+``# /home/f5/scripts/generate_http_bad_traffic.sh``
 
 3. Check the various Security Analytics: Illegal Transactions, All Transactions and Violations.
 
