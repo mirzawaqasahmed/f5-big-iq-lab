@@ -68,7 +68,6 @@ do
 		# Port 443 open
 		port=443
         else
-        
                 # If 443 not anwser, trying port 80
                 timeout 1 bash -c "cat < /dev/null > /dev/tcp/${ip:1:-1}/80"
                 if [  $? == 0 ]; then

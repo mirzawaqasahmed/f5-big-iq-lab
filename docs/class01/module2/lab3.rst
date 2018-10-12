@@ -33,6 +33,8 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 - Servers (Pool Member): ``10.1.20.118`` and ``10.1.20.119``
 - Service Port: ``80``
 
+.. note:: Nodes and pool members are “device specific objects”
+
 - Name WAF & LB (Virtual Server): ``vs_site18.example.com_https``
 - Destination Address: ``10.1.10.118``
 - Destination Network Mask: ``255.255.255.255``

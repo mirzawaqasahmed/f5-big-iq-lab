@@ -18,7 +18,9 @@ of the *Ubuntu Lamp Server* system and select *XRDP*
 
 |
 
-Open Chrome and Firefox and navigate on the website https://site40.example.com.
+Open Chrome and Firefox and navigate on the website https://site40.example.com/f5_browser_issue.php.
+
+.. note:: Go firt to https://site40.example.com to accept the private certificates.
 
 A page f5_browser_issue.php is behaving differenty on Chrome compare to other browsers.
 
