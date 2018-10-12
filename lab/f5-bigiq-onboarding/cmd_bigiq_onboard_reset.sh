@@ -44,6 +44,8 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+echo -e "${RED} /!\ CHECK IF THE APPLICATIONS ARE CORRECTLY DELETED IN BIG-IQ. MAY NEED TO RETRY. /!\ ${NC}"
+
 echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD ${NC}"
 for ip in $ip_cm1 $ip_dcd1; do
   echo -e "\n---- ${RED} $ip ${NC} ----"

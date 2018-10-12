@@ -39,11 +39,10 @@ for ip in $ip_cm1 $ip_dcd1; do
   ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
 ############### ONLY FOR PME LAB START
 if [[  $env != "udf" ]]; then
   if [ -z "$4" ]; then
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     # if no iso specified download the image from build server  
     echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -129,19 +128,19 @@ if [[  $env != "udf" ]]; then
           done
         done
   fi
+  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  echo -e "\n${RED} Waiting 10 min ... ${NC}"
+  sleep 600
 fi
 ############### ONLY FOR PME LAB END
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-echo -e "\n${RED} Waiting 10 min ... ${NC}"
-sleep 600
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Install ansible-galaxy module${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ansible-galaxy install f5devcentral.bigiq_onboard --force
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Onboarding BIG-IQ CM and DCD${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
