@@ -2,6 +2,14 @@
 # Uncomment set command below for code debugging bash
 #set -x
 
+#######################
+# CONFIGURATION
+ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+
+declare -a ips=("$ip_cm1" "$ip_dcd1")
+#######################
+
 function pause(){
    read -p "$*"
 }
@@ -11,11 +19,13 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Usage
 if [[ -z $1 ]]; then
     echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
+# Default value set to UDF
 if [ -z "$2" ]; then
   env="udf"
 else
@@ -26,9 +36,6 @@ else
 fi
 
 echo -e "Environement:${RED} $env ${NC}"
-
-ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
-ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -47,7 +54,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "${RED} /!\ CHECK IF THE APPLICATIONS ARE CORRECTLY DELETED IN BIG-IQ. MAY NEED TO RETRY. /!\ ${NC}"
 
 echo -e "\n${RED}clear-rest-storage -d on both BIG-IQ CM and DCD ${NC}"
-for ip in $ip_cm1 $ip_dcd1; do
+for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
   echo "Type $ip root password."

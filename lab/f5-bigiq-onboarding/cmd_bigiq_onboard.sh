@@ -4,6 +4,14 @@
 # Uncomment set command below for code debugging ansible
 #DEBUG_arg="-vvvv"
 
+#######################
+# CONFIGURATION
+ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+
+declare -a ips=("$ip_cm1" "$ip_dcd1")
+#######################
+
 function pause(){
    read -p "$*"
 }
@@ -13,11 +21,13 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Usage
 if [[ -z $1 ]]; then
     echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> <build number> <iso> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
+# Default value set to UDF
 if [ -z "$2" ]; then
   env="udf"
 else
@@ -29,18 +39,14 @@ fi
 
 echo -e "Environement:${RED} $env ${NC}"
 
-ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
-pwd_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
-ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
-pwd_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
-
-for ip in $ip_cm1 $ip_dcd1; do
+for ip in "${ips[@]}"; do
   echo "Type $ip root password."
   ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
-############### ONLY FOR PME LAB START
+################################################## ONLY FOR PME LAB START ########################################################
 if [[  $env != "udf" ]]; then
+  echo -e "${RED} INTERNAL USE --- ONLY F5 LAB --- START ${NC}"
   if [ -z "$4" ]; then
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     # if no iso specified download the image from build server  
@@ -49,8 +55,9 @@ if [[  $env != "udf" ]]; then
     ## Cleanup
     rm -f *iso* activeVolume status
     # remove cookie if older than 1 day
-    if [[ $(find "./.cookie" -mtime +1 -print) ]]; then
+    if [[ $(find "./.cookie" -mtime +1 -print 2> /dev/null) ]]; then
       echo "./.cookie older than 1 day"
+      rm -f ./.cookie
     fi
     if [ ! -f ./.cookie ]; then
       # Corporate user/password to download the latest iso
@@ -91,7 +98,7 @@ if [[  $env != "udf" ]]; then
 
   if [ -f $iso ]; then
       # loop around the BIG-IQ CM/DCD
-      for ip in $ip_cm1 $ip_dcd1; do
+      for ip in "${ips[@]}"; do
         # transfer iso image
         echo -e "\n${GREEN}Transfer iso on $ip ${NC}"
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -139,10 +146,11 @@ if [[  $env != "udf" ]]; then
     exit 3;
   fi
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  echo -e "\n${RED} Waiting 10 min ... ${NC}"
+  echo -e "\n${RED}Waiting 10 min ... ${NC}"
   sleep 600
+  echo -e "${RED} INTERNAL USE --- ONLY F5 LAB --- END ${NC}"
 fi
-############### ONLY FOR PME LAB END
+################################################## ONLY FOR PME LAB END ########################################################
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -179,19 +187,21 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-### CUSTOMIZATION
-# loop around the BIG-IQ CM/DCD
-# enable ssh for admin
-for ip in $ip_cm1 $ip_dcd1; do
-  echo -e "\n---- ${RED} $ip ${NC} ----"
-  ssh root@$ip tmsh modify auth user admin shell bash
-done
+### CUSTOMIZATION - F5 INTERNAL LAB ONLY
+if [[  $env != "udf" ]]; then
+  # loop around the BIG-IQ CM/DCD
+  # enable ssh for admin
+  for ip in "${ips[@]}"; do
+    echo -e "\n---- ${RED} $ip ${NC} ----"
+    ssh root@$ip tmsh modify auth user admin shell bash
+  done
 
-# disable ssl check for VMware SSG
-ssh root@$ip_cm1 << EOF
-  echo >> /var/config/orchestrator/orchestrator.conf
-  echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
-  bigstart restart gunicorn
-EOF
+  # disable ssl check for VMware SSG
+  ssh root@$ip_cm1 << EOF
+    echo >> /var/config/orchestrator/orchestrator.conf
+    echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
+    bigstart restart gunicorn
+  EOF
 
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+fi
