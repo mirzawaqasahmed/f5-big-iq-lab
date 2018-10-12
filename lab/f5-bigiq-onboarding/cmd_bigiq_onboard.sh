@@ -217,7 +217,6 @@ done
 ssh root@$ip_cm1 << EOF
   echo >> /var/config/orchestrator/orchestrator.conf
   echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
-  cat /var/config/orchestrator/orchestrator.conf
   bigstart restart gunicorn
 EOF
 
