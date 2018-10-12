@@ -174,6 +174,20 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${RED} Waiting 5 min ... ${NC}"
 sleep 300
 
+## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+# Add devices
+### NEED TO ADD ENABLE STAT COLLECTION IN THE SCRIPT
+scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
+ssh root@$ip_cm1 << EOF
+  cd /root
+  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
+EOF
+## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
+
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Create Applications${NC}"
