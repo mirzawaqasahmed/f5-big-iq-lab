@@ -185,7 +185,7 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED} Waiting 5 min ... ${NC}"
+echo -e "\n${RED}Waiting 5 min ... ${NC}"
 sleep 300
 
 ## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
@@ -230,8 +230,9 @@ done
 
 # disable ssl check for VMware SSG
 ssh root@$ip_cm1 << EOF
-  cd /root
-  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
+  echo >> /var/config/orchestrator/orchestrator.conf
+  echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
+  bigstart restart gunicorn
 EOF
   
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

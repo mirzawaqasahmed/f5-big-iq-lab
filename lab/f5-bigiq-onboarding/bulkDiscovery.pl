@@ -516,6 +516,9 @@ for $bigip (@bigips) {
         my $machineId = getMachineId($mip);
         $postBodyHash{"enabled"} = "true";
         $postBodyHash{"targetDeviceReference"}{"link"} = "https://localhost/mgmt/shared/resolver/device-groups/cm-bigip-allBigIpDevices/devices/$machineId";
+        $postBodyHash{"modules"}[0]{"module"} = "DEVICE";
+        $postBodyHash{"modules"}[1]{"module"} = "LTM";
+        $postBodyHash{"modules"}[2]{"module"} = "DNS";
         $postBodyJson = encode_json(\%postBodyHash);
         $url = "https://localhost/mgmt/cm/shared/stats-mgmt/agent-install-and-config-task";
         $statsTask = postRequest($url, $postBodyJson, "Enabling Stat Collection for $mip");
