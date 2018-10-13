@@ -15,7 +15,7 @@ else
   env=$2
 fi
 
-#######################
+############################################################################################
 # CONFIGURATION
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
@@ -26,7 +26,7 @@ pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_ne
 declare -a ips=("$ip_cm1" "$ip_dcd1")
 
 release="v6.1.0"
-#######################
+############################################################################################
 
 function pause(){
    read -p "$*"
@@ -189,6 +189,7 @@ echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 # Add devices
 ### NEED TO ADD ENABLE STAT COLLECTION IN THE SCRIPT
 scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
+ echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
 ssh root@$ip_cm1 << EOF
   cd /root
   perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
@@ -209,20 +210,21 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
-if [[  $env != "udf" ]]; then
-  # loop around the BIG-IQ CM/DCD
-  # enable ssh for admin
-  for ip in "${ips[@]}"; do
-    echo -e "\n---- ${RED} $ip ${NC} ----"
-    ssh root@$ip tmsh modify auth user admin shell bash
-  done
-
-  # disable ssl check for VMware SSG
-  ssh root@$ip_cm1 << EOF
-    echo >> /var/config/orchestrator/orchestrator.conf
-    echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
-    bigstart restart gunicorn
-  EOF
-
-  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+if [[  $env == "udf" ]]; then
+  exit 0;
 fi
+
+# loop around the BIG-IQ CM/DCD
+# enable ssh for admin
+for ip in "${ips[@]}"; do
+  echo -e "\n---- ${RED} $ip ${NC} ----"
+  ssh root@$ip tmsh modify auth user admin shell bash
+done
+
+# disable ssl check for VMware SSG
+ssh root@$ip_cm1 << EOF
+  cd /root
+  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
+EOF
+  
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

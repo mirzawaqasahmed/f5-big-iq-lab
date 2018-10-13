@@ -14,12 +14,13 @@
 my $program = $0;
 $program = `basename $program`;
 chomp $program;
-my $version = "v2.3.0";
+my $version = "v2.4.0";
 
 ## CHANGE QUEUE
 # rewritten for BIG-IQ 5.0
 # modified for BIG-IQ 5.2 to include re-discoveries
 # modified to add BIG-IQ password prompt and fix uri bug
+# modified to add option to enable stats
 #
 ## DESCRIPTION
 # This script reads a CSV file containing a list of BIG-IPs and then:
@@ -80,6 +81,7 @@ my %usage = (
     "a" =>  "Admin credentials for every BIG-IP (such as admin:admin) - overrides any creds in CSV",
     "r" =>  "Root credentials for every BIG-IP (such as root:default) - overrides root creds in CSV",
     "u" =>  "Update framework if needed, CSV value overrides this value if CSV value is not null",
+    "t" =>  "Not Enable Stats Collection",
     "g" =>  "access group name if needed, not required for re-discovery",
     "l" =>  "Discover LTM, this must be included for initial discovery and import of services",
     "p" =>  "Discover APM",
@@ -92,10 +94,10 @@ my %usage = (
     "n" =>  "Do not import the service, only discover the service, the service import will be done manually",
 );
 # Use this to determine the order of the arg help output
-my @usage = ("h","c","q","a","r","u","g","l","p","s","f","d","v","m","o","n");
-our($opt_h,$opt_c,$opt_q,$opt_a,$opt_r,$opt_u,$opt_g);
+my @usage = ("h","c","q","a","r","u","t","g","l","p","s","f","d","v","m","o","n");
+our($opt_h,$opt_c,$opt_q,$opt_a,$opt_r,$opt_u,$opt_t,$opt_g);
 our($opt_l,$opt_p,$opt_s,$opt_f,$opt_d,$opt_v,$opt_m,$opt_o,$opt_n);
-getopts('hc:q:a:r:g:lpsfdvumon');
+getopts('hc:q:a:r:t:g:lpsfdvumon');
 if (defined $opt_h && $opt_h) {
     print "Discover or rediscover multiple BIG-IP devices.\n";
     print "If the csv file does not exist and the -m option is passed, the script will generate a file based\n";
@@ -105,6 +107,7 @@ if (defined $opt_h && $opt_h) {
     print "The -l option must be included when performing initial trust, discovery and import of services.\n";
     print "The -m option must be used for re-discovery if any BIG-IP requires a framework upgrade.\n";
     print "The -n option can be used to skip service import, this is recommended if there are outstanding changes to be deployed\n";
+    print "The -t option can be used to enable stats collection on the device, recommended if DCD is present.\n";
     print "If a framework upgrade is required for any device, that device requires the administrator\n";
     print "and root credentials passed either in the CSV file or using the -a and -r options.\n";
     print "If a failure is encountered, the script logs the error and continues.\n";
@@ -502,6 +505,22 @@ for $bigip (@bigips) {
     else
     {
         $DeviceStatus{"all"}{"failure"}++;
+    }
+
+    # Enable Stats Collection
+    if (not defined $opt_t)
+    {
+        my $statsTask;
+        my $postBodyJson;
+        my %postBodyHash = ();
+        my $machineId = getMachineId($mip);
+        $postBodyHash{"enabled"} = "true";
+        $postBodyHash{"targetDeviceReference"}{"link"} = "https://localhost/mgmt/shared/resolver/device-groups/cm-bigip-allBigIpDevices/devices/$machineId";
+        $postBodyJson = encode_json(\%postBodyHash);
+        $url = "https://localhost/mgmt/cm/shared/stats-mgmt/agent-install-and-config-task";
+        $statsTask = postRequest($url, $postBodyJson, "Enabling Stat Collection for $mip");
+        my $statsStatus = $statsTask->{"status"};
+        &printAndLog(STDOUT, 1, "$mip Stats Collection $statsStatus\n");
     }
 
     my $deviceEnd = gettimeofday();

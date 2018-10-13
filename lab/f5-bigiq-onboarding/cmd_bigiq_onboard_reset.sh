@@ -13,13 +13,13 @@ else
   env=$2
 fi
 
-#######################
+############################################################################################
 # CONFIGURATION
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
-#######################
+############################################################################################
 
 function pause(){
    read -p "$*"
