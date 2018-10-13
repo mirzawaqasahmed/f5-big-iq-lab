@@ -4,18 +4,18 @@
   connection: local
 
   tasks:
-    - name: site20waf.example2.com
+    - name: site20waf.example.com
       bigiq_application_https_waf:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site20waf.example2.com"
+        name: "site20waf.example.com"
         wait: yes
         description: Load balance WAF
         service_environment: "bigip2tier1.lab.fp.f5net.com"
-        domain_names: "site20.example2.com"
+        domain_names: "site20.example.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.201
@@ -32,14 +32,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site22http.example2.com
+    - name: site22http.example.com
       bigiq_application_http:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site22http.example2.com"
+        name: "site22http.example.com"
         wait: yes
         description: Load balance HTTP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
@@ -53,14 +53,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site26https.example2.com
+    - name: site26https.example.com
       bigiq_application_https_offload:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site26https.example2.com"
+        name: "site26https.example.com"
         wait: yes
         description: Load balance HTTPS Offload
         service_environment: "bigip2tier1.lab.fp.f5net.com"
@@ -80,14 +80,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site28fasthttp.example2.com
+    - name: site28fasthttp.example.com
       bigiq_application_fasthttp:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site28fasthttp.example2.com"
+        name: "site28fasthttp.example.com"
         wait: yes
         description: Load balance Fast HTTP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
@@ -103,14 +103,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site30fastL4tcp.example2.com
+    - name: site30fastL4tcp.example.com
       bigiq_application_fastl4_tcp:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site30fasL4.example2.com"
+        name: "site30fasL4.example.com"
         wait: yes
         description: Load balance Fast L4 TCP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
@@ -125,14 +125,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site32udp.example2.com
+    - name: site32udp.example.com
       bigiq_application_fastl4_udp:
         provider:
           server: 10.192.75.185
           user: admin
           password: admin
           validate_certs: no
-        name: "site32udp.example2.com"
+        name: "site32udp.example.com"
         wait: yes
         description: Load balance Fast UDP
         service_environment: "bigip2tier1.lab.fp.f5net.com"
