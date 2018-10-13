@@ -43,10 +43,11 @@ if [[ -z $1 ]]; then
     exit 1;
 fi
 
-echo -e "Environement:${RED} $env ${NC}"
+echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
+echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
-  echo "Type $ip root password."
+  echo "Type $ip root password (if asked)"
   ssh-copy-id root@$ip > /dev/null 2>&1
 done
 

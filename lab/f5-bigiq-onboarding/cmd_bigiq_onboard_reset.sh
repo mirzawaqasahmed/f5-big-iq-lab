@@ -36,7 +36,7 @@ if [[ -z $1 ]]; then
     exit 1;
 fi
 
-echo -e "Environement:${RED} $env ${NC}"
+echo -e "\nEnvironement:${RED} $env ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
