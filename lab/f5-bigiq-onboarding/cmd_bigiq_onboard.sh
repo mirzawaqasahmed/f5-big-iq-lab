@@ -205,6 +205,12 @@ EOF
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+## Work Around bug app deployment failing when ASM signature task running while deploying the task.
+echo -e "\n${RED}Waiting 5 min ... ${NC}"
+sleep 300
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${GREEN}Create Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Create apps
