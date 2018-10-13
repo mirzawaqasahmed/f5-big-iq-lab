@@ -233,7 +233,7 @@ for ip in "${ips[@]}"; do
   ssh root@$ip tmsh modify auth user admin shell bash
 done
 
-# disable ssl check for VMware SSG
+# disable ssl check for VMware SSG on the CM
 ssh root@$ip_cm1 << EOF
   echo >> /var/config/orchestrator/orchestrator.conf
   echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
