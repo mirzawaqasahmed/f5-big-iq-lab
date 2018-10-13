@@ -20,6 +20,9 @@ fi
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
+## TO BE REMOVED ONE ANSIBLE MODULE TO ADD BIG-IP IS AVAILABLE
+pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
+
 declare -a ips=("$ip_cm1" "$ip_dcd1")
 #######################
 
