@@ -24,6 +24,8 @@ ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_se
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
+
+release="v6.1.0"
 #######################
 
 function pause(){
@@ -70,7 +72,7 @@ if [[  $env != "udf" ]]; then
       echo -e "Corporate F5 password:"
       read -s f5pass
     fi
-    release="v6.1.0"
+    
     if [[ -z $3 ]]; then
       build="current"
     else
