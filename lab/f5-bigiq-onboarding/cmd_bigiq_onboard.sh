@@ -4,7 +4,6 @@
 # Uncomment set command below for code debugging ansible
 #DEBUG_arg="-vvvv"
 
-
 # Default value set to UDF
 if [ -z "$2" ]; then
   env="udf"
