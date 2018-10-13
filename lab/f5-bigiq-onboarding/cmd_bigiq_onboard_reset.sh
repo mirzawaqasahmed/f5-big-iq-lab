@@ -2,6 +2,17 @@
 # Uncomment set command below for code debugging bash
 #set -x
 
+
+# Default value set to UDF
+if [ -z "$2" ]; then
+  env="udf"
+else
+  #env="sjc"
+  #env="sjc2"
+  #env="sea"
+  env=$2
+fi
+
 #######################
 # CONFIGURATION
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
@@ -23,16 +34,6 @@ NC='\033[0m' # No Color
 if [[ -z $1 ]]; then
     echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> ${NC} (1st parameter mandatory)\n"
     exit 1;
-fi
-
-# Default value set to UDF
-if [ -z "$2" ]; then
-  env="udf"
-else
-  #env="sjc"
-  #env="sjc2"
-  #env="sea"
-  env=$2
 fi
 
 echo -e "Environement:${RED} $env ${NC}"

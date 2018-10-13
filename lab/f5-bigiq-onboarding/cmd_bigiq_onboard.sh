@@ -4,6 +4,17 @@
 # Uncomment set command below for code debugging ansible
 #DEBUG_arg="-vvvv"
 
+
+# Default value set to UDF
+if [ -z "$2" ]; then
+  env="udf"
+else
+  #env="sjc"
+  #env="sjc2"
+  #env="sea"
+  env=$2
+fi
+
 #######################
 # CONFIGURATION
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
@@ -25,16 +36,6 @@ NC='\033[0m' # No Color
 if [[ -z $1 ]]; then
     echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> <build number> <iso> ${NC} (1st parameter mandatory)\n"
     exit 1;
-fi
-
-# Default value set to UDF
-if [ -z "$2" ]; then
-  env="udf"
-else
-  #env="sjc"
-  #env="sjc2"
-  #env="sea"
-  env=$2
 fi
 
 echo -e "Environement:${RED} $env ${NC}"
@@ -92,6 +93,7 @@ if [[  $env != "udf" ]]; then
   else
     # use the iso transfered on the lamp server in parameter 4
     iso=$4
+    ls -lrt $iso*
   fi
   
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
@@ -142,7 +144,7 @@ if [[  $env != "udf" ]]; then
         done
   
   else
-    echo -e "$iso does not exist. You may delete the ${RED}./.cookie${NC} file to re-authenticate."
+    echo -e "$iso does not exist.\nYou may delete the ${RED}./.cookie${NC} file to re-authenticate."
     exit 3;
   fi
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
