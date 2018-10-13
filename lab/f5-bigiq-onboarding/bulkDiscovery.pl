@@ -14,7 +14,7 @@
 my $program = $0;
 $program = `basename $program`;
 chomp $program;
-my $version = "v2.4.0";
+my $version = "v2.4.0.1";
 
 ## CHANGE QUEUE
 # rewritten for BIG-IQ 5.0
