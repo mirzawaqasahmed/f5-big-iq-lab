@@ -168,7 +168,7 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}Install ansible-galaxy module${NC}"
+echo -e "\n${GREEN}Install ansible-galaxy roles${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ansible-galaxy install f5devcentral.bigiq_onboard --force
 ansible-galaxy install f5devcentral.register_dcd --force
@@ -223,14 +223,12 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
-if [[  $env == "udf" ]]; then
-  exit 0;
-fi
 
 # loop around the BIG-IQ CM/DCD
 # enable ssh for admin
 for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
+  echo -e "tmsh modify auth user admin shell bash"
   ssh root@$ip tmsh modify auth user admin shell bash
 done
 

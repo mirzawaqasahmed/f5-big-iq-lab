@@ -34,20 +34,29 @@ In order to test it quickly, let's manually set in the HTTP profile attached to 
 
 .. note :: Other way could be to create a clone of a default template and change the parameter Request Header Erase within the template. Note we cannot modify the default built-in templates.
 
-From UDF, launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *XRDP*
 
-.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
+From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
+
+.. image:: ../../pictures/udf_ubuntu.png
     :align: center
     :scale: 50%
 
 |
 
-From Ravello, launch the console to have access to the Ubuntu Desktop.
+If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
 
-.. image:: ../../class02/pictures/module1/img_module1_lab3_5a.png
+.. image:: ../../pictures/ravello_ubuntu.png
     :align: center
     :scale: 50%
+
+|
+
+You can use the copy/past feature if you are using the Console:
+
+.. image:: ../../pictures/ubuntu_console.png
+:align: center
+:scale: 50%
 
 |
 

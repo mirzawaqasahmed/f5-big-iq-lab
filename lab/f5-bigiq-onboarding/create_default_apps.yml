@@ -4,18 +4,18 @@
   connection: local
 
   tasks:
-    - name: site40.example.com
+    - name: site40.example.f5.com
       bigiq_application_https_waf:
         provider:
           server: 10.1.1.4
           user: admin
           password: purPl3f5@rk
           validate_certs: no
-        name: "site40.example.com"
+        name: "site40.example.f5.com"
         wait: no
         description: Load balance WAF
         service_environment: "SEA-vBIGIP01.termmarc.com"
-        domain_names: "site40.example.com"
+        domain_names: "site40.example.f5.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.140
@@ -32,14 +32,14 @@
           port: 80
       delegate_to: localhost
 
-    - name: site42.example.com
+    - name: site42.example.f5.com
       bigiq_application_http:
         provider:
           server: 10.1.1.4
           user: admin
           password: purPl3f5@rk
           validate_certs: no
-        name: "site42.example.com"
+        name: "site42.example.f5.com"
         wait: no
         description: Load balance HTTP
         service_environment: "SEA-vBIGIP01.termmarc.com"
@@ -53,18 +53,18 @@
           port: 80
       delegate_to: localhost
 
-    - name: site36.example.com
+    - name: site36.example.f5.com
       bigiq_application_https_waf:
         provider:
           server: 10.1.1.4
           user: admin
           password: purPl3f5@rk
           validate_certs: no
-        name: "site36.example.com"
+        name: "site36.example.f5.com"
         wait: no
         description: Load balance WAF
         service_environment: "BOS-vBIGIP01.termmarc.com"
-        domain_names: "site36.example.com"
+        domain_names: "site36.example.f5.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.136
@@ -81,18 +81,18 @@
           port: 80
       delegate_to: localhost
 
-    - name: site38.example.com
+    - name: site38.example.f5.com
       bigiq_application_http:
         provider:
           server: 10.1.1.4
           user: admin
           password: purPl3f5@rk
           validate_certs: no
-        name: "site38.example.com"
+        name: "site38.example.f5.com"
         wait: no
         description: Load balance HTTP BIG-IP 12.1
         service_environment: "TLV-vBIGIP01.termmarc.com"
-        add_analytics: yes
+        add_analytics: no
         servers:
           - address: 10.1.20.138
             port: 80

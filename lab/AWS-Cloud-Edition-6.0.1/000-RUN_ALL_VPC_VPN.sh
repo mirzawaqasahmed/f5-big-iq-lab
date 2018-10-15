@@ -36,26 +36,26 @@ echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 01-install.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 02-vpc-elb.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 03-vpn.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-customerGatewayConfigExport.sh
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./04a-configure-bigip.sh

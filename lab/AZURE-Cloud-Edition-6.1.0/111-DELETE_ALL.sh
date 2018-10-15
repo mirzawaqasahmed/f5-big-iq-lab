@@ -37,7 +37,7 @@ sleep 60
 
 echo -e "\n\n${RED}/!\ DELETION OF ALL AZURE OBJECTS (Application/SSG/VPN/VNET) /!\ ${NC} \n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 clear
 
@@ -50,7 +50,7 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AZURE SSG BEFORE PROCEEDING ${NC}\n\n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 #$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
@@ -60,12 +60,12 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 #$PYTHON_PATH/python 11-delete-azure-ssg-resources-check.py
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "${RED}/!\ IS YOUR SSG COMPLETLY REMOVED FROM YOUR AZURE ACCOUNT? /!\ \n"
 echo -e "MAKE SURE THE AZURE SSG HAS BEEN REMOVED COMPLETLY BEFORE PROCEEDING${NC}\n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+X to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 az group delete --name $PREFIX --yes

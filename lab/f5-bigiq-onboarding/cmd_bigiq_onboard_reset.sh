@@ -41,6 +41,18 @@ echo -e "\nEnvironement:${RED} $env ${NC}"
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${RED}Delete Applications${NC}"
+[[ $1 != "nopause" ]] && pause "Press ${BLUE}[Enter]${NC} key to continue... CTRL+C to Cancel"
+
+# Delete apps
+if [[  $env == "udf" ]]; then
+  ansible-playbook -i notahost, delete_default_apps.yml $DEBUG_arg
+else
+  ansible-playbook -i notahost, .delete_default_apps_$env.yml $DEBUG_arg
+fi
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+echo -e "\n${RED}Delete Applications (retry)${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 # Delete apps
@@ -64,7 +76,7 @@ done
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Uninstall ansible-galaxy module ${NC}"
+echo -e "\n${RED}Uninstall ansible-galaxy roles${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ansible-galaxy remove f5devcentral.bigiq_onboard
 ansible-galaxy remove f5devcentral.register_dcd

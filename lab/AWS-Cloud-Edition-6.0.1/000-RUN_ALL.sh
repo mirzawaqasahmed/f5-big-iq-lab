@@ -36,26 +36,26 @@ echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 01-install.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 02-vpc-elb.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 03-vpn.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-customerGatewayConfigExport.sh
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./04a-configure-bigip.sh
@@ -80,7 +80,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 06-ubuntu-apache2.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-#[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+#[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 # Not needed, this playbook creates a service catalog template (custom)
 #ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i inventory/hosts
@@ -101,7 +101,7 @@ echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_aws.sh${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo "
 #!/bin/bash
@@ -122,7 +122,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}In order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${GREEN}Sleep 5 min (to allow time for the SSG to come up)${NC}"
 sleep 300

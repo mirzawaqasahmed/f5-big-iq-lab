@@ -9,12 +9,28 @@ Connect as **paul**.
 The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
 Note: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list.
 
-2. Launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *XRDP*
+2. From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
-.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
+.. image:: ../../pictures/udf_ubuntu.png
     :align: center
     :scale: 50%
+
+|
+
+If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
+
+.. image:: ../../pictures/ravello_ubuntu.png
+    :align: center
+    :scale: 50%
+
+|
+
+You can use the copy/past feature if you are using the Console:
+
+.. image:: ../../pictures/ubuntu_console.png
+:align: center
+:scale: 50%
 
 |
 

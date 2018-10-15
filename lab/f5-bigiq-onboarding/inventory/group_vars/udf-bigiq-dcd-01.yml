@@ -16,18 +16,17 @@ bigiq_onboard_dns_search:
 bigiq_onboard_ntp_servers:
   - time.nist.gov
 bigiq_onboard_timezone: America/Los_Angeles
-bigiq_onboard_license_key: F8446-476849-956-8585540-2138249
+bigiq_onboard_license_key: O1569-269458-196-7849806-1615014
 
 register_dcd_cm_server: 10.1.1.4
 register_dcd_dcd_listener: 10.1.10.6
 register_dcd_cm_user: admin
-register_dcd_cm_password: admin
+register_dcd_cm_password: purPl3f5@rk
 register_dcd_dcd_user: admin
-register_dcd_dcd_password: admin
+register_dcd_dcd_password: purPl3f5@rk
 register_dcd_dcd_services:
   - access
   - dos
-  - websafe
   - ipsec
   - afm
   - asm

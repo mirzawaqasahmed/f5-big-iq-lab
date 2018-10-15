@@ -36,19 +36,19 @@ clear
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./01-install_azure_cli.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./02-create-vpn-azure_cli.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause 'Press [Enter] key to continue... CTRL+C to Cancel'
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-configure-bigip.sh
