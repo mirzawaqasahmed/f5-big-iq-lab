@@ -5,19 +5,19 @@ F5 provides Ansible Galaxy roles to onboard BIG-IQ Centralized Management (CM) a
 
 This automation scenario is composed of 4 parts:
 
-1. Erase the current BIG-IQ CM and DCD configuration to default.
+* Erase the current BIG-IQ CM and DCD configuration to default.
 
-2. Onboard BIG-IQ CM and DCD
+* Onboard BIG-IQ CM and DCD
 
     - `bigiq_onboard`_ ansible Role: performs a basic series of on-boarding steps to bootstrap a BIG-IQ system to the point that it can accept configuration.
 
     - `register_dcd`_  ansible Role: performs a series of steps needed to register a BIG-IQ provisioned as a Data Collection Device (DCD) to a BIG-IQ provisioned as a Configuration Management (CM) device.
 
-3. Add BIG-IPs to the BIG-IQ
+* Add BIG-IPs to the BIG-IQ
 
     - `bulkDiscovery.pl`_  script: leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ.
 
-4. Create Application Services
+* Create Application Services
 
     - `Ansible`_ playbook: use BIG-IQ Ansible Modules to deploy appplication services (see class 1, module 3, lab 1)
 
@@ -28,26 +28,35 @@ This automation scenario is composed of 4 parts:
 
 **Lab:**
 
-1. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` ::
+1. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key``
 
-    # cd /home/f5/f5-bigiq-onboarding 
-    # vi inventory/group_vars/udf-bigiq-dcd-01.yml
-    # vi inventory/group_vars/udf-bigiq-cm-01.yml
+    ::
 
-2. Reset both BIG-IQ CM and DCD Execute the bash script::
+        # cd /home/f5/f5-bigiq-onboarding 
+        # vi inventory/group_vars/udf-bigiq-dcd-01.yml
+        # vi inventory/group_vars/udf-bigiq-cm-01.yml
 
-    # cd /home/f5/f5-bigiq-onboarding
-    # ./cmd_bigiq_onboard_reset.sh pause
+2. Reset both BIG-IQ CM and DCD Execute the bash script
 
-The script will do in this order:
+    ::
+
+        # cd /home/f5/f5-bigiq-onboarding
+        # ./cmd_bigiq_onboard_reset.sh pause
+
+    The script will do in this order:
+
     1. Delete existing applications
     2. Execute the ``clear-rest-storage -d`` command on both BIG-IQ CM and DCD
     3. Uninstall existing ansible-galaxy roles (if any)
 
-2. Execute the bash script::
+3. Execute the bash script
 
-    # cd /home/f5/f5-bigiq-onboarding
-    # ./cmd_bigiq_onboard.sh pause
+    ::
+
+        # cd /home/f5/f5-bigiq-onboarding
+        # ./cmd_bigiq_onboard.sh pause
+
+| 
 
 .. image:: ../pictures/module5/img_module5_lab1_1.png
   :align: center
@@ -55,22 +64,25 @@ The script will do in this order:
 
 |
 
-The script will do in this order:
-    1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).
-    2. Install ansible-galaxy roles
-    3. Onboarding BIG-IQ CM and DCD:
-        Using bigiq_onboard role: setup hostname, role, dns, ntp, self-ip, master key, passwords (DCD first, then CM)
-        Using register_dcd role: add DCD to CM, activate necessary services (asm, afm, ...)
-    4. Add & discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl.
-    5. Create Applications using Ansible playbook.
+    The script will perform in this order:
 
-Ignore the following errors:
+        1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).
+        2. Install ansible-galaxy roles
+        3. Onboarding BIG-IQ CM and DCD:
 
-    ``TASK [f5devcentral.bigiq_onboard : Test authentication - old credentials] ***********************************************************
-    fatal: [udf-bigiq-dcd-01]: FAILED! => {"cache_control": "no-store, no-cache, must-revalidate", "changed": false, "connection": "close", "content": "{\"code\":401,\"message\":\"Authentication failed.\",\"originalRequestBody\":\"{\\\"username\\\":\\\"admin\\\",\\\"generation\\\":0,\\\"lastUpdateMicros\\\":0}\",\"restOperationId\":1067315,\"errorStack\":[],\"kind\":\":resterrorresponse\"}", "content_length": "206", "content_type": "application/json; charset=UTF-8", "date": "Mon, 15 Oct 2018 21:15:41 GMT", "expires": "-1", "json": {"code": 401, "errorStack": [], "kind": ":resterrorresponse", "message": "Authentication failed.", "originalRequestBody": "{\"username\":\"admin\",\"generation\":0,\"lastUpdateMicros\":0}", "restOperationId": 1067315}, "msg": "Status code was 401 and not [200]: HTTP Error 401: Unauthorized", "pragma": "no-cache", "redirected": false, "server": "webd", "status": 401, "url": "https://10.1.1.6:443/mgmt/shared/authn/login"}
-    ...ignoring``
+            - Using bigiq_onboard role: setup hostname, role, dns, ntp, self-ip, master key, passwords (DCD first, then CM)
+            - Using register_dcd role: add DCD to CM, activate necessary services (asm, afm, ...)
+            
+        4. Add & discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl.
+        5. Create Applications using Ansible playbook.
 
-At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
+    Ignore the following errors:
+
+        ``TASK [f5devcentral.bigiq_onboard : Test authentication - old credentials] ***********************************************************
+        fatal: [udf-bigiq-dcd-01]: FAILED! => {"cache_control": "no-store, no-cache, must-revalidate", "changed": false, "connection": "close", "content": "{\"code\":401,\"message\":\"Authentication failed.\",\"originalRequestBody\":\"{\\\"username\\\":\\\"admin\\\",\\\"generation\\\":0,\\\"lastUpdateMicros\\\":0}\",\"restOperationId\":1067315,\"errorStack\":[],\"kind\":\":resterrorresponse\"}", "content_length": "206", "content_type": "application/json; charset=UTF-8", "date": "Mon, 15 Oct 2018 21:15:41 GMT", "expires": "-1", "json": {"code": 401, "errorStack": [], "kind": ":resterrorresponse", "message": "Authentication failed.", "originalRequestBody": "{\"username\":\"admin\",\"generation\":0,\"lastUpdateMicros\":0}", "restOperationId": 1067315}, "msg": "Status code was 401 and not [200]: HTTP Error 401: Unauthorized", "pragma": "no-cache", "redirected": false, "server": "webd", "status": 401, "url": "https://10.1.1.6:443/mgmt/shared/authn/login"}
+        ...ignoring``
+
+4. At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
 
 .. image:: ../pictures/module5/img_module5_lab1_2.png
   :align: center
