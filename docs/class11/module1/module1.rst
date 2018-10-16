@@ -5,7 +5,7 @@ Module 1: DNS DDoS Hybrid Defender
 
 .. image:: ../../pictures/under-construction-02.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
 
 .. toctree::
    :maxdepth: 1

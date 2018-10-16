@@ -4,7 +4,7 @@ Module 6: Managing an BIG-IP in Public Cloud
 
 .. image:: ../../pictures/under-construction-01.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
 
 .. toctree::
    :maxdepth: 1

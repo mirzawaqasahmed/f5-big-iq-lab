@@ -6,7 +6,7 @@ Module 2:
 
 .. image:: ../../pictures/under-construction-01.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
 
 .. toctree::
    :maxdepth: 1

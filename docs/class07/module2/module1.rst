@@ -9,7 +9,7 @@ Module 2: Network Tools and Logs
 
 .. image:: ../../pictures/under-construction-03.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
 
 .. toctree::
    :maxdepth: 1

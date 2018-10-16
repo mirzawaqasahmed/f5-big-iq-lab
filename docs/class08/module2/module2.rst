@@ -12,7 +12,7 @@ BIG-IQ ASM Central Policy Builder
 
 .. image:: ../../pictures/under-construction-03.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
 
 .. toctree::
    :maxdepth: 1

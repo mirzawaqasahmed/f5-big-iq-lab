@@ -4,7 +4,7 @@ Module 4: Version Specific Objects
 
 .. image:: ../../pictures/under-construction-03.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
   
 .. toctree::
    :maxdepth: 1

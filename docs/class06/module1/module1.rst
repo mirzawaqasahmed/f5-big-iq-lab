@@ -4,7 +4,7 @@ Module 1: Application Delivery Controller
 
 .. image:: ../../pictures/under-construction-02.jpg
   :align: center
-  :scale: 10%
+  :scale: 25%
 
 .. toctree::
    :maxdepth: 1
