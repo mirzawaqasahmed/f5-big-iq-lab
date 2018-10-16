@@ -68,7 +68,7 @@ deployed in a certain manner:
   therefore we will deploy 1nic VE in AZURE. So traffic and everything will be sent
   to the nic Self IP.
 * This config will be configured on all ``SSG`` VEs.
-  They will have have an **identical** Setup
+  They will have an **identical** Setup
 
 In this lab, we will create a ``Service Scaling Group`` in an ``AZURE`` environment.
 

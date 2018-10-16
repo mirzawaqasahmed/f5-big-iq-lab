@@ -66,7 +66,7 @@ deployed in a certain manner:
 * This VS IP will be configured:
 
   * On all VEs part of the ``SSG``. This IP will be used to setup the relevant
-    All the Virtual editions part of the ``SSG`` will have have an
+    All the Virtual editions part of the ``SSG`` will have an
     **identical** Setup
   * On the tier 1/``Service Scaler`` cluster. ``BIG-IQ`` will setup a virtual server with the same IP
     and the following configuration
