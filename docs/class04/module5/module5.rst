@@ -1,7 +1,7 @@
-Module 5: BIG-IQ Onboarding
-===========================
+Module 5: BIG-IQ Automated onboarding
+=====================================
 
-In this module, we will learn how to onboard BIG-IQ in various ways.
+In this module, we will learn how to onboard BIG-IQ in an automated maner.
 
 .. toctree::
    :maxdepth: 1
