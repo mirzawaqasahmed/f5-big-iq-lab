@@ -30,18 +30,17 @@ fi
 
 cd /home/$user
 
-# default, create the bigiq version file 6.0.1
-if [ -f /home/$user/bigiq_version ]; then
-    echo "6.0.1" > /home/$user/bigiq_version
-fi
-
-bigiq_version=$(cat /home/$user/bigiq_version)
-
-###### for 6.1, create file: user="f5";echo "6.1.0" > /home/$user/bigiq_version
-
 if [ -f /home/$user/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
+    # default, create the bigiq version file 6.0.1
+    if [ -f /home/$user/bigiq_version ]; then
+        echo "6.0.1" > /home/$user/bigiq_version
+    fi
+
+    bigiq_version=$(cat /home/$user/bigiq_version)
+    ###### for 6.1, create file: user="f5";echo "6.1.0" > /home/$user/bigiq_version
+
     echo "Cleanup previous files..."
     rm -rf AWS* AZURE* f5-ansi* f5-bigiq-onboarding scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting
     echo "Install new scripts..."
