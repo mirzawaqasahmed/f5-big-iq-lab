@@ -25,3 +25,6 @@
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
 @reboot sleep 82800 && /home/f5/AWS-Cloud-Edition/111-DELETE_ALL.sh nopause
 @reboot sleep 82800 && /home/f5/AZURE-Cloud-Edition/111-DELETE_ALL.sh nopause
+
+## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 20 MIN DEPLOYMENT STARTS
+@reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh
