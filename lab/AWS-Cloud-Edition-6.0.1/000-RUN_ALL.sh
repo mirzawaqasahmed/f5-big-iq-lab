@@ -35,10 +35,6 @@ clear
 echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?\n\n"
 echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
 
-echo -e "Exchange ssh keys with BIG-IQ & DCD:" #used for BIG-IQ ansible playbook 08-create-aws-auto-scaling.yml
-echo "Type $BIGIQ_MGT_HOST admin password (if asked)"
-ssh-copy-id admin@$BIGIQ_MGT_HOST > /dev/null 2>&1
-
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"

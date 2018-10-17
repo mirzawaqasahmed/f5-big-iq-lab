@@ -35,10 +35,6 @@ clear
 
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
 
-echo -e "Exchange ssh keys with BIG-IQ & DCD:" #used for BIG-IQ ansible playbook 08-create-azure-auto-scaling.yml
-echo "Type $BIGIQ_MGT_HOST admin password (if asked)"
-ssh-copy-id admin@$BIGIQ_MGT_HOST > /dev/null 2>&1
-
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
