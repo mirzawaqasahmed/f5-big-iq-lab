@@ -51,9 +51,9 @@ EOF
 byolutility[1]="A2762-65666-03770-68885-8401075" #byol-pool-utility 
 
 # get length of the array
-arraylength=${#byolutility[@]}
+arraylength2=${#byolutility[@]}
 
-for (( i=1; i<${arraylength}+1; i++ ));
+for (( i=1; i<${arraylength2}+1; i++ ));
 do
     echo "byol-utility $1"
     curl -k -i \
