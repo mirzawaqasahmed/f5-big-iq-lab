@@ -30,6 +30,15 @@ fi
 
 cd /home/$user
 
+# default, create the bigiq version file 6.0.1
+if [ -f /home/$user/bigiq_version ]; then
+    echo "6.0.1" > /home/$user/bigiq_version
+fi
+
+bigiq_version=$(cat /home/$user/bigiq_version)
+
+###### for 6.1, create file: user="f5";echo "6.1.0" > /home/$user/bigiq_version
+
 if [ -f /home/$user/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
@@ -41,9 +50,9 @@ else
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
     rm -rf /home/$user/f5-big-iq-lab
     echo "AWS scripts"
-    mv AWS-Cloud-Edition-6.0.1 AWS-Cloud-Edition
+    mv AWS-Cloud-Edition-$bigiq_version AWS-Cloud-Edition
     echo "Azure scripts"
-    mv AZURE-Cloud-Edition-6.1.0 AZURE-Cloud-Edition
+    mv AZURE-Cloud-Edition-$bigiq_version AZURE-Cloud-Edition
     echo "Fixing permissions..."
     chmod +x *py *sh scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh f5-bigiq-onboarding/*sh f5-bigiq-onboarding/*pl AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
