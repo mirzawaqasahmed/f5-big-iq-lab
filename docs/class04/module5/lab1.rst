@@ -1,7 +1,7 @@
 Lab 5.1: Onboard BIG-IQ using Ansible Galaxy
 --------------------------------------------
 
-.. warning:: This lab has steps to reset the BIG-IQ CM and DCD to its factory configuration. Plan accordinly if you need to run other classes/labs (this one should be the last one).
+.. warning:: This lab has steps to reset the BIG-IQ CM and DCD to its factory configuration. Plan accordingly if you need to run other classes/labs.
 
 F5 provides Ansible Galaxy roles to onboard BIG-IQ Centralized Management (CM) and BIG-IQ Data Collection Device (DCD).
 
@@ -11,17 +11,17 @@ This automation scenario is composed of 4 parts:
 
 * Onboard BIG-IQ CM and DCD
 
-    - **`bigiq_onboard`_ ansible Role**: Performs a basic series of on-boarding steps to bootstrap a BIG-IQ system to the point that it can accept configuration.
+    - `bigiq_onboard`_ **ansible Role**: Performs a basic series of on-boarding steps to bootstrap a BIG-IQ system to the point that it can accept configuration.
 
-    - **`register_dcd`_  ansible Role**: Performs a series of steps needed to register a BIG-IQ provisioned as a Data Collection Device (DCD) to a BIG-IQ provisioned as a Configuration Management (CM) device.
+    - `register_dcd`_  **ansible Role**: Performs a series of steps needed to register a BIG-IQ provisioned as a Data Collection Device (DCD) to a BIG-IQ provisioned as a Configuration Management (CM) device.
 
 * Add BIG-IPs to the BIG-IQ
 
-    - **`bulkDiscovery.pl`_  script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ.
+    - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ.
 
 * Create Application Services
 
-    - **`Ansible`_ playbook**: Use BIG-IQ Ansible Modules to deploy appplication services (see class 1, module 3, lab 1)
+    - `Ansible`_ **playbook**: Use BIG-IQ Ansible Modules to deploy appplication services (see class 1, module 3, lab 1)
 
 .. _bigiq_onboard: https://galaxy.ansible.com/f5devcentral/bigiq_onboard
 .. _register_dcd: https://galaxy.ansible.com/f5devcentral/register_dcd
