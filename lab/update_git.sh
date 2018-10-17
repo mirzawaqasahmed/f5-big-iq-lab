@@ -33,13 +33,17 @@ cd /home/$user
 if [ -f /home/$user/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
-    # default, create the bigiq version file 6.0.1
-    if [ -f /home/$user/bigiq_version ]; then
-        echo "6.0.1" > /home/$user/bigiq_version
+    # create default BIG-IQ version file (min)
+    if [ -f /home/$user/bigiq_version_aws ]; then
+        echo "6.0.1" > /home/$user/bigiq_version_aws
+    fi
+    if [ -f /home/$user/bigiq_version_azure ]; then
+        echo "6.1.0" > /home/$user/bigiq_version_azure
     fi
 
-    bigiq_version=$(cat /home/$user/bigiq_version)
-    ###### for 6.1, create file: user="f5";echo "6.1.0" > /home/$user/bigiq_version
+    bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
+    bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
+    ###### for 6.1 AWS, create file: user="f5";echo "6.1.0" > /home/$user/bigiq_version_aws
 
     echo "Cleanup previous files..."
     rm -rf AWS* AZURE* f5-ansi* f5-bigiq-onboarding scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting
@@ -49,9 +53,9 @@ else
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
     rm -rf /home/$user/f5-big-iq-lab
     echo "AWS scripts"
-    mv AWS-Cloud-Edition-$bigiq_version AWS-Cloud-Edition
+    mv AWS-Cloud-Edition-$bigiq_version_aws AWS-Cloud-Edition
     echo "Azure scripts"
-    mv AZURE-Cloud-Edition-$bigiq_version AZURE-Cloud-Edition
+    mv AZURE-Cloud-Edition-$bigiq_version_azure AZURE-Cloud-Edition
     echo "Fixing permissions..."
     chmod +x *py *sh scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh f5-bigiq-onboarding/*sh f5-bigiq-onboarding/*pl AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
