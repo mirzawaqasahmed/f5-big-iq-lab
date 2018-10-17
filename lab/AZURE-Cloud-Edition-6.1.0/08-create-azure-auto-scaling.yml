@@ -4,7 +4,6 @@
   hosts: bigiq-01
   vars_files:     
     - ./config.yml
-    - ./cache/{{PREFIX}}/1-vpc.yml
   become: root
   tasks:             
     - name: Create resources
@@ -15,7 +14,7 @@
           body: > 
             {
                 "name": "{{DEVICE_TEMPLATE_NAME}}",
-                "type": "AWS",
+                "type": "AZURE",
                 "timeZone": "UTC",
                 "ntpServerList": [ "{{NTP_SERVER}}" ],
                 "userAccountList": [
@@ -35,12 +34,14 @@
           url: "{{BIGIQ_URI}}/cm/cloud/providers"
           body: >
             {
-                "providerType": "AWS",
+                "providerType": "AZURE",
                 "name": "{{CLOUD_PROVIDER_NAME}}",
-                "description": "AWS cloud provider",
-                "awsProperties": {
-                    "accessKeyId": "{{AWS_ACCESS_KEY_ID}}",
-                    "secretAccessKey": "{{AWS_SECRET_ACCESS_KEY}}"
+                "description": "AZURE cloud provider",
+                "azureProperties": {
+                    "subscriptionId": "{{SUBSCRIPTION_ID}}",
+                    "servicePrincipalSecret": "{{SERVICE_PRINCIPAL_SECRET}}",
+                    "tenantId": "{{TENANT_ID}}",
+                    "clientId": "{{CLIENT_ID}}"
                 }
             }
 
@@ -53,24 +54,24 @@
           body: >
             {
                 "name": "{{CLOUD_ENVIRONMENT_NAME}}",
-                "description": "AWS cloud environment",
+                "description": "AZURE cloud environment",
                 "providerReference": {
                     "link": "https://localhost/mgmt/cm/cloud/providers/{{cloud_provider_result.id}}"
                 },
                 "deviceTemplateReference": {
                     "link": "https://localhost/mgmt/cm/device/templates/{{device_template_result.id}}"
                 },
-                "awsProperties": {
-                    "region": "{{DEFAULT_REGION}}",
-                    "vpc": "{{AWS_VPC}}",
-                    "availabilityZones": [ "{{AWS_AZ_1A}}", "{{AWS_AZ_1B}}" ],
-                    "subnets": [ "{{AWS_SUBNET_1A}}", "{{AWS_SUBNET_1B}}" ],
-                    "restrictedSourceAddress": "0.0.0.0/0",
-                    "sshKeyName": "{{AWS_SSH_KEY}}",
+                "azureProperties": {
+                    "location": "{{DEFAULT_REGION}}",
+                    "mgmtSubnetName": "{{VNET_SUBNET1}}",
+                    "vnetName": "{{VNET1}}",
+                    "vnetResourceGroupName": "{{PREFIX}}",
+                    "sourceAddrRestriction": "*",
                     "moduleSelection": "{{MODULE}}",
                     "licenseType": "BYOL",
-                    "imageId": "{{BYOL_BIGIP_AMI}}",
-                    "instanceType": "m4.2xlarge",
+                    "imageName": "{{BYOL_BIGIP_NAME}}",
+                    "bigipVersion": "{{BYOL_BIGIP_VERSION}}",
+                    "instanceType": "Standard_A6",
                     "byolLicenseInformation": {
                         "bigiqAddress": "{{BYOL_BIGIQ_HOST}}",
                         "bigiqUser": "{{BYOL_BIGIQ_USER}}",

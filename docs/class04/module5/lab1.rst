@@ -30,7 +30,7 @@ This automation scenario is composed of 4 parts:
 
 **Lab:**
 
-1. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key``
+1. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` variable.
 
     ::
 
@@ -38,7 +38,7 @@ This automation scenario is composed of 4 parts:
         # vi inventory/group_vars/udf-bigiq-dcd-01.yml
         # vi inventory/group_vars/udf-bigiq-cm-01.yml
 
-2. Reset both BIG-IQ CM and DCD Execute the bash script
+2. Reset both BIG-IQ CM and DCD.
 
     ::
 
@@ -51,7 +51,7 @@ This automation scenario is composed of 4 parts:
     2. Execute the ``clear-rest-storage -d`` command on both BIG-IQ CM and DCD
     3. Uninstall existing ansible-galaxy roles (if any)
 
-3. Execute the bash script
+3. Execute the script
 
     ::
 
@@ -62,7 +62,7 @@ This automation scenario is composed of 4 parts:
 
 .. image:: ../pictures/module5/img_module5_lab1_1.png
   :align: center
-  :scale: 50%
+  :scale: 70%
 
 |
 

@@ -39,6 +39,9 @@ echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+#sudo apt-get install python-setuptools
+#sudo easy_install pip
+#sudo pip install ansible
 #sudo apt-get install sshpass
 #sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
 ansible-playbook $DEBUG_arg 01b-install-aws.yml

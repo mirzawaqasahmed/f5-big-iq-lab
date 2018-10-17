@@ -39,6 +39,9 @@ echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+#sudo apt-get install python-setuptools
+#sudo easy_install pip
+#sudo pip install ansible
 #sudo apt-get install sshpass
 #sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
 ansible-playbook $DEBUG_arg 01b-install-aws.yml
@@ -80,6 +83,8 @@ sleep 20
 # WA Tunnel
 ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1350
 ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1350
+
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 06-ubuntu-apache2.yml

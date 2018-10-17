@@ -27,35 +27,38 @@ LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{print $2}')"
 ASN1="$(cat config.yml | grep ASN1 | awk '{print $2}')"
 ASN2="$(cat config.yml | grep ASN2 | awk '{print $2}')"
+VNET1="$(cat config.yml | grep VNET1 | awk '{print $2}')"
+VNET_SUBNET1="$(cat config.yml | grep VNET_SUBNET1 | awk '{print $2}')"
+VNET_SUBNET2="$(cat config.yml | grep VNET_SUBNET2 | awk '{print $2}')"
 
 echo -e "\n${GREEN}Create a resource group${NC}"
 az group create --name $PREFIX --location $DEFAULT_REGION
 
 echo -e "\n${GREEN}Create a virtual network and subnet 1${NC}"
 az network vnet create \
-  -n VNet1 \
+  -n $VNET1 \
   -g $PREFIX \
   -l $DEFAULT_REGION \
   --address-prefix $VNET_CIDR_BLOCK \
-  --subnet-name Subnet1 \
+  --subnet-name $VNET_SUBNET1 \
   --subnet-prefix $SUBNET1_CIDR_BLOCK
 
 echo -e "\n${GREEN}Create subnet 2${NC}"
 az network vnet subnet create \
-  --vnet-name VNet1 \
-  -n Subnet2 \
+  --vnet-name $VNET1 \
+  -n $VNET_SUBNET2 \
   -g $PREFIX \
   --address-prefix $SUBNET2_CIDR_BLOCK
 
 echo -e "\n${GREEN}Add a gateway subnet${NC}"
 az network vnet subnet create \
-  --vnet-name VNet1 \
+  --vnet-name $VNET1 \
   -n GatewaySubnet \
   -g $PREFIX \
   --address-prefix $SUBNET3_CIDR_BLOCK
 
 echo -e "\n${GREEN}View the subnets${NC}"
-az network vnet subnet list -g $PREFIX --vnet-name VNet1 --output table
+az network vnet subnet list -g $PREFIX --vnet-name $VNET1 --output table
 
 echo -e "\n${GREEN}Request a public IP address${NC}"
 az network public-ip create \
@@ -69,7 +72,7 @@ az network vnet-gateway create \
   -l $DEFAULT_REGION \
   --public-ip-address VNet1GWIP \
   -g $PREFIX \
-  --vnet VNet1 \
+  --vnet $VNET1 \
   --gateway-type Vpn \
   --sku VpnGw1 \
   --vpn-type RouteBased \

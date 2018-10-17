@@ -15,6 +15,7 @@ USE_TOKEN: no
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
 PREFIX: udf-<name>
+# Also used for the Azure Resource group name
 
 # Select on of  the region below (default East US) - westus, westeurope, eastasia, brazilsouth ...
 # run az account list-locations --output table
@@ -26,7 +27,9 @@ DEFAULT_REGION: eastus
 CUSTOMER_GATEWAY_IP: 0.0.0.0
 
 # Adjust the BIG-IP Version based on your region 
-BYOL_BIGIP_VERSION: "ami-04e893bab1e8b9b10" # 
+BYOL_BIGIP_NAME: "f5-bigip-virtual-edition-best-byol"
+BYOL_BIGIP_VERSION: "13.1.0200"
+MODULE: WAF # LTM OR WAF
 
 ##################################################################################################
 ###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
@@ -38,6 +41,9 @@ SUBNET1_CIDR_BLOCK: 172.200.1.0/24
 SUBNET2_CIDR_BLOCK: 172.200.2.0/24
 SUBNET3_CIDR_BLOCK: 172.200.255.0/27
 SUBNET3_BGP_PEERING: 172.200.255.254
+VNET1: "{{PREFIX}}-vnet1"
+VNET_SUBNET1: "{{PREFIX}}-subnet1"
+VNET_SUBNET2: "{{PREFIX}}-subnet2"
 
 EXT_NETWORK_UDF_VPN: 10.1.10.0/24
 EXT_NETWORK_UDF_PEERING: 10.1.10.7
