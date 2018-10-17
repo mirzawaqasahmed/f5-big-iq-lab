@@ -14,7 +14,7 @@
           body: > 
             {
                 "name": "{{DEVICE_TEMPLATE_NAME}}",
-                "type": "AZURE",
+                "type": "Azure",
                 "timeZone": "UTC",
                 "ntpServerList": [ "{{NTP_SERVER}}" ],
                 "userAccountList": [
@@ -34,7 +34,7 @@
           url: "{{BIGIQ_URI}}/cm/cloud/providers"
           body: >
             {
-                "providerType": "AZURE",
+                "providerType": "Azure",
                 "name": "{{CLOUD_PROVIDER_NAME}}",
                 "description": "AZURE cloud provider",
                 "azureProperties": {

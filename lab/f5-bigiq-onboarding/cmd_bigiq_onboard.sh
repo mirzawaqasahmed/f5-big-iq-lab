@@ -49,6 +49,8 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "Type $ip root password (if asked)"
   ssh-copy-id root@$ip > /dev/null 2>&1
+  echo "Type $ip admin password (if asked)"
+  ssh-copy-id admin@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################

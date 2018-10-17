@@ -21,6 +21,7 @@ c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
+BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
 if [[ $c == 1 || $c2 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
@@ -33,6 +34,10 @@ clear
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
 echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?\n\n"
 echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
+
+echo -e "Exchange ssh keys with BIG-IQ & DCD:" #used for BIG-IQ ansible playbook 08-create-aws-auto-scaling.yml
+echo "Type $BIGIQ_MGT_HOST admin password (if asked)"
+ssh-copy-id admin@$BIGIQ_MGT_HOST > /dev/null 2>&1
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 
