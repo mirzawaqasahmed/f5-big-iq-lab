@@ -72,8 +72,7 @@ az group delete --name $PREFIX --yes
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "Clear cache directory and *retry"
-rm -rf cache *.retry
-rm nohup.out
+rm -rf *.retry nohup.out
 
 echo -e "\n${RED}/!\ DOUBLE CHECK IN YOUR AZURE ACCOUNT ALL THE RESOURCES CREATED FOR YOUR DEMO HAVE BEEN DELETED  /!\ ${NC}\n"
 

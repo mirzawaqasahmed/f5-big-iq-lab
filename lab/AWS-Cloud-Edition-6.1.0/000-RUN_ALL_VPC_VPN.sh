@@ -30,10 +30,6 @@ fi
 
 clear
 
-## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
-echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?\n\n"
-echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
-
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"

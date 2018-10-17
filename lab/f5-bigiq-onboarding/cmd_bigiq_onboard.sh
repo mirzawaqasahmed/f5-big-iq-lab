@@ -49,8 +49,6 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "Type $ip root password (if asked)"
   ssh-copy-id root@$ip > /dev/null 2>&1
-  echo "Type $ip admin password (if asked)"
-  ssh-copy-id admin@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################
@@ -167,6 +165,10 @@ if [[  $env != "udf" ]]; then
   fi
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+
+  echo -e "\n${RED}Waiting 10 min ... ${NC}"
+  sleep 900
+
   echo -e "\n${RED}INTERNAL USE --- ONLY F5 LAB --- END ${NC}"
 fi
 ################################################## ONLY FOR PME LAB END ########################################################
@@ -190,8 +192,8 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Waiting 5 min ... ${NC}"
-sleep 300
+echo -e "\n${RED}Waiting 10 min ... ${NC}"
+sleep 900
 
 ## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
