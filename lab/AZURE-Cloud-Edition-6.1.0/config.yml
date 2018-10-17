@@ -2,8 +2,10 @@
 ###########################         UPDATE VARIABLE BELOW          ###############################
 ##################################################################################################
 
-# Select Azure Cloud: AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud
+# Select Azure Cloud for VNET and VPN creation: AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud
 AZURE_CLOUD: AzureCloud
+# Select Azure Cloud for BIG-IQ SSG: AZURE, AZURE_CHINA, AZURE_US_GOVERNMENT, AZURE_GERMANY
+AZURE_BIGIQ_CLOUD: AZURE
 
 SUBSCRIPTION_ID: <Subscription Id>
 TENANT_ID: <Tenant Id>

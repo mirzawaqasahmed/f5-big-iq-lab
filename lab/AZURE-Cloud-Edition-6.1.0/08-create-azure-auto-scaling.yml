@@ -38,6 +38,7 @@
                 "name": "{{CLOUD_PROVIDER_NAME}}",
                 "description": "AZURE cloud provider",
                 "azureProperties": {
+                    "azureCloud": "{{AZURE_BIGIQ_CLOUD}}",
                     "subscriptionId": "{{SUBSCRIPTION_ID}}",
                     "servicePrincipalSecret": "{{SERVICE_PRINCIPAL_SECRET}}",
                     "tenantId": "{{TENANT_ID}}",
