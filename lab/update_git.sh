@@ -34,10 +34,10 @@ if [ -f /home/$user/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
     # create default BIG-IQ version file (min)
-    if [ -f /home/$user/bigiq_version_aws ]; then
+    if [ ! -f /home/$user/bigiq_version_aws ]; then
         echo "6.0.1" > /home/$user/bigiq_version_aws
     fi
-    if [ -f /home/$user/bigiq_version_azure ]; then
+    if [ ! -f /home/$user/bigiq_version_azure ]; then
         echo "6.1.0" > /home/$user/bigiq_version_azure
     fi
 
