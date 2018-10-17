@@ -20,6 +20,8 @@ IPSEC_DESTINATION_ADDRESS1="169.253.1.33"
 IPSEC_DESTINATION_ADDRESS2="169.253.1.34"
 IPSEC_DESTINATION_MASK="30"
 
+ssh-copy-id admin@$MGT_NETWORK_UDF > /dev/null 2>&1
+
 publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
 publicIpAddress=${publicIpAddress:1:${#publicIpAddress}-2}
 echo -e "\npublicIpAddress = ${BLUE} $publicIpAddress ${NC}"

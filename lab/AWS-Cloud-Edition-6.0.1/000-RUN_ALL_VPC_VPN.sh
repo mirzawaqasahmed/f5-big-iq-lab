@@ -39,7 +39,9 @@ echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 01-install.yml
+#sudo apt-get install sshpass
+#sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
+ansible-playbook $DEBUG_arg 01b-install-aws.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -59,14 +61,18 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./04a-configure-bigip.sh
-ansible-playbook $DEBUG_arg 04b-configure-bigip.yml
+
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+
+ansible-playbook $DEBUG_arg 04b-configure-bigip.yml -i inventory/hosts
+
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\nSleep 10 seconds"
 sleep 10
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml
+ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\nSleep 20 seconds"

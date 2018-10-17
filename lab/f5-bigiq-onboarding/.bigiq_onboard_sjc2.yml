@@ -18,8 +18,6 @@
   vars_files:
     - inventory/group_vars/sjc2-bigiq-dcd-01.yml
   tasks:
-    - pause:
-      minutes: 5
     - name: Add DCD to CM
       include_role:
         name: f5devcentral.register_dcd

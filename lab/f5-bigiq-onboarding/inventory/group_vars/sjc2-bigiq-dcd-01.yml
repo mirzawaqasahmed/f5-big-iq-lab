@@ -27,7 +27,7 @@ register_dcd_dcd_password: admin
 register_dcd_dcd_services:
   - access
   - dos
-  - websafe
   - ipsec
   - afm
   - asm
+  - websafe

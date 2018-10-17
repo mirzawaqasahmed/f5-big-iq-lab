@@ -1,6 +1,6 @@
 ---
 - name: Delete the application
-  hosts: localhost
+  hosts: bigiq-01
   vars_files:
     - ./config.yml
   connection: local

@@ -30,3 +30,4 @@ register_dcd_dcd_services:
   - ipsec
   - afm
   - asm
+#  - websafe

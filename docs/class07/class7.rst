@@ -10,7 +10,7 @@ Below Virtual Servers and Pool Members can be used in the context of the  (UDF l
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
 
 
-- **Test Web Site 18:** *(used in module 2)*
+- **Test Web Site 18:** *(used in module 1)*
 
 ==================  ============ ======== ============================ ============
 Test Website         VIP         Ports    Servers                      Port
@@ -18,6 +18,12 @@ Test Website         VIP         Ports    Servers                      Port
 site18.example.com   10.1.10.118 443/80   10.1.20.118 and 10.1.20.119  80/8080/8081
 ==================  ============ ======== ============================ ============
 
+- Port 80: hackazon application
+- Port 8080: web-dvwa application
+- Port 8081: f5-hello-world application
+- Port 8082: f5-demo-httpd application
+- Port 8083: f5-demo-httpd frontend application
+- Port 8084: f5-demo-httpd backend application
 
 .. toctree::
    :maxdepth: 1

@@ -16,8 +16,8 @@ fi
 
 ############################################################################################
 # CONFIGURATION
-ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
 ## TO BE REMOVED ONE ANSIBLE MODULE TO ADD BIG-IP IS AVAILABLE
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
@@ -118,6 +118,7 @@ if [[  $env != "udf" ]]; then
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         ssh root@$ip rm -f /shared/images/*.iso
         scp $iso root@$ip:/shared/images/
+        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
         echo -e "\n${GREEN}Install on $ip ${NC}"
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         # check active volume and install
@@ -140,6 +141,10 @@ if [[  $env != "udf" ]]; then
           sleep 5
           ssh root@$ip tmsh install sys software image $iso volume HD1.1 create-volume reboot
         fi
+      done
+      echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+      echo -e "\n${GREEN}Install on going - status $ip ${NC}"
+      for ip in "${ips[@]}"; do
         status=""
         while [[ $status != "complete" ]] 
           do
@@ -153,15 +158,13 @@ if [[  $env != "udf" ]]; then
               fi
               sleep 30
           done
-        done
-  
+      done
   else
     echo -e "$iso does not exist.\nYou may delete the ${RED}./.cookie${NC} file to re-authenticate."
     exit 3;
   fi
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  echo -e "\n${RED}Waiting 10 min ... ${NC}"
-  sleep 600
+
   echo -e "\n${RED}INTERNAL USE --- ONLY F5 LAB --- END ${NC}"
 fi
 ################################################## ONLY FOR PME LAB END ########################################################
@@ -205,7 +208,7 @@ EOF
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-## Work Around bug app deployment failing when ASM signature task running while deploying the task.
+## Work Around bug app deployment failing when ASM signature task running while deploying the task, to be removed in 6.1
 echo -e "\n${RED}Waiting 5 min ... ${NC}"
 sleep 300
 
@@ -225,11 +228,12 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
 
 # loop around the BIG-IQ CM/DCD
-# enable ssh for admin
+# enable ssh for admin and set-basic-auth on
 for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
   echo -e "tmsh modify auth user admin shell bash"
   ssh root@$ip tmsh modify auth user admin shell bash
+  ssh root@$ip set-basic-auth on
 done
 
 # disable ssl check for VMware SSG on the CM

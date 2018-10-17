@@ -10,6 +10,8 @@ NC='\033[0m' # No Color
 VPC_CIDR_BLOCK="$(cat config.yml | grep VPC_CIDR_BLOCK | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{ print $2}')"
 
+ssh-copy-id admin@$MGT_NETWORK_UDF > /dev/null 2>&1
+
 echo -e "\n${GREEN}Setting sys db global parameters${NC}"
 ssh admin@$MGT_NETWORK_UDF tmsh modify sys db config.allow.rfc3927 { value "enable" } 
 ssh admin@$MGT_NETWORK_UDF tmsh modify sys db ipsec.if.checkpolicy { value "disable" }
