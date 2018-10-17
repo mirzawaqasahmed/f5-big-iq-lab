@@ -2,6 +2,14 @@
 ###########################         UPDATE VARIABLE BELOW          ###############################
 ##################################################################################################
 
+# Enabling Azure Marketplace images for programmatic access
+# On the Azure portal go to All Services
+# In the General section, click on Marketplace
+# Type in "F5 BIG-IP" in the Search Box to filter the items
+# Click on each of the images and do the following
+# Click on the "Want to deploy programmatically?"  link on the right
+# Click on "Enable" and Save
+
 # Select Azure Cloud for VNET and VPN creation: AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud
 AZURE_CLOUD: AzureCloud
 # Select Azure Cloud for BIG-IQ SSG: AZURE, AZURE_CHINA, AZURE_US_GOVERNMENT, AZURE_GERMANY
@@ -43,9 +51,11 @@ SUBNET1_CIDR_BLOCK: 172.200.1.0/24
 SUBNET2_CIDR_BLOCK: 172.200.2.0/24
 SUBNET3_CIDR_BLOCK: 172.200.255.0/27
 SUBNET3_BGP_PEERING: 172.200.255.254
-VNET1: "{{PREFIX}}-vnet1"
-VNET_SUBNET1: "{{PREFIX}}-subnet1"
-VNET_SUBNET2: "{{PREFIX}}-subnet2"
+# The VNET and VNET_SUBNET names can be up to 80 characters long. It must begin with a word character, and it must end with a word character or with '_'.
+# It may contain word characters or '.', '-', '_'.
+VNET1: vnet1demo
+VNET_SUBNET1: subnet1demo
+VNET_SUBNET2: subnet2demo
 
 EXT_NETWORK_UDF_VPN: 10.1.10.0/24
 # BIG-IP Customer gw (Seattle BIG-IP)

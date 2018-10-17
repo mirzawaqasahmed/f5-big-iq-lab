@@ -21,10 +21,9 @@ c4=$(grep '<Subscription Id>' ./config.yml | wc -l)
 c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
 c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST| awk '{print $2}')"
-
 
 if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credential\n - Azure Region\n - Prefix\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
@@ -40,7 +39,7 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:" #used for BIG-IQ ansible playbook
 echo "Type $BIGIQ_MGT_HOST admin password (if asked)"
 ssh-copy-id admin@$BIGIQ_MGT_HOST > /dev/null 2>&1
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
+echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

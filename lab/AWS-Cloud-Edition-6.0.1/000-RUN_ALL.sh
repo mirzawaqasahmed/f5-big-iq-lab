@@ -39,7 +39,7 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:" #used for BIG-IQ ansible playbook
 echo "Type $BIGIQ_MGT_HOST admin password (if asked)"
 ssh-copy-id admin@$BIGIQ_MGT_HOST > /dev/null 2>&1
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
+echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

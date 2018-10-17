@@ -19,7 +19,7 @@ c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
@@ -39,7 +39,7 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:" #used for BIG-IQ ansible playbook
 echo "Type $BIGIQ_MGT_HOST admin password (if asked)"
 ssh-copy-id admin@$BIGIQ_MGT_HOST > /dev/null 2>&1
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
+echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

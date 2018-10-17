@@ -24,7 +24,7 @@ c4=$(grep '<Subscription Id>' ./config.yml | wc -l)
 c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
 c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
 
 if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nNo Azure SSG created, nothing to tear down.\n${NC}"

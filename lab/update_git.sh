@@ -1,8 +1,20 @@
 #!/bin/bash
 
+##### INSTALLATION
 ## Configured in /etc/rc.local
 ## /home/f5student/update_git.sh > //home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
+
+#################### INFORMATION #################### 
+
+# DEFAULT SSG ONBOARDING ARE 6.0.1 for AWS and 6.1.0 for Azure.
+# If you need to force AWS to use 6.1.0 updated scripts run, prior saving the blueprint.
+# user="f5student"; echo "6.1.0" > /home/$user/bigiq_version_aws
+
+# BEFORE SAVING THE BLUEPRINT, DELETE udf_auto_update_git so new deployment will download the latest version of the lab scripts/tools.
+# user="f5student"; rm /home/$user/udf_auto_update_git 
+
+#####################################################
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -43,7 +55,6 @@ else
 
     bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
     bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
-    ###### for 6.1 AWS, create file: user="f5";echo "6.1.0" > /home/$user/bigiq_version_aws
 
     echo "Cleanup previous files..."
     rm -rf AWS* AZURE* f5-ansi* f5-bigiq-onboarding scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting

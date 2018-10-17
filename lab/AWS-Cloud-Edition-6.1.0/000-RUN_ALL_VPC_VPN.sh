@@ -19,7 +19,7 @@ c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
 if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
@@ -34,7 +34,7 @@ clear
 echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?\n\n"
 echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n\n"
+echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

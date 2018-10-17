@@ -12,7 +12,7 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{print $2}')"
+PREFIX="$(head -40 config.yml | grep PREFIX | awk '{print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
 VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{ print $2}')"

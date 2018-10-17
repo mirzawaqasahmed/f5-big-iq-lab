@@ -12,7 +12,7 @@ EXT_NETWORK_UDF_PEERING="$(cat config.yml | grep EXT_NETWORK_UDF_PEERING | awk '
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{print $2}')"
 VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{print $2}')"
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{print $2}')"
+PREFIX="$(head -40 config.yml | grep PREFIX | awk '{print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
 IPSEC_DESTINATION_NETWORK="169.253.1.32"
