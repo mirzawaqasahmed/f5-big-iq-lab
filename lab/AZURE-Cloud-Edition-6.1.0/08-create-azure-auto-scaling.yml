@@ -72,7 +72,7 @@
                     "licenseType": "BYOL",
                     "imageName": "{{BYOL_BIGIP_NAME}}",
                     "bigipVersion": "{{BYOL_BIGIP_VERSION}}",
-                    "instanceType": "Standard_A6",
+                    "instanceType": "Standard_DS4_v2",
                     "byolLicenseInformation": {
                         "bigiqAddress": "{{BYOL_BIGIQ_HOST}}",
                         "bigiqUser": "{{BYOL_BIGIQ_USER}}",

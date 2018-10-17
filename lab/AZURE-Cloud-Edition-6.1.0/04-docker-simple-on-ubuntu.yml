@@ -11,7 +11,28 @@
         state: present
         resource_group_name: "{{ PREFIX }}"
         template: "{{ lookup('file', 'arm/docker-simple-on-ubuntu.json') }}"
-        parameters: "{{ (lookup('file', 'arn/docker-simple-on-ubuntu.parameters.json') | from_json).parameters }}"
+        parameters:
+          adminUsername:
+            value: "{{NODE_USER}}"
+          adminPassword:
+            value: "{{NODE_PASSWORD}}"
+          dnsNameForPublicIP:
+            value: null
+          vmSize:
+            value: Standard_F1
+          vmName:
+            value: "{{PREFIX}}-server"
+          location:
+            value: "{{DEFAULT_REGION}}"
+          privateIPAddress:
+            value: "{{NODE_ADDRESS}}"
+          virtualNetworkName: 
+            value: "{{VNET1}}"
+          subnetName:
+            value: "{{VNET_SUBNET1}}"
+          addressPrefix:
+            value: "{{VNET_CIDR_BLOCK}}"
+          subnetPrefix:
+            value: "{{SUBNET1_CIDR_BLOCK}}"
 
 ...
-

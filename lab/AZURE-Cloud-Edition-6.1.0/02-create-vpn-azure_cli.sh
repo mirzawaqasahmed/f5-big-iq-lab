@@ -80,7 +80,7 @@ az network vnet-gateway create \
   --sku HighPerformance \
   --no-wait
 
-echo -e "\n(refresh every 1 min)"
+echo -e "\n(refresh every 1 min if not = Succeeded)"
 while [[ $provisioningState != "Succeeded" ]] 
 do
     provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')

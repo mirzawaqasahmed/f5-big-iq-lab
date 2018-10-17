@@ -23,7 +23,8 @@ c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
 PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
-BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST| awk '{print $2}')"
+BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
+APP_FQDN="$(cat config.yml | grep APP_FQDN | awk '{print $2}')"
 
 if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credential\n - Azure Region\n - Prefix\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
@@ -97,13 +98,12 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # add ab in crontab to simulate traffic
 echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
-if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
-   ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
-   (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$ELB_DNS/" ) | crontab -
-   echo -e "\nAplication URL:${RED} $ELB_DNS"
-else
-   echo "${RED}Something wrong happen, no ./cache/$PREFIX/1-vpc.yml${NC}"
-fi
+
+# Get App FQDN
+appfqdn=$(az network public-ip show --resource-group $PREFIX --name $APP_FQDN | jq '.dnsSettings.fqdn')
+appfqdn=${appfqdn:1:${#appfqdn}-2}
+(crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$appfqdn/" ) | crontab -
+echo -e "\nAplication URL:${RED} https://$appfqdn"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

@@ -152,7 +152,7 @@ echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
 if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
    ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
    (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$ELB_DNS/" ) | crontab -
-   echo -e "\nAplication URL:${RED} $ELB_DNS"
+   echo -e "\nAplication URL:${RED} https://$ELB_DNS"
 else
    echo "${RED}Something wrong happen, no ./cache/$PREFIX/1-vpc.yml${NC}"
 fi

@@ -7,19 +7,13 @@ with open('config.yml', 'r') as f:
     doc = yaml.load(f)
 PREFIX = doc["PREFIX"]
 NODE_ADDRESS = doc["NODE_ADDRESS"]
-ELB_NAME = PREFIX + '-elb'
-APP_NAME = PREFIX + '-app-aws'
-SSG_NAME = PREFIX + '-aws-ssg'
+APP_NAME = PREFIX + '-app-azure'
+SSG_NAME = PREFIX + '-aws-azure'
 #print PREFIX
 #print SSG_NAME
-#print ELB_NAME
 #print APP_NAME
 #print NODE_ADDRESS
 
-with open('cache/%s/1-vpc.yml' % PREFIX, 'r') as f:
-    doc = yaml.load(f)
-ELB_DNS = doc["ELB_DNS"]
-#print ELB_DNS
 
 TEMPLATES_URL = '/mgmt/cm/global/templates' # list of templates
 APPLY_TEMPLATE_URL = '/mgmt/cm/global/tasks/apply-template' # creates applications
@@ -170,21 +164,15 @@ post_body = """
     "ssgReference": {
         "link": "%s"
     },
-    "awsLoadBalancer": {
-        "name": "%s",
-        "description": "%s",
+    "azureLoadBalancer": {
         "listeners": [
             {
                 "loadBalancerPort": 443,
-                "loadBalancerProtocol": "TCP",
-                "instancePort": 443,
-                "instanceProtocol": "TCP"
+                "instancePort": 443
             },
             {
                 "loadBalancerPort": 80,
-                "loadBalancerProtocol": "TCP",
-                "instancePort": 80,
-                "instanceProtocol": "TCP"
+                "instancePort": 80
             }
         ]
     },
@@ -194,7 +182,7 @@ post_body = """
     },
     "mode": "CREATE"
 }
-""" % (NODE_ADDRESS, NODE_ADDRESS, NODE_ADDRESS, NODE_ADDRESS, APP_NAME, device_link, ELB_NAME, ELB_DNS, APP_NAME, template_link)
+""" % (NODE_ADDRESS, NODE_ADDRESS, NODE_ADDRESS, NODE_ADDRESS, APP_NAME, device_link, APP_NAME, template_link)
 
 # start the task
 apply_template_task = session.post(HOST + APPLY_TEMPLATE_URL, data=post_body).json()

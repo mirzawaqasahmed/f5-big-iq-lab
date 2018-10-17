@@ -69,7 +69,7 @@ ssh admin@$MGT_NETWORK_UDF tmsh save sys config
 echo -e "\n${GREEN}Restarting tmipsecd${NC}"
 ssh admin@$MGT_NETWORK_UDF bigstart restart tmipsecd
 
-echo -e "\n(refresh every 1 min)"
+echo -e "\n(refresh every 1 min if not = Connected)"
 while [[ $connectionStatus != "Connected" ]] 
 do
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
