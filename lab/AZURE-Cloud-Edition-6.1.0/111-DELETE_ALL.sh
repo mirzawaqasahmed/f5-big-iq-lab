@@ -88,7 +88,9 @@ else
   az role assignment list --assignee $CLIENT_ID --output table
 fi
 
+echo -e "\n${GREEN}Delete resource group${GREEN} $PREFIX ${NC}\n"
 az group delete --name $PREFIX --yes
+
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "Clear cache directory and *retry"
