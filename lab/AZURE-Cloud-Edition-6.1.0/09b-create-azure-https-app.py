@@ -8,7 +8,7 @@ with open('config.yml', 'r') as f:
 PREFIX = doc["PREFIX"]
 NODE_ADDRESS = doc["NODE_ADDRESS"]
 APP_NAME = PREFIX + '-app-azure'
-SSG_NAME = PREFIX + '-aws-azure'
+SSG_NAME = PREFIX + '-azure-ssg'
 #print PREFIX
 #print SSG_NAME
 #print APP_NAME

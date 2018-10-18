@@ -1,4 +1,5 @@
-# This file establishes the necessary resources on AWS to create a Demo Webserver using Ubuntu
+# This file establishes the necessary resources on Azure to create a Demo Webserver using Ubuntu
+# source: https://github.com/jmcalalang/f5-rs-azure/blob/master/playbooks/server.yml
 - name: Create Ubuntu resources
   hosts: localhost
   vars_files:
@@ -29,7 +30,8 @@
         subnet: "{{ VNET_SUBNET1 }}"
         ip_configurations:
           - name: ipconfig1
-            private_ip_allocation_method: Dynamic
+            private_ip_allocation_method: Static
+            private_ip_address: "{{ NODE_ADDRESS }}"
             public_ip_address_name: "{{ NODE_NAME }}-server-int-pip0"
       register: "app_server_int_nic_private"
 
@@ -105,14 +107,7 @@
         publisher: Microsoft.Azure.Extensions
         virtual_machine_extension_type: CustomScript
         type_handler_version: 2.0
-        settings: '{"fileUris": ["{{ APPPPLICATION_BUILDING_SCRIPT }}"],"commandToExecute": "./init_web.sh"}'
+        settings: '{"fileUris": ["{{ APPLICATION_BUILDING_SCRIPT }}"],"commandToExecute": "./init_web.sh"}'
         auto_upgrade_minor_version: true
-
-    - name: Assign {{ NODE_ADDRESS }}_int_nic Fact
-      set_fact:
-        application_server_int_pri_ip: "{{ NODE_ADDRESS }}"
-
-    - debug:
-        msg: Registered "{{ NODE_ADDRESS }}" as Internal NIC Private IP
 
 ...
