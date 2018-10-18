@@ -48,22 +48,29 @@
               - name: 'AllowHTTP'
                 protocol: Tcp
                 source_address_prefix: 'VirtualNetwork'
-                destination_port_range: "80-8082"
+                destination_port_range: 80
                 access: Allow
                 priority: 100
+                direction: Inbound
+              - name: 'Allow8080-8084'
+                protocol: Tcp
+                source_address_prefix: 'VirtualNetwork'
+                destination_port_range: "8080-8082"
+                access: Allow
+                priority: 101
                 direction: Inbound
               - name: 'AllowHTTPS'
                 protocol: Tcp
                 source_address_prefix: 'VirtualNetwork'
-                destination_port_range: "443-444"
+                destination_port_range: "445"
                 access: Allow
-                priority: 101
+                priority: 102
                 direction: Inbound
               - name: 'AllowSSH'
                 protocol: Tcp
                 source_address_prefix: '{{ RESTRICTED_SRC_ADDRESS }}'
                 destination_port_range: 22
-                access: Deny
+                access: Deny #Allow
                 priority: 102
                 direction: Inbound
 

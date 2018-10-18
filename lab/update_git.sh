@@ -115,7 +115,7 @@ if [[  $currentuser == "root" ]]; then
     # Installing docker images
     sudo docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     sudo docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
-    sudo docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -p 443:8443 -e NODE='Blue' f5devcentral/f5-hello-world
+    sudo docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
     sudo docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     # ASM Policy Validator:
     sudo docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
