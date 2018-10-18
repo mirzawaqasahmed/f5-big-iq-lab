@@ -65,3 +65,36 @@ The Profile will appear in the list of Profiles pinned to this device.
 When your edits are complete, click Save & Close.
 
 **Repeat for the second BOS BIG-IP device**
+
+We can now see that the BOS BIG-IP devices each have 3 Profiles pinned to them.
+
+.. image:: ../pictures/module1/module1_lab3_5.png
+  :align: center
+  :scale: 50%
+  
+Now we need to deploy the Profile. 
+Navigate to the Deployment tab and create a DNS Deployment.
+
+.. image:: ../pictures/module1/module1_lab3_6.png
+  :align: center
+  :scale: 50%
+  
+Create a sensible name for the deployment and select both BOS BIG-IP devices.
+
+.. image:: ../pictures/module1/module1_lab3_7.png
+  :align: center
+  :scale: 50%
+  
+After the evaluation completes, select the deployment and click Deploy.
+
+.. image:: ../pictures/module1/module1_lab3_8.png
+  :align: center
+  :scale: 50%
+  
+Once the deployment finishes, it will be listed in the completed deployments.
+
+.. image:: ../pictures/module1/module1_lab3_9.png
+  :align: center
+  :scale: 50%
+  
+  Now the Profile is ready to be used in a Listener.
