@@ -5,7 +5,7 @@
     - ./config.yml
 
   tasks:
-    - name: Create {{ PREFIX }}-server Storage Account in Resource Group {{ PREFIX }}
+    - name: Create {{ NODE_NAME }}-server Storage Account in Resource Group {{ PREFIX }}
       azure_rm_storageaccount:
         tenant: "{{ TENANT_ID }}"
         client_id: "{{ CLIENT_ID}}"
@@ -13,10 +13,10 @@
         subscription_id: "{{ SUBSCRIPTION_ID }}"
         location: "{{ DEFAULT_REGION }}"
         resource_group: "{{ PREFIX }}"
-        name: "{{application_storage_account}}"
+        name: "{{ NODE_NAME }}stract"
         account_type: Standard_LRS
 
-    - name: Create {{ PREFIX }}-serverInternal NIC in Resource Group {{ PREFIX }}
+    - name: Create {{ NODE_NAME }}-serverInternal NIC in Resource Group {{ PREFIX }}
       azure_rm_networkinterface:
         tenant: "{{ TENANT_ID }}"
         client_id: "{{ CLIENT_ID}}"
@@ -24,23 +24,23 @@
         subscription_id: "{{ SUBSCRIPTION_ID }}"
         location: "{{ DEFAULT_REGION }}"
         resource_group: "{{ PREFIX }}"
-        name: "{{ PREFIX }}-server_int_nic"
+        name: "{{ NODE_NAME }}-server_int_nic"
         virtual_network: "{{ VNET1 }}"
         subnet: "{{ VNET_SUBNET1 }}"
         ip_configurations:
           - name: ipconfig1
             private_ip_allocation_method: Dynamic
-            public_ip_address_name: "{{ PREFIX }}-server-int-pip0"
+            public_ip_address_name: "{{ NODE_NAME }}-server-int-pip0"
       register: "app_server_int_nic_private"
 
-    - name: Edit {{ PREFIX }}-server_int_nic Security Group in Resource Group {{ PREFIX }} (Allow HTTP(S) Access)
+    - name: Edit {{ NODE_NAME }}-server_int_nic Security Group in Resource Group {{ PREFIX }} (Allow HTTP(S) Access)
       azure_rm_securitygroup:
           tenant: "{{ TENANT_ID }}"
           client_id: "{{ CLIENT_ID}}"
           secret: "{{ SERVICE_PRINCIPAL_SECRET }}"
           subscription_id: "{{ SUBSCRIPTION_ID }}"
           resource_group: "{{ PREFIX }}"
-          name: "{{ PREFIX }}-server_int_nic"
+          name: "{{ NODE_NAME }}-server_int_nic"
           purge_rules: yes
           rules:
               - name: 'AllowHTTP'
@@ -65,7 +65,7 @@
                 priority: 102
                 direction: Inbound
 
-    - name: Create {{ PREFIX }}-server Virtual Machine
+    - name: Create {{ NODE_NAME }}-server Virtual Machine
       azure_rm_virtualmachine:
         tenant: "{{ TENANT_ID }}"
         client_id: "{{ CLIENT_ID}}"
@@ -73,14 +73,14 @@
         subscription_id: "{{ SUBSCRIPTION_ID }}"
         location: "{{ DEFAULT_REGION }}"
         resource_group: "{{ PREFIX }}"
-        name: "{{ PREFIX }}-server"
+        name: "{{ NODE_NAME }}-server"
         vm_size: Standard_D1_v2
-        storage_account: "{{ PREFIX }}-serverstract"
-        storage_container: "{{ PREFIX }}-server001"
-        storage_blob: "{{ PREFIX }}-server001.vhd"
+        storage_account: "{{ NODE_NAME }}stract"
+        storage_container: "{{ NODE_NAME }}-server001"
+        storage_blob: "{{ NODE_NAME }}-server001.vhd"
         admin_username: "{{ NODE_USER }}"
         admin_password: "{{ NODE_PASSWORD }}"
-        network_interfaces: "{{ PREFIX }}-server_int_nic"
+        network_interfaces: "{{ NODE_NAME }}-server_int_nic"
         append_tags: True
         tags:
           OperatingSystem: "Ubuntu"
@@ -92,7 +92,7 @@
           sku: 18.04-LTS
           version: latest
 
-    - name: Execute {{ PREFIX }}-server Azure Extension
+    - name: Execute {{ NODE_NAME }}-server Azure Extension
       azure_rm_virtualmachine_extension:
         tenant: "{{ TENANT_ID }}"
         client_id: "{{ CLIENT_ID}}"
@@ -101,7 +101,7 @@
         location: "{{ DEFAULT_REGION }}"
         name: External-Script-to-install-Backend-Services
         resource_group: "{{ PREFIX }}"
-        virtual_machine_name: "{{ PREFIX }}-server"
+        virtual_machine_name: "{{ NODE_NAME }}-server"
         publisher: Microsoft.Azure.Extensions
         virtual_machine_extension_type: CustomScript
         type_handler_version: 2.0

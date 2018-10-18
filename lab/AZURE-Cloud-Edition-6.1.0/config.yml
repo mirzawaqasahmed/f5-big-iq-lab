@@ -69,6 +69,7 @@ ASN2: 65020 #local network gateway
 BIGIQ_MGT_HOST: 10.1.1.4
 
 # Ubuntu Web Server IP Address (in Subnet 1):
+NODE_NAME: ubuntu
 NODE_ADDRESS: 172.200.1.50
 NODE_USER: ubuntu
 NODE_PASSWORD: "q6YMum6jG888BFHu"
