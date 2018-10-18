@@ -26,6 +26,13 @@ c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
 PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
 
+USE_TOKEN=$(grep USE_TOKEN ./config.yml | grep yes | wc -l)
+AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
+SUBSCRIPTION_ID=$(grep SUBSCRIPTION_ID ./config.yml | awk '{ print $2}')
+TENANT_ID=$(grep TENANT_ID ./config.yml | awk '{ print $2}')
+CLIENT_ID=$(grep CLIENT_ID ./config.yml | awk '{ print $2}')
+SERVICE_PRINCIPAL_SECRET=$(grep SERVICE_PRINCIPAL_SECRET ./config.yml | awk '{ print $2}')
+
 if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nNo Azure SSG created, nothing to tear down.\n${NC}"
        exit 1
@@ -68,6 +75,19 @@ echo -e "MAKE SURE THE AZURE SSG HAS BEEN REMOVED COMPLETLY BEFORE PROCEEDING${N
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
+echo -e "\n${GREEN}Set Cloud Name to ${BLUE} $AZURE_CLOUD ${NC}"
+az cloud set --name $AZURE_CLOUD
+
+echo -e "\n${GREEN}Login${NC}"
+if [[ $USE_TOKEN == 1 ]]; then
+  az login
+else
+  az login --service-principal -u $CLIENT_ID --password $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID
+  az account set --subscription $SUBSCRIPTION_ID
+  az role assignment list --assignee $CLIENT_ID --output table
+fi
+
 az group delete --name $PREFIX --yes
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 

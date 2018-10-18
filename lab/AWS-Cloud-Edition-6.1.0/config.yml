@@ -3,7 +3,7 @@
 ##################################################################################################
 
 # Select AWA Cloud for BIG-IQ SSG: AWS, AWA_CHINA, AWA_US_GOVERNMENT
-AWA_BIGIQ_CLOUD: AWS
+AWS_BIGIQ_CLOUD: AWS
 
 ## Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?
 ## https://aws.amazon.com/marketplace/pp/B07G5MT2KT

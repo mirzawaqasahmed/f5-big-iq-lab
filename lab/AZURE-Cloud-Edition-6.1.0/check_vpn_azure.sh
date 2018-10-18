@@ -10,7 +10,26 @@ NC='\033[0m' # No Color
 PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
+USE_TOKEN=$(grep USE_TOKEN ./config.yml | grep yes | wc -l)
+AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
+SUBSCRIPTION_ID=$(grep SUBSCRIPTION_ID ./config.yml | awk '{ print $2}')
+TENANT_ID=$(grep TENANT_ID ./config.yml | awk '{ print $2}')
+CLIENT_ID=$(grep CLIENT_ID ./config.yml | awk '{ print $2}')
+SERVICE_PRINCIPAL_SECRET=$(grep SERVICE_PRINCIPAL_SECRET ./config.yml | awk '{ print $2}')
+
 echo -e "\n${BLUE}VPN Azure <-> UDF${NC}"
+
+echo -e "\n${GREEN}Set Cloud Name to ${BLUE} $AZURE_CLOUD ${NC}"
+az cloud set --name $AZURE_CLOUD
+
+echo -e "\n${GREEN}Login${NC}"
+if [[ $USE_TOKEN == 1 ]]; then
+  az login
+else
+  az login --service-principal -u $CLIENT_ID --password $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID
+  az account set --subscription $SUBSCRIPTION_ID
+  az role assignment list --assignee $CLIENT_ID --output table
+fi
 
 echo -e "\n${GREEN}View the VPN gateway${NC}"
 az network vnet-gateway show \

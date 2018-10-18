@@ -75,12 +75,14 @@ There is lab environment (``version 13``) available in UDF and Ravello (Oracle P
 **Documentations**:
 
 - `BIG-IQ Knowledge Center`_
-- `F5 BIG-IQ API`_
+- `F5 BIG-IQ API 6.0.1`_
+- `F5 BIG-IQ API 6.1.0`_
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
-.. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0/
+.. _F5 BIG-IQ API 6.0.1: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0/
+.. _F5 BIG-IQ API 6.1.0: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270?tag=big-iq
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373
 

@@ -1,6 +1,6 @@
 Module 3: Application Deployment via API
 ========================================
-BIG-IQ 6.0 will offer the below Ansible module available in Ansible 2.6 (for info `Ansible F5 github`_).
+BIG-IQ 6.0/6.1 the below Ansible module available in Ansible 2.6 (for info `Ansible F5 github`_).
 
 .. _Ansible F5 github: https://github.com/F5Networks/f5-ansible
 
@@ -19,6 +19,14 @@ BIG-IQ 6.0 will offer the below Ansible module available in Ansible 2.6 (for inf
 
  More information on all `F5 Ansible Modules`_.
 .. _F5 Ansible Modules: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/list_of_all_modules.html
+
+You can access the API & Ansible BIG-IQ documentations from the **BIG-IQ External Resources**:
+
+.. image:: ../pictures/module3/img_module3_1.png
+  :align: center
+  :scale: 50%
+
+|
 
 In this module, we will learn how to see create and delete an application using Ansible Playbook, also look at an example of straight API payload from BIG-IQ UI.
 
