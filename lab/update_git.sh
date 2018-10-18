@@ -113,11 +113,6 @@ if [[  $currentuser == "root" ]]; then
     sudo /home/$user/scripts/cleanup-docker.sh
 
     # Installing docker images
-    #sudo docker pull mutzel/all-in-one-hackazon:postinstall
-    #sudo docker run --name hackazon2 -d -p 80:80 --restart=always mutzel/all-in-one-hackazon:postinstall supervisord -n
-    #sudo docker run -dit -p 8080:80 --name dvwa --restart=always citizenstig/dvwa 
-    #sudo docker run -dit -p 8081:8080 --restart=always f5devcentral/f5-hello-world
-
     sudo docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     sudo docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
     sudo docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -p 443:8443 -e NODE='Blue' f5devcentral/f5-hello-world
