@@ -69,8 +69,7 @@ site25.example.com  10.1.10.125  443/80   10.1.20.127 and 10.1.20.128  80/8080/8
 - Port 8080: web-dvwa application
 - Port 8081: f5-hello-world application
 - Port 8082: f5-demo-httpd application
-- Port 8083: f5-demo-httpd frontend application
-- Port 8084: f5-demo-httpd backend application
+- Port 445: ASM Policy Validator
 
 .. toctree::
    :maxdepth: 1

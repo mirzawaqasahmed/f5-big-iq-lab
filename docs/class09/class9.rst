@@ -34,10 +34,10 @@ site21auth.example.com  10.1.10.121  443      10.1.20.134 and 10.1.20.135  80/80
 ======================  ============ ======== ============================ ============
 
 - Port 80: hackazon application
+- Port 8080: web-dvwa application
 - Port 8081: f5-hello-world application
 - Port 8082: f5-demo-httpd application
-- Port 8083: f5-demo-httpd frontend application
-- Port 8084: f5-demo-httpd backend application
+- Port 445: ASM Policy Validator
 
 .. toctree::
    :maxdepth: 1

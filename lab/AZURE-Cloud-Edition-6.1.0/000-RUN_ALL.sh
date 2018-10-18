@@ -59,6 +59,10 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+## additional packages needed for this playbook
+sudo pip install packaging
+sudo pip install msrestazure
+sudo pip install ansible[azure]
 ansible-playbook $DEBUG_arg 04-docker-simple-on-ubuntu.yml
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
