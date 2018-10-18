@@ -44,9 +44,24 @@ The system creates the new profile you specified and adds it to the list of prof
 
 Since we intend to use this new Profile when we create a Listener, it's necessary to Deploy it to the devices ahead of the Listener deployment.
 
-..NOTE::
-	When you attempt to deploy a Listener that references a Profile that doesn't exist on the target device, you will receive and error.
+.. NOTE:: When you attempt to deploy a Listener that references a Profile that doesn't exist on the target device, you will receive and error.
 
 **Deploying your DNS Profile**
-Navigate to the 
 
+Navigate to the Pinning Policies menu.
+
+.. image:: ../pictures/module1/module1_lab3_3.png
+  :align: center
+  :scale: 50%
+
+Click the name of the first BOS BIG-IP.
+
+.. image:: ../pictures/module1/module1_lab3_4.png
+  :align: center
+  :scale: 50%
+  
+Select the DNSprofile, and click Add Selected.
+The Profile will appear in the list of Profiles pinned to this device.
+When your edits are complete, click Save & Close.
+
+**Repeat for the second BOS BIG-IP device**
