@@ -54,7 +54,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-configure-bigip.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\n\n"
+echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\nYou can also run ./wa_azure_vpn_down_bigip.sh\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_azure..sh${NC}"
 

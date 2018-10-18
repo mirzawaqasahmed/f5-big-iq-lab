@@ -74,7 +74,7 @@ sudo pip install ansible[azure] > /dev/null 2>&1
 ansible-playbook $DEBUG_arg 04-docker-on-ubuntu-azure.yml > 04-docker-on-ubuntu-azure.log 2>&1 &
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\n\n"
+echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\nYou can also run ./wa_azure_vpn_down_bigip.sh\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_azure.sh${NC}"
 
@@ -86,7 +86,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 08-create-azure-auto-scaling.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}In order to follow the AZURE SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"
+echo -e "\n${GREEN}In order to follow the  SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
@@ -95,7 +95,7 @@ sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}Application Creation: (it will start once AZURE SSG creation is completed)\n${NC}"
+echo -e "\n${GREEN}Application Creation: (it will start once Azure SSG creation is completed)\n${NC}"
 python 09a-create-azure-waf-app.py
 
 echo "${RED}In case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: # python 09b-create-azure-https-app.py ${NC}"
@@ -115,10 +115,10 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}NEXT STEPS ON BIG-IQ:\n\n1. Allow Paul to manage the Application previously created:\n  - Connect as admin in BIG-IQ and go to : System > User Management > Users and select Paul.\n  - Select the Role udf-<yourname>-elb, drag it to the right\n  - Save & Close.\n"
 
-echo -e "2. Allow Paul to use the AZURE SSG previously  created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator AZURE role.\n  - Select the Service Scaling Groups udf-<yourname>-azure-ssg, drag it to the right\n  - Save & Close.\n"
+echo -e "2. Allow Paul to use the  SSG previously  created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator  role.\n  - Select the Service Scaling Groups udf-<yourname>-azure-ssg, drag it to the right\n  - Save & Close.\n"
 
 echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh\n\n or\n\n# nohup ./111-DELETE_ALL.sh nopause &\n\n"
-echo -e "/!\ The objects created in AZURE will be automatically delete 23h after the deployment was started. /!\ "
+echo -e "/!\ The objects created in  will be automatically delete 23h after the deployment was started. /!\ "
 
 echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
 

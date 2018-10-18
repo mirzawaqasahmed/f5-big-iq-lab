@@ -85,7 +85,7 @@ sleep 20
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 06-docker-on-ubuntu-aws.yml
+ansible-playbook $DEBUG_arg 06-docker-on-ubuntu-aws.yml > 06-docker-on-ubuntu-aws.log 2>&1 &
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 #[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -96,7 +96,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
 ./check_vpn_aws.sh
 
-echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
+echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\nYou can also run ./wa_aws_vpn_down_bigip.sh\n"
 echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/racoon.log${NC}\n\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_aws.sh${NC}"

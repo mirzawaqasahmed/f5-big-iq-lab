@@ -20,7 +20,4 @@
         stack_name: "{{PREFIX}}-vpc-elb-cf-stack"
         state: absent
 
-    - name: Delete directory
-      file: path=./cache/{{PREFIX}} state=absent
-
 ...

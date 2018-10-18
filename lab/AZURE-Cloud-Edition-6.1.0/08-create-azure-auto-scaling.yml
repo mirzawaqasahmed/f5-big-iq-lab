@@ -93,7 +93,7 @@
           body: >
             {
                 "name": "{{SSG_NAME}}",
-                "description": "AWS scaling group",
+                "description": "Azure scaling group",
                 "environmentReference": {
                     "link": "https://localhost/mgmt/cm/cloud/environments/{{cloud_environment_result.id}}"
                 },
@@ -101,19 +101,20 @@
                 "maxSize": 3,
                 "maxSupportedApplications": 3,
                 "desiredSize": 1,
+                "providerType": "Azure",
                 "postDeviceCreationUserScriptReference": null,
                 "preDeviceDeletionUserScriptReference": null,
                 "scalingPolicies": [
                 {
                     "name": "scale-out",
-                    "cooldown": 15,
+                    "cooldown": 30,
                     "direction": "ADD",
                     "type": "ChangeCount",
                     "value": 1
                 },
                 {
                     "name": "scale-in",
-                    "cooldown": 15,
+                    "cooldown": 30,
                     "direction": "REMOVE",
                     "type": "ChangeCount",
                     "value": 1
