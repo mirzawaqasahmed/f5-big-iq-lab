@@ -93,6 +93,19 @@ az group delete --name $PREFIX --yes
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
+echo -e "\n${GREEN}Cleanup Customer Gateway (Seattle BIG-IP)${NC}\n"
+ssh admin@$MGT_NETWORK_UDF tmsh delete net route azure_subnet
+ssh admin@$MGT_NETWORK_UDF tmsh delete ltm pool keepalive-vpn-azure 
+ssh admin@$MGT_NETWORK_UDF tmsh delete net self $IPSEC_DESTINATION_ADDRESS1
+ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels tunnel tunnel-vpn-azure 
+ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels ipsec profile-vpn-azure 
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ike-peer peer-vpn-azure
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec traffic-selector selector-vpn-azure 
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ipsec-policy ipsec-policy-vpn-azure
+ssh admin@$MGT_NETWORK_UDF tmsh save sys config
+
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
 echo -e "Clear cache directory and *retry"
 rm -rf *.retry nohup.out
 

@@ -7,8 +7,9 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-PREFIX="$(head -20 config.yml | grep PREFIX | awk '{ print $2}')"
+PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
 PREFIXVPN="$PREFIX-vpn"
+MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
 USE_TOKEN=$(grep USE_TOKEN ./config.yml | grep yes | wc -l)
 AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
@@ -60,9 +61,11 @@ do
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
     connectionStatus=${connectionStatus:1:${#connectionStatus}-2}
     if [[ $connectionStatus == "Connected" ]]; then
-      echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
+      echo -e "\nconnectionStatus =${GREEN} $connectionStatus ${NC}"
     else
       echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
+      echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
+      ssh admin@$MGT_NETWORK_UDF tail -5 /var/log/ipsec.log
     fi
     sleep 30
 done

@@ -74,21 +74,12 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\nSleep 20 seconds"
-sleep 20
-
 # WA Tunnel
-ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_1 mtu 1350
-ssh admin@$MGT_NETWORK_UDF tmsh modify net tunnels tunnel aws_conn_tun_2 mtu 1350
+sleep 20
+./wa_aws_vpn_down_bigip.sh
 
-echo -e "\n${GREEN}Sleep 3 min (to allow some time for the VPN to come up)${NC}"
-sleep 180
-
-echo -e "\n${GREEN}VPN status:${NC}\n"
+echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
 ./check_vpn_aws.sh
-
-echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
-ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/racoon.log
 
 echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook 05-restart-bigip-services.yml\n"
 echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/racoon.log${NC}\n\n"

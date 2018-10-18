@@ -35,6 +35,14 @@ fi
 clear
 
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
+echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for 'F5 BIG-IP Virtual Edition - BEST - BYOL' in Azure Marketplace?\n"
+echo -e "Enabling Azure Marketplace images for programmatic access:
+  - On the Azure portal go to All Services
+  - In the General section, click on Marketplace
+  - Type in 'F5 BIG-IP Virtual Edition - BEST - BYOL' in the Search Box to filter the items
+  - Click on each of the images and do the following
+  - Click on the 'Want to deploy programmatically?'  link on the right
+  - Click on 'Enable, then Save.'\n\n${NC}"
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
@@ -60,17 +68,11 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ## additional packages needed for this playbook
-sudo pip install packaging
-sudo pip install msrestazure
-sudo pip install ansible[azure]
-ansible-playbook $DEBUG_arg 04-docker-simple-on-ubuntu.yml
+sudo pip install packaging > /dev/null 2>&1
+sudo pip install msrestazure > /dev/null 2>&1
+sudo pip install ansible[azure] > /dev/null 2>&1
+ansible-playbook $DEBUG_arg 04-docker-on-ubuntu-azure.yml > 04-docker-on-ubuntu-azure.log 2>&1 &
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-echo -e "\n${GREEN}VPN status:${NC}\n"
-./check_vpn_azure.sh
-
-echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
-ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/ipsec.log
 
 echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\n\n"
 

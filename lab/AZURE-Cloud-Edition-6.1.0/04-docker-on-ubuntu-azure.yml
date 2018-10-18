@@ -12,7 +12,7 @@
         client_id: "{{ CLIENT_ID}}"
         secret: "{{ SERVICE_PRINCIPAL_SECRET }}"
         subscription_id: "{{ SUBSCRIPTION_ID }}"
-        location: "{{ DEFAULT_REGION }}"
+        location: "{{ DEFAULT_LOCATION }}"
         resource_group: "{{ PREFIX }}"
         name: "{{ NODE_NAME }}stract"
         account_type: Standard_LRS
@@ -23,7 +23,7 @@
         client_id: "{{ CLIENT_ID}}"
         secret: "{{ SERVICE_PRINCIPAL_SECRET }}"
         subscription_id: "{{ SUBSCRIPTION_ID }}"
-        location: "{{ DEFAULT_REGION }}"
+        location: "{{ DEFAULT_LOCATION }}"
         resource_group: "{{ PREFIX }}"
         name: "{{ NODE_NAME }}-server_int_nic"
         virtual_network: "{{ VNET1 }}"
@@ -71,7 +71,7 @@
                 source_address_prefix: '{{ RESTRICTED_SRC_ADDRESS }}'
                 destination_port_range: 22
                 access: Deny #Allow
-                priority: 102
+                priority: 103
                 direction: Inbound
 
     - name: Create {{ NODE_NAME }}-server Virtual Machine
@@ -80,7 +80,7 @@
         client_id: "{{ CLIENT_ID}}"
         secret: "{{ SERVICE_PRINCIPAL_SECRET }}"
         subscription_id: "{{ SUBSCRIPTION_ID }}"
-        location: "{{ DEFAULT_REGION }}"
+        location: "{{ DEFAULT_LOCATION }}"
         resource_group: "{{ PREFIX }}"
         name: "{{ NODE_NAME }}-server"
         vm_size: Standard_D1_v2
@@ -107,7 +107,7 @@
         client_id: "{{ CLIENT_ID}}"
         secret: "{{ SERVICE_PRINCIPAL_SECRET }}"
         subscription_id: "{{ SUBSCRIPTION_ID }}"
-        location: "{{ DEFAULT_REGION }}"
+        location: "{{ DEFAULT_LOCATION }}"
         name: External-Script-to-install-Backend-Services
         resource_group: "{{ PREFIX }}"
         virtual_machine_name: "{{ NODE_NAME }}-server"

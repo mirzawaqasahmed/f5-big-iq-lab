@@ -12,6 +12,9 @@ NC='\033[0m' # No Color
 ANSIBLE_PATH="/usr/local/bin"
 PYTHON_PATH="/usr/bin"
 
+PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
+MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
+
 function pause(){
    read -p "$*"
 }
@@ -66,6 +69,27 @@ echo -e "MAKE SURE THE AWS SSG HAS BEEN REMOVED COMPLETLY BEFORE PROCEEDING${NC}
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 12-teardown-aws-vpn-vpc-ubuntu.yml
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
+echo -e "\n${GREEN}Cleanup Customer Gateway (Seattle BIG-IP)${NC}\n"
+
+IPSEC_DESTINATION_ADDRESSES=$(cat cache/$PREFIX/3-customer_gateway_configuration.xml | awk -F'[<>]' '/<ip_address>/{print $3}' | grep 169)
+
+for ip in ${IPSEC_DESTINATION_ADDRESSES[@]}; do
+  echo "ssh admin@$MGT_NETWORK_UDF tmsh delete net self $ip"
+done
+
+ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels tunnel aws_conn_tun_1
+ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels tunnel aws_conn_tun_2
+ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels ipsec aws_conn_tun_1_profile
+ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels ipsec aws_conn_tun_2_profile
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ike-peer aws_vpn_conn_peer_1
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ike-peer aws_vpn_conn_peer_2
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec traffic-selector aws_conn_tun_1_selector
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec traffic-selector aws_conn_tun_2_selector
+ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ipsec-policy ipsec-policy-vpn-aws
+ssh admin@$MGT_NETWORK_UDF tmsh save sys config
+
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "Clear cache directory and *retry"

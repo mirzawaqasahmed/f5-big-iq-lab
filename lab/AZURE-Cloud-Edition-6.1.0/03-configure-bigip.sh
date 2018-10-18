@@ -69,7 +69,13 @@ ssh admin@$MGT_NETWORK_UDF tmsh save sys config
 echo -e "\n${GREEN}Restarting tmipsecd${NC}"
 ssh admin@$MGT_NETWORK_UDF bigstart restart tmipsecd
 
-echo -e "\n(refresh every 1 min if not = Connected)"
+# WA Tunnel
+sleep 20
+./wa_azure_vpn_down_bigip.sh
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+echo -e "\n(refresh every 1 min if not = Connected) -- Expected time: ${GREEN}10 min${NC}"
 while [[ $connectionStatus != "Connected" ]] 
 do
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
@@ -78,7 +84,6 @@ do
       echo -e "connectionStatus =${GREEN} $connectionStatus ${NC}"
     else
       echo -e "connectionStatus =${RED} $connectionStatus ${NC}"
-      #ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/ipsec.log
     fi
     sleep 60
 done

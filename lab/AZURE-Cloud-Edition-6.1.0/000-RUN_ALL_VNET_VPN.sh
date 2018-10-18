@@ -32,7 +32,7 @@ fi
 
 clear
 
-## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
+## if any variables are passed to the script ./000-RUN_ALL_VNET_VPN.sh (e.g. 000-RUN_ALL_VNET_VPN.sh nopause), no pause will happen during the execution of the script
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
@@ -53,12 +53,6 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-configure-bigip.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-echo -e "\n${GREEN}VPN status:${NC}\n"
-./check_vpn_azure.sh
-
-echo -e "\n${GREEN}IPsec logs on the BIG-IP SEA-vBIGIP01.termmarc.com${NC}"
-ssh admin@$MGT_NETWORK_UDF tail -10 /var/log/ipsec.log
 
 echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\n\n"
 

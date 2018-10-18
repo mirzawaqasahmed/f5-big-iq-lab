@@ -29,7 +29,7 @@ PREFIX: udf-<name>
 
 # Select on of  the region below (default East US) - westus, westeurope, eastasia, brazilsouth ...
 # run az account list-locations --output table
-DEFAULT_REGION: eastus
+DEFAULT_LOCATION: eastus
 
 # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
 # Fill the IP address returned by the nslookup here

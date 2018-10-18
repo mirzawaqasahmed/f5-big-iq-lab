@@ -63,7 +63,7 @@
                     "link": "https://localhost/mgmt/cm/device/templates/{{device_template_result.id}}"
                 },
                 "azureProperties": {
-                    "location": "{{DEFAULT_REGION}}",
+                    "location": "{{DEFAULT_LOCATION}}",
                     "mgmtSubnetName": "{{VNET_SUBNET1}}",
                     "vnetName": "{{VNET1}}",
                     "vnetResourceGroupName": "{{PREFIX}}",

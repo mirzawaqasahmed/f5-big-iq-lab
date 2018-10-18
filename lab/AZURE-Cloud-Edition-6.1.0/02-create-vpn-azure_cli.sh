@@ -22,7 +22,7 @@ SUBNET3_CIDR_BLOCK="$(cat config.yml | grep SUBNET3_CIDR_BLOCK | awk '{print $2}
 CUSTOMER_GATEWAY_IP="$(cat config.yml | grep CUSTOMER_GATEWAY_IP | awk '{print $2}')"
 EXT_NETWORK_UDF_VPN="$(cat config.yml | grep EXT_NETWORK_UDF_VPN | awk '{print $2}')"
 EXT_NETWORK_UDF_PEERING="$(cat config.yml | grep EXT_NETWORK_UDF_PEERING | awk '{print $2}')"
-DEFAULT_REGION="$(cat config.yml | grep DEFAULT_REGION | awk '{print $2}')"
+DEFAULT_LOCATION="$(cat config.yml | grep DEFAULT_LOCATION | awk '{print $2}')"
 LOCAL_GATEWAY="$(cat config.yml | grep LOCAL_GATEWAY | awk '{print $2}')"
 SHARED_KEY="$(cat config.yml | grep SHARED_KEY | awk '{print $2}')"
 ASN1="$(cat config.yml | grep ASN1 | awk '{print $2}')"
@@ -32,16 +32,18 @@ VNET_SUBNET1="$(cat config.yml | grep VNET_SUBNET1 | awk '{print $2}')"
 VNET_SUBNET2="$(cat config.yml | grep VNET_SUBNET2 | awk '{print $2}')"
 
 echo -e "\n${GREEN}Create a resource group${NC}"
-az group create --name $PREFIX --location $DEFAULT_REGION
+az group create --name $PREFIX --location $DEFAULT_LOCATION
 
 echo -e "\n${GREEN}Create a virtual network and subnet 1${NC}"
 az network vnet create \
   -n $VNET1 \
   -g $PREFIX \
-  -l $DEFAULT_REGION \
+  -l $DEFAULT_LOCATION \
   --address-prefix $VNET_CIDR_BLOCK \
   --subnet-name $VNET_SUBNET1 \
   --subnet-prefix $SUBNET1_CIDR_BLOCK
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Create subnet 2${NC}"
 az network vnet subnet create \
@@ -49,6 +51,8 @@ az network vnet subnet create \
   -n $VNET_SUBNET2 \
   -g $PREFIX \
   --address-prefix $SUBNET2_CIDR_BLOCK
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Add a gateway subnet${NC}"
 az network vnet subnet create \
@@ -60,16 +64,20 @@ az network vnet subnet create \
 echo -e "\n${GREEN}View the subnets${NC}"
 az network vnet subnet list -g $PREFIX --vnet-name $VNET1 --output table
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${GREEN}Request a public IP address${NC}"
 az network public-ip create \
   -n VNet1GWIP \
   -g $PREFIX \
   --allocation-method Dynamic 
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${GREEN}Create the VPN gateway${NC}"
 az network vnet-gateway create \
   -n VNet1GW \
-  -l $DEFAULT_REGION \
+  -l $DEFAULT_LOCATION \
   --public-ip-address VNet1GWIP \
   -g $PREFIX \
   --vnet $VNET1 \
@@ -80,7 +88,7 @@ az network vnet-gateway create \
   --sku HighPerformance \
   --no-wait
 
-echo -e "\n(refresh every 1 min if not = Succeeded)"
+echo -e "\n(refresh every 1 min if not = Succeeded) -- Expected time: ${GREEN}30 min${NC}"
 while [[ $provisioningState != "Succeeded" ]] 
 do
     provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')
@@ -92,6 +100,8 @@ do
     fi
     sleep 60
 done
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}View the public IP address${NC}"
 az network public-ip show \
@@ -113,6 +123,8 @@ bgpPeeringAddress=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.bg
 bgpPeeringAddress=${bgpPeeringAddress:1:${#bgpPeeringAddress}-2}
 echo -e "\nbgpPeeringAddress =${BLUE} $bgpPeeringAddress ${NC}"
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 echo -e "\n${GREEN}Create the local network gateway${NC}"
 az network local-gateway create \
    --gateway-ip-address $CUSTOMER_GATEWAY_IP \
@@ -122,18 +134,22 @@ az network local-gateway create \
    --bgp-peering-address $EXT_NETWORK_UDF_PEERING \
    --asn $ASN2
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 # To modify the local network gateway 'gatewayIpAddress'
 # az network local-gateway update --gateway-ip-address $CUSTOMER_GATEWAY_IP --name $LOCAL_GATEWAY --resource-group $PREFIX
 
-echo -e "\n${GREEN}Create the VPN connection${NC}"
+echo -e "\n${GREEN}Create the VPN connection${NC} -- Expected time: ${GREEN}5 min${NC}"
 az network vpn-connection create \
     --n $PREFIXVPN \
     --resource-group $PREFIX \
     --vnet-gateway1 VNet1GW \
-    -l $DEFAULT_REGION \
+    -l $DEFAULT_LOCATION \
     --shared-key $SHARED_KEY \
     --local-gateway2 $LOCAL_GATEWAY #\
     #--enable-bgp
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Verify the VPN connection${NC}"
 az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX --output table
