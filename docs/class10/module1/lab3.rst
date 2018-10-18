@@ -21,7 +21,9 @@ Type a Name for the DNS profile: **DNSprofile**
 
 Select a Parent Profile from which this profile inherits settings: **/Common/dns**
 
-|image11|
+.. image:: ../media/module1_lab3_1.png
+  :align: center
+  :scale: 50%
 
 Select the options you want to override from the parent DNS profile.
 
@@ -29,7 +31,9 @@ These options perform the same function as they do on a BIG-IP device.
 
 Under DNS Features, check the **Use BIND Server on BIG-IP**, and select **Disabled**.
 
-|image12|
+.. image:: ../media/module1_lab3_2.png
+  :align: center
+  :scale: 50%
 
 When your edits are complete, click Save & Close.
 
@@ -38,10 +42,11 @@ The system creates the new profile you specified and adds it to the list of prof
 .. NOTE::
 	 When you edit a default profile, you cannot override the parent profile settings, because default profiles do not have a parent.
 
+Since we intend to use this new Profile when we create a Listener, it's necessary to Deploy it to the devices ahead of the Listener deployment.
 
-.. |image11| image:: media/image12.png
-   :width: 5.76250in
-   :height: 4.75833in
-.. |image12| image:: media/image13.png
-   :width: 5.39583in
-   :height: 5.36250in
+..NOTE::
+	When you attempt to deploy a Listener that references a Profile that doesn't exist on the target device, you will receive and error.
+
+**Deploying your DNS Profile**
+Navigate to the 
+
