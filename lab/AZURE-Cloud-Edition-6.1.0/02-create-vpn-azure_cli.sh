@@ -88,7 +88,7 @@ az network vnet-gateway create \
   --sku HighPerformance \
   --no-wait
 
-echo -e "\n(refresh every 1 min if not = Succeeded) -- Expected time: ${GREEN}30 min${NC}"
+echo -e "\n(refresh every 1 min if not = Succeeded) -- Expected time: ${GREEN}~30 min${NC}"
 while [[ $provisioningState != "Succeeded" ]] 
 do
     provisioningState=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.ipConfigurations' | jq '.[].provisioningState')
@@ -139,7 +139,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 # To modify the local network gateway 'gatewayIpAddress'
 # az network local-gateway update --gateway-ip-address $CUSTOMER_GATEWAY_IP --name $LOCAL_GATEWAY --resource-group $PREFIX
 
-echo -e "\n${GREEN}Create the VPN connection${NC} -- Expected time: ${GREEN}5 min${NC}"
+echo -e "\n${GREEN}Create the VPN connection${NC} -- Expected time: ${GREEN}~5 min${NC}"
 az network vpn-connection create \
     --n $PREFIXVPN \
     --resource-group $PREFIX \

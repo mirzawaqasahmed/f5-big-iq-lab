@@ -75,7 +75,7 @@ sleep 20
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n(refresh every 1 min if not = Connected) -- Expected time: ${GREEN}10 min${NC}"
+echo -e "\n(refresh every 1 min if not = Connected) -- Expected time: ${GREEN}~10 min${NC}"
 while [[ $connectionStatus != "Connected" ]] 
 do
     connectionStatus=$(az network vpn-connection show --name $PREFIXVPN --resource-group $PREFIX  | jq '.connectionStatus')
