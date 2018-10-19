@@ -2,6 +2,7 @@
 ## Traffic Generator (HTTP)
 */3 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
+@reboot perl -le 'sleep 900 && /home/f5/scripts/generate_http_bad_traffic.sh
 ## DOS fake data
 */10 * * * * /home/f5/scripts/generate_dos_fake.sh > /dev/null 2>&1
 ## AFM data
