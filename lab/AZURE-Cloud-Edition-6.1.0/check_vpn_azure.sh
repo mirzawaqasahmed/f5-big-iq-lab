@@ -38,9 +38,9 @@ az network vnet-gateway show \
   -g $PREFIX \
   --output table
 
-bgpPeeringAddress=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.bgpSettings.bgpPeeringAddress')
-bgpPeeringAddress=${bgpPeeringAddress:1:${#bgpPeeringAddress}-2}
-echo -e "\nbgpPeeringAddress =${BLUE} $bgpPeeringAddress ${NC}"
+#bgpPeeringAddress=$(az network vnet-gateway show -n VNet1GW -g $PREFIX | jq '.bgpSettings.bgpPeeringAddress')
+#bgpPeeringAddress=${bgpPeeringAddress:1:${#bgpPeeringAddress}-2}
+#echo -e "\nbgpPeeringAddress =${BLUE} $bgpPeeringAddress ${NC}"
 
 echo -e "\n${GREEN}View the public IP address${NC}"
 az network public-ip show \
