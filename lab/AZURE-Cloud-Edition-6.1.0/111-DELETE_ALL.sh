@@ -33,6 +33,8 @@ TENANT_ID=$(grep TENANT_ID ./config.yml | awk '{ print $2}')
 CLIENT_ID=$(grep CLIENT_ID ./config.yml | awk '{ print $2}')
 SERVICE_PRINCIPAL_SECRET=$(grep SERVICE_PRINCIPAL_SECRET ./config.yml | awk '{ print $2}')
 
+IPSEC_DESTINATION_ADDRESS1=$(grep IPSEC_DESTINATION_ADDRESS1 ./config.yml | awk '{ print $2}')
+
 if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nNo Azure SSG created, nothing to tear down.\n${NC}"
        exit 1

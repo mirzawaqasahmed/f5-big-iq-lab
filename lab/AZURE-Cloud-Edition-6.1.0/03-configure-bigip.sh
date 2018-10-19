@@ -15,10 +15,10 @@ VNET_CIDR_BLOCK="$(cat config.yml | grep VNET_CIDR_BLOCK | awk '{print $2}')"
 PREFIX="$(head -40 config.yml | grep PREFIX | awk '{print $2}')"
 PREFIXVPN="$PREFIX-vpn"
 
-IPSEC_DESTINATION_NETWORK="169.253.1.32"
-IPSEC_DESTINATION_ADDRESS1="169.253.1.33"
-IPSEC_DESTINATION_ADDRESS2="169.253.1.34"
-IPSEC_DESTINATION_MASK="30"
+IPSEC_DESTINATION_NETWORK=$(grep IPSEC_DESTINATION_NETWORK ./config.yml | awk '{ print $2}')
+IPSEC_DESTINATION_ADDRESS1=$(grep IPSEC_DESTINATION_ADDRESS1 ./config.yml | awk '{ print $2}')
+IPSEC_DESTINATION_ADDRESS2=$(grep IPSEC_DESTINATION_ADDRESS2 ./config.yml | awk '{ print $2}')
+IPSEC_DESTINATION_MASK=$(grep IPSEC_DESTINATION_MASK ./config.yml | awk '{ print $2}')
 
 ssh-copy-id admin@$MGT_NETWORK_UDF > /dev/null 2>&1
 
