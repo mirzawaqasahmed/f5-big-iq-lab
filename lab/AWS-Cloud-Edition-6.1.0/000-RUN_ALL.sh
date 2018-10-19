@@ -140,6 +140,9 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # add ab in crontab to simulate traffic
 echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
+# write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
+echo $ELB_DNS >> /home/f5/scripts/ssg-apps
+
 if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
    ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
    (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$ELB_DNS/" ) | crontab -

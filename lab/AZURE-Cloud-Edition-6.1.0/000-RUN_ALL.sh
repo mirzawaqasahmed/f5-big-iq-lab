@@ -108,6 +108,9 @@ echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
 # Get App FQDN
 appfqdn=$(az network public-ip show --resource-group $PREFIX --name $APP_FQDN | jq '.dnsSettings.fqdn')
 appfqdn=${appfqdn:1:${#appfqdn}-2}
+# write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
+echo $appfqdn >> /home/f5/scripts/ssg-apps
+
 (crontab -l ; echo "* * * * * /usr/bin/ab -n 1000 -c 500 https://$appfqdn/" ) | crontab -
 echo -e "\nAplication URL:${RED} https://$appfqdn"
 

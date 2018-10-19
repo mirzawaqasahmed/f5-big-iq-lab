@@ -25,13 +25,22 @@ sitefqdn[14]="site36.example.com"
 sitefqdn[15]="site38.example.com"
 sitefqdn[16]="site40.example.com"
 sitefqdn[17]="site42.example.com"
+
+# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
+if [ -f /home/f5/scripts/ssg-apps ]; then
+        i=${#sitefqdn[@]}
+        SSGAPPS=$(cat /home/f5/scripts/ssg-apps)
+        for fqdn in ${SSGAPPS[@]}; do
+                i=$(($i+1))
+                sitefqdn[$i]="$fqdn"
+        done
+fi
+
 # for hackazon app on port 80 in a docker
 sitepages="index.php f5_browser_issue.php faq contact wishlist user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=64 product/view?id=72 product/view?id=78 product/view?id=81 product/view?id=101 product/view?id=112 product/view?id=113 product/view?id=130 product/view?id=141 product/view?id=142 product/view?id=150 product/view?id=169 product/view?id=191"
 
-
 # get length of the array
 arraylength=${#sitefqdn[@]}
-
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
