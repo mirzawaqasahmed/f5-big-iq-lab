@@ -80,7 +80,8 @@ echo -e "\n${GREEN}Cleanup Customer Gateway (Seattle BIG-IP)${NC}\n"
 IPSEC_DESTINATION_ADDRESSES=$(cat cache/$PREFIX/3-customer_gateway_configuration.xml | awk -F'[<>]' '/<ip_address>/{print $3}' | grep 169)
 
 for ip in ${IPSEC_DESTINATION_ADDRESSES[@]}; do
-  echo "ssh admin@$MGT_NETWORK_UDF tmsh delete net self $ip"
+  echo $ip
+  ssh admin@$MGT_NETWORK_UDF tmsh delete net self $ip
 done
 
 ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels tunnel aws_conn_tun_1
