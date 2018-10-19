@@ -13,18 +13,23 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AWS-Cloud-Edition
+#cd /home/f5/AWS-Cloud-Edition
 
-c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
+getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
+if [[ ! -z $getPublicIP ]]; then
+    sed -i "s/0.0.0.0/$getPublicIP/g" ./config.yml
+fi
+
+c1=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
-if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
-       echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - Prefix\n - Key Name\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
-	     echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VPC_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+if [[ $c1  == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
+       echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
+	   echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VPC_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -92,5 +97,7 @@ echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END 
 echo -e "/!\ The objects created in AWS will be automatically delete 23h after the deployment was started. /!\ "
 
 echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 exit 0

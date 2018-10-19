@@ -16,9 +16,13 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AZURE-Cloud-Edition
+#cd /home/f5/AZURE-Cloud-Edition
 
-c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
+getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
+if [[ ! -z $getPublicIP ]]; then
+    sed -i "s/$getPublicIP/0.0.0.0/g" ./config.yml
+fi
+
 c2=$(grep '<name>' ./config.yml | wc -l)
 c4=$(grep '<Subscription Id>' ./config.yml | wc -l)
 c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
@@ -35,7 +39,7 @@ SERVICE_PRINCIPAL_SECRET=$(grep SERVICE_PRINCIPAL_SECRET ./config.yml | awk '{ p
 
 IPSEC_DESTINATION_ADDRESS1=$(grep IPSEC_DESTINATION_ADDRESS1 ./config.yml | awk '{ print $2}')
 
-if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
+if [[ $c2  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nNo Azure SSG created, nothing to tear down.\n${NC}"
        exit 1
 fi

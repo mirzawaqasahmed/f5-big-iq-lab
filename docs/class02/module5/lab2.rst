@@ -4,8 +4,10 @@ Lab 4.2: Deploy our ``SSG`` in ``AZURE``
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
 we will automatically deploy it and review its configuration. 
 
-Retrieve our BIG-IP SEA Public IP 
-*********************************
+Retrieve our BIG-IP SEA Public IP (used only for troubleshooting)
+*****************************************************************
+
+.. note:: the IP will be retreived automatically by the VPN script.
 
 We will establish a ``VPN`` connection between our ``UDF`` environment and ``AZURE``. 
 This will be setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
@@ -89,7 +91,6 @@ Here are the settings you will need to change to deploy everything successfully:
 
 * AZURE_SSH_KEY: Use the ``AZURE Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
     but yours should have a different name.
-* CUSTOMER_GATEWAY_IP: Use the Public IP Address of your BIG-IP **SEA BIG-IP** that you retrieved earlier. 
 
 Save the config file. 
 
@@ -101,30 +102,41 @@ Here is an example of the updated **config.yml** file:
     ###########################         UPDATE VARIABLE BELOW          ###############################
     ##################################################################################################
 
-    AZURE_ACCESS_KEY_ID: *****************
-    AZURE_SECRET_ACCESS_KEY: *********************
+    # Enabling Azure Marketplace images for programmatic access
+    # On the Azure portal go to All Services
+    # In the General section, click on Marketplace
+    # Type in "F5 BIG-IP" in the Search Box to filter the items
+    # Click on each of the images and do the following
+    # Click on the "Want to deploy programmatically?"  link on the right
+    # Click on "Enable" and Save
+
+    # Select Azure Cloud for VNET and VPN creation: AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud
+    AZURE_CLOUD: AzureCloud
+    # Select Azure Cloud for BIG-IQ SSG: AZURE, AZURE_CHINA, AZURE_US_GOVERNMENT, AZURE_GERMANY
+    AZURE_BIGIQ_CLOUD: AZURE
+
+    SUBSCRIPTION_ID: <Subscription Id>
+    TENANT_ID: <Tenant Id>
+    CLIENT_ID: <Client Id>
+    SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
+    # web browser and access token to sign in (if set to yes, delete USERNAME AND PASSWORD variables)
+    USE_TOKEN: no
 
     # A unique searchable prefix to all resources which are created
     # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
-    PREFIX: udf-MENANT
+    PREFIX: udf-azure-demo
+    # Also used for the Azure Resource group name
 
-    # Select on of  the region below (default US EST N. Virginia)
-    DEFAULT_REGION: us-east-1
-    AZURE_AZ_1A: us-east-1a
-    AZURE_AZ_1B: us-east-1b
+    # Select on of  the region below (default East US) - westus, westeurope, eastasia, brazilsouth ...
+    # run az account list-locations --output table
+    DEFAULT_LOCATION: eastus
 
-    # Update your SSH AZURE KEY (EC2 > NETWORK & SECURITY > Key Pairs)
-    AZURE_SSH_KEY: CE-Lab-MENANT
-
-    # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
-    # Fill the IP address returned by the nslookup here
-    # /!\ IF THE IP ADDRESS ENDS WITH A x.x.x.0 (e.g. 129.43.54.0), DELETE YOUR DEPLOYMENT AND RESTART A NEW ONE.
-    CUSTOMER_GATEWAY_IP: 129.146.19.143
-
-    BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
+    # Adjust the BIG-IP Version based on your region 
+    BYOL_BIGIP_NAME: "f5-bigip-virtual-edition-best-byol"
+    BYOL_BIGIP_VERSION: "13.1.100000" #14.0.001000
 
 
-.. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Region
+.. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Location
 
 .. warning:: in your **config.yml** file, you have the default password that will be used for the admin user 
     This password will be enforced on all the VEs deployed in your ``SSG``. 
@@ -155,7 +167,7 @@ Look for this section in the file:
           body: >
             {
                 "name": "{{SSG_NAME}}",
-                "description": "AZURE scaling group",
+                "description": "Azure scaling group",
                 "environmentReference": {
                     "link": "https://localhost/mgmt/cm/cloud/environments/{{cloud_environment_result.id}}"
                 },
@@ -163,19 +175,20 @@ Look for this section in the file:
                 "maxSize": 3,
                 "maxSupportedApplications": 3,
                 "desiredSize": 1,
+                "providerType": "Azure",
                 "postDeviceCreationUserScriptReference": null,
                 "preDeviceDeletionUserScriptReference": null,
                 "scalingPolicies": [
                 {
                     "name": "scale-out",
-                    "cooldown": 15,
+                    "cooldown": 30,
                     "direction": "ADD",
                     "type": "ChangeCount",
                     "value": 1
                 },
                 {
                     "name": "scale-in",
-                    "cooldown": 15,
+                    "cooldown": 30,
                     "direction": "REMOVE",
                     "type": "ChangeCount",
                     "value": 1
@@ -193,7 +206,7 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
           body: >
             {
                 "name": "{{SSG_NAME}}",
-                "description": "AZURE scaling group",
+                "description": "Azure scaling group",
                 "environmentReference": {
                     "link": "https://localhost/mgmt/cm/cloud/environments/{{cloud_environment_result.id}}"
                 },
@@ -201,19 +214,20 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
                 "maxSize": 3,
                 "maxSupportedApplications": 3,
                 "desiredSize": 2,
+                "providerType": "Azure",
                 "postDeviceCreationUserScriptReference": null,
                 "preDeviceDeletionUserScriptReference": null,
                 "scalingPolicies": [
                 {
                     "name": "scale-out",
-                    "cooldown": 15,
+                    "cooldown": 30,
                     "direction": "ADD",
                     "type": "ChangeCount",
                     "value": 1
                 },
                 {
                     "name": "scale-in",
-                    "cooldown": 15,
+                    "cooldown": 30,
                     "direction": "REMOVE",
                     "type": "ChangeCount",
                     "value": 1
@@ -237,59 +251,44 @@ You should see something like this:
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~/AZURE-Cloud-Edition$ nohup ./000-RUN_ALL.sh nopause &
-    f5@03a920f8b4c0410d8f:~/AZURE-Cloud-Edition$ tail -f nohup.out
+    f5student@b24c2f7914ba48efae:~/AZURE-Cloud-Edition$ ./000-RUN_ALL.sh
 
-    Did you subscribed and agreed to the software terms in AZURE Marketplace?
+    Did you subscribed and agreed to the software terms for 'F5 BIG-IP Virtual Edition - BEST - BYOL' in Azure Marketplace?
 
-    https://AZURE.amazon.com/marketplace/pp/B07G5MT2KT/
+    Enabling Azure Marketplace images for programmatic access:
+    - On the Azure portal go to All Services
+    - In the General section, click on Marketplace
+    - Type in 'F5 BIG-IP Virtual Edition - BEST - BYOL' in the Search Box to filter the items
+    - Click on each of the images and do the following
+    - Click on the 'Want to deploy programmatically?'  link on the right
+    - Click on 'Enable, then Save.'
 
+
+    EXPECTED TIME: ~45 min
 
     Press [Enter] key to continue... CTRL+C to Cancel
-    [DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
-    instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 
-    PLAY [Install and configure dependencies and verify environment] ************************************************************************************************************************
+    TIME:: 08:43
 
-    TASK [Gathering Facts] ******************************************************************************************************************************************************************
-    ok: [localhost]
+    Installation Azure CLI
 
-    TASK [command] **************************************************************************************************************************************************************************
-    changed: [localhost]
+    Set Cloud Name to  AzureCloud
 
-    TASK [command] **************************************************************************************************************************************************************************
-    changed: [localhost]
+    Login
+    [
+    {
+        "cloudName": "AzureCloud",
+        "id": "a3615-1030-41dfd-a146-dba5dfdfdf6a1b",
+        "isDefault": true,
+        "name": "f5-AZR-SEATTLE",
+        "state": "Enabled",
+        "tenantId": "abadssf66-905c-4wewe9-9wew8-d4f347sdsde33",
+        "user": {
+        "name": "dbwefsd23fc-fsdf5-4werw4-83wefwdf6-2b9wesdfsdf02b",
+        "type": "servicePrincipal"
+        }
+    }
 
-    TASK [command] **************************************************************************************************************************************************************************
-    changed: [localhost]
-
-    TASK [command] **************************************************************************************************************************************************************************
-    changed: [localhost]
-
-    TASK [command] **************************************************************************************************************************************************************************
-    changed: [localhost]
-
-    PLAY RECAP ******************************************************************************************************************************************************************************
-    localhost                  : ok=6    changed=5    unreachable=0    failed=0
-
-    [DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
-    instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-
-    PLAY [Deploy prerequisite infrastructure for SSG to AZURE] ********************************************************************************************************************************
-
-    TASK [Gathering Facts] ******************************************************************************************************************************************************************
-    ok: [localhost]
-
-    TASK [Set AZURE Region] *******************************************************************************************************************************************************************
-    changed: [localhost]
-
-    TASK [Retrieve available subnets] *******************************************************************************************************************************************************
-    ok: [localhost]
-
-    TASK [Fail if there aren't enough availability zones] ***********************************************************************************************************************************
-    skipping: [localhost]
-
-    TASK [Build VPC CloudFormation] *********************************************************************************************************************************************************
 
 At this stage, we should start deploying your environment in ``AZURE``. 
 In your ``AZURE Console``, go to **Services** > **CloudFormation**. 

@@ -21,11 +21,6 @@ AWS_AZ_1B: us-east-1b
 # Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
 AWS_SSH_KEY: <name_of_the_aws_key>
 
-# Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
-# Fill the IP address returned by the nslookup here
-# /!\ IF THE IP ADDRESS ENDS WITH A x.x.x.0 (e.g. 129.43.54.0), DELETE YOUR DEPLOYMENT AND RESTART A NEW ONE.
-CUSTOMER_GATEWAY_IP: 0.0.0.0
-
 # Adjust the AMI based on your region (EC2 > IMAGES > AMIs > Public Images)
 #BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
 BYOL_BIGIP_AMI: "ami-04e893bab1e8b9b10" # us-east-1 F5 Networks BIGIP-14.0.0.1-0.0.2 BYOL - All Modules 1 Boot Location
@@ -35,6 +30,11 @@ MODULE: WAF # LTM OR WAF
 ##################################################################################################
 ###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
 ##################################################################################################
+
+# Public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
+# The script will get the IP automatically, you should not need to update it.
+# dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+CUSTOMER_GATEWAY_IP: 0.0.0.0
 
 # VPC cidr block should encompass the subnets you specify
 VPC_CIDR_BLOCK: 172.100.0.0/16

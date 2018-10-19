@@ -4,8 +4,10 @@ Lab 4.2: Deploy our ``SSG`` in ``AWS``
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
 we will automatically deploy it and review its configuration. 
 
-Retrieve our BIG-IP SEA Public IP 
-*********************************
+Retrieve our BIG-IP SEA Public IP (used only for troubleshooting)
+*****************************************************************
+
+.. note:: the IP will be retreived automatically by the VPN script.
 
 We will establish a ``VPN`` connection between our ``UDF`` environment and ``AWS``. 
 This will be setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
@@ -84,12 +86,10 @@ Here are the settings you will need to change to deploy everything successfully:
         Use udf- in the prefix or your ``SSG`` deployment will fail
         
         Remember that the PREFIX must be 10 CHARACTERS MAX
-
-        
+  
 
 * AWS_SSH_KEY: Use the ``AWS Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
     but yours should have a different name.
-* CUSTOMER_GATEWAY_IP: Use the Public IP Address of your BIG-IP **SEA BIG-IP** that you retrieved earlier. 
 
 Save the config file. 
 
@@ -116,12 +116,8 @@ Here is an example of the updated **config.yml** file:
     # Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
     AWS_SSH_KEY: CE-Lab-MENANT
 
-    # Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
-    # Fill the IP address returned by the nslookup here
-    # /!\ IF THE IP ADDRESS ENDS WITH A x.x.x.0 (e.g. 129.43.54.0), DELETE YOUR DEPLOYMENT AND RESTART A NEW ONE.
-    CUSTOMER_GATEWAY_IP: 129.146.19.143
 
-    BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
+    BYOL_BIGIP_AMI: "ami-04e893bab1e8b9b10" # us-east-1 F5 Networks BIGIP-14.0.0.1-0.0.2 BYOL - All Modules 1 Boot Location
 
 
 .. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Region
@@ -201,6 +197,7 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
                 "maxSize": 3,
                 "maxSupportedApplications": 3,
                 "desiredSize": 2,
+                "providerType": "AWS",
                 "postDeviceCreationUserScriptReference": null,
                 "preDeviceDeletionUserScriptReference": null,
                 "scalingPolicies": [
@@ -242,7 +239,7 @@ You should see something like this:
 
     Did you subscribed and agreed to the software terms in AWS Marketplace?
 
-    https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
+    https://aws.amazon.com/marketplace/pp/B07G5MT2KT
 
 
     Press [Enter] key to continue... CTRL+C to Cancel

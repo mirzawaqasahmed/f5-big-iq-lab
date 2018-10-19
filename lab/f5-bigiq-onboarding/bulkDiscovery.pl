@@ -14,13 +14,15 @@
 my $program = $0;
 $program = `basename $program`;
 chomp $program;
-my $version = "v2.4.0.1";
+my $version = "v2.4.1";
 
+## BIG-IQ SUPPORT 5.4 up to 6.0.1
 ## CHANGE QUEUE
 # rewritten for BIG-IQ 5.0
 # modified for BIG-IQ 5.2 to include re-discoveries
 # modified to add BIG-IQ password prompt and fix uri bug
 # modified to add option to enable stats
+# Add pollTask function & correct option -t description
 #
 ## DESCRIPTION
 # This script reads a CSV file containing a list of BIG-IPs and then:
@@ -81,7 +83,7 @@ my %usage = (
     "a" =>  "Admin credentials for every BIG-IP (such as admin:admin) - overrides any creds in CSV",
     "r" =>  "Root credentials for every BIG-IP (such as root:default) - overrides root creds in CSV",
     "u" =>  "Update framework if needed, CSV value overrides this value if CSV value is not null",
-    "t" =>  "Not Enable Stats Collection",
+    "t" =>  "Disable Stats Collection",
     "g" =>  "access group name if needed, not required for re-discovery",
     "l" =>  "Discover LTM, this must be included for initial discovery and import of services",
     "p" =>  "Discover APM",
@@ -107,7 +109,7 @@ if (defined $opt_h && $opt_h) {
     print "The -l option must be included when performing initial trust, discovery and import of services.\n";
     print "The -m option must be used for re-discovery if any BIG-IP requires a framework upgrade.\n";
     print "The -n option can be used to skip service import, this is recommended if there are outstanding changes to be deployed\n";
-    print "The -t option can be used to enable stats collection on the device, recommended if DCD is present.\n";
+    print "The -t option can be used to disable stats collection on the device, do not use if DCD is present.\n";
     print "If a framework upgrade is required for any device, that device requires the administrator\n";
     print "and root credentials passed either in the CSV file or using the -a and -r options.\n";
     print "If a failure is encountered, the script logs the error and continues.\n";
@@ -522,6 +524,8 @@ for $bigip (@bigips) {
         $postBodyJson = encode_json(\%postBodyHash);
         $url = "https://localhost/mgmt/cm/shared/stats-mgmt/agent-install-and-config-task";
         $statsTask = postRequest($url, $postBodyJson, "Enabling Stat Collection for $mip");
+        my $statsTaskSelfLink = $statsTask->{"selfLink"};
+        $statsTask = &pollTask($bigiqCreds, $statsTaskSelfLink, $opt_v);
         my $statsStatus = $statsTask->{"status"};
         &printAndLog(STDOUT, 1, "$mip Stats Collection $statsStatus\n");
     }
