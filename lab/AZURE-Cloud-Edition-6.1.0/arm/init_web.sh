@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# add small delay to the install
+sleep 120
 ##### Install Artiom's awesome Demo App #####
 # install Docker
-apt-get -y install docker.io python-setuptools apache2-utils
+apt-get -y install docker.io
 # Spin up Docker Instances
 
 # Hackazon for AS3 with WAF:
