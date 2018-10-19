@@ -10,7 +10,7 @@ AWS_SECRET_ACCESS_KEY: <key_secret>
 
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
-PREFIX: udf-<name>
+PREFIX: udf-aws-demo
 
 # Select on of  the region below (default US EST N. Virginia)
 #us-east-1, us-east-2, us-west-1, us-west-2, us-west-3, eu-central-1, eu-west-1, eu-west-2, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2
