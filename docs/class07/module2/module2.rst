@@ -1,0 +1,18 @@
+Module 2: Network Tools and Logs
+================================
+``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+
+- Multi Device Packet Tester
+- Support AFM log aggregation and Visibility
+- Ability to rename an object related to firewall
+- GUI support device dos multi-editing function
+
+.. image:: ../../pictures/under-construction-03.jpg
+  :align: center
+  :scale: 10%
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   lab*
