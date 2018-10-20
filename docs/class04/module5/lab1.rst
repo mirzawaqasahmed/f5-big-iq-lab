@@ -46,7 +46,6 @@ This automation scenario is composed of 4 parts:
         # ./cmd_bigiq_onboard_reset.sh pause
 
     The script will do in this order:
-
     1. Delete existing applications
     2. Execute the ``clear-rest-storage -d`` command on both BIG-IQ CM and DCD
     3. Uninstall existing ansible-galaxy roles (if any)
@@ -67,7 +66,6 @@ This automation scenario is composed of 4 parts:
 |
 
     The script will perform in this order:
-
         1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).
         2. Install ansible-galaxy roles
         3. Onboarding BIG-IQ CM and DCD:
