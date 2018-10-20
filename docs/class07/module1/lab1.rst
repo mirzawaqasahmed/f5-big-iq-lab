@@ -13,7 +13,7 @@ F5 Advanced Firewall Manager (AFM) configurations are built-up using a series of
 3. Edit the *Name* field, using the name ``deployed_app_destinations``
 4. Click the *Addresses* button on left side of screen
 5. Click the *Type* field to review the available options, then select *Address*
-6. Add the address 10.1.10.118, and use site18 in the description
+6. Add the address 10.1.10.136, and use site36 in the description
 7. Click *Update*, then click *Save & Close* from bottom right
 
 Create another address list identifying some known bad sources to block (small subset for Spamhaus EDROP):
@@ -85,7 +85,7 @@ In this section, we will experiment with the various methods of re-ordering, edi
 4. Right click newly created rule, and select *Paste Before*.  The rule we copied from the ``deployed_app_filters`` has now been inserted in our new rule list.
 .. note :: You can use Copy Rule and then Paste Rule between rule lists.  However, if you use the Cut Rule option and then paste betweeen rule lists, the cut rule will not be removed from the rule list.
 
-5. Click the pencil next the rule you just inserted to edit the rule.  Click the "x" next to the ``deployed_app_destinations`` and ``deployed_web_app_ports`` lists to clear these fields from the rule.
+5. Click the pencil next the rule you just inserted to edit the rule.  Click the "x" next to the ``deployed_app_destinations`` and ``deployed_app_ports`` lists to clear these fields from the rule.
 
 .. note :: When editing a rule not all fields can be cleared, but you can remove the contents of the following fields:
  - Address (source or destination)
@@ -120,7 +120,7 @@ Ultimately, the rule lists we worked with in the previous section are associated
 
 1. Under *Configuration* > *Security* > *Network Security*, click *Firewall Policies*
 2. Click *Create* to create a new firewall policy
-3. Give the policy the name ``f5-afm-policy_118``, and click *Rules* button
+3. Give the policy the name ``f5-afm-policy_136``, and click *Rules* button
 4. Click *Add Rule List* button, and select the ``deployed_app_filters`` rule list created previously, and click Add.
 5. The ``deployed_app_filters`` rule list will be added to the firewall policy, named as ``Reference_To_deployed_app_filters``.  From here, you can click the carrot beneath the rule ID and see the details of the rules that are part of the associated rule lists.
 6. At the bottom on the Policy Editor screen, look at the Shared Objects view.  Click the drop down to see what Shared Objects can be added to a firewall policy.  
@@ -148,125 +148,13 @@ As mentioned, firewall policies can be attached to various contexts within a BIG
 3. Click the global context for the device ``SEA-vBIGIP01.termmarc.com``
 4. Examine the *Properties* page.  A firewall policy can be attached as an *Enforced Firewall Policy* or a *Staged Firewall Policy*
 5. From the *Shared Objects* section on bottom of screen, select *Firewall Policies*
-6. Drag the ``f5-afm-policy_118`` policy into the row for *Enforced Firewall Policy*
+6. Drag the ``f5-afm-policy_136`` policy into the row for *Enforced Firewall Policy*
 - Shared objects (Firewall Policies, Service Policies, NAT Policies) can be dragged and dropped into the context.
 7. Click *Cancel*
 8. Clear the filter for Global. If interested, you can repeat the above steps for Self-IP, Route Domain, and/or VIP.
 
 .. note :: To this point in the lab, we have not actually deployed any configuration to BIG-IP's.  All of our configuration has been created exclusively on BIG-IQ.  You can create a deployment now to push the objects that we have created, but we will do this as part of an application template update in a subsequent step.
 
-Lab 1.4: Configure BIG-IQ Logging for AFM
-******************************************
-As of BIG-IQ 6.0, BIG-IQ supports remote log collecting and viewing for AFM policies.  The below steps will take you through the configuration required to support this feature:
-
-1. Under *Configuration* > *Security* > *Network Security*, click *Contexts*
-2. In the search bar in the upper right corner, search for ``site18``
-3. Click the checkbox next to the lock symbol to select both the http and https virtual servers returned from search.
-4. The *Configure Logging* button should now be available to click, click it.  
-
-Unlike ASM logging configurations, Network Firewall logging configurations reference a number of system objects including: log publishers, destination, high speed log pools, and associated pool objects.  In order to create a logging profile to logs firewall events, these objects must already exist on the system.  By clicking *Configure Logging* BIG-IQ will create, if necessary, all the dependent objects and then create the logging profile that creates the objects.  BIG-IQ will display the dialog below, which outlines the objects that are being created:
-
-.. image:: ../pictures/module1/afm_configure_logging_dialog.png
-  :align: center
-  :scale: 50%
-
-
-5. Under *Configuration* > *Security* > *Network Security* > *Shared Security*, click *Logging Profiles*
-6. Click the ``afm-remote-logging-profile`` created by BIG-IQ in previous step, the *Network Firewall* tab on left
-7. Examine the options set by BIG-IQ when creating the logging profile.
-
-.. note :: per https://support.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-security-6-0-1/23.html#guid-525b3d56-f673-4569-85a5-0b979cb2cb35, none of the objects created in this manner should be modified.  Need to confirm whether this is the case.  Certainly seems reasonable that a customer would want to tweak these settings to meet their requirements.
-
-8. Click *Cancel*
-
-At this point, we have created all the objects necessary for logging firewall events.  However, we do need to verify that the Data Collection Devices (DCD) being used for this lab have the Network Security Service enabled.  To do this, follow the following steps:
-
-1. We are currently logged in as Larry, the security manager, we need to log out of this role.  Then log in as the admin user.
-2. Under *System* > *BIG-IQ Data Collection*, click *BIG-IQ Data Collection Devices*
-3. Click on the device ``bigiq1dcd.example.com``, and click *Services* on left side.
-4. Scroll down to *Network Security* and verify that service status is *Active*.  If not, activate.
-5. Log out of system as Admin, and log back in as Larry.
-
-
-Lab 1.4: Create new Application Template Using Firewall objects
-****************************************************************
-In this lab, we are going to attach our newly created firewall policies to application templates.
-
-1. Under *Configuration* > *Security* > *Network Security*, click *Firewall Policies*
-2. Click the checkbox next to ``f5-afm-policy_118``
-3. Click the dropdown box on the *More* button and select *make available for templates*
-- the firewall policy is now available for use with application templates on BIG-IQ
-4. Click *Configuration* > *Security* > *Shared Security*, click *Logging Profiles*
-5. Click the checkbox next to ``afm-remote-logging-profile``
-6. Click the button *Make available for templates*
-- the afm-remote-logging-profile is the logging profile BIG-IQ created for us when we configured logging in the previous exercise.
-
-With the objects we created available for use with templates, we will now create a new template to use which references these objects.
-
-For the steps below, we will use the *Marco* account to manipulate application templates
-1. Under *Applications* > *Service Catalog* 
-2. Check the box next to the ``Default-f5-HTTPS-WAF-lb-template``, click the dropdown box on the *More* button and select *Clone*
-3. Name the cloned policy ``Default-f5-HTTPS-WAF-FW-lb-template``
-4. Once editing the new template, select the *Security Policies* button
-5. In the *Network Security* section, set the Enforced Firewall Policy to ``f5-afm-policy_118`` for both virtual servers.
-6. In the *Shared Security* section, set the Logging Profiles to ``afm-remote-logging-profile`` for both virtual servers on the Standalone Device.
-7. Click *Save & Close*
-8. From the Service Catalog screen, select the template you just created ``Default-f5-HTTPS-WAF-FW-lb-template``, the click the *Publish* button.
-
-At this point, we have created a new application template that is using our newly created firewall policy and logging profiles.  Next, we will associate an existing application with our new template.
-
-
-Lab 1.5: Update Existing Application To Use New Application Template:
-**********************************************************************
-In previous labs, we have created and deployed a new application using a fresh template.  In this exercise, we are going to update an existing application to use a new template.
-
-Complete the steps below logged in as *Marco*
-1. Click the *Applications* tab, and click the *Applications* button.
-2. Click the application ``site18.example.com``
-3. In the upper right hand corner, click *Switch to Template* button
-
-.. image:: ../pictures/module1/switch_to_template.png
-  :align: center
-  :scale: 50%
-
-4. Select the ``Default-f5-HTTPS-WAF-FW-lb-template`` we just created.
-5. In the template editor, in the Domain Names field, type site18.example.com
-6. Click *Save & Close*
-
- - This will take a few moments, but the existing application is being re-configured with our updated template, which references our new firewall policy.
-
-7. Once the application finishes deploying, click on the application ``site18.example.com``
-8. Click the *Security* label under *Application Services*
-9. Verify that the Network Firewall policy listed in the Security Configuration summary pane lists ``f5-afm-policy_118`` as the firewall policy.
-
-.. image:: ../pictures/module1/app_sec_summary.png
-  :align: center
-  :scale: 50%
-
-
-Lab 1.6 Monitoring Firewall Logging On BIG-IQ:
-***********************************************
-In this exercise, we will generate some traffic to be processes by the firewall policy, and use BIG-IQ monitoring to examine the results.
-
-Complete the steps below logged in as *Larry*
-1. Under *Monitoring* > *Events* > *Network Security*, click *Firewall*
-2. View the current Firewall Event log, in filter box, enter ``site18`` to filter the log for our test application
-- At this point, you probably will not have any events in the log.
-3. From the ``Ubuntu 18.04 Lamp Server`` open an SSH session.
-4. From the SSH session, run the following command:
-.. code::cli
-sudo nmap -sS 10.1.10.118 -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
-
-This will use the nmap program to scan our test application using several different source addresses.  Our firewall policy will not allow all of the sources.
-
-5. Refresh the Firewall Event Log.  This time you should see a number of events in the firewall log.
-6. Click one of the events, and examine the details available
-
-.. image:: ../pictures/module1/firewall_log_drop.png
-  :align: center
-  :scale: 50%
-
-Why is the Firewall Event log not showing accepted connections, only drops?  <HINT: check the remote-afm-logging-profile>
 
 
 
