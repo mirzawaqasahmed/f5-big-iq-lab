@@ -86,6 +86,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 # WA Tunnel
 sleep 20
 ./wa_aws_vpn_down_bigip.sh
+../AZURE-Cloud-Edition/wa_azure_vpn_down_bigip.sh
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

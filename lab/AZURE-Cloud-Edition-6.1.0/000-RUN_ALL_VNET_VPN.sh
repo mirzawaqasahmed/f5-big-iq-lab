@@ -31,7 +31,7 @@ MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
 if [[ $c1  == 1 || $c2  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credentials\n - Azure Location\n - Prefix (optional)"
-	   echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VNET_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+	   echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VNET_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL_VPC_VPN.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -58,6 +58,11 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-configure-bigip.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+# WA Tunnel
+sleep 20
+../AWS-Cloud-Edition/wa_aws_vpn_down_bigip.sh
+../wa_azure_vpn_down_bigip.sh
 
 echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\nYou can also run ./wa_azure_vpn_down_bigip.sh\n"
 

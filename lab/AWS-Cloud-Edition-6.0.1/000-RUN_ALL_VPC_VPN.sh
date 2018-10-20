@@ -30,7 +30,7 @@ MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 
 if [[ $c1  == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
-       echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VPC_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+       echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VPC_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL_VPC_VPN.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
