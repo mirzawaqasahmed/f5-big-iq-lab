@@ -1,8 +1,7 @@
-Lab 1.1: Create and Deploy Firewall Objects to Secure Applications
-
 Lab 1.1: Create Shared Firewall Objects
 ****************************************
-F5 Advanced Firewall Manager (AFM) configurations are built-up using a series of smaller object containers.  For example, a firewall policy may contain one or more rule lists, which contain firewall rules in an ordered list; a rule in  a rule list may contain one or more address lists, which contain lists of addresses or networks, and/or one or more port lists, which contain lists of ports.  Building firewall policies through a series of smaller building blocks, allows for object re-use across all firewall objects, and when managed through BIG-IQ allows for simple re-use of firewall objects across an entire fleet for F5 AFM instances.  In this excercise, we will create a few shared objects to be used in subsequent exercises for building a firewall policy.
+F5 Advanced Firewall Manager (AFM) configurations are built-up using a series of smaller object containers. 
+For example, a firewall policy may contain one or more rule lists, which contain firewall rules in an ordered list; a rule in  a rule list may contain one or more address lists, which contain lists of addresses or networks, and/or one or more port lists, which contain lists of ports.  Building firewall policies through a series of smaller building blocks, allows for object re-use across all firewall objects, and when managed through BIG-IQ allows for simple re-use of firewall objects across an entire fleet for F5 AFM instances.  In this excercise, we will create a few shared objects to be used in subsequent exercises for building a firewall policy.
 
 .. note:: All steps in this lab will be completed using the persona Larry.
 
@@ -188,7 +187,7 @@ At this point, we have created all the objects necessary for logging firewall ev
 5. Log out of system as Admin, and log back in as Larry.
 
 
-Lab 1.4: Create new Application Template Using Firewall objects
+Lab 1.5: Create new Application Template Using Firewall objects
 ****************************************************************
 In this lab, we are going to attach our newly created firewall policies to application templates.
 
@@ -216,7 +215,7 @@ For the steps below, we will use the *Marco* account to manipulate application t
 At this point, we have created a new application template that is using our newly created firewall policy and logging profiles.  Next, we will associate an existing application with our new template.
 
 
-Lab 1.5: Update Existing Application To Use New Application Template:
+Lab 1.6: Update Existing Application To Use New Application Template:
 **********************************************************************
 In previous labs, we have created and deployed a new application using a fresh template.  In this exercise, we are going to update an existing application to use a new template.
 
@@ -244,7 +243,7 @@ Complete the steps below logged in as *Marco*
   :scale: 50%
 
 
-Lab 1.6 Monitoring Firewall Logging On BIG-IQ:
+Lab 1.7: Monitoring Firewall Logging On BIG-IQ:
 ***********************************************
 In this exercise, we will generate some traffic to be processes by the firewall policy, and use BIG-IQ monitoring to examine the results.
 
