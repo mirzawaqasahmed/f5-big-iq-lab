@@ -1,7 +1,7 @@
 Lab 2.1: Configure and Use BIG-IQ Logging for AFM
 --------------------------------------------------
 
-.. note :: This lab uses firewall objects created on Class 7 Module 1, and also uses previously created application deployments (site36.example.com).  Please verify the application site36.example.com is a currently deployed application in your environment, and complete the steps in Module 1 before proceeding with steps below
+.. note:: This lab uses firewall objects created on Class 7 Module 1, and also uses previously created application deployments (site36.example.com).  Please verify the application site36.example.com is a currently deployed application in your environment, and complete the steps in Module 1 before proceeding with steps below
 
 
 As of BIG-IQ 6.0, BIG-IQ supports remote log collecting and viewing for AFM policies.  The below steps will take you through the configuration required to support this feature:
@@ -22,7 +22,7 @@ Unlike ASM logging configurations, Network Firewall logging configurations refer
 6. Click the ``afm-remote-logging-profile`` created by BIG-IQ in previous step, the *Network Firewall* tab on left
 7. Examine the options set by BIG-IQ when creating the logging profile.
 
-.. note :: per https://support.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-security-6-0-1/23.html#guid-525b3d56-f673-4569-85a5-0b979cb2cb35, none of the objects created in this manner should be modified.  Need to confirm whether this is the case.  Certainly seems reasonable that a customer would want to tweak these settings to meet their requirements.
+.. note:: per https://support.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-security-6-0-1/23.html#guid-525b3d56-f673-4569-85a5-0b979cb2cb35, none of the objects created in this manner should be modified.  Need to confirm whether this is the case.  Certainly seems reasonable that a customer would want to tweak these settings to meet their requirements.
 
 8. Click *Cancel*
 
@@ -101,7 +101,8 @@ Complete the steps below logged in as *Larry*
 - At this point, you probably will not have any events in the log.
 3. From the ``Ubuntu 18.04 Lamp Server`` open an SSH session.
 4. From the SSH session, run the following command:
-.. code::cli
+
+.. code:: console 
 sudo nmap -sS 10.1.10.118 -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
 
 This will use the nmap program to scan our test application using several different source addresses.  Our firewall policy will not allow all of the sources.
@@ -113,4 +114,5 @@ This will use the nmap program to scan our test application using several differ
   :align: center
   :scale: 50%
 
-Why is the Firewall Event log not showing accepted connections, only drops?  <HINT: check the remote-afm-logging-profile>
+Why is the Firewall Event log not showing accepted connections, only drops?  
+.. NOTE:: check the remote-afm-logging-profile
