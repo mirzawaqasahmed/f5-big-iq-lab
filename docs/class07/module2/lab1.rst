@@ -115,4 +115,4 @@ This will use the nmap program to scan our test application using several differ
   :scale: 50%
 
 Why is the Firewall Event log not showing accepted connections, only drops?  
-.. NOTE:: check the remote-afm-logging-profile
+.. HINT:: check the remote-afm-logging-profile
