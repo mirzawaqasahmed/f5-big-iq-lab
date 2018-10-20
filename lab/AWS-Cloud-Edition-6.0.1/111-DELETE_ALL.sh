@@ -18,12 +18,16 @@ function pause(){
 
 cd /home/f5/AWS-Cloud-Edition
 
-c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
+getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
+if [[ ! -z $getPublicIP ]]; then
+    sed -i "s/$getPublicIP/0.0.0.0/g" ./config.yml
+fi
+
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 
-if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
+if [[ $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        echo -e "${RED}\nNo AWS SSG created, nothing to tear down.\n${NC}"
        exit 1
 fi

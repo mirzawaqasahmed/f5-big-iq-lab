@@ -11,23 +11,18 @@ AWS_BIGIQ_CLOUD: AWS
 AWS_ACCESS_KEY_ID: <key_id>
 AWS_SECRET_ACCESS_KEY: <key_secret>
 
+# Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
+AWS_SSH_KEY: <name_of_the_aws_key>
+
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
-PREFIX: udf-<name>
+PREFIX: udf-aws-demo
 
 # Select on of  the region below (default US EST N. Virginia)
 #us-east-1, us-east-2, us-west-1, us-west-2, us-west-3, eu-central-1, eu-west-1, eu-west-2, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2
 DEFAULT_REGION: us-east-1
 AWS_AZ_1A: us-east-1a
 AWS_AZ_1B: us-east-1b
-
-# Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
-AWS_SSH_KEY: <name_of_the_aws_key>
-
-# Get the public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
-# Fill the IP address returned by the nslookup here
-# /!\ IF THE IP ADDRESS ENDS WITH A x.x.x.0 (e.g. 129.43.54.0), DELETE YOUR DEPLOYMENT AND RESTART A NEW ONE.
-CUSTOMER_GATEWAY_IP: 0.0.0.0
 
 # Adjust the AMI based on your region (EC2 > IMAGES > AMIs > Public Images)
 #BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
@@ -38,6 +33,11 @@ MODULE: WAF # LTM OR WAF
 ##################################################################################################
 ###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
 ##################################################################################################
+
+# Public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
+# The script will get the IP automatically, you should not need to update it.
+# dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+CUSTOMER_GATEWAY_IP: 0.0.0.0
 
 # VPC cidr block should encompass the subnets you specify
 VPC_CIDR_BLOCK: 172.100.0.0/16

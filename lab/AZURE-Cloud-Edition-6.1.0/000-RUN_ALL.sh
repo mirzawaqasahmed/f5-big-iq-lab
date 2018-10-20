@@ -13,9 +13,14 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AZURE-Cloud-Edition
+#cd /home/f5/AZURE-Cloud-Edition
 
-c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
+getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
+if [[ ! -z $getPublicIP ]]; then
+    sed -i "s/0.0.0.0/$getPublicIP/g" ./config.yml
+fi
+
+c1=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c2=$(grep '<name>' ./config.yml | wc -l)
 c4=$(grep '<Subscription Id>' ./config.yml | wc -l)
 c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
@@ -23,12 +28,14 @@ c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
 PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
+APP_FQDN="$PREFIX-azure-ssg-$PREFIX-app-azure-pip"
 BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
+
 APP_FQDN="$(cat config.yml | grep APP_FQDN | awk '{print $2}')"
 
-if [[ $c == 1 || $c  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
-       echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credential\n - Azure Region\n - Prefix\n - Customer Gateway public IP address (SEA-vBIGIP01.termmarc.com's public IP)"
-	     echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VNET_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+if [[ $c1 == 1 || $c2  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
+       echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credentials\n - Azure Location\n - Prefix (optional)"
+       echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VNET_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -64,6 +71,11 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-configure-bigip.sh
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+# WA Tunnel
+sleep 20
+../AWS-Cloud-Edition/wa_aws_vpn_down_bigip.sh
+../wa_azure_vpn_down_bigip.sh
+
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
@@ -72,6 +84,7 @@ sudo pip install packaging > /dev/null 2>&1
 sudo pip install msrestazure > /dev/null 2>&1
 sudo pip install ansible[azure] > /dev/null 2>&1
 ansible-playbook $DEBUG_arg 04-docker-on-ubuntu-azure.yml > 04-docker-on-ubuntu-azure.log 2>&1 &
+tail -20 04-docker-on-ubuntu-azure.log 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\nYou can also run ./wa_azure_vpn_down_bigip.sh\n"
@@ -106,7 +119,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
 
 # Get App FQDN
-appfqdn=$(az network public-ip show --resource-group $PREFIX --name $APP_FQDN | jq '.dnsSettings.fqdn')
+appfqdn=$(az network public-ip show --resource-group $PREFIX-azure-ssg --name $APP_FQDN | jq '.dnsSettings.fqdn')
 appfqdn=${appfqdn:1:${#appfqdn}-2}
 # write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
 echo $appfqdn >> /home/f5/scripts/ssg-apps
@@ -124,5 +137,7 @@ echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END 
 echo -e "/!\ The objects created in  will be automatically delete 23h after the deployment was started. /!\ "
 
 echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 exit 0

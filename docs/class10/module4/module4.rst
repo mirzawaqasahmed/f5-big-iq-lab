@@ -1,5 +1,5 @@
-Module 4: DNS Anaytics
-======================
+Module 4: DNS Analytics
+=======================
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 

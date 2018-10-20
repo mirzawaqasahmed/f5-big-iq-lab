@@ -19,14 +19,18 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AWS-Cloud-Edition
+#cd /home/f5/AWS-Cloud-Edition
 
-c=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
+getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
+if [[ ! -z $getPublicIP ]]; then
+    sed -i "s/$getPublicIP/0.0.0.0/g" ./config.yml
+fi
+
 c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 
-if [[ $c == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
+if [[ $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
        echo -e "${RED}\nNo AWS SSG created, nothing to tear down.\n${NC}"
        exit 1
 fi
@@ -76,7 +80,8 @@ echo -e "\n${GREEN}Cleanup Customer Gateway (Seattle BIG-IP)${NC}\n"
 IPSEC_DESTINATION_ADDRESSES=$(cat cache/$PREFIX/3-customer_gateway_configuration.xml | awk -F'[<>]' '/<ip_address>/{print $3}' | grep 169)
 
 for ip in ${IPSEC_DESTINATION_ADDRESSES[@]}; do
-  echo "ssh admin@$MGT_NETWORK_UDF tmsh delete net self $ip"
+  echo $ip
+  ssh admin@$MGT_NETWORK_UDF tmsh delete net self $ip
 done
 
 ssh admin@$MGT_NETWORK_UDF tmsh delete net tunnels tunnel aws_conn_tun_1

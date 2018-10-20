@@ -5,7 +5,7 @@ Class 7: BIG-IQ Application Firewall Manager (AFM)
 
 In this class, we will review the managing F5 Advanced Firewall Manager deployments in BIG-IQ 6.0.
 
-Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
+Below Virtual Servers and Pool Members can be used in the context of the (UDF lab) for this class.
 
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
 

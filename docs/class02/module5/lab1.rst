@@ -21,7 +21,7 @@ When you want to deploy a ``SSG`` in ``AZURE``, you don't need to provide the sa
 
 To deploy our ``SSG`` in ``AZURE``, we will need to do a few things: 
 
-* Pick an ``AZURE Region``
+* Pick an ``AZURE Location``
 * Setup an ``IAM`` resource (Identity and Access Management) that will allow us to setup our ``SSG`` via 
   the ``AZURE`` API
 * Setup a ``Key Pair`` in the selected ``AZURE Region``

@@ -9,10 +9,10 @@
 
 # DEFAULT SSG ONBOARDING ARE 6.0.1 for AWS and 6.1.0 for Azure.
 # If you need to force AWS to use 6.1.0 updated scripts run, prior saving the blueprint.
-# user="f5student"; echo "6.1.0" > /home/$user/bigiq_version_aws
+# echo "6.1.0" > ~/bigiq_version_aws
 
 # BEFORE SAVING THE BLUEPRINT, DELETE udf_auto_update_git so new deployment will download the latest version of the lab scripts/tools.
-# user="f5student"; rm /home/$user/udf_auto_update_git 
+# rm ~/udf_auto_update_git 
 
 #####################################################
 
