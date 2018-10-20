@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Module 1: Network Security Firewall Objects
 ========================================================
  
