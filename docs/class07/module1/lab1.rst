@@ -1,7 +1,7 @@
 Lab1: Creating and Managing Network Firewall Objects
 -----------------------------------------------------
 
-Lab 1.1: Create Shared Firewall Objects
+Lab 1.1.1: Create Shared Firewall Objects
 **************************************
 
 F5 Advanced Firewall Manager (AFM) configurations are built-up using a series of smaller object containers. 
@@ -45,7 +45,7 @@ Create another address list identifying some known bad sources to block (small s
 7. Click *Update*, then click *Save & Close* from the bottom right
 
 
-Lab 1.2: Create Firewall Rules using Shared Firewall Objects
+Lab 1.1.2: Create Firewall Rules using Shared Firewall Objects
 *************************************************************
 Network firewalls use rules and rule lists to specify traffic-handling actions. The network software compares IP packets to the criteria specified in rules. If a packet matches the criteria, then the system takes the action specified by the rule. If a packet does not match any rule from the list, the software accepts the packet or passes it to the next rule or rule list. For example, the system compares the packet to self IP rules if the packet is destined for a network associated with a self IP address that has firewall rules defined.
 
@@ -116,7 +116,7 @@ In this section, we will work with various options for managing rule lists
 5. Click the *Delete* button.  In this case, our cloned rule list isn't being used, so it is safe to delete.  If, however, the rule list was in use BIQ would present a dialog box informing you that you cannot remove the rule list because it is in use.
 
 
-Lab 1.3: Create Firewall Policy, Publish, and Assign to Context
+Lab 1.1.3: Create Firewall Policy, Publish, and Assign to Context
 ****************************************************************
 Ultimately, the rule lists we worked with in the previous section are associated with a firewall policy for deployment.  Firewall policies, can be attached in multiple contexts (Global, Route Domain, Virtual Server, Self IP, and Management IP).  In this lab, we will explore using BIG-IQ to create a firewall policy, and look at options for attaching the policy in various contexts.  Finally, we will publish our firewall policy, and assign it to an application template.
 
