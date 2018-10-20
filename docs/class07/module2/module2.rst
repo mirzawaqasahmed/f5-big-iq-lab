@@ -1,15 +1,10 @@
 Module 2: Network Tools and Logs
 ================================
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
-
-- Multi Device Packet Tester
-- Support AFM log aggregation and Visibility
-- Ability to rename an object related to firewall
-- GUI support device dos multi-editing function
-
-.. image:: ../../pictures/under-construction-03.jpg
-  :align: center
-  :scale: 10%
+In this module, we will explore using BIG-IQ to centrally view AFM logs and leverage built-in tools to evaluate and monitor firewall policy.  Specifically, we will work with the following BIG-IQ features:
+ - Multi Device Packet Tester
+ - Support AFM log aggregation and Visibility
+ - Ability to rename an object related to firewall
+ - GUI support device dos multi-editing function
 
 .. toctree::
    :maxdepth: 1
