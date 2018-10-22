@@ -15,7 +15,7 @@ As of BIG-IQ 6.0, BIG-IQ supports remote log collecting and viewing for AFM poli
 
 Unlike ASM logging configurations, Network Firewall logging configurations reference a number of system objects including: log publishers, destination, high speed log pools, and associated pool objects.  In order to create a logging profile to logs firewall events, these objects must already exist on the system.  By clicking *Configure Logging* BIG-IQ will create, if necessary, all the dependent objects and then create the logging profile that creates the objects.  BIG-IQ will display the dialog below, which outlines the objects that are being created:
 
-.. image:: ../pictures/module1/afm_configure_logging_dialog.png
+.. image:: ../pictures/module2/afm_configure_logging_dialog.png
   :align: center
   :scale: 50%
 
@@ -75,7 +75,7 @@ Complete the steps below logged in as *Marco*
 2. Click the application ``site36.example.com``
 3. In the upper right hand corner, click *Switch to Template* button
 
-.. image:: ../pictures/module1/switch_to_template.png
+.. image:: ../pictures/module2/switch_to_template.png
   :align: center
   :scale: 50%
 
@@ -89,7 +89,7 @@ Complete the steps below logged in as *Marco*
 8. Click the *Security* label under *Application Services*
 9. Verify that the Network Firewall policy listed in the Security Configuration summary pane lists ``f5-afm-policy_136`` as the firewall policy.
 
-.. image:: ../pictures/module1/app_sec_summary.png
+.. image:: ../pictures/module2/app_sec_summary.png
   :align: center
   :scale: 50%
 
@@ -113,7 +113,7 @@ This will use the nmap program to scan our test application using several differ
 5. Refresh the Firewall Event Log.  This time you should see a number of events in the firewall log.
 6. Click one of the events, and examine the details available
 
-.. image:: ../pictures/module1/firewall_log_drop.png
+.. image:: ../pictures/module2/firewall_log_drop.png
   :align: center
   :scale: 50%
 

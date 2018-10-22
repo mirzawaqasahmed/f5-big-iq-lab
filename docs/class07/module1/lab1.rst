@@ -1,8 +1,8 @@
-Lab1: Creating and Managing Network Firewall Objects
+Lab 1.1: Creating and Managing Network Firewall Objects
 -----------------------------------------------------
 
 Lab 1.1.1: Create Shared Firewall Objects
-**************************************
+*******************************************
 
 F5 Advanced Firewall Manager (AFM) configurations are built-up using a series of smaller object containers. 
 For example, a firewall policy may contain one or more rule lists, which contain firewall rules in an ordered list; a rule in  a rule list may contain one or more address lists, which contain lists of addresses or networks, and/or one or more port lists, which contain lists of ports.  Building firewall policies through a series of smaller building blocks, allows for object re-use across all firewall objects, and when managed through BIG-IQ allows for simple re-use of firewall objects across an entire fleet for F5 AFM instances.  In this excercise, we will create a few shared objects to be used in subsequent exercises for building a firewall policy.
