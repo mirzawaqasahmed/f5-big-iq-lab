@@ -25,9 +25,8 @@ widip[9]="site40.example.com A"
 widip[10]="site42.example.com A"
 widip[11]="site38.example.com A"
 widip[12]="site36.example.com A"
-widip[13]="www.abc.com CNAME"
-widip[14]="www.google.com MX"
-widip[15]="www.yahoo.com TXT"
+widip[13]="canonical.example.com CNAME"
+widip[14]="mail.example.com MX"
 
 # get length of the array
 arraylength=${#sitelistener[@]}

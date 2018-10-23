@@ -99,7 +99,6 @@ do
                                 echo "Loop $k"
                                 #Randome IP
                                 source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                                source_ip_address2=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
 
                                 # add random number for browsers
                                 rb=`shuf -i 1-$arraylengthbrowser -n 1`;
