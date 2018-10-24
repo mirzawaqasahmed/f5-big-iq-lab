@@ -87,7 +87,7 @@ The system creates the new listener you specified and adds it to the list of lis
 
 | Name: **my-listener-udp**
 | BIG-IP Device: **BOS-vBIGIP01.termmarc.com** 
-| IP Address: **10.1.10.204 **
+| IP Address: **10.1.10.204**
 | DNS Profile: **DNSprofile**
 
 When you finish that, the BIG-IP device for which you created these
@@ -127,12 +127,4 @@ Now we can verify the Listener creation by logging into one of the BIG-IPs and c
 .. |image15| image:: media/image16.png
    :width: 6.50000in
    :height: 3.65625in
-.. |image16| image:: media/image17.png
-   :width: 6.49167in
-   :height: 3.90000in
-.. |image17| image:: media/image18.png
-   :width: 4.97500in
-   :height: 3.16250in
-.. |image18| image:: media/image19.png
-   :width: 6.50000in
-   :height: 2.20833in
+
