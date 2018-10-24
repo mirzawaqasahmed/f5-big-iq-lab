@@ -52,21 +52,26 @@ The screen displays the list of listeners defined on this device.
 
 2. Click Create.
 
+.. image:: ../pictures/module1/module1_lab4_1.png
+  :align: center
+  :scale: 50%
+
 The New Listener screen opens.
 
 3. Type a Name for the DNS listener: **my-listener-udp**
 
-4. Select a BIG-IP Device on which the DNS listener will run: **SEA-vBIGIP01.termmarc.com**
+4. Select a BIG-IP Device on which the DNS listener will run: **BOS-vBIGIP01.termmarc.com**
 
 5. In the Listener area, type the IP Address on which the BIG-IP system listens for connections: **10.1.10.204**
 
 The BIG-IP system receives traffic sent to this IP address and processes it as needed.
 
-|image16|
 
-6. Scroll down to the Service area and select the DNS Profile that defines how the listener handles DNS traffic: **mydnsprofile.**
+6. Scroll down to the Service area and select the DNS Profile that defines how the listener handles DNS traffic: **DNSprofile.**
 
-|image17|
+.. image:: ../pictures/module1/module1_lab4_2.png
+  :align: center
+  :scale: 50%
 
 The options are a list of system-supplied and user-defined DNS profiles.
 
@@ -78,19 +83,41 @@ Name, Device, Address, and DNS Profile are the only required parameters when
 
 The system creates the new listener you specified and adds it to the list of listeners.
 
-9. Create another listener with the same IPv4 address and configuration, but **select TCP from the Protocol list**.
+9. Create another listener with the same IPv4 address and configuration, but **select the second BOS BIG-IP**.
 
-| Name: **my-listener-tcp**
-| BIG-IP Device: **SEA-vBIGIP01.termmarc.com** 
+| Name: **my-listener-udp**
+| BIG-IP Device: **BOS-vBIGIP01.termmarc.com** 
 | IP Address: **10.1.10.204 **
-| DNS Profile: **mydnsprofile**
+| DNS Profile: **DNSprofile**
 
 When you finish that, the BIG-IP device for which you created these
 listeners will be able to receive DNS queries, handle wide IP requests,
 and forward all other DNS queries to members of the pool of DNS servers.
 
-|image18|
+.. image:: ../pictures/module1/module1_lab4_3.png
+  :align: center
+  :scale: 50%
 
+Now the Listener is ready to be deployed.
+Navigate to the Deployment tab, create a new DNS Deployment named **Listener-Deployment**, and select both BOS BIG-IP devices. Click **Create* at the bottom of the page.
+
+.. image:: ../pictures/module1/module1_lab4_4.png
+  :align: center
+  :scale: 50%
+
+Once the evaluation is complete, select the Deployment and click **Deploy**.
+
+.. image:: ../pictures/module1/module1_lab4_5.png
+  :align: center
+  :scale: 50%
+  
+Now we can verify the Listener creation by logging into one of the BIG-IPs and checking the list of current Listeners.
+
+.. image:: ../pictures/module1/module1_lab4_6.png
+  :align: center
+  :scale: 50%  
+  
+  
 .. |image13| image:: media/image14.png
    :width: 6.49583in
    :height: 3.07500in
