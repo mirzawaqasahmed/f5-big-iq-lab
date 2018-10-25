@@ -1,4 +1,4 @@
-Lab 1.2: Check DNS Sync Group Health
+Lab 1.1: Check DNS Sync Group Health
 ------------------------------------
 
 Before you can monitor the sync group health, you must add a BIG-IP

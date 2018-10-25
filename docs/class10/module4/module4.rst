@@ -30,7 +30,7 @@ The Services tab contains 7 different charts which essentially cover all the ser
   :align: center
   :scale: 50%
   
-The charts on the Attacks and Violations tab indicate Protocol Violations found in both hardware and software. The Hardware Protocol Violations are only implemented on the B2250 blade and this time. And, since we aren't generating bad DNS traffic these charts are empty.
+The charts on the Attacks and Violations tab indicate Protocol Violations found in both hardware and software. The Hardware Protocol Violations are only implemented on the B2250 blade at this time. And, since we aren't generating bad DNS traffic these charts are empty.
 
 .. image:: ../pictures/module4/Attacks-Violations.png
   :align: center

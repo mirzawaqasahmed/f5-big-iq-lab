@@ -1,4 +1,4 @@
-Lab 1.5: Managing permissions for GSLB Objects
+Lab 1.4: Managing permissions for GSLB Objects
 ----------------------------------------------
 
 **View GSLB objects**
