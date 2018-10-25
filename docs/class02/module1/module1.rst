@@ -48,7 +48,6 @@ different components:
 * ansible playbooks to handle the provisioning of our F5 virtual edition
 * our F5 cloud deployment templates
 
-  * `F5 AWS template <https://github.com/F5Networks/f5-aws-cloudformation>`_
   * `F5 VMWare template <https://github.com/F5Networks/f5-vmware-vcenter-templates>`_
 
 * f5 cloud libs
@@ -67,7 +66,7 @@ deployed in a certain manner:
 * This VS IP will be configured:
 
   * On all VEs part of the ``SSG``. This IP will be used to setup the relevant
-    All the Virtual editions part of the ``SSG`` will have have an
+    All the Virtual editions part of the ``SSG`` will have an
     **identical** Setup
   * On the tier 1/``Service Scaler`` cluster. ``BIG-IQ`` will setup a virtual server with the same IP
     and the following configuration

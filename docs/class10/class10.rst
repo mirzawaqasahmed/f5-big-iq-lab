@@ -1,10 +1,6 @@
 Class 10: BIG-IQ DNS
 ====================
 
-.. image:: ../pictures/under-construction-01.jpg
-  :align: center
-  :scale: 20%
-
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
 In this class, we will review the DNS Management in BIG-IQ 6.0.

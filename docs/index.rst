@@ -19,15 +19,22 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the monitoring tab.
 
-There is lab environment (``version 11``) available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
-
-.. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/
+There is lab environment available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
 
 .. image:: ./pictures/diagram_udf.png
   :align: center
-  :scale: 30%
+  :scale: 50%
+
+**Networks**:
+
+- 10.1.1.0/24 UDF Management Network
+- 10.1.10.0/24 and 10.1.30.0/24 UDF external Network
+- 10.1.20.0/24 UDF internal Network
+- 172.17.0.0/16 UDF docker internal network
+- 172.100.0.0/16 AWS internal Network
+- 172.200.0.0/16 Azure internal Network - *coming soon*
 
 **List of instances**:
 
@@ -50,7 +57,7 @@ There is lab environment (``version 11``) available in UDF and Ravello (Oracle P
 
   1. STOP the ESXi if you do not plan to demo VMware SSG.
   2. STOP your deployment at the end of your demo.
-  3. Do not forget to tear down your AWS SSG if any.
+  3. Do not forget to tear down your AWS & Azure SSG if any.
   4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
 .. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
@@ -66,12 +73,14 @@ There is lab environment (``version 11``) available in UDF and Ravello (Oracle P
 **Documentations**:
 
 - `BIG-IQ Knowledge Center`_
-- `F5 BIG-IQ API`_
+- `F5 BIG-IQ API 6.0.1`_
+- `F5 BIG-IQ API 6.1.0`_ - *coming soon*
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
-.. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0/
+.. _F5 BIG-IQ API 6.0.1: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0/
+.. _F5 BIG-IQ API 6.1.0: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270?tag=big-iq
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373
 
@@ -96,12 +105,11 @@ There is lab environment (``version 11``) available in UDF and Ravello (Oracle P
 **Tools**:
 
 - `BIG-IP Cloud Edition AWS trial`_ (see `internal video`_)
-- `BIG-IP 6.0 Application Service Catalog - Automation Demo with Postman`_
 - `BIG-IQ PM team GitHub (various automation tools)`_
 
 .. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
-.. _BIG-IP 6.0 Application Service Catalog - Automation Demo with Postman: https://github.com/codygreen/BIG-IQ-Automation-Application-Service-Catalog 
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
-.. _internal video: https://web.microsoftstream.com/video/e36b28df-3c4c-44e9-b0ab-fd961617ca1b 
 
 .. note:: A draft version of this lab guide can be found `here`_.
+
+.. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/

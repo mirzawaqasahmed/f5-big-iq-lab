@@ -28,11 +28,7 @@ Tier1/``Service Scaler`` management - how does this work ?
 With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
 upfront by the administrator. It means that:
 
-
-* The AWS ELB will have to be provisioned, licensed (for F5 VE)
-  and its networking configuration done
-* Once the platform is ready. everything related to app deployment will be
-  handled by BIG-IQ
+* The AWS ELB will have to be provisioned
 
 Tier2/``SSG`` management - how does this work ?
 ***********************************************
@@ -44,11 +40,9 @@ dynamically provisioned BIG-IPs
 To handle the provisioning and onboarding of our F5 virtual edition, we leverage
 different components:
 
-* ansible playbooks to handle the provisioning of our F5 virtual edition
 * our F5 cloud deployment templates
 
   * `F5 AWS template <https://github.com/F5Networks/f5-aws-cloudformation>`_
-  * `F5 VMWare template <https://github.com/F5Networks/f5-vmware-vcenter-templates>`_
 
 * f5 cloud libs
 
@@ -70,7 +64,7 @@ deployed in a certain manner:
   therefore we will deploy 1nic VE in AWS. So traffic and everything will be sent
   to the nic Self IP.
 * This config will be configured on all ``SSG`` VEs.
-  They will have have an **identical** Setup
+  They will have an **identical** Setup
 
 In this lab, we will create a ``Service Scaling Group`` in an ``AWS`` environment.
 

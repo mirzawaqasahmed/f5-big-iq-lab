@@ -107,3 +107,9 @@ Take the time to navigate in all the different menu.
 .. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center
   :scale: 50%
+
+If you select the **Properties** object, you can check if the *HTTP Statistics Collection* is enabled or disabled.
+
+.. image:: ../pictures/module1/img_module1_lab1_9.png
+  :align: center
+  :scale: 50%

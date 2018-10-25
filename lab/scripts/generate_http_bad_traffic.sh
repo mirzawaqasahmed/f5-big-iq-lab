@@ -27,8 +27,18 @@ sitefqdn[14]="site36.example.com"
 sitefqdn[15]="site38.example.com"
 sitefqdn[16]="site40.example.com"
 sitefqdn[17]="site42.example.com"
-sitepages="privatedata.html badlinks.html calc.exe %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme"
 
+# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
+if [ -f /home/f5/scripts/ssg-apps ]; then
+        i=${#sitefqdn[@]}
+        SSGAPPS=$(cat /home/f5/scripts/ssg-apps)
+        for fqdn in ${SSGAPPS[@]}; do
+                i=$(($i+1))
+                sitefqdn[$i]="$fqdn"
+        done
+fi
+
+sitepages="privatedata.html badlinks.html calc.exe %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme"
 
 # get length of the array
 arraylength=${#sitefqdn[@]}
@@ -89,7 +99,6 @@ do
                                 echo "Loop $k"
                                 #Randome IP
                                 source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                                source_ip_address2=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
 
                                 # add random number for browsers
                                 rb=`shuf -i 1-$arraylengthbrowser -n 1`;

@@ -34,7 +34,7 @@ Here we can see that we use:
 
 * 2 vCPUs
 * 8 Gb of Memory
-* BIG-IP version 13.1.0.5
+* BIG-IP version 13.1.1
 
 **[New 6.0.1]** you can also check the BIG-IP version by selecting the device part of the SSG.
 
@@ -52,9 +52,7 @@ If we need to upgrade AND/OR scale-up our ``SSG``, we just need to do the follow
 .. note:: we could also scale down a SSG if we realized we allocated too much compute to it
 
 In this lab, we already have another VM template available to test this: 
-BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template
-
-.. note:: **[New 6.0.1]** BIGIP-13.1.1-0.0.4.ALL_1SLOT_ASM_template was added in vCenter.
+BIGIP-14.0.0.1-0.0.2.ALL_1SLOT_ASM_template
 
 .. image:: ../pictures/module3/img_module3_lab1_1.png
  :align: center
@@ -66,7 +64,7 @@ We can review the configuration of this VM template:
 
 * 4 vCPUs 
 * 8 Gb of Memory 
-* BIG-IP version 13.1.0.7
+* BIG-IP version 14.0.0
 
 .. image:: ../pictures/module3/img_module3_lab1_3.png
  :align: center
@@ -76,7 +74,7 @@ We can review the configuration of this VM template:
 
 So if we switch from our previous template to this one, we will UPGRADE our environment AND SCALE-UP: 
 
-* upgrade from 13.1.0.5 to 13.1.0.7 or 13.1.1
+* upgrade from 13.1.0.7 to 13.1.1 or 14.0.0
 * add more vCPUs to the instances (2 -> 4 vCPUs)
 
 In your ``BIG-IQ`` UI, Go to *Applications* > *Environments* > *Cloud Environments*, Select 

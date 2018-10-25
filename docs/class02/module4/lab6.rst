@@ -27,3 +27,7 @@ Here are some Troubleshooting steps to help you troubleshooting issue with your 
 .. image:: ../pictures/module4/img_module4_lab6_3.png
   :align: center
   :scale: 50%
+
+10. In BIG-IQ, if the deployment of the application fails with the following error message, delete your SSG and re-create it (known issue fixed in 6.1).
+
+``Task Failed: Failed to get the module device: Device <ip-172-17-2-110.ec2.internal> does not have asm service imported``

@@ -1,7 +1,7 @@
-Module 5: BIG-IQ Onboarding
-===========================
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Module 5: BIG-IQ Automated onboarding
+=====================================
 
+In this module, we will learn how to onboard BIG-IQ in an automated maner.
 
 .. toctree::
    :maxdepth: 1

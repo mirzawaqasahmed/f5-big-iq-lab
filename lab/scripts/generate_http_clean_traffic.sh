@@ -25,13 +25,22 @@ sitefqdn[14]="site36.example.com"
 sitefqdn[15]="site38.example.com"
 sitefqdn[16]="site40.example.com"
 sitefqdn[17]="site42.example.com"
+
+# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
+if [ -f /home/f5/scripts/ssg-apps ]; then
+        i=${#sitefqdn[@]}
+        SSGAPPS=$(cat /home/f5/scripts/ssg-apps)
+        for fqdn in ${SSGAPPS[@]}; do
+                i=$(($i+1))
+                sitefqdn[$i]="$fqdn"
+        done
+fi
+
 # for hackazon app on port 80 in a docker
 sitepages="index.php f5_browser_issue.php faq contact wishlist user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=64 product/view?id=72 product/view?id=78 product/view?id=81 product/view?id=101 product/view?id=112 product/view?id=113 product/view?id=130 product/view?id=141 product/view?id=142 product/view?id=150 product/view?id=169 product/view?id=191"
 
-
 # get length of the array
 arraylength=${#sitefqdn[@]}
-
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
@@ -68,7 +77,6 @@ do
 		# Port 443 open
 		port=443
         else
-        
                 # If 443 not anwser, trying port 80
                 timeout 1 bash -c "cat < /dev/null > /dev/tcp/${ip:1:-1}/80"
                 if [  $? == 0 ]; then
@@ -87,17 +95,21 @@ do
                         for j in $sitepages; do
                                 echo "Loop $k"
                                 #Randome IP
-                                source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                                source_ip_address2=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                                #source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                                rip=`shuf -i 1-254 -n 1`;
+                                source_ip_address="10.1.10.$rip"
+                                echo $source_ip_address
 
                                 # add random number for browsers
                                 rb=`shuf -i 1-$arraylengthbrowser -n 1`;
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
+                                http_header="-H 'X-Forwarded-For: $source_ip_address' -H 'authority: ${sitefqdn[$i]}' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'dnt: 1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' --compressed"
+                                
                                 if [  $port == 443 ]; then
-                                        curl -k -s -m 10 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
+                                        curl -k -s -m 10 -o /dev/null $http_header -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
                                 else
-                                        curl -s -m 10 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
+                                        curl -s -m 10 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
                                 fi
                         done
                 done

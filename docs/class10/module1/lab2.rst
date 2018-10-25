@@ -1,103 +1,101 @@
-Lab 1.2: Check DNS Sync Group Health
-------------------------------------
+Lab 1.2: Managing DNS Profiles
+------------------------------
 
-Before you can monitor the sync group health, you must add a BIG-IP
-device configured in a DNS sync group to the BIG-IP Devices inventory
-list, and import the LTM and DNS services. For the purpose of this lab,
-the sync group on BIG-IP DNS devices are already properly configured.
+A DNS profile allows you to configure various DNS attributes that a virtual server or DNS listener object applies to DNS traffic. For example, when you enable the DNS Express feature in the DNS profile, the BIG-IP system acts as an authoritative secondary DNS server, and performs actions such as zone transfers from multiple primary DNS servers or zone transfers from the local BIND server on the BIG-IP system.
 
-When you use F5 BIG-IQ Centralized Management to manage your DNS sync
-group, you can monitor the health status of the group. Sync group health
-relies on complete alignment of a variety of device configuration
-elements. Using BIG-IQ simplifies the process of determining the health
-of your DNS sync groups.
+You can view the DNS profiles you manage by navigating to "Configuration > DNS > Delivery > Profiles". From there, click "Create" to setup a new one, or click on an existing profile to edit it.
 
-At the top of the screen > click Devices.
+**Create a DNS profile**
 
-On the left, click BIG-IP CLUSTERS > DNS Sync Groups.
+You create a profile to configure various DNS attributes that a virtual server or DNS listener object can apply to DNS traffic.
 
-The screen displays the list of DNS sync groups defined on this device. A health indicator icon and a message describe the status of each group.
+At the top of the screen, click Configuration, then, on the left, click "DNS > Delivery > Profiles".
 
-|image0|
+The screen displays the list of profiles defined on this device.
 
-To view the general properties for a sync group, click the sync group name.
+Click "Create".
 
-|image1|
+The New Profile screen opens.
 
-The screen displays the properties for the selected group. This screen shows an overview of your DNS sync group health. Under Status, you can see the current state (for example, Required Services Down, or Health Check(s) Passed) for each device in the group.
+Type a Name for the DNS profile: **DNSprofile**
 
-To view the health for an individual sync group member, on the left click HEALTH.
+Select a Parent Profile from which this profile inherits settings: **/Common/dns**
 
-|image2|
+.. image:: ../pictures/module1/module1_lab3_1.png
+  :align: center
+  :scale: 50%
 
-The Health screen displays detailed information for each factor that contributes to the health of a DNS sync group. Following a definition of each factor, a Status row provides additional detail.
+Select the options you want to override from the parent DNS profile.
 
-For each indicator, the most serious issues impacting that indicator are listed first. Finally, if the status for a health indicator is not Health Check(s) Passed, the Recommended Action setting describes what you can do to correct the issue.
+These options perform the same function as they do on a BIG-IP device.
 
-Now, we will introduce a problem in the DNS Sync Group to see how that appears in BIG-IQ.
+Under DNS Features, check the **Use BIND Server on BIG-IP**, and select **Disabled**.
 
-Log into the command line of BOS-vBIGIP01 and run the following command.
 
-|image3|
+When your edits are complete, click Save & Close.
 
-Return to the BIG-IQ GUI and select the status check box and then click the Refresh Status button to force a refresh.
+The system creates the new profile you specified and adds it to the list of profiles.
 
-|image4|
+.. image:: ../pictures/module1/module1_lab3_2.png
+  :align: center
+  :scale: 50%
 
-Review the Status for the sync group(s). (This may take a minute for it to show down)
+.. NOTE:: When you edit a default profile, you cannot override the parent profile settings, because default profiles do not have a parent.
 
-|image5|
+Since we intend to use this new Profile when we create a Listener, it's necessary to Deploy it to the devices ahead of the Listener deployment.
 
-Click on the DNS Sync Group name to get more information
+.. NOTE:: When you attempt to deploy a Listener that references a Profile that doesn't exist on the target device, you will receive and error.
 
-|image6|
+**Deploying your DNS Profile**
 
-Review the Properties of the DNS Sync Group 
+Navigate to the Pinning Policies menu.
 
-|image7|
+.. image:: ../pictures/module1/module1_lab3_3.png
+  :align: center
+  :scale: 50%
 
-Click on the Health tab to get further information. Scroll down to find the problem. 
-   
-|image8|
+Click the name of the first BOS BIG-IP.
 
-Return to the shell for BIG-IP01 and restart gtmd. 
+.. image:: ../pictures/module1/module1_lab3_4.png
+  :align: center
+  :scale: 50%
+  
+Select the DNSprofile, and click Add Selected.
+The Profile will appear in the list of Profiles pinned to this device.
+When your edits are complete, click Save & Close.
 
-|image9|
+**Repeat for the second BOS BIG-IP device**
 
-12.	Return to the BIG-IQ DNS Sync Group page and click on Refresh Status button again, and verify that all indicators have returned to green.
-   
-|image10|
+We can now see that the BOS BIG-IP devices each have 3 Profiles pinned to them.
 
-.. |image0| image:: media/image1.png
-   :width: 6.50000in
-   :height: 2.57500in
-.. |image1| image:: media/image2.png
-   :width: 6.50000in
-   :height: 2.55833in
-.. |image2| image:: media/image3.png
-   :width: 6.50000in
-   :height: 3.65625in
-.. |image3| image:: media/image4.png
-   :width: 5.48890in
-   :height: 0.47911in
-.. |image4| image:: media/image5.png
-   :width: 3.08295in
-   :height: 1.12486in
-.. |image5| image:: media/image6.png
-   :width: 6.50000in
-   :height: 1.05972in
-.. |image6| image:: media/image7.png
-   :width: 6.50000in
-   :height: 1.08333in
-.. |image7| image:: media/image8.png
-   :width: 6.50000in
-   :height: 2.48542in
-.. |image8| image:: media/image9.png
-   :width: 6.50000in
-   :height: 2.02708in
-.. |image9| image:: media/image10.png
-   :width: 5.96800in
-   :height: 0.45828in
-.. |image10| image:: media/image11.png
-   :width: 6.50000in
-   :height: 2.02153in
+.. image:: ../pictures/module1/module1_lab3_5.png
+  :align: center
+  :scale: 50%
+  
+Now we need to deploy the Profile. 
+Navigate to the Deployment tab and create a DNS Deployment.
+
+.. image:: ../pictures/module1/module1_lab3_6.png
+  :align: center
+  :scale: 50%
+  
+Create a sensible name for the deployment and select both BOS BIG-IP devices.
+
+.. image:: ../pictures/module1/module1_lab3_7.png
+  :align: center
+  :scale: 50%
+  
+After the evaluation completes, select the deployment and click Deploy.
+
+.. image:: ../pictures/module1/module1_lab3_8.png
+  :align: center
+  :scale: 50%
+  
+Once the deployment finishes, it will be listed in the completed deployments.
+
+.. image:: ../pictures/module1/module1_lab3_9.png
+  :align: center
+  :scale: 50%
+  
+Now the Profile is ready to be used in a Listener.
+  

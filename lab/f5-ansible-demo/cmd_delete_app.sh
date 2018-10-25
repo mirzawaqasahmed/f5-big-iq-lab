@@ -1,1 +1,7 @@
-ansible-playbook -i notahost, delete_http_app.yaml
+#!/bin/bash
+# Uncomment set command below for code debugging bash
+#set -x
+# Uncomment set command below for code debugging ansible
+#DEBUG_arg="-vvvv"
+
+ansible-playbook -i notahost, delete_http_app.yaml $DEBUG_arg

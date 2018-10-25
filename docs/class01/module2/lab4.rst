@@ -59,6 +59,8 @@ Select ``site18.example.com``
 
 |
 
+After Blocking is turned on:
+
 .. image:: ../pictures/module2/img_module2_lab4_6.png
   :align: center
   :scale: 50%

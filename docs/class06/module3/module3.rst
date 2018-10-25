@@ -1,8 +1,6 @@
 Module 3: Local Traffic Management Virtual Servers
 ===================================================
 
-Goal:
-
 In this lab, we will demonstrate how to manage Virtual Servers on the managed BIG-IP devices.
 
 BIG-IQ is able to create nodes, monitors, pools, profiles, and virtual servers, so a user can create and stage a new application directly on the BIG-IQ, then deploy the change to the Managed BIG-IP device.

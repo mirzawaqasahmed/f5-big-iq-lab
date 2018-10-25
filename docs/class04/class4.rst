@@ -1,7 +1,7 @@
 Class 4: BIG-IQ Platform
 ========================
 
-In this class, we will focus on the BIG-IQ and DCD plaforms. Let's have a look at the ``System Tab`` in BIG-IQ.
+In this class, we will focus on the BIG-IQ CM and DCD plaforms. Let's have a look at the ``System Tab`` in BIG-IQ.
  
 **THIS DEVICE**
 

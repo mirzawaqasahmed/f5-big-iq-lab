@@ -1,0 +1,77 @@
+---
+- name: Delete applications SJC Lab F5 Networks
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: site20waf.example.f5.com
+      bigiq_application_https_waf:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site20waf.example.f5.com"
+        wait: yes
+        state: absent
+      delegate_to: localhost
+
+    - name: site22http.example.f5.com
+      bigiq_application_http:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site22http.example.f5.com"
+        wait: yes
+        state: absent
+      delegate_to: localhost
+
+    - name: site26https.example.f5.com
+      bigiq_application_https_offload:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site14https.example.f5.com"
+        wait: yes
+        state: absent
+      delegate_to: localhost
+
+    - name: site28fasthttp.example.f5.com
+      bigiq_application_fasthttp:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site26fasthttp.example.f5.com"
+        wait: yes
+        state: absent
+      delegate_to: localhost
+
+    - name: site30fastL4tcp.example.f5.com
+      bigiq_application_fastl4_tcp:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site28fasL4.example.f5.com"
+        wait: yes
+        state: absent
+      delegate_to: localhost
+
+    - name: site32udp.example.f5.com
+      bigiq_application_fastl4_udp:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site30udp.example.f5.com"
+        wait: yes
+        state: absent
+      delegate_to: localhost
