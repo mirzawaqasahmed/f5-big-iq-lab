@@ -1,6 +1,10 @@
 Module 5: Setup a Service scaling group (SSG) in Azure
 ======================================================
 
+.. image:: ../pictures/under-construction-01.jpg
+  :align: center
+  :scale: 25%
+  
 **[New 6.1.0]** 
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
