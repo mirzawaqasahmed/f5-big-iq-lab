@@ -62,8 +62,8 @@ if [[  $env != "udf" ]]; then
     ## Cleanup
     rm -f *iso* activeVolume status
     # remove cookie if older than 1 day
-    if [[ $(find "./.cookie" -mtime +1 -print 2> /dev/null) ]]; then
-      echo "./.cookie older than 1 day"
+    if [[ $(find "./.cookie" -mmin +120 -print 2> /dev/null) ]]; then
+      echo "Deleted .cookie older than 2 hours"
       rm -f ./.cookie
     fi
     if [ ! -f ./.cookie ]; then
@@ -203,10 +203,10 @@ echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 # Add devices
 ### NEED TO ADD ENABLE STAT COLLECTION IN THE SCRIPT
 scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
- echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
+echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
 ssh root@$ip_cm1 << EOF
   cd /root
-  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -q admin:$pwd_cm1
+  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -f -q admin:$pwd_cm1
 EOF
 ## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
 

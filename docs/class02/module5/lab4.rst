@@ -1,7 +1,7 @@
-Lab 4.4: Deploy an application (AZURE)
+Lab 4.4: Deploy an application (Azure)
 --------------------------------------
 
-.. warning:: An default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the AZURE SSG (udf-<your name>-elb).
+.. warning:: An default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the Azure SSG (udf-<your name>-elb).
 
 Deploy your application (optional)
 **********************************
@@ -15,12 +15,12 @@ In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on t
 
 |
 
-Select the template called **Default-AZURE-f5-HTTPS-WAF-lb-template**.
+Select the template called **Default-Azure-f5-HTTPS-WAF-lb-template**.
 
 General properties:
 
-* Name: **site-AZURE.example.com**
-* Domain Names: **site-AZURE.example.com**
+* Name: **site-Azure.example.com**
+* Domain Names: **site-Azure.example.com**
 
 .. image:: ../pictures/module4/img_module4_lab4_3.png
   :align: center
@@ -31,7 +31,7 @@ General properties:
 Select a Traffic Service Environment:
 
 * Environment: Select **Service Scaling Group**
-* Service Scaling Group: Select **<YOUR PREFIX>-AZURE-ssg**
+* Service Scaling Group: Select **<YOUR PREFIX>-Azure-ssg**
 
 .. image:: ../pictures/module4/img_module4_lab4_4.png
   :align: center
@@ -40,18 +40,18 @@ Select a Traffic Service Environment:
 |
 
 
-AZURE ELB settings:
+Azure ELB settings:
 
 * Name of Classic Load Balancer: **<YOUR PREFIX>-elb**
 
-    .. note:: You can retrieve the name of your ``AZURE ELB`` by going to your ``AZURE Console``
+    .. note:: You can retrieve the name of your ``Azure ELB`` by going to your ``Azure Console``
         and go to **Services** > **EC2** > **Load Balancing** > **Load Balancer**
 
         .. image:: ../pictures/module4/img_module4_lab4_2.png
             :align: center
             :scale: 50%
 
-    .. note:: Remember that we don't create the ``AZURE ELB`` here. It has to exist before
+    .. note:: Remember that we don't create the ``Azure ELB`` here. It has to exist before
         deploying an App.
 
 * Listeners:
@@ -133,12 +133,12 @@ on the Address of one of your devices.
 
 Spend some time reviewing your app configuration on your ``SSG Devices``.
 
-Review your ``AZURE ELB`` setup
+Review your ``Azure ELB`` setup
 *****************************
 
-In your ``AZURE Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**.
+In your ``Azure Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**.
 
-Click on the ``AZURE ELB`` we specified in the app settings (**<YOUR PREFIX>-elb**)
+Click on the ``Azure ELB`` we specified in the app settings (**<YOUR PREFIX>-elb**)
 
 Retrieve the DNS Name tied to this ELB:
 

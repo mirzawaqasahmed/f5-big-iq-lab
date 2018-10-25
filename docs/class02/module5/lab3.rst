@@ -1,10 +1,10 @@
-Lab 4.3: Review our ``SSG`` deployment in ``AZURE``
+Lab 4.3: Review our ``SSG`` deployment in ``Azure``
 ---------------------------------------------------
 
-``AZURE`` configuration review
+``Azure`` configuration review
 ****************************
 
-Connect to your ``AZURE Console`` to review what has been created already.
+Connect to your ``Azure Console`` to review what has been created already.
 
 Go to **Services** > **CloudFormation**
 
@@ -14,17 +14,17 @@ Go to **Services** > **CloudFormation**
 
 |
 
-Here you can see that 4 ``AZURE Stacks`` have been deployed:
+Here you can see that 4 ``Azure Stacks`` have been deployed:
 
 * <YOUR PREFIX>-vpc-elb-cf-stack : This stack deploys a new VPC called **<YOUR PREFIX>-vpc**.
     We use this new VPC to avoid any conflict and ensure we won't disrupt anything. We will
     create the subnets, security groups and an ELB called **<YOUR PREFIX>-elb that can be used
     to deploy an App later
-* <YOUR PREFIX>-vpn-cf-stack : This stack depoys the ``VPN`` configuration in ``AZURE``. We
+* <YOUR PREFIX>-vpn-cf-stack : This stack depoys the ``VPN`` configuration in ``Azure``. We
     use this ``VPN`` to send data back to ``BIG-IQ DCDs``.
 * <YOUR PREFIX>-ubuntu-cf-stack : This stack deploys an ubuntu instance that will behave
     as our app
-* <YOUR PREFIX>-AZURE-ssg : this will create the ``AZURE autoscale`` deployment : launch
+* <YOUR PREFIX>-Azure-ssg : this will create the ``Azure autoscale`` deployment : launch
     configuration, auto scaling groups, ...
 
 Those stacks were deployed from our system called **Ubuntu 16.04 Lamp Server, Radius and DHCP**.
@@ -32,8 +32,8 @@ If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd AZURE-Cloud-Edition/cft/
-    f5@03a920f8b4c0410d8f:~/AZURE-Cloud-Edition/cft$ ll
+    f5@03a920f8b4c0410d8f:~$ cd Azure-Cloud-Edition/cft/
+    f5@03a920f8b4c0410d8f:~/Azure-Cloud-Edition/cft$ ll
     total 44
     drwxr-xr-x 2 f5 f5 4096 Jun 11 00:27 ./
     drwxr-xr-x 9 f5 f5 4096 Jun 11 02:29 ../
@@ -41,7 +41,7 @@ If you want to review those stacks, connect to this system and go to :
     -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
     -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template
     -rw-r--r-- 1 f5 f5 2642 May  9 08:33 Setup-VPN.template
-    f5@03a920f8b4c0410d8f:~/AZURE-Cloud-Edition/cft$
+    f5@03a920f8b4c0410d8f:~/Azure-Cloud-Edition/cft$
 
 Take some time to review the different things setup in your own VPC.
 
@@ -51,7 +51,7 @@ Take some time to review the different things setup in your own VPC.
 ***********************************
 
 Connect to the ``BIG-IQ UI`` and go to **Devices** > **Device Templates**.
-You should see a new device template called <your PREFIX>-AZURE-device-template
+You should see a new device template called <your PREFIX>-Azure-device-template
 
 .. image:: ../pictures/module4/img_module4_lab3_1.png
   :align: center
@@ -73,7 +73,7 @@ only **NTP** and **User Accounts** have been setup.
 |
 
 Next, you may go to **Applications** > **Environments** > **Cloud Providers**.
-You will see a new Cloud Providers called **<YOUR prefix>-AZURE-provider**:
+You will see a new Cloud Providers called **<YOUR prefix>-Azure-provider**:
 
 .. image:: ../pictures/module4/img_module4_lab3_3.png
   :align: center
@@ -81,8 +81,8 @@ You will see a new Cloud Providers called **<YOUR prefix>-AZURE-provider**:
 
 |
 
-Click on this new cloud provider. You'll see that it contains your ``AZURE Access Key``
-and your ``AZURE Secret Access Key``.
+Click on this new cloud provider. You'll see that it contains your ``Azure Access Key``
+and your ``Azure Secret Access Key``.
 
 Click on the **Test** button when you need to make sure your credentials are fine.
 
@@ -93,7 +93,7 @@ Click on the **Test** button when you need to make sure your credentials are fin
 |
 
 Go to **Applications** > **Environments** > **Cloud Environments**. Click on your cloud
-environment called **<YOUR PREFIX>-AZURE-environment**
+environment called **<YOUR PREFIX>-Azure-environment**
 
 .. image:: ../pictures/module4/img_module4_lab3_5.png
   :align: center
@@ -118,7 +118,7 @@ You will be able to retrieve a lot of the information that were defined in the *
 |
 
 Go to **Applications** > **Environments** > **Service Scaling Groups**. Click on your ``SSG``
-called **<YOUR PREFIX>-MENANT-AZURE-ssg**
+called **<YOUR PREFIX>-MENANT-Azure-ssg**
 
 .. image:: ../pictures/module4/img_module4_lab3_7.png
   :align: center
@@ -151,7 +151,7 @@ Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 Once you're logged in your ``BIG-IP``, you can see a few things:
 
 * it's offically managed by ``BIG-IQ``
-* it's in SYNC. Our ``BIG-IPs`` part of a ``SSG`` deployed in ``AZURE`` will be setup as a cluster
+* it's in SYNC. Our ``BIG-IPs`` part of a ``SSG`` deployed in ``Azure`` will be setup as a cluster
 
 .. image:: ../pictures/module4/img_module4_lab3_10.png
   :align: center
@@ -169,5 +169,5 @@ Go to **Device Management** > Overview
 
 You can see that **Auto Sync** is enabled for a Device Group called **autoscale-group**.
 
-Let's deploy an application to see how it is setup on our different components (``AZURE ELB``,
+Let's deploy an application to see how it is setup on our different components (``Azure ELB``,
 ``BIG-IPs`` in the ``SSG``).

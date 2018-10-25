@@ -31,8 +31,6 @@ MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 APP_FQDN="$PREFIX-azure-ssg-$PREFIX-app-azure-pip"
 BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
-APP_FQDN="$(cat config.yml | grep APP_FQDN | awk '{print $2}')"
-
 if [[ $c1 == 1 || $c2  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credentials\n - Azure Location\n - Prefix (optional)"
        echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VNET_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
@@ -111,7 +109,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${GREEN}Application Creation: (it will start once Azure SSG creation is completed)\n${NC}"
 python 09a-create-azure-waf-app.py
 
-echo "${RED}In case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: # python 09b-create-azure-https-app.py ${NC}"
+echo -e "${RED}\nIn case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: # python 09b-create-azure-https-app.py ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

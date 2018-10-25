@@ -81,4 +81,24 @@ echo -e "\n${RED}Uninstall ansible-galaxy roles${NC}"
 ansible-galaxy remove f5devcentral.bigiq_onboard
 ansible-galaxy remove f5devcentral.register_dcd
 
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+### CUSTOMIZATION - F5 INTERNAL LAB ONLY
+
+if [[  $env != "udf" ]]; then
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    # Cleanup AS3 on the BIG-IP
+    while IFS="," read -r a b c;
+    do
+        echo -e "Exchange ssh keys with BIG-IP:"
+        echo "Type $a root password (if asked)"
+        ssh-copy-id root@$a > /dev/null 2>&1
+
+        echo "Cleanup AS3 on $a"
+        ssh root@$a bigstart stop restjavad restnoded; 
+        ssh root@$a rm -rf /var/config/rest/storage; 
+        ssh root@$a rm -rf /var/config/rest/index; 
+        ssh root@$a bigstart start restjavad restnoded; 
+        ssh root@$a rm -f /var/config/rest/downloads/*.rpm; 
+        ssh root@$a rm -f /var/config/rest/iapps/RPMS/*.rpm;
+    done < inventory/$env-bigip.csv
+fi
+

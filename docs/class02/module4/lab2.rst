@@ -242,7 +242,6 @@ You should see something like this:
     https://aws.amazon.com/marketplace/pp/B07G5MT2KT
 
 
-    Press [Enter] key to continue... CTRL+C to Cancel
     [DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
     instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 

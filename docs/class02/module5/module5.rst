@@ -1,16 +1,12 @@
-Module 5: Setup a Service scaling group (SSG) in AZURE
+Module 5: Setup a Service scaling group (SSG) in Azure
 ======================================================
-
-.. image:: ../../pictures/under-construction-02.jpg
-  :align: center
-  :scale: 10%
 
 **[New 6.1.0]** 
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
 In this module, we will learn about the ``Service Scaling Group`` (SSG) feature
-provided with BIG-IQ 6.1 in a the ``AZURE`` environment.
+provided with BIG-IQ 6.1 in a the ``Azure`` environment.
 
 The ``Service Scaling Group`` (SSG) gives us the capability to setup a cluster of BIG-IPs
 that will scale based on criterias defined by the administrator.
@@ -25,7 +21,7 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
 ============= ===================================== ============================
  Environment     Tier1 (called ``Service Scaler``)      Tier2 (called ``SSG``)
 ============= ===================================== ============================
-   AZURE                     ALB                                 F5 VE
+   Azure                     ALB                                 F5 VE
 ============= ===================================== ============================
 
 Tier1/``Service Scaler`` management - how does this work ?
@@ -46,7 +42,7 @@ different components:
 
 * our F5 cloud deployment templates
 
-  * `F5 AZURE template <https://github.com/F5Networks/f5-azure-arm-templates>`_
+  * `F5 Azure template <https://github.com/F5Networks/f5-azure-arm-templates>`_
 
 * f5 cloud libs
 
@@ -54,7 +50,7 @@ different components:
 
 .. note:: We will review this in more details in lab4
 
-Application deployment in a ``SSG`` - AZURE
+Application deployment in a ``SSG`` - Azure
 *******************************************
 
 To ensure the traffic goes through the ``SSG`` as expected, application will be
@@ -62,15 +58,15 @@ deployed in a certain manner:
 
 * You will need dedicated ``Azure Load Balancer`` (AKA ALB previously) per
   application. The reason is that each ``ALB`` has one public IP/DNS Name
-  (ie you can't have 2 app runnings on port 443/HTTPS on a ``ELB`` )
+  (ie you can't have 2 app runnings on port 443/HTTPS on a ``ALB`` )
 * When the app is deployed from BIG-IQ, we will specify a VS IP that will be 0.0.0.0.
   This is because ELB can only send traffic to the first nic of an instance and
-  therefore we will deploy 1nic VE in AZURE. So traffic and everything will be sent
+  therefore we will deploy 1nic VE in Azure. So traffic and everything will be sent
   to the nic Self IP.
 * This config will be configured on all ``SSG`` VEs.
   They will have an **identical** Setup
 
-In this lab, we will create a ``Service Scaling Group`` in an ``AZURE`` environment.
+In this lab, we will create a ``Service Scaling Group`` in an ``Azure`` environment.
 
 .. toctree::
    :maxdepth: 1

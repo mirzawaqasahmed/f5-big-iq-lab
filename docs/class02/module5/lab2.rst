@@ -1,4 +1,4 @@
-Lab 4.2: Deploy our ``SSG`` in ``AZURE``
+Lab 4.2: Deploy our ``SSG`` in ``Azure``
 ----------------------------------------
 
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
@@ -9,7 +9,7 @@ Retrieve our BIG-IP SEA Public IP (used only for troubleshooting)
 
 .. note:: the IP will be retreived automatically by the VPN script.
 
-We will establish a ``VPN`` connection between our ``UDF`` environment and ``AZURE``. 
+We will establish a ``VPN`` connection between our ``UDF`` environment and ``Azure``. 
 This will be setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
 
 In your ``UDF`` blueprint, find your BIG-IP called **SEA-vBIGIP01.termmarc.com.v13.1.0.5 (VPN)** 
@@ -38,7 +38,7 @@ In the example above, we can see that our public IP is **129.146.155.127**.
 Launch our ``SSG`` - Access our orchestrator
 ********************************************
 
-To setup ``BIG-IQ`` and ``AZURE`` automatically, open a ``SSH`` connection on the 
+To setup ``BIG-IQ`` and ``Azure`` automatically, open a ``SSH`` connection on the 
 UDF system called: **Ubuntu 18.04 Lamp Server, Radius and DHCP**
 
 .. image:: ../pictures/module4/img_module4_lab2_1.png
@@ -47,15 +47,15 @@ UDF system called: **Ubuntu 18.04 Lamp Server, Radius and DHCP**
 
 |
 
-Once connected via ``SSH``, go into the folder: **AZURE-Cloud-Edition**: 
+Once connected via ``SSH``, go into the folder: **Azure-Cloud-Edition**: 
 
-    ``cd AZURE-Cloud-Edition/``
+    ``cd Azure-Cloud-Edition/``
 
 we will need to edit the following files: 
 
 * **config.yml**: This file will contains all the information needed to 
-    deploy the ``AZURE`` environment successfully. 
-* **08-create-AZURE-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
+    deploy the ``Azure`` environment successfully. 
+* **08-create-Azure-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
     that gets deployed. we want to deploy 2 instances to review how it is setup as 
     part of a ``SSG`` group. 
 
@@ -69,9 +69,9 @@ Use your favorite editor to update this file.
 
 Here are the settings you will need to change to deploy everything successfully: 
 
-* AZURE_ACCESS_KEY_ID: Use the ``AZURE Access Key`` you retrieved from the previous 
+* Azure_ACCESS_KEY_ID: Use the ``Azure Access Key`` you retrieved from the previous 
     lab (IAM section).
-* AZURE_SECRET_ACCESS_KEY: Use the ``AZURE Secret Access Key`` you retrieve from the 
+* Azure_SECRET_ACCESS_KEY: Use the ``Azure Secret Access Key`` you retrieve from the 
     previous lab (IAM section).
 * PREFIX: Specify a ``prefix`` that will be used on each object automatically 
     created. we will use **udf-<your NAME>**. For example: **udf-MENANT** 
@@ -89,7 +89,7 @@ Here are the settings you will need to change to deploy everything successfully:
 
         
 
-* AZURE_SSH_KEY: Use the ``AZURE Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
+* Azure_SSH_KEY: Use the ``Azure Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
     but yours should have a different name.
 
 Save the config file. 
@@ -111,9 +111,9 @@ Here is an example of the updated **config.yml** file:
     # Click on "Enable" and Save
 
     # Select Azure Cloud for VNET and VPN creation: AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud
-    AZURE_CLOUD: AzureCloud
-    # Select Azure Cloud for BIG-IQ SSG: AZURE, AZURE_CHINA, AZURE_US_GOVERNMENT, AZURE_GERMANY
-    AZURE_BIGIQ_CLOUD: AZURE
+    Azure_CLOUD: AzureCloud
+    # Select Azure Cloud for BIG-IQ SSG: Azure, Azure_CHINA, Azure_US_GOVERNMENT, Azure_GERMANY
+    Azure_BIGIQ_CLOUD: Azure
 
     SUBSCRIPTION_ID: <Subscription Id>
     TENANT_ID: <Tenant Id>
@@ -154,7 +154,7 @@ Launch our ``SSG`` - Update our SSG configuration
 *************************************************
 
 To update configuration pushed by the orchestrator, we will update the file called 
-**08-create-AZURE-auto-scaling.yml**. Use your favorite editor to update it 
+**08-create-Azure-auto-scaling.yml**. Use your favorite editor to update it 
 
 Look for this section in the file: 
 
@@ -251,7 +251,8 @@ You should see something like this:
 
 .. code::
 
-    f5student@b24c2f7914ba48efae:~/AZURE-Cloud-Edition$ ./000-RUN_ALL.sh
+    f5@03a920f8b4c0410d8f:~/Azure-Cloud-Edition$ nohup ./000-RUN_ALL.sh nopause &
+    f5@03a920f8b4c0410d8f:~/Azure-Cloud-Edition$ tail -f nohup.out
 
     Did you subscribed and agreed to the software terms for 'F5 BIG-IP Virtual Edition - BEST - BYOL' in Azure Marketplace?
 
@@ -266,10 +267,6 @@ You should see something like this:
 
     EXPECTED TIME: ~45 min
 
-    Press [Enter] key to continue... CTRL+C to Cancel
-
-    TIME:: 08:43
-
     Installation Azure CLI
 
     Set Cloud Name to  AzureCloud
@@ -278,20 +275,20 @@ You should see something like this:
     [
     {
         "cloudName": "AzureCloud",
-        "id": "a3615-1030-41dfd-a146-dba5dfdfdf6a1b",
+        "id": "a3615-1ds30-41dfd-a146-dba5dsdssdf6a1b",
         "isDefault": true,
         "name": "f5-AZR-SEATTLE",
         "state": "Enabled",
-        "tenantId": "abadssf66-905c-4wewe9-9wew8-d4f347sdsde33",
+        "tenantId": "abawewsd6-905c-4wwewde9-9wew8-d43344rrtwewe33",
         "user": {
-        "name": "dbwefsd23fc-fsdf5-4werw4-83wefwdf6-2b9wesdfsdf02b",
+        "name": "dbw34343fc-fsdf5-4wererw4-83wefwdf6-2b9ererdfsdf02b",
         "type": "servicePrincipal"
         }
     }
 
 
-At this stage, we should start deploying your environment in ``AZURE``. 
-In your ``AZURE Console``, go to **Services** > **CloudFormation**. 
+At this stage, we should start deploying your environment in ``Azure``. 
+In your ``Azure Console``, go to **Services** > **CloudFormation**. 
 
 .. image:: ../pictures/module4/img_module4_lab2_3.png
   :align: center
@@ -303,6 +300,6 @@ Here we can see that ``CloudFormation Stacks`` are being deployed with the prefi
 **udf-MENANT** as mentioned in **config.yml** file (prefix attribute)
 
 In the next lab, we will review what has been setup on ``BIG-IQ`` and what was 
-deployed in our ``AZURE VPC``.
+deployed in our ``Azure VNET``.
 
 
