@@ -19,9 +19,7 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the monitoring tab.
 
-There is lab environment (``version 13``) available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
-
-.. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/
+There is lab environment available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
 
@@ -76,7 +74,7 @@ There is lab environment (``version 13``) available in UDF and Ravello (Oracle P
 
 - `BIG-IQ Knowledge Center`_
 - `F5 BIG-IQ API 6.0.1`_
-- `F5 BIG-IQ API 6.1.0`_
+- `F5 BIG-IQ API 6.1.0`_ - *coming soon*
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 
@@ -113,3 +111,5 @@ There is lab environment (``version 13``) available in UDF and Ravello (Oracle P
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 
 .. note:: A draft version of this lab guide can be found `here`_.
+
+.. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/
