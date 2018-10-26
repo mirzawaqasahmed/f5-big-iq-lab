@@ -24,8 +24,8 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
 
 .. image:: ./pictures/diagram_udf.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 **Networks**:
 
@@ -55,16 +55,15 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 .. warning:: When using the UDF or Ravello Lab, make sure:
 
-  1. STOP the ESXi if you do not plan to demo VMware SSG.
-  2. STOP your deployment at the end of your demo.
-  3. Do not forget to tear down your AWS & Azure SSG if any.
-  4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
+   #. STOP the ESXi if you do not plan to demo VMware SSG.
+   #. STOP your deployment at the end of your demo.
+   #. Do not forget to tear down your AWS & Azure SSG if any.
+   #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
 .. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
 
 .. toctree::
-   :maxdepth: 2
-   :numbered:
+   :maxdepth: 1
    :caption: Contents/Lab:
    :glob:
 
