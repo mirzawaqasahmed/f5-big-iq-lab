@@ -1,13 +1,13 @@
-Introduction
-============
+Class 2: Introduction
+=====================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
 .. warning:: When using the UDF or Ravello Lab, make sure:
 
-  1. STOP your deployment at the end of your demo.
-  2. Do not forget to tear down your AWS & Azure SSG if any.
-  3. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
+   1. STOP your deployment at the end of your demo.
+   2. Do not forget to tear down your AWS & Azure SSG if any.
+   3. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
 
 Definition of Cloud Auto-scaling
@@ -85,7 +85,6 @@ Some other benefits are:
   *	Cost can be tied to use. No need to pre-allocate resources, do complex capacity planning and pay for peak demand
 
   *	For companies running their own servers
-
 
 * Unlimited scalability
 *	Less expensive to configure/deploy a new virtual machine/service than buying, installing and configuring a new hypervisor in a datacenter.

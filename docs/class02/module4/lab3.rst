@@ -18,7 +18,7 @@ Here you can see that 4 ``AWS Stacks`` have been deployed:
 
 * <YOUR PREFIX>-vpc-elb-cf-stack : This stack deploys a new VPC called **<YOUR PREFIX>-vpc**.
     We use this new VPC to avoid any conflict and ensure we won't disrupt anything. We will
-    create the subnets, security groups and an ELB called **<YOUR PREFIX>-elb that can be used
+    create the subnets, security groups and an ELB called **<YOUR PREFIX>-elb** that can be used
     to deploy an App later
 * <YOUR PREFIX>-vpn-cf-stack : This stack depoys the ``VPN`` configuration in ``AWS``. We
     use this ``VPN`` to send data back to ``BIG-IQ DCDs``.
@@ -109,6 +109,7 @@ You will be able to retrieve a lot of the information that were defined in the *
 * License type
 * AMI
 * BIG-IQ information
+
 ...
 
 .. image:: ../pictures/module4/img_module4_lab3_6.png

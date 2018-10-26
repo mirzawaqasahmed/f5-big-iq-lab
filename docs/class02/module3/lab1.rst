@@ -2,7 +2,7 @@ Lab 3.1: Update our Cloud Environment
 -------------------------------------
 
 When we deploy or scale-out a ``SSG``. The provisioned instances will rely on the 
-information specified in the ``Cloud Environment``to know what it needs to deploy. 
+information specified in the ``Cloud Environment`` to know what it needs to deploy. 
 
 In the **(Module1)Lab 1.2: Define your Cloud Environment**, we defined the ``Cloud Environment`` 
 used by our ``SSG`` **SSGClass2** 
@@ -25,8 +25,8 @@ when we created this template we:
 Here is the configuration of the VM template we use in our existing ``SSG`` **SSGClass2**
 
 .. image:: ../pictures/module3/img_module3_lab1_4.png
- :align: center
- :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -39,10 +39,8 @@ Here we can see that we use:
 **[New 6.0.1]** you can also check the BIG-IP version by selecting the device part of the SSG.
 
 .. image:: ../pictures/module3/img_module3_lab1_4b.png
- :align: center
- :scale: 50%
-
-|
+   :align: center
+   :scale: 50%
 
 If we need to upgrade AND/OR scale-up our ``SSG``, we just need to do the following: 
 
@@ -55,20 +53,20 @@ In this lab, we already have another VM template available to test this:
 BIGIP-14.0.0.1-0.0.2.ALL_1SLOT_ASM_template
 
 .. image:: ../pictures/module3/img_module3_lab1_1.png
- :align: center
- :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 We can review the configuration of this VM template: 
 
-* 4 vCPUs 
-* 8 Gb of Memory 
-* BIG-IP version 14.0.0
+* 4 vCPUs
+* 8 Gb of Memory
+* BIG-IP Version 14.0.0
 
 .. image:: ../pictures/module3/img_module3_lab1_3.png
- :align: center
- :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -83,8 +81,8 @@ In your ``BIG-IQ`` UI, Go to *Applications* > *Environments* > *Cloud Environmen
 Update the *VM Image* field to use the new VM Template: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template or BIGIP-13.1.1-0.0.4.ALL_1SLOT_ASM_template
 
 .. image:: ../pictures/module3/img_module3_lab1_2.png
- :align: center
- :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -93,4 +91,4 @@ Click *Save & Close*. Now that our ``Cloud Environment`` is updated, we can upgr
 
 
 .. note:: bear in the mind that from now on, if our ``SSG`` need to scale-out, it will use 
-    this new VM Template also
+   this new VM Template also

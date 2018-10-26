@@ -6,9 +6,9 @@ Management Capabilities for APM SSO Configuration for Web Proxy Authentication S
 Management Capabilities for APM Federation Through BIG-IQ (SAML SP)
 Management Capabilities for APM Federation Through BIG-IQ (SAML IdP)"
 
-.. image:: ../pictures/under-construction-01.jpg
-  :align: center
-  :scale: 25%
+.. image:: /pictures/under-construction-01.jpg
+   :align: center
+   :scale: 25%
 
 .. toctree::
    :maxdepth: 1

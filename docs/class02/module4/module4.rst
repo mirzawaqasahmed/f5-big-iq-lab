@@ -9,8 +9,8 @@ provided with BIG-IQ 6.0 in a the ``AWS`` environment.
 The ``Service Scaling Group`` (SSG) gives us the capability to setup a cluster of BIG-IPs
 that will scale based on criterias defined by the administrator.
 
-Topology of Service Scaling Group
-*********************************
+Topology of AWS Service Scaling Group
+*************************************
 
 With BIG-IQ 6.0, the ``Service Scaling Group`` is composed of 2 tiers of ADCs.
 Depending on the environment, the implementation of the ``Service Scaling Group``
@@ -22,16 +22,16 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
    AWS                       ELB                                 F5 VE
 ============= ===================================== ============================
 
-Tier1/``Service Scaler`` management - how does this work ?
-**********************************************************
+AWS Tier1/``Service Scaler`` management - how does this work ?
+**************************************************************
 
 With BIG-IQ 6.0, the provisioning and deployment of Tier1 has to be done
 upfront by the administrator. It means that:
 
 * The AWS ELB will have to be provisioned
 
-Tier2/``SSG`` management - how does this work ?
-***********************************************
+AWS Tier2/``SSG`` management - how does this work ?
+***************************************************
 
 With BIG-IQ 6.0, the provisioning of ``SSG`` BIG-IPs is fully automated. You
 don't have to setup anything upfront but licenses for BIG-IQ to assign to the

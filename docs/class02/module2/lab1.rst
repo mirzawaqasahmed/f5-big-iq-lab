@@ -32,18 +32,19 @@ Click on the *Create* button. Select the Template *Default-f5-HTTPS-offload-lb-t
 * Servers : Click on the advanced view
 
 .. image:: ../pictures/module2/img_module2_lab1_3.png
-    :align: center
+   :align: center
+
 |
 
 .. note:: You'll need to setup the *Application Server Nodes* first to be able
-  to select them as your pool members. So create the nodes as shown in the
-  screenshot **below** and then setup the pool member. To setup the pool member, it
-  may be easier to click on the drop down list and type the beginning of the
-  node name (ie 10.1.20.130 or 10.1.20.131)
+   to select them as your pool members. So create the nodes as shown in the
+   screenshot **below** and then setup the pool member. To setup the pool member, it
+   may be easier to click on the drop down list and type the beginning of the
+   node name (ie 10.1.20.130 or 10.1.20.131)
 
 .. image:: ../pictures/module2/img_module2_lab1_4.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 

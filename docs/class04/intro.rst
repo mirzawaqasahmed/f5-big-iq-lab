@@ -1,5 +1,5 @@
-Introduction
-============
+Class 4: Introduction
+=====================
 
 .. warning:: When using the UDF or Ravello Lab, make sure:
 

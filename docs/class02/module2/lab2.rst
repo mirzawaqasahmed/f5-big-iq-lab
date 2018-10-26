@@ -47,7 +47,7 @@ On each ``BIG-IP`` in your ``SSG``, you should have an identical setup:
   all our ``SSG`` devices
 
 ``Service Scaler`` Setup for our Application
-*******************************************
+********************************************
 
 Connect to your ``BIG-IPs`` used as ``Service Scaler``: *BOS-vBIGIP01.termmarc.com* and
 *BOS-vBIGIP02.termmarc.com*

@@ -31,7 +31,7 @@ Go to POLICY BUILDING > Settings and check **Automatic** is set for the Learning
 		      * default policy
    * - Headers:
       		* methods allow GET/HEAD/POST
-      		* HTTP headers */authorization/referer check signatures, referer Perform Normalization
+      		* HTTP headers \*/authorization/referer check signatures, referer Perform Normalization
       		* Cookies * allow
       		* Redirection Protection allow
       		* Character Set (list of allow/disallow)

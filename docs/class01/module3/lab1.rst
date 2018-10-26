@@ -1,8 +1,9 @@
 Lab 3.1: Create Application via API (Ansible)
---------------------------------------------
+---------------------------------------------
+
 In this lab, we are going to deploy a basic HTTP application using Ansible.
 
-.. warning :: **david** is used to execute Ansible playbooks, make sure it has the correct permission and is a LOCAL user (c.f. Class 1 Module 1)
+.. WARNING:: **david** is used to execute Ansible playbooks, make sure it has the correct permission and is a LOCAL user (c.f. Class 1 Module 1)
 
 The following parameters are filled in the playbook ``create_http_app.yaml``.
 

@@ -10,8 +10,8 @@ In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on t
 **Create** button.
 
 .. image:: ../pictures/module4/img_module4_lab4_1.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -23,8 +23,8 @@ General properties:
 * Domain Names: **site-Azure.example.com**
 
 .. image:: ../pictures/module4/img_module4_lab4_3.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -34,8 +34,8 @@ Select a Traffic Service Environment:
 * Service Scaling Group: Select **<YOUR PREFIX>-Azure-ssg**
 
 .. image:: ../pictures/module4/img_module4_lab4_4.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -56,17 +56,26 @@ Azure ELB settings:
 
 * Listeners:
 
-    ==================  ============ ======================= ==================
-       LB Protocol        LB Port       Instance protocol       Instance Port
-    ==================  ============ ======================= ==================
-           TCP              443               TCP                   443
-    ==================  ============ ======================= ==================
-           TCP               80               TCP                    80
-    ==================  ============ ======================= ==================
+  .. list-table::
+     :widths: 15 30 30 30
+     :header-rows: 1
+
+     * - **LB PROTOCOL**
+       - **LB PORT**
+       - **INSTANCE PROTOCOL**
+       - **INSTANCE PORT**
+     * - TCP
+       - 443
+       - TCP
+       - 443
+     * - TCP
+       - 80
+       - TCP
+       - 80
 
 .. image:: ../pictures/module4/img_module4_lab4_5.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -76,8 +85,8 @@ Servers:
 * Servers: 172.17.2.50 / Port 80
 
 .. image:: ../pictures/module4/img_module4_lab4_6.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -87,8 +96,8 @@ Web Application Firewall & Load Balancer:
 * Name: default_vs
 
 .. image:: ../pictures/module4/img_module4_lab4_7.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -97,8 +106,8 @@ Click on the **Create** button.
 After some time, you should see this:
 
 .. image:: ../pictures/module4/img_module4_lab4_8.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -112,8 +121,8 @@ Click on your ``SSG`` and then go to **Configuration** > **Devices**. Here you c
 on the Address of one of your devices.
 
 .. image:: ../pictures/module4/img_module4_lab3_8.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -123,8 +132,8 @@ on the Address of one of your devices.
     * Password: <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
 .. image:: ../pictures/module4/img_module4_lab4_9.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -134,7 +143,7 @@ on the Address of one of your devices.
 Spend some time reviewing your app configuration on your ``SSG Devices``.
 
 Review your ``Azure ELB`` setup
-*****************************
+*******************************
 
 In your ``Azure Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**.
 
@@ -143,16 +152,16 @@ Click on the ``Azure ELB`` we specified in the app settings (**<YOUR PREFIX>-elb
 Retrieve the DNS Name tied to this ELB:
 
 .. image:: ../pictures/module4/img_module4_lab4_10.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Open a new tab in your browser and go to this DNS name (https)
 
 .. image:: ../pictures/module4/img_module4_lab4_11.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 

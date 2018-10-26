@@ -104,7 +104,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 **Tools**:
 
-- `BIG-IP Cloud Edition AWS trial`_ (see `internal video`_)
+- `BIG-IP Cloud Edition AWS trial`_
 - `BIG-IQ PM team GitHub (various automation tools)`_
 
 .. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start

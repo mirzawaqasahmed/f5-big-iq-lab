@@ -13,8 +13,8 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
 .. image:: ../../pictures/udf_ubuntu.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -29,8 +29,8 @@ If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*
 You can use the copy/past feature if you are using the Console:
 
 .. image:: ../../pictures/ubuntu_console.png
-:align: center
-:scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -41,8 +41,8 @@ Open Chrome and Firefox and navigate on the website https://site40.example.com/f
 A page f5_browser_issue.php is behaving differenty on Chrome compare to other browsers.
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -51,8 +51,8 @@ A page f5_browser_issue.php is behaving differenty on Chrome compare to other br
 Expand the right-edge of the analytics pane to get the URLs and Browser filters. Order the URLs by App Response Time Average.
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -61,5 +61,5 @@ Select the page f5_browser_issue.php, which has the highest value. Now all the v
 In the Browsers filter, notice the 30 sec Application Response Time for Chrome browser.
 
 .. image:: ../pictures/module2/img_module2_lab3_3.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%

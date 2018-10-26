@@ -57,8 +57,8 @@ If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*
 You can use the copy/past feature if you are using the Console:
 
 .. image:: ../../pictures/ubuntu_console.png
-:align: center
-:scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -67,8 +67,8 @@ You can use the copy/past feature if you are using the Console:
 Launch Chrome and click on the *vSphere Web Client* bookmark.
 
 .. image:: ../pictures/module1/img_module1_lab3_6.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -78,8 +78,8 @@ Use the following credentials:
 * password: Purpl3$lab
 
 .. image:: ../pictures/module1/img_module1_lab3_4.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -89,8 +89,8 @@ Once logged in, click on the *VMs and Templates* button to see the list of VMs
 and folder.
 
 .. image:: ../pictures/module1/img_module1_lab3_7.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -107,8 +107,8 @@ our ``SSG``:
 |
 
 .. image:: ../pictures/module1/img_module1_lab3_8.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -121,8 +121,8 @@ To deploy your ``Service Scaling Group`` (SSG), go to *Applications* >
 *Environments* > *Service Scaling Groups* and click the *Create* button
 
 .. image:: ../pictures/module1/img_module1_lab3_1.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -137,13 +137,13 @@ Service Scaling Group Properties:
 
 .. note::
 
-    In UDF, the provisioning of a SSG VE may take up to 10 min. So it may takes
-    up to 20 min to build those 2 devices. If you are short on time, it may be
-    better to specify 1 minimum device and 1 desired device instead of 2.
+   In UDF, the provisioning of a SSG VE may take up to 10 min. So it may takes
+   up to 20 min to build those 2 devices. If you are short on time, it may be
+   better to specify 1 minimum device and 1 desired device instead of 2.
 
 .. image:: ../pictures/module1/img_module1_lab3_2.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -167,8 +167,8 @@ Load-Balancer:
   *BOS-vBIGIP02.termmarc.com*
 
 .. image:: ../pictures/module1/img_module1_lab3_3.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -182,8 +182,8 @@ Scaling Rules:
 * Scale-In: Select *Troughput(In)* Less than 5 Mbps
 
 .. image:: ../pictures/module1/img_module1_lab3_9.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -197,8 +197,8 @@ In order to allow Paula to use the SSG previously created, go to : *System* > *R
 and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Service Scaling Groups *SSGClass2*, drag it to the right.
 
 .. image:: ../pictures/module1/img_module1_lab3_10.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 

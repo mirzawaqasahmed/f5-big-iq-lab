@@ -19,8 +19,8 @@ For Device, select the name of the device you want to deploy this application to
 - BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
 
 .. image:: ../pictures/module1/img_module1_lab3_1.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -48,8 +48,8 @@ HTTP Redirect (Virtual Server):
 It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
 
 .. image:: ../pictures/module1/img_module1_lab3_2.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -57,8 +57,8 @@ Then Click on Create (bottom right of the window).
 The Application is deployed.
 
 .. image:: ../pictures/module1/img_module1_lab3_3.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -69,41 +69,41 @@ The Application is deployed.
 In Paula's Dashboard, she can see her Application.
 
 .. image:: ../pictures/module1/img_module1_lab3_4.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *XRDP*
 
-.. image:: ../../class02/pictures/module1/img_module1_lab3_5.png
-    :align: center
-    :scale: 50%
+.. image:: ../pictures/module1/img_module1_lab3_5.png
+   :align: center
+   :scale: 50%
 
 |
 
 Open Chrome and navigate on the website https://site19auth.example.com. 
 
 .. image:: ../pictures/module1/img_module1_lab3_5.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Fill in user/password to authenticate to the application: ``paula``/``paula``
 
 .. image:: ../pictures/module1/img_module1_lab3_6.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Back on BIG-IQ, click on the Application and check the Analytics coming in.
 
 .. image:: ../pictures/module1/img_module1_lab3_7.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 

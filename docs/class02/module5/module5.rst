@@ -1,7 +1,7 @@
 Module 5: Setup a Service scaling group (SSG) in Azure
 ======================================================
 
-.. image:: ../pictures/under-construction-01.jpg
+.. image:: /pictures/under-construction-01.jpg
   :align: center
   :scale: 25%
   
@@ -15,8 +15,8 @@ provided with BIG-IQ 6.1 in a the ``Azure`` environment.
 The ``Service Scaling Group`` (SSG) gives us the capability to setup a cluster of BIG-IPs
 that will scale based on criterias defined by the administrator.
 
-Topology of Service Scaling Group
-*********************************
+Service Scaling Group Topology
+******************************
 
 With BIG-IQ 6.1, the ``Service Scaling Group`` is composed of 2 tiers of ADCs.
 Depending on the environment, the implementation of the ``Service Scaling Group``
@@ -28,14 +28,14 @@ Depending on the environment, the implementation of the ``Service Scaling Group`
    Azure                     ALB                                 F5 VE
 ============= ===================================== ============================
 
-Tier1/``Service Scaler`` management - how does this work ?
-**********************************************************
+Tier1/``Service Scaler`` Management
+***********************************
 
 With BIG-IQ 6.1, the provisioning and deployment of Tier1 is handle automatically by BIG-IQ.
 
 
-Tier2/``SSG`` management - how does this work ?
-***********************************************
+Tier2/``SSG`` Management
+************************
 
 With BIG-IQ 6.1, the provisioning of ``SSG`` BIG-IPs is fully automated. You
 don't have to setup anything upfront but licenses for BIG-IQ to assign to the

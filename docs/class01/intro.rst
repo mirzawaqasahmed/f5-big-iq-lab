@@ -1,5 +1,6 @@
-Introduction
-============
+Class 1: Introduction
+=====================
+
 This class will cover the creation of Application Template and deployment of Applications.
 
 .. warning:: When using the UDF or Ravello Lab, make sure:

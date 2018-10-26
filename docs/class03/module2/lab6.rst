@@ -27,8 +27,8 @@ In order to get the page load time, there are 2 things:
 In order to test it quickly, let's manually set in the HTTP profile attached to ``site42.example.com`` on the BIG-IP ``SEA-vBIGIP01.termmarc.com``
 
 .. image:: ../pictures/module2/img_module2_lab6_1.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -39,40 +39,40 @@ From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To 
 of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
 .. image:: ../../pictures/udf_ubuntu.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
 
 .. image:: ../../pictures/ravello_ubuntu.png
-    :align: center
-    :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 You can use the copy/past feature if you are using the Console:
 
 .. image:: ../../pictures/ubuntu_console.png
-:align: center
-:scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Open Chrome and navigate on the website http://site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab6_2.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Go back on the BIG-IQ, expand the right-edge of the analytics pane and check you can see now the Page Load Time.
 
 .. image:: ../pictures/module2/img_module2_lab6_3.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
@@ -80,29 +80,29 @@ Go back on the BIG-IQ, expand the right-edge of the analytics pane and check you
 Login to BIG-IP, go to ``SEA-vBIGIP01.termmarc.com`` BIG-IP, Local Traffic > Profiles > Analytics > HTTP Analytics.
 
 .. image:: ../pictures/module2/img_module2_lab6_4.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 .. image:: ../pictures/module2/img_module2_lab6_5.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 3. Compare two or more items in the detailed right hand panel. i.e. compare pool members and URLs.
 
 .. image:: ../pictures/module2/img_module2_lab6_6.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
 Select different metric:
 
 .. image:: ../pictures/module2/img_module2_lab6_7.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |

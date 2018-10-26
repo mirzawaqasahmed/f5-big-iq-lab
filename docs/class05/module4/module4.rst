@@ -33,4 +33,4 @@ You have the option to choose whether you want to evaluate all of the changes, o
 
    lab*
 
-.. |image01| image:: media/image01.png
+.. |image01| image:: media/image1.png

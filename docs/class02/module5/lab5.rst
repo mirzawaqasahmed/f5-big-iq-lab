@@ -22,8 +22,9 @@ Do the following:
 
 Follow all the steps as explained:
 
-* Delete the app deployed on your Azure ``SSG`` from the ``BIG-IQ UI``and then press ENTER
-* Delete the Azure ``SSG`` from the ``BIG-IQ UI``and then press Enter
+* Delete the app deployed on your Azure ``SSG`` from the ``BIG-IQ UI`` and then press ENTER
+* Delete the Azure ``SSG`` from the ``BIG-IQ UI`` and then press Enter
+
 ...
 
 .. image:: ../pictures/module4/img_module4_lab5_1.png

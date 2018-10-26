@@ -17,7 +17,8 @@ BIG-IQ 6.0/6.1 the below Ansible module available in Ansible 2.6 (for info `Ansi
 - Create and Delete Application from Default-f5-FastL4-TCP-lb-template: **bigiq_application_fastl4_tcp**
 - Create and Delete Application from Default-f5-FastL4-UDP-lb-template: **bigiq_application_fastl4_udp**
 
- More information on all `F5 Ansible Modules`_.
+More information on all `F5 Ansible Modules`_.
+
 .. _F5 Ansible Modules: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/list_of_all_modules.html
 
 You can access the API & Ansible BIG-IQ documentations from the **BIG-IQ External Resources**:

@@ -147,7 +147,7 @@ In the ``AWS UI``, click on **Services** > **EC2**
 
 |
 
-Select your region: on the top right , click on the selected ``AWS Region`` and select **US East (N. Virginia)
+Select your region: on the top right , click on the selected ``AWS Region`` and select **US East (N. Virginia)**
 
 .. image:: ../pictures/module4/img_module4_lab1_11.png
   :align: center

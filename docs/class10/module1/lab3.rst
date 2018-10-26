@@ -99,7 +99,7 @@ and forward all other DNS queries to members of the pool of DNS servers.
   :scale: 50%
 
 Now the Listener is ready to be deployed.
-Navigate to the Deployment tab, create a new DNS Deployment named **Listener-Deployment**, and select both BOS BIG-IP devices. Click **Create* at the bottom of the page.
+Navigate to the Deployment tab, create a new DNS Deployment named **Listener-Deployment**, and select both BOS BIG-IP devices. Click **Create** at the bottom of the page.
 
 .. image:: ../pictures/module1/module1_lab4_4.png
   :align: center

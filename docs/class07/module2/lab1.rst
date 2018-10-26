@@ -42,56 +42,55 @@ Lab 2.1.2: Create new Application Template Using Firewall objects
 
 In the steps below, we are going to attach our newly created firewall policies to application templates.
 
-1. Under *Configuration* > *Security* > *Network Security*, click *Firewall Policies*
-2. Click the checkbox next to ``f5-afm-policy_136``
-3. Click the dropdown box on the *More* button and select *make available for templates*
-- the firewall policy is now available for use with application templates on BIG-IQ
-4. Click *Configuration* > *Security* > *Shared Security*, click *Logging Profiles*
-5. Click the checkbox next to ``afm-remote-logging-profile``
-6. Click the button *Make available for templates*
-- the afm-remote-logging-profile is the logging profile BIG-IQ created for us when we configured logging in the previous exercise.
+#. Under *Configuration* > *Security* > *Network Security*, click *Firewall Policies*
+#. Click the checkbox next to ``f5-afm-policy_136``
+#. Click the dropdown box on the *More* button and select *make available for templates*
+   - the firewall policy is now available for use with application templates on BIG-IQ
+#. Click *Configuration* > *Security* > *Shared Security*, click *Logging Profiles*
+#. Click the checkbox next to ``afm-remote-logging-profile``
+#. Click the button *Make available for templates*
+   - the afm-remote-logging-profile is the logging profile BIG-IQ created for us when we configured logging in the previous exercise.
 
 With the objects we created available for use with templates, we will now create a new template to use which references these objects.
 
 For the steps below, we will use the *Marco* account to manipulate application templates
-1. Under *Applications* > *Service Catalog* 
-2. Check the box next to the ``Default-f5-HTTPS-WAF-lb-template``, click the dropdown box on the *More* button and select *Clone*
-3. Name the cloned policy ``Default-f5-HTTPS-WAF-FW-lb-template``
-4. Once editing the new template, select the *Security Policies* button
-5. In the *Network Security* section, set the Enforced Firewall Policy to ``f5-afm-policy_136`` for both virtual servers.
-6. In the *Shared Security* section, set the Logging Profiles to ``afm-remote-logging-profile`` for both virtual servers on the Standalone Device.
-7. Click *Save & Close*
-8. From the Service Catalog screen, select the template you just created ``Default-f5-HTTPS-WAF-FW-lb-template``, the click the *Publish* button.
+
+#. Under *Applications* > *Service Catalog* 
+#. Check the box next to the ``Default-f5-HTTPS-WAF-lb-template``, click the dropdown box on the *More* button and select *Clone*
+#. Name the cloned policy ``Default-f5-HTTPS-WAF-FW-lb-template``
+#. Once editing the new template, select the *Security Policies* button
+#. In the *Network Security* section, set the Enforced Firewall Policy to ``f5-afm-policy_136`` for both virtual servers.
+#. In the *Shared Security* section, set the Logging Profiles to ``afm-remote-logging-profile`` for both virtual servers on the Standalone Device.
+#. Click *Save & Close*
+#. From the Service Catalog screen, select the template you just created ``Default-f5-HTTPS-WAF-FW-lb-template``, the click the *Publish* button.
 
 At this point, we have created a new application template that is using our newly created firewall policy and logging profiles.  Next, we will associate an existing application with our new template.
-
 
 Lab 2.1.3: Update Existing Application To Use New Application Template:
 *************************************************************************
 In previous labs, we have created and deployed a new application using a fresh template.  In this exercise, we are going to update an existing application to use a new template.
 
 Complete the steps below logged in as *Marco*
-1. Click the *Applications* tab, and click the *Applications* button.
-2. Click the application ``site36.example.com``
-3. In the upper right hand corner, click *Switch to Template* button
 
-.. image:: ../pictures/module2/switch_to_template.png
-  :align: center
-  :scale: 50%
+#. Click the *Applications* tab, and click the *Applications* button.
+#. Click the application ``site36.example.com``
+#. In the upper right hand corner, click *Switch to Template* button
 
-4. Select the ``Default-f5-HTTPS-WAF-FW-lb-template`` we just created.
-5. In the template editor, in the Domain Names field, type site36.example.com
-6. Click *Save & Close*
+   .. image:: ../pictures/module2/switch_to_template.png
+      :align: center
+      :scale: 50%
 
- - This will take a few moments, but the existing application is being re-configured with our updated template, which references our new firewall policy.
+#. Select the ``Default-f5-HTTPS-WAF-FW-lb-template`` we just created.
+#. In the template editor, in the Domain Names field, type site36.example.com
+#. Click *Save & Close*
+   - This will take a few moments, but the existing application is being re-configured with our updated template, which references our new firewall policy.
+#. Once the application finishes deploying, click on the application ``site36.example.com``
+#. Click the *Security* label under *Application Services*
+#. Verify that the Network Firewall policy listed in the Security Configuration summary pane lists ``f5-afm-policy_136`` as the firewall policy.
 
-7. Once the application finishes deploying, click on the application ``site36.example.com``
-8. Click the *Security* label under *Application Services*
-9. Verify that the Network Firewall policy listed in the Security Configuration summary pane lists ``f5-afm-policy_136`` as the firewall policy.
-
-.. image:: ../pictures/module2/app_sec_summary.png
-  :align: center
-  :scale: 50%
+   .. image:: ../pictures/module2/app_sec_summary.png
+      :align: center
+      :scale: 50%
 
 
 Lab 2.1.4: Monitoring Firewall Logging On BIG-IQ:
@@ -99,23 +98,26 @@ Lab 2.1.4: Monitoring Firewall Logging On BIG-IQ:
 In this exercise, we will generate some traffic to be processes by the firewall policy, and use BIG-IQ monitoring to examine the results.
 
 Complete the steps below logged in as *Larry*
-1. Under *Monitoring* > *Events* > *Network Security*, click *Firewall*
-2. View the current Firewall Event log, in filter box, enter ``site36`` to filter the log for our test application
-- At this point, you probably will not have any events in the log.
-3. From the ``Ubuntu 18.04 Lamp Server`` open an SSH session.
-4. From the SSH session, run the following command:
 
-.. code:: console 
-sudo nmap -sS 10.1.10.136 -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
+#. Under *Monitoring* > *Events* > *Network Security*, click *Firewall*
+#. View the current Firewall Event log, in filter box, enter ``site36`` to filter the log for our test application
+   - At this point, you probably will not have any events in the log.
+#. From the ``Ubuntu 18.04 Lamp Server`` open an SSH session.
+#. From the SSH session, run the following command:
 
-This will use the nmap program to scan our test application using several different source addresses.  Our firewall policy will not allow all of the sources.
+   .. code:: console 
+      
+      sudo nmap -sS 10.1.10.136 -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
 
-5. Refresh the Firewall Event Log.  This time you should see a number of events in the firewall log.
-6. Click one of the events, and examine the details available
+   This will use the nmap program to scan our test application using several different source addresses.  Our firewall policy will not allow all of the sources.
 
-.. image:: ../pictures/module2/firewall_log_drop.png
-  :align: center
-  :scale: 50%
+#. Refresh the Firewall Event Log.  This time you should see a number of events in the firewall log.
+#. Click one of the events, and examine the details available
+
+   .. image:: ../pictures/module2/firewall_log_drop.png
+      :align: center
+      :scale: 50%
 
 Why is the Firewall Event log not showing accepted connections, only drops?  
+
 .. HINT:: check the remote-afm-logging-profile
