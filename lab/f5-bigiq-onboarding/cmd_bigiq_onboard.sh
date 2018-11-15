@@ -81,13 +81,7 @@ if [[  $env != "udf" ]]; then
     fi
     ## download iso file
     curl "https://weblogin.f5net.com/sso/login.php?redir=https://nibs.f5net.com/build" -H "Connection: keep-alive" -H "Pragma: no-cache" -H "Cache-Control: no-cache" -H "Origin: https://weblogin.f5net.com" -H "Upgrade-Insecure-Requests: 1" -H "DNT: 1" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" -H "Referer: https://weblogin.f5net.com/sso/login.php?msg=Invalid%20Credentials&redir=https://nibs.f5net.com/build" -H "Accept-Encoding: gzip, deflate, br" -H "Accept-Language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7" --data "user=$f5user&pass=$f5pass&submit_form=Submit" --compressed -c ./.cookie
-    if [[ $release == "v6.1.0" ]]; then
-      cut="7-41"
-    fi
-    if [[ $release == "v6.0.1.1" ]]; then
-      cut="7-30"
-    fi
-    curl -b ./.cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | cut -b $cut > iso.txt
+    curl -b ./.cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/ | grep BIG-IQ | grep 'iso"'  | awk '{print $6}' | grep -oP '(?<=").*(?=")' > iso.txt
     iso=$(cat iso.txt)
     curl -b ./.cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/$iso > $iso
     curl -b ./.cookie -o - https://nibs.f5net.com/build/bigiq/$release/daily/$build/$iso.md5 > $iso.md5

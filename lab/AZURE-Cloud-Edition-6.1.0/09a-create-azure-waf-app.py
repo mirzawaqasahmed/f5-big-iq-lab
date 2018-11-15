@@ -60,7 +60,7 @@ while device_status not in ['READY']:
         exit()
 
     if  device_status == 'PAUSED':
-        pretty_print('SSG status PAUSED, Application not created. Check your VPN is UP. You may retry app creation afterward: # python 09-create-aws-waf-app.py')
+        pretty_print('SSG status PAUSED, Application not created. Check your VPN is UP. You may retry app creation afterward: # python 09-create-azure-waf-app.py')
         exit()
 
 pretty_print('Wait for an additonal 2 min to stabilize the SSG.')
