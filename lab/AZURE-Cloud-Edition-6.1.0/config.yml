@@ -23,7 +23,8 @@ SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
 USE_TOKEN: no
 
 # A unique searchable prefix to all resources which are created
-# Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)
+# Use a prefix w/o spaces or special characters (not end with - or special characters)
+# PREFIX MUST BE LESS THAN 15 CHARACTERES
 PREFIX: udf-azure-demo
 # Also used for the Azure Resource group name
 
