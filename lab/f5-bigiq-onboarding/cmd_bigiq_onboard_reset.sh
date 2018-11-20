@@ -41,7 +41,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}"
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${RED}Delete Applications${NC}"
-[[ $1 != "nopause" ]] && pause "Press ${BLUE}[Enter]${NC} key to continue... CTRL+C to Cancel"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 # Delete apps
 if [[  $env == "udf" ]]; then
