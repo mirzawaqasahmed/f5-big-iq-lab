@@ -160,7 +160,7 @@ if [[  $env != "udf" ]]; then
   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 
-  echo -e "\n${RED}Waiting 10 min ... ${NC}"
+  echo -e "\n${RED}Waiting 15 min ... ${NC}"
   sleep 900
 
   echo -e "\n${RED}INTERNAL USE --- ONLY F5 LAB --- END ${NC}"
