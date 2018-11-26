@@ -60,7 +60,7 @@ if [[  $env != "udf" ]]; then
     echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
     ## Cleanup
-    rm -f *iso* activeVolume status
+    rm -f *iso *iso.md5 *iso.md5.verify activeVolume status
     # remove cookie if older than 1 day
     if [[ $(find "./.cookie" -mmin +120 -print 2> /dev/null) ]]; then
       echo "Deleted .cookie older than 2 hours"

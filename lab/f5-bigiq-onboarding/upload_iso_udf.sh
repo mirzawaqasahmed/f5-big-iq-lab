@@ -23,7 +23,7 @@ read sshkey
 echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
 
 ## Cleanup
-rm -f *iso*
+rm -f *iso *iso.md5 *iso.md5.verify
 # remove cookie if older than 1 day
 if [[ $(find "./.cookie" -mmin +120 -print 2> /dev/null) ]]; then
   echo "\nDeleted .cookie older than 2 hours"
@@ -56,4 +56,4 @@ else
 fi
 
 echo -e "\n${GREEN}Transfer iso to BIG-IQ CM in UDF:${NC}"
-scp -P $port -i $sshkey $iso $fqdn:/shared/images/
+scp -o "StrictHostKeyChecking no" -P $port -i $sshkey $iso $fqdn:/shared/images/
