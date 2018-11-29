@@ -2,7 +2,7 @@
 - name: BIG-IQ and AS3 Lab - Task 9 - Delete Task1 and Task2 AS3 Applications
   hosts: udf-bigiq-cm-01
   vars_files:
-    - inventory/group_vars/udf-bigiq-cm-01
+    - inventory/group_vars/udf-bigiq-cm-01.yml
 
   tasks: 
     - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq.json or auth_bigiq_radius.json)
