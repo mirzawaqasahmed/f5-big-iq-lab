@@ -40,7 +40,7 @@
               hostname: "{{ bigip_target }}"
             Task3:
               class: Tenant
-              MyWebApp3:
+              MyWebApp3waf:
                 class: Application
                 template: https
                 statsProfile:

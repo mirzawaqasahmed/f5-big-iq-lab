@@ -40,7 +40,7 @@
               hostname: "{{ bigip_target }}"
             Task4:
               class: Tenant
-              MyWebApp4:
+              MyWebApp4generic:
                 class: Application
                 template: generic
                 statsProfile:
