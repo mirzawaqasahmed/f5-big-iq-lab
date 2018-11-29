@@ -1,0 +1,6 @@
+bigiq_cm_server: 10.192.75.180
+bigip_target: bigip1tier1.lab.fp.f5net.com
+as3_schemaVersion: 3.7.0
+task1_vs: 10.1.10.213
+task1_node1: 10.1.20.205
+task1_node2: 10.1.20.206

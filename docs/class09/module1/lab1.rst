@@ -10,7 +10,7 @@ You can clone these service templates and edit the cloned templates to add acces
 
 .. warning:: You currently cannot deploy access service templates with Amazon Web Services (AWS) SSG but only on VMware SSG and cluster/standalone BIG-IP
 
-Connect as **marco**, go to *Applications* > *SERVICE CATALOG*:
+Connect as **david** or **marco**, go to *Applications* > *SERVICE CATALOG*:
 
 Look through the different default templates.
 

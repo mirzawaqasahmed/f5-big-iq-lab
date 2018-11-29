@@ -1,4 +1,4 @@
-Module 4: Custom Application Templates & Deployment
+Module 4: BIG_IQ Custom Application Templates & Deployment
 ===================================================
 In this module, we will learn how to use Custom Application Templates and deploy an **Application** from it.
 

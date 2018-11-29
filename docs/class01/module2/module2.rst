@@ -1,8 +1,8 @@
-Module 2: Application Templates & Deployment
-============================================
+Module 2: BIG-IQ Application Templates & Deployment
+===================================================
 In this module, we will learn how to use Application Templates and how to deploy an **Application**.
 
-The Application Templates will be created by **marco**, the Administrator.
+The Application Templates will be created by **david** or **marco**, the Administrator.
 **larry** will create the security policies and let Marco know about the ones to associate with the templates.
 Once the template is ready with all the necessary information, it will be ready to use by the Application owner.
 

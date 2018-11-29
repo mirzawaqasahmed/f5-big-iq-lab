@@ -26,4 +26,4 @@ Execute the playbook::
 
 .. note :: If you prefer not to wait until the app is created, you can switch the variable ``wait`` to ``no`` in the playbook.
 
-Connect as **david** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.
+Connect as **olivia** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.

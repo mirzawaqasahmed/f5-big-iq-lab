@@ -54,7 +54,7 @@ Click Save & Close.
 
 |
 
-Connect as **marco**
+Connect as **david** or **marco**
 
 1. Create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
 Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``

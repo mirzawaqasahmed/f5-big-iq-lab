@@ -9,23 +9,17 @@ Below Virtual Servers and Pool Members can be used in the context of the  (UDF l
 
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
 
-- **Test Web Site 17:** *(used in module 1)*
+- **Test Web Sites:** *(used in module 1)*
 
 ======================  ============ ======== ============================ ============
 Test Website            VIP          Ports    Servers                      Ports
 ======================  ============ ======== ============================ ============
 site17auth.example.com  10.1.10.117  443      10.1.20.123 and 10.1.20.124  80/8081
 ======================  ============ ======== ============================ ============
-
-- **Test Web Site 19:** *(used in module 1)*
-
-======================  ============ ======== ============================ ============
-Test Website            VIP          Ports    Servers                      Ports
-======================  ============ ======== ============================ ============
 site19auth.example.com  10.1.10.119  443      10.1.20.125 and 10.1.20.133  80/8081
 ======================  ============ ======== ============================ ============
 
-- **Test Web Site 21:**
+- **Test Web Site:**
 
 ======================  ============ ======== ============================ ============
 Test Website            VIP          Ports    Servers                      Ports

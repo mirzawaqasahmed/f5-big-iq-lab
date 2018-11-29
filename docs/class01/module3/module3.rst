@@ -1,6 +1,6 @@
-Module 3: Application Deployment via API
-========================================
-BIG-IQ 6.0/6.1 the below Ansible module available in Ansible 2.6 (for info `Ansible F5 github`_).
+Module 3: BIG-IQ Application Deployment via API
+===============================================
+BIG-IQ Ansible module available in Ansible 2.6 (for info `Ansible F5 github`_).
 
 .. _Ansible F5 github: https://github.com/F5Networks/f5-ansible
 
