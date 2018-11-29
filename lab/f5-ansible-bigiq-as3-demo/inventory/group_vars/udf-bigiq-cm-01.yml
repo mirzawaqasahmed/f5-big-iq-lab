@@ -14,7 +14,6 @@ task3_policyWAF: /Common/templates-default
 task4_vs: 10.1.10.125
 task4_node1: 10.1.20.125
 task4_node2: 10.1.20.126
-task4_generic_virtual: myservicetcp
 task5_vs: 10.1.10.127
 task5_node1: 10.1.20.127
 task5_node2: 10.1.20.128
