@@ -34,8 +34,8 @@
             class: ADC
             schemaVersion: "{{ as3_schemaVersion }}"
             id: example-declaration-01
-            label: Task1
-            remark: Task 1 - HTTP Application Service
+            label: Task9
+            remark:  Task 9 - Delete ALL Tasks AS3 Applications 
             target:
               hostname: "{{ bigip_target }}"
             Task1:
@@ -83,12 +83,13 @@
         headers:
           Content-Type: application/json
           X-F5-Auth-Token: "{{auth.json.token.token}}"
-        status_code: 200, 202
+        status_code: 200, 202, 207
         validate_certs: false
       register: json_response_task
       until: "json_response_task.json[0].results != 'pending'"
-      retries: 120
-      delay: 30
+      retries: 90
+      delay: 10
+      ignore_errors: yes
 
     - debug:
         var: json_response_task.json
