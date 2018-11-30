@@ -34,15 +34,11 @@
             schemaVersion: "{{ as3_schemaVersion }}"
             id: isc-lab
             label: Task8
-            remark: Task 8 - Deploy the HTTP Application Service using the Custom Template
             target:
               hostname: "{{ bigip_target }}"
-            controls:
-              class: Controls
-              logLevel: debug
             Task8:
               class: Tenant
-              A8:
+              MyWebApp8http:
                 class: Application
                 schemaOverlay: "{{ task6_bigiq_custom_template }}"
                 template: http
@@ -68,10 +64,11 @@
                   monitors:
                   - http
                   members:
-                  - serverAddresses:
+                  - servicePort: 80
+                    serverAddresses:
                     - "{{ task8_node1 }}"
                     - "{{ task8_node2 }}"
-                    servicePort: 80
+                    shareNodes: true
         body_format: json
         timeout: 60
         status_code: 200, 202

@@ -70,6 +70,7 @@
                     serverAddresses:
                     - "{{ task2_node1 }}"
                     - "{{ task2_node2 }}"
+                    shareNodes: true
                 webtls:
                   class: TLS_Server
                   certificates:

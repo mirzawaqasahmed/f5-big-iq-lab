@@ -69,6 +69,7 @@
                     serverAddresses:
                     - "{{ task1_node1 }}"
                     - "{{ task1_node2 }}"
+                    shareNodes: true
               MyWebApp6https:
                 class: Application
                 template: https
@@ -99,6 +100,7 @@
                     serverAddresses:
                     - "{{ task5a_node1 }}"
                     - "{{ task5a_node2 }}"
+                    shareNodes: true
                 webtls:
                   class: TLS_Server
                   certificates:

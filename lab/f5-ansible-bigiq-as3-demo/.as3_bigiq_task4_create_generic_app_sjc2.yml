@@ -70,6 +70,7 @@
                     serverAddresses:
                     - "{{ task4_node1 }}"
                     - "{{ task4_node2 }}"
+                    shareNodes: true
         body_format: json
         timeout: 60
         status_code: 200, 202
