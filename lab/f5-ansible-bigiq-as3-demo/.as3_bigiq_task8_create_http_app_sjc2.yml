@@ -33,6 +33,8 @@
             class: ADC
             schemaVersion: "{{ as3_schemaVersion }}"
             id: isc-lab
+            label: Task8
+            remark: Task 8 - Deploy the HTTP Application Service using the Custom Template
             target:
               hostname: "{{ bigip_target }}"
             controls:
@@ -67,8 +69,8 @@
                   - http
                   members:
                   - serverAddresses:
-                    -  "{{ task8_node1 }}"
-                    -  "{{ task8_node1 }}"
+                    - "{{ task8_node1 }}"
+                    - "{{ task8_node2 }}"
                     servicePort: 80
         body_format: json
         timeout: 60
