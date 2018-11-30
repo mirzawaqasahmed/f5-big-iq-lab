@@ -218,7 +218,7 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
     }
 
 
-If you have issues, use the AS3 public validator (go to the Linux Jumphost, open a browser and connect to http://10.1.1.14:5000):
+If you have issues, use the AS3 public validator (go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000):
 
 4. Click on ``Format JSON`` on the top left.
 
