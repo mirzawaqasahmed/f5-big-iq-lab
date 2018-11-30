@@ -173,7 +173,8 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
 1. Add the below application service to the existing AS3 declaration in the validator.
 
 .. code-block:: yaml
-   :linenos: 3
+   :linenos:
+   :emphasize-lines: 3
 
     {
         "class": "AS3",
