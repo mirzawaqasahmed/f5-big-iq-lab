@@ -100,7 +100,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-To access to the AS3 public validator, go to the Linux Jumphost, open a browser and connect to http://10.1.1.15:5000
+To access to the AS3 public validator, go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000
 
 2. Click on ``Format JSON`` on the top left ("hamburger"-like button).
 
