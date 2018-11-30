@@ -24,7 +24,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
            "target": {
-               "hostname": "SEA-vBIGIP01.termmarc.com
+               "hostname": "SEA-vBIGIP01.termmarc.com"
            },
            "Task1": {
                "class": "Tenant",
@@ -166,48 +166,56 @@ If you have issues, use the AS3 public validator (go to the Linux Jumphost, open
 9. Logon on BIG-IQ as admin, go to Application tab and check the application is displayed and analytics are showing.
 
 Task 5b - Add an HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This declaration will create add a HTTP application to a exsisting Tenant. In this task, we will submit only the new application using the PATCH.
 
 1. Add the below application service to the existing AS3 declaration in the validator.
 
 .. code-block:: yaml
-   :linenos:
+   :linenos: 3
 
-    [
-        {
-            "path": "/Task1/MyWebApp7http",
-            "op": "add",
-            "value": {
-                "class": "Application",
-                "template": "http",
-                "serviceMain": {
-                    "class": "Service_HTTP",
-                    "virtualAddresses": [
-                        "10.1.10.129"
-                    ],
-                    "pool": "web_pool"
-                },
-                "web_pool": {
-                    "class": "Pool",
-                    "monitors": [
-                        "http"
-                    ],
-                    "members": [
-                        {
-                            "servicePort": 80,
-                            "serverAddresses": [
-                                "10.1.20.129",
-                                "10.1.20.130"
-                            ],
-                            "shareNodes": true
-                        }
-                    ]
+    {
+        "class": "AS3",
+        "action": "patch",
+        "target": {
+            "hostname": "SEA-vBIGIP01.termmarc.com"
+        },
+        "patchBody": [
+            {
+                "path": "/Task1/MyWebApp7http",
+                "op": "add",
+                "value": {
+                    "class": "Application",
+                    "template": "http",
+                    "serviceMain": {
+                        "class": "Service_HTTP",
+                        "virtualAddresses": [
+                            "10.1.10.129"
+                        ],
+                        "pool": "web_pool"
+                    },
+                    "web_pool": {
+                        "class": "Pool",
+                        "monitors": [
+                            "http"
+                        ],
+                        "members": [
+                            {
+                                "servicePort": 80,
+                                "serverAddresses": [
+                                  "10.1.20.129",
+                                  "10.1.20.130"
+                                ],
+                                "shareNodes": true
+                            }
+                        ]
+                    }
                 }
             }
-        }
-    ]
+        ]
+    }
+
 
 If you have issues, use the AS3 public validator (go to the Linux Jumphost, open a browser and connect to http://10.1.1.14:5000):
 
@@ -217,9 +225,9 @@ If you have issues, use the AS3 public validator (go to the Linux Jumphost, open
 
 6. Click on  ``Format JSON``, ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
 
-7. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Change the methode to **PATCH**. Copy/Past the declaration into Postman:
+7. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
-   PATCH https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 

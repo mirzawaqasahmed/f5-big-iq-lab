@@ -27,6 +27,11 @@
           X-F5-Auth-Token: "{{auth.json.token.token}}"
         body:
           # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: patch
+          target:
+            hostname: "{{ bigip_target }}"
+          patchBody:
           - path: "/Task1/MyWebApp7http"
             op: add
             value:
