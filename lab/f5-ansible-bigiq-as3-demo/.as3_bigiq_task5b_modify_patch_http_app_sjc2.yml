@@ -27,26 +27,26 @@
           X-F5-Auth-Token: "{{auth.json.token.token}}"
         body:
           # used https://www.json2yaml.com/ to convert JSON declaration to YAML
-          path: "/Task1/MyWebApp7http"
-          op: add
-          value:
-            class: Application
-            template: http
-            serviceMain:
-              class: Service_HTTP
-              virtualAddresses:
-              - "{{ task5b_vs }}"
-              pool: web_pool
-            web_pool:
-              class: Pool
-              monitors:
-              - http
-              members:
-              - servicePort: 80
-                serverAddresses:
-                - "{{ task5b_node1 }}"
-                - "{{ task5b_node1 }}"
-                shareNodes: true
+          - path: "/Task1/MyWebApp7http"
+            op: add
+            value:
+              class: Application
+              template: http
+              serviceMain:
+                class: Service_HTTP
+                virtualAddresses:
+                - "{{ task5b_vs }}"
+                pool: web_pool
+              web_pool:
+                class: Pool
+                monitors:
+                - http
+                members:
+                - servicePort: 80
+                  serverAddresses:
+                  - "{{ task5b_node1 }}"
+                  - "{{ task5b_node2 }}"
+                  shareNodes: true
         body_format: json
         timeout: 60
         status_code: 200, 202
