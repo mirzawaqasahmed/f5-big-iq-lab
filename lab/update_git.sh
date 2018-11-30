@@ -128,6 +128,20 @@ if [[  $currentuser == "root" ]]; then
 
     sudo docker ps
 
+    # Install AS3 Validator
+    # https://github.com/F5Networks/f5-appsvcs-extension/tree/master/AS3-schema-validator
+    sudo docker run --restart=always --name=as3validatortool -dit -p 5000:5000 node
+    docker_as3validatortool_id=$(sudo docker ps | grep as3validatortool | awk '{print $1}')
+    wget https://github.com/F5Networks/f5-appsvcs-extension/raw/master/AS3-schema-validator/3.6.0/build.zip
+    rm -rf build
+    unzip build.zip
+    sudo docker cp build $docker_as3validatortool_id:/
+    sudo docker exec -i -t $docker_as3validatortool_id sh -c "yarn global add serve"
+    sudo docker exec -i -t $docker_as3validatortool_id sh -c "npm install -g serve"
+    sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt-get update"
+    sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt install xsel -y"
+    sudo docker exec -i -t $docker_as3validatortool_id sh -c "cd /build; serve -s build -p 5000 &"
+
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
     # wait 15 min for ESX to boot
     sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &

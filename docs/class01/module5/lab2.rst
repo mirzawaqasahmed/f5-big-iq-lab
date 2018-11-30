@@ -145,7 +145,14 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            }
        }
 
-If you have issues, use the AS3 public validator (go to the Linux Jumphost, open a browser and connect to http://10.1.1.14:5000):
+To access to the AS3 public validator, go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000.
+
+From UDF, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *AS3 Validator Tool*
+
+|lab-1-5|
+
+.. warning:: The Validator isn't working at the moment, use this one instead: http://35.239.61.203:5000/
 
 4. Click on ``Format JSON`` on the top left.
 
@@ -217,8 +224,14 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
         ]
     }
 
+To access to the AS3 public validator, go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000.
 
-If you have issues, use the AS3 public validator (go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000):
+From UDF, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *AS3 Validator Tool*
+
+|lab-1-5|
+
+.. warning:: The Validator isn't working at the moment, use this one instead: http://35.239.61.203:5000/
 
 4. Click on ``Format JSON`` on the top left.
 
@@ -240,3 +253,6 @@ If you have issues, use the AS3 public validator (go to the Linux Jumphost, open
 
 .. |lab-2-1| image:: images/lab-2-1.png
    :scale: 80%
+.. |lab-1-5| image:: images/lab-1-5.png
+   :scale: 80%
+

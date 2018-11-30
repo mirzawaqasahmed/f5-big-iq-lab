@@ -100,7 +100,14 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-To access to the AS3 public validator, go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000
+To access to the AS3 public validator, go to the Linux Jumphost, open a browser and connect to http://10.1.1.5:5000.
+
+From UDF, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *AS3 Validator Tool*
+
+|lab-1-5|
+
+.. warning:: The Validator isn't working at the moment, use this one instead: http://35.239.61.203:5000/
 
 2. Click on ``Format JSON`` on the top left ("hamburger"-like button).
 
@@ -445,4 +452,6 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 .. |lab-1-3| image:: images/lab-1-3.png
    :scale: 80%
 .. |lab-1-4| image:: images/lab-1-4.png
+   :scale: 80%
+.. |lab-1-5| image:: images/lab-1-5.png
    :scale: 80%
