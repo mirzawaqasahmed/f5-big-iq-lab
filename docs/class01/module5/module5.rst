@@ -1,5 +1,7 @@
-Module 5: AS3 and BIG-IQ 6.1 integration
-========================================
+Module 5: BIG-IQ Application Templates & Deployment with AS3
+============================================================
+
+**[New 6.1.0]** 
 
 .. graphviz::
 
