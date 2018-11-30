@@ -28,7 +28,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            },
            "Task1": {
                "class": "Tenant",
-               "MyWebApp1": {
+               "MyWebApp1http": {
                    "class": "Application",
                    "template": "http",
                    "statsProfile": {
@@ -84,7 +84,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
 .. code-block:: yaml
    :linenos:
 
-   "MyWebApp6": {
+   "MyWebApp6https": {
            "class": "Application",
            "template": "https",
            "statsProfile": {

@@ -112,7 +112,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
             },
             "Task8": {
                 "class": "Tenant",
-                "A8": {
+                "MyWebApp8http": {
                     "class": "Application",
                     "schemaOverlay": "HTTPcustomTemplateTask6",
                     "template": "http",

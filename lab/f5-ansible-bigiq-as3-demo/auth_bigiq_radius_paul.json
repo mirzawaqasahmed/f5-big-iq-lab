@@ -1,5 +1,5 @@
 {
     "username": "paul",
     "password": "paul",
-    "loginProviderName": "radius"
+    "loginProviderName": "RadiusServer"
 }

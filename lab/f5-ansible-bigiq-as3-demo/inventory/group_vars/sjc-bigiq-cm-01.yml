@@ -14,9 +14,12 @@ task3_policyWAF: /Common/templates-default
 task4_vs: 10.1.10.216
 task4_node1: 10.1.20.211
 task4_node2: 10.1.20.212
-task5_vs: 10.1.10.217
-task5_node1: 10.1.20.207
-task5_node2: 10.1.20.208
-task8_vs: 10.1.10.218
+task5a_vs: 10.1.10.217
+task5a_node1: 10.1.20.207
+task5a_node2: 10.1.20.208
+task5b_vs: 10.1.10.218
+task5b_node1: 10.1.20.207
+task5b_node2: 10.1.20.208
+task8_vs: 10.1.10.219
 task8_node1: 10.1.20.205
 task8_node2: 10.1.20.206

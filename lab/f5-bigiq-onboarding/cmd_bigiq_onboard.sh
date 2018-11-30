@@ -217,9 +217,9 @@ echo -e "\n${GREEN}Create Applications${NC}"
 # Create apps
 if [[  $env == "udf" ]]; then
   ansible-playbook -i notahost, create_default_apps.yml $DEBUG_arg
-else
-  ansible-playbook -i notahost, .create_default_apps_$env.yml $DEBUG_arg
 fi
+# For Internal labs
+#ansible-playbook -i notahost, .create_default_apps_$env.yml $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

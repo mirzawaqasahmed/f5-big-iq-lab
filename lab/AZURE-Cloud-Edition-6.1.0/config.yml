@@ -24,7 +24,7 @@ USE_TOKEN: no
 
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (not end with - or special characters)
-# PREFIX MUST BE LESS OR EQUAL 15 CHARACTERES
+# MUST BE LESS OR EQUAL 15 CHARACTERES
 PREFIX: udf-azure-demo
 # Also used for the Azure Resource group name
 

@@ -41,7 +41,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
            },
            "Task1": {
                "class": "Tenant",
-               "MyWebApp1": {
+               "MyWebApp1http": {
                    "class": "Application",
                    "template": "http",
                    "statsProfile": {
@@ -164,7 +164,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
            },
            "Task2": {
                "class": "Tenant",
-               "MyWebApp2": {
+               "MyWebApp2https": {
                    "class": "Application",
                    "template": "https",
                    "statsProfile": {
@@ -261,7 +261,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
            },
            "Task3": {
                "class": "Tenant",
-               "MyWebApp3": {
+               "MyWebApp3waf": {
                    "class": "Application",
                    "template": "https",
                    "statsProfile": {
@@ -364,7 +364,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
            },
            "Task4": {
                "class": "Tenant",
-               "MyWebApp4": {
+               "MyWebApp4generic": {
                    "class": "Application",
                    "template": "generic",
                    "statsProfile": {
