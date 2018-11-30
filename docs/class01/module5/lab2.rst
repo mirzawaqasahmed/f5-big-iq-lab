@@ -24,7 +24,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com
+               "hostname": "SEA-vBIGIP01.termmarc.com
            },
            "Task1": {
                "class": "Tenant",

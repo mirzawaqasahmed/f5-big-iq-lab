@@ -112,7 +112,7 @@ To access to the AS3 public validator, go to the Linux Jumphost, open a browser 
 4. Now that the JSON is validated, let's add the target (BIG-IP device)::
 
     "target": {
-        "hostname": "BOS-vBIGIP01.termmarc.com"
+        "hostname": "SEA-vBIGIP01.termmarc.com"
     },
 
 .. note:: The target BIG-IP is standalone but it could be configured as an HA pair.
@@ -138,7 +138,7 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
    
 .. note:: notice that the app deployment may take a few minutes.
 
-8. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
+8. Logon on **SEA-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
 
 9. Logon on **BIG-IQ** as admin, go to Application tab and check the application is displayed and analytics are showing.
 
@@ -175,7 +175,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
            "label": "Task2",
            "remark": "Task 2 - HTTPS Application Service",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "hostname": "SEA-vBIGIP01.termmarc.com"
            },
            "Task2": {
                "class": "Tenant",
@@ -273,7 +273,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
            "label": "Task3",
            "remark": "Task 3 - HTTPS Application with WAF",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "hostname": "SEA-vBIGIP01.termmarc.com"
            },
            "Task3": {
                "class": "Tenant",
@@ -377,7 +377,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
            "label": "Task4",
            "remark": "Task 4 - Generic Services",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "hostname": "SEA-vBIGIP01.termmarc.com"
            },
            "Task4": {
                "class": "Tenant",

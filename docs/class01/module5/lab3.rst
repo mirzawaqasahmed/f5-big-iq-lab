@@ -105,7 +105,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
             "id": "isc-lab",
             "label": "Task8",
             "target": {
-                "hostname": "BOS-vBIGIP01.termmarc.com"
+                "hostname": "SEA-vBIGIP01.termmarc.com"
             },
             "Task8": {
                 "class": "Tenant",
@@ -162,7 +162,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-4. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
+4. Logon on **SEA-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
 
 5. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
@@ -199,7 +199,7 @@ As admin, use below AS3 declaration to delete couple of the application previoul
        }
    }
 
-Here, we empty the tenants/partitions: Task1 and Task2. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
+Here, we empty the tenants/partitions: Task1 and Task2. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
 should also disappear from BIG-IQ. 
 
 .. |lab-3-1| image:: images/lab-3-1.png
