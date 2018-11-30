@@ -63,7 +63,8 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                                "serverAddresses": [
                                    "10.1.20.110",
                                    "10.1.20.111"
-                               ]
+                               ],
+                               "shareNodes": true
                            }
                        ]
                    }
@@ -120,7 +121,8 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                        "serverAddresses": [
                            "10.1.20.127",
                            "10.1.20.128"
-                       ]
+                       ],
+                       "shareNodes": true
                    }
                ]
            },

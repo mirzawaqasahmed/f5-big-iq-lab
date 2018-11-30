@@ -76,7 +76,8 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
                                "serverAddresses": [
                                    "<node1>",
                                    "<node2>"
-                               ]
+                               ],
+                               "shareNodes": true
                            }
                        ]
                    }
@@ -200,7 +201,8 @@ Copy/Paste the below AS3 declaration into the body (Postman):
                                "serverAddresses": [
                                    "10.1.20.112",
                                    "10.1.20.113"
-                               ]
+                               ],
+                               "shareNodes": true
                            }
                        ]
                    },
@@ -300,7 +302,8 @@ Update the WAF policy section below with the policy available on BIG-IP::
                                "serverAddresses": [
                                    "10.1.20.123",
                                    "10.1.20.124"
-                               ]
+                               ],
+                               "shareNodes": true
                            }
                        ]
                    },
@@ -400,7 +403,8 @@ Modify the Generic virtual with something other than <generic_virtual>.
                                "serverAddresses": [
                                    "10.1.20.125",
                                    "10.1.20.126"
-                               ]
+                               ],
+                               "shareNodes": true
                            }
                        ]
                    }
