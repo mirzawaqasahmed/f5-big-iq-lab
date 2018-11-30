@@ -3,10 +3,10 @@ Lab 4.2: Modify AS3 Declaration using BIG-IQ 6.1
 
 Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
 
-Task 5 - Add an HTTPS Application to existing HTTP AS3 Declaration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 5a - Add an HTTPS Application to existing HTTP AS3 Declaration (using POST)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This declaration will create add a HTTPS application to a exsisting HTTP application. 
+This declaration will create add a HTTPS application to a exsisting HTTP application. In this task, we will re-submit the entire declaration.
 
 1. Start with the previous AS3 Declaration from **lab 1 - Task 1**
 
@@ -24,7 +24,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
            "target": {
-               "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+               "hostname": "BOS-vBIGIP01.termmarc.com
            },
            "Task1": {
                "class": "Tenant",
@@ -45,7 +45,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                    "serviceMain": {
                        "class": "Service_HTTP",
                        "virtualAddresses": [
-                           "10.1.20.100"
+                           "10.1.10.111"
                        ],
                        "pool": "web_pool",
                        "profileAnalytics": {
@@ -61,8 +61,8 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                            {
                                "servicePort": 80,
                                "serverAddresses": [
-                                   "10.1.10.100",
-                                   "10.1.10.101"
+                                   "10.1.20.110",
+                                   "10.1.20.111"
                                ]
                            }
                        ]
@@ -101,7 +101,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            "serviceMain": {
                "class": "Service_HTTPS",
                "virtualAddresses": [
-                   "10.1.20.104"
+                   "10.1.10.127"
                ],
                "pool": "web_pool",
                "profileAnalytics": {
@@ -118,8 +118,8 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                    {
                        "servicePort": 80,
                        "serverAddresses": [
-                           "10.1.10.109",
-                           "10.1.10.110"
+                           "10.1.20.127",
+                           "10.1.20.128"
                        ]
                    }
                ]
@@ -163,6 +163,69 @@ If you have issues, use the AS3 public validator (go to the Linux Jumphost, open
 
 9. Logon on BIG-IQ as admin, go to Application tab and check the application is displayed and analytics are showing.
 
+Task 5b - Add an HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This declaration will create add a HTTP application to a exsisting Tenant. In this task, we will submit only the new application using the PATCH.
+
+1. Add the below application service to the existing AS3 declaration in the validator.
+
+.. code-block:: yaml
+   :linenos:
+
+    [
+        {
+            "path": "/Task1/MyWebApp7http",
+            "op": "add",
+            "value": {
+                "class": "Application",
+                "template": "http",
+                "serviceMain": {
+                    "class": "Service_HTTP",
+                    "virtualAddresses": [
+                        "10.1.10.129"
+                    ],
+                    "pool": "web_pool"
+                },
+                "web_pool": {
+                    "class": "Pool",
+                    "monitors": [
+                        "http"
+                    ],
+                    "members": [
+                        {
+                            "servicePort": 80,
+                            "serverAddresses": [
+                                "10.1.20.129",
+                                "10.1.20.130"
+                            ],
+                            "shareNodes": true
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+
+If you have issues, use the AS3 public validator (go to the Linux Jumphost, open a browser and connect to http://10.1.1.14:5000):
+
+4. Click on ``Format JSON`` on the top left.
+
+5. Click on ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
+
+6. Click on  ``Format JSON``, ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
+
+7. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Change the methode to **PATCH**. Copy/Past the declaration into Postman:
+
+   PATCH https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   
+   This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
+
+8. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+
+   GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+
+9. Logon on BIG-IQ as admin, go to Application tab and check the application is displayed and analytics are showing.
 
 .. |lab-2-1| image:: images/lab-2-1.png
    :scale: 80%

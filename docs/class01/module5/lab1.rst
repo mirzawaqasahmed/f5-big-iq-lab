@@ -97,14 +97,14 @@ To access to the AS3 public validator, go to the Linux Jumphost, open a browser 
 4. Now that the JSON is validated, let's add the target (BIG-IP device)::
 
     "target": {
-        "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+        "hostname": "BOS-vBIGIP01.termmarc.com"
     },
 
 .. note:: The target BIG-IP is standalone but it could be configured as an HA pair.
           If you want, configure the HA in auto-sync mode. Configure the BIG-IP cluster in BIG-IQ.
           The target in this case can be either device.
 
-Modify the Virtual Address to 10.1.20.100 and the serverAddresses to 10.1.10.100 and 10.1.10.101.
+Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
 5. Click on  ``Format JSON``, ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
 
@@ -160,7 +160,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
            "label": "Task2",
            "remark": "Task 2 - HTTPS Application Service",
            "target": {
-               "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task2": {
                "class": "Tenant",
@@ -181,7 +181,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
                    "serviceMain": {
                        "class": "Service_HTTPS",
                        "virtualAddresses": [
-                           "10.1.20.101"
+                           "10.1.10.113"
                        ],
                        "pool": "web_pool",
                        "profileAnalytics": {
@@ -198,8 +198,8 @@ Copy/Paste the below AS3 declaration into the body (Postman):
                            {
                                "servicePort": 80,
                                "serverAddresses": [
-                                   "10.1.10.103",
-                                   "10.1.10.104"
+                                   "10.1.20.112",
+                                   "10.1.20.113"
                                ]
                            }
                        ]
@@ -257,7 +257,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
            "label": "Task3",
            "remark": "Task 3 - HTTPS Application with WAF",
            "target": {
-               "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task3": {
                "class": "Tenant",
@@ -278,7 +278,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
                    "serviceMain": {
                        "class": "Service_HTTPS",
                        "virtualAddresses": [
-                           "10.1.20.102"
+                           "10.1.10.123"
                        ],
                        "pool": "web_pool",
                        "profileAnalytics": {
@@ -298,8 +298,8 @@ Update the WAF policy section below with the policy available on BIG-IP::
                            {
                                "servicePort": 80,
                                "serverAddresses": [
-                                   "10.1.10.105",
-                                   "10.1.10.106"
+                                   "10.1.20.123",
+                                   "10.1.20.124"
                                ]
                            }
                        ]
@@ -360,7 +360,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
            "label": "Task4",
            "remark": "Task 4 - Generic Services",
            "target": {
-               "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task4": {
                "class": "Tenant",
@@ -381,7 +381,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
                    "<generic_virtual>": {
                        "class": "Service_Generic",
                        "virtualAddresses": [
-                           "10.1.20.103"
+                           "10.1.10.125"
                        ],
                        "virtualPort": 8080,
                        "pool": "web_pool",
@@ -398,8 +398,8 @@ Modify the Generic virtual with something other than <generic_virtual>.
                            {
                                "servicePort": 80,
                                "serverAddresses": [
-                                   "10.1.10.107",
-                                   "10.1.10.108"
+                                   "10.1.20.125",
+                                   "10.1.20.126"
                                ]
                            }
                        ]

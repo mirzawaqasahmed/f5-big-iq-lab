@@ -20,6 +20,7 @@ task5a_node2: 10.1.20.208
 task5b_vs: 10.1.10.218
 task5b_node1: 10.1.20.207
 task5b_node2: 10.1.20.208
+task6_bigiq_custom_template: HTTPcustomTemplateTask6
 task8_vs: 10.1.10.219
 task8_node1: 10.1.20.205
 task8_node2: 10.1.20.206

@@ -13,7 +13,7 @@ It will create a new template in BIG-IQ AS3 Service Catalogue:
    :linenos:
 
     {
-        "description": "",
+        "description": "Task 6 - Create custom HTTP AS3 Template on BIG-IQ",
         "name": "HTTPcustomTemplateTask6",
         "schemaOverlay": {
             "type": "object",
@@ -83,8 +83,8 @@ Click **Save & Close**.
 |lab-3-3|
 
 
-Task 8 - As Olivia, deploy the HTTP Application Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 8 - Deploy the HTTP Application Service using a Custom Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Using Postman, update the user to olivia/olivia in the **BIG-IQ Token** call (body).
 
@@ -102,7 +102,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         "declaration": {
             "class": "ADC",
             "target": {
-                "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+                "hostname": "BOS-vBIGIP01.termmarc.com"
             },
             "schemaVersion": "3.7.0",
             "id": "isc-lab",
@@ -130,7 +130,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                     "serviceMain": {
                         "class": "Service_HTTP",
                         "virtualAddresses": [
-                            "10.1.20.105"
+                            "10.1.10.130"
                         ],
                         "pool": "pool_8",
                         "profileAnalytics": {
@@ -145,7 +145,8 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                         "members": [
                             {
                                 "serverAddresses": [
-                                    "10.1.10.111"
+                                    "10.1.20.130",
+                                    "10.1.20.131"
                                 ],
                                 "servicePort": 80
                             }
