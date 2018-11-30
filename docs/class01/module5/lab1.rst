@@ -1,5 +1,5 @@
-Lab 5.1: Sending AS3 declaration through BIG-IQ 6.1
----------------------------------------------------
+Lab 5.1: Sending AS3 declaration through BIG-IQ
+-----------------------------------------------
 
 From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
@@ -454,4 +454,4 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 .. |lab-1-4| image:: images/lab-1-4.png
    :scale: 80%
 .. |lab-1-5| image:: images/lab-1-5.png
-   :scale: 80%
+   :scale: 40%
