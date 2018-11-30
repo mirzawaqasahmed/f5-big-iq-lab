@@ -126,8 +126,6 @@ if [[  $currentuser == "root" ]]; then
     sudo docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     sudo docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
-    sudo docker ps
-
     # Install AS3 Validator
     # https://github.com/F5Networks/f5-appsvcs-extension/tree/master/AS3-schema-validator
     sudo docker run --restart=always --name=as3validatortool -dit -p 5000:5000 node
@@ -141,6 +139,8 @@ if [[  $currentuser == "root" ]]; then
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt-get update"
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt install xsel -y"
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "cd /build; serve -s build -p 5000 &"
+
+    sudo docker ps
 
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
     # wait 15 min for ESX to boot
