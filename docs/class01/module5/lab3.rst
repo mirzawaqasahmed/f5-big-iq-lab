@@ -1,4 +1,4 @@
-Lab 4.3: Deploying AS3 Templates with BIG-IQ 6.1
+Lab 5.3: Deploying AS3 Templates with BIG-IQ 6.1
 ------------------------------------------------
 
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ

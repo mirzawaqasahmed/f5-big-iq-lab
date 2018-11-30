@@ -1,10 +1,24 @@
-Lab 4.1: Sending AS3 declaration through BIG-IQ 6.1
+Lab 5.1: Sending AS3 declaration through BIG-IQ 6.1
 ---------------------------------------------------
 
-Connect to the **Linux Jumphost** and open Chrome and Postman (wait ~2 minutes).
+From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
-.. note:: When you log in, you may have a "strange" login screen. Click on the LEFT grey button
-    |lab-1-5|
+.. image:: ../../pictures/udf_ubuntu.png
+    :align: center
+    :scale: 50%
+
+|
+
+If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
+
+.. image:: ../../pictures/ravello_ubuntu.png
+    :align: center
+    :scale: 50%
+
+|
+
+Open Chrome and Postman (wait ~2 minutes).
 
 Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
 
@@ -431,6 +445,4 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 .. |lab-1-3| image:: images/lab-1-3.png
    :scale: 80%
 .. |lab-1-4| image:: images/lab-1-4.png
-   :scale: 80%
-.. |lab-1-5| image:: images/lab-1-5.png
    :scale: 80%

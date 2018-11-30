@@ -1,4 +1,4 @@
-Lab 4.2: Modify AS3 Declaration using BIG-IQ 6.1
+Lab 5.2: Modify AS3 Declaration using BIG-IQ 6.1
 ------------------------------------------------
 
 Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
