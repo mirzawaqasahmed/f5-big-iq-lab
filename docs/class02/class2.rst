@@ -1,5 +1,5 @@
-Class 2: BIG-IQ Deployment with auto-scale AWS/Azure/VMware (Cloud Edition)
-===========================================================================
+Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure & VMware (Cloud Edition)
+=================================================================================
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
