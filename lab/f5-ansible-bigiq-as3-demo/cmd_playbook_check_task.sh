@@ -29,9 +29,9 @@ fi
 
 # pass a variable in Ansible playbook
 if [[  $env != "udf" ]]; then
-    ansible-playbook -i inventory/$env-hosts .as_bigiq_check_task_status_$env.yml $DEBUG_arg --extra-vars "taskid=$1"
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_check_task_status_$env.yml $DEBUG_arg --extra-vars "taskid=$1"
 else
-    ansible-playbook -i inventory/$env-hosts as_bigiq_check_task_status.yml $DEBUG_arg --extra-vars "taskid=$1"
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_check_task_status.yml $DEBUG_arg --extra-vars "taskid=$1"
 fi
 
 

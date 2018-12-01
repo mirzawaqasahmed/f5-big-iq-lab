@@ -3,6 +3,8 @@
   hosts: sjc2-bigiq-cm-01
   vars_files:
     - inventory/group_vars/sjc2-bigiq-cm-01.yml
+  vars:
+    my_taskid: "{{ taskid }}"
     
   tasks: 
     - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq.json or auth_bigiq_radius.json)
@@ -18,9 +20,12 @@
         validate_certs: false
       register: auth
 
+    - debug:
+        var: my_taskid
+
     - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/"{{ taskid }}"
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{ my_taskid }}
         method: GET
         headers:
           Content-Type: application/json
