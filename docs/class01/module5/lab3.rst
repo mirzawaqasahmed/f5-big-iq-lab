@@ -76,7 +76,7 @@ Task 7 - Admin set RBAC for Olivia on BIG-IQ
 
 Let's update now Oliva's service catalog.
 
-Logon on BIG-IQ as admin go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Applicator Creator AS3** 
+Logon on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Applicator Creator AS3** 
 and the custom role linked to the custom HTTP template previously created. Remove the **default** template from the allowed list. 
 Click **Save & Close**.
 
@@ -172,7 +172,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 Task 9 - Delete Task1 and Task 2 AS3 Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As admin, use below AS3 declaration to delete couple of the application previoulsy created.
+As david, use below AS3 declaration to delete couple of the application previoulsy created.
 
 .. code-block:: yaml
    :linenos:

@@ -3,8 +3,8 @@ Lab 5.2: Modify Application using AS3
 
 Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
 
-Task 5a - Add an HTTPS Application to existing HTTP AS3 Declaration (using POST)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 5a - Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This declaration will create add a HTTPS application to a exsisting HTTP application. In this task, we will re-submit the entire declaration.
 
@@ -170,10 +170,10 @@ of the *Ubuntu Lamp Server* system and select *AS3 Validator Tool*
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-9. Logon on BIG-IQ as admin, go to Application tab and check the application is displayed and analytics are showing.
+9. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-Task 5b - Add an HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This declaration will create add a HTTP application to a exsisting Tenant. In this task, we will submit only the new application using the PATCH.
 
@@ -249,7 +249,7 @@ of the *Ubuntu Lamp Server* system and select *AS3 Validator Tool*
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-9. Logon on BIG-IQ as admin, go to Application tab and check the application is displayed and analytics are showing.
+9. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. |lab-2-1| image:: images/lab-2-1.png
    :scale: 80%
