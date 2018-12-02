@@ -53,6 +53,17 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 - "Application" - Application Management (Cloud Edition)
 
+------------
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents/Lab:
+   :glob:
+
+   class*/class*
+
+------------
+
 .. warning:: When using the UDF or Ravello Lab, make sure:
 
    #. STOP the ESXi if you do not plan to demo VMware SSG.
@@ -62,12 +73,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 .. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents/Lab:
-   :glob:
-
-   class*/class*
+------------
 
 **Documentations**:
 
@@ -108,6 +114,8 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 .. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
+
+------------
 
 .. note:: A draft version of this lab guide can be found `here`_.
 
