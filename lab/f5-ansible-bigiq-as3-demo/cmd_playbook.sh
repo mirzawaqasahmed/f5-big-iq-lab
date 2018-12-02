@@ -33,7 +33,7 @@ if [[ -z $1 ]]; then
 fi
 
 if [ ! -f $1 ]; then
-    echo -e "\n${RED} $1 playbook ${NC} does not exist.\n"
+    echo -e "\n${RED}ERROR: $1 playbook ${NC} does not exist.\n"
     if [[  $env != "udf" ]]; then
         ls -l .*.yml
     else

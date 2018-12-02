@@ -66,7 +66,7 @@ if [[  $env != "udf" ]]; then
     sleep 10
     # echo -e "\n${RED}Warning${NC}: Follow Task 8 from the lab guide:\n Assign ${BLUE}HTTPcustomTemplateTask6${NC} template to Applicator Creator AS3 custom role and remove the ${BLUE}default${NC} template from the allowed list).\n"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task8_create_http_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task8_create_http_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 else
     ansible-playbook -i inventory/$env-hosts as3_bigiq_task1_create_http_app.yml $DEBUG_arg
