@@ -6,6 +6,13 @@ Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure & VMware (Cloud Edition
 In this class, we will review the auto-scale feature available with BIG-IQ 6.0
 called ``Service Scaling Groups`` (SSG)
 
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
@@ -44,10 +51,3 @@ site32.example.com   10.1.10.132 80       10.1.20.132                  80/8080/8
 - Port 8081: f5-hello-world application blue
 - Port 8082: f5-hello-world application green
 - Port 445: ASM Policy Validator
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*
