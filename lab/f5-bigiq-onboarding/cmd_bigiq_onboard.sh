@@ -186,7 +186,7 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Waiting 10 min ... ${NC}"
+echo -e "\n${RED}Waiting 15 min ... ${NC}"
 sleep 900
 
 ## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
