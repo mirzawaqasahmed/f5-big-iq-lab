@@ -42,4 +42,8 @@ if [ ! -f $1 ]; then
     exit 2;
 fi
 
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
 ansible-playbook -i inventory/$env-hosts $1 $DEBUG_arg
+
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

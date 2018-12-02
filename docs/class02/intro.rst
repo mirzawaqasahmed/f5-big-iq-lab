@@ -1,5 +1,5 @@
-Class 2: Introduction
-=====================
+Introduction
+============
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
