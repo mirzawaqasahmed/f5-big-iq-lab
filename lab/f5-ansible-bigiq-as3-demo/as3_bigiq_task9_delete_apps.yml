@@ -82,6 +82,3 @@
       retries: 90
       delay: 10
       ignore_errors: yes
-
-    - debug:
-        var: json_response_task.json
