@@ -2,7 +2,16 @@ Class 5: BIG-IQ Device Management
 =================================
 
 In this class, we will focus on the BIG-IQ Device Management. Let's have a look at the ``Device Tab`` in BIG-IQ.
- 
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
+
 **BIG-IP DEVICES**
 
 - Discuss the data shown in the table for each device: hostname, IP address, services managed
@@ -74,11 +83,3 @@ The audit logs (in the Monitoring tab) show who made what change, when they made
 **DASHBOARDS**
 
 The dashboards (in the Monitoring tab) provide the visualization of the data that is collected on the BIG-IQ Data Collection Devices (DCDs).  This menu area will be blank if DCDs are not deployed or the statistics collection is failing.  
-
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*

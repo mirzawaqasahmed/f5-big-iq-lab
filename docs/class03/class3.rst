@@ -1,9 +1,16 @@
 Class 3:  BIG-IQ Analytics (Cloud Edition)
 ==========================================
 
-.. note:: On this page there is no actions to be done here regarding the lab itself
+In this class, we will review the various analytics available for the applications and Service Scaling Group objects in BIG-IQ 6.0 and above.
 
-In this class, we will review the various analytics available for the applications and Service Scaling Group objects in BIG-IQ 6.0.
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 
@@ -33,9 +40,4 @@ site38.example.com   10.1.10.138 443/80   10.1.20.138 and 10.1.20.139  80/8080/8
 - Port 8082: f5-demo-httpd application
 - Port 445: ASM Policy Validator
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
 
-   intro
-   module*/module*

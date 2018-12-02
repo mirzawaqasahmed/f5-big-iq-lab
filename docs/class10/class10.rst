@@ -1,9 +1,16 @@
 Class 10: BIG-IQ DNS
 ====================
 
-.. note:: On this page there is no actions to be done here regarding the lab itself
+In this class, we will review the DNS Management in BIG-IQ 6.0 and above.
 
-In this class, we will review the DNS Management in BIG-IQ 6.0.
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 
@@ -15,10 +22,3 @@ Test Listeners                      Ports
 10.1.10.203 *(Boston Cluster)*      53 UDP
 10.1.10.204                         53 UDP
 ==================================  ===========
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*

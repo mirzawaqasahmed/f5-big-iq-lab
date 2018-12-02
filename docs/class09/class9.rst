@@ -1,9 +1,16 @@
 Class 9: BIG-IQ Access Policy Manager (APM)
 ===========================================
 
-.. note:: On this page there is no actions to be done here regarding the lab itself
+In this class, we will review the access management and access application creation feature available with BIG-IQ 6.0.1 and above.
 
-In this class, we will review the access management and access application creation feature available with BIG-IQ 6.0.1.
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 
@@ -31,10 +38,3 @@ site21auth.example.com  10.1.10.121  443      10.1.20.134 and 10.1.20.135  80/80
 - Port 8081: f5-hello-world application
 - Port 8082: f5-demo-httpd application
 - Port 445: ASM Policy Validator
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*

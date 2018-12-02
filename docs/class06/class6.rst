@@ -3,6 +3,15 @@ Class 6: BIG-IQ ADC Management
 
 In this class, we will focus on the BIG-IQ and DCD plaforms.
 
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
+
 Let's have a look at the ``Configuration Tab`` in BIG-IQ.
 
 .. image:: ./pictures/img_module1_1.png
@@ -76,10 +85,3 @@ The restore area allows you to restore all or part of the BIG-IQ configuration t
 **QUICK UPDATES**
 This area shows the list enable, disable, and force offline activities that have been launched by users.  These activities can be launched directly from the configuration area for virtual servers and pool members, by users with the right privileges.
 
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*

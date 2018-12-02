@@ -1,9 +1,16 @@
 Class 7: BIG-IQ Application Firewall Manager (AFM)
 ==================================================
 
-.. note:: On this page there is no actions to be done here regarding the lab itself
+In this class, we will review the managing F5 Advanced Firewall Manager deployments in BIG-IQ 6.0 and above.
 
-In this class, we will review the managing F5 Advanced Firewall Manager deployments in BIG-IQ 6.0.
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
 
 Below Virtual Servers and Pool Members can be used in the context of the (UDF lab) for this class.
 
@@ -23,10 +30,3 @@ site18.example.com   10.1.10.118 443/80   10.1.20.118 and 10.1.20.119  80/8080/8
 - Port 8081: f5-hello-world application
 - Port 8082: f5-demo-httpd application
 - Port 445: ASM Policy Validator
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*

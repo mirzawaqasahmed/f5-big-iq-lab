@@ -8,8 +8,8 @@
       bigiq_application_http:
         provider:
           server: 10.1.1.4
-          user: david
-          password: david
+          user: olivia
+          password: olivia
           validate_certs: no
         name: "site22.example.com"
         wait: yes

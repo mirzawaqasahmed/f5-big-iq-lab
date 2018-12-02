@@ -1,8 +1,5 @@
 Lab 3.3: Create Application via API (Python)
 --------------------------------------------
-.. note :: This is an optional lab.
-
-.. warning :: **olivia** is used to do the API calls, make sure it has the correct permission and is a LOCAL user (c.f. Class 1 Module 1)
 
 In this lab, we are going to create an application using Python script and BIG-IQ API.
 

@@ -2,7 +2,16 @@ Class 4: BIG-IQ Platform
 ========================
 
 In this class, we will focus on the BIG-IQ CM and DCD plaforms. Let's have a look at the ``System Tab`` in BIG-IQ.
- 
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   intro
+   module*/module*
+
+------------
+
 **THIS DEVICE**
 
 This area contains the configuration information for this BIG-IQ system, including statistics, licensing, DNS, NTP, SNMP, SMTP,
@@ -124,10 +133,3 @@ Related items are populated on the right.  You can click the name of the related
   :scale: 50%
 
 |
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   intro
-   module*/module*

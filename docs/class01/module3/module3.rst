@@ -8,7 +8,7 @@ BIG-IQ Ansible module available in Ansible 2.6 (for info `Ansible F5 github`_).
 
 .. _experimental F5 Modules: http://clouddocs.f5.com/products/orchestration/ansible/devel/usage/installing-modules.html
 
-.. warning:: Ansible 2.6+ only support App deployment on VMware environement. Anisble support for AWS to come in the future.
+.. warning:: Ansible 2.6+ only support App deployment on VMware environement.
 
 - Create and Delete Application from Default-f5-HTTP-lb-template: **bigiq_application_http**
 - Create and Delete Application from Default-f5-HTTPS-offload-lb-template: **bigiq_application_https_offload**

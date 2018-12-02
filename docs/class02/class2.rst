@@ -1,9 +1,7 @@
 Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure & VMware (Cloud Edition)
 =================================================================================
 
-.. note:: On this page there is no actions to be done here regarding the lab itself
-
-In this class, we will review the auto-scale feature available with BIG-IQ 6.0
+In this class, we will review the auto-scale feature available with BIG-IQ 6.0 and above.
 called ``Service Scaling Groups`` (SSG)
 
 .. toctree::
@@ -12,6 +10,8 @@ called ``Service Scaling Groups`` (SSG)
 
    intro
    module*/module*
+
+------------
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 

@@ -2,8 +2,6 @@ Lab 3.2: Delete Application via API  (Ansible)
 ----------------------------------------------
 In this lab, we are going to delete an application using Ansible.
 
-.. warning :: **olivia** is used to execute Ansible playbooks, make sure it has the correct permission and is a LOCAL user (c.f. Class 1 Module 1)
-
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
 **olivia** user is used to execute the playbook:

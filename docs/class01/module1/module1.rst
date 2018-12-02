@@ -4,7 +4,7 @@ In this module, we will learn about the different personas used in the Cloud Edi
 
 We will use these personas through out the lab. We are not trying to demonstrate full RBAC feature, as this is not the focus.
 
-.. note:: David, Marco, Paula, Paul and Larry are already created in the blueprint, so only the **olivia* user needs to be created.
+.. note:: all users are already created in the blueprint.
 
 We will be using 4 main personas for this lab:
 
@@ -35,7 +35,7 @@ and verify each user & role below and change where needed.
 
 **1. David and Marco: Full Administrator**
 
-- *Auth Provider* = local
+- *Auth Provider* = Radius
 - *User Name* = david
 - *Full Name* = Full Administrator
 - (*Password stored in Radius server* = david)
@@ -63,15 +63,15 @@ and verify each user & role below and change where needed.
 - (*Password stored in Radius server* = paula)
 - *Role* = Application Creator VMware (custom role with ALL default templates except AWS)
 
-**4. Paul: Application Manager AWS**
+**4. Paul: Application Manager AWS and Azure**
 
 - *Auth Provider* = Radius
 - *User Name* = paul
 - *Full Name* = Application Manager
 - (*Password stored in Radius server* = paul)
-- *Role* = Application Creator AWS (custom role with AWS default templates only)
+- *Role* = Application Creator AWS and Azure (custom role with AWS default templates only)
 
-**5. Olivia: Super-NetOps**
+**5. Olivia: Super-NetOps AS3 and Ansible**
 
 Click on *Add*
 
@@ -79,7 +79,7 @@ Click on *Add*
 - *User Name* = olivia
 - *Full Name* = Super-NetOps
 - *Password* = olivia
-- *Role* = Application Creator VMware (custom role with ALL default templates)
+- *Role* = Application AS3 (custom role with ALL default templates and default AS3 template)
 
 Click on *Save & Close*
 

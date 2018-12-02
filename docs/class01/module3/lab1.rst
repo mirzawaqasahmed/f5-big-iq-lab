@@ -3,8 +3,6 @@ Lab 3.1: Create Application via API (Ansible)
 
 In this lab, we are going to deploy a basic HTTP application using Ansible.
 
-.. WARNING:: **david** is used to execute Ansible playbooks, make sure it has the correct permission and is a LOCAL user (c.f. Class 1 Module 1)
-
 The following parameters are filled in the playbook ``create_http_app.yaml``.
 
 - BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
