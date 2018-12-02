@@ -14,8 +14,6 @@ In this class, we will review the application creation feature available with BI
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 
-.. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
-
 - **Test Web Site:** *(used in module 4)*
 
 ==================  ============ ======== ============================ ============
@@ -61,3 +59,5 @@ site30.example.com  10.1.10.130  443/80   10.1.20.130 and 10.1.20.131  80/8080/8
 - Port 8081: f5-hello-world application
 - Port 8082: f5-demo-httpd application
 - Port 445: ASM Policy Validator
+
+.. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.

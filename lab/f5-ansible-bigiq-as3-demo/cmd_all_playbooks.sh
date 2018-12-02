@@ -63,7 +63,7 @@ if [[  $env != "udf" ]]; then
     sleep 15
     ansible-playbook -i inventory/$env-hosts .as3_bigiq_task6_create_template_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-    echo -e "\nWarning: ${RED}Follow Task 8 from the lab guide (assign HTTPcustomTemplateTask6 template to Applicator Creator AS3 custom role and remove the **default** template from the allowed list).${NC}\n"
+    #echo -e "\nWarning: ${RED}Follow Task 8 from the lab guide (assign HTTPcustomTemplateTask6 template to Applicator Creator AS3 custom role and remove the **default** template from the allowed list).${NC}\n"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
     sleep 15
     ansible-playbook -i inventory/$env-hosts as3_bigiq_task8_create_http_app_$env.yml $DEBUG_arg

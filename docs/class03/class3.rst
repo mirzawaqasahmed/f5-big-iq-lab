@@ -14,8 +14,6 @@ In this class, we will review the various analytics available for the applicatio
 
 Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
 
-.. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
-
 - **Test Web Sites:** *(used in module 2)*
 
 ==================  ============ ======== ============================ ============
@@ -40,4 +38,4 @@ site38.example.com   10.1.10.138 443/80   10.1.20.138 and 10.1.20.139  80/8080/8
 - Port 8082: f5-demo-httpd application
 - Port 445: ASM Policy Validator
 
-
+.. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
