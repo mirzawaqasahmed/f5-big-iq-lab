@@ -127,7 +127,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                     "serviceMain": {
                         "class": "Service_HTTP",
                         "virtualAddresses": [
-                            "10.1.10.130"
+                            "10.1.10.131"
                         ],
                         "pool": "pool_8",
                         "profileAnalytics": {
@@ -143,8 +143,8 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                             {
                                 "servicePort": 80,
                                 "serverAddresses": [
-                                    "10.1.20.130",
-                                    "10.1.20.131"
+                                    "10.1.20.131",
+                                    "10.1.20.132"
                                 ],
                                 "shareNodes": true
                             }
@@ -169,8 +169,8 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 |lab-3-4|
 
 
-Task 9 - Delete Task1 and Task 2 AS3 Applications
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 9 - Delete Task1 and Task 2 with their AS3 Applications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As david, use below AS3 declaration to delete couple of the application previoulsy created.
 
@@ -185,10 +185,10 @@ As david, use below AS3 declaration to delete couple of the application previoul
            "class": "ADC",
            "schemaVersion": "3.7.0",
            "id": "example-declaration-01",
-           "label": "Task1",
-           "remark": "Task 1 - HTTP Application Service",
+           "label": "Task9",
+           "remark": "Task 9 - Delete Tenants",
            "target": {
-               "hostname": "ip-10-1-1-10.us-west-2.compute.internal"
+               "hostname": "SEA-vBIGIP01.termmarc.com"
            },
            "Task1": {
                "class": "Tenant"

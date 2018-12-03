@@ -8,49 +8,49 @@ Execute the playbooks for each tasks
 - Task 1: HTTP Application Service::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task1_create_http_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task01_create_http_app.yml
 
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
 - Task 2: HTTPS Offload::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task2_create_https_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task02_create_https_app.yml
 
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
 - Task 3: HTTPS Application with Web Application Firewall::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task3_create_waf_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task03_create_waf_app.yml
 
 Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
 - Task 4: Generic Services::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task4_create_generic_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task04_create_generic_app.yml
 
 Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
 - Task 5a: Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task5a_modify_post_http_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task05a_modify_post_http_app.yml
 
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
 - Task 5b: Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task5b_modify_patch_http_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task05b_modify_patch_http_app.yml
 
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
 - Task 6: Create custom HTTP AS3 Template on BIG-IQ::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task6_create_template.yml
+    # ./cmd_playbook.sh as3_bigiq_task06_create_template.yml
 
 Connect as **david** and check on BIG-IQ the AS3 template has been correctly created.
 
@@ -78,7 +78,7 @@ Click **Save & Close**.
 - Task 8: Deploy the HTTP Application Service using a Custom Template::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task8_create_http_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task08_create_http_app.yml
 
 Connect as **olivia** and check on BIG-IQ the application has been correctly created.
 
@@ -87,7 +87,7 @@ Connect as **olivia** and check on BIG-IQ the application has been correctly cre
 - Task 9: Delete Task1 and Task2 AS3 Applications::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task9_delete_apps.yml
+    # ./cmd_playbook.sh as3_bigiq_task09_delete_apps.yml
 
 Connect as **david** and check on BIG-IQ the applications under Task1 and Task2 tenant have been correctly deleted.
 
