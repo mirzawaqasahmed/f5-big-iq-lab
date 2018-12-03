@@ -143,7 +143,7 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
    
-.. note:: notice that the app deployment may take a few minutes.
+.. note:: Notice that the app deployment may take a few minutes.
 
 8. Logon on **SEA-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
 
@@ -450,8 +450,8 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 .. |lab-1-2| image:: images/lab-1-2.png
    :scale: 80%
 .. |lab-1-3| image:: images/lab-1-3.png
-   :scale: 80%
+   :scale: 60%
 .. |lab-1-4| image:: images/lab-1-4.png
-   :scale: 80%
+   :scale: 60%
 .. |lab-1-5| image:: images/lab-1-5.png
    :scale: 40%
