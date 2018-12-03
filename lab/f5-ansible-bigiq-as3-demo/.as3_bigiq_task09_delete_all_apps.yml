@@ -1,9 +1,9 @@
 ---
-- name: BIG-IQ and AS3 Lab - Task 1 - HTTP Application Service
-  hosts: sjc2-bigiq-cm-01
+- name: BIG-IQ and AS3 Lab - Task 9 - Delete Task1 and Task2 AS3 Applications
+  hosts: "{{ env }}"
   vars_files:
-    - inventory/group_vars/sjc2-bigiq-cm-01.yml
-
+    - inventory/group_vars/{{ env }}.yml
+    
   tasks: 
     - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq.json or auth_bigiq_radius.json)
       uri:
@@ -11,14 +11,14 @@
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','.auth_bigiq.json') }}"
+        body: "{{ lookup('file','{{ user }}') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202
         validate_certs: false
       register: auth
 
-    - name: Task 1 - HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: Task 9 - Delete Task1 to Task10 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -34,42 +34,26 @@
             class: ADC
             schemaVersion: "{{ as3_schemaVersion }}"
             id: example-declaration-01
-            label: Task1
-            remark: Task 1 - HTTP Application Service
+            label: Task9
+            remark: Task 9 - Delete Task1 and Task2 AS3 Applications
             target:
               hostname: "{{ bigip_target }}"
             Task1:
               class: Tenant
-              MyWebApp1http:
-                class: Application
-                template: http
-                statsProfile:
-                  class: Analytics_Profile
-                  collectedStatsInternalLogging: true
-                  collectedStatsExternalLogging: false
-                  capturedTrafficInternalLogging: false
-                  capturedTrafficExternalLogging: true
-                  collectPageLoadTime: true
-                  collectClientSideStatistics: true
-                  collectResponseCode: true
-                  sessionCookieSecurity: ssl-only
-                serviceMain:
-                  class: Service_HTTP
-                  virtualAddresses:
-                  - "{{ task1_vs }}"
-                  pool: web_pool
-                  profileAnalytics:
-                    use: statsProfile
-                web_pool:
-                  class: Pool
-                  monitors:
-                  - http
-                  members:
-                  - servicePort: 80
-                    serverAddresses:
-                    - "{{ task1_node1 }}"
-                    - "{{ task1_node2 }}"
-                    shareNodes: true
+            Task2:
+              class: Tenant
+            Task3a:
+              class: Tenant
+            Task3b:
+              class: Tenant
+            Task4:
+              class: Tenant
+            Task5:
+              class: Tenant
+            Task8:
+              class: Tenant
+            Task10:
+              class: Tenant
         body_format: json
         timeout: 60
         status_code: 200, 202
@@ -103,12 +87,10 @@
         headers:
           Content-Type: application/json
           X-F5-Auth-Token: "{{auth.json.token.token}}"
-        status_code: 200, 202
+        status_code: 200, 202, 207
         validate_certs: false
       register: json_response_task
       until: "json_response_task.json[0].results != 'pending'"
-      retries: 20
-      delay: 30
-
-    - debug:
-        var: json_response_task.json
+      retries: 90
+      delay: 10
+      ignore_errors: yes

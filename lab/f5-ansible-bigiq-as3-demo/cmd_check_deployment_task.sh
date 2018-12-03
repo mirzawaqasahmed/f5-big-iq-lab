@@ -30,10 +30,14 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # pass a variable in Ansible playbook
-if [[  $env != "udf" ]]; then
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_check_task_status_$env.yml $DEBUG_arg --extra-vars "taskid=$1"
-else
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_check_task_status.yml $DEBUG_arg --extra-vars "taskid=$1"
+if [[  $env == "udf" ]]; then
+    env_playbook="udf-bigiq-cm-01"
+    user_playbook="auth_bigiq_admin.json"
+elif [[  $env == "sjc2" ]]; then
+    env_playbook="sjc2-bigiq-cm-01"
+    user_playbook=".auth_bigiq_admin.json"
 fi
+
+ansible-playbook -i inventory/$env-hosts as3_bigiq_check_task_status.yml $DEBUG_arg --extra-vars "taskid=$1 env=$env_playbook user=$user_playbook"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

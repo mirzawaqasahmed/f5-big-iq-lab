@@ -1,8 +1,8 @@
 ---
 - name: BIG-IQ and AS3 Lab - Task 3b - HTTPS Application with Web Application Firewall using an External ASM policy
-  hosts: udf-bigiq-cm-01
+  hosts: "{{ env }}"
   vars_files:
-    - inventory/group_vars/udf-bigiq-cm-01.yml
+    - inventory/group_vars/{{ env }}.yml
 
   tasks: 
     - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq.json or auth_bigiq_radius.json)
@@ -11,7 +11,7 @@
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','auth_bigiq_radius_paul.json') }}"
+        body: "{{ lookup('file','{{ user }}') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202

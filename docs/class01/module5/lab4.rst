@@ -8,9 +8,9 @@ Execute the playbooks for each tasks
 - Task 10: HTTP Application Service using an FQDN pool to identify pool members::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task10_create_http_app_fqdn_nodes.yml
+    # ./cmd_playbook.sh as3_bigiq_task10_create_http_app_fqdn_nodes.yml paul
 
-Connect as **paula** and check on BIG-IQ the application has been correctly created.
+Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
 |lab-4-1|
 
