@@ -36,70 +36,70 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 if [[  $env != "udf" ]]; then
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task1_create_http_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task01_create_http_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task2_create_https_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task02_create_https_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task3_create_waf_app_$env.yml $DEBUG_arg
-    # ansible-playbook -i inventory/$env-hosts .as3_bigiq_task3b_create_waf_ext_policy_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task03_create_waf_app_$env.yml $DEBUG_arg
+    # ansible-playbook -i inventory/$env-hosts .as3_bigiq_task03b_create_waf_ext_policy_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task4_create_generic_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task04_create_generic_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task5a_modify_post_http_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task05a_modify_post_http_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task5b_modify_patch_http_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task05b_modify_patch_http_app_$env.yml $DEBUG_arg
     sleep 10
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task6_create_template_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task06_create_template_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     # echo -e "\n${RED}Warning${NC}: Follow Task 8 from the lab guide:\n Assign ${BLUE}HTTPcustomTemplateTask6${NC} template to Applicator Creator AS3 custom role and remove the ${BLUE}default${NC} template from the allowed list).\n"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task8_create_http_app_$env.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts .as3_bigiq_task08_create_http_app_$env.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 else
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task1_create_http_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task01_create_http_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task2_create_https_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task02_create_https_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task3_create_waf_app.yml $DEBUG_arg
-    # ansible-playbook -i inventory/$env-hosts as3_bigiq_task3b_create_waf_ext_policy_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task03_create_waf_app.yml $DEBUG_arg
+    # ansible-playbook -i inventory/$env-hosts as3_bigiq_task03b_create_waf_ext_policy_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task4_create_generic_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task04_create_generic_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task5a_modify_post_http_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task05a_modify_post_http_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task5b_modify_patch_http_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task05b_modify_patch_http_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task6_create_template.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task06_create_template.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     sleep 10
     echo -e "\n${RED}Warning${NC}: Follow Task 8 from the lab guide:\n Assign ${BLUE}HTTPcustomTemplateTask6${NC} template to Applicator Creator AS3 custom role and remove the ${BLUE}default${NC} template from the allowed list).\n"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-playbook -i inventory/$env-hosts as3_bigiq_task8_create_http_app.yml $DEBUG_arg
+    ansible-playbook -i inventory/$env-hosts as3_bigiq_task08_create_http_app.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 fi
 

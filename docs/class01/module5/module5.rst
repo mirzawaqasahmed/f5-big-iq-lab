@@ -67,4 +67,4 @@ integrated directly into the relevant CI/CD toolchains and workflows.
 
 
 .. |diagram_as3_bigiq| image:: images/diagram_as3_bigiq.png
-   :scale: 100%
+   :scale: 70%
