@@ -56,7 +56,7 @@ fi
 
 if [ ! -f $user_playbook ]; then
     echo -e "\n${RED}ERROR: $user_playbook user json file${NC} does not exist.\n"
-    ls -lrt *.yml
+    ls -lrt auth_bigiq*
     exit 3;
 fi
 

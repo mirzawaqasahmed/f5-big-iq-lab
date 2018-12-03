@@ -19,7 +19,7 @@
       register: auth
 
     - debug:
-        var: my_taskid
+        var: taskid
 
     - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
