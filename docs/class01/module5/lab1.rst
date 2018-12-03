@@ -255,7 +255,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
 
 Task 3a - HTTPS Application with Web Application Firewall
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template and a WAF policy.
 
