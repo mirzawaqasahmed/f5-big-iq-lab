@@ -24,14 +24,14 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 # Usage
 if [[ -z $1 || -z $2 ]]; then
     echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia> <udf/sjc/sjc2/sea> ${NC} (1st and 2nd parameters mandatory)\n"
-    ls -lrt *.yml
+    ls -l *.yml
     exit 1;
 fi
 
 
 if [ ! -f $1 ]; then
     echo -e "\n${RED}ERROR: $1 playbook${NC} does not exist.\n"
-    ls -lrt *.yml
+    ls -l *.yml
     exit 2;
 fi
 
