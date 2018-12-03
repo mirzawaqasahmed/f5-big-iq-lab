@@ -199,6 +199,8 @@ As david, use below AS3 declaration to delete couple of the application previoul
        }
    }
 
+Connect as **david** on BIG-IQ.
+
 Here, we empty the tenants/partitions: Task1 and Task2. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
 should also disappear from BIG-IQ. 
 
