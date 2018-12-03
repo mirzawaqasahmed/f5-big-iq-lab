@@ -3,8 +3,8 @@ Lab 5.4: Deploy an application (Azure)
 
 .. warning:: An default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the Azure SSG (udf-<your name>-elb).
 
-Deploy your application (optional)
-**********************************
+Deploy your application (optional) - Azure
+******************************************
 
 In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on the
 **Create** button.
@@ -111,8 +111,8 @@ After some time, you should see this:
 
 |
 
-Review your ``SSG`` devices setup
-*********************************
+Review your ``SSG`` devices setup - Azure
+*****************************************
 
 To review the app configuration on the ``SSG`` devices, in your ``BIG-IQ UI``, go to
 **Applications** > **Environments** > **Service SCaling Groups**.
@@ -142,12 +142,12 @@ on the Address of one of your devices.
 
 Spend some time reviewing your app configuration on your ``SSG Devices``.
 
-Review your ``Azure ELB`` setup
-*******************************
+Review your ``Azure ALB`` setup - Azure
+***************************************
 
 In your ``Azure Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**.
 
-Click on the ``Azure ELB`` we specified in the app settings (**<YOUR PREFIX>-elb**)
+Click on the ``Azure ALB`` we specified in the app settings (**<YOUR PREFIX>-elb**)
 
 Retrieve the DNS Name tied to this ELB:
 

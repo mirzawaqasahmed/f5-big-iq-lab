@@ -47,8 +47,8 @@ Take some time to review the different things setup in your own VPC.
 
 
 
-``BIG-IQ SSG`` configuration review
-***********************************
+``BIG-IQ SSG`` configuration review - Azure
+*******************************************
 
 Connect to the ``BIG-IQ UI`` and go to **Devices** > **Device Templates**.
 You should see a new device template called <your PREFIX>-Azure-device-template
@@ -146,8 +146,8 @@ Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 * Login: admin
 * Password: <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
-``SSG BIG-IP`` configuration review
-***********************************
+``SSG BIG-IP`` configuration review - Azure
+*******************************************
 
 Once you're logged in your ``BIG-IP``, you can see a few things:
 

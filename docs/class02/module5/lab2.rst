@@ -4,8 +4,8 @@ Lab 5.2: Deploy our ``SSG`` in ``Azure``
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
 we will automatically deploy it and review its configuration. 
 
-Retrieve our BIG-IP SEA Public IP (used only for troubleshooting)
-*****************************************************************
+Retrieve our BIG-IP SEA Public IP (used only for troubleshooting) - Azure
+*************************************************************************
 
 .. note:: the IP will be retreived automatically by the VPN script.
 
@@ -35,8 +35,8 @@ In the example above, we can see that our public IP is **129.146.155.127**.
 
 .. note:: the ping will fail, it's fine. we just needed to retrieve the public IP
 
-Launch our ``SSG`` - Access our orchestrator
-********************************************
+Launch our ``SSG`` - Access our orchestrator - Azure
+****************************************************
 
 To setup ``BIG-IQ`` and ``Azure`` automatically, open a ``SSH`` connection on the 
 UDF system called: **Ubuntu 18.04 Lamp Server, Radius and DHCP**
@@ -60,8 +60,8 @@ we will need to edit the following files:
     part of a ``SSG`` group. 
 
 
-Launch our ``SSG`` - Update config.yml
-***************************************
+Launch our ``SSG`` - Update config.yml - Azure
+***********************************************
 
 Use your favorite editor to update this file. 
 
@@ -150,8 +150,8 @@ Here is an example of the updated **config.yml** file:
     MAKE SURE TO NOTE IT SOMEWHERE
 
 
-Launch our ``SSG`` - Update our SSG configuration
-*************************************************
+Launch our ``SSG`` - Update our SSG configuration - Azure
+*********************************************************
 
 To update configuration pushed by the orchestrator, we will update the file called 
 **08-create-Azure-auto-scaling.yml**. Use your favorite editor to update it 
@@ -235,8 +235,8 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
             }
 
 
-Launch our ``SSG`` - Trigger the deployment 
-*******************************************
+Launch our ``SSG`` - Trigger the deployment - Azure
+***************************************************
 
 Now that the relevant files have been updated, we can trigger the deployment. 
 
