@@ -38,7 +38,7 @@
             remark: Task 3a - HTTPS Application with WAF
             target:
               hostname: "{{ bigip_target }}"
-            Task3:
+            Task3a:
               class: Tenant
               MyWebApp3waf:
                 class: Application

@@ -42,13 +42,17 @@
               class: Tenant
             Task2:
               class: Tenant
-            Task3:
+            Task3a:
+              class: Tenant
+            Task3b:
               class: Tenant
             Task4:
               class: Tenant
             Task5:
               class: Tenant
             Task8:
+              class: Tenant
+            Task10:
               class: Tenant
         body_format: json
         timeout: 60

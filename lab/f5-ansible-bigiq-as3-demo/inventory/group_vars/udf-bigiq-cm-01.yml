@@ -15,7 +15,6 @@ task3a_policyWAF: /Common/templates-default
 task3b_vs: 10.1.10.125
 task3b_node1: 10.1.20.124
 task3b_node2: 10.1.20.125
-task3b_policyWAF: https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/f5-ansible-bigiq-as3-demo/Common_linux-high.xml
 task4_vs: 10.1.10.127
 task4_node1: 10.1.20.126
 task4_node2: 10.1.20.127

@@ -38,7 +38,7 @@
             remark: Task 3a - HTTPS Application with WAF
             target:
               hostname: "{{ bigip_target }}"
-            Task3:
+            Task3a:
               class: Tenant
               MyWebApp3waf:
                 class: Application
@@ -62,7 +62,7 @@
                     use: statsProfile
                   serverTLS: webtls
                   policyWAF:
-                    bigip: "{{ task3_policyWAF }}"
+                    bigip: "{{ task3a_policyWAF }}"
                 web_pool:
                   class: Pool
                   monitors:
