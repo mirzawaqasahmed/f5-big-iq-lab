@@ -9,6 +9,7 @@ They can be used to deploy various type of applications. **These default templat
 - ``Default-f5-fastHTTP-lb-template``: For load balancing an HTTP-based application, speeding up connections and reducing the number of connections to the back-end server.
 - ``Default-f5-HTTPS-WAF-lb-template``: For load balancing an HTTPS application on port 443 with a Web Application Firewall using an ASM Rapid Deployment policy.
 - ``Default-f5-HTTPS-offload-lb-template``: For load balancing an HTTPS application on port 443 with SSL offloading on BIG-IP.
+- ``Default-f5-HTTP-url-routing-lb-template``: For load balancing an HTTP application with url routing. **[New 6.1.0]** 
 
 Connect as **david** or **marco**, go to *Applications* > *SERVICE CATALOG*:
 
