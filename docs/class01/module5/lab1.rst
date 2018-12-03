@@ -254,7 +254,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 
-Task 3 - HTTPS Application with Web Application Firewall
+Task 3a - HTTPS Application with Web Application Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template and a WAF policy.
@@ -277,8 +277,8 @@ Update the WAF policy section below with the policy available on BIG-IP::
            "class": "ADC",
            "schemaVersion": "3.7.0",
            "id": "isc-lab",
-           "label": "Task3",
-           "remark": "Task 3 - HTTPS Application with WAF",
+           "label": "Task3a",
+           "remark": "Task 3a - HTTPS Application with WAF",
            "target": {
                "hostname": "SEA-vBIGIP01.termmarc.com"
            },
@@ -321,8 +321,8 @@ Update the WAF policy section below with the policy available on BIG-IP::
                            {
                                "servicePort": 80,
                                "serverAddresses": [
-                                   "10.1.20.123",
-                                   "10.1.20.124"
+                                   "10.1.20.122",
+                                   "10.1.20.123"
                                ],
                                "shareNodes": true
                            }
@@ -405,7 +405,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
                    "<generic_virtual>": {
                        "class": "Service_Generic",
                        "virtualAddresses": [
-                           "10.1.10.125"
+                           "10.1.10.127"
                        ],
                        "virtualPort": 8080,
                        "pool": "web_pool",
@@ -422,8 +422,8 @@ Modify the Generic virtual with something other than <generic_virtual>.
                            {
                                "servicePort": 80,
                                "serverAddresses": [
-                                   "10.1.20.125",
-                                   "10.1.20.126"
+                                   "10.1.20.126",
+                                   "10.1.20.127"
                                ],
                                "shareNodes": true
                            }

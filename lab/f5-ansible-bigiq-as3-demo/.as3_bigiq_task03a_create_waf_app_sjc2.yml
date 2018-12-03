@@ -1,5 +1,5 @@
 ---
-- name: BIG-IQ and AS3 Lab - Task 3 - HTTPS Application with Web Application Firewall
+- name: BIG-IQ and AS3 Lab - Task 3a - HTTPS Application with Web Application Firewall
   hosts: sjc2-bigiq-cm-01
   vars_files:
     - inventory/group_vars/sjc2-bigiq-cm-01.yml
@@ -18,7 +18,7 @@
         validate_certs: false
       register: auth
 
-    - name: Task 3 - HTTPS Application with Web Application Firewall - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: Task 3a - HTTPS Application with Web Application Firewall - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -34,8 +34,8 @@
             class: ADC
             schemaVersion: "{{ as3_schemaVersion }}"
             id: isc-lab
-            label: Task3
-            remark: Task 3 - HTTPS Application with WAF
+            label: Task3a
+            remark: Task 3a - HTTPS Application with WAF
             target:
               hostname: "{{ bigip_target }}"
             Task3:
@@ -56,13 +56,13 @@
                 serviceMain:
                   class: Service_HTTPS
                   virtualAddresses:
-                  - "{{ task3_vs }}"
+                  - "{{ task3a_vs }}"
                   pool: web_pool
                   profileAnalytics:
                     use: statsProfile
                   serverTLS: webtls
                   policyWAF:
-                    bigip: "{{ task3_policyWAF }}"
+                    bigip: "{{ task3a_policyWAF }}"
                 web_pool:
                   class: Pool
                   monitors:
@@ -70,8 +70,8 @@
                   members:
                   - servicePort: 80
                     serverAddresses:
-                    - "{{ task3_node1 }}"
-                    - "{{ task3_node2 }}"
+                    - "{{ task3a_node1 }}"
+                    - "{{ task3a_node2 }}"
                     shareNodes: true
                 webtls:
                   class: TLS_Server

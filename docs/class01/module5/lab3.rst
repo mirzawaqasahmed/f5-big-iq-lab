@@ -127,7 +127,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                     "serviceMain": {
                         "class": "Service_HTTP",
                         "virtualAddresses": [
-                            "10.1.10.131"
+                            "10.1.10.133"
                         ],
                         "pool": "pool_8",
                         "profileAnalytics": {
@@ -143,8 +143,8 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                             {
                                 "servicePort": 80,
                                 "serverAddresses": [
-                                    "10.1.20.131",
-                                    "10.1.20.132"
+                                    "10.1.20.132",
+                                    "10.1.20.133"
                                 ],
                                 "shareNodes": true
                             }

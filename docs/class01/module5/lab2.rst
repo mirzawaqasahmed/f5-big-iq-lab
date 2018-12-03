@@ -102,7 +102,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            "serviceMain": {
                "class": "Service_HTTPS",
                "virtualAddresses": [
-                   "10.1.10.127"
+                   "10.1.10.129"
                ],
                "pool": "web_pool",
                "profileAnalytics": {
@@ -119,8 +119,8 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                    {
                        "servicePort": 80,
                        "serverAddresses": [
-                           "10.1.20.127",
-                           "10.1.20.128"
+                           "10.1.20.128",
+                           "10.1.20.129"
                        ],
                        "shareNodes": true
                    }
@@ -199,7 +199,7 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
                     "serviceMain": {
                         "class": "Service_HTTP",
                         "virtualAddresses": [
-                            "10.1.10.129"
+                            "10.1.10.131"
                         ],
                         "pool": "web_pool"
                     },
@@ -212,8 +212,8 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
                             {
                                 "servicePort": 80,
                                 "serverAddresses": [
-                                  "10.1.20.129",
-                                  "10.1.20.130"
+                                  "10.1.20.130",
+                                  "10.1.20.131"
                                 ],
                                 "shareNodes": true
                             }

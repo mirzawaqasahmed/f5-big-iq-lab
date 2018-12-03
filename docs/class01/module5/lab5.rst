@@ -19,12 +19,19 @@ Connect as **paula** and check on BIG-IQ the application has been correctly crea
 
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
-- Task 3: HTTPS Application with Web Application Firewall::
+- Task 3a: HTTPS Application with Web Application Firewall::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task03_create_waf_app.yml
+    # ./cmd_playbook.sh as3_bigiq_task03a_create_waf_app.yml
 
-Connect as **paul** and check on BIG-IQ the application has been correctly created.
+Connect as **paula** and check on BIG-IQ the application has been correctly created.
+
+- Task 3b: HTTPS Application with Web Application Firewall using an External ASM policy::
+
+    # cd /home/f5/f5-ansible-bigiq-as3-demo
+    # ./cmd_playbook.sh as3_bigiq_task03b_create_waf_ext_policy_app.yml
+
+Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
 - Task 4: Generic Services::
 
