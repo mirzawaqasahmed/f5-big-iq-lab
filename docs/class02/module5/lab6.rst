@@ -1,4 +1,4 @@
-Lab 4.6: Troubleshooting (Azure)
+Lab 5.6: Troubleshooting (Azure)
 --------------------------------
 
 Here are some Troubleshooting steps to help you troubleshooting issue with your Azure SSG deployment and Application:

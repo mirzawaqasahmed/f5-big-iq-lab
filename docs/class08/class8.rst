@@ -11,5 +11,3 @@ Class 8: BIG-IQ Application Security Manager (ASM)
 
    intro
    module*/module*
-
-------------

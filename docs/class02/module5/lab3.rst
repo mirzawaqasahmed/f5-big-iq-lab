@@ -1,4 +1,4 @@
-Lab 4.3: Review our ``SSG`` deployment in ``Azure``
+Lab 5.3: Review our ``SSG`` deployment in ``Azure``
 ---------------------------------------------------
 
 ``Azure`` configuration review

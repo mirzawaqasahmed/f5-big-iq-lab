@@ -1,4 +1,4 @@
-Lab 4.5: Cleanup the environment (Azure)
+Lab 5.5: Cleanup the environment (Azure)
 ----------------------------------------
 
 Once you are done with your demo/training/testing, you will want to cleanup your

@@ -1,4 +1,4 @@
-Lab 4.2: Deploy our ``SSG`` in ``Azure``
+Lab 5.2: Deploy our ``SSG`` in ``Azure``
 ----------------------------------------
 
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 

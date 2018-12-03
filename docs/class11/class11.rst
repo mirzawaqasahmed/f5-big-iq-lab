@@ -13,5 +13,3 @@ Class 11: BIG-IQ DDoS Hybrid Defender (DHD)
 
    intro
    module*/module*
-
-------------

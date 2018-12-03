@@ -1,4 +1,4 @@
-Lab 4.1: Prepare our ``Azure`` deployment 
+Lab 5.1: Prepare our ``Azure`` deployment 
 -----------------------------------------
 
 .. warning:: The SSG will be automatically delete 23h after the deployment was started.

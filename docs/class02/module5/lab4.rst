@@ -1,4 +1,4 @@
-Lab 4.4: Deploy an application (Azure)
+Lab 5.4: Deploy an application (Azure)
 --------------------------------------
 
 .. warning:: An default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the Azure SSG (udf-<your name>-elb).
