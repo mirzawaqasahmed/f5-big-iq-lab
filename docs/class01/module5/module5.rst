@@ -35,6 +35,8 @@ L4-7 Application Service Delivery is accomplished by:
    the traditional templates provided with **BIG-IQ 6.0** but you'll be able to create new kind of templates to consume 
    **AS3**. 
 
+.. note:: Moving forward, BIG-IQ will invest on AS3 Templates more than on existing BIG-IQ templates.
+
 -  Utilizing BIG-IQ's **Roll Based Access Control (RBAC)** to divide
    workloads based on user functions.
 

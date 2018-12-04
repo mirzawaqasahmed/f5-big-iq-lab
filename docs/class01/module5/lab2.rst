@@ -1,7 +1,13 @@
-Lab 5.2: Modify Application using AS3
--------------------------------------
+Lab 5.2: Modify Tenant/Application using AS3
+--------------------------------------------
 
-Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
+Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **Lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
+
+In this lab, we will show 2 use cases.
+
+- Task 5a will show an example of updating a tenant/application by re-posting the entire declaration using POST. In this case, user A and user B need to know the full content of the Tenant.
+- Task 5b will show an example of updating a tenant/application by posting only what's new to an existing declaration using PATCH. In this case, user A and user B don't need to know the full content of the Tenant but 1 single tenant can be shared.
+
 
 Task 5a - Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
