@@ -25,8 +25,6 @@ Look through the different default templates.
     Use the following AWS templates: ``Default-AWS-f5-HTTPS-WAF-lb-template`` or ``Default-AWS-f5-HTTPS-offload-lb-template``.
     For these two templates, ports 443 and 80 (for HTTP redirect) are hard-coded in an iRule, which enable this functionality.
 
-.. note:: Check `Lab 1.1 Access Built-in templates`_ for the Authentication template available from 6.0.1
-
-.. _Lab 1.1 Access Built-in templates: ../../class09/module1/lab1.html
+.. note:: Check Access Built-in templates in class 9 available from 6.0.1
 
 .. warning:: There will be no default AFM or DoS policies delivered in BIG-IQ 6.0. **Larry** will need to manually define them and link them to the custom templates.
