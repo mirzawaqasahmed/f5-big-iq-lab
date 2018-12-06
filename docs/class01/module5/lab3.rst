@@ -121,6 +121,9 @@ Click **Save & Close**.
 Task 8 - Deploy the HTTP Application Service using a Custom Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Now, let's deploy an application as Olivia using the AS3 template previously created in Task 6. Note in the below declaration, 
+the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
+
 1. Using Postman, update the user to olivia/olivia in the **BIG-IQ Token** call (body).
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
@@ -130,6 +133,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 .. code-block:: yaml
    :linenos:
+   :emphasize-lines: 34
 
     {
         "class": "AS3",
@@ -164,6 +168,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                         "virtualAddresses": [
                             "10.1.10.133"
                         ],
+                        "virtualPort": 9090,
                         "pool": "pool_8",
                         "profileAnalytics": {
                             "use": "statsProfile"
@@ -197,9 +202,17 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-4. Logon on **SEA-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
+4. As expected, note the error message returned due to the static value set in the template::
 
-5. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
+     "response": "declaration is invalid according to provided schema overlay: data['serviceMain'].virtualPort should be equal to constant",
+                "status": 422
+
+
+5. Update the "virtualPort" to 8080 and re-send the declaration.
+
+6. Logon on **SEA-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
+
+7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
 |lab-3-4|
 

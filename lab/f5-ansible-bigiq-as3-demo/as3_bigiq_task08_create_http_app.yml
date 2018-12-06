@@ -56,6 +56,7 @@
                   class: Service_HTTP
                   virtualAddresses:
                   - "{{ task8_vs }}"
+                  virtualPort: 8080
                   pool: pool_8
                   profileAnalytics:
                     use: statsProfile
