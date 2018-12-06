@@ -4,6 +4,8 @@ Lab 5.3: Deploying AS3 Templates on BIG-IQ
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+In this task, we will create a template which require a Service_HTTP object, force the service port to 8080, and prevent WAF (ASM) and IAM (APM) configuration.
+
 1. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
 It will create a new template in BIG-IQ AS3 Service Catalogue:
 
@@ -18,42 +20,73 @@ It will create a new template in BIG-IQ AS3 Service Catalogue:
         "schemaOverlay": {
             "type": "object",
             "properties": {
-                "class": {},
-                "updateMode": {},
-                "schemaVersion": {},
-                "id": {},
+                "class": {
+                    "type": "string",
+                    "const": "Application"
+                },
+                "schemaOverlay": {},
                 "label": {},
                 "remark": {},
-                "constants": {},
-                "Common": {},
-                "controls": {},
-                "scratch": {}
+                "template": {},
+                "enable": {},
+                "constants": {}
+            },
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "class": {
+                                    "const": "Service_HTTP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/definitions/Service_HTTP"
+                        }
+                    }
+                ],
+                "not": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "class": {
+                                    "const": "IAM_Policy"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "class": {
+                                    "const": "WAF_Policy"
+                                }
+                            }
+                        }
+                    ]
+                }
             },
             "required": [
                 "class"
             ],
             "definitions": {
-                "Pool": {
-                    "loadBalancingMode": {
-                        "type": "string",
-                        "default": "round-robin"
-                    },
-                    "monitors": {
-                        "type": "array"
-                    },
-                    "members": {
-                        "type": "array"
-                    }
-                },
                 "Service_HTTP": {
-                    "virtualPort": {
-                        "type": "integer",
-                        "default": 8080,
-                        "const": 8080
+                    "type": "object",
+                    "properties": {
+                        "virtualPort": {
+                            "type": "integer",
+                            "const": 8080,
+                            "default": 8080
+                        }
                     },
-                    "virtualAddresses": {
-                        "type": "array"
-                    }
+                    "dependencies": {
+                        "policyIAM": {
+                            "not": {}
+                        },
+                        "policyWAF": {
+                            "not": {}
+                        }
+                    },
+                    "additionalProperties": true
                 }
             }
         }
@@ -69,6 +102,8 @@ Note the AS3 Template cannot be created through BIG-IQ UI but only using the API
 You can see the Template in JSON format if you click on it.
 
 |lab-3-2|
+
+.. note :: For help with JSON Schema, there are lots of resources, but one good place to start is https://json-schema.org/learn.
 
 
 Task 7 - Admin set RBAC for Olivia on BIG-IQ

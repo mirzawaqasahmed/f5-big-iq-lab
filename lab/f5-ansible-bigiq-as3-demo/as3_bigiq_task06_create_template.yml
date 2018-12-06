@@ -32,34 +32,47 @@
           schemaOverlay:
             type: object
             properties:
-              class: {}
-              updateMode: {}
-              schemaVersion: {}
-              id: {}
+              class:
+                type: string
+                const: Application
+              schemaOverlay: {}
               label: {}
               remark: {}
+              template: {}
+              enable: {}
               constants: {}
-              Common: {}
-              controls: {}
-              scratch: {}
+            additionalProperties:
+              allOf:
+              - if:
+                  properties:
+                    class:
+                      const: Service_HTTP
+                then:
+                  "$ref": "#/definitions/Service_HTTP"
+              not:
+                anyOf:
+                - properties:
+                    class:
+                      const: IAM_Policy
+                - properties:
+                    class:
+                      const: WAF_Policy
             required:
             - class
             definitions:
-              Pool:
-                loadBalancingMode:
-                  type: string
-                  default: round-robin
-                monitors:
-                  type: array
-                members:
-                  type: array
               Service_HTTP:
-                virtualPort:
-                  type: integer
-                  default: 8080
-                  const: 8080
-                virtualAddresses:
-                  type: array
+                type: object
+                properties:
+                  virtualPort:
+                    type: integer
+                    const: 8080
+                    default: 8080
+                dependencies:
+                  policyIAM:
+                    not: {}
+                  policyWAF:
+                    not: {}
+                additionalProperties: true
         body_format: json
         timeout: 60
         status_code: 200, 202
