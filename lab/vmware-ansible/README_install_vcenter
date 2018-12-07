@@ -1,1 +1,2 @@
-#/mnt/vcsa-cli-installer/lin64/vcsa-deploy install /root/embedded_vCSA_on_ESXi.json --accept-eula --acknowledge-ceip
+# mount -o loop /tmp/VMware-VCSA-all-6.7.0-10244745.iso /mnt/
+# /mnt/vcsa-cli-installer/lin64/vcsa-deploy install /root/embedded_vCSA_on_ESXi.json --accept-eula --acknowledge-ceip
