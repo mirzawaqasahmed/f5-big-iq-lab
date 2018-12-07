@@ -5,7 +5,8 @@
 @reboot perl -le 'sleep 1800' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
 ## DOS data
 */10 * * * * /home/f5/scripts/generate_dos_fake.sh > /dev/null 2>&1
-*/30 * * * * /home/f5/scripts/generate_dos_real.sh > /dev/null 2>&1
+#0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dos_real.sh > /dev/null 2>&1
+#@reboot perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dos_real.sh> /home/f5/scripts/generate_dos_real.log
 ## AFM data
 */10 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
 ## DNS Traffic

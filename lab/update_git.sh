@@ -87,14 +87,17 @@ else
     if [[  $env == "sjc" ]]; then
         # for SCJ - DCD lab IP
         sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
+        sed -i 's/10.1.10.4/10.192.75.180/g' /home/$user/scripts/*sh
     fi
     if [[  $env == "sjc2" ]]; then
         # for SCJ - DCD lab IP
         sed -i 's/10.1.10.6/10.192.75.186/g' /home/$user/scripts/*sh
+        sed -i 's/10.1.10.4/10.192.75.185/g' /home/$user/scripts/*sh
     fi
     if [[  $env == "sea" ]]; then
         # for SEA - DCD lab IP
         sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
+        sed -i 's/10.1.10.4/10.11.150.14/g' /home/$user/scripts/*sh
     fi
     
     touch udf_auto_update_git

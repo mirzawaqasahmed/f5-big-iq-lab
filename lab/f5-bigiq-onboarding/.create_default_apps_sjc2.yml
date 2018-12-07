@@ -15,7 +15,7 @@
         wait: yes
         description: Load balance WAF
         service_environment: "bigip2tier1.lab.fp.f5net.com"
-        domain_names: "site20.example.f5.com"
+        domain_names: "site20.example.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.201

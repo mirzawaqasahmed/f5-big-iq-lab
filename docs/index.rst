@@ -9,7 +9,7 @@ Welcome to the |classbold| - |year|
 |repoinfo|
 
 This document details the lab exercises and demonstrations that comprise
-the hands-on component of the BIG-IQ v6.0. The environment is setup with
+the hands-on component of the BIG-IQ. The environment is setup with
 basic configuration and associated traffic generation to populate
 dashboards for easy demos. Additional configuration can be added to
 support items that are not currently covered.
@@ -38,7 +38,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 **List of instances**:
 
-- BIGIQ <> DCD 6.0.1 HF1
+- BIGIQ <> DCD 6.1.0
 - 2x BIG-IP 13.1.0.5 / 1 cluster (BOS)
 - 1x BIG-IP 14.0.0.1 / 1 standalone (SEA)
 - 1x BIG-IP 12.1.0 / 1 standalone (TLV)
@@ -79,13 +79,13 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 - `BIG-IQ Knowledge Center`_
 - `F5 BIG-IQ API 6.0.1`_
-- `F5 BIG-IQ API 6.1.0`_ - *coming soon*
+- `F5 BIG-IQ API 6.1.0`_
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
-.. _F5 BIG-IQ API 6.0.1: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0/
 .. _F5 BIG-IQ API 6.1.0: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/
+.. _F5 BIG-IQ API 6.0.1: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0.1/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270?tag=big-iq
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373
 
