@@ -47,7 +47,7 @@ VMWare Properties:
 * Datacenter: UDF
 * Folder: Purple
 * User: administrator@vsphere.local
-* Password: purple123$lab
+* Password: Purpl3$lab
 * VM Image: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template or 13.1.1-0.0.4.ALL_1SLOT_ASM_template
 * Network Interface Mappings
 

@@ -5,7 +5,7 @@
         "esxi": {
             "hostname": "10.1.1.9",
             "username": "root",
-            "password": "default",
+            "password": "purple123$lab",
             "deployment.network": "VM Network",
             "datastore": "datastore"
         },
@@ -26,11 +26,11 @@
             "system.name": "10.1.1.90"
         },
         "os": {
-            "password": "purple123$lab",
+            "password": "Purpl3$lab",
             "ssh.enable": true
         },
         "sso": {
-            "password": "purple123$lab",
+            "password": "Purpl3$lab",
             "domain-name": "vsphere.local",
             "site-name": "udf"
         }
