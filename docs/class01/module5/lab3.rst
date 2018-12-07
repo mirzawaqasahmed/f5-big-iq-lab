@@ -111,7 +111,7 @@ Task 7 - Admin set RBAC for Olivia on BIG-IQ
 
 Let's update now Oliva's service catalog.
 
-Logon on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Applicator Creator AS3** 
+Logon on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Application Creator AS3** 
 and the custom role linked to the custom HTTP template previously created. Remove the **default** template from the allowed list. 
 Click **Save & Close**.
 
@@ -124,7 +124,7 @@ Task 8 - Deploy the HTTP Application Service using a Custom Template
 Now, let's deploy an application as Olivia using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
-1. Using Postman, update the user to olivia/olivia in the **BIG-IQ Token** call (body).
+1. Using Postman, update the user to olivia/olivia in the **BIG-IQ Token (olivia)** call (body).
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 

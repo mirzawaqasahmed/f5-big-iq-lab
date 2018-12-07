@@ -22,7 +22,7 @@ Open Chrome and Postman (wait ~2 minutes).
 
 Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
 
-Using Postman select ``BIG-IQ Token`` available in the Collections.
+Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
 Press Send. This, will save the token value as _f5_token. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
 
 .. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.

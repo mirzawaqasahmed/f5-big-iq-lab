@@ -24,7 +24,8 @@ pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_ne
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
 
-release="v6.1.0"
+release="v7.0.0"
+#release="v6.1.0"
 #release="v6.0.1.1"
 ############################################################################################
 
