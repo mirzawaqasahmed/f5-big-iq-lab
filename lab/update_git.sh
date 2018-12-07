@@ -70,7 +70,7 @@ else
     # cleanup other versions
     rm -rf AWS-Cloud-Edition-* AZURE-Cloud-Edition-*
     echo "Fixing permissions..."
-    chmod +x *py *sh scripts/*sh scripts/*py scripts/access/*sh scripts/access/*py scripts/fps/*py f5-ansible-demo/*sh f5-bigiq-onboarding/*sh f5-ansible-bigiq-as3-demo/*sh f5-bigiq-onboarding/*pl AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
+    chmod +x *py *sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then
@@ -80,7 +80,7 @@ else
         su - $user -c "crontab < crontab.txt"
     fi
 
-    # Cleanup AWS credentials
+    # Cleanup AWS and Azure credentials
     rm -f /home/$user/.aws/*
     rm -fr /home/$user/.azure/*
 
