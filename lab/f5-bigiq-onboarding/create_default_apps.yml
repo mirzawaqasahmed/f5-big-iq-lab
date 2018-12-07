@@ -9,7 +9,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site40.example.f5.com"
         wait: no
@@ -37,7 +37,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site42.example.f5.com"
         wait: no
@@ -58,7 +58,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site36.example.f5.com"
         wait: no
@@ -86,7 +86,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site38.example.f5.com"
         wait: no

@@ -75,7 +75,7 @@ Launch Chrome and click on the *vSphere Web Client* bookmark.
 Use the following credentials:
 
 * login: administrator@vsphere.local
-* password: Purpl3$lab
+* password: purple123
 
 .. image:: ../pictures/module1/img_module1_lab3_4.png
    :align: center

@@ -189,7 +189,7 @@ open a new tab to access its UI.
 
 .. note::
 
-  Remember that we changed the default admin password to purple
+  Remember that we changed the default admin password
 
 .. image:: ../pictures/module1/img_module1_lab4_6.png
      :align: center

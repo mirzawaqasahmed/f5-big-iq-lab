@@ -28,7 +28,7 @@ session = requests.Session()
 requests.packages.urllib3.disable_warnings()
 session.verify = False # BIG-IQ uses self-signed cert. Note: you can also supply a CA signed cert instead
 
-session.auth = ('admin', 'purPl3f5@rk') # BIG-IQ must be configured for basic auth, in the console run `set-basic-auth on`
+session.auth = ('admin', 'purple123') # BIG-IQ must be configured for basic auth, in the console run `set-basic-auth on`
 
 # Get the template
 the_url = HOST + TEMPLATES_URL + "?$filter=name eq 'Default-AWS-f5-HTTPS-WAF-lb-template'"

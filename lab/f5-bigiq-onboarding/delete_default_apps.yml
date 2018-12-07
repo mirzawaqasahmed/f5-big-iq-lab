@@ -9,7 +9,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site40.example.com"
         wait: yes
@@ -21,7 +21,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site36.example.com"
         wait: yes
@@ -33,7 +33,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site42.example.com"
         wait: yes
@@ -45,7 +45,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site38.example.com"
         wait: yes
@@ -57,7 +57,7 @@
         provider:
           server: 10.1.1.4
           user: admin
-          password: purPl3f5@rk
+          password: purple123
           validate_certs: no
         name: "site17auth.example.com"
         wait: yes

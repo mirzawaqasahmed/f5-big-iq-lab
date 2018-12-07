@@ -5,7 +5,7 @@
 # BIG-IQ must be configured for basic auth, in the console run `set-basic-auth on`
 bigiq="10.1.1.4"
 bigiq_user="admin"
-bigiq_password="purPl3f5%40rk" 
+bigiq_password="purple123" 
 
 ############# ############# ############# 
 ############# License Pool  ############# 

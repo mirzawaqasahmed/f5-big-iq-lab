@@ -26,7 +26,7 @@ echo -e "\n${GREEN}Download iso from nibs.f5net.com${NC}"
 rm -f *iso *iso.md5 *iso.md5.verify
 # remove cookie if older than 1 day
 if [[ $(find "./.cookie" -mmin +120 -print 2> /dev/null) ]]; then
-  echo "\nDeleted .cookie older than 2 hours"
+  echo -e "\nDeleted .cookie older than 2 hours"
   rm -f ./.cookie
 fi
 if [ ! -f ./.cookie ]; then

@@ -131,8 +131,8 @@ do
             #sudo ./gen_ab.sh $server_ip > /dev/null 2>&1 &
             
             r=`shuf -i 120-600 -n 1`;
-            perl -le "sleep rand $r" && killall -9 hping3 &
-            perl -le "sleep rand $r" && killall -9 nping &
+            perl -le "sleep rand $r" && sudo killall -9 hping3 &
+            perl -le "sleep rand $r" && sudo killall -9 nping &
 
         else
                 echo -e "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"

@@ -10,7 +10,7 @@
     vmware_vm_facts:
       hostname: 10.1.1.90
       username: administrator@vsphere.local
-      password: "Purpl3$lab"
+      password: "purple123"
       vm_type: vm
       validate_certs: no
     delegate_to: localhost
