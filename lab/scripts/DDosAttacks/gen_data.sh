@@ -21,9 +21,6 @@ else
       #echo "port = $server_port \r\n"
 fi
 
-echo "Running Legitmate DNS Traffic... \r\n "
-sudo ./gen_legit_dns_traffic.sh $server_ip $queries_ps &>/dev/null &
-
 echo "Running UDP Floods... \r\n "
 sudo ./gen_udp_floods.sh $server_ip  &>/dev/null &
 

@@ -75,7 +75,8 @@ do
                 fi
         fi
 
-        if [[  $port == 443 || $port == 80 ]]; then
+        # Only sending traffic to Apps on port 443
+        if [[  $port == 443 ]]; then
             
             echo -e "\n# site $i ${sitefqdn[$i]} DDOS attack"
 
@@ -92,8 +93,7 @@ do
             #ps -ef | grep "sleep rand" | grep -v grep
 
             cd $home/DDosAttacks
-            ./gen_data.sh ${sitefqdn[$i]}
-            ./gen_udp_floods.sh ${sitefqdn[$i]}
+            ./gen_data.sh ${sitefqdn[$i]} &
             
             r=`shuf -i 120-600 -n 1`;
             perl -le "sleep rand $r" && ./kill_all_attacks.sh
