@@ -18,7 +18,7 @@
         validate_certs: false
       register: auth
 
-    - name: Task 1 - HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -38,9 +38,9 @@
             remark: Example- HTTP Application Service
             target:
               hostname: "BOS-vBIGIP01.termmarc.com"
-            Task1:
+            example:
               class: Tenant
-              MyWebApp1http:
+              site15http:
                 class: Application
                 template: http
                 statsProfile:
