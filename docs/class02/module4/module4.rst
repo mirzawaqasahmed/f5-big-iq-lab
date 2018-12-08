@@ -1,8 +1,6 @@
 Module 4: Setup a Service scaling group (SSG) in AWS
 ====================================================
 
-.. note:: On this page there is no actions to be done here regarding the lab itself
-
 In this module, we will learn about the ``Service Scaling Group`` (SSG) feature
 provided with BIG-IQ 6.0 in a the ``AWS`` environment.
 
