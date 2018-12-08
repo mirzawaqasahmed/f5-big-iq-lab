@@ -8,43 +8,45 @@ Connect to your ``Azure Console`` to review what has been created already.
 
 Go to **Services** > **CloudFormation**
 
-.. image:: ../pictures/module4/img_module4_lab3_12.png
+.. image:: ../pictures/module5/img_module5_lab3_1.png
   :align: center
-  :scale: 50%
+  :scale: 60%
 
 |
 
-Here you can see that 4 ``Azure Stacks`` have been deployed:
+Here you can see that 2 ``Resource groups`` have been deployed:
 
-* <YOUR PREFIX>-vpc-elb-cf-stack : This stack deploys a new VPC called **<YOUR PREFIX>-vpc**.
-    We use this new VPC to avoid any conflict and ensure we won't disrupt anything. We will
-    create the subnets, security groups and an ELB called **<YOUR PREFIX>-elb** that can be used
-    to deploy an App later
-* <YOUR PREFIX>-vpn-cf-stack : This stack depoys the ``VPN`` configuration in ``Azure``. We
-    use this ``VPN`` to send data back to ``BIG-IQ DCDs``.
-* <YOUR PREFIX>-ubuntu-cf-stack : This stack deploys an ubuntu instance that will behave
-    as our app
-* <YOUR PREFIX>-Azure-ssg : this will create the ``Azure autoscale`` deployment : launch
+* <YOUR PREFIX> : This stack deploys a new VNET called **vnet1demo**.
+    We use this new VNET to avoid any conflict and ensure we won't disrupt anything. We will
+    create the subnets, gateway, VPN, an ubuntu instance that will behave
+    as our app.
+* <YOUR PREFIX>-azure-ssg : this will create the ``Azure autoscale`` deployment : launch
     configuration, auto scaling groups, ...
 
-Those stacks were deployed from our system called **Ubuntu 16.04 Lamp Server, Radius and DHCP**.
+Those resource groups were deployed from our system called **Ubuntu 18.04 Lamp Server, Radius and DHCP**.
 If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd Azure-Cloud-Edition/cft/
-    f5@03a920f8b4c0410d8f:~/Azure-Cloud-Edition/cft$ ll
-    total 44
-    drwxr-xr-x 2 f5 f5 4096 Jun 11 00:27 ./
-    drwxr-xr-x 9 f5 f5 4096 Jun 11 02:29 ../
-    -rw-r--r-- 1 f5 f5 7148 May  3 06:49 Servers-Setup.template
-    -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
-    -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template
-    -rw-r--r-- 1 f5 f5 2642 May  9 08:33 Setup-VPN.template
-    f5@03a920f8b4c0410d8f:~/Azure-Cloud-Edition/cft$
+    f5@03a920f8b4c0410d8f:~$ cd AZURE-Cloud-Edition
+    f5@03a920f8b4c0410d8f:~/AZURE-Cloud-Edition$  ls -l
+    -rwxrwxr-x 1 f5student f5student  6736 Dec  8 11:54 000-RUN_ALL.sh
+    -rwxrwxr-x 1 f5student f5student  3205 Dec  8 11:54 000-RUN_ALL_VNET_VPN.sh
+    -rwxrwxr-x 1 f5student f5student  1653 Dec  8 11:54 01-install_azure_cli.sh
+    -rwxrwxr-x 1 f5student f5student  5703 Dec  8 11:54 02-create-vpn-azure_cli.sh
+    -rwxrwxr-x 1 f5student f5student  4905 Dec  8 11:54 03-configure-bigip.sh
+    -rw-rw-r-- 1 f5student f5student   868 Dec  8 12:38 04-docker-on-ubuntu-azure.log
+    -rw-rw-r-- 1 f5student f5student  4757 Dec  8 11:54 04-docker-on-ubuntu-azure.yml
+    -rw-rw-r-- 1 f5student f5student     9 Dec  8 12:36 08-create-azure-auto-scaling.retry
+    -rw-rw-r-- 1 f5student f5student 14896 Dec  8 12:01 08-create-azure-auto-scaling.yml
+    -rwxrwxr-x 1 f5student f5student  6357 Dec  8 11:54 09a-create-azure-waf-app.py
+    -rwxrwxr-x 1 f5student f5student  6463 Dec  8 11:54 09b-create-azure-https-app.py
+    -rw-rw-r-- 1 f5student f5student  1045 Dec  8 11:54 10-delete-azure-app.yml
+    -rwxrwxr-x 1 f5student f5student  4669 Dec  8 11:54 111-DELETE_ALL.sh
+    -rwxrwxr-x 1 f5student f5student  1547 Dec  8 11:54 11-delete-azure-ssg-resources-check.py
+    -rw-rw-r-- 1 f5student f5student  1082 Dec  8 11:54 11-delete-azure-ssg-resources.yml
 
-Take some time to review the different things setup in your own VPC.
-
+Take some time to review the different things setup in your own VNET.
 
 
 ``BIG-IQ SSG`` configuration review - Azure
@@ -53,7 +55,7 @@ Take some time to review the different things setup in your own VPC.
 Connect to the ``BIG-IQ UI`` and go to **Devices** > **Device Templates**.
 You should see a new device template called <your PREFIX>-Azure-device-template
 
-.. image:: ../pictures/module4/img_module4_lab3_1.png
+.. image:: ../pictures/module4/img_module5_lab3_2.png
   :align: center
   :scale: 50%
 

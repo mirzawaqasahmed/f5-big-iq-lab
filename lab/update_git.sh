@@ -142,6 +142,7 @@ if [[  $currentuser == "root" ]]; then
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt-get update"
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt install xsel -y"
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "cd /build; serve -s build -p 5000 &"
+    rm -rf build build.zip
 
     sudo docker ps
 

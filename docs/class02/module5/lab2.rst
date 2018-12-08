@@ -69,12 +69,12 @@ Use your favorite editor to update this file.
 
 Here are the settings you will need to change to deploy everything successfully: 
 
-* Azure_ACCESS_KEY_ID: Use the ``Azure Access Key`` you retrieved from the previous 
-    lab (IAM section).
-* Azure_SECRET_ACCESS_KEY: Use the ``Azure Secret Access Key`` you retrieve from the 
-    previous lab (IAM section).
+* SUBSCRIPTION_ID
+* TENANT_ID
+* CLIENT_ID
+* SERVICE_PRINCIPAL_SECRET
 * PREFIX: Specify a ``prefix`` that will be used on each object automatically 
-    created. we will use **udf-<your NAME>**. For example: **udf-MENANT** 
+    created. we will use **udf-<your NAME>**. For example: **udf-azure-demo** 
 
   .. warning:: 
         DO NOT PUT a ``-`` at the end or your deployment will fail. 
@@ -85,12 +85,7 @@ Here are the settings you will need to change to deploy everything successfully:
 
         Use udf- in the prefix or your ``SSG`` deployment will fail
         
-        Remember that the PREFIX must be 10 CHARACTERS MAX
-
-        
-
-* Azure_SSH_KEY: Use the ``Azure Key Pair`` we created in the previous lab. In our example, it was **CE-Lab-MENANT** 
-    but yours should have a different name.
+        Remember that the PREFIX must be 15 CHARACTERS MAX
 
 Save the config file. 
 
@@ -154,7 +149,7 @@ Launch our ``SSG`` - Update our SSG configuration - Azure
 *********************************************************
 
 To update configuration pushed by the orchestrator, we will update the file called 
-**08-create-Azure-auto-scaling.yml**. Use your favorite editor to update it 
+**08-create-azure-auto-scaling.yml**. Use your favorite editor to update it.
 
 Look for this section in the file: 
 
@@ -288,16 +283,16 @@ You should see something like this:
 
 
 At this stage, we should start deploying your environment in ``Azure``. 
-In your ``Azure Console``, go to **Services** > **CloudFormation**. 
+In your ``Azure Console``, go to **Resource groups**. 
 
-.. image:: ../pictures/module4/img_module4_lab2_3.png
+.. image:: ../pictures/module5/img_module5_lab2_1.png
   :align: center
   :scale: 50%
 
 |
 
-Here we can see that ``CloudFormation Stacks`` are being deployed with the prefix 
-**udf-MENANT** as mentioned in **config.yml** file (prefix attribute)
+Here we can see that the objects are being deployed with the prefix 
+**udf-azure-demo** as mentioned in **config.yml** file (prefix attribute)
 
 In the next lab, we will review what has been setup on ``BIG-IQ`` and what was 
 deployed in our ``Azure VNET``.

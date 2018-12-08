@@ -27,21 +27,17 @@ Here you can see that 4 ``AWS Stacks`` have been deployed:
 * <YOUR PREFIX>-aws-ssg : this will create the ``AWS autoscale`` deployment : launch
     configuration, auto scaling groups, ...
 
-Those stacks were deployed from our system called **Ubuntu 16.04 Lamp Server, Radius and DHCP**.
+Those stacks were deployed from our system called **Ubuntu 18.04 Lamp Server, Radius and DHCP**.
 If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
     f5@03a920f8b4c0410d8f:~$ cd AWS-Cloud-Edition/cft/
-    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition/cft$ ll
-    total 44
-    drwxr-xr-x 2 f5 f5 4096 Jun 11 00:27 ./
-    drwxr-xr-x 9 f5 f5 4096 Jun 11 02:29 ../
+    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition/cft$ ls -l
     -rw-r--r-- 1 f5 f5 7148 May  3 06:49 Servers-Setup.template
     -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
     -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template
     -rw-r--r-- 1 f5 f5 2642 May  9 08:33 Setup-VPN.template
-    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition/cft$
 
 Take some time to review the different things setup in your own VPC.
 

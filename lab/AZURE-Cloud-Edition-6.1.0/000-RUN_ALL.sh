@@ -77,8 +77,8 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # WA Tunnel
 sleep 20
-../AWS-Cloud-Edition/wa_aws_vpn_down_bigip.sh
-../wa_azure_vpn_down_bigip.sh
+#../AWS-Cloud-Edition/wa_aws_vpn_down_bigip.sh
+./wa_azure_vpn_down_bigip.sh
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
@@ -88,6 +88,7 @@ sudo pip install packaging > /dev/null 2>&1
 sudo pip install msrestazure > /dev/null 2>&1
 sudo pip install ansible[azure] > /dev/null 2>&1
 ansible-playbook $DEBUG_arg 04-docker-on-ubuntu-azure.yml > 04-docker-on-ubuntu-azure.log 2>&1 &
+sleep 10
 tail -20 04-docker-on-ubuntu-azure.log 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

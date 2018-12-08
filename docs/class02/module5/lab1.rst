@@ -21,7 +21,7 @@ When you want to deploy a ``SSG`` in ``Azure``, you don't need to provide the sa
 
 To deploy our ``SSG`` in ``Azure``, we will need to do a few things: 
 
-* Setup an ``IAM`` resource (Identity and Access Management) that will allow us to setup our ``SSG`` via 
+* Setup an ``Service Principal Account`` that will allow us to setup our ``SSG`` via 
   the ``Azure`` API
 
 Once this is done, we will be able to deploy our ``SSG``. We will rely on some ansible scripts to: 
