@@ -27,7 +27,7 @@ Here you can see that 4 ``AWS Stacks`` have been deployed:
 * <YOUR PREFIX>-aws-ssg : this will create the ``AWS autoscale`` deployment : launch
     configuration, auto scaling groups, ...
 
-Those stacks were deployed from our system called **Ubuntu 18.04 Lamp Server, Radius and DHCP**.
+Those stacks were deployed from our system called **Ubuntu Lamp Server**.
 If you want to review those stacks, connect to this system and go to :
 
 .. code::

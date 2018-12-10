@@ -8,7 +8,7 @@ Launch our ``SSG`` - Access our orchestrator
 ********************************************
 
 To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the 
-UDF system called: **Ubuntu 18.04 Lamp Server, Radius and DHCP**
+UDF system called: **Ubuntu Lamp Server**
 
 .. image:: ../pictures/module4/img_module4_lab2_1.png
   :align: center

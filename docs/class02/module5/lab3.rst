@@ -23,7 +23,7 @@ Here you can see that 2 ``Resource groups`` have been deployed:
 * <YOUR PREFIX>-azure-ssg : this will create the ``Azure autoscale`` deployment : launch
     configuration, auto scaling groups, ...
 
-Those resource groups were deployed from our system called **Ubuntu 18.04 Lamp Server, Radius and DHCP**.
+Those resource groups were deployed from our system called **Ubuntu Lamp Server**.
 If you want to review those, connect to this system and go to :
 
 .. code::

@@ -10,24 +10,8 @@ Here are some Troubleshooting steps to help you troubleshooting issue with your 
 4. In BIG-IQ CLI, check following logs: /var/log/restjavad.0.log and /var/log/orchestrator.log.
 5. In Azure Marketplace, check if you have subscribed and accepted the terms for the F5 products.
 
-.. image:: ../pictures/module4/img_module4_lab6_1.png
+.. image:: ../pictures/module5/img_module5_lab1_5.png
   :align: center
   :scale: 50%
 
-6. In Azure CFT Console, check the CFT status, make sure it is COMPLETED with no errors.
-7. In Azure IAM Console, confirm the Access Key has the necessary permissions.
-8. In Azure EC2 Console, check the Activity History in the Auto Scaling Group.
-
-.. image:: ../pictures/module4/img_module4_lab6_2.png
-  :align: center
-  :scale: 50%
-
-9. In Azure EC2 Console, check the Instances in the Auto Scaling Group and confirm ``Protected from`` has at least 1 instance with *Scale-in*
-
-.. image:: ../pictures/module4/img_module4_lab6_3.png
-  :align: center
-  :scale: 50%
-
-10. In BIG-IQ, if the deployment of the application fails with the following error message, delete your SSG and re-create it (known issue fixed in 6.1).
-
-``Task Failed: Failed to get the module device: Device <ip-172-17-2-110.ec2.internal> does not have asm service imported``
+7. In Azure Console, confirm the Access Key has the necessary permissions (review lab 1).
