@@ -6,7 +6,7 @@ Lab 5.3: Review our ``SSG`` deployment in ``Azure``
 
 Connect to your ``Azure Console`` to review what has been created already.
 
-Go to **Services** > **CloudFormation**
+Go to **Resource groups**
 
 .. image:: ../pictures/module5/img_module5_lab3_1.png
   :align: center
@@ -24,7 +24,7 @@ Here you can see that 2 ``Resource groups`` have been deployed:
     configuration, auto scaling groups, ...
 
 Those resource groups were deployed from our system called **Ubuntu 18.04 Lamp Server, Radius and DHCP**.
-If you want to review those stacks, connect to this system and go to :
+If you want to review those, connect to this system and go to :
 
 .. code::
 
@@ -55,7 +55,7 @@ Take some time to review the different things setup in your own VNET.
 Connect to the ``BIG-IQ UI`` and go to **Devices** > **Device Templates**.
 You should see a new device template called <your PREFIX>-Azure-device-template
 
-.. image:: ../pictures/module4/img_module5_lab3_2.png
+.. image:: ../pictures/module5/img_module5_lab3_2.png
   :align: center
   :scale: 50%
 
@@ -68,7 +68,7 @@ only **NTP** and **User Accounts** have been setup.
 
 .. note:: **[New 6.0.1]** DNS server shouldn't be set in the device template
 
-.. image:: ../pictures/module4/img_module4_lab3_2.png
+.. image:: ../pictures/module5/img_module5_lab3_3.png
   :align: center
   :scale: 50%
 
@@ -77,18 +77,18 @@ only **NTP** and **User Accounts** have been setup.
 Next, you may go to **Applications** > **Environments** > **Cloud Providers**.
 You will see a new Cloud Providers called **<YOUR prefix>-Azure-provider**:
 
-.. image:: ../pictures/module4/img_module4_lab3_3.png
+.. image:: ../pictures/module5/img_module5_lab3_4.png
   :align: center
   :scale: 50%
 
 |
 
-Click on this new cloud provider. You'll see that it contains your ``Azure Access Key``
-and your ``Azure Secret Access Key``.
+Click on this new cloud provider. You'll see that it contains your ``Tenant ID``, ``Client ID``, ``Service Principal Secret``
+and your ``Subscription ID``.
 
 Click on the **Test** button when you need to make sure your credentials are fine.
 
-.. image:: ../pictures/module4/img_module4_lab3_4.png
+.. image:: ../pictures/module5/img_module5_lab3_5.png
   :align: center
   :scale: 50%
 
@@ -97,7 +97,7 @@ Click on the **Test** button when you need to make sure your credentials are fin
 Go to **Applications** > **Environments** > **Cloud Environments**. Click on your cloud
 environment called **<YOUR PREFIX>-Azure-environment**
 
-.. image:: ../pictures/module4/img_module4_lab3_5.png
+.. image:: ../pictures/module5/img_module4_lab3_6.png
   :align: center
   :scale: 50%
 
@@ -112,16 +112,18 @@ You will be able to retrieve a lot of the information that were defined in the *
 
 ...
 
-.. image:: ../pictures/module4/img_module4_lab3_6.png
+.. note:: It may take some time for the page to load.
+
+.. image:: ../pictures/module5/img_module5_lab3_7.png
   :align: center
   :scale: 50%
 
 |
 
 Go to **Applications** > **Environments** > **Service Scaling Groups**. Click on your ``SSG``
-called **<YOUR PREFIX>-MENANT-Azure-ssg**
+called **<YOUR PREFIX>-azure-ssg**
 
-.. image:: ../pictures/module4/img_module4_lab3_7.png
+.. image:: ../pictures/module5/img_module5_lab3_8.png
   :align: center
   :scale: 50%
 
@@ -129,7 +131,7 @@ called **<YOUR PREFIX>-MENANT-Azure-ssg**
 
 Go to **Configuration** > **Devices**. You'll be able to see your two provisioned ``BIG-IPs```
 
-.. image:: ../pictures/module4/img_module4_lab3_8.png
+.. image:: ../pictures/module5/img_module4_lab3_9.png
   :align: center
   :scale: 50%
 
@@ -137,13 +139,13 @@ Go to **Configuration** > **Devices**. You'll be able to see your two provisione
 
 Click on one of your ``BIG-IP`` to open its GUI in a new tab.
 
-.. image:: ../pictures/module4/img_module4_lab3_9.png
+.. image:: ../pictures/module5/img_module5_lab3_10.png
   :align: center
   :scale: 50%
 
 |
 
-* Login: admin
+* Login: adminUser
 * Password: <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
 ``SSG BIG-IP`` configuration review - Azure
@@ -154,15 +156,17 @@ Once you're logged in your ``BIG-IP``, you can see a few things:
 * it's offically managed by ``BIG-IQ``
 * it's in SYNC. Our ``BIG-IPs`` part of a ``SSG`` deployed in ``Azure`` will be setup as a cluster
 
-.. image:: ../pictures/module4/img_module4_lab3_10.png
+.. image:: ../pictures/module5/img_module5_lab3_11.png
   :align: center
   :scale: 50%
 
 |
 
+.. note:: Ignore the Provisioning Warning which is due to the license used.
+
 Go to **Device Management** > Overview
 
-.. image:: ../pictures/module4/img_module4_lab3_11.png
+.. image:: ../pictures/module4/img_module4_lab3_12.png
   :align: center
   :scale: 50%
 
@@ -170,5 +174,5 @@ Go to **Device Management** > Overview
 
 You can see that **Auto Sync** is enabled for a Device Group called **autoscale-group**.
 
-Let's deploy an application to see how it is setup on our different components (``Azure ELB``,
+Let's deploy an application to see how it is setup on our different components (``Azure ALB``,
 ``BIG-IPs`` in the ``SSG``).

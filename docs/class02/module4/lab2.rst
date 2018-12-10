@@ -4,37 +4,6 @@ Lab 4.2: Deploy our ``SSG`` in ``AWS``
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
 we will automatically deploy it and review its configuration. 
 
-Retrieve our BIG-IP SEA Public IP (used only for troubleshooting)
-*****************************************************************
-
-.. note:: the IP will be retreived automatically by the VPN script.
-
-We will establish a ``VPN`` connection between our ``UDF`` environment and ``AWS``. 
-This will be setup automatically with our BIG-IP SEA as one of the ``VPN endpoint``. 
-
-In your ``UDF`` blueprint, find your BIG-IP called **SEA-vBIGIP01.termmarc.com.v13.1.0.5 (VPN)** 
-and click on **Access** > **TMUI**. It will open a new tab in your browser to access its GUI. 
-
-Here copy the ``hostname`` you see in your browser : 
-
-.. image:: ../pictures/module4/img_module4_lab2_2.png
-  :align: center
-  :scale: 50%
-
-|
-
-Ping this ``hostname`` to retrieve its IP Address: 
-
-.. code:: 
-
-    PAR-ML-00026375:~ menant$ ping 443cbace-334b-491d-8b10-3772c26d70bb.access.udf.f5.com
-    PING 443cbace-334b-491d-8b10-3772c26d70bb.access.udf.f5.com (129.146.155.127): 56 data bytes
-    Request timeout for icmp_seq 0
-
-In the example above, we can see that our public IP is **129.146.155.127**. 
-
-.. note:: the ping will fail, it's fine. we just needed to retrieve the public IP
-
 Launch our ``SSG`` - Access our orchestrator
 ********************************************
 

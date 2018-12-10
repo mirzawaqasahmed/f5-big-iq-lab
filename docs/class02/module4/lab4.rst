@@ -1,7 +1,7 @@
 Lab 4.4: Deploy an application (AWS)
 ------------------------------------
 
-.. warning:: An default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the AWS SSG (udf-<your name>-elb).
+.. warning:: A default Application should be already deloy (by admin user). If you want to proceed delete the existing application deployed on the AWS SSG (udf-<your name>-elb).
 
 Deploy your application (optional)
 **********************************
