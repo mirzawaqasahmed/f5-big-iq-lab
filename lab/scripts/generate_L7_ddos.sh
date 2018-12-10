@@ -130,7 +130,7 @@ do
             #sudo ./slowhttptest -c 1000 -B -g -o my_body_stats -i 110 -r 200 -s 8192 -t FAKEVERB -u https://$server_ip/resources/loginform.html -x 10 -p 3 > /dev/null 2>&1 &
             #sudo ./gen_ab.sh $server_ip > /dev/null 2>&1 &
             
-            r=`shuf -i 120-600 -n 1`;
+            r=`shuf -i 60-300 -n 1`;
             perl -le "sleep rand $r" && sudo killall -9 hping3 > /dev/null 2>&1 &
             perl -le "sleep rand $r" && sudo killall -9 nping > /dev/null 2>&1 &
 
