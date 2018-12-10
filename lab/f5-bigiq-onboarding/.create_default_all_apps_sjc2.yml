@@ -79,3 +79,70 @@
           netmask: 255.255.255.255
           port: 80
       delegate_to: localhost
+
+    - name: site28fasthttp.example.f5.com
+      bigiq_application_fasthttp:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site28fasthttp.example.f5.com"
+        wait: yes
+        description: Load balance Fast HTTP
+        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        add_analytics: yes
+        servers:
+          - address: 10.1.20.206
+            port: 80
+          - address: 10.1.20.207
+            port: 80
+        inbound_virtual:
+          address: 10.1.10.210
+          netmask: 255.255.255.255
+          port: 80
+      delegate_to: localhost
+
+    - name: site30fastL4tcp.example.f5.com
+      bigiq_application_fastl4_tcp:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site30fasL4.example.f5.com"
+        wait: yes
+        description: Load balance Fast L4 TCP
+        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        servers:
+          - address: 10.1.20.206
+            port: 80
+          - address: 10.1.20.207
+            port: 80
+        inbound_virtual:
+          address: 10.1.10.211
+          netmask: 255.255.255.255
+          port: 80
+      delegate_to: localhost
+
+    - name: site32udp.example.f5.com
+      bigiq_application_fastl4_udp:
+        provider:
+          server: 10.192.75.185
+          user: admin
+          password: admin
+          validate_certs: no
+        name: "site32udp.example.f5.com"
+        wait: yes
+        description: Load balance Fast UDP
+        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        servers:
+          - address: 10.1.20.206
+            port: 80
+          - address: 10.1.20.207
+            port: 80
+        inbound_virtual:
+          address: 10.1.10.212
+          netmask: 255.255.255.255
+          port: 53
+      delegate_to: localhost

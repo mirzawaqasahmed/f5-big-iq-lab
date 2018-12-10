@@ -116,9 +116,9 @@ Subscribe to the BIG-IP instance in the ``Azure MArketplace``
 
 Before being able to deploy an instance in ``Azure``, you'll have to **subscribe** to this license agreement
 
-Go here to **subscribe** to right F5 instance we will use in this lab: 
+Go here to **subscribe** to the right F5 instance we will use in this lab: 
 
-`F5 BIG-IP Virtual Edition - BEST - BYOL <https://portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryFeaturedMenuItemBlade/selectedMenuItemId/home/searchQuery/f5-bigip/resetMenuId/>`_
+`F5 BIG-IP VE – ALL (BYOL, 1 Boot Location) <https://portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryFeaturedMenuItemBlade/selectedMenuItemId/home/searchQuery/f5-bigip/resetMenuId/>`_
 
 Once you've subscribed, you should see something like this: 
 

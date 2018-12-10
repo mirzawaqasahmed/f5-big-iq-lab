@@ -127,7 +127,7 @@ Here is an example of the updated **config.yml** file:
     DEFAULT_LOCATION: eastus
 
     # Adjust the BIG-IP Version based on your region 
-    BYOL_BIGIP_NAME: "f5-bigip-virtual-edition-best-byol"
+    BYOL_BIGIP_NAME: "f5-big-all-1slot-byol"
     BYOL_BIGIP_VERSION: "13.1.100000" #14.0.001000
 
 

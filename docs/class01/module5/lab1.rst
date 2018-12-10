@@ -18,7 +18,15 @@ If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*
 
 |
 
-Open Chrome and Postman (wait ~2 minutes).
+Open Chrome and Postman.
+
+For Postman, click right and click on execute (wait ~2 minutes).
+
+.. image:: ../../pictures/postman.png
+    :align: center
+    :scale: 100%
+
+|
 
 Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
 

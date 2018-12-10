@@ -52,6 +52,13 @@ elif [[  $env == "sjc2" ]]; then
     else
         user_playbook="auth_bigiq_$2.json"
     fi
+elif [[  $env == "sjc" ]]; then
+    env_playbook="sjc-bigiq-cm-01"
+    if [[  $2 == "admin" ]]; then
+        user_playbook=".auth_bigiq_admin.json"
+    else
+        user_playbook="auth_bigiq_$2.json"
+    fi
 fi
 
 if [ ! -f $user_playbook ]; then

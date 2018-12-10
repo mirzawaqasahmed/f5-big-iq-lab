@@ -46,7 +46,7 @@
         add_analytics: yes
         servers:
           - address: 10.101.51.51
-            port: 8081
+            port: 80
         inbound_virtual:
           address: 10.101.50.215
           netmask: 255.255.255.255
@@ -116,9 +116,9 @@
         service_environment: "008-bigip-01.example.com"
         servers:
           - address: 10.101.51.56
-            port: 8081
+            port: 80
           - address: 10.101.51.57
-            port: 8081
+            port: 80
         inbound_virtual:
           address: 10.101.50.218
           netmask: 255.255.255.255
@@ -138,9 +138,9 @@
         service_environment: "008-bigip-01.example.com"
         servers:
           - address: 10.101.51.56
-            port: 8090
+            port: 80
           - address: 10.101.51.57
-            port: 8090
+            port: 80
         inbound_virtual:
           address: 10.101.50.219
           netmask: 255.255.255.255

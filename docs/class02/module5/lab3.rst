@@ -105,11 +105,9 @@ environment called **<YOUR PREFIX>-Azure-environment**
 
 You will be able to retrieve a lot of the information that were defined in the **config.yml** file:
 
-* Region
-* AZ
-* SSH Key Name
+* Location
 * License type
-* AMI
+* BIG-IP image
 * BIG-IQ information
 
 ...

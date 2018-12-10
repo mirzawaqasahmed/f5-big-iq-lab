@@ -187,7 +187,7 @@ Subscribe to the BIG-IP instance in the ``AWS MArketplace``
 
 Before being able to deploy an instance in ``AWS``, you'll have to **subscribe** to this license agreement
 
-Go here to **subscribe** to right F5 instance we will use in this lab: 
+Go here to **subscribe** to the right F5 instance we will use in this lab: 
 
 `F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) <https://aws.amazon.com/marketplace/pp/B07G5MT2KT/>`_
 

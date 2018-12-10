@@ -48,6 +48,12 @@ If you try and run these against your BIG-IQ it will not work.
 Example_Usage
 -------------
 
+Open Postman, click right and click on execute (wait ~2 minutes).
+
+.. image:: ../../pictures/postman.png
+    :align: center
+    :scale: 100%
+
 1. Get an authentication token - run the Get Auth Token collection
 2. Create an application - run the Create App collection
 3. Check the results (you should see status: FINISHED in the JSON response) - run the Get Status collection
