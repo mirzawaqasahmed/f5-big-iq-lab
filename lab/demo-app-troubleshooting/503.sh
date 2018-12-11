@@ -17,7 +17,7 @@ echo -e "\nHTTP app only.\nUsage: $0 site42.example.com"
 
 echo -e "\nTarget:${GREEN} $url ${NC}\n"
 
-echo -e "\n500 HTTP requests:\n"
+echo -e "\nSending 500 HTTP requests:\n"
 
 for i in {1..500};
 do
