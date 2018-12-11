@@ -112,9 +112,9 @@ do
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
                                 if [  $port == 443 ]; then
-                                        curl -k -s -m 10 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
+                                        curl -k -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
                                 else
-                                        curl -s -m 10 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
+                                        curl -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
                                 fi
                                 echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
                                 echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt

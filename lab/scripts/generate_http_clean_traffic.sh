@@ -97,7 +97,7 @@ do
         
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
                 # add random number for loop
-                r=`shuf -i 1-5 -n 1`;
+                r=`shuf -i 1-3 -n 1`;
                 for k in `seq 1 $r`; do
                         for j in $sitepages; do
                                 echo "Loop $k"
@@ -114,9 +114,9 @@ do
                                 http_header="-H 'X-Forwarded-For: $source_ip_address' -H 'authority: ${sitefqdn[$i]}' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'dnt: 1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' --compressed"
                                 
                                 if [  $port == 443 ]; then
-                                        curl -k -s -m 10 -o /dev/null $http_header -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
+                                        curl -k -s -m 30 -o /dev/null $http_header -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
                                 else
-                                        curl -s -m 10 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
+                                        curl -s -m 30 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
                                 fi
                                 echo -e "sleep $r"
                                 sleep $r
