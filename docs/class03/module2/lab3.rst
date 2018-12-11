@@ -48,9 +48,17 @@ A page f5_browser_issue.php is behaving differenty on Chrome compare to other br
 
 3. Back to BIG-IQ Application dashboard, open application ``site40.example.com`` and display the *Application Response Time* Analytics.
 
-Expand the right-edge of the analytics pane to get the URLs and Browser filters. Order the URLs by App Response Time Average.
+Expand the right-edge of the analytics panel to get the URLs and Browser filters. Order the URLs by App Response Time Average.
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
+   :align: center
+   :scale: 50%
+
+|
+
+If the Application Response Time column, click right on the blue portion of the table, select Columns, then select Avg under the Application Response Time:
+
+.. image:: ../pictures/module2/img_module2_lab3_2a.png
    :align: center
    :scale: 50%
 

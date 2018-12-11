@@ -20,7 +20,7 @@ echo -e "\nTarget:${GREEN} $url ${NC}\n"
 for i in {1..10};
 do
         curl -k -s -m 10 -o /dev/null -w '404demo.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' https://$url/404demo.php
-        sleep 2;
+        sleep 10;
 done
 
-echo -e "\n${BLUE}Attack completed.${NC}\n"
+echo -e "\n${BLUE}Simulator 404 completed.${NC}\n"

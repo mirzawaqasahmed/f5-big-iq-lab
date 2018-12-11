@@ -15,14 +15,16 @@ In your ``BIG-IQ UI`` , Go to **Applications** > **Applications** and click on t
 
 |
 
-Select the template called **Default-Azure-f5-HTTPS-WAF-lb-template**.
+Select the template called **Default-AWS-f5-HTTPS-WAF-lb-template**.
+
+.. note:: The AWS default templates can also be used for Azure.
 
 General properties:
 
-* Name: **site-Azure.example.com**
-* Domain Names: **site-Azure.example.com**
+* Name: **site-azure.example.com**
+* Domain Names: **site-azure.example.com**
 
-.. image:: ../pictures/module4/img_module4_lab4_3.png
+.. image:: ../pictures/module5/img_module5_lab4_4.png
    :align: center
    :scale: 50%
 
@@ -31,28 +33,14 @@ General properties:
 Select a Traffic Service Environment:
 
 * Environment: Select **Service Scaling Group**
-* Service Scaling Group: Select **<YOUR PREFIX>-Azure-ssg**
+* Service Scaling Group: Select **<YOUR PREFIX>-azure-ssg**
 
-.. image:: ../pictures/module4/img_module4_lab4_4.png
+.. image:: ../pictures/module5/img_module5_lab4_5.png
    :align: center
    :scale: 50%
 
 |
 
-
-Azure ELB settings:
-
-* Name of Classic Load Balancer: **<YOUR PREFIX>-elb**
-
-    .. note:: You can retrieve the name of your ``Azure ELB`` by going to your ``Azure Console``
-        and go to **Services** > **EC2** > **Load Balancing** > **Load Balancer**
-
-        .. image:: ../pictures/module4/img_module4_lab4_2.png
-            :align: center
-            :scale: 50%
-
-    .. note:: Remember that we don't create the ``Azure ELB`` here. It has to exist before
-        deploying an App.
 
 * Listeners:
 
@@ -73,7 +61,7 @@ Azure ELB settings:
        - TCP
        - 80
 
-.. image:: ../pictures/module4/img_module4_lab4_5.png
+.. image:: ../pictures/module5/img_module5_lab4_6.png
    :align: center
    :scale: 50%
 
@@ -82,9 +70,9 @@ Azure ELB settings:
 
 Servers:
 
-* Servers: 172.17.2.50 / Port 80
+* Servers: 172.200.1.50 / Port 80
 
-.. image:: ../pictures/module4/img_module4_lab4_6.png
+.. image:: ../pictures/module5/img_module5_lab4_7.png
    :align: center
    :scale: 50%
 
@@ -105,7 +93,7 @@ Click on the **Create** button.
 
 After some time, you should see this:
 
-.. image:: ../pictures/module4/img_module4_lab4_8.png
+.. image:: ../pictures/module5/img_module5_lab4_8.png
    :align: center
    :scale: 50%
 
@@ -120,7 +108,7 @@ To review the app configuration on the ``SSG`` devices, in your ``BIG-IQ UI``, g
 Click on your ``SSG`` and then go to **Configuration** > **Devices**. Here you can click
 on the Address of one of your devices.
 
-.. image:: ../pictures/module4/img_module4_lab3_8.png
+.. image:: ../pictures/module5/img_module5_lab3_9.png
    :align: center
    :scale: 50%
 
@@ -145,13 +133,13 @@ Spend some time reviewing your app configuration on your ``SSG Devices``.
 Review your ``Azure ALB`` setup - Azure
 ***************************************
 
-In your ``Azure Console`` , go to **Services** > **EC2** > **Load Balancing** > **Load Balancers**.
+In your ``Azure Console`` , go to **Resource groups** > **<YOUR PREFIX>-azure-ssg**.
 
-Click on the ``Azure ALB`` we specified in the app settings (**<YOUR PREFIX>-elb**)
+Click on the ``Azure ALB`` we specified in the app settings (**<YOUR PREFIX>-azure-ssg-ext-alb**)
 
 Retrieve the DNS Name tied to this ELB:
 
-.. image:: ../pictures/module4/img_module4_lab4_10.png
+.. image:: ../pictures/module5/img_module5_lab4_9.png
    :align: center
    :scale: 50%
 
@@ -159,7 +147,7 @@ Retrieve the DNS Name tied to this ELB:
 
 Open a new tab in your browser and go to this DNS name (https)
 
-.. image:: ../pictures/module4/img_module4_lab4_11.png
+.. image:: ../pictures/module5/img_module5_lab4_10.png
    :align: center
    :scale: 50%
 

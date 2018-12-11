@@ -33,21 +33,10 @@ site28.example.com   10.1.10.128 443/80   10.1.20.128 and 10.1.20.129  80/8080/8
 site32.example.com   10.1.10.132 80       10.1.20.132                  80/8080/8081
 ==================  ============ ======== ============================ ============
 
-**VMware:**
-
 - Port 80: hackazon application
 - Port 8080: web-dvwa application
 - Port 8081: f5-hello-world application
 - Port 8082: f5-demo-httpd application
-- Port 445: ASM Policy Validator
-
-
-**AWS and Azure:**
-
-- Port 80: hackazon application
-- Port 8080: web-dvwa application
-- Port 8081: f5-hello-world application blue
-- Port 8082: f5-hello-world application green
 - Port 445: ASM Policy Validator
 
 .. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.

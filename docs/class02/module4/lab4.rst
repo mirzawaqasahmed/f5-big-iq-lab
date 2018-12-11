@@ -82,7 +82,7 @@ AWS ELB settings:
 
 Servers:
 
-* Servers: 172.17.2.50 / Port 80
+* Servers: 172.100.1.50 / Port 80
 
 .. image:: ../pictures/module4/img_module4_lab4_6.png
    :align: center

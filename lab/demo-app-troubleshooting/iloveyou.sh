@@ -26,7 +26,7 @@ echo -e "\nTarget:${GREEN} $url ${NC}- Source:${RED} $client ${NC}\n"
 for ((n=0;n<5;n++));
 do
         curl -k -s -m 10 -o /dev/null --header "X-Forwarded-For: $client" -A "Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)" -w "iloveyou.exe\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $client url: $url\n" https://$url/iloveyou.exe
-        sleep 2;
+        sleep 10;
 done
 
 echo -e "\n${BLUE}Attack completed.${NC}\n"

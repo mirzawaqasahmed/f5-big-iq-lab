@@ -131,7 +131,7 @@ called **<YOUR PREFIX>-azure-ssg**
 
 Go to **Configuration** > **Devices**. You'll be able to see your two provisioned ``BIG-IPs```
 
-.. image:: ../pictures/module5/img_module4_lab3_9.png
+.. image:: ../pictures/module5/img_module5_lab3_9.png
   :align: center
   :scale: 50%
 
@@ -166,7 +166,7 @@ Once you're logged in your ``BIG-IP``, you can see a few things:
 
 Go to **Device Management** > Overview
 
-.. image:: ../pictures/module4/img_module4_lab3_12.png
+.. image:: ../pictures/module5/img_module5_lab3_12.png
   :align: center
   :scale: 50%
 
