@@ -97,7 +97,7 @@ Click on the **Test** button when you need to make sure your credentials are fin
 Go to **Applications** > **Environments** > **Cloud Environments**. Click on your cloud
 environment called **<YOUR PREFIX>-Azure-environment**
 
-.. image:: ../pictures/module5/img_module4_lab3_6.png
+.. image:: ../pictures/module5/img_module5_lab3_6.png
   :align: center
   :scale: 50%
 
