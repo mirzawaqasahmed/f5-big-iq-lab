@@ -37,7 +37,7 @@ L4-7 Application Service Delivery is accomplished by:
 
 .. note:: Moving forward, BIG-IQ will invest on AS3 Templates more than on existing BIG-IQ templates.
 
--  Utilizing BIG-IQ's **Roll Based Access Control (RBAC)** to divide
+-  Utilizing BIG-IQ's **Role Based Access Control (RBAC)** to divide
    workloads based on user functions.
 
 The labs in the module will focus on the high level features in place to
@@ -46,7 +46,7 @@ achieve full L4-7 automation.
 In this Module, we will provision **BIG-IQ 6.1** to deploy and modify the AS3
 declarations.
 
-The focus of Module 5 was to demonstrate application deployment directly on to the BIG-IP. 
+The focus of Module 5 was to demonstrate application deployment directly to the BIG-IP. 
 **BIG-IQ 6.1** will allow the administrator to restrict access an interface and API for users based 
 on their current role within the organization.
 
