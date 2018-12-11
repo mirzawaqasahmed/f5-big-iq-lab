@@ -36,9 +36,9 @@ sitefqdn[21]="site40.example.com"
 sitefqdn[22]="site42.example.com"
 
 # add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
-if [ -f /home/f5/scripts/ssg-apps ]; then
+if [ -f $home/ssg-apps ]; then
         i=${#sitefqdn[@]}
-        SSGAPPS=$(cat /home/f5/scripts/ssg-apps)
+        SSGAPPS=$(cat $home/ssg-apps)
         for fqdn in ${SSGAPPS[@]}; do
                 i=$(($i+1))
                 sitefqdn[$i]="$fqdn"
@@ -112,9 +112,9 @@ do
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
                                 if [  $port == 443 ]; then
-                                        curl -k -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j
+                                        curl -k -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j &
                                 else
-                                        curl -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
+                                        curl -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j &
                                 fi
                                 echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
                                 echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
@@ -129,10 +129,10 @@ do
 
                 echo -e "\n# site $i ${sitefqdn[$i]} nmap"
 
-                nmap --system-dns -p $port -script http-sql-injection -T5 -Pn ${sitefqdn[$i]}
-                nmap --system-dns -p $port -script http-waf-detect -T4 -Pn ${sitefqdn[$i]}
-                nmap --system-dns -p $port -script http-enum -T5 -Pn ${sitefqdn[$i]}
-                nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]}
+                nmap --system-dns -p $port -script http-sql-injection -T5 -Pn ${sitefqdn[$i]} &
+                nmap --system-dns -p $port -script http-waf-detect -T4 -Pn ${sitefqdn[$i]} &
+                nmap --system-dns -p $port -script http-enum -T5 -Pn ${sitefqdn[$i]} &
+                nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]} &
 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
