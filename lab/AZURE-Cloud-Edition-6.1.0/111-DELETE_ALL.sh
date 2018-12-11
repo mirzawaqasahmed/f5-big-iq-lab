@@ -70,6 +70,11 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
+# Retry delete in case first one failed
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $PYTHON_PATH/python 11-delete-azure-ssg-resources-check.py
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"

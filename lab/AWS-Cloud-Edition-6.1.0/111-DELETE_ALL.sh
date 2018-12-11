@@ -51,6 +51,11 @@ echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 10-delete-aws-app.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
+# Retry delete in case first one failed
+echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
+$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 10-delete-aws-app.yml -i inventory/hosts
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AWS SSG BEFORE PROCEEDING ${NC}\n\n"
 
