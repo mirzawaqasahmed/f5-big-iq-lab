@@ -13,31 +13,44 @@ $filename = 'database.txt';
 
 if (file_exists($filename)) {
 	echo "The file $filename exists";
-	$n=file_get_contents('database.txt');
-	# Increasing "number of connection to the DB"
-	$n++;
-	$handle = fopen($filename, 'w') or die('Cannot open file:  '.$filename);
-	fwrite($handle, $n);
-	fclose($handle);
+	$myfile = fopen("$filename", "r") or die("Unable to open file!");
+	flock($myfile, LOCK_EX);
+	$n=fgets($myfile);
 	echo "<img src='f5-logo.png' alt='f5-logo.png' />";
 	echo "<p/>$n users connected to the application.";
+	flock($myfile, LOCK_UN);
+	fclose($myfile);
+	$n++;
+	$myfile = fopen("$filename", 'w') or die('Cannot open file:  '.$filename);
+	flock($myfile, LOCK_EX);
+	fwrite($myfile, $n);
+	flock($myfile, LOCK_UN);
+	fclose($myfile);
 } else {
 	echo "The file $filename does not exist";
-	$handle = fopen($filename, 'w') or die('Cannot open file:  '.$filename);
-	$n="1"
-	fwrite($handle, $n);
-	fclose($handle);
+	$myfile = fopen("$filename", 'w') or die('Cannot open file:  '.$filename);
+	flock($myfile, LOCK_EX);
+	$n="1";
+	echo "<img src='f5-logo.png' alt='f5-logo.png' />";
+	echo "<p/>$n users connected to the application.";
+	fwrite($myfile, $n);
+	flock($myfile, LOCK_UN);
+	fclose($myfile);
 }
 
-# If number over 1000, send error 500
-if($n >=1000)
+# If number over 100, send error 500
+if($n >= 20)
 {
-	http_response_code(500);
-	# Reset number of DB connection to 1
-	$handle = fopen($filename, 'w') or die('Cannot open file:  '.$filename);
-	$n="1"
-	fwrite($handle, $n);
-	fclose($handle);
+	echo "<img src='f5-logo-black-and-white.png' alt='f5-logo-black-and-white.png' />";
+	echo "<p/>$n users connected to the application.";
+	http_response_code(503);
+}
+
+if($n >= 25)
+{
+	# delete database
+	unlink("$filename");
+	sleep(10);
 }
 
 ?>

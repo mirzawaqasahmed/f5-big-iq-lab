@@ -13,14 +13,14 @@ else
         url=$1
 fi
 
-echo -e "\nHTTPS app only.\nUsage: $0 site42.example.com"
+echo -e "\nHTTP app only.\nUsage: $0 site42.example.com"
 
 echo -e "\nTarget:${GREEN} $url ${NC}\n"
 
-for i in {1..10};
+for i in {1..500};
 do
-        curl -k -s -m 10 -o /dev/null -w '404demo.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' https://$url/f5_capacity_issue.php
-        sleep 10;
+        curl -s -o /dev/null -w 'f5_capacity_issue.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' http://$url/f5_capacity_issue.php
 done
+
 
 echo -e "\n${BLUE}Simulator 503 completed.${NC}\n"
