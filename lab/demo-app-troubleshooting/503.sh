@@ -17,9 +17,11 @@ echo -e "\nHTTP app only.\nUsage: $0 site42.example.com"
 
 echo -e "\nTarget:${GREEN} $url ${NC}\n"
 
+echo -e "\n500 HTTP requests:\n"
+
 for i in {1..500};
 do
-        curl -s -o /dev/null -w 'f5_capacity_issue.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n' http://$url/f5_capacity_issue.php
+        curl -s -o /dev/null -w "$i - f5_capacity_issue.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$url/f5_capacity_issue.php
 done
 
 
