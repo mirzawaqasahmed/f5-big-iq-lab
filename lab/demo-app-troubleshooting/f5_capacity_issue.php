@@ -51,7 +51,6 @@ if (file_exists($filename)) {
 # If number over 20, send error 500
 if($n >= 20)
 {
-	echo "<img src='f5-logo-black-and-white.png' alt='f5-logo-black-and-white.png' />";
 	echo "<p/>Data: $n";
 	http_response_code(503);
 }
