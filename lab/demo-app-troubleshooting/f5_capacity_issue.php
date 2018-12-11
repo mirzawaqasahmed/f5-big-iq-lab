@@ -1,5 +1,4 @@
 <!-- Page to install in hackazon container under /var/www/hackazon/web -->
-<!-- f5-logo-black-and-white.png and f5-logo-black-and-white.png to be also uploaded under /var/www/hackazon/web -->
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -13,13 +12,24 @@ $filename = 'database.txt';
 
 if (file_exists($filename)) {
 	echo "The file $filename exists";
+	# if file date is less than 60 sec but has value less than 10, delete it => normal condition.
+	while($filename)
+	{
+		if(date("U",filectime($filename) <= time() - 30) {
+			if($n <= 10){
+				# delete database
+				unlink("$filename");
+			}
+		}
+	}
+	# retreive database content
 	$myfile = fopen("$filename", "r") or die("Unable to open file!");
 	flock($myfile, LOCK_EX);
 	$n=fgets($myfile);
-	echo "<img src='f5-logo.png' alt='f5-logo.png' />";
-	echo "<p/>$n users connected to the application.";
+	echo "<p/>Data: $n";
 	flock($myfile, LOCK_UN);
 	fclose($myfile);
+	# increase and write in database file
 	$n++;
 	$myfile = fopen("$filename", 'w') or die('Cannot open file:  '.$filename);
 	flock($myfile, LOCK_EX);
@@ -27,25 +37,26 @@ if (file_exists($filename)) {
 	flock($myfile, LOCK_UN);
 	fclose($myfile);
 } else {
+	# if file does not exist, instanciate database to 1
 	echo "The file $filename does not exist";
 	$myfile = fopen("$filename", 'w') or die('Cannot open file:  '.$filename);
 	flock($myfile, LOCK_EX);
 	$n="1";
-	echo "<img src='f5-logo.png' alt='f5-logo.png' />";
-	echo "<p/>$n users connected to the application.";
+	echo "<p/>Data: $n";
 	fwrite($myfile, $n);
 	flock($myfile, LOCK_UN);
 	fclose($myfile);
 }
 
-# If number over 100, send error 500
+# If number over 20, send error 500
 if($n >= 20)
 {
 	echo "<img src='f5-logo-black-and-white.png' alt='f5-logo-black-and-white.png' />";
-	echo "<p/>$n users connected to the application.";
+	echo "<p/>Data: $n";
 	http_response_code(503);
 }
 
+# If number over 100, send error 500
 if($n >= 25)
 {
 	# delete database
