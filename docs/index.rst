@@ -78,8 +78,8 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 **Documentations**:
 
 - `BIG-IQ Knowledge Center`_
-- `F5 BIG-IQ API 6.0.1`_
 - `F5 BIG-IQ API 6.1.0`_
+- `F5 BIG-IQ API 6.0.1`_
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 - `AS3 Documentation`_

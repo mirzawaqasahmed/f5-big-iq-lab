@@ -5,6 +5,7 @@
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 if [  $already -gt 5 ]; then
     echo "The script is already running `expr $already - 2` time."
+    killall $(basename "$0")
     exit 1
 fi
 
@@ -96,7 +97,7 @@ do
         
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
                 # add random number for loop
-                r=`shuf -i 1-3 -n 1`;
+                r=`shuf -i 1-5 -n 1`;
                 for k in `seq 1 $r`; do
                         for j in $sitepages; do
                                 echo "Loop $k"
@@ -117,19 +118,21 @@ do
                                 else
                                         curl -s -m 10 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j
                                 fi
+                                echo -e "sleep $r"
+                                sleep $r
                         done
                 done
 
-                echo -e "\n# site $i ab traffic gen"
-                if [  $port == 443 ]; then
-                       count=`shuf -i 11-30 -n 1`;
-                       conc=`shuf -i 1-10 -n 1`;
-                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
-                else
-                       count=`shuf -i 11-30 -n 1`;
-                       conc=`shuf -i 1-10 -n 1`;
-                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
-                fi
+                #echo -e "\n# site $i ab traffic gen"
+                #if [  $port == 443 ]; then
+                #       count=`shuf -i 11-30 -n 1`;
+                #       conc=`shuf -i 1-10 -n 1`;
+                #       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
+                #else
+                #       count=`shuf -i 11-30 -n 1`;
+                #       conc=`shuf -i 1-10 -n 1`;
+                #       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
+                #fi
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi
