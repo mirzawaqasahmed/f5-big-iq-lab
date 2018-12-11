@@ -57,7 +57,7 @@ else
     bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
 
     echo "Cleanup previous files..."
-    rm -rf AWS* AZURE* f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting
+    rm -rf build* AWS* AZURE* f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -133,8 +133,8 @@ if [[  $currentuser == "root" ]]; then
     # https://github.com/F5Networks/f5-appsvcs-extension/tree/master/AS3-schema-validator
     sudo docker run --restart=always --name=as3validatortool -dit -p 5000:5000 node
     docker_as3validatortool_id=$(sudo docker ps | grep as3validatortool | awk '{print $1}')
+    rm -rf build*
     wget https://github.com/F5Networks/f5-appsvcs-extension/raw/master/AS3-schema-validator/3.6.0/build.zip
-    rm -rf build
     unzip build.zip
     sudo docker cp build $docker_as3validatortool_id:/
     sudo docker exec -i -t $docker_as3validatortool_id sh -c "yarn global add serve"

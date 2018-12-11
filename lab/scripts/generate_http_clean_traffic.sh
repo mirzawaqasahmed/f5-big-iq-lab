@@ -121,7 +121,7 @@ do
                                 else
                                         curl -s -m 35 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j &
                                 fi
-                                sleep 1
+                                sleep $r
                         done
                 done
 
