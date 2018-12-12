@@ -217,7 +217,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 |lab-3-4|
 
 
-Task 9 - Delete Task1 and Task 2 with their AS3 Applications
+Task 9 - Delete Task1 with their AS3 Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As david, use below AS3 declaration to delete couple of the application previoulsy created.
@@ -240,16 +240,13 @@ As david, use below AS3 declaration to delete couple of the application previoul
            },
            "Task1": {
                "class": "Tenant"
-           },
-           "Task2": {
-               "class": "Tenant"
            }
        }
    }
 
 Connect as **david** on BIG-IQ.
 
-Here, we empty the tenants/partitions: Task1 and Task2. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
+Here, we empty the tenants/partitions of Task1. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
 should also disappear from BIG-IQ. 
 
 .. |lab-3-1| image:: images/lab-3-1.png

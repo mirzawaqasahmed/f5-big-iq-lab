@@ -12,14 +12,11 @@ $filename = 'database.txt';
 
 if (file_exists($filename)) {
 	echo "The file $filename exists";
-	# if file date is less than 60 sec but has value less than 10, delete it => normal condition.
-	while($filename)
-	{
-		if(date("U",filectime($filename) <= time() - 30) {
-			if($n <= 10){
-				# delete database
-				unlink("$filename");
-			}
+	# if file date is less than 30 sec but has value less than 10, delete it => normal condition.
+	if(date("U",filectime($filename)) <= time() - 30) {
+		if($n <= 10){
+			# delete database
+			unlink("$filename");
 		}
 	}
 	# retreive database content
@@ -49,20 +46,17 @@ if (file_exists($filename)) {
 }
 
 # If number over 20, send error 500
-if($n >= 20)
-{
+if($n >= 20) {
 	echo "<p/>Data: $n";
 	http_response_code(503);
 }
 
 # If number over 100, send error 500
-if($n >= 25)
-{
+if($n >= 25) {
 	# delete database
 	unlink("$filename");
 	sleep(10);
 }
-
 ?>
 
 </body>

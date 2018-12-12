@@ -2,7 +2,7 @@ Lab 2.3: Troubleshooting Application Response Time Browser
 ----------------------------------------------------------
 Connect as **paul**.
 
-1. Select one of the application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
+1. Select application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
 
 .. note:: Enhanced Analytics might be already turn on for site40.example.com
 

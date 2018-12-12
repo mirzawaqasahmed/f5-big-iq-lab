@@ -1,5 +1,5 @@
 ---
-- name: BIG-IQ and AS3 Lab - Task 9 - Delete Task1 and Task2 AS3 Applications
+- name: BIG-IQ and AS3 Lab - Task 9 - Delete Task1 AS3 Applications
   hosts: "{{ env }}"
   vars_files:
     - inventory/group_vars/{{ env }}.yml
@@ -18,7 +18,7 @@
         validate_certs: false
       register: auth
 
-    - name: Task 9 - Delete Task1 and Task2 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: Task 9 - Delete Task1 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -35,12 +35,10 @@
             schemaVersion: "{{ as3_schemaVersion }}"
             id: example-declaration-01
             label: Task9
-            remark: Task 9 - Delete Task1 and Task2 AS3 Applications
+            remark: Task 9 - Delete Task1 AS3 Applications
             target:
               hostname: "{{ bigip_target }}"
             Task1:
-              class: Tenant
-            Task2:
               class: Tenant
         body_format: json
         timeout: 60

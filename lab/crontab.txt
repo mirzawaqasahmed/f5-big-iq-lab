@@ -4,6 +4,9 @@
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
 @reboot perl -le 'sleep 1800' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
 
+## Troubleshooting 503 Service Unavailable (class 3 module 2 lab 7)
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5student/demo-app-troubleshooting/503.sh > /home/f5student/demo-app-troubleshooting/503.log
+
 ## DOS data
 */10 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /dev/null 2>&1

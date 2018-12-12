@@ -19,7 +19,7 @@ echo -e "\nTarget:${GREEN} $url ${NC}\n"
 
 echo -e "\nSending 500 HTTP requests:\n"
 
-for i in {1..500};
+for i in {1..250};
 do
         curl -s -o /dev/null -w "$i - f5_capacity_issue.php\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$url/f5_capacity_issue.php
 done
