@@ -10,7 +10,7 @@ Administrators will employ the BIG-IQ Service Catalog to construct and manage a 
 - Restrict specific AS3 properties and/or classes
 - Override specific AS3 default property values
 
-he following examples demonstrate how these goals can be met with JSON Schema.
+The following examples demonstrate how these goals can be met with JSON Schema.
 
 1. Enforcing Changes to AS3 Classes
 
@@ -18,7 +18,7 @@ In order to trigger schema enforcement of each class in the template other than 
 
 .. code-block:: yaml
    :linenos:
-   
+
     "additionalProperties": {
         "allOf": [
             {
@@ -318,7 +318,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
                 "status": 422
 
 
-5. Update the "virtualPort" to 8080 and re-send the declaration.
+5. Update the ``virtualPort`` to **8080** and re-send the declaration.
 
 6. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
 
