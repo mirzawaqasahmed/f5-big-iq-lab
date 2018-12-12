@@ -4,6 +4,116 @@ Lab 5.3: Deploying AS3 Templates on BIG-IQ
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Administrators will employ the BIG-IQ Service Catalog to construct and manage a set of JSON Schema templates.  Non-administrative users may be selectively allowed to deploy configurations using these templates according to BIG-IQ RBAC policies.  The purpose of the templates is to filter the information being supplied to AS3 in 3 ways:
+
+- Force the inclusion of specific AS3 class objects
+- Restrict specific AS3 properties and/or classes
+- Override specific AS3 default property values
+
+he following examples demonstrate how these goals can be met with JSON Schema.
+
+1. Enforcing Changes to AS3 Classes
+
+In order to trigger schema enforcement of each class in the template other than Tenant and Application, specify the class name(s) and reference(s) in the Application class additionalProperties, like this:
+
+.. code-block:: yaml
+   :linenos:
+   
+    "additionalProperties": {
+        "allOf": [
+            {
+                "if": {"properties": {"class": {"const": "Service_HTTP"}}},
+                "then": { "$ref": "#/definitions/Service_HTTP" }
+            },
+            {
+                "if": {"properties": {"class": {"const": "HTTP_Profile"}}},
+                "then": { "$ref": "#/definitions/HTTP_Profile" }
+            }
+        ]
+    }
+
+2. Overriding an AS3 Default Value
+
+To override a default, specify the property name, type, and new default like this snippet for the HTTP_Profile class: 
+
+.. code-block:: yaml
+   :linenos:
+
+    "xForwardedFor": {
+        "type": "boolean",
+        "default": true
+    }
+
+3. Setting a Static Value
+
+To force a property to a specific value and accept no other, specify the property name, type, and const.  To add the static value when the user omits the property, specify the default as well, like this snippet added to the Service_HTTP class:
+
+.. code-block:: yaml
+   :linenos:
+
+    "virtualPort": {
+        "type": "integer",
+        "const": 8080,
+        "default": 8080
+    }
+
+4. Disallowing One or More Properties
+
+To reject a specific property whenever it appears in a declaration, specify that property within dependencies, like this snippet added to the Service_HTTP class:
+
+.. code-block:: yaml
+   :linenos:
+
+    "dependencies": {
+        "policyIAM": { "not": {} },
+        "policyWAF": { "not": {} }
+    }
+
+5. Disallowing All Properties Except Those Specified
+
+To act on a handful of properties and reject all others, make sure to include a stub for the "class" property and specify:
+
+.. code-block:: yaml
+   :linenos:
+
+    "additionalProperties": false
+
+6. Disallowing One or More Classes
+
+To reject an entire class, specify this not anyOf properties clause within the Application class additionalProperties object:
+
+.. code-block:: yaml
+
+   :linenos:
+    "additionalProperties": {
+        "not": {
+            "anyOf": [
+                {"properties": {"class": {"const": "TCP_Profile"}}},
+                {"properties": {"class": {"const": "TLS_Client"}}}
+            ]
+        }
+    }
+
+7. Disallowing All But 1 or 2 Classes
+
+To allow just 1 or 2 classes, use an if-then construct within additionalProperties:
+
+.. code-block:: yaml
+   :linenos:
+
+    "additionalProperties": {
+        "if": {
+            "properties": {"class": {"const": "Service_L4"}}
+        },
+        "then": { "$ref": "#/definitions/Service_L4" },
+        "else": {
+                "if": { "not": {"properties": {"class": {"const": "Pool"}}}},
+                "then": false
+        }
+    }
+
+------------
+
 In this task, we will create a template which require a Service_HTTP object, force the service port to 8080, and prevent WAF (ASM) and IAM (APM) configuration.
 
 1. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
