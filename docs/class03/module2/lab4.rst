@@ -10,7 +10,7 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 .. note:: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list. Enhanced Analytics might be already turn on for site40.example.com
 
-2. Let's generate additonnal traffic to the application ``site40.example.com``, connect on the *Ubuntu Lamp Server* server and launch the following command:
+2. Let's generate additonnal traffic to the application ``site40.example.com``, connect on the *Ubuntu Lamp Server* and launch the following command:
 
 ``# docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')``
 

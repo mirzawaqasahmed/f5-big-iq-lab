@@ -127,7 +127,7 @@ of the *Ubuntu Lamp Server* system and select *AS3 Validator Tool*
 4. Now that the JSON is validated, let's add the target (BIG-IP device)::
 
     "target": {
-        "hostname": "SEA-vBIGIP01.termmarc.com"
+        "hostname": "BOS-vBIGIP01.termmarc.com"
     },
 
 .. note:: The target BIG-IP is standalone but it could be configured as an HA pair.
@@ -153,7 +153,7 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
    
 .. note:: Notice that the app deployment may take a few minutes.
 
-8. Logon on **SEA-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
+8. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
 
 9. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
@@ -190,7 +190,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
            "label": "Task2",
            "remark": "Task 2 - HTTPS Application Service",
            "target": {
-               "hostname": "SEA-vBIGIP01.termmarc.com"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task2": {
                "class": "Tenant",
@@ -288,7 +288,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
            "label": "Task3a",
            "remark": "Task 3a - HTTPS Application with WAF",
            "target": {
-               "hostname": "SEA-vBIGIP01.termmarc.com"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task3": {
                "class": "Tenant",
@@ -392,7 +392,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
            "label": "Task4",
            "remark": "Task 4 - Generic Services",
            "target": {
-               "hostname": "SEA-vBIGIP01.termmarc.com"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task4": {
                "class": "Tenant",

@@ -30,7 +30,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
            "target": {
-               "hostname": "SEA-vBIGIP01.termmarc.com"
+               "hostname": "BOS-vBIGIP01.termmarc.com"
            },
            "Task1": {
                "class": "Tenant",
@@ -193,7 +193,7 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
         "class": "AS3",
         "action": "patch",
         "target": {
-            "hostname": "SEA-vBIGIP01.termmarc.com"
+            "hostname": "BOS-vBIGIP01.termmarc.com"
         },
         "patchBody": [
             {
