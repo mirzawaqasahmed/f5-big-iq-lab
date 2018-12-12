@@ -330,7 +330,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 Task 9 - Delete Task1 with their AS3 Applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As david, use below AS3 declaration to delete couple of the application previoulsy created.
+As david, use below AS3 declaration to delete applications previoulsy created in the tenant Task1.
 
 .. code-block:: yaml
    :linenos:
