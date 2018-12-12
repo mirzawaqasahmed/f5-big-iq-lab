@@ -23,13 +23,6 @@ The Enhanced Analytics allows you to increase the application data visibility by
 - Click Expand the right-edge of the analytics panel to get the filters.
 - Move the *URLs* and the *Response Codes* tables next to each other and expand them both (the tables can be moved up/down).
 - In the *Response Codes* table, select the *200* and *503* lines.
-
-.. image:: ../pictures/module2/img_module2_lab7_1.png
-   :align: center
-   :scale: 80%
-
-|
-
 - Click right on the *Response Codes* and click on *Add Comparison Chart*.
 
 .. image:: ../pictures/module2/img_module2_lab7_2.png
@@ -37,6 +30,14 @@ The Enhanced Analytics allows you to increase the application data visibility by
    :scale: 100%
 
 |
+
+.. image:: ../pictures/module2/img_module2_lab7_1.png
+   :align: center
+   :scale: 80%
+
+|
+
+
 
 - Finally, only select the *503* error in the filters and notice the page *f5_capacity_issue.php* shows up.
 
