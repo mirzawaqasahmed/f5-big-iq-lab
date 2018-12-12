@@ -27,7 +27,7 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 
 .. image:: ../pictures/module2/img_module2_lab7_1.png
    :align: center
-   :scale: 50%
+   :scale: 80%
 
 |
 
@@ -35,7 +35,7 @@ Note: When this option is enabled, a banner appears at the top of the screen and
 
 .. image:: ../pictures/module2/img_module2_lab7_2.png
    :align: center
-   :scale: 50%
+   :scale: 100%
 
 |
 
@@ -45,7 +45,7 @@ It appears from the data showing on BIG-IQ the application may start having issu
 
 .. image:: ../pictures/module2/img_module2_lab7_3.png
    :align: center
-   :scale: 50%
+   :scale: 100%
 
 |
 
