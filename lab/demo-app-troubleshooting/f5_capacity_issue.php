@@ -46,13 +46,13 @@ if (file_exists($filename)) {
 }
 
 # If number over 20, send error 500
-if($n >= 20) {
+if($n >= 60) {
 	echo "<p/>Data: $n";
 	http_response_code(503);
 }
 
 # If number over 100, send error 500
-if($n >= 25) {
+if($n >= 65) {
 	# delete database
 	unlink("$filename");
 	sleep(10);
