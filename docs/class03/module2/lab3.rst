@@ -7,6 +7,7 @@ Connect as **paul**.
 .. note:: Enhanced Analytics might be already turn on for site40.example.com
 
 The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
+
 Note: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list.
 
 2. From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
