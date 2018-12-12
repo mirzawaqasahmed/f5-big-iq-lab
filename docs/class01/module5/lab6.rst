@@ -91,14 +91,14 @@ Connect as **olivia** and check on BIG-IQ the application has been correctly cre
 
 |lab-3-4|
 
-- Task 9: Delete Task1 and Task 2 with their AS3 Applications::
+- Task 9: Delete Task1 with their AS3 Applications::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task09_delete_task1_task2_apps.yml david
+    # ./cmd_playbook.sh as3_bigiq_task09_delete_task1_apps.yml david
 
 Connect as **david** on BIG-IQ.
 
-Here, we empty the tenants/partitions: Task1 and Task2. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
+Here, we empty the tenant/partition Task1. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
 should also disappear from BIG-IQ. 
 
 .. |lab-3-1| image:: images/lab-3-1.png
