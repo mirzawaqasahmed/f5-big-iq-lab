@@ -2,8 +2,10 @@
 # Uncomment set command below for code debugging bash
 #set -x
 
-release="v6.1.0"
+release="v7.0.0"
+#release="v6.1.0"
 #release="v6.0.1.1"
+#release="v6.0.1.2"
 build="current"
 
 RED='\033[0;31m'
