@@ -82,14 +82,18 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 sleep 15
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-# Need to use an admin user to create the template
+# Need to use an admin user to create the template (using david)
 ansible-playbook -i inventory/$env-hosts as3_bigiq_task06_create_template.yml $DEBUG_arg --extra-vars "env=$env_playbook user=$user_playbook"
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 sleep 15
 
 echo -e "\n${RED}Warning${NC}: Follow Task 8 from the lab guide:\n Assign ${BLUE}HTTPcustomTemplateTask6${NC} template to Applicator Creator AS3 custom role and remove the ${BLUE}default${NC} template from the allowed list).\n"
+echo -e "\nUser being used:${BLUE}"
+user_playbook="auth_bigiq_olivia.json"
+cat $user_playbook
+echo -e "${NC}"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
-ansible-playbook -i inventory/$env-hosts as3_bigiq_task08_create_http_app.yml $DEBUG_arg --extra-vars "env=$env_playbook user=olivia"
+ansible-playbook -i inventory/$env-hosts as3_bigiq_task08_create_http_app.yml $DEBUG_arg --extra-vars "env=$env_playbook user=$user_playbook"
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 sleep 15
 
