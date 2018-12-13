@@ -61,7 +61,12 @@ else
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
-    rm -rf /home/$user/f5-big-iq-lab
+
+    if [[  $env == "udf" ]]; then
+        # remove repo directory only if UDF, keep it for PME lab so people can run the ./containthedocs-cleanbuild.sh to validate lab guide
+        rm -rf /home/$user/f5-big-iq-lab
+    fi
+
     echo "AWS scripts"
     mv AWS-Cloud-Edition-$bigiq_version_aws AWS-Cloud-Edition
     echo "Azure scripts"
