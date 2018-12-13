@@ -1,8 +1,6 @@
 Module 2: Role Base Access Control (RBAC)
 =========================================
 
-Goal:
-
 The following labs will get you familiar with managing Role Based Access
 Control for the BIG-IP devices from BIG-IQ Centralized Management
 console. There are several built-in roles shipped with BIG-IQ, but there
