@@ -46,9 +46,8 @@ This automation scenario is composed of 4 parts:
         # ./cmd_bigiq_onboard_reset.sh pause
 
     The script will do in this order:
-    1. Delete existing applications
+    1. Delete existing applications (BIG-IQ and AS3)
     2. Execute the ``clear-rest-storage -d`` command on both BIG-IQ CM and DCD
-    3. Uninstall existing ansible-galaxy roles (if any)
 
 3. Execute the script
 

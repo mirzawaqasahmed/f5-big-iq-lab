@@ -1,7 +1,8 @@
 #!/bin/bash
 # Uncomment set command below for code debugging bash
 #set -x
-
+# Uncomment set command below for code debugging ansible
+#DEBUG_arg="-vvvv"
 
 # Default value set to UDF
 if [ -z "$2" ]; then
@@ -9,7 +10,6 @@ if [ -z "$2" ]; then
 else
   #env="sjc"
   #env="sjc2"
-  #env="sea"
   env=$2
 fi
 
@@ -32,41 +32,52 @@ NC='\033[0m' # No Color
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
 echo -e "\nEnvironement:${RED} $env ${NC}"
 
+echo -e "Exchange ssh keys with BIG-IQ & DCD:"
+for ip in "${ips[@]}"; do
+  echo "Type $ip root password (if asked)"
+  ssh-copy-id root@$ip > /dev/null 2>&1
+done
+
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Delete Applications${NC}"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-# Delete apps
+# Delete apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
-  ansible-playbook -i notahost, delete_default_apps.yml $DEBUG_arg
-else
-  ansible-playbook -i notahost, .delete_default_apps_$env.yml $DEBUG_arg
+  echo -e "\n${RED}Delete Applications${NC}"
+  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+
+  touch delete_default_apps.retry
+  touch delete_default_as3_app.retry
+
+  # run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
+  echo -e "\n${RED}BIG-IQ Applications${NC}"
+  while [ -f delete_default_apps.retry ]
+  do
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    rm *.retry
+    ansible-playbook -i notahost, delete_default_apps.yml $DEBUG_arg
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  done
+
+  echo -e "\n${RED}AS3 Applications${NC}"
+  while [ -f delete_default_as3_app.retry ]
+  do
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    rm *.retry
+    ansible-playbook -i notahost, delete_default_as3_app.yml $DEBUG_arg
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  done
 fi
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-echo -e "\n${RED}Delete Applications (retry)${NC}"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-# Delete apps
-if [[  $env == "udf" ]]; then
-  ansible-playbook -i notahost, delete_default_apps.yml $DEBUG_arg
-else
-  ansible-playbook -i notahost, .delete_default_apps_$env.yml $DEBUG_arg
-fi
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${RED} /!\ CHECK IF THE APPLICATIONS ARE CORRECTLY DELETED IN BIG-IQ. MAY NEED TO RETRY. /!\ ${NC}"
 
 echo -e "\n${RED}=>>> clear-rest-storage -d${NC} on both BIG-IQ CM and DCD"
+
 for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -76,14 +87,16 @@ done
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Uninstall ansible-galaxy roles${NC}"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-ansible-galaxy remove f5devcentral.bigiq_onboard
-ansible-galaxy remove f5devcentral.register_dcd
-
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
 
 if [[  $env != "udf" ]]; then
+
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    echo -e "\n${RED}Uninstall ansible-galaxy roles${NC}"
+    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    ansible-galaxy remove f5devcentral.bigiq_onboard
+    ansible-galaxy remove f5devcentral.register_dcd
+
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     # Cleanup AS3 on the BIG-IP
     while IFS="," read -r a b c;

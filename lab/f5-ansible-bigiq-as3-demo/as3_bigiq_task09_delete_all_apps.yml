@@ -5,7 +5,7 @@
     - inventory/group_vars/{{ env }}.yml
     
   tasks: 
-    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq.json or auth_bigiq_radius.json)
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
       uri:
         url: https://{{ bigiq_cm_server }}/mgmt/shared/authn/login
         method: POST

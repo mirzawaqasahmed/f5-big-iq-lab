@@ -1,26 +1,25 @@
 ---
-- name: BIG-IQ and AS3 Lab - Task 9 - Delete Task1 AS3 Applications
-  hosts: "{{ env }}"
-  vars_files:
-    - inventory/group_vars/{{ env }}.yml
+- name: Delete Task1 AS3 Applications example_site15http
+  hosts: all
+  connection: local
     
   tasks: 
     - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/authn/login
+        url: https://10.1.1.4/mgmt/shared/authn/login
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','{{ user }}') }}"
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202
         validate_certs: false
       register: auth
 
-    - name: Task 9 - Delete Task1 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: Delete example_site15http AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
+        url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         method: POST
         headers:
           Content-Type: application/json
@@ -32,13 +31,13 @@
           persist: true
           declaration:
             class: ADC
-            schemaVersion: "{{ as3_schemaVersion }}"
+            schemaVersion: 3.7.0
             id: example-declaration-01
             label: Task9
             remark: Task 9 - Delete Task1 AS3 Applications
             target:
-              hostname: "{{ bigip_target }}"
-            Task1:
+              hostname: BOS-vBIGIP01.termmarc.com
+            example:
               class: Tenant
         body_format: json
         timeout: 60
@@ -53,7 +52,7 @@
 
     - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
         method: GET
         headers:
           Content-Type: application/json
@@ -68,7 +67,7 @@
 
     - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
         method: GET
         headers:
           Content-Type: application/json

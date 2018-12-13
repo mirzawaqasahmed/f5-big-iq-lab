@@ -10,7 +10,6 @@ if [ -z "$2" ]; then
 else
   #env="sjc"
   #env="sjc2"
-  #env="sea"
   env=$2
 fi
 
@@ -40,7 +39,7 @@ NC='\033[0m' # No Color
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> <build number> <iso> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> <build number> <iso> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
@@ -213,18 +212,19 @@ sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}Create Applications${NC}"
+echo -e "\n${GREEN}Create BIG-IQ and AS3 Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-# Create apps
+# Create apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
   ansible-playbook -i notahost, create_default_apps.yml $DEBUG_arg
+  sleep 15
+  ansible-playbook -i notahost, create_default_as3_app.yml $DEBUG_arg
 fi
-# For Internal labs
-#ansible-playbook -i notahost, .create_default_apps_$env.yml $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 # loop around the BIG-IQ CM/DCD
 # enable ssh for admin and set-basic-auth on

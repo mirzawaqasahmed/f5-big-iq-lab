@@ -26,7 +26,6 @@ if [ -z "$1" ]; then
 else
   #env="sjc"
   #env="sjc2"
-  #env="sea"
   env=$1
 fi
 
@@ -34,7 +33,7 @@ echo -e "Environement:${RED} $env ${NC}"
 
 currentuser=$(whoami)
 if [[  $currentuser == "f5" ]]; then
-    # for SCJ & SEA lab
+    # for SCJ lab
     user="f5"
 else
     user="f5student"
@@ -94,12 +93,7 @@ else
         sed -i 's/10.1.10.6/10.192.75.186/g' /home/$user/scripts/*sh
         sed -i 's/10.1.10.4/10.192.75.185/g' /home/$user/scripts/*sh
     fi
-    if [[  $env == "sea" ]]; then
-        # for SEA - DCD lab IP
-        sed -i 's/10.1.10.6/10.11.150.16/g' /home/$user/scripts/*sh
-        sed -i 's/10.1.10.4/10.11.150.14/g' /home/$user/scripts/*sh
-    fi
-    
+ 
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)

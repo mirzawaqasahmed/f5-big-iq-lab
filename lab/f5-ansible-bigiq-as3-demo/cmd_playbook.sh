@@ -15,7 +15,6 @@ if [ -z "$3" ]; then
 else
   #env="sjc"
   #env="sjc2"
-  #env="sea"
   env=$3
 fi
 
@@ -23,7 +22,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
 # Usage
 if [[ -z $1 || -z $2 ]]; then
-    echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia> <udf/sjc/sjc2/sea> ${NC} (1st and 2nd parameters mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia> <udf/sjc/sjc2> ${NC} (1st and 2nd parameters mandatory)\n"
     ls -l *.yml
     exit 1;
 fi

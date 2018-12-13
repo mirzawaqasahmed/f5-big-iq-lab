@@ -19,7 +19,6 @@ if [ -z "$2" ]; then
 else
   #env="sjc"
   #env="sjc2"
-  #env="sea"
   env=$2
 fi
 
@@ -36,7 +35,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2/sea> ${NC} (1st parameter is mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> ${NC} (1st parameter is mandatory)\n"
     exit 1;
 fi
 

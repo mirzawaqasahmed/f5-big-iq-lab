@@ -1,17 +1,16 @@
 ---
 - name: BIG-IQ and AS3 Lab - Example Demo App - HTTP Application Service
-  hosts: "{{ env }}"
-  vars_files:
-    - inventory/group_vars/{{ env }}.yml
+  hosts: all
+  connection: local
 
   tasks: 
     - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq.json or auth_bigiq_radius.json)
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/authn/login
+        url: https://10.1.1.4/mgmt/shared/authn/login
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','{{ user }}') }}"
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202
@@ -20,7 +19,7 @@
 
     - name: HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
+        url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         method: POST
         headers:
           Content-Type: application/json
@@ -32,12 +31,12 @@
           persist: true
           declaration:
             class: ADC
-            schemaVersion: "{{ as3_schemaVersion }}"
+            schemaVersion: 3.7.0
             id: example-declaration-01
             label: example
             remark: Example- HTTP Application Service
             target:
-              hostname: "BOS-vBIGIP01.termmarc.com"
+              hostname: BOS-vBIGIP01.termmarc.com
             example:
               class: Tenant
               site15http:
@@ -82,7 +81,7 @@
 
     - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
         method: GET
         headers:
           Content-Type: application/json
@@ -97,7 +96,7 @@
 
     - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
         method: GET
         headers:
           Content-Type: application/json

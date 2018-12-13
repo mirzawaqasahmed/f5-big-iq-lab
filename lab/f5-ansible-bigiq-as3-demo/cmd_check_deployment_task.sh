@@ -15,7 +15,6 @@ if [ -z "$2" ]; then
 else
   #env="sjc"
   #env="sjc2"
-  #env="sea"
   env=$2
 fi
 
