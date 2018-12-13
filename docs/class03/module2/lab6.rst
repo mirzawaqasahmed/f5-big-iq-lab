@@ -8,13 +8,13 @@ Go to Configuration > SECURITY > Web Application Security > Policies, select ``t
 
 Go to POLICY PROPERTIES > General Properties and check **Automatic** is set for the Learning Mode.
 
-.. image:: ../pictures/module2/img_module2_lab5_1a.png
+.. image:: ../pictures/module2/img_module2_lab6_1a.png
   :align: center
   :scale: 50%
 
 Go to POLICY BUILDING > Settings and check **Automatic** is set for the Learning Mode, and Auto-Deploy Policy set to **Real Time**.
 
-.. image:: ../pictures/module2/img_module2_lab5_1b.png
+.. image:: ../pictures/module2/img_module2_lab6_1b.png
   :align: center
   :scale: 50%
 
@@ -59,7 +59,7 @@ Go to POLICY BUILDING > Settings and check **Automatic** is set for the Learning
 
 Go to POLICY PROPERTIES > General Properties
 
-.. image:: ../pictures/module2/img_module2_lab5_2.png
+.. image:: ../pictures/module2/img_module2_lab6_2.png
   :align: center
   :scale: 50%
 
@@ -73,7 +73,7 @@ Select ``site36.example.com``
 
 1. Paula enforce the policy: APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
 
-.. image:: ../pictures/module2/img_module2_lab5_3.png
+.. image:: ../pictures/module2/img_module2_lab6_3.png
   :align: center
   :scale: 50%
 
@@ -81,7 +81,7 @@ Select ``site36.example.com``
 
 .. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy to enforce it (or not)
 
-.. image:: ../pictures/module2/img_module2_lab5_3a.png
+.. image:: ../pictures/module2/img_module2_lab6_3a.png
   :align: center
   :scale: 50%
 
@@ -91,7 +91,7 @@ Select ``site36.example.com``
 
 3. Check the various Security Analytics: Illegal Transactions, All Transactions and Violations.
 
-.. image:: ../pictures/module2/img_module2_lab5_4.png
+.. image:: ../pictures/module2/img_module2_lab6_4.png
   :align: center
   :scale: 50%
 

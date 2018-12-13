@@ -11,13 +11,13 @@ Lab 2.5: Troubleshooting Security (single attack)
 
 Expand the right-edge of the analytics pane to get the Client IPs, Countries, Attack Type and Violations filters.
 
-.. image:: ../pictures/module2/img_module2_lab4_1.png
+.. image:: ../pictures/module2/img_module2_lab5_1.png
   :align: center
   :scale: 50%
 
 4. Connect as **larry**, look for more details on the violation under Monitoring > EVENTS > Web Application Security > Event Logs > Events
 
-.. image:: ../pictures/module2/img_module2_lab4_2.png
+.. image:: ../pictures/module2/img_module2_lab5_2.png
   :align: center
   :scale: 50%
 

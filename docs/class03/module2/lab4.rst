@@ -25,13 +25,13 @@ The Enhanced Analytics allows you to increase the application data visibility by
 - In the *Response Codes* table, select the *200* and *503* lines.
 - Click right on the *Response Codes* and click on *Add Comparison Chart*.
 
-.. image:: ../pictures/module2/img_module2_lab7_2.png
+.. image:: ../pictures/module2/img_module2_lab4_2.png
    :align: center
    :scale: 100%
 
 |
 
-.. image:: ../pictures/module2/img_module2_lab7_1.png
+.. image:: ../pictures/module2/img_module2_lab4_1.png
    :align: center
    :scale: 80%
 
@@ -43,10 +43,18 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 It appears from the data showing on BIG-IQ the application may start having issue (error 503) when there are more traffic going through it.
 
-.. image:: ../pictures/module2/img_module2_lab7_3.png
+.. image:: ../pictures/module2/img_module2_lab4_3.png
    :align: center
    :scale: 100%
 
 |
 
 Using the data available in BIG-IQ Application dashboard, we can narrow down 503 error and troubleshoot the inability of an application to handle production data capacities.
+
+Looking in a longer time period:
+
+.. image:: ../pictures/module2/img_module2_lab4_4.png
+   :align: center
+   :scale: 100%
+
+|
