@@ -23,19 +23,19 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 - Click the Add button
 
 
-- Add the DCD Management IP Address (10.1.1.6), Username admin, Password admin, and the Data Collection IP Address (self-IP: 10.1.10.6).
-Data collection port default is 9300. Click the Add button in the lower right of the screen.
-
-- Adding the DCD will take a minute or two:
+- Add the DCD Management IP Address (10.1.1.6), Username admin, Password admin, and the Data Collection IP Address (self-IP: 10.1.10.6). Data collection port default is 9300. Click the Add button in the lower right of the screen.
+- Adding the DCD will take a minute or two.
 
 - DCD item in UI displayed.
+
   - Status – State indicator. Green (UP) | Yellow (Unhealthy) | Red (Down)
   - Device name – Hostname of DCD (data collection device)
   - IP Address – IP Address of interface used for data collection. 
   - Version – Software version of BIG-IQ DCD (data collection device)
 
 - Add Services to the new DCD Device by clicking the Add Services link under the services column
-  - Activate the Access, FPS, and Web Application Security stats.  Make sure the Service Status is Active (each click may take a minute to register)
+
+- Activate the Access, FPS, and Web Application Security stats.  Make sure the Service Status is Active (each click may take a minute to register)
 
 3. Now, let's add a BIG-IP in BIG-IQ and enable the statistics collection for this device.
 
