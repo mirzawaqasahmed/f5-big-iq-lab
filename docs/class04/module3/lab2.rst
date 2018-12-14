@@ -5,7 +5,7 @@ Lab 3.2: BIG-IQ Data Collection Devices (DCD)
 
 Use ``bigiq1dcd.example.com`` for hostname, ``10.1.10.6/24`` for self-ip, ``time.nist.gov`` for NTP server and ``Thisisthemasterkey#1234`` for master key.
 
-When going through the SYSTEN PERSONALITY screen, make sure you select the **BIG-IQ Data Collection Device**
+When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG-IQ Data Collection Device**
 
 .. image:: ../pictures/module3/img_module3_lab2_1.png
   :align: center
