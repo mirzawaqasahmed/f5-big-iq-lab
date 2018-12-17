@@ -46,8 +46,8 @@
                   class: Analytics_Profile
                   collectedStatsInternalLogging: true
                   collectedStatsExternalLogging: false
-                  capturedTrafficInternalLogging: false
-                  capturedTrafficExternalLogging: true
+                  capturedTrafficInternalLogging: true
+                  capturedTrafficExternalLogging: false
                   collectPageLoadTime: true
                   collectClientSideStatistics: true
                   collectResponseCode: true

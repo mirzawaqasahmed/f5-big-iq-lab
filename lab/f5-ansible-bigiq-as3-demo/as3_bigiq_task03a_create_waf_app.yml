@@ -48,7 +48,7 @@
                   collectedStatsInternalLogging: true
                   collectedStatsExternalLogging: false
                   capturedTrafficInternalLogging: false
-                  capturedTrafficExternalLogging: true
+                  capturedTrafficExternalLogging: false
                   collectPageLoadTime: true
                   collectClientSideStatistics: true
                   collectResponseCode: true
