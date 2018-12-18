@@ -1,5 +1,5 @@
-Lab 5.3: Deploying AS3 Templates on BIG-IQ
-------------------------------------------
+Lab 5.3: Deploying AS3 Templates on BIG-IQ and Delete AS3 Tenant
+----------------------------------------------------------------
 
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -327,13 +327,23 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 |lab-3-4|
 
 
-Task 9 - Delete Task1 with their AS3 Applications
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 9 - Delete Task1 with its AS3 Applications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As david, use below AS3 declaration to delete applications previoulsy created in the tenant Task1.
+Here, we empty the tenant/partition of Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
+should also disappear from BIG-IQ. 
+
+.. note :: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
+
+1. Using Postman, update the user to david/david in the **BIG-IQ Token (david)** call (body).
+
+2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
+
+POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 .. code-block:: yaml
    :linenos:
+    :emphasize-lines: 14,15,16
 
    {
        "class": "AS3",
@@ -354,10 +364,7 @@ As david, use below AS3 declaration to delete applications previoulsy created in
        }
    }
 
-Connect as **david** on BIG-IQ.
-
-Here, we empty the tenant/partition of Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
-should also disappear from BIG-IQ. 
+3. Check the tenant/application(s) has been correctly removed from the BIG-IP and BIG-IQ.
 
 .. |lab-3-1| image:: images/lab-3-1.png
    :scale: 60%

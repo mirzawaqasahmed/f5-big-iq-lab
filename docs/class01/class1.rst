@@ -1,7 +1,7 @@
-Class 1: BIG-IQ Application Creation and AS3 (Cloud Edition)
-============================================================
+Class 1: BIG-IQ Application Managment and AS3 (Cloud Edition)
+=============================================================
 
-In this class, we will review the application creation feature available with BIG-IQ 6.0 and above.
+In this class, we will review the application management feature available with BIG-IQ 6.0 and above.
 
 .. toctree::
    :maxdepth: 1
