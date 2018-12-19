@@ -1,27 +1,41 @@
-Lab 5.4: FQDN and Service Discovery
------------------------------------
+Lab 5.4: Delete AS3 Tenant/Applications on BIG-IQ
+-------------------------------------------------
 
-Open a SSH session to *Ubuntu Lamp Server* in UDF.
+Task 9 - Delete Task1 with its AS3 Applications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Execute the playbooks for each tasks
+Here, we empty the tenant/partition of Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
+should also disappear from BIG-IQ. 
 
-- Task 10: HTTP Application Service using an FQDN pool to identify pool members::
+.. note :: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
 
-    # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task10_create_http_app_fqdn_nodes.yml paul
+1. Using Postman, update the user to david/david in the **BIG-IQ Token (david)** call (body).
 
-Connect as **paul** and check on BIG-IQ the application has been correctly created.
+2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 
-|lab-4-1|
+POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
-Connect on the BIG-IP and look at the **fqdn_pool**:
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 14,15,16
 
-|lab-4-2|
+   {
+       "class": "AS3",
+       "action": "deploy",
+       "persist": true,
+       "declaration": {
+           "class": "ADC",
+           "schemaVersion": "3.7.0",
+           "id": "example-declaration-01",
+           "label": "Task9",
+           "remark": "Task 9 - Delete Tenants",
+           "target": {
+               "hostname": "BOS-vBIGIP01.termmarc.com"
+           },
+           "Task1": {
+               "class": "Tenant"
+           }
+       }
+   }
 
-
-.. |lab-4-1| image:: images/lab-4-1.png
-   :scale: 80%
-
-.. |lab-4-2| image:: images/lab-4-2.png
-   :scale: 80%
-
+3. Check the tenant/application(s) has been correctly removed from the BIG-IP and BIG-IQ.

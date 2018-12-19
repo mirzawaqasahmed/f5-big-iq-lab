@@ -1,51 +1,27 @@
-Lab 5.5: Enable/Disable Enhanced Analytics on BIG-IQ
-----------------------------------------------------
+Lab 5.5: FQDN and Service Discovery
+-----------------------------------
 
-1. Using Postman, use the **BIG-IQ Enable/Disable Enhanced Analytics** collection in order to turn on the Enhanced Analytics on a specific Application Service.
+Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Replace the **<uuid-of-config-set>** with the appropriate value.
+Execute the playbooks for each tasks
 
-.. note:: The <uuid-of-config-set> can be retrived from the BIG-IQ |lab-5-1|
+- Task 10: HTTP Application Service using an FQDN pool to identify pool members::
 
-Copy/Paste the below BIG-IQ JSON into the body (Postman):
+    # cd /home/f5/f5-ansible-bigiq-as3-demo
+    # ./cmd_playbook.sh as3_bigiq_task10_create_http_app_fqdn_nodes.yml paul
 
-   POST https://10.1.1.4/mgmt/cm/global/tasks/set-application-analytic-mode
+Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
-.. code-block:: yaml
-   :linenos:
-   :emphasize-lines: 3
+|lab-5-1|
 
-    {
-        "configSetReference":{
-            "link":"https://localhost/mgmt/cm/global/config-sets/<uuid-of-config-set>"
-        },
-        "analyticsMode":"ENHANCED",
-        "options":[
-            "COLLECT_GEO",
-            "COLLECT_METHOD",
-            "COLLECT_OS_AND_BROWSER",
-            "COLLECT_SUBNET",
-            "COLLECT_URL",
-            "COLLECT_IP",
-            "COLLECT_SECURITY_DATA"
-        ],
-        "ipsForStatCollection":[]
-    }
+Connect on the BIG-IP and look at the **fqdn_pool**:
 
-
-To turn it off, POST:
-
-.. code-block:: yaml
-   :linenos:
-   :emphasize-lines: 3
-
-    {
-    "configSetReference":{
-        "link":"https://localhost/mgmt/cm/global/config-sets/<uuid-of-config-set>"
-    },
-    "analyticsMode":"NORMAL"
-    }
+|lab-5-2|
 
 
 .. |lab-5-1| image:: images/lab-5-1.png
-   :scale: 60%
+   :scale: 80%
+
+.. |lab-5-2| image:: images/lab-5-2.png
+   :scale: 80%
+
