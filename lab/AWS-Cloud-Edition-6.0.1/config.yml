@@ -14,7 +14,7 @@ AWS_SSH_KEY: <name_of_the_aws_key>
 # A unique searchable prefix to all resources which are created
 # Use a prefix w/o spaces or special characters (not end with - or special characters)
 # MUST BE LESS OR EQUAL 10 CHARACTERES
-PREFIX: udf-aws-demo
+PREFIX: udf-demo
 
 # Select on of  the region below (default US EST N. Virginia)
 #us-east-1, us-east-2, us-west-1, us-west-2, us-west-3, eu-central-1, eu-west-1, eu-west-2, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2
