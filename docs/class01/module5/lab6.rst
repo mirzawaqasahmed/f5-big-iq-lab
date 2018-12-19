@@ -5,7 +5,7 @@ Lab 5.6: Enable/Disable Enhanced Analytics on BIG-IQ
 
 Replace the **<uuid-of-config-set>** with the appropriate value.
 
-.. note:: The <uuid-of-config-set> can be retrived from the BIG-IQ |lab-5-1|
+.. note:: The <uuid-of-config-set> can be retrived from the BIG-IQ |lab-6-1|
 
 Copy/Paste the below BIG-IQ JSON into the body (Postman):
 
