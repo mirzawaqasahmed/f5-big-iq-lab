@@ -63,6 +63,8 @@
                   serverTLS: webtls
                   policyWAF:
                     bigip: "{{ task3a_policyWAF }}"
+                  securityLogProfiles:
+                  - bigip: "/Common/templates-default"
                 web_pool:
                   class: Pool
                   monitors:

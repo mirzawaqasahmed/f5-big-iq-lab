@@ -63,6 +63,8 @@
                   serverTLS: webtls
                   policyWAF:
                     use: "linux_high"
+                  securityLogProfiles:
+                  - bigip: "/Common/templates-default"
                 web_pool:
                   class: Pool
                   monitors:
