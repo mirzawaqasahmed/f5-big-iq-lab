@@ -1,11 +1,9 @@
-Class 11: BIG-IQ DDoS Hybrid Defender (DHD)
+Class 11: BIG-IQ DDoS Monitoring and Dashboard
 ===========================================
 
 **[New 6.1.0]** 
 
-.. image:: ../pictures/under-construction-02.jpg
-  :align: center
-  :scale: 20%
+In this class, we will review new DDoS Dashboard view, protection summary, and event navigation.
 
 .. toctree::
    :maxdepth: 1
