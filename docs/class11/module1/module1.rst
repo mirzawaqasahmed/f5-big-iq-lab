@@ -1,11 +1,13 @@
-Module 1: DNS DDoS Hybrid Defender
+Module 1: DDoS Monitoring and Dashboard
 ==================================
 
-**[New 6.1.0]** 
+Goal:
 
-.. image:: ../../pictures/under-construction-02.jpg
-  :align: center
-  :scale: 25%
+In this lab, we will generate attack traffic on a BIG-IP being managed 
+by BIG-IQ 6.1 with DCDs. When BIG-IP is configured to send DoS logs to 
+the DCD, BIG-IQ can display a near real time DoS Dashbaord for visibility 
+and analysis. 
+
 
 .. toctree::
    :maxdepth: 1
