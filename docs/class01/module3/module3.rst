@@ -1,12 +1,10 @@
-Module 3: BIG-IQ Application Deployment via API
-===============================================
-BIG-IQ Ansible module available in Ansible 2.6 (for info `Ansible F5 github`_).
+Module 3: BIG-IQ Application Deployment via API (6.0.x only)
+============================================================
+BIG-IQ Ansible module available in Ansible 2.6 and above (for info `Ansible F5 github`_).
 
 .. _Ansible F5 github: https://github.com/F5Networks/f5-ansible
 
-.. warning:: Please, follow instruction on your machine to configure the `experimental F5 Modules`_ (UDF lab already setup).
-
-.. _experimental F5 Modules: http://clouddocs.f5.com/products/orchestration/ansible/devel/usage/installing-modules.html
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 
 .. warning:: Ansible 2.6+ only support App deployment on VMware environement.
 

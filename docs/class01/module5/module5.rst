@@ -1,7 +1,7 @@
-Module 5: BIG-IQ Application Templates & Deployment with AS3
-============================================================
+Module 5: BIG-IQ Application Templates & Deployment with AS3 (new 6.1)
+======================================================================
 
-**[New 6.1.0]** 
+**[New 6.1.0]**
 
 |diagram_as3_bigiq|
 

@@ -2,6 +2,8 @@ Module 2: BIG-IQ Application Templates & Deployment
 ===================================================
 In this module, we will learn how to use Application Templates and how to deploy an **Application**.
 
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+
 The Application Templates will be created by **david** or **marco**, the Administrator.
 **larry** will create the security policies and let Marco know about the ones to associate with the templates.
 Once the template is ready with all the necessary information, it will be ready to use by the Application owner.
