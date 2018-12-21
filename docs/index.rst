@@ -85,7 +85,6 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - `AS3 Documentation`_
 - `AS3 on GitHub`_
 
-
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
 .. _F5 BIG-IQ API 6.1.0: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/
 .. _F5 BIG-IQ API 6.0.1: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0.1/
@@ -114,10 +113,10 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 **Tools**:
 
-- `BIG-IP Cloud Edition AWS trial`_
+- `BIG-IP Cloud Edition trial on AWS and Azure`_
 - `BIG-IQ PM team GitHub (various automation tools)`_
 
-.. _BIG-IP Cloud Edition AWS trial: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
+.. _BIG-IP Cloud Edition trial on AWS and Azure: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 
 ------------
