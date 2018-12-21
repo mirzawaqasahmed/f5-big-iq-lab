@@ -61,6 +61,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # WA Tunnel
 sleep 20
+# IN CASE AWS VPN RUNNING ALREADY
 ../AWS-Cloud-Edition/wa_aws_vpn_down_bigip.sh
 ../wa_azure_vpn_down_bigip.sh
 
