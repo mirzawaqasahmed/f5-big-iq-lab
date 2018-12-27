@@ -1,2 +1,2 @@
-Lab 1.2: Example module 1 lab 2
+Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ
 -------------------------------

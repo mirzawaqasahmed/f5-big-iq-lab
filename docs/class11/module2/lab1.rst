@@ -1,2 +1,2 @@
-Lab 1.1: Configuring BIG-IQ for DDoS Analytics
+Lab 1.1: Configurating and Generating Simple DDoS Attack
 --------------------------------------------------------

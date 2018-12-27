@@ -8,4 +8,4 @@ Introduction class 11
   3. Do not forget to tear down your AWS & Azure SSG if any.
   4. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
-This class will cover BIG-IQ DDoS Hybrid Defender topics.
+This class will cover BIG-IQ DDoS Monitoring and Dashboard enhancements to BIG-IQ 6.1.

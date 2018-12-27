@@ -1,12 +1,10 @@
-Module 1: DDoS Monitoring and Dashboard
-=======================================
+Module 1: Required Configuration For DDoS Monitoring
+=====================================================
 
 Goal:
 
-In this lab, we will generate attack traffic on a BIG-IP being managed 
-by BIG-IQ 6.1 with DCDs. When BIG-IP is configured to send DoS logs to 
-the DCD, BIG-IQ can display a near real time DoS Dashbaord for visibility 
-and analysis. 
+In this lab, we will validate the required configuration of BIG-IQ for DDoS analytics and BIG-IP logging profiles. If the AFM 
+lab module was completed, logging profiles will already exist in BIG-IQ and have been deployed to the BIG-IP.  
 
 
 .. toctree::
