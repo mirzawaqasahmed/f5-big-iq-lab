@@ -12,6 +12,6 @@ By default, BIG-IQ CM does *not* enable this service for DoS. This Lab blueprint
 3. Validate the *DoS Protection* services status is active (the listening port is 8020)
 
 
-.. image:: ../pictures/module1/Dos-services.png
+.. image:: ../pictures/module1/DoS-services.png
   :align: center
   :scale: 50%

@@ -18,12 +18,13 @@ Begin by creating a Device DoS Log Publisher which can then be re-used for virtu
 .. image:: ../pictures/module1/dos-log-config.png
   :align: center
   :scale: 50%
-
+  
+  
 
 6. Click *Continue* to have BIG-IQ create the objects and observe the pop up window: it outlines the objects being created that you can now view/browse in BIG-IQ, along with the name of the new logging profile. This Logging Profile can now be selected for other DoS Logging contexts such
 as a virtual server/protected object configuration on this BIG-IP. 
 
-7. Next, a Logging Publisher needs to be assigned to the DoS Configuration as we only just created the profile objects: nothing's assigned. Select the *BOS-vBIGIP01* and set the *Log Publisher* as shown in the image below
+7. Next, a Logging Publisher needs to be assigned to the DoS Configuration. Since this was just created, it should already be assigned to the *BOS-vBIGIP01* devices but if it is not, or another device is to be configured with this suchs as *BOS-vBIGIP02*, set the DoS log publisher assign it as shown below: 
 
 .. image:: ../pictures/module1/dos-log-publisher.png
   :align: center
