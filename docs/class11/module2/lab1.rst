@@ -1,7 +1,7 @@
 Lab 2.1: Configuring DoS Device Profile
 ---------------------------------------
 
-The Devic DoS profile reports and mitigates based on aggregated data across the entire BIG-IP. All packets that are not explicitly white listed
+The Device DoS profile reports and mitigates based on aggregated data across the entire BIG-IP. All packets that are not explicitly white listed
 count for the Device DoS vectors. When using more specific profiles on Virtual Servers, the Device DoS profile should be set using values large
 enough that they provide protection for the device without conflicting with Virtual Server profiles. For example individual virtual servers may be 
 configured with UDP flood values of detect and mitigate values of 10000 PPS, however device DoS is set to 50000 PPS. 
@@ -33,3 +33,6 @@ If using a lab VE license the 10 Mb/s limit will make demonstrations challenging
 
 6. Click *Save & Close* to save all the DoS Profile edits to BIG-IQ
 7. To deploy the changes, create and deploy using *Shared Security* or *Network Security* 
+
+.. Bonus Tip:: When asked what to set any DoS vector to, using DoS table statistics can be very helpful when manual detection and mitigation is preferred. 
+To view statistics for any vector, use *tmsh show security dos device-config*. For advanced users, the tmctl table *dos_stat* shows the same data that can be quickly formatted based on CLI options.
