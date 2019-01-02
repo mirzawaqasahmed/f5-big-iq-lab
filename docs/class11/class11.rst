@@ -11,6 +11,7 @@ In this class, we will review new DDoS Dashboard view, protection summary, and D
 
    intro
    module*/module*
+   
 ------------
 
 For simplicity, UDP attack traffic will be generated against both DNS virtual servers and device wide DoS: additional attacks can be done using the client nodes at the discretion of the student. 

@@ -1,5 +1,5 @@
 Lab 1.1: Configuring BIG-IQ for DoS Visibility
-------------------------------------------------
+----------------------------------------------
 
 As of BIG-IQ 6.0, BIG-IQ supports remote log collecting and viewing for DDoS Events. DCDs are *required* for this feature as
 the BIG-IQ CM is not receiving any logs directly rather, all log messages are sent via HSL from the BIG-IP to a DCD.  The BIG-IQ CM 
