@@ -2,3 +2,5 @@ build/*
 _build/*
 _templates/*
 _static/*
+*/.DS_Store 
+*/*/.DS_Store
