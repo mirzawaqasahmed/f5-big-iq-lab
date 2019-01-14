@@ -12,7 +12,7 @@ if [ -f ./cache/$PREFIX/3-customer_gateway_configuration.xml ]; then
    if [ $(grep None ./cache/$PREFIX/3-customer_gateway_configuration.xml) ]; then
      sed -i '/None/d' ./cache/$PREFIX/3-customer_gateway_configuration.xml
    fi
-   if [ ! $(grep "vpn_connection id" ./cache/$PREFIX/3-customer_gateway_configuration.xml) ]; then
+   if [ ! $(grep 'vpn_connection id' ./cache/$PREFIX/3-customer_gateway_configuration.xml) ]; then
      sed -i '1 s/^/<vpn_connection id="vpn-03dcde03d0c5877dd">\n/' ./cache/$PREFIX/3-customer_gateway_configuration.xml
    fi
    echo "Customer Gateway Configuration file export OK"
