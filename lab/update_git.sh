@@ -108,41 +108,27 @@ fi
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
+    ############### not cleanup until UDF ISSUE RESOLVED
     # Cleanup docker
-    sudo docker kill $(sudo docker ps -q)
-    sudo docker rm $(sudo docker ps -a -q)
-    sudo docker rmi $(sudo docker images -q) -f
-    sudo /home/$user/scripts/cleanup-docker.sh
+    #sudo docker kill $(sudo docker ps -q)
+    #sudo docker rm $(sudo docker ps -a -q)
+    #sudo docker rmi $(sudo docker images -q) -f
+    #sudo /home/$user/scripts/cleanup-docker.sh
 
     # Installing docker images
-    sudo docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
-    sudo docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
-    sudo docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
-    sudo docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
+    #sudo docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
+    #sudo docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
+    #sudo docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
+    #sudo docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     # ASM Policy Validator:
-    sudo docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
+    #sudo docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
 
-    docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')
-    sudo docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    sudo docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
-    sudo docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
-    sudo docker cp demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    sudo docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
-
-    # Install AS3 Validator --- DEPRECATED
-    # https://github.com/F5Networks/f5-appsvcs-extension/tree/master/AS3-schema-validator
-    #sudo docker run --restart=always --name=as3validatortool -dit -p 5000:5000 node
-    #docker_as3validatortool_id=$(sudo docker ps | grep as3validatortool | awk '{print $1}')
-    #rm -rf build*
-    #wget https://github.com/F5Networks/f5-appsvcs-extension/raw/master/AS3-schema-validator/3.6.0/build.zip
-    #unzip build.zip
-    #sudo docker cp build $docker_as3validatortool_id:/
-    #sudo docker exec -i -t $docker_as3validatortool_id sh -c "yarn global add serve"
-    #sudo docker exec -i -t $docker_as3validatortool_id sh -c "npm install -g serve"
-    #sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt-get update"
-    #sudo docker exec -i -t $docker_as3validatortool_id sh -c "apt install xsel -y"
-    #sudo docker exec -i -t $docker_as3validatortool_id sh -c "cd /build; serve -s build -p 5000 &"
-    #rm -rf build build.zip
+    #docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')
+    #sudo docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    #sudo docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
+    #sudo docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
+    #sudo docker cp demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    #sudo docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     sudo docker ps
 
