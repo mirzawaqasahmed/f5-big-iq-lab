@@ -66,9 +66,13 @@ echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AZURE
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
+sleep 300
+
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
+sleep 300
 
 # Retry delete in case first one failed
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"

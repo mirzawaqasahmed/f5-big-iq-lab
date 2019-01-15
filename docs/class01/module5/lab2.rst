@@ -79,7 +79,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
        }
    }
 
-2. Add the below application service to the existing AS3 declaration in the validator.
+2. Add the below application service to the existing AS3 declaration in the JSON validator.
 
 .. note:: Add a **","** at the end of the MyWebApp1 statement.
     If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
@@ -151,23 +151,21 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            }
        }
 
-.. note:: To access to the AS3 public validator, use http://35.239.61.203:5000/
+.. note:: You can use any JSON formatter/Validator available. A specific AS3 plugin to validate the JSON against AS3 schema will be available soon.
 
-4. Click on ``Format JSON`` on the top left.
+3. Make sure the Declaration is valid!
 
-5. Click on ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
-
-6. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
+4. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
-7. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-8. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
+6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,23 +219,21 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
         ]
     }
 
-.. note:: To access to the AS3 public validator, use http://35.239.61.203:5000/
+.. note:: You can use any JSON formatter/Validator available. A specific AS3 plugin to validate the JSON against AS3 schema will be available soon.
 
-4. Click on ``Format JSON`` on the top left.
+3. Make sure the Declaration is valid!
 
-5. Click on ``Validate JSON``. Make sure the Declaration is valid!
-
-6. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
+4. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
-7. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-8. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
+6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. |lab-2-1| image:: images/lab-2-1.png
    :scale: 80%

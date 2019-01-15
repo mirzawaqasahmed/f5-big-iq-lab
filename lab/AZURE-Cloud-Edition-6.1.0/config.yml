@@ -75,7 +75,8 @@ IPSEC_DESTINATION_MASK: 30
 BIGIQ_MGT_HOST: 10.1.1.4
 
 # Ubuntu Web Server IP Address (in Subnet 1):
-NODE_NAME: ubuntu
+#NODE_NAME: ubuntu
+NODE_NAME: "ubuntu{{ lookup('pipe', 'date +%Y%m%d%H') }}"
 NODE_ADDRESS: 172.200.1.50
 NODE_USER: ubuntu
 NODE_PASSWORD: "q6YMum6jG888BFHu"

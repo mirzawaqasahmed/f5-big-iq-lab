@@ -42,7 +42,7 @@ Task 1 - HTTP Application Service
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistance, etc...
 
-1. Copy below example of an AS3 Declaration into the AS3 validator. The AS3 validator is your IDE.
+1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE.
 
 .. code-block:: yaml
    :linenos:
@@ -108,16 +108,11 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-.. note:: To access to the AS3 public validator, use http://35.239.61.203:5000/
+.. note:: You can use any JSON formatter/Validator available. A specific AS3 plugin to validate the JSON against AS3 schema will be available soon.
 
-2. Click on ``Format JSON`` on the top left ("hamburger"-like button).
+2. Make sure the Declaration is valid!
 
-3. Click on ``Validate JSON`` . Make sure the Declaration is valid!
-
-|lab-1-2|
-
-
-4. Now that the JSON is validated, let's add the target (BIG-IP device)::
+3. Now that the JSON is validated, let's add the target (BIG-IP device)::
 
     "target": {
         "hostname": "BOS-vBIGIP01.termmarc.com"
@@ -129,26 +124,26 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
-5. Click on  ``Format JSON``, ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
+4. Click on  ``Format JSON``, ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
 
 .. note:: Ignore the schemaVersion error. Note the schema validator is using AS3.6 and we are using AS3.7.
 
-6. Using Postman, use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
+5. Using Postman, use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the AS3 declaration from the validator to the declaration body into Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
-7. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
+6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
    
 .. note:: Notice that the app deployment may take a few minutes.
 
-8. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
+7. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
 
-9. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+8. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 |lab-1-3|
 
