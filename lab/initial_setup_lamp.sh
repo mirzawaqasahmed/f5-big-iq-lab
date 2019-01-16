@@ -78,10 +78,6 @@ if [[  $answer == "Y" ]]; then
             - 10.1.10.5/24' > /etc/netplan/01-netcfg.yaml
 fi
 
-echo -e "Cleanup unnessary packages"
-apt --purge remove apache2 chromium-browser -y
-apt autoremove -y
-
 read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     echo 'deb http://archive.ubuntu.com/ubuntu artful main restricted
@@ -147,9 +143,9 @@ read -p "Perform Ubuntu Post Upgrade task 18.04? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     apt update
     export DEBIAN_FRONTEND=noninteractive
-    apt --fix-broken install -y
-    apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
-    apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
+    apt --fix-broken -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y
+    apt --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
+    apt --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
     apt autoremove -y
     lsb_release -a
 
@@ -159,10 +155,14 @@ if [[  $answer == "Y" ]]; then
     fi
 fi
 
-echo -e "IP config"
+echo -e "Cleanup unnessary packages"
+apt --purge remove apache2 chromium-browser -y
+apt autoremove -y
+
+echo -e "\nIP config check"
 ip addr
 
-echo -e "Install Docker"
+echo -e "\nInstall Docker"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -172,7 +172,7 @@ apt update
 apt install docker-ce -y
 /etc/init.d/docker status
 
-echo -e "Install DHCP service"
+echo -e "\nInstall DHCP service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install isc-dhcp-server -y
 echo 'INTERFACES="eth0"' > /etc/default/isc-dhcp-server
@@ -187,7 +187,7 @@ range   10.1.1.220   10.1.1.250;
 /etc/init.d/isc-dhcp-server status
 dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
 
-echo -e "Install Radius service"
+echo -e "\nInstall Radius service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install freeradius -y
 freeradius –v
@@ -204,13 +204,13 @@ shortname = bigiq
 /etc/init.d/freeradius restart
 /etc/init.d/freeradius status
 
-echo -e "Install Apache Benchmark, Git, SNMPD"
+echo -e "\nInstall Apache Benchmark, Git, SNMPD"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
 apt install git -y
 apt install snmpd snmptrapd -y
 
-echo -e "Install Ansible and sshpass"
+echo -e "\nInstall Ansible and sshpass"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install software-properties-common -y
 add-apt-repository ppa:ansible/ansible -y
@@ -219,7 +219,7 @@ apt install ansible -y
 apt install sshpass -y
 ansible-playbook --version
 
-echo -e "Install Postman"
+echo -e "\nInstall Postman"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y 
 wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
@@ -227,7 +227,7 @@ tar -xzf postman.tar.gz -C /opt
 rm postman.tar.gz
 sudo ln -s /opt/Postman/Postman /usr/bin/postman
 
-echo -e "Install DNS perf"
+echo -e "\nInstall DNS perf"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
 apt install -y gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev
@@ -238,13 +238,13 @@ cd dnsperf-src-2.0.0.0-1
 make
 make install
 
-echo -e "Install Chrome"
+echo -e "\nInstall Chrome"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i google-chrome-stable_current_amd64.deb
 
-echo -e "Install Azure CLI"
+echo -e "\nInstall Azure CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 AZ_REPO=$(lsb_release -cs)
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
@@ -255,7 +255,7 @@ curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 apt update
 apt install apt-transport-https azure-cli -y
 
-echo -e "Customisation f5student user"
+echo -e "\nCustomisation f5student user"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ln -snf /home/f5student /home/f5
 chown -R f5student:f5student /home/f5
@@ -375,7 +375,7 @@ StartupNotify=false' > /home/f5student/Desktop/Postman_postman.desktop
 
 chmod +x /home/f5student/Desktop/*.desktop
 
-echo -e "System customisation (e.g. host file)"
+echo -e "\nSystem customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 echo '10.1.10.70 site70.example.com
 10.1.10.110 site10.example.com
@@ -416,29 +416,29 @@ echo '10.1.10.70 site70.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
 echo 'Ubuntu1804LampServ' > /etc/hostname
 
-echo -e "Execution of update_git.sh"
+echo -e "\nExecution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 /home/f5student/update_git.sh
 chown -R f5student:f5student /home/f5student
 killall sleep
 
-echo -e "Install AWS CLI"
+echo -e "\nInstall AWS CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install python-pip -i
 pip --version
 cd /home/f5student/AWS-Cloud-Edition
 ansible-playbook 01a-install-pip.yml
 
-echo -e "Install PyVmomi for VMware ansible playbooks"
+echo -e "\nInstall PyVmomi for VMware ansible playbooks"
 su - f5student -c "sudo pip install PyVmomi"
 
-echo -e "SSH keys exchanges between Lamp server and BIG-IP SEA and BIG-IQ CM"
+echo -e "\nSSH keys exchanges between Lamp server and BIG-IP SEA and BIG-IQ CM"
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.7 
 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
 
 ## Add there things to do manually
-echo -e "Install AWS CLI
+echo -e "\nInstall AWS CLI
 - Test HTTP traffic is showing on BIG-IQ
 - Test Access traffic is showing on BIG-IQ
 - Test DNS traffic is showing on BIG-IQ
@@ -450,11 +450,9 @@ echo -e "Install AWS CLI
 - Test Launch Chrome & Firefox
 - Remove unecessary links in the bottom task bar
 - Add postman collection, disable SSL in postman
-- Do not forget to delete /home/f5/udf_auto_update_git before saving the BP"
+- Do not forget to delete /home/f5/udf_auto_update_git before saving the BP\n\n"
 
 read -p "Final reboot? (Y/N) " answer
 if [[  $answer == "Y" ]]; then
         init 6
 fi
-
-echo -e "End."
