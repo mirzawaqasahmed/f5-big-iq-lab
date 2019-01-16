@@ -2,7 +2,7 @@
 
 ##### INSTALLATION
 ## Configured in /etc/rc.local
-## /home/f5student/update_git.sh > //home/f5student/update_git.log
+## /home/f5student/update_git.sh > /home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
 #################### INFORMATION #################### 
