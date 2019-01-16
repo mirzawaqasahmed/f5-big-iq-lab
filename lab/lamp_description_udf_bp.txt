@@ -4,9 +4,10 @@ Xubuntu Jumpbox v17
 DESCRIPTION
 ###########
 
-/!\ if RDP isn't working, ssh Ubuntu Lamp server and restart the xrdp service: sudo /etc/init.d/xrdp restart
 
+/!\ if RDP isn't working, ssh Ubuntu Lamp server and restart the xrdp service: sudo /etc/init.d/xrdp restart
 /!\ if all your apps are down (red), restart the containers: sudo docker restart $(sudo docker ps -q)
+/!\ if you can't login to BIG-IQ, ssh Ubuntu Lamp server and restart the radius service: sudo /etc/init.d/freeradius restart
 
 Traffic Generator configured in the f5student crontab.
 

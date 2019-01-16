@@ -460,6 +460,7 @@ echo -e "\nPost-Checks:
 - Test AWS and Azure playbooks
 - Test Connection to RDP
 - Test Launch Chrome & Firefox
+- Add bookmark of the BIG-IQ CE lab guide
 - Remove bottom task bar (click right, properties, remove)
 - Add postman collection, disable SSL in postman
 - Do not forget to delete /home/f5/udf_auto_update_git before saving the BP\n\n"
