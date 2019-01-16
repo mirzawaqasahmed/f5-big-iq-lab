@@ -22,7 +22,7 @@ function pause(){
 
 cd /root
 
-read -p "Configure Network? (Y/N) (Default=N)" answer
+read -p "Configure Network? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     # Configure Network
     echo 'network:
@@ -79,10 +79,9 @@ if [[  $answer == "Y" ]]; then
 fi
 
 echo -e "Cleanup unnessary packages"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt --purge remove apache2 chromium-browser
+apt --purge remove apache2 chromium-browser -y
 
-read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) " answer
+read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     cp -p /etc/apt/sources.list /etc/apt/sources.list.old
     echo 'deb http://archive.ubuntu.com/ubuntu artful main restricted
@@ -119,13 +118,13 @@ if [[  $answer == "Y" ]]; then
     apt autoremove -y
     lsb_release -a
 
-    read -p "Reboot? (Y/N) (Default=N) (Default=N)" answer
+    read -p "Reboot? (Y/N) (Default=N): " answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
 fi
 
-read -p "Perform Ubuntu Upgrade 17.10 to 18.04? (Y/N) " answer
+read -p "Perform Ubuntu Upgrade 17.10 to 18.04? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     lsb_release -a
     apt update
@@ -135,13 +134,13 @@ if [[  $answer == "Y" ]]; then
     apt autoremove -y
     lsb_release -a
 
-    read -p "Reboot? (Y/N) (Default=N)" answer
+    read -p "Reboot? (Y/N) (Default=N): " answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
 fi
 
-read -p "Perform Ubuntu Post Upgrade task 18.04? (Y/N) " answer
+read -p "Perform Ubuntu Post Upgrade task 18.04? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     lsb_release -a
     apt update
@@ -152,7 +151,7 @@ if [[  $answer == "Y" ]]; then
     apt autoremove -y
     lsb_release -a
 
-    read -p "Reboot? (Y/N) (Default=N)" answer
+    read -p "Reboot? (Y/N) (Default=N): " answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
