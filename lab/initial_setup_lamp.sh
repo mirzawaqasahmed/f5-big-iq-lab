@@ -427,10 +427,12 @@ net.ipv6.conf.eth0.disable_ipv6 = 1
 net.ipv6.conf.eth1.disable_ipv6 = 1
 net.ipv6.conf.eth2.disable_ipv6 = 1' >> /etc/sysctl.conf
 
+echo -e "\nInstall and xRDP"
+#### TO BE ADDED
+
 echo -e "\nInstall and execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 echo "6.1.0" > /home/f5/bigiq_version_aws
-#echo "6.0.1" > /home/f5/bigiq_version_aws
 
 echo '#!/bin/sh -e
 
@@ -480,6 +482,8 @@ echo -e "\nPost-Checks:
 - Test Launch Chrome & Firefox
 - Add bookmark of the BIG-IQ CE lab guide
 - Remove bottom task bar (click right, properties, remove)
-- Add postman collection, disable SSL in postman\n"
+- Add postman collection, disable SSL in postman\n\n
+
+/!\ Make sure you delete /home/f5student/udf_auto_update_git file before saving the BP /!\"
 
 exit 0
