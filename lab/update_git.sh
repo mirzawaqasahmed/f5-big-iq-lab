@@ -2,6 +2,7 @@
 
 ##### INSTALLATION
 ## Configured in /etc/rc.local
+## curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 ## /home/f5student/update_git.sh > /home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
@@ -23,21 +24,22 @@ NC='\033[0m' # No Color
 
 if [ -z "$1" ]; then
   env="udf"
+  user="f5student"
 else
   #env="sjc"
   #env="sjc2"
   env=$1
+  user="f5"
+fi
+
+# run only when server boots (through /etc/rc.local as root)
+currentuser=$(whoami)
+if [[  $currentuser == "root" ]]; then
+    # Remove auto update file at the reboot
+    rm -f /home/$user/udf_auto_update_git
 fi
 
 echo -e "Environement:${RED} $env ${NC}"
-
-currentuser=$(whoami)
-if [[  $currentuser == "f5" ]]; then
-    # for SCJ lab
-    user="f5"
-else
-    user="f5student"
-fi
 
 cd /home/$user
 
@@ -107,7 +109,6 @@ fi
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
-    ############### not cleanup until UDF ISSUE RESOLVED
     # Cleanup docker
     sudo docker kill $(sudo docker ps -q)
     sudo docker rm $(sudo docker ps -a -q)
@@ -132,7 +133,7 @@ if [[  $currentuser == "root" ]]; then
     sudo docker ps
 
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
-    # wait 15 min for ESX to boot
+    # wait for ESX to boot
     echo "Restart VM in case any are powered off"
     sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
     sleep 1100 && sudo chown -R $user:$user /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &

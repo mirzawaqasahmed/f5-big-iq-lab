@@ -451,6 +451,7 @@ ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
+- Test Reboot (init 6)
 - Test HTTP traffic is showing on BIG-IQ
 - Test Access traffic is showing on BIG-IQ
 - Test DNS traffic is showing on BIG-IQ
@@ -462,10 +463,5 @@ echo -e "\nPost-Checks:
 - Test Launch Chrome & Firefox
 - Add bookmark of the BIG-IQ CE lab guide
 - Remove bottom task bar (click right, properties, remove)
-- Add postman collection, disable SSL in postman
-- Do not forget to delete /home/f5/udf_auto_update_git before saving the BP\n\n"
-
-read -p "Final reboot? (Y/N) " answer
-if [[  $answer == "Y" ]]; then
-        init 6
-fi
+- Add postman collection, disable SSL in postman\n\n
+/!\ Do not forget to delete /home/f5/udf_auto_update_git and /home/f5/update_git.log before saving the BP /!\ \n\n"

@@ -1,9 +1,9 @@
-Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
-Xubuntu Jumpbox v17
+Name: Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
+Type: Xubuntu Jumpbox v17
 
+################################################################################################################
 DESCRIPTION
-###########
-
+################################################################################################################
 
 /!\ if RDP isn't working, ssh Ubuntu Lamp server and restart the xrdp service: sudo /etc/init.d/xrdp restart
 /!\ if all your apps are down (red), restart the containers: sudo docker restart $(sudo docker ps -q)
@@ -91,8 +91,9 @@ Username	Password	Notes
 f5student	purple123	ubuntu
 admin	password	web-dvwa application
 
+################################################################################################################
 ACCESS METHODS
-##############
+################################################################################################################
 
 SSH
 Protocol: SSHUser: ubuntu
@@ -110,8 +111,9 @@ Protocol: RDP
 Local:
 10.1.1.5 port 3389
 
+################################################################################################################
 SUBNETS
-#######
+################################################################################################################
 
 Management
 10.1.1.0/24
