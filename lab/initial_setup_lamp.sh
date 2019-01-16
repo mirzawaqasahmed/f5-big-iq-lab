@@ -109,8 +109,8 @@ if [[  $answer == "Y" ]]; then
     lsb_release -a 
     apt update
     export DEBIAN_FRONTEND=noninteractive
-    apt --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
-    apt --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
+    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
+    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
     apt autoremove -y
     lsb_release -a
 
@@ -167,9 +167,13 @@ echo -e "\nInstall Docker"
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 apt-key fingerprint 0EBFCD88
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+#add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
 apt update
 apt install docker-ce -y
+docker version
+docker info
+docker network ls
 /etc/init.d/docker status
 
 echo -e "\nInstall DHCP service"
@@ -411,6 +415,15 @@ echo '10.1.10.70 site70.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
 
 hostnamectl set-hostname xjumpbox
+
+# Disable IPv6?
+echo 'net.ipv4.ip_forward = 1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+net.ipv6.conf.eth0.disable_ipv6 = 1
+net.ipv6.conf.eth1.disable_ipv6 = 1
+net.ipv6.conf.eth2.disable_ipv6 = 1' >> /etc/sysctl.conf
 
 echo -e "\nInstall and execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"

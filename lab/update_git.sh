@@ -111,19 +111,23 @@ currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
     # WA UDF ISSUE: docker: filesystem layer verification failed for digest --- UNCOMMENT ALL BELOW
     # Cleanup docker
-    #docker kill $(docker ps -q)
-    #docker stop $(docker ps -q)
-    #docker rm $(docker ps -a -q)
+    docker kill $(docker ps -q)
+    docker stop $(docker ps -q)
+    docker rm $(docker ps -a -q)
     #docker rmi $(docker images -q) -f
     #/home/$user/scripts/cleanup-docker.sh
 
-    # Installing docker images
-    #docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
-    #docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
-    #docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
-    #docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
+    # Starting docker images
+    docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
+    sleep 10
+    docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
+    sleep 10
+    docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
+    sleep 10
+    docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
+    sleep 10
     # ASM Policy Validator:
-    #docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
+    docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
 
     #docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
     #docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
@@ -132,6 +136,8 @@ if [[  $currentuser == "root" ]]; then
     #docker cp demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
     #docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
+    docker images
+    docker ps -a
     docker ps
 
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
