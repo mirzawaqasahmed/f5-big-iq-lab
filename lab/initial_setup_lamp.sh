@@ -2,6 +2,7 @@
 
 # Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
 # Use Xubuntu Jumpbox v17 as a baseline in UDF
+#### UDF TEAM WILL PROVIDE AN UBUNTU IMAGE ALREADY IN 18.04 SO WE DON'T HAVE TO UPGRADE
 # vCPUs: 2
 # Memory: 2 GiB
 # Disk Size: 60 GiB
@@ -77,6 +78,8 @@ if [[  $answer == "Y" ]]; then
         addresses:
             - 10.1.10.5/24' > /etc/netplan/01-netcfg.yaml
 fi
+
+#### UDF TEAM WILL PROVIDE AN UBUNTU IMAGE ALREADY IN 18.04 SO WE DON'T HAVE TO UPGRADE
 
 read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
