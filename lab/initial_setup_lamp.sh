@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ubuntu 18.10 Lamp Server, RDP, Radius, Docker
+# Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
 # Use Xubuntu Jumpbox v17 as a baseline in UDF
 # vCPUs: 2
 # Memory: 2 GiB
@@ -9,7 +9,10 @@
 # Interfaces: 10
 
 # Initial script install:
-# sudo su -;wget https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh;chmod +x /root/initial_setup_lamp.sh;. nohup ./initial_setup_lamp.sh &; tail -f nohup.out
+# sudo su - 
+# wget https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh
+# chmod +x /root/initial_setup_lamp.sh
+# ./initial_setup_lamp.sh
 
 # Run as root in /root
 
@@ -170,7 +173,7 @@ apt-key fingerprint 0EBFCD88
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 apt update
 apt install docker-ce -y
-systemctl status docker
+/etc/init.d/docker status
 
 echo -e "Install DHCP service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
