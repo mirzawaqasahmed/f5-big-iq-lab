@@ -80,10 +80,10 @@ fi
 
 echo -e "Cleanup unnessary packages"
 apt --purge remove apache2 chromium-browser -y
+apt autoremove -y
 
 read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
-    cp -p /etc/apt/sources.list /etc/apt/sources.list.old
     echo 'deb http://archive.ubuntu.com/ubuntu artful main restricted
     deb-src http://archive.ubuntu.com/ubuntu artful main restricted
 
