@@ -1,4 +1,4 @@
-Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
+Ubuntu 18.10 Lamp Server, RDP, Radius, Docker
 Xubuntu Jumpbox v17
 
 DESCRIPTION

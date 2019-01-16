@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
+# Ubuntu 18.10 Lamp Server, RDP, Radius, Docker
 # Use Xubuntu Jumpbox v17 as a baseline in UDF
 # vCPUs: 2
 # Memory: 2 GiB
@@ -9,7 +9,7 @@
 # Interfaces: 10
 
 # Initial script install:
-# sudo su -;wget https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh;chmod +x /root/initial_setup_lamp.sh;./initial_setup_lamp.sh
+# sudo su -;wget https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh;chmod +x /root/initial_setup_lamp.sh;. nohup ./initial_setup_lamp.sh &; tail -f nohup.out
 
 # Run as root in /root
 
@@ -121,6 +121,7 @@ if [[  $answer == "Y" ]]; then
     apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
     apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
     apt autoremove -y
+    lsb_release -a
 
     read -p "Reboot? (Y/N) " answer
     if [[  $answer == "Y" ]]; then
@@ -131,8 +132,9 @@ fi
 read -p "Perform Ubuntu Upgrade 17.10 to 18.04? (Y/N) " answer
 if [[  $answer == "Y" ]]; then
     lsb_release -a
+    apt update
     export DEBIAN_FRONTEND=noninteractive
-    apt install update-manager-core -y
+    apt --fix-broken install -y
     do-release-upgrade -f DistUpgradeViewNonInteractive
     apt autoremove -y
     lsb_release -a
@@ -143,12 +145,14 @@ if [[  $answer == "Y" ]]; then
     fi
 fi
 
-read -p "Perform Ubuntu Post-Upgrade 18.04? (Y/N) " answer
+read -p "Perform Ubuntu Post Upgrade task 18.04? (Y/N) " answer
 if [[  $answer == "Y" ]]; then
+    lsb_release -a
     apt update
     export DEBIAN_FRONTEND=noninteractive
-    apt --fix-broken install
+    apt --fix-broken install -y
     apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
+    apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
     apt autoremove -y
     lsb_release -a
 
@@ -350,6 +354,7 @@ echo '10.1.10.70 site70.example.com
 10.1.10.143 site43.example.com
 10.1.10.144 site44.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
+echo 'Ubuntu1804LampServ' > /etc/hostname
 
 echo -e "Execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
