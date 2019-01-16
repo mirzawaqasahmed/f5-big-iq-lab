@@ -102,7 +102,6 @@ else
     touch udf_auto_update_git
     rm -f last_update_*
     touch last_update_$(date +%Y-%m-%d_%H-%M)
-
 fi
 
 # run only when server boots (through /etc/rc.local as root)
@@ -134,6 +133,9 @@ if [[  $currentuser == "root" ]]; then
 
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
     # wait 15 min for ESX to boot
+    echo "Restart VM in case any are powered off"
     sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
     sleep 1100 && sudo chown -R $user:$user /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
 fi
+
+exit 0
