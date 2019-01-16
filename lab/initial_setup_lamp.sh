@@ -421,6 +421,7 @@ echo '#!/bin/sh -e
 curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 /home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
+hostnamectl set-hostname xjumpbox
 
 exit 0' > /etc/rc.local
 chmod +x /etc/rc.local
@@ -463,5 +464,6 @@ echo -e "\nPost-Checks:
 - Test Launch Chrome & Firefox
 - Add bookmark of the BIG-IQ CE lab guide
 - Remove bottom task bar (click right, properties, remove)
-- Add postman collection, disable SSL in postman\n\n
-/!\ Do not forget to delete /home/f5/udf_auto_update_git and /home/f5/update_git.log before saving the BP /!\ \n\n"
+- Add postman collection, disable SSL in postman\n"
+
+exit 0
