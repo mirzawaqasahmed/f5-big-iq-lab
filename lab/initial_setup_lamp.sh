@@ -10,7 +10,7 @@
 
 # Initial script install:
 # sudo su - 
-# wget https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh
+# curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh
 # chmod +x /root/initial_setup_lamp.sh
 # ./initial_setup_lamp.sh
 
@@ -22,7 +22,7 @@ function pause(){
 
 cd /root
 
-read -p "Configure Network? (Y/N) " answer
+read -p "Configure Network? (Y/N) (Default=N)" answer
 if [[  $answer == "Y" ]]; then
     # Configure Network
     echo 'network:
@@ -76,18 +76,11 @@ if [[  $answer == "Y" ]]; then
     eth1:
         addresses:
             - 10.1.10.5/24' > /etc/netplan/01-netcfg.yaml
-
-    read -p "Reboot? (Y/N) " answer
-    if [[  $answer == "Y" ]]; then
-        init 6
-    fi
 fi
-
-ip addr
 
 echo -e "Cleanup unnessary packages"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt --purge remove apache2
+apt --purge remove apache2 chromium-browser
 
 read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) " answer
 if [[  $answer == "Y" ]]; then
@@ -126,7 +119,7 @@ if [[  $answer == "Y" ]]; then
     apt autoremove -y
     lsb_release -a
 
-    read -p "Reboot? (Y/N) " answer
+    read -p "Reboot? (Y/N) (Default=N) (Default=N)" answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
@@ -142,7 +135,7 @@ if [[  $answer == "Y" ]]; then
     apt autoremove -y
     lsb_release -a
 
-    read -p "Reboot? (Y/N) " answer
+    read -p "Reboot? (Y/N) (Default=N)" answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
@@ -159,11 +152,14 @@ if [[  $answer == "Y" ]]; then
     apt autoremove -y
     lsb_release -a
 
-    read -p "Reboot? (Y/N) " answer
+    read -p "Reboot? (Y/N) (Default=N)" answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
 fi
+
+echo -e "IP config"
+ip addr
 
 echo -e "Install Docker"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -190,8 +186,6 @@ range   10.1.1.220   10.1.1.250;
 /etc/init.d/isc-dhcp-server status
 dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
 echo -e "Install Radius service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install freeradius -y
@@ -209,12 +203,11 @@ shortname = bigiq
 /etc/init.d/freeradius restart
 /etc/init.d/freeradius status
 
-echo -e "Install Apache Benchmark and Git"
+echo -e "Install Apache Benchmark, Git, SNMPD"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
 apt install git -y
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install snmpd snmptrapd -y
 
 echo -e "Install Ansible and sshpass"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -223,6 +216,7 @@ add-apt-repository ppa:ansible/ansible -y
 apt update
 apt install ansible -y
 apt install sshpass -y
+ansible-playbook --version
 
 echo -e "Install Postman"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -235,7 +229,7 @@ sudo ln -s /opt/Postman/Postman /usr/bin/postman
 echo -e "Install DNS perf"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
-apt install bind9utils make -y
+apt install -y gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev
 wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.0.0.0/dnsperf-src-2.0.0.0-1.tar.gz
 tar xfvz dnsperf-src-2.0.0.0-1.tar.gz
 cd dnsperf-src-2.0.0.0-1
@@ -267,8 +261,9 @@ chown -R f5student:f5student /home/f5
 echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # some cleanup
 cd /home/f5student
-rm -rf AVR\ Demo.jmx hackazon* AB_DOS.sh baseline_menu.sh jmeter.log scripts dos30.sh Templates Downloads/* Documents source Desktop/DoS3_0.desktop Desktop/jmeter.desktop Desktop/chromium-browser.desktop /home/f5student/.config/Postman/*
+rm -rf AVR\ Demo.jmx hackazon* AB_DOS.sh baseline_menu.sh jmeter.log PuTTY* Notes* scripts dos30.sh Templates Downloads/* Documents source Desktop/DoS3_0.desktop Desktop/jmeter.desktop Desktop/chromium-browser.desktop /home/f5student/.config/Postman/*
 rmdir /home/f5student/*
+mkdir rmdir /home/f5student/Downloads
 rm -rf /root/scripts
 # Reset user's password
 echo -e "Users customisation"
@@ -283,8 +278,7 @@ echo '/home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
 exit 0' >> /etc/rc.local
 
-wget https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
-mv update_git.sh /home/f5student
+curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 chown f5student:f5student /home/f5student/update_git.sh
 chmod +x /home/f5student/update_git.sh
 
@@ -317,6 +311,68 @@ cp /root/.vimrc /home/ubuntu/.vimrc
 cp /root/.vimrc /home/f5student/.vimrc
 chown ubuntu:ubuntu /home/ubuntu/.vimrc
 chown f5student:f5student /home/f5student/.vimrc
+
+# Add links:
+echo '[Desktop Entry]
+Version=1.0
+Name=Google Chrome
+GenericName=Web Browser
+Comment=Access the Internet
+Exec=/usr/bin/google-chrome-stable %U
+StartupNotify=true
+Terminal=false
+Icon=google-chrome
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=/usr/bin/google-chrome-stable
+
+[Desktop Action new-private-window]
+Name=New Incognito Window
+Exec=/usr/bin/google-chrome-stable --incognito' > /home/f5student/Desktop/google-chrome.desktop
+
+echo '[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=exo-open --launch TerminalEmulator
+Icon=utilities-terminal
+StartupNotify=true
+Terminal=false
+Categories=Utility;X-XFCE;X-Xfce-Toplevel;
+OnlyShowIn=XFCE;
+Name=Terminal Emulator
+Comment=Use the command line' > /home/f5student/Desktop/exo-terminal-emulator.desktop
+
+curl -O https://www.logolynx.com/images/logolynx/19/191dac9f3656d7c08de542b49e827f39.png
+mv 191dac9f3656d7c08de542b49e827f39.png /home/f5student/Downloads/vcenter_logo.png
+
+echo '[Desktop Entry]
+Version=1.0
+Type=Link
+Name=vCenter
+Comment=
+Icon=/home/f5student/Downloads/vcenter_logo.png
+URL=https://10.1.1.90/ui' > /home/f5student/Desktop/vCenter.desktop
+
+curl -O https://www.getpostman.com/img/v2/logo-glyph.png
+mv logo-glyph.png /home/f5student/Downloads/postman_logo.png
+
+echo '[Desktop Entry]
+Version=1.0
+Type=Application
+Name=postman
+Comment=
+Exec=/usr/bin/postman
+Icon=/home/f5student/Downloads/postman_logo.png
+Path=
+Terminal=false
+StartupNotify=false' > /home/f5student/Desktop/Postman_postman.desktop
+
+chmod +x /home/f5student/Desktop/*.desktop
 
 echo -e "System customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -363,13 +419,37 @@ echo -e "Execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 /home/f5student/update_git.sh
 chown -R f5student:f5student /home/f5student
+killall sleep
 
 echo -e "Install AWS CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install python-pip
+apt install python-pip -i
 pip --version
 cd /home/f5student/AWS-Cloud-Edition
-ansible-playbook 01b-install-aws.yml
+ansible-playbook 01a-install-pip.yml
+
+echo -e "Install PyVmomi for VMware ansible playbooks"
+su - f5student -c "sudo pip install PyVmomi"
+
+echo -e "SSH keys exchanges between Lamp server and BIG-IP SEA and BIG-IQ CM"
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.7 
+ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
+
+## Add there things to do manually
+echo -e "Install AWS CLI
+- Test HTTP traffic is showing on BIG-IQ
+- Test Access traffic is showing on BIG-IQ
+- Test DNS traffic is showing on BIG-IQ
+- Test Radius user can connect on BIG-IQ
+- Test VMware SSG working using DHCP
+- Test VMware Ansible playbook
+- Test AWS and Azure playbooks
+- Test Connection to RDP
+- Test Launch Chrome & Firefox
+- Remove unecessary links in the bottom task bar
+- Add postman collection, disable SSL in postman
+- Do not forget to delete /home/f5/udf_auto_update_git before saving the BP"
 
 read -p "Final reboot? (Y/N) " answer
 if [[  $answer == "Y" ]]; then
