@@ -32,13 +32,6 @@ else
   user="f5"
 fi
 
-# run only when server boots (through /etc/rc.local as root)
-currentuser=$(whoami)
-if [[  $currentuser == "root" ]]; then
-    # Remove auto update file at the reboot
-    rm -f /home/$user/udf_auto_update_git
-fi
-
 echo -e "Environement:${RED} $env ${NC}"
 
 cd /home/$user
@@ -109,23 +102,18 @@ fi
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
-    # WA UDF ISSUE: docker: filesystem layer verification failed for digest --- UNCOMMENT ALL BELOW
     # Cleanup docker
     docker kill $(docker ps -q)
     docker stop $(docker ps -q)
     docker rm $(docker ps -a -q)
-    #docker rmi $(docker images -q) -f
-    #/home/$user/scripts/cleanup-docker.sh
+    docker rmi $(docker images -q) -f
+    /home/$user/scripts/cleanup-docker.sh
 
     # Starting docker images
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
-    sleep 10
     docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
-    sleep 10
     docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
-    sleep 10
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
-    sleep 10
     # ASM Policy Validator:
     docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
 
