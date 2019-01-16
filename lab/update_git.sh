@@ -44,7 +44,7 @@ cd /home/$user
 if [ -f /home/$user/udf_auto_update_git ]; then
     echo -e "\nIn order to force the scripts/tools updates, delete udf_auto_update_git and re-run update_git.sh (optional).\n"
 else
-    # create default BIG-IQ version file (min)
+    # create default BIG-IQ version file
     if [ ! -f /home/$user/bigiq_version_aws ]; then
         echo "6.0.1" > /home/$user/bigiq_version_aws
     fi

@@ -266,7 +266,7 @@ chown -R f5student:f5student /home/f5
 echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # some cleanup
 cd /home/f5student
-rm -rf AVR\ Demo.jmx hackazon* AB_DOS.sh baseline_menu.sh jmeter.log PuTTY* Notes* scripts dos30.sh Templates Downloads/* Documents source Desktop/DoS3_0.desktop Desktop/jmeter.desktop Desktop/chromium-browser.desktop /home/f5student/.config/Postman/*
+rm -rf AVR\ Demo.jmx hackazon* AB_DOS.sh baseline_menu.sh jmeter.log scripts dos30.sh Templates Documents source Desktop/putty.desktop Desktop/wireshark.desktop Desktop/Notes* Desktop/DoS3_0.desktop Desktop/jmeter.desktop Desktop/chromium-browser.desktop /home/f5student/.config/Postman/* Downloads/*
 rmdir /home/f5student/*
 mkdir rmdir /home/f5student/Downloads
 rm -rf /root/scripts
@@ -366,6 +366,9 @@ StartupNotify=false' > /home/f5student/Desktop/Postman_postman.desktop
 
 chmod +x /home/f5student/Desktop/*.desktop
 
+# WA Chrome always ask for keyring
+rm /home/f5student/.local/share/keyrings/*
+rm /var/crash/*
 
 echo -e "\nSystem customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -408,16 +411,19 @@ echo '10.1.10.70 site70.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
 hostnamectl set-hostname xjumpbox
 
-echo -e "\nExecution of update_git.sh"
+echo -e "\nInstall and execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-# Install update_git.sh scripte
 echo "6.1.0" > /home/f5/bigiq_version_aws
 #echo "6.0.1" > /home/f5/bigiq_version_aws
 
-sed -i '$ d' /etc/rc.local
-echo '/home/f5student/update_git.sh > /home/f5student/update_git.log
+echo '#!/bin/sh -e
+
+curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
+/home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
-exit 0' >> /etc/rc.local
+
+exit 0' > /etc/rc.local
+chmod +x /etc/rc.local
 
 curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 chown f5student:f5student /home/f5student/update_git.sh
@@ -454,7 +460,7 @@ echo -e "\nPost-Checks:
 - Test AWS and Azure playbooks
 - Test Connection to RDP
 - Test Launch Chrome & Firefox
-- Remove unecessary links in the bottom task bar
+- Remove bottom task bar (click right, properties, remove)
 - Add postman collection, disable SSL in postman
 - Do not forget to delete /home/f5/udf_auto_update_git before saving the BP\n\n"
 
