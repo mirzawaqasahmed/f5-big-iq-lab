@@ -111,28 +111,27 @@ currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
     # WA UDF ISSUE --- UNCOMMENT ALL BELOW
     # Cleanup docker
-    docker kill $(docker ps -q)
-    docker stop $(docker ps -q)
-    docker rm $(docker ps -a -q)
-    docker rmi $(docker images -q) -f
-    /home/$user/scripts/cleanup-docker.sh
-
-    /etc/init.d/docker restart
+    #docker kill $(docker ps -q)
+    #docker stop $(docker ps -q)
+    #docker rm $(docker ps -a -q)
+    #docker rmi $(docker images -q) -f
+    #/home/$user/scripts/cleanup-docker.sh
+    #/etc/init.d/docker restart
 
     # Installing docker images
-    docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
-    docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
-    docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
-    docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
+    #docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
+    #docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
+    #docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
+    #docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     # ASM Policy Validator:
-    docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
+    #docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
 
-    docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
-    docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+    #docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
+    #docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    #docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
+    #docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
+    #docker cp demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    #docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     docker ps
 
