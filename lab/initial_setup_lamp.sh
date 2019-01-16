@@ -409,6 +409,7 @@ echo '10.1.10.70 site70.example.com
 10.1.10.143 site43.example.com
 10.1.10.144 site44.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
+
 hostnamectl set-hostname xjumpbox
 
 echo -e "\nInstall and execution of update_git.sh"
@@ -433,7 +434,6 @@ chmod +x /home/f5student/update_git.sh
 
 /home/f5student/update_git.sh
 chown -R f5student:f5student /home/f5student
-sleep 5
 killall sleep
 
 echo -e "\nInstall AWS CLI"

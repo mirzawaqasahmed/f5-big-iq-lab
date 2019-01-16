@@ -17,6 +17,11 @@ docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker 
 docker system prune -af
 docker system prune --volumes -f
 
+# /var/lib/docker cleanup
+/etc/init.d/docker stop
+rm -rf /var/lib/docker/*
+/etc/init.d/docker start
+
 # after
 df -i
 echo

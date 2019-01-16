@@ -109,7 +109,7 @@ fi
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
-    # WA UDF ISSUE --- UNCOMMENT ALL BELOW
+    # WA UDF ISSUE: docker: filesystem layer verification failed for digest --- UNCOMMENT ALL BELOW
     # Cleanup docker
     #docker kill $(docker ps -q)
     #docker stop $(docker ps -q)
