@@ -109,8 +109,8 @@ if [[  $answer == "Y" ]]; then
     lsb_release -a 
     apt update
     export DEBIAN_FRONTEND=noninteractive
-    apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
-    apt --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
+    apt --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
+    apt --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
     apt autoremove -y
     lsb_release -a
 
@@ -144,8 +144,8 @@ if [[  $answer == "Y" ]]; then
     apt update
     export DEBIAN_FRONTEND=noninteractive
     apt --fix-broken -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y
-    apt --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
-    apt --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
+    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
+    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
     apt autoremove -y
     lsb_release -a
 
@@ -174,15 +174,18 @@ apt install docker-ce -y
 
 echo -e "\nInstall DHCP service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install isc-dhcp-server -y
+apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
 echo 'INTERFACES="eth0"' > /etc/default/isc-dhcp-server
-echo 'subnet 10.1.1.0 netmask 255.255.255.0 {
+echo 'default-lease-time 600;
+max-lease-time 7200;
+
+subnet 10.1.1.0 netmask 255.255.255.0 {
 option routers                  10.1.1.1;
 option subnet-mask              255.255.255.0;
 option domain-search            "example.com";
 option domain-name-servers      8.8.8.8;
 range   10.1.1.220   10.1.1.250;
-}' >> /etc/dhcp/dhcpd.conf
+}' > /etc/dhcp/dhcpd.conf
 /etc/init.d/isc-dhcp-server restart
 /etc/init.d/isc-dhcp-server status
 dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
@@ -230,13 +233,14 @@ sudo ln -s /opt/Postman/Postman /usr/bin/postman
 echo -e "\nInstall DNS perf"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
-apt install -y gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev
+apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
 wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.0.0.0/dnsperf-src-2.0.0.0-1.tar.gz
 tar xfvz dnsperf-src-2.0.0.0-1.tar.gz
 cd dnsperf-src-2.0.0.0-1
 ./configure
 make
 make install
+rm -f dnsperf-src-2.0.0.0-1.tar.gz
 
 echo -e "\nInstall Chrome"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -255,7 +259,7 @@ curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 apt update
 apt install apt-transport-https azure-cli -y
 
-echo -e "\nCustomisation f5student user"
+echo -e "\nCustomisation Users"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ln -snf /home/f5student /home/f5
 chown -R f5student:f5student /home/f5
@@ -267,22 +271,9 @@ rmdir /home/f5student/*
 mkdir rmdir /home/f5student/Downloads
 rm -rf /root/scripts
 # Reset user's password
-echo -e "Users customisation"
 yes purple123 | passwd f5student
 
-# Install update_git.sh scripte
-echo "6.1.0" > /home/f5/bigiq_version_aws
-#echo "6.0.1" > /home/f5/bigiq_version_aws
-
-sed -i '$ d' /etc/rc.local
-echo '/home/f5student/update_git.sh > /home/f5student/update_git.log
-chown -R f5student:f5student /home/f5student
-exit 0' >> /etc/rc.local
-
-curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
-chown f5student:f5student /home/f5student/update_git.sh
-chmod +x /home/f5student/update_git.sh
-
+# bashrc config
 echo 'cd /home/f5student
 echo
 sudo docker images;
@@ -313,7 +304,7 @@ cp /root/.vimrc /home/f5student/.vimrc
 chown ubuntu:ubuntu /home/ubuntu/.vimrc
 chown f5student:f5student /home/f5student/.vimrc
 
-# Add links:
+# Add links on f5student desktop
 echo '[Desktop Entry]
 Version=1.0
 Name=Google Chrome
@@ -375,6 +366,7 @@ StartupNotify=false' > /home/f5student/Desktop/Postman_postman.desktop
 
 chmod +x /home/f5student/Desktop/*.desktop
 
+
 echo -e "\nSystem customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 echo '10.1.10.70 site70.example.com
@@ -414,17 +406,31 @@ echo '10.1.10.70 site70.example.com
 10.1.10.143 site43.example.com
 10.1.10.144 site44.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
-echo 'Ubuntu1804LampServ' > /etc/hostname
+hostnamectl set-hostname xjumpbox
 
 echo -e "\nExecution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+# Install update_git.sh scripte
+echo "6.1.0" > /home/f5/bigiq_version_aws
+#echo "6.0.1" > /home/f5/bigiq_version_aws
+
+sed -i '$ d' /etc/rc.local
+echo '/home/f5student/update_git.sh > /home/f5student/update_git.log
+chown -R f5student:f5student /home/f5student
+exit 0' >> /etc/rc.local
+
+curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
+chown f5student:f5student /home/f5student/update_git.sh
+chmod +x /home/f5student/update_git.sh
+
 /home/f5student/update_git.sh
 chown -R f5student:f5student /home/f5student
+sleep 5
 killall sleep
 
 echo -e "\nInstall AWS CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install python-pip -i
+apt install python-pip -y
 pip --version
 cd /home/f5student/AWS-Cloud-Edition
 ansible-playbook 01a-install-pip.yml
@@ -438,7 +444,7 @@ ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.7
 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
 
 ## Add there things to do manually
-echo -e "\nInstall AWS CLI
+echo -e "\nPost-Checks:
 - Test HTTP traffic is showing on BIG-IQ
 - Test Access traffic is showing on BIG-IQ
 - Test DNS traffic is showing on BIG-IQ
