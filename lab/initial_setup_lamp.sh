@@ -124,9 +124,10 @@ if [[  $answer == "Y" ]]; then
     fi
 fi
 
+lsb_release -a
+
 read -p "Perform Ubuntu Upgrade 17.10 to 18.04? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
-    lsb_release -a
     apt update
     export DEBIAN_FRONTEND=noninteractive
     apt --fix-broken install -y
@@ -140,9 +141,10 @@ if [[  $answer == "Y" ]]; then
     fi
 fi
 
+lsb_release -a
+
 read -p "Perform Ubuntu Post Upgrade task 18.04? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
-    lsb_release -a
     apt update
     export DEBIAN_FRONTEND=noninteractive
     apt --fix-broken install -y
