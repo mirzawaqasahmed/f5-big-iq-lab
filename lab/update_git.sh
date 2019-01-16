@@ -116,7 +116,9 @@ if [[  $currentuser == "root" ]]; then
     docker rm $(docker ps -a -q)
     docker rmi $(docker images -q) -f
     /home/$user/scripts/cleanup-docker.sh
-    
+
+    /etc/init.d/docker restart
+
     # Installing docker images
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
