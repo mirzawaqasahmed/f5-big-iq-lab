@@ -1,2 +1,2 @@
-Lab 1.1: Configurating and Generating Simple DDoS Attack
+Lab 1.1: Generating Simple DDoS Attacks
 --------------------------------------------------------
