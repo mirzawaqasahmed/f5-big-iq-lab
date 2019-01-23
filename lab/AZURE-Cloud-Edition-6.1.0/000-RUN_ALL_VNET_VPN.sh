@@ -61,9 +61,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # WA Tunnel
 sleep 20
-# IN CASE AWS VPN RUNNING ALREADY
-../AWS-Cloud-Edition/wa_aws_vpn_down_bigip.sh
-../wa_azure_vpn_down_bigip.sh
+./wa_azure_vpn_down_bigip.sh
 
 echo -e "\n${GREEN}If the VPN is not UP, check the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/ipsec.log${NC}\nYou can also run ./wa_azure_vpn_down_bigip.sh\n"
 
