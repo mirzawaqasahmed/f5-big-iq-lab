@@ -1,6 +1,8 @@
 #!/bin/bash
 # Uncomment set command below for code debuging bash
 #set -x
+# Uncomment set command below for code debugging ansible
+#DEBUG_arg="-vvvv"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -27,7 +29,7 @@ if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
       apiSecret=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.apiSecret')
       apiSecret=${apiSecret:1:${#apiSecret}-2}
       echo -e "- UDF apiSecret: ${GREEN} $apiSecret ${NC}"
-      sed -i "s/<key_secret>/$apiSecret/g" ./config.yml
+      sed -i "s#<key_secret>#$apiSecret#g" ./config.yml
 
       # Get and set AWS region
       region=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.regions | .[0]')
@@ -37,7 +39,7 @@ if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
 
       # Configure AWS cli
       echo -e "Run AWS CLI config:\n"
-      ansible-playbook $DEBUG_arg 01b-install-aws.yml
+      ansible-playbook $DEBUG_arg 01b-install-aws-creds.yml
 
       # Create a pair of SSH key
       aws ec2 create-key-pair --key-name $PREFIX-ssh-key

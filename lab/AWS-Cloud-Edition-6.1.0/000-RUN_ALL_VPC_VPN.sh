@@ -15,43 +15,53 @@ function pause(){
 
 cd /home/f5/AWS-Cloud-Edition
 
+# Pre-requisits
+#sudo apt-get install python-setuptools
+#sudo easy_install pip
+#sudo pip install ansible
+#sudo apt-get install sshpass
+#sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
+
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 if [[ ! -z $getPublicIP ]]; then
     sed -i "s/0.0.0.0/$getPublicIP/g" ./config.yml
 fi
 
 # Use UDF Cloud Account (under developement, only for AWS)
-#./01-configure-cloud-udf.sh
+./01-configure-cloud-udf.sh
 
-# [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+ [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 c1=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
-c2=$(grep '<name>' ./config.yml | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
 c4=$(grep '<key_id>' ./config.yml | wc -l)
 PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
+nPREFIX="$(echo $PREFIX | wc -m)"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
+BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
-if [[ $c1  == 1 || $c2  == 1 || $c3  == 1 || $c4  == 1 ]]; then
+if [[ $c1 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
-	   echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VPC_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL_VPC_VPN.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+	    echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL_VPC_VPN.sh\n\n or\n\n# nohup ./000-RUN_ALL_VPC_VPN.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
+fi
+
+if (( $nPREFIX > 11 )); then
+       echo -e "${RED}PREFIX must be less or equal 10 characteres (config.yml file) ${NC}\n"
+       exit 2
 fi
 
 clear
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
+echo -e "${BLUE}EXPECTED TIME: ~25 min${NC}\n"
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-#sudo apt-get install python-setuptools
-#sudo easy_install pip
-#sudo pip install ansible
-#sudo apt-get install sshpass
-#sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
-ansible-playbook $DEBUG_arg 01b-install-aws.yml
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+## If AWS UDF account is used, no need to run this
+if [[ $c3 == 0 || $c4 == 0 ]]; then
+   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+   ansible-playbook $DEBUG_arg 01b-install-aws-creds.yml
+   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+fi
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

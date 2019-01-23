@@ -15,6 +15,13 @@ function pause(){
 
 cd /home/f5/AWS-Cloud-Edition
 
+# Pre-requisits
+#sudo apt-get install python-setuptools
+#sudo easy_install pip
+#sudo pip install ansible
+#sudo apt-get install sshpass
+#sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
+
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 if [[ ! -z $getPublicIP ]]; then
     sed -i "s/0.0.0.0/$getPublicIP/g" ./config.yml
@@ -35,7 +42,7 @@ BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
 if [[ $c1 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
-	   echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+	    echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -52,16 +59,13 @@ echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-#sudo apt-get install python-setuptools
-#sudo easy_install pip
-#sudo pip install ansible
-#sudo apt-get install sshpass
-#sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
-ansible-playbook $DEBUG_arg 01b-install-aws.yml
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+## If AWS UDF account is used, no need to run this
+if [[ $c3 == 0 || $c4 == 0 ]]; then
+   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+   ansible-playbook $DEBUG_arg 01b-install-aws-creds.yml
+   echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+fi
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
