@@ -12,7 +12,7 @@ Begin by creating a Device DoS Log Publisher which can then be re-used for virtu
 
 1. Log into the BIG-IQ CM
 2. Under *Configuration* > *Security* > *Shared Security* > *DoS Protection* > *Device DoS Configurations*, we see all Managed BIG-IPs with Device DoS Profiles
-3. Select *BOS-vBIGIP01*, and the *Configure DoS Logging* button will be enabled
+3. Select both *BOS-vBIGIP01*, and *BOS-vBIGIP02* and the *Configure DoS Logging* button will be enabled
 4. Click this button to view the following pop up window 
 
 .. image:: ../pictures/module1/dos-log-config.png
@@ -21,10 +21,9 @@ Begin by creating a Device DoS Log Publisher which can then be re-used for virtu
   
   
 
-6. Click *Continue* to have BIG-IQ create the objects and observe the pop up window: it outlines the objects being created that you can now view/browse in BIG-IQ, along with the name of the new logging profile. This Logging Profile can now be selected for other DoS Logging contexts such
-as a virtual server/protected object configuration on this BIG-IP. 
+6. Click *Continue* to have BIG-IQ create the objects and observe the pop up window: it outlines the objects being created that you can now view/browse in BIG-IQ. Since this was the Device DoS, only a new publisher has been created (not a profile as that Device DoS is a built in profile).  
 
-7. Next, a Logging Publisher needs to be assigned to the DoS Configuration. Since this was just created, it should already be assigned to the *BOS-vBIGIP01* devices but if it is not, or another device is to be configured with this suchs as *BOS-vBIGIP02*, set the DoS log publisher assign it as shown below: 
+7. Click on both *BOS* devices and notice that the publisher is now assigned to both Device DoS configurations: 
 
 .. image:: ../pictures/module1/dos-log-publisher.png
   :align: center
@@ -32,19 +31,18 @@ as a virtual server/protected object configuration on this BIG-IP.
 
 
 
-Logging profiles created and deployed by BIG-IQ use HSL only as the log destination pool member: no other publishers are in the profile. If local logging of DoS Events is desired for troubleshooting on the BIG-IP, the publisher must have 
-the *local-syslog* log destination in the log publisher in use. 
+Logging publishers created by BIG-IQ use HSL to the DCD as the only log destination: no othe no other destinations are in the publisher by default. If local DB or syslog logging of DoS Events is desired for troubleshooting on the BIG-IP, the publisher be edited to include these destinations. Often local syslog is helpful: lets add that now. 
 
 
-1. Under *Configuration > Local Traffic > Logs > Log Publishers*  select the recently created publisher *dos-remote-logging-publisher*
-2. From here additional log destinations can be added: select and add *local-syslog*
+1. Under *Configuration > Local Traffic > Logs > Log Publishers*  select the newly created publisher *dos-remote-logging-publisher*
+2. From here additional log destinations can be added: select and add *local-syslog*, then save and close changes
 
 .. image:: ../pictures/module1/dos-local-pub.png
   :align: center
   :scale: 50%
 
 
-Finally the changes need to be deployed to the BIG-IPs in order to take affect. Since there is a combination of ADC object and Network Security objects, the ADC deployment must be done first otherwise Network Security will **fail** due to missing the profile. 
+Finally the changes need to be deployed to the BIG-IPs in order to take affect. Since there is a combination of ADC object (new publisher) and Network Security objects (Device DoS change), the ADC deployment must be done first otherwise Network Security will **fail** due to missing the profile. Device DoS settings can be viewed under Shared Security in the evaluation differences. 
 
 1. Under *Deployment > Evaluate > Local Traffic* create a new Evalation for *BOS-vBIGIP01 and 02* and deploy the changes after optionally looking at the differences
 2. Under *Deployment > Evaluate > Network Security* create a new Evalation for *BOS-vBIGIP01 and 02* and deploy the changes after optionally looking at the differences

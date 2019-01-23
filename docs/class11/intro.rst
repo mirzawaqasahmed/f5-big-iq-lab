@@ -1,7 +1,7 @@
 Introduction class 11
 =====================
 
-This class will cover BIG-IQ DDoS Monitoring and Dashboard enhancements to BIG-IQ 6.1.
+This class will cover BIG-IQ DDoS Monitoring and Dashboard enhancements to BIG-IQ 6.1. Components used include BIG-IP CM/DCD along with the Boston BIG-IPs and Ubuntu host. ESXi, TLV and SEA BIG-IPs can be stopped. 
 
 .. warning:: When using the UDF or Ravello Lab, make sure:
 
