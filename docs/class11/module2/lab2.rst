@@ -8,7 +8,7 @@ First we will create and edit a new DoS Profile:
 1. Under *Configuration* > *Security* > *Shared Security* > *DoS Profiles*, click the *Create* button
 2. Under Properties, give the profile a unique name such as *my_dos_profile*
 3. Select *Protocol DNS Security* and check *DNS Protection* which enables all Attack Types to be viewed and edited
-4. Enable and set the *SOA Query* and *TXT Query* Vectors for manual detection with values shown in the image below
+4. Enable and set the *SOA Query*, *MX Query*, and *TXT Query* Vectors for manual detection with values shown in the image below
 
 .. image:: ../pictures/module2/dns-dos-profile.png
   :align: center
