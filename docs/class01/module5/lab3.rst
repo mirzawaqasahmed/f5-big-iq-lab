@@ -267,7 +267,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
                         "collectedStatsInternalLogging": true,
                         "collectedStatsExternalLogging": false,
                         "capturedTrafficInternalLogging": false,
-                        "capturedTrafficExternalLogging": true,
+                        "capturedTrafficExternalLogging": false,
                         "collectPageLoadTime": true,
                         "collectClientSideStatistics": true,
                         "collectResponseCode": true,
