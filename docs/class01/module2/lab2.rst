@@ -12,7 +12,7 @@ Connect as **larry**
 
 Select the ``f5-asm-policy1`` ASM policy from the list and look through its settings. Notice the policy is in Transparent mode.
 
-Edit the Policy ``f5-asm-policy1``, switch to ``Manual`` Learning Mode and ``Make available in Application Templates``, click Save.
+Edit the Policy ``f5-asm-policy1``, notice the leaning mode is set to ``manual`` and Trust XFF is ``enabled``. Above Learning Mode select ``Make available in Application Templates``, click Save.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
