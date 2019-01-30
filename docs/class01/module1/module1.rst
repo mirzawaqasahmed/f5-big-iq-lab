@@ -6,13 +6,13 @@ We will use these personas through out the lab. We are not trying to demonstrate
 
 We will be using 4 main personas for this lab:
 
-1. **David** & **Marco**: Full Administrator
+1. **David**: Full Administrator (previously **Marco**)
 2. **Larry**: Security Manager
 3. **Paula** & **Paul**: Application Manager
 4. **Olivia**: Super-NetOps
 
-**David** and **Marco** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
-He will provide the access to David, Larry and Paula. He will also manage the Service Scaling Group (SSG)
+**David** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
+He will provide the access to Larry, Olivia, Paul and Paula. He will also manage the Service Scaling Group (SSG)
 and application templates.
 
 **Larry** will manage the Web Application Firewall (WAF) policies. He will work with Paula's team

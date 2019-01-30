@@ -305,7 +305,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
                        },
                        "serverTLS": "webtls",
                        "policyWAF": {
-                           "bigip": "/Common/<ASM policy>"
+                           "bigip": "/Common/<WAF policy>"
                        },
                        "securityLogProfiles": [
                            {
