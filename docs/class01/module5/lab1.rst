@@ -352,7 +352,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
    }
 
 1. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
-Copy/Paste the above AS3 declaration into the declaration body into Postman(DON T FORGET TO UPDATE THE WAF Policy):
+Copy/Paste the above AS3 declaration into the declaration body into Postman (DON'T FORGET TO UPDATE THE WAF Policy):
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
