@@ -48,7 +48,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "Type $ip root password (if asked)"
-  ssh-copy-id root@$ip > /dev/null 2>&1
+  sshpass -p purple123 ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################
@@ -212,12 +212,12 @@ sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}Create BIG-IQ and AS3 Applications${NC}"
+echo -e "\n${GREEN}Create AS3 Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Create apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
-  ansible-playbook -i notahost, create_default_apps.yml $DEBUG_arg
-  sleep 15
+  #ansible-playbook -i notahost, create_default_apps.yml $DEBUG_arg
+  #sleep 15
   ansible-playbook -i notahost, create_default_as3_app.yml $DEBUG_arg
 fi
 

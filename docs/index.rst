@@ -40,7 +40,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 - BIGIQ <> DCD 6.1.0
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
-- 1x BIG-IP 14.0 / 1 standalone (SEA)
+- 1x BIG-IP 14.1 / 1 standalone (SEA)
 - 1x BIG-IP 12.1 / 1 standalone (TLV)
 - LAMP Server - Radius, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 
@@ -51,7 +51,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - "Configuration" - ADC, Security (ASM config/monitoring, AFM config, FPS monitoring.)
 - "Deployment" - Manage evaluation task and deployment.
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Application" - Application Management (Cloud Edition)
+- "Application" - Application Management (Cloud Edition, AS3)
 
 ------------
 
@@ -107,6 +107,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 .. _BIG-IP Cloud Edition Deploy and Secure an Application: https://www.youtube.com/watch?v=0a5e-70vS-4
 .. _BIG-IP Cloud Edition Auto-scaling with VMware: https://www.youtube.com/watch?v=fA22obOF_iY
 .. _BIG-IP Cloud Edition Auto scaling with AWS: https://www.youtube.com/watch?v=YByW7Q3jAvQ
+.. _BIG-IP Cloud Edition Auto scaling with Azure: https://youtu.be/dDWybCsQGgY
 .. _BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard: https://www.youtube.com/watch?v=FjyJq_9NS2Y
 
 **Tools**:

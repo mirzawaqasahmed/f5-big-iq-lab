@@ -20,7 +20,7 @@ IPSEC_DESTINATION_ADDRESS1=$(grep IPSEC_DESTINATION_ADDRESS1 ./config.yml | awk 
 IPSEC_DESTINATION_ADDRESS2=$(grep IPSEC_DESTINATION_ADDRESS2 ./config.yml | awk '{ print $2}')
 IPSEC_DESTINATION_MASK=$(grep IPSEC_DESTINATION_MASK ./config.yml | awk '{ print $2}')
 
-ssh-copy-id admin@$MGT_NETWORK_UDF > /dev/null 2>&1
+sshpass -p purple123 ssh-copy-id admin@$MGT_NETWORK_UDF > /dev/null 2>&1
 
 publicIpAddress=$(az network public-ip show --name VNet1GWIP --resource-group $PREFIX | jq '.ipAddress')
 publicIpAddress=${publicIpAddress:1:${#publicIpAddress}-2}
