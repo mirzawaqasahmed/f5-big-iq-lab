@@ -1,7 +1,7 @@
 Lab 5.6: Enable/Disable Enhanced Analytics on BIG-IQ
 ----------------------------------------------------
 
-1. Using Postman, use the **BIG-IQ Enable/Disable Enhanced Analytics** collection in order to turn on the Enhanced Analytics on a specific Application Service.
+Using Postman, use the **BIG-IQ Enable/Disable Enhanced Analytics** collection in order to turn on the Enhanced Analytics on a specific Application Service.
 
 Replace the **<uuid-of-config-set>** with the appropriate value.
 
@@ -45,6 +45,18 @@ To turn it off, POST:
     },
     "analyticsMode":"NORMAL"
     }
+
+Or turn it on/off directly within your AS3 declaration:
+
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 3
+
+    "statsProfile": {
+         "class": "Analytics_Profile",
+         "collectedStatsInternalLogging": true/false,
+          ...
+    },
 
 
 .. |lab-6-1| image:: images/lab-6-1.png

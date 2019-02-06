@@ -14,7 +14,7 @@
         name: "site20waf.example.f5.com"
         wait: yes
         description: Load balance WAF
-        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        service_environment: "bigip2.lab.fp.f5net.com"
         domain_names: "site20.example.com"
         add_analytics: yes
         servers:
@@ -42,7 +42,7 @@
         name: "site22http.example.f5.com"
         wait: yes
         description: Load balance HTTP
-        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        service_environment: "bigip2.lab.fp.f5net.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.202
@@ -63,7 +63,7 @@
         name: "site26https.example.f5.com"
         wait: yes
         description: Load balance HTTPS Offload
-        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        service_environment: "bigip2.lab.fp.f5net.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.204
@@ -90,7 +90,7 @@
         name: "site28fasthttp.example.f5.com"
         wait: yes
         description: Load balance Fast HTTP
-        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        service_environment: "bigip2.lab.fp.f5net.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.206
@@ -113,7 +113,7 @@
         name: "site30fasL4.example.f5.com"
         wait: yes
         description: Load balance Fast L4 TCP
-        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        service_environment: "bigip2.lab.fp.f5net.com"
         servers:
           - address: 10.1.20.206
             port: 80
@@ -135,7 +135,7 @@
         name: "site32udp.example.f5.com"
         wait: yes
         description: Load balance Fast UDP
-        service_environment: "bigip2tier1.lab.fp.f5net.com"
+        service_environment: "bigip2.lab.fp.f5net.com"
         servers:
           - address: 10.1.20.206
             port: 80

@@ -463,10 +463,13 @@ ansible-playbook 01a-install-pip.yml
 echo -e "\nInstall PyVmomi for VMware ansible playbooks"
 su - f5student -c "sudo pip install PyVmomi"
 
-echo -e "\nSSH keys exchanges between Lamp server and BIG-IP SEA and BIG-IQ CM"
+echo -e "\nSSH keys exchanges between Lamp server and BIG-IP and BIG-IQ CM/DCD"
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.7 
-ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
+sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.7
+sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.8
+sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.10 
+sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
+sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.6
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:

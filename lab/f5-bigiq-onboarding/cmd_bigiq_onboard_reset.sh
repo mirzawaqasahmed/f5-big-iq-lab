@@ -41,7 +41,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "Type $ip root password (if asked)"
-  ssh-copy-id root@$ip > /dev/null 2>&1
+  sshpass -p purple123 ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

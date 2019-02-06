@@ -39,9 +39,9 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 **List of instances**:
 
 - BIGIQ <> DCD 6.1.0
-- 2x BIG-IP 13.1.0.5 / 1 cluster (BOS)
-- 1x BIG-IP 14.0.0.1 / 1 standalone (SEA)
-- 1x BIG-IP 12.1.0 / 1 standalone (TLV)
+- 2x BIG-IP 13.1 / 1 cluster (BOS)
+- 1x BIG-IP 14.1 / 1 standalone (SEA)
+- 1x BIG-IP 12.1 / 1 standalone (TLV)
 - LAMP Server - Radius, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 
 **Components available**:
@@ -51,7 +51,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - "Configuration" - ADC, Security (ASM config/monitoring, AFM config, FPS monitoring.)
 - "Deployment" - Manage evaluation task and deployment.
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Application" - Application Management (Cloud Edition)
+- "Application" - Application Management (Cloud Edition, AS3)
 
 ------------
 
@@ -79,7 +79,6 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 - `BIG-IQ Knowledge Center`_
 - `F5 BIG-IQ API 6.1.0`_
-- `F5 BIG-IQ API 6.0.1`_
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
 - `AS3 Documentation`_
@@ -87,7 +86,6 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
 .. _F5 BIG-IQ API 6.1.0: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/
-.. _F5 BIG-IQ API 6.0.1: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.0.1/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270?tag=big-iq
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
@@ -109,6 +107,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 .. _BIG-IP Cloud Edition Deploy and Secure an Application: https://www.youtube.com/watch?v=0a5e-70vS-4
 .. _BIG-IP Cloud Edition Auto-scaling with VMware: https://www.youtube.com/watch?v=fA22obOF_iY
 .. _BIG-IP Cloud Edition Auto scaling with AWS: https://www.youtube.com/watch?v=YByW7Q3jAvQ
+.. _BIG-IP Cloud Edition Auto scaling with Azure: https://youtu.be/dDWybCsQGgY
 .. _BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard: https://www.youtube.com/watch?v=FjyJq_9NS2Y
 
 **Tools**:

@@ -42,7 +42,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                        "collectedStatsInternalLogging": true,
                        "collectedStatsExternalLogging": false,
                        "capturedTrafficInternalLogging": false,
-                       "capturedTrafficExternalLogging": true,
+                       "capturedTrafficExternalLogging": false,
                        "collectPageLoadTime": true,
                        "collectClientSideStatistics": true,
                        "collectResponseCode": true,
@@ -99,7 +99,7 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                "collectedStatsInternalLogging": true,
                "collectedStatsExternalLogging": false,
                "capturedTrafficInternalLogging": false,
-               "capturedTrafficExternalLogging": true,
+               "capturedTrafficExternalLogging": false,
                "collectPageLoadTime": true,
                "collectClientSideStatistics": true,
                "collectResponseCode": true,
@@ -169,6 +169,8 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
 
 Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning:: This isn't the recommended way of adding an application to an existing Tenant. Method described in Task 5a is preferred.
 
 This declaration will create add a HTTP application to a exsisting Tenant. In this task, we will submit only the new application using the PATCH.
 
