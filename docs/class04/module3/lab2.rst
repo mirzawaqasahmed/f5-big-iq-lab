@@ -17,10 +17,10 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 2. Once the DCD is initially provisionned, let's establish connectivity with BIG-IQ console node (BIG-IQ CM).
 
-- Log in to the BIG-IQ Console Node (10.1.1.4 admin/admin)
-- Under System > BIG-IQ DATA COLLECTION
-- Select BIG-IQ Data Collection Devices
-- Click the Add button
+  - Log in to the BIG-IQ Console Node (10.1.1.4 admin/admin)
+  - Under System > BIG-IQ DATA COLLECTION
+  - Select BIG-IQ Data Collection Devices
+  - Click the Add button
 
 .. image:: ../pictures/module3/img_module3_lab2_2.png
   :align: center

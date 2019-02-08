@@ -136,12 +136,10 @@ Service Scaling Group Properties:
 
 .. note::
 
-   **[New 6.0.1]** an SSG can be used along with an Access Group. APM module will need to be provisioned in the device template and proper license pool will need to be configure.
-   The access group to use need to be specified in the SSG configuration.
+    **[New 6.0.1]** SSG can be used along with an Access Group. APM module will need to be provisioned in the device template and proper license pool will need to be configure.
+    The access group to use need to be specified in the SSG configuration.
    
-   .. image:: ../pictures/module1/img_module1_lab3_1b.png
-   :align: left
-   :scale: 80%
+    .. image:: ../pictures/module1/img_module1_lab3_1b.png
 
 .. warning::
 
