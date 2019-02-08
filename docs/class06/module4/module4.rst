@@ -18,6 +18,7 @@ The options are:
    :align: left
    :scale: 80%
 
+
 BIG-IQ creates and stores a copy of the BIG-IP device's LTM monitor or profile object(s), specific to the software version running on that BIG-IP device.
 If you select this option, BIG-IQ replaces that object for all the managed BIG-IP devices running that version, the next time it deploys a configuration.
 You can store multiple versions of LTM monitors or profiles. BIG-IQ deploys the appropriate stored version to your managed devices.
@@ -29,11 +30,14 @@ Navigate to the Configuration tab, under Local Traffic left-hand menu to see obj
    :align: left
    :scale: 80%
 
+
 If you select one object with different version, you can see the detail of that object for each version available.
+
 
 .. image:: ../pictures/img_module4_3.png
    :align: left
    :scale: 80%
+
 
 
 .. toctree::
