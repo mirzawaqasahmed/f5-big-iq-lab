@@ -42,7 +42,9 @@ Logging publishers created by BIG-IQ use HSL to the DCD as the only log destinat
   :scale: 50%
 
 
-Finally the changes need to be deployed to the BIG-IPs in order to take affect. Since there is a combination of ADC object (new publisher) and Network Security objects (Device DoS change), the ADC deployment must be done first otherwise Network Security will **fail** due to missing the profile. Device DoS settings can be viewed under Shared Security in the evaluation differences. 
+
+
+Finally the changes need to be deployed to the BIG-IPs in order to take affect. Since there is a combination of ADC object (new publisher) and Network Security objects (Device DoS change), the ADC deployment must be done first otherwise Network Security will **fail** due to missing the referenced LTM log profile. Device DoS settings can be viewed under Shared Security in the evaluation differences. 
 
 1. Under *Deployment > Evaluate > Local Traffic* create a new Evalation for *BOS-vBIGIP01 and 02* and deploy the changes after optionally looking at the differences
 2. Under *Deployment > Evaluate > Network Security* create a new Evalation for *BOS-vBIGIP01 and 02* and deploy the changes after optionally looking at the differences

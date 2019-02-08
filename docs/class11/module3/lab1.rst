@@ -1,5 +1,5 @@
 Lab 1.1: Generating Simple DDoS Attacks
---------------------------------------------------------
+---------------------------------------
 
 With the DoS Profiles applied to the BIG-IP, we can now generate attack traffic that will be detected and mitigated. The Ubuntu host has several simple tools useful in generating packet and application based attacks that will be used. 
 

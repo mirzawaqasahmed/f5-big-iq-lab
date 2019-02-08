@@ -6,7 +6,7 @@ count for the Device DoS vectors. When using more specific profiles on Virtual S
 enough that they provide protection for the device without conflicting with Virtual Server profiles. For example individual virtual servers may be 
 configured with UDP flood values to detect and mitigate values of 10000 PPS, however device DoS is set to 50000 PPS. 
 
-.. note:: Most DoS Vector values are *per TMM*, with one common exception being Single Endpoint Sweep and Flood vectors which aggregates multiple packet types and applies the configured limit across all TMMs. 
+.. note:: Most DoS Vector values are *per TMM*, one exception being Single Endpoint Sweep and Flood vectors which aggregates multiple packet types and applies the configured limit across all TMMs. 
 
 The default Device DoS profile settings manual detect and mitigate are set high for all vectors. To simplify any demo, reducing these values allows for easier demonstrations. 
 Additionally, if using a lab VE license there is a 10 Mb/s limit which limits how many PPS can be processed by TMM. If using larger values for DoS demonstration, use at least a 1 Gb/s license. 
