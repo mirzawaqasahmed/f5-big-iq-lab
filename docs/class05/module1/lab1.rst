@@ -1,19 +1,21 @@
 Lab 1.1: Import a device to an existing Cluster
 -----------------------------------------------
 
-**BOS-vBIGIP02.termmarc.com (10.1.10.10)** is currently NOT managed by BIG-IQ CM, however it is in the same Device Service Cluster (DSC) with BOS-vBIGIP01. We will be adding this device to BIG-IQ. 
+.. warning:: **BOS-vBIGIP02.termmarc.com (10.1.10.10)** is currently managed by BIG-IQ CM, however it is in the same Device Service Cluster (DSC) with BOS-vBIGIP01. We will be adding this device to BIG-IQ. 
 
-Log in to the BIG-IQ system with your user name (admin) and password (admin).
+Log in to the BIG-IQ system with your user name (david) and password (david).
 
 On the top menu bar, select Devices from the BIG-IQ menu.
 
 On the left-hand menu bar, click BIG-IP Devices.
 
+Select **BOS-vBIGIP02.termmarc.com** and click on **Remove All Service**, then when all services are removed, click on **Remove Device**.
+
 Click the Add Device button in the main pane.
 
 a. In the IP Address field, type the IP address of the device: **10.1.10.10**
 
-b. In the User Name and Password fields, type the user name (admin) and password (admin) for the device.
+b. In the User Name and Password fields, type the user name (david) and password (david) for the device.
 
 c. Cluster Display Name: **Use Existing**.
 
