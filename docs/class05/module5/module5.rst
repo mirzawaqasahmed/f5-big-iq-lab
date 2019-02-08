@@ -12,11 +12,15 @@ to assign to another BIG-IP VE. This flexible licensing model helps keep track o
 
 There are 3 types of devices you can manage licenses for:
 
-- Managed BIG-IP devices: From BIG-IQ, you assign licenses to and revoke license from BIG-IP devices using each device’s SSL certificate for authentication over an SSL connection.
-- Unmanaged BIG-IP devices: From BIG-IQ, you assign licenses to and revoke licenses from BIG-IP devices using each BIG-IP device’s IP address, user name, and password for authentication over an SSL connection.
-- Unreachable devices: For devices that BIG-IQ does not have network access to, a third-party computer or program communicates with BIG-IQ through API calls to get a license from BIG-IQ and assign it to the BIG-IP device by a method of your choosing. The third party makes a similar API call to BIG-IQ for revoking a license. For more information about these API calls, see https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/.
+- **Managed BIG-IP devices**: From BIG-IQ, you assign licenses to and revoke license from BIG-IP devices using each device’s SSL certificate 
+  for authentication over an SSL connection.
+- **Unmanaged BIG-IP devices**: From BIG-IQ, you assign licenses to and revoke licenses from BIG-IP devices using each BIG-IP device’s IP address, 
+  user name, and password for authentication over an SSL connection.
+- **Unreachable devices**: For devices that BIG-IQ does not have network access to, a third-party computer or program communicates with BIG-IQ through 
+  API calls to get a license from BIG-IQ and assign it to the BIG-IP device by a method of your choosing. The third party makes a similar API call to 
+  BIG-IQ for revoking a license.
   
-In this lab, we will see the difference between the various types of license pools and how to license a BIG-IP Virtual Edition (VE) using BIG-IQ as a License Manager.
+In this lab, we will see the difference between the various types of license pools and how to license a **Managed BIG-IP** Virtual Edition (VE) using BIG-IQ as a License Manager.
 
 .. toctree::
    :maxdepth: 1
