@@ -1,5 +1,5 @@
-Lab 1.2: Using the DoS Dashboard
---------------------------------
+Lab 1.2: Additional DDoS Monitoring 
+-----------------------------
 
 Dos Dashboard...
 
