@@ -41,7 +41,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - BIGIQ <> DCD 6.1.0
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 1x BIG-IP 14.1 / 1 standalone (SEA)
-- 1x BIG-IP 12.1 / 1 standalone (TLV)
+- 1x BIG-IP 12.1 / 1 standalone (SJC)
 - LAMP Server - Radius, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 
 **Components available**:

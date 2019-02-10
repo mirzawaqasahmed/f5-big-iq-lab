@@ -1,7 +1,11 @@
 Class 6: BIG-IQ ADC Management
 ==============================
 
-In this class, we will focus on the BIG-IQ and DCD plaforms.
+In this class, we will focus on Application Delivery Controller (ADC).
+
+To learn more on application delivery controllers, - `DevCentral`_.
+
+.. _DevCentral: https://devcentral.f5.com/articles/what-is-an-application-delivery-controller-part-1-24742
 
 .. toctree::
    :maxdepth: 1
@@ -22,23 +26,24 @@ Let's have a look at the ``Configuration Tab`` in BIG-IQ.
 
 **LOCAL TRAFFIC**
 
--	Click on the virtual server menu.  Show the state and availability.  Show the ability to sort the column in the table.  Show the ability to search and filter the table.
--	Click on a virtual server that is installed on the clustered BIG-IPs (01 and 02), like the HR virtual server.  Point out that the editing view is very similar to the view on the BIG-IP.  Change something like the port and save the change.  Point out that BIG-IQ has updated the staged configuration for the virtual server on both cluster devices.
--	Show the ability to clone a virtual server to create one that is very similar to an existing one.  Cloned virtuals can be created on the same device/cluster or on a different device/cluster.  Note: with the service template feature, this feature may become less used/useful, as this only clones the virtual, not all of the application components.
--	Show the ability to bulk attach iRules.
--	Show the ability to select one or more virtuals and create a partial deployment.
--	Show the ability to edit iRules.  There is no context checking in BIG-IQ, but depending on the browser, you might see some editing assistance.
--	Review the rest of the LTM components
--	Click on the certificate management area
+  -	Click on the virtual server menu.  Show the state and availability.  Show the ability to sort the column in the table.  Show the ability to search and filter the table.
+  -	Click on a virtual server that is installed on the clustered BIG-IPs (01 and 02), like the HR virtual server.  Point out that the editing view is very similar to the view on the BIG-IP.  Change something like the port and save the change.  Point out that BIG-IQ has updated the staged configuration for the virtual server on both cluster devices.
+  -	Show the ability to clone a virtual server to create one that is very similar to an existing one.  Cloned virtuals can be created on the same device/cluster or on a different device/cluster.  Note: with the service template feature, this feature may become less used/useful, as this only clones the virtual, not all of the application components.
+  -	Show the ability to bulk attach iRules.
+  -	Show the ability to select one or more virtuals and create a partial deployment.
+  -	Show the ability to edit iRules.  There is no context checking in BIG-IQ, but depending on the browser, you might see some editing assistance.
+  -	Review the rest of the LTM components
 
-  - Click on Certs and Keys: This is where we can manage traffic certs to be used in SSL profiles.
-  - Create button allows you to create self-signed certs or create a CSR to send off to a CA for a signed cert.
-  - After you receive the signed cert, you can click the Import button to import the cert, key, or PKCS#12 bundle.
-  - The generate report button exports a CSV file of all of the metadata about the certs that are on the BIG-IQ.
-  - The Alert Settings button takes you to the page to configure the alerts about certificate expiration.
+  - Click on the certificate management area
+  
+    - Click on Certs and Keys: This is where we can manage traffic certs to be used in SSL profiles.
+    - Create button allows you to create self-signed certs or create a CSR to send off to a CA for a signed cert.
+    - After you receive the signed cert, you can click the Import button to import the cert, key, or PKCS#12 bundle.
+    - The generate report button exports a CSV file of all of the metadata about the certs that are on the BIG-IQ.
+    - The Alert Settings button takes you to the page to configure the alerts about certificate expiration.
 
-    - The currently available alerts are N days ahead of certificate expiration and an alert that the certificates has expired.
-    - These alerts are currently send via email only.
+      - The currently available alerts are N days ahead of certificate expiration and an alert that the certificates has expired.
+      - These alerts are currently send via email only.
 
   - The More button exposed additional options to clone or delete a certificate.
   - The status column in the table gives a visual indication if the cert has expired, will expire soon, or if the expiration is significantly in the future (beyond the alert threshold that is set for N days alert)

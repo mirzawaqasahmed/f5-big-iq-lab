@@ -17,10 +17,10 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 2. Once the DCD is initially provisionned, let's establish connectivity with BIG-IQ console node (BIG-IQ CM).
 
-- Log in to the BIG-IQ Console Node (10.1.1.4 admin/admin)
-- Under System > BIG-IQ DATA COLLECTION
-- Select BIG-IQ Data Collection Devices
-- Click the Add button
+  - Log in to the BIG-IQ Console Node (10.1.1.4 admin/admin)
+  - Under System > BIG-IQ DATA COLLECTION
+  - Select BIG-IQ Data Collection Devices
+  - Click the Add button
 
 .. image:: ../pictures/module3/img_module3_lab2_2.png
   :align: center
@@ -69,8 +69,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 |
 
-- For devices that were discovered before you added the DCD, you can now enable the statistics collection for those devices by going on 
-the Devices tab and click on the “Disabled” link under Stats Collection Status.
+- For devices that were discovered before you added the DCD, you can now enable the statistics collection for those devices by going on the Devices tab and click on the “Disabled” link under Stats Collection Status.
 
 - Click the Enabled button, accept the defaults, and click the Save & Close button in the lower right.
 

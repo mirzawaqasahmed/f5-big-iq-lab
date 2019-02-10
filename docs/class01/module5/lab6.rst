@@ -56,7 +56,7 @@ Or turn it on/off directly within your AS3 declaration:
          "class": "Analytics_Profile",
          "collectedStatsInternalLogging": true/false,
           ...
-    },
+    }
 
 
 .. |lab-6-1| image:: images/lab-6-1.png
