@@ -3,7 +3,7 @@
   <type>Security</type>
   <policy_version>
     <timestamp>2018-05-03T19:14:16Z</timestamp>
-    <device_name>big-ip-ve3-pme.lab.fp.f5net.com</device_name>
+    <device_name>big-ip-ve3-pme.lab.fp.f5.com</device_name>
     <policy_name>/Common/linux-high</policy_name>
     <last_change>Redirection Domain * (Include Subdomains: false) [delete] { audit: policy = /Common/linux-high, component = Policy Builder }</last_change>
   </policy_version>

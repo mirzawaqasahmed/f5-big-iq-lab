@@ -14,7 +14,7 @@
         name: "site10waf.example.com"
         wait: yes
         description: Load balance WAF
-        service_environment: "bigip1.lab.fp.f5net.com"
+        service_environment: "bigip1.lab.fp.f5.com"
         domain_names: "site10.example.com"
         add_analytics: yes
         servers:
@@ -42,7 +42,7 @@
         name: "site12http.example.com"
         wait: yes
         description: Load balance HTTP
-        service_environment: "bigip1.lab.fp.f5net.com"
+        service_environment: "bigip1.lab.fp.f5.com"
         add_analytics: yes
         servers:
           - address: 10.1.20.201
