@@ -13,7 +13,7 @@
 # argument 2 is the BIG-IP hostname for which session needs to be created
 # argument 3 is how many access sessions are required to be created defaults to 500
 #
-# example ./generate_access_reports_mock_data.sh 10.192.123.87 karabip1new.lab.fp.f5net.com 5000 - This will create 5000 access session with hostname  karabip1new.lab.fp.f5net.com on the BIG-IQ 10.192.123.87
+# example ./generate_access_reports_mock_data.sh 10.192.123.87 karabip1new.lab.fp.f5.com 5000 - This will create 5000 access session with hostname  karabip1new.lab.fp.f5.com on the BIG-IQ 10.192.123.87
 #
 
 BIG_IQ="$1"
