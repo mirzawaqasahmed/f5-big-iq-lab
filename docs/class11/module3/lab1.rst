@@ -12,7 +12,7 @@ First, generate an attack that will be handled by Device DoS:
 3. In the BOS BIG-IP shell run: *tail -f /var/log/ltm*
 4. Observe the log file until *DNS Malformed* device DoS Messages appear
 
-.. note:: A handy CLI command to look at DoS stats quicker is to use the tmctl command and display individual columns. This is the same data as *tmsh show sec dos device-config* and similar but can be quicker and more customized with *tmctl* =
+.. note:: A handy CLI command to look at DoS stats quicker is to use the tmctl command and display individual columns. This is the same data as *tmsh show sec dos device-config* and similar but can be quicker and more customized with *tmctl*
 Example: tmctl -w 300 -s vector_name,attack_detected,stats,stat_rate,stats_1m,drops,drops_rate dos_stat  | grep DNS
 
 With the DoS Log messages (which appear since the DoS publisher includes local syslog from the previous configuration step), there is an active DoS Attack against for Malformed DNS at the device level. BIG-IQ has Visibilty for Netowrk and DNS DoS Events in multiple new screens. Lets explore these views!
@@ -41,19 +41,24 @@ Clicking on each of these views allow for selection/deselection of many objects 
   :align: center
   :scale: 100%
 
-4. Launch a DNS attack with dnsperf, 150 QPS for 600 seconds: *dnsperf -s 10.1.10.203 -d soa.txt -Q 150 -l 600*
-5. Tail the *ltm* log file on the BIG-IP
-6. In BIG-IQ, observe the *Protection Summary* dashboards
+4. Launch a DNS attack with dnsperf, 150 QPS for 600 seconds by typing this command: *dnsperf -s 10.1.10.203 -d soa.txt -Q 150 -l 600*
+5. tail -f the *ltm* log file on the BOS BIG-IP
+6. In BIG-IQ, observe the *Protection Summary* dashboard
+
+
 
 If auto-refresh is still enabled at 30 seconds a new DoS Attack should be added within a few minutes. The attack is mitigated quickly on BIG-IP, and the initial view in BIG-IQ is near real time. Once the attack is recorded, statistics are also updated in near real time based on polling intervals. This attack is recorded differently as the Protected Object is highlighted.
+
+
 
 .. image:: ../pictures/module3/protected-object-summary.png
   :align: center
   :scale: 50%
 
-Click the link for the Attack, and the details of the attack is visible. With DNS attacks, query response type/volume provides more granular visibilty and reporting. During the attack the TPS graph will continue to update. Selecting specific time intervals brings up the zoom tool to change the view, or use the time scale sliders for the same effect. 
-    
-  .. image:: ../pictures/module3/soa-attack-details.png
+
+
+Click the link for the Attack, and the details of the attack are now visible. With DNS attacks, query response type/volume provides more granular visibilty and reporting. During the attack the TPS graph will continue to update. Selecting specific time intervals brings up the zoom tool to change the view, or use the time scale sliders for the same effect. 
+
+.. image:: ../pictures/module3/soa-attack-details.png
   :align: center
   :scale: 50%
-
