@@ -198,12 +198,23 @@ echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Add devices
 ### NEED TO ADD ENABLE STAT COLLECTION IN THE SCRIPT
-scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
-echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
-ssh root@$ip_cm1 << EOF
-  cd /root
-  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -f -q admin:$pwd_cm1
-EOF
+#scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
+#echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
+#ssh root@$ip_cm1 << EOF
+#  cd /root
+#  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -f -q admin:$pwd_cm1
+#EOF
+
+## Using Ansible Role
+## clone devel branch until module publish to 2.8 (using ansible.cfg)
+rm -rf f5-ansible > /dev/null 2>&1
+git clone https://github.com/F5Networks/f5-ansible.git --branch devel
+ansible-galaxy install f5devcentral.f5ansible,master --force
+if [[  $env == "udf" ]]; then
+  ansible-playbook -i notahost, bigiq_device_discovery $DEBUG_arg
+else
+  ansible-playbook -i notahost, .bigiq_device_discovery_$env.yml $DEBUG_arg
+fi
 ## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

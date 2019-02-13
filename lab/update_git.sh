@@ -46,12 +46,20 @@ else
     if [ ! -f /home/$user/bigiq_version_azure ]; then
         echo "6.1.0" > /home/$user/bigiq_version_azure
     fi
+    if [ ! -f /home/$user/bigiq_version_gcp ]; then
+        echo "6.1.0" > /home/$user/bigiq_version_gcp
+    fi
+    if [ ! -f /home/$user/bigiq_version_alibaba ]; then
+        echo "6.1.0" > /home/$user/bigiq_version_alibaba
+    fi
 
     bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
     bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
+    bigiq_version_gcp=$(cat /home/$user/bigiq_version_gcp)
+    bigiq_version_alibaba=$(cat /home/$user/bigiq_version_alibaba)
 
     echo "Cleanup previous files..."
-    rm -rf build* AWS* AZURE* f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting
+    rm -rf build* AWS* AZURE* GCP* ALIBABA* f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting > /dev/null 2>&1
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -63,13 +71,17 @@ else
     fi
 
     echo "AWS scripts"
-    mv AWS-Cloud-Edition-$bigiq_version_aws AWS-Cloud-Edition
+    mv AWS-Cloud-Edition-$bigiq_version_aws AWS-Cloud-Edition > /dev/null 2>&1
     echo "Azure scripts"
-    mv AZURE-Cloud-Edition-$bigiq_version_azure AZURE-Cloud-Edition
+    mv AZURE-Cloud-Edition-$bigiq_version_azure AZURE-Cloud-Edition > /dev/null 2>&1
+    echo "Google scripts"
+    mv GCP-Cloud-Edition-$bigiq_version_gcp GCP-Cloud-Edition > /dev/null 2>&1
+    echo "Alibaba scripts"
+    mv ALIBABA-Cloud-Edition-$bigiq_version_alibaba ALIBABA-Cloud-Edition > /dev/null 2>&1
     # cleanup other versions
-    rm -rf AWS-Cloud-Edition-* AZURE-Cloud-Edition-*
+    rm -rf AWS-Cloud-Edition-* AZURE-Cloud-Edition-* GCP-Cloud-Edition-* ALIBABA-Cloud-Edition-* > /dev/null 2>&1
     echo "Fixing permissions..."
-    chmod +x *py *sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py  AZURE*/*sh AZURE*/*py vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
+    chmod +x *py *sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py AZURE*/*sh AZURE*/*py ALIBABA*/*sh GCP*/*sh vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then
@@ -79,7 +91,7 @@ else
         su - $user -c "crontab < crontab.txt"
     fi
 
-    # Cleanup AWS and Azure credentials
+    # Cleanup Clouds credentials
     rm -f /home/$user/.aws/*
     rm -fr /home/$user/.azure/*
 

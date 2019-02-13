@@ -1,0 +1,97 @@
+---
+- name: Add BIG-IPs to BIG-IQ
+  hosts: all
+  connection: local
+  vars_files:
+    - inventory/group_vars/udf-bigiq-cm-01.yml
+  roles:
+    - { role: f5devcentral.f5ansible }
+
+  tasks:
+    - name: Discover Boston Cluster device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip1 }}"
+        device_username: "{{ bigip1user }}"
+        device_password: "{{ bigip1pass }}"
+        conflict_policy: "{{ bigip1conflict }}"
+        ha_name: "{{ bigip1cluster }}"
+        modules: "{{ bigip1modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Assert Discover Boston Cluster device and import config, use default conflict policy
+      assert:
+        that:
+          - result is changed
+          - result is success
+
+    - name: Discover Boston Cluster device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip2 }}"
+        device_username: "{{ bigip2user }}"
+        device_password: "{{ bigip2pass }}"
+        conflict_policy: "{{ bigip2conflict }}"
+        ha_name: "{{ bigip2cluster }}"
+        modules: "{{ bigip2modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Assert Discover Boston Cluster device and import config, use default conflict policy
+      assert:
+        that:
+          - result is changed
+          - result is success
+
+    - name: Discover Seattle device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip3 }}"
+        device_username: "{{ bigip3user }}"
+        device_password: "{{ bigip3pass }}"
+        conflict_policy: "{{ bigip3conflict }}"
+        ha_name: "{{ bigip3cluster }}"
+        modules: "{{ bigip3modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Assert Discover Seattle device and import config, use default conflict policy
+      assert:
+        that:
+          - result is changed
+          - result is success
+
+    - name: Discover San Jose device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip4 }}"
+        device_username: "{{ bigip4user }}"
+        device_password: "{{ bigip4pass }}"
+        conflict_policy: "{{ bigip4conflict }}"
+        ha_name: "{{ bigip4cluster }}"
+        modules: "{{ bigip4modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Assert Discover San Jose device and import config, use default conflict policy
+      assert:
+        that:
+          - result is changed
+          - result is success

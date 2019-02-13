@@ -1,5 +1,8 @@
-Lab 3.2: Delete Application via API  (Ansible)
-----------------------------------------------
+Lab 3.2: Delete Application via API with Ansible (6.0.x only)
+-------------------------------------------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+
 In this lab, we are going to delete an application using Ansible.
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.

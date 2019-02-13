@@ -1,5 +1,7 @@
-Lab 3.3: Create Application via API (Python)
---------------------------------------------
+Lab 3.3: Create Application via API with Python (6.0.x only)
+------------------------------------------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 
 In this lab, we are going to create an application using Python script and BIG-IQ API.
 

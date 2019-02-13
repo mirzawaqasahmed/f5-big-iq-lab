@@ -1,12 +1,7 @@
 Module 3: BIG-IQ Application Deployment via API (6.0.x only)
 ============================================================
-BIG-IQ Ansible module available in Ansible 2.6 and above (for info `Ansible F5 github`_).
-
-.. _Ansible F5 github: https://github.com/F5Networks/f5-ansible
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
-
-.. warning:: Ansible 2.6+ only support App deployment on VMware environement.
 
 - Create and Delete Application from Default-f5-HTTP-lb-template: **bigiq_application_http**
 - Create and Delete Application from Default-f5-HTTPS-offload-lb-template: **bigiq_application_https_offload**
@@ -15,9 +10,12 @@ BIG-IQ Ansible module available in Ansible 2.6 and above (for info `Ansible F5 g
 - Create and Delete Application from Default-f5-FastL4-TCP-lb-template: **bigiq_application_fastl4_tcp**
 - Create and Delete Application from Default-f5-FastL4-UDP-lb-template: **bigiq_application_fastl4_udp**
 
-More information on all `F5 Ansible Modules`_.
+More information on all `F5 Ansible Modules`_ (GitHub repository `Ansible F5 github`_)
 
 .. _F5 Ansible Modules: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/list_of_all_modules.html
+.. _Ansible F5 github: https://github.com/F5Networks/f5-ansible
+
+.. warning:: Ansible 2.6+ only support App deployment on VMware environement. 
 
 You can access the API & Ansible BIG-IQ documentations from the **BIG-IQ External Resources**:
 

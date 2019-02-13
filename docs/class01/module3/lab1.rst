@@ -1,5 +1,7 @@
-Lab 3.1: Create Application via API (Ansible)
----------------------------------------------
+Lab 3.1: Create Application via API with Ansible (6.0.x only)
+-------------------------------------------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 
 In this lab, we are going to deploy a basic HTTP application using Ansible.
 

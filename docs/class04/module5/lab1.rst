@@ -17,16 +17,23 @@ This automation scenario is composed of 4 parts:
 
 * Add BIG-IPs to the BIG-IQ
 
-    - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ.
+    - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 5.4, 6.0.x)**.
+
+    - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 6.1 and above)**.
 
 * Create Application Services
 
     - `Ansible`_ **playbook**: Use BIG-IQ Ansible Modules to deploy appplication services (see class 1, module 3, lab 1)
 
+    - `Ansible AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy appplication services (see class 1, module 5, lab 7)
+
+
 .. _bigiq_onboard: https://galaxy.ansible.com/f5devcentral/bigiq_onboard
 .. _register_dcd: https://galaxy.ansible.com/f5devcentral/register_dcd
 .. _bulkDiscovery.pl: https://downloads.f5.com/esd/eula.sv?sw=BIG-IQ&pro=big-iq_CM&ver=6.0.1&container=v6.0.1.1&path=&file=&B1=I+Accept
-.. _`Ansible`: ../../class01/module3/module3.html
+.. _bigiq_device_discovery: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigiq_device_discovery_module.html
+.. _Ansible: ../../class01/module3/module3.html
+.. _Ansible AS3: ../../class01/module5/module5.html
 
 **Lab:**
 
@@ -72,8 +79,8 @@ This automation scenario is composed of 4 parts:
             - Using bigiq_onboard role: setup hostname, role, dns, ntp, self-ip, master key, passwords (DCD first, then CM)
             - Using register_dcd role: add DCD to CM, activate necessary services (asm, afm, ...)
             
-        4. Add & discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl.
-        5. Create Applications using Ansible playbook.
+        4. Add & discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl or Ansible module bigiq_device_discovery.
+        5. Create Applications using Ansible playbook (AS3 or none AS3).
 
     Ignore the following errors:
 

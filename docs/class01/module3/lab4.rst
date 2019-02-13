@@ -1,5 +1,7 @@
-Lab 3.4: Automation Demo with Postman
--------------------------------------
+Lab 3.4: Automation Demo with Postman (6.0.x only)
+--------------------------------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 
 From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
@@ -31,7 +33,7 @@ Follow below steps (source: `github`_):
 .. _github: https://github.com/codygreen/BIG-IQ-Automation-Application-Service-Catalog
 
 Installation
-------------
+############
 
 1. Import the `F5 Workflow Functions postman libraries`_: 
 2. Install the F5 Workflow Functions by running the install command inside it's collection.
@@ -40,13 +42,13 @@ Installation
 
 
 Notice
-------
+######
 
 These examples are based on a custom service catalog entry and are intended for use as a example and starting point. 
 If you try and run these against your BIG-IQ it will not work.  
 
 Example_Usage
--------------
+#############
 
 Open Postman, click right and click on execute (wait ~2 minutes).
 
