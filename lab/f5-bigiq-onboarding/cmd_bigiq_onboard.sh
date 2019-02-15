@@ -17,6 +17,7 @@ fi
 # CONFIGURATION
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+udfpassword="purple123"
 
 ## TO BE REMOVED ONE ANSIBLE MODULE TO ADD BIG-IP IS AVAILABLE
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
@@ -48,7 +49,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "Type $ip root password (if asked)"
-  sshpass -p purple123 ssh-copy-id root@$ip > /dev/null 2>&1
+  sshpass -p $udfpassword ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################
@@ -72,7 +73,7 @@ if [[  $env != "udf" ]]; then
       read f5user
       echo -e "Corporate F5 password:"
       read -s f5pass
-      echo -e "F5 domain:"
+      echo -e "F5 domain (f 5 n e t . c o m):"
       read -s f5domain
     fi
     
@@ -254,5 +255,17 @@ ssh root@$ip_cm1 << EOF
   echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
   bigstart restart gunicorn
 EOF
+
+if [[ $env == "udf" ]]; then
+  # copy customer scripts udf
+  mkdir udf
+  sshpass -p $udfpassword scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/.udf* udf
+  sshpass -p $udfpassword scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/startup udf
+  ls -lrta udf
+  for ip in "${ips[@]}"; do
+    echo -e "\n---- ${RED} $ip ${NC} ----"
+    sshpass -p $udfpassword scp -rp -o StrictHostKeyChecking=no udf/.udf* udf/startup admin@$ip:/config
+  done
+fi
   
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
