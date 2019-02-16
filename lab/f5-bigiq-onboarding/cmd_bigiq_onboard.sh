@@ -17,13 +17,13 @@ fi
 # CONFIGURATION
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
-udfpassword="purple123"
 
 ## TO BE REMOVED ONE ANSIBLE MODULE TO ADD BIG-IP IS AVAILABLE
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
 
+# F5 INTERNAL LAB ONLY
 release="v7.0.0"
 #release="v6.1.0"
 #release="v6.0.1.1"
@@ -48,8 +48,8 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
-  echo "Type $ip root password (if asked)"
-  sshpass -p $udfpassword ssh-copy-id root@$ip > /dev/null 2>&1
+  echo "$ip"
+  sshpass -p default ssh-copy-id root@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################
@@ -192,13 +192,11 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${RED}Waiting 15 min ... ${NC}"
 sleep 900
 
-## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-# Add devices
-### NEED TO ADD ENABLE STAT COLLECTION IN THE SCRIPT
+# Add devices using the old script bulkDiscovery.pl (THIS WORKS ONLY FOR BIG-IQ 5.x and 6.0)
 #scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
 #echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
 #ssh root@$ip_cm1 << EOF
@@ -206,8 +204,8 @@ echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 #  perl ./bulkDiscovery.pl -c $env-bigip.csv -l -s -f -q admin:$pwd_cm1
 #EOF
 
-## Using Ansible Role
-## clone devel branch until module publish to 2.8 (using ansible.cfg)
+## Using Ansible Role (to use for BIG-IQ 6.1 and above)
+## clone devel branch until module published to Ansible version 2.8 (using ansible.cfg)
 rm -rf f5-ansible > /dev/null 2>&1
 git clone https://github.com/F5Networks/f5-ansible.git --branch devel
 ansible-galaxy install f5devcentral.f5ansible,master --force
@@ -216,7 +214,6 @@ if [[  $env == "udf" ]]; then
 else
   ansible-playbook -i notahost, .bigiq_device_discovery_$env.yml $DEBUG_arg
 fi
-## =>>>>>>>>>>>>>>>>>>>>>>>>> to be replace with Ansible Role.
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -255,17 +252,5 @@ ssh root@$ip_cm1 << EOF
   echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
   bigstart restart gunicorn
 EOF
-
-if [[ $env == "udf" ]]; then
-  # copy customer scripts udf
-  mkdir udf
-  sshpass -p $udfpassword scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/.udf* udf
-  sshpass -p $udfpassword scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/startup udf
-  ls -lrta udf
-  for ip in "${ips[@]}"; do
-    echo -e "\n---- ${RED} $ip ${NC} ----"
-    sshpass -p $udfpassword scp -rp -o StrictHostKeyChecking=no udf/.udf* udf/startup admin@$ip:/config
-  done
-fi
   
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

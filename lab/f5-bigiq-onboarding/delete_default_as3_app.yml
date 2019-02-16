@@ -1,5 +1,5 @@
 ---
-- name: Delete Task1 AS3 Applications example_site15http
+- name: Delete Example AS3 Applications example_site15http
   hosts: all
   connection: local
     
