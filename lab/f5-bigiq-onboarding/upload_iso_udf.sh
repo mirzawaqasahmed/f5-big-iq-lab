@@ -22,8 +22,8 @@ read port
 echo -e "\n${GREEN}SSH priv key saved in UDF: (e.g. ~/.ssh/id_rsa):${NC}"
 read sshkey
 
-echo -e "F5 domain (f 5 n e t . c o m):"
-read -s f5domain
+echo -e "F5 domain:"
+read f5domain
 
 echo -e "\n${GREEN}Download iso${NC}"
 

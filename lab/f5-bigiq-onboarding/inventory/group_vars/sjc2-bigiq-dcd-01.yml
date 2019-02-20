@@ -1,5 +1,5 @@
 bigiq_onboard_server: 10.192.75.186
-bigiq_onboard_hostname: big-iq-dcd-sjc2.lab.fp.f5.com
+bigiq_onboard_hostname: big-iq-dcd-01-sjc2.lab.fp.f5.com
 #bigiq_onboard_discovery_address: 10.1.10.186/24
 bigiq_onboard_node_type: dcd
 bigiq_onboard_password: admin

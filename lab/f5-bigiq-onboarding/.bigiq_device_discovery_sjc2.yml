@@ -8,7 +8,7 @@
     - { role: f5devcentral.f5ansible }
   
   tasks:
-    - name: Discover a BIG-IP 1 device and import config, use default conflict policy
+    - name: Discover BIG-IP 1 device and import config, use default conflict policy
       bigiq_device_discovery:
         provider:
           server: "{{ bigiq_onboard_server }}"
@@ -29,7 +29,7 @@
           - result is changed
           - result is success
 
-    - name: Discover a BIG-IP 2 device and import config, use default conflict policy
+    - name: Discover BIG-IP 2 device and import config, use default conflict policy
       bigiq_device_discovery:
         provider:
           server: "{{ bigiq_onboard_server }}"

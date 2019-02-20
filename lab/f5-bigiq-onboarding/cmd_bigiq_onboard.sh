@@ -73,8 +73,8 @@ if [[  $env != "udf" ]]; then
       read f5user
       echo -e "Corporate F5 password:"
       read -s f5pass
-      echo -e "F5 domain (f 5 n e t . c o m):"
-      read -s f5domain
+      echo -e "F5 domain:"
+      read f5domain
     fi
     
     if [[ -z $3 ]]; then
