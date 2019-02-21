@@ -37,11 +37,3 @@ If you select one object with different version, you can see the detail of that 
 .. image:: ../pictures/img_module4_3.png
    :align: left
    :scale: 80%
-
-
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   lab*

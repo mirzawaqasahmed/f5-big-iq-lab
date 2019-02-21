@@ -12,8 +12,10 @@ First, generate an attack that will be handled by Device DoS:
 3. In the BOS BIG-IP shell run: *tail -f /var/log/ltm*
 4. Observe the log file until *DNS Malformed* device DoS Messages appear
 
-.. note:: A handy CLI command to look at DoS stats quicker is to use the tmctl command and display individual columns. This is the same data as *tmsh show sec dos device-config* and similar but can be quicker and more customized with *tmctl*
-Example: tmctl -w 300 -s vector_name,attack_detected,stats,stat_rate,stats_1m,drops,drops_rate dos_stat  | grep DNS
+.. note:: A handy CLI command to look at DoS stats quicker is to use the tmctl command and display individual columns. 
+   This is the same data as *tmsh show sec dos device-config* and similar but can be quicker and more customized with *tmctl*
+   
+   Example: tmctl -w 300 -s vector_name,attack_detected,stats,stat_rate,stats_1m,drops,drops_rate dos_stat  | grep DNS
 
 With the DoS Log messages (which appear since the DoS publisher includes local syslog from the previous configuration step), there is an active DoS Attack against for Malformed DNS at the device level. BIG-IQ has Visibilty for Netowrk and DNS DoS Events in multiple new screens. Lets explore these views!
 
