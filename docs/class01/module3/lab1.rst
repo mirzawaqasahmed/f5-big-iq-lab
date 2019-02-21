@@ -15,7 +15,7 @@ The following parameters are filled in the playbook ``create_http_app.yaml``.
 - Service Port: ``80``
 - Servers (Pool Member): ``10.1.20.122``
 
-Open a SSH session to *Ubuntu Lamp Server* in UDF.
+Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbook::
 

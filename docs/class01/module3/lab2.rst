@@ -5,7 +5,7 @@ Lab 3.2: Delete Application via API with Ansible (6.0.x only)
 
 In this lab, we are going to delete an application using Ansible.
 
-Open a SSH session to *Ubuntu Lamp Server* in UDF.
+Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 **olivia** user is used to execute the playbook:
 

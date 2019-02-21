@@ -37,7 +37,9 @@ This automation scenario is composed of 4 parts:
 
 **Lab:**
 
-1. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` variable.
+1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+
+2. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` variable (**Ravello only**).
 
     ::
 
@@ -45,7 +47,7 @@ This automation scenario is composed of 4 parts:
         # vi inventory/group_vars/udf-bigiq-dcd-01.yml
         # vi inventory/group_vars/udf-bigiq-cm-01.yml
 
-2. Reset both BIG-IQ CM and DCD.
+3. Reset both BIG-IQ CM and DCD.
 
     ::
 
@@ -56,7 +58,7 @@ This automation scenario is composed of 4 parts:
     1. Delete existing applications (BIG-IQ and AS3)
     2. Execute the ``clear-rest-storage -d`` command on both BIG-IQ CM and DCD
 
-3. Execute the script
+4. Execute the script
 
     ::
 
@@ -88,7 +90,7 @@ This automation scenario is composed of 4 parts:
         fatal: [udf-bigiq-dcd-01]: FAILED! => {"cache_control": "no-store, no-cache, must-revalidate", "changed": false, "connection": "close", "content": "{\"code\":401,\"message\":\"Authentication failed.\",\"originalRequestBody\":\"{\\\"username\\\":\\\"admin\\\",\\\"generation\\\":0,\\\"lastUpdateMicros\\\":0}\",\"restOperationId\":1067315,\"errorStack\":[],\"kind\":\":resterrorresponse\"}", "content_length": "206", "content_type": "application/json; charset=UTF-8", "date": "Mon, 15 Oct 2018 21:15:41 GMT", "expires": "-1", "json": {"code": 401, "errorStack": [], "kind": ":resterrorresponse", "message": "Authentication failed.", "originalRequestBody": "{\"username\":\"admin\",\"generation\":0,\"lastUpdateMicros\":0}", "restOperationId": 1067315}, "msg": "Status code was 401 and not [200]: HTTP Error 401: Unauthorized", "pragma": "no-cache", "redirected": false, "server": "webd", "status": 401, "url": "https://10.1.1.6:443/mgmt/shared/authn/login"}
         ...ignoring``
 
-4. At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
+5. At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
 
 .. image:: ../pictures/module5/img_module5_lab1_2.png
   :align: center

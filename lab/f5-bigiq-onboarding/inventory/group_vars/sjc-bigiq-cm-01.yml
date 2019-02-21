@@ -20,7 +20,8 @@ bigiq_onboard_license_key: S0747-355703-915-8967225-4253130
 bigip1: 10.192.75.182
 bigip1user: admin
 bigip1pass: admin
-bigip1conflict: keep_version
+#bigip1conflict: keep_version
+bigip1conflict: use_bigip
 bigip1modules:
   - ltm
   - asm

@@ -44,8 +44,3 @@
       register: result
       delegate_to: localhost
 
-    - name: Assert Discover BIG-IP 2 device and import config, use default conflict policy
-      assert:
-        that:
-          - result is changed
-          - result is success

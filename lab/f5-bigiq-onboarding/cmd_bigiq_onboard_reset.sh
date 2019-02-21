@@ -16,6 +16,7 @@ fi
 ############################################################################################
 # CONFIGURATION
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
+ip_cm2="$(cat inventory/group_vars/$env-bigiq-cm-02.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
@@ -42,7 +43,7 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 if [[  $env == "udf" ]]; then
   for ip in "${ips[@]}"; do
     echo "$ip"
-    sshpass -p purple123 ssh-copy-id root@$ip > /dev/null 2>&1
+    sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no root@$ip > /dev/null 2>&1
   done
 fi
 
@@ -83,7 +84,7 @@ for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
   echo "clear-rest-storag"
-  ssh root@$ip clear-rest-storage -d
+  ssh -o StrictHostKeyChecking=no root@$ip clear-rest-storage -d
 done
 
 ### CUSTOMIZATION - UDF ONLY
@@ -106,7 +107,7 @@ if [[ $env == "udf" ]]; then
   for ip in "${ips[@]}"; do
     echo -e "\n---- ${RED} $ip ${NC} ----"
     echo "reboot"
-    ssh root@$ip reboot
+    ssh -o StrictHostKeyChecking=no root@$ip reboot
   done
 fi
 
@@ -124,15 +125,15 @@ if [[  $env != "udf" ]]; then
     do
         echo -e "Exchange ssh keys with BIG-IP:"
         echo "Type $a root password (if asked)"
-        ssh-copy-id root@$a > /dev/null 2>&1
+        ssh-copy-id -o StrictHostKeyChecking=no root@$a > /dev/null 2>&1
 
         echo "Cleanup AS3 on $a"
-        ssh root@$a bigstart stop restjavad restnoded; 
-        ssh root@$a rm -rf /var/config/rest/storage; 
-        ssh root@$a rm -rf /var/config/rest/index; 
-        ssh root@$a bigstart start restjavad restnoded; 
-        ssh root@$a rm -f /var/config/rest/downloads/*.rpm; 
-        ssh root@$a rm -f /var/config/rest/iapps/RPMS/*.rpm;
+        ssh -o StrictHostKeyChecking=no root@$a bigstart stop restjavad restnoded; 
+        ssh -o StrictHostKeyChecking=no root@$a rm -rf /var/config/rest/storage; 
+        ssh -o StrictHostKeyChecking=no root@$a rm -rf /var/config/rest/index; 
+        ssh -o StrictHostKeyChecking=no root@$a bigstart start restjavad restnoded; 
+        ssh -o StrictHostKeyChecking=no root@$a rm -f /var/config/rest/downloads/*.rpm; 
+        ssh -o StrictHostKeyChecking=no root@$a rm -f /var/config/rest/iapps/RPMS/*.rpm;
     done < inventory/$env-bigip.csv
 fi
 

@@ -1,7 +1,7 @@
 bigiq_onboard_server: 10.1.1.4
 bigiq_onboard_hostname: big-iq-cm-01.example.com
 bigiq_onboard_node_type: cm
-#bigiq_onboard_discovery_address: 10.1.10.4/24
+bigiq_onboard_discovery_address: 10.1.10.4/24
 bigiq_onboard_password: admin
 bigiq_onboard_new_root_password: purple123
 bigiq_onboard_old_root_password: default
@@ -20,7 +20,8 @@ bigiq_onboard_license_key: Q0558-866155-422-7867054-4573666
 bigip1: 10.1.1.8
 bigip1user: admin
 bigip1pass: purple123
-bigip1conflict: keep_version
+#bigip1conflict: keep_version
+bigip1conflict: use_bigip
 bigip1cluster: BostonCluster
 bigip1modules:
   - ltm
@@ -32,7 +33,8 @@ bigip1modules:
 bigip2: 10.1.1.10
 bigip2user: admin
 bigip2pass: purple123
-bigip2conflict: keep_version
+#bigip2conflict: keep_version
+bigip2conflict: use_bigip
 bigip2cluster: BostonCluster
 bigip2modules:
   - ltm
@@ -44,7 +46,8 @@ bigip2modules:
 bigip3: 10.1.1.7
 bigip3user: admin
 bigip3pass: purple123
-bigip3conflict: keep_version
+#bigip3conflict: keep_version
+bigip3conflict: use_bigip
 bigip3modules:
   - ltm
   - asm
@@ -55,7 +58,8 @@ bigip3modules:
 bigip4: 10.1.1.11
 bigip4user: admin
 bigip4pass: purple123
-bigip4conflict: keep_version
+#bigip4conflict: keep_version
+bigip4conflict: use_bigip
 bigip4modules:
   - ltm
   - asm

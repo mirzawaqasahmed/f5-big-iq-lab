@@ -18,7 +18,7 @@ fi
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
-## TO BE REMOVED ONE ANSIBLE MODULE TO ADD BIG-IP IS AVAILABLE
+## TO BE REMOVED when bulkDiscovery.pl isn't used anymore
 pwd_cm1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_new_admin_password | awk '{print $2}')"
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
@@ -49,7 +49,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "$ip"
-  sshpass -p default ssh-copy-id root@$ip > /dev/null 2>&1
+  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no root@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################
@@ -113,30 +113,30 @@ if [[  $env != "udf" ]]; then
         # transfer iso image
         echo -e "\n${GREEN}Transfer iso on $ip ${NC}"
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-        ssh root@$ip rm -f /shared/images/*.iso
-        scp $iso root@$ip:/shared/images/
+        ssh -o StrictHostKeyChecking=no -o StrictHostKeyChecking=no root@$ip rm -f /shared/images/*.iso
+        scp -o StrictHostKeyChecking=no $iso root@$ip:/shared/images/
         echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
         echo -e "\n${GREEN}Install on $ip ${NC}"
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         # check active volume and install
-        ssh root@$ip tmsh show sys software status > activeVolume
+        ssh -o StrictHostKeyChecking=no root@$ip tmsh show sys software status > activeVolume
         activeVolume=$(cat activeVolume | grep yes | awk '{print $1}')
         if [[  $activeVolume == "HD1.1" ]]; then
-          ssh root@$ip tmsh delete sys software volume HD1.2
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh delete sys software volume HD1.2
           sleep 10
-          ssh root@$ip tmsh modify sys db liveinstall.saveconfig value disable
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh modify sys db liveinstall.saveconfig value disable
           sleep 5
-          ssh root@$ip tmsh modify sys db liveinstall.moveconfig value disable
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh modify sys db liveinstall.moveconfig value disable
           sleep 5
-          ssh root@$ip tmsh install sys software image $iso volume HD1.2 create-volume reboot
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh install sys software image $iso volume HD1.2 create-volume reboot
         else
-          ssh root@$ip tmsh delete sys software volume HD1.1
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh delete sys software volume HD1.1
           sleep 10
-          ssh root@$ip tmsh modify sys db liveinstall.saveconfig value disable
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh modify sys db liveinstall.saveconfig value disable
           sleep 5
-          ssh root@$ip tmsh modify sys db liveinstall.moveconfig value disable
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh modify sys db liveinstall.moveconfig value disable
           sleep 5
-          ssh root@$ip tmsh install sys software image $iso volume HD1.1 create-volume reboot
+          ssh -o StrictHostKeyChecking=no root@$ip tmsh install sys software image $iso volume HD1.1 create-volume reboot
         fi
       done
       echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
@@ -145,7 +145,7 @@ if [[  $env != "udf" ]]; then
         status=""
         while [[ $status != "complete" ]] 
           do
-              ssh root@$ip tmsh show sys software status > status
+              ssh -o StrictHostKeyChecking=no root@$ip tmsh show sys software status > status
               status=$(cat status | grep no | awk '{print $6}')
               percentage=$(cat status | grep no | awk '{print $7 $8}')
               if [[ $status == "complete" ]]; then
@@ -197,7 +197,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Add devices using the old script bulkDiscovery.pl (THIS WORKS ONLY FOR BIG-IQ 5.x and 6.0)
-#scp -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
+#scp -o StrictHostKeyChecking=no -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
 #echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
 #ssh root@$ip_cm1 << EOF
 #  cd /root
@@ -242,12 +242,12 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
   echo -e "tmsh modify auth user admin shell bash"
-  ssh root@$ip tmsh modify auth user admin shell bash
-  ssh root@$ip set-basic-auth on
+  ssh -o StrictHostKeyChecking=no root@$ip tmsh modify auth user admin shell bash
+  ssh -o StrictHostKeyChecking=no root@$ip set-basic-auth on
 done
 
 # disable ssl check for VMware SSG on the CM
-ssh root@$ip_cm1 << EOF
+ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
   echo >> /var/config/orchestrator/orchestrator.conf
   echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
   bigstart restart gunicorn

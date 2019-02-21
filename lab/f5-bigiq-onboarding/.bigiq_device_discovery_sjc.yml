@@ -22,9 +22,3 @@
         modules: "{{ bigip1modules }}"
       register: result
       delegate_to: localhost
-
-    - name: Assert Discover BIG-IP 1 device and import config, use default conflict policy
-      assert:
-        that:
-          - result is changed
-          - result is success

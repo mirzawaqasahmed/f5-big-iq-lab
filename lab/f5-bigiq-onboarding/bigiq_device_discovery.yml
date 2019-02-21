@@ -24,12 +24,6 @@
       register: result
       delegate_to: localhost
 
-    - name: Assert Discover Boston Cluster device and import config, use default conflict policy
-      assert:
-        that:
-          - result is changed
-          - result is success
-
     - name: Discover Boston Cluster device and import config, use default conflict policy
       bigiq_device_discovery:
         provider:
@@ -45,12 +39,6 @@
         modules: "{{ bigip2modules }}"
       register: result
       delegate_to: localhost
-
-    - name: Assert Discover Boston Cluster device and import config, use default conflict policy
-      assert:
-        that:
-          - result is changed
-          - result is success
 
     - name: Discover Seattle device and import config, use default conflict policy
       bigiq_device_discovery:
@@ -68,12 +56,6 @@
       register: result
       delegate_to: localhost
 
-    - name: Assert Discover Seattle device and import config, use default conflict policy
-      assert:
-        that:
-          - result is changed
-          - result is success
-
     - name: Discover San Jose device and import config, use default conflict policy
       bigiq_device_discovery:
         provider:
@@ -89,9 +71,3 @@
         modules: "{{ bigip4modules }}"
       register: result
       delegate_to: localhost
-
-    - name: Assert Discover San Jose device and import config, use default conflict policy
-      assert:
-        that:
-          - result is changed
-          - result is success

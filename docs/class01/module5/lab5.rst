@@ -1,7 +1,7 @@
 Lab 5.5: FQDN and Service Discovery
 -----------------------------------
 
-Open a SSH session to *Ubuntu Lamp Server* in UDF.
+Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbooks for each tasks
 

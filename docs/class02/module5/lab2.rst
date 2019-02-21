@@ -7,8 +7,7 @@ we will automatically deploy it and review its configuration.
 Launch our ``SSG`` - Access our orchestrator - Azure
 ****************************************************
 
-To setup ``BIG-IQ`` and ``Azure`` automatically, open a ``SSH`` connection on the 
-UDF system called: **Ubuntu Lamp Server**
+To setup ``BIG-IQ`` and ``Azure`` automatically, open a ``SSH`` connection on the system called: **Ubuntu Lamp Server**
 
 .. image:: ../pictures/module4/img_module4_lab2_1.png
   :align: center
