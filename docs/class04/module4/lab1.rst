@@ -82,7 +82,7 @@ Finally, start the new BIG-
 
 .. image:: ../pictures/module4/img_module4_lab1_3.png
   :align: center
-  :scale: 70%
+  :scale: 50%
 
 |
 
@@ -110,7 +110,7 @@ Then, click OK.
 
 .. image:: ../pictures/module4/img_module4_lab1_6.png
   :align: center
-  :scale: 70%
+  :scale: 90%
 
 |
 

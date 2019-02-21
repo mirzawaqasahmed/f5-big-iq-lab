@@ -125,15 +125,15 @@ if [[  $env != "udf" ]]; then
     do
         echo -e "Exchange ssh keys with BIG-IP:"
         echo "Type $a root password (if asked)"
-        ssh-copy-id -o StrictHostKeyChecking=no root@$a > /dev/null 2>&1
+        sshpass -p $c ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub $b@$a > /dev/null 2>&1
 
         echo "Cleanup AS3 on $a"
-        ssh -o StrictHostKeyChecking=no root@$a bigstart stop restjavad restnoded; 
-        ssh -o StrictHostKeyChecking=no root@$a rm -rf /var/config/rest/storage; 
-        ssh -o StrictHostKeyChecking=no root@$a rm -rf /var/config/rest/index; 
-        ssh -o StrictHostKeyChecking=no root@$a bigstart start restjavad restnoded; 
-        ssh -o StrictHostKeyChecking=no root@$a rm -f /var/config/rest/downloads/*.rpm; 
-        ssh -o StrictHostKeyChecking=no root@$a rm -f /var/config/rest/iapps/RPMS/*.rpm;
+        ssh -o StrictHostKeyChecking=no $b@$a bigstart stop restjavad restnoded < /dev/null
+        ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/storage < /dev/null
+        ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/index < /dev/null
+        ssh -o StrictHostKeyChecking=no $b@$a bigstart start restjavad restnoded < /dev/null
+        ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/downloads/*.rpm < /dev/null
+        ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/iapps/RPMS/*.rpm < /dev/null
     done < inventory/$env-bigip.csv
 fi
 
