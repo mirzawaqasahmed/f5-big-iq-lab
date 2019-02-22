@@ -35,6 +35,9 @@ if [[ -z $1 ]]; then
     exit 1;
 fi
 
+# SECONDS used for total execution time (see end of the script)
+SECONDS=0
+
 echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
@@ -81,3 +84,6 @@ ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
 EOF
   
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+# total script execution time
+echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"

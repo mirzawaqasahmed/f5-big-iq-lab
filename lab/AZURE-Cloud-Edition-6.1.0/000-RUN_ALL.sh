@@ -13,6 +13,9 @@ function pause(){
    read -p "$*"
 }
 
+# SECONDS used for total execution time (see end of the script)
+SECONDS=0
+
 cd /home/f5/AZURE-Cloud-Edition
 
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
@@ -143,5 +146,8 @@ echo -e "/!\ The objects created in  will be automatically delete 23h after the 
 echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+# total script execution time
+echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"
 
 exit 0
