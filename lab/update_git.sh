@@ -59,7 +59,7 @@ else
     bigiq_version_alibaba=$(cat /home/$user/bigiq_version_alibaba)
 
     echo "Cleanup previous files..."
-    rm -rf build* AWS* AZURE* GCP* ALIBABA* asm-brute-force f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting > /dev/null 2>&1
+    rm -rf build* AWS* AZURE* GCP* ALIBABA* f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting > /dev/null 2>&1
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -81,7 +81,7 @@ else
     # cleanup other versions
     rm -rf AWS-Cloud-Edition-* AZURE-Cloud-Edition-* GCP-Cloud-Edition-* ALIBABA-Cloud-Edition-* > /dev/null 2>&1
     echo "Fixing permissions..."
-    chmod +x *py *sh asm-brute-force/*sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py AZURE*/*sh AZURE*/*py ALIBABA*/*sh GCP*/*sh vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
+    chmod +x *py *sh scripts/asm-brute-force/*sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py AZURE*/*sh AZURE*/*py ALIBABA*/*sh GCP*/*sh vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then
@@ -129,7 +129,7 @@ if [[  $currentuser == "root" ]]; then
     # ASM Policy Validator
     docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
     # ASM Brute Force
-    docker build /home/$user/asm-brute-force -t asm-brute-force
+    docker build /home/$user/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
 
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
