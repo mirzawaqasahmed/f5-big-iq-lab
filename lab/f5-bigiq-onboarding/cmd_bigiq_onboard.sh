@@ -76,9 +76,10 @@ if [[  $env != "udf" ]]; then
       read f5user
       echo -e "Corporate F5 password:"
       read -s f5pass
-      echo -e "F5 domain:"
-      read f5domain
     fi
+    
+    echo -e "F5 domain:"
+    read f5domain
     
     if [[ -z $3 ]]; then
       build="current"
@@ -230,9 +231,11 @@ echo -e "\n${GREEN}Create AS3 Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Create apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
-  #ansible-playbook -i notahost, create_default_apps.yml $DEBUG_arg
+  #ansible-playbook -i notahost, create_default_bigiq_apps.yml $DEBUG_arg
   #sleep 15
-  ansible-playbook -i notahost, create_default_as3_app.yml $DEBUG_arg
+  ansible-playbook -i notahost, create_default_as3_app_waf_site15_boston.yml $DEBUG_arg
+  sleep 15
+  ansible-playbook -i notahost, create_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
 fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

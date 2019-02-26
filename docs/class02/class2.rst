@@ -13,30 +13,31 @@ called ``Service Scaling Groups`` (SSG)
 
 ------------
 
-Below Virtual Servers and Pool Members can be used in the context of the  (UDF lab) for this class.
+List of Virtual Servers and Applications Servers where various type of traffic is being send to (check ``crontab`` config for more details).
 
-- **Test Web Site:** *(used in module 2)*
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Descriptions                                                                              | IP addresses/ports                                                                       |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Virtual IP addresses where the traffic generator sends HTTP clean traffic                 | ``10.1.10.110`` to ``10.1.10.142``                                                       |
+|                                                                                           |                                                                                          |
+|                                                                                           | Except ``10.1.10.117``, ``10.1.10.119`` and ``10.1.10.121`` (used for access in class 9) |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Virtual IP addresses where the traffic generator sends HTTP bad traffic                   | ``10.1.10.110`` to ``10.1.10.136``                                                       |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Virtual IP addresse(es) where the traffic generator sends access traffic (class 9)         | ``10.1.10.222``                                                                          |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Virtual IP addresses (listeners) where the traffic generator sends DNS traffic (class 10) | ``10.1.10.203``, ``10.1.10.204``                                                         |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Virtual IP addresse(es) where the traffic generator sends DDOS attack (class 11)           | ``10.1.10.136``                                                                          |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+| Servers Applications (running in docker containers)                                       | ``10.1.20.110`` to ``10.1.20.145``                                                       |
+|                                                                                           |                                                                                          |
+|                                                                                           |                                                                                          |
+|                                                                                           | - Port ``80``: hackazon application                                                      |
+|                                                                                           | - Port ``8080``: web-dvwa application                                                    |
+|                                                                                           | - Port ``8081``: f5-hello-world application                                              |
+|                                                                                           | - Port ``8082``: f5-demo-httpd application                                               |
+|                                                                                           | - Port ``445``: ASM Policy Validator                                                     |
++-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
-==================  ============ ======== ============================ ============
-Test Website         VIP         Ports    Servers                      Ports
-==================  ============ ======== ============================ ============
-site30.example.com   10.1.10.130 443/80   10.1.20.130 and 10.1.20.131  80/8080/8081
-==================  ============ ======== ============================ ============
-
-- **Test Web Sites:**
-
-==================  ============ ======== ============================ ============
-Test Website         VIP         Ports    Servers                      Ports
-==================  ============ ======== ============================ ============
-site26.example.com   10.1.10.126 443/80   10.1.20.126 and 10.1.20.127  80/8080/8081
-site28.example.com   10.1.10.128 443/80   10.1.20.128 and 10.1.20.129  80/8080/8081
-site32.example.com   10.1.10.132 80       10.1.20.132                  80/8080/8081
-==================  ============ ======== ============================ ============
-
-- Port 80: hackazon application
-- Port 8080: web-dvwa application
-- Port 8081: f5-hello-world application
-- Port 8082: f5-demo-httpd application
-- Port 445: ASM Policy Validator
-
-.. warning:: After starting the blueprint in UDF, connect to the BIG-IP Cluster BOS-vBIGIP01.termmarc.com and BOS-vBIGIP02.termmarc.com, make sure the cluster shows **In Sync**.
+IPs from ``10.1.10.110`` to ``10.1.10.142`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.

@@ -51,27 +51,36 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # Delete apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
-  touch delete_default_apps.retry
-  touch delete_default_as3_app.retry
+  touch delete_default_bigiq_apps.retry
+  touch delete_default_as3_app_waf_site15_boston.yml.retry
+  touch delete_default_as3_app_waf_site40_seattle.yml.retry
 
   # run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
   echo -e "\n${RED}Delete BIG-IQ Applications${NC}"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  while [ -f delete_default_apps.retry ]
+  while [ -f delete_default_bigiq_apps.retry ]
   do
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     rm *.retry
-    ansible-playbook -i notahost, delete_default_apps.yml $DEBUG_arg
+    ansible-playbook -i notahost, delete_default_bigiq_apps.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
   done
 
   echo -e "\n${RED}Delete AS3 Applications${NC}"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  while [ -f delete_default_as3_app.retry ]
+  while [ -f delete_default_as3_app_waf_site15_boston.yml.retry ]
   do
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     rm *.retry
-    ansible-playbook -i notahost, delete_default_as3_app.yml $DEBUG_arg
+    ansible-playbook -i notahost, delete_default_as3_app_waf_site15_boston.yml $DEBUG_arg
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  done
+
+  while [ -f delete_default_as3_app_waf_site40_seattle.yml.retry ]
+  do
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    rm *.retry
+    ansible-playbook -i notahost, delete_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
   done
 fi

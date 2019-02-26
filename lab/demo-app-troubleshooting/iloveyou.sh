@@ -8,7 +8,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 if [ -z "$1" ];then
-        url="site40.example.com"
+        url="site36.example.com"
 else
         url=$1
 fi
@@ -19,7 +19,7 @@ else
         client=$2
 fi
 
-echo -e "\nHTTPS app only.\nUsage: ./iloveyou.sh site40.example.com 213.187.116.138"
+echo -e "\nHTTPS app only.\nUsage: ./iloveyou.sh site36.example.com 213.187.116.138"
 
 echo -e "\nTarget:${GREEN} $url ${NC}- Source:${RED} $client ${NC}\n"
 

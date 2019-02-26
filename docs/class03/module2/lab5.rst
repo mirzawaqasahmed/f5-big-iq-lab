@@ -5,9 +5,9 @@ Lab 2.5: Troubleshooting Security (single attack)
 
 ``# /home/f5/demo-app-troubleshooting/iloveyou.sh``
 
-2. Connect as **paula** on the BIG-IQ and select ``site40.example.com``
+2. Connect as **paula** on the BIG-IQ and select ``site36.example.com``
 
-3. Open application ``site40.example.com`` and display the *All Transactions* under the Security Analytics.
+3. Open application ``sit36.example.com`` and display the *All Transactions* under the Security Analytics.
 
 Expand the right-edge of the analytics pane to get the Client IPs, Countries, Attack Type and Violations filters.
 

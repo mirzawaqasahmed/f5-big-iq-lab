@@ -8,12 +8,12 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 if [ -z "$1" ];then
-        url="site40.example.com"
+        url="site42.example.com"
 else
         url=$1
 fi
 
-echo -e "\nHTTPS app only.\nUsage: $0 site40.example.com"
+echo -e "\nHTTPS app only.\nUsage: $0 site42.example.com"
 
 echo -e "\nTarget:${GREEN} $url ${NC}\n"
 

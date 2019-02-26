@@ -4,13 +4,13 @@ Connect as **paula**.
 
 The goal of this lab is to show how BIG-IQ can help to troubleshoot an 503 HTTP error.
 
-1. Select application ``site40.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
+1. Select application ``site42.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
 
 The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
 
-.. note:: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list. Enhanced Analytics might be already turn on for site40.example.com
+.. note:: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list. Enhanced Analytics might be already turn on for site42.example.com
 
-2. Let's generate additonnal traffic to the application ``site40.example.com``, connect on the *Ubuntu Lamp Server* and launch the following command:
+2. Let's generate additonnal traffic to the application ``site42.example.com``, connect on the *Ubuntu Lamp Server* and launch the following command:
 
 ``# docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')``
 
@@ -18,7 +18,7 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 ``# /home/f5/demo-app-troubleshooting/503.sh``
 
-3. Back to BIG-IQ Application dashboard, open application ``site40.example.com`` and display the *Transaction* Analytics.
+3. Back to BIG-IQ Application dashboard, open application ``site42.example.com`` and display the *Transaction* Analytics.
 
 - Click Expand the right-edge of the analytics panel to get the filters.
 - Move the *URLs* and the *Response Codes* tables next to each other and expand them both (the tables can be moved up/down).

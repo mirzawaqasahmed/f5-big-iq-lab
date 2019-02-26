@@ -13,10 +13,10 @@ In this lab, we will configure both the Device DoS profile along with creating a
 
 3. Manging Device DoS Profiles
 
-As a pre-requisite for Lab 3, the TMOS version of all BIG-IPs must be the same. To facilitate this, the TLV BIG-IP must be upgraded to the same version as the BOS BIG-IP cluster. 
+As a pre-requisite for Lab 3, the TMOS version of all BIG-IPs must be the same. To facilitate this, the SJC BIG-IP must be upgraded to the same version as the BOS BIG-IP cluster. 
 
 1. Under *Devices* > *Software Management* > *Software Installations* create a New Managed Device Install task
-2. Create a task name, the 13.1.1 TMOS image, and select the TLV BIG-IP as shown in the image below to install to a new volume 
+2. Create a task name, the 13.1.1 TMOS image, and select the SJC BIG-IP as shown in the image below to install to a new volume 
 
 .. image:: ../pictures/module2/software-upgrade.png
   :align: center

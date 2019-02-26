@@ -12,7 +12,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 Execute the playbook::
 
     # cd /home/f5/f5-ansible-demo
-    # ansible-playbook -i notahost, delete_http_app.yaml -vvvv
+    # ansible-playbook -i notahost, delete_http_bigiq_app.yaml -vvvv
 
 Connect as **olivia** (select Auth Provider local) and check on BIG-IQ the application has been correctly deleted.
 

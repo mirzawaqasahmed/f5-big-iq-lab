@@ -5,7 +5,7 @@ Lab 3.1: Create Application via API with Ansible (6.0.x only)
 
 In this lab, we are going to deploy a basic HTTP application using Ansible.
 
-The following parameters are filled in the playbook ``create_http_app.yaml``.
+The following parameters are filled in the playbook ``create_http_bigiq_app.yaml``.
 
 - BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
 - Collect HTTP Statistics ``yes``
@@ -20,7 +20,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 Execute the playbook::
 
     # cd /home/f5/f5-ansible-demo
-    # ansible-playbook -i notahost, create_http_app.yaml -vvvv
+    # ansible-playbook -i notahost, create_http_bigiq_app.yaml -vvvv
 
 .. warning :: If the ansible playbook run successfully but the app doesn't show up, please, review david's role.
 
