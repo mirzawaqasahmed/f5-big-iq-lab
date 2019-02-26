@@ -1,0 +1,61 @@
+---
+- name: BIG-IQ and AS3 Lab - Create custom HTTP AS3 Template on BIG-IQ
+  hosts: all
+  connection: local
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login
+      uri:
+        url: https://10.1.1.4/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: Create custom HTTP AS3 Template on BIG-IQ - POST /mgmt/cm/global/appsvcs-templates
+      uri:
+        url: https://10.1.1.4/mgmt/cm/global/appsvcs-templates
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          description: 'Custom HTTPS AS3 Template with Analytics on BIG-IQ'
+          name: "Default-as3-f5-HTTPS-lb-template"
+          schemaOverlay:
+            type: object
+            properties:
+              class:
+                type: string
+                const: Application
+              schemaOverlay: {}
+              label: {}
+              remark: {}
+              template: {}
+              enable: {}
+              constants: {}
+            required:
+            - class
+            definitions:
+              Service_HTTPS:
+                type: object
+                properties:
+                  virtualPort:
+                    type: integer
+                    const: 443
+                    default: 443
+                additionalProperties: false
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json

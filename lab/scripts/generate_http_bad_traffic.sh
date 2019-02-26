@@ -36,12 +36,12 @@ sitefqdn[21]="site33.example.com"
 sitefqdn[22]="site34.example.com"
 sitefqdn[23]="site35.example.com"
 sitefqdn[24]="site36.example.com"
-#sitefqdn[25]="site37.example.com"
-#sitefqdn[26]="site38.example.com"
-#sitefqdn[27]="site39.example.com"
-#sitefqdn[28]="site40.example.com"
-#sitefqdn[29]="site41.example.com"
-#sitefqdn[30]="site42.example.com"
+sitefqdn[25]="site37.example.com"
+sitefqdn[26]="site38.example.com"
+sitefqdn[27]="site39.example.com"
+sitefqdn[28]="site40.example.com"
+sitefqdn[29]="site41.example.com"
+sitefqdn[30]="site42.example.com"
 
 # add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
 if [ -f $home/ssg-apps ]; then
