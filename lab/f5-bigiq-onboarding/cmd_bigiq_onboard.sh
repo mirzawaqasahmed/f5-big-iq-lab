@@ -52,7 +52,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "$ip"
-  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no root@$ip > /dev/null 2>&1
+  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip > /dev/null 2>&1
 done
 
 ################################################## ONLY FOR PME LAB START ########################################################
@@ -227,15 +227,17 @@ sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}Create AS3 Applications${NC}"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # Create apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
+  echo -e "\n${GREEN}Create AS3 Applications${NC}"
+  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
   #ansible-playbook -i notahost, create_default_bigiq_apps.yml $DEBUG_arg
   #sleep 15
   ansible-playbook -i notahost, create_default_as3_app_waf_site15_boston.yml $DEBUG_arg
   sleep 15
   ansible-playbook -i notahost, create_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
+  sleep 15
+  ansible-playbook -i notahost, create_default_as3_app_https_site38_sanjose.yml $DEBUG_arg
 fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

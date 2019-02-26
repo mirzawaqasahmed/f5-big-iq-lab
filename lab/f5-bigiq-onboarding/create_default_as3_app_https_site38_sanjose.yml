@@ -1,10 +1,10 @@
 ---
-- name: Delete Example AS3 Applications example_site15http
+- name: BIG-IQ and AS3 Lab - Example Demo App - HTTP Application Service
   hosts: all
   connection: local
-    
+
   tasks: 
-    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login
       uri:
         url: https://10.1.1.4/mgmt/shared/authn/login
         method: POST
@@ -17,7 +17,7 @@
         validate_certs: false
       register: auth
 
-    - name: Delete site15 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -32,13 +32,42 @@
           declaration:
             class: ADC
             schemaVersion: 3.7.0
-            id: example-declaration-01
-            label: ecommerce
-            remark: Delete Task1 AS3 Applications
+            id: finance-declaration-01
+            label: finance
+            remark: finance Application Service
             target:
-              hostname: BOS-vBIGIP01.termmarc.com
-            ecommerce:
+              hostname: SJC-vBIGIP01.termmarc.com
+            finance:
               class: Tenant
+              site38httpsBigip121:
+                class: Application
+                template: https
+                serviceMain:
+                  class: Service_HTTPS
+                  virtualAddresses:
+                  - "10.1.10.138"
+                  pool: web_pool
+                  serverTLS: webtls
+                web_pool:
+                  class: Pool
+                  monitors:
+                  - http
+                  members:
+                  - servicePort: 80
+                    serverAddresses:
+                    - "10.1.20.138"
+                    - "10.1.20.139"
+                    shareNodes: true
+                webtls:
+                  class: TLS_Server
+                  certificates:
+                  - certificate: webcert
+                webcert:
+                  class: Certificate
+                  certificate:
+                    bigip: "/Common/default.crt"
+                  privateKey:
+                    bigip: "/Common/default.key"
         body_format: json
         timeout: 60
         status_code: 200, 202
@@ -72,10 +101,12 @@
         headers:
           Content-Type: application/json
           X-F5-Auth-Token: "{{auth.json.token.token}}"
-        status_code: 200, 202, 207
+        status_code: 200, 202
         validate_certs: false
       register: json_response_task
       until: "json_response_task.json[0].results != 'pending'"
-      retries: 90
-      delay: 10
-      ignore_errors: yes
+      retries: 20
+      delay: 30
+
+    - debug:
+        var: json_response_task.json

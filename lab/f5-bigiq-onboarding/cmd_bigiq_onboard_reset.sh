@@ -43,7 +43,7 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 if [[  $env == "udf" ]]; then
   for ip in "${ips[@]}"; do
     echo "$ip"
-    sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no root@$ip > /dev/null 2>&1
+    sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip > /dev/null 2>&1
   done
 fi
 
@@ -54,6 +54,7 @@ if [[  $env == "udf" ]]; then
   touch delete_default_bigiq_apps.retry
   touch delete_default_as3_app_waf_site15_boston.yml.retry
   touch delete_default_as3_app_waf_site40_seattle.yml.retry
+  touch delete_default_as3_app_https_site38_sanjose.yml.retry
 
   # run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
   echo -e "\n${RED}Delete BIG-IQ Applications${NC}"
@@ -81,6 +82,14 @@ if [[  $env == "udf" ]]; then
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     rm *.retry
     ansible-playbook -i notahost, delete_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  done
+
+  while [ -f delete_default_as3_app_https_site38_sanjose.yml.retry ]
+  do
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    rm *.retry
+    ansible-playbook -i notahost, delete_default_as3_app_https_site38_sanjose.yml $DEBUG_arg
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
   done
 fi

@@ -43,7 +43,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "$ip"
-  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no root@$ip > /dev/null 2>&1
+  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip > /dev/null 2>&1
 done
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

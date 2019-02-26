@@ -52,26 +52,3 @@
           netmask: 255.255.255.255
           port: 80
       delegate_to: localhost
-
-    - name: site38.example.f5.com
-      bigiq_application_http:
-        provider:
-          server: 10.1.1.4
-          user: admin
-          password: purple123
-          validate_certs: no
-        name: "site38.example.f5.com"
-        wait: no
-        description: Load balance HTTP BIG-IP 12.1
-        service_environment: "SJC-vBIGIP01.termmarc.com"
-        add_analytics: no
-        servers:
-          - address: 10.1.20.138
-            port: 80
-          - address: 10.1.20.139
-            port: 80
-        inbound_virtual:
-          address: 10.1.10.138
-          netmask: 255.255.255.255
-          port: 80
-      delegate_to: localhost
