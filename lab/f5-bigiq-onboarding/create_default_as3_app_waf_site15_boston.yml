@@ -70,6 +70,8 @@
                   class: HTTP_Profile
                   label: http_site15
                   remark: http_site15
+                  trustXFF: true
+                  xForwardedFor: false
                 web_pool:
                   class: Pool
                   monitors:
