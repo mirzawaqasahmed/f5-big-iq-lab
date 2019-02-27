@@ -57,7 +57,7 @@
                   virtualAddresses:
                   - "10.1.10.115"
                   profileHTTP:
-                  - http_site15
+                    use: "http_site15"
                   pool: web_pool
                   profileAnalytics:
                     use: statsProfile

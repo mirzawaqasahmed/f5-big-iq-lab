@@ -57,7 +57,7 @@
                   virtualAddresses:
                   - "10.1.10.140"
                   profileHTTP:
-                  - http_site40
+                    use: http_mail
                   pool: web_pool
                   profileAnalytics:
                     use: statsProfile
@@ -66,7 +66,7 @@
                     bigip: "/Common/asm-lab-2019"
                   securityLogProfiles:
                   - bigip: "/Common/asm-lab-2019"
-                http_site40:
+                http_mail:
                   class: HTTP_Profile
                   label: http_site15
                   remark: http_site15
