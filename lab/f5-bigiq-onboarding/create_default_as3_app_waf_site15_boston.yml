@@ -63,8 +63,9 @@
                     use: statsProfile
                   serverTLS: webtls
                   policyWAF:
-                    bigip: "/Common/asm-lab-2019"
+                    bigip: "/Common/asm-lab2-2019"
                   securityLogProfiles:
+                  - bigip: "/Common/templates-default"
                   - bigip: "/Common/asm-lab-2019"
                 http_site15:
                   class: HTTP_Profile
