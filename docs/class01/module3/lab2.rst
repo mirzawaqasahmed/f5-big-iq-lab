@@ -15,5 +15,3 @@ Execute the playbook::
     # ansible-playbook -i notahost, delete_http_bigiq_app.yaml -vvvv
 
 Connect as **olivia** (select Auth Provider local) and check on BIG-IQ the application has been correctly deleted.
-
-.. note :: If you have time, you can try to deploy another application type using other Ansible modules (e.g. bigiq_application_fasthttp, bigiq_application_fastl4_tcp, bigiq_application_https_offload, bigiq_application_https_waf)

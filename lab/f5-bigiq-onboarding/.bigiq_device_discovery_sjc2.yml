@@ -19,6 +19,16 @@
         device_username: "{{ bigip1user }}"
         device_password: "{{ bigip1pass }}"
         conflict_policy: "{{ bigip1conflict }}"
+        device_conflict_policy: "{{ bigip1device_conflict }}"
+        versioned_conflict_policy: "{{ bigip1versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip1device_statistics_enable }}"
+          interval: "{{ bigip1device_statistics_interval }}"
+          zone: "{{ bigip1device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip1device_statistics_module1 }}"
+            - "{{ bigip1device_statistics_module2 }}"
+            - "{{ bigip1device_statistics_module3 }}"
         modules: "{{ bigip1modules }}"
       register: result
       delegate_to: localhost
@@ -40,6 +50,15 @@
         device_username: "{{ bigip2user }}"
         device_password: "{{ bigip2pass }}"
         conflict_policy: "{{ bigip2conflict }}"
+        device_conflict_policy: "{{ bigip2device_conflict }}"
+        versioned_conflict_policy: "{{ bigip2versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip2device_statistics_enable }}"
+          interval: "{{ big2p1device_statistics_interval }}"
+          zone: "{{ bigip2device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip2device_statistics_module1 }}"
+            - "{{ bigip2device_statistics_module2 }}"
         modules: "{{ bigip2modules }}"
       register: result
       delegate_to: localhost

@@ -19,6 +19,16 @@
         device_username: "{{ bigip1user }}"
         device_password: "{{ bigip1pass }}"
         conflict_policy: "{{ bigip1conflict }}"
+        device_conflict_policy: "{{ bigip1device_conflict }}"
+        versioned_conflict_policy: "{{ bigip1versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip1device_statistics_enable }}"
+          interval: "{{ bigip1device_statistics_interval }}"
+          zone: "{{ bigip1device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip1device_statistics_module1 }}"
+            - "{{ bigip1device_statistics_module2 }}"
+            - "{{ bigip1device_statistics_module3 }}"
         ha_name: "{{ bigip1cluster }}"
         modules: "{{ bigip1modules }}"
       register: result

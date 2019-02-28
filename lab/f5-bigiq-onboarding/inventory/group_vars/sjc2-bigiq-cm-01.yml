@@ -20,8 +20,15 @@ bigiq_onboard_license_key: S0747-355703-915-8967225-4253130
 bigip1: 10.192.75.183
 bigip1user: admin
 bigip1pass: admin
-#bigip1conflict: keep_version
 bigip1conflict: use_bigip
+bigip1device_conflict: use_bigip
+bigip1versioned_conflict: keep_version
+bigip1device_statistics_enable: yes
+bigip1device_statistics_interval: 60
+bigip1device_statistics_zone: default
+bigip1device_statistics_module1: device
+bigip1device_statistics_module2: ltm
+bigip1device_statistics_module3: dns
 bigip1modules:
   - ltm
   - asm
@@ -31,8 +38,14 @@ bigip1modules:
 bigip2: 10.192.75.184
 bigip2user: admin
 bigip2pass: "@dmin1356"
-#bigip2conflict: keep_version
 bigip2conflict: use_bigip
+bigip2device_conflict: use_bigip
+bigip2versioned_conflict: keep_version
+bigip2device_statistics_enable: yes
+bigip2device_statistics_interval: 60
+bigip2device_statistics_zone: default
+bigip2device_statistics_module1: device
+bigip2device_statistics_module2: ltm
 bigip2modules:
   - ltm
   - asm
