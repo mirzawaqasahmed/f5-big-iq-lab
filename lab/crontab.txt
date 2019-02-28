@@ -20,7 +20,7 @@
 @reboot perl -le 'sleep rand 1850' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/generate_dns_ddos_traffic_real.log
 
 ## AFM data
-*/10 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
+#*/10 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
 
 ## DNS Traffic
 */3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null 2>&1
