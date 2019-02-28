@@ -378,8 +378,7 @@ rm /var/crash/*
 
 echo -e "\nSystem customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-echo '10.1.10.70 site70.example.com
-10.1.10.110 site10.example.com
+echo '10.1.10.110 site10.example.com
 10.1.10.111 site11.example.com
 10.1.10.112 site12.example.com
 10.1.10.113 site13.example.com

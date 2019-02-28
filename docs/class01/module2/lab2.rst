@@ -20,9 +20,9 @@ Edit the Policy ``f5-asm-policy1``, notice the leaning mode is set to ``manual``
 
 |
 
-.. note:: Set ``Trust XFF Header`` to ``Yes`` if you want the client IP/Country visible in the Security Analytics
+.. note:: ``Trust XFF Header`` is set to ``Yes`` if you want the client IP/Country visible in the Security Analytics
 
-In addition, go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode, click Save & Close.
+Go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode, click Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_4b.png
   :align: center
@@ -67,7 +67,7 @@ Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
 
 |
 
-2. Then select the ASM policy ``test-asm-policy_1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
+2. Then select the ASM policy ``f5-asm-policy1``, the AFM policy ``f5-afm-policy1`` and the Logging Profile ``templates-default`` in the SECURITY POLICIES section on both Virtual Servers (Standalone Device).
 
 .. warning:: The virtual servers within the same application have to use the same ASM policies. Therefore, the ASM policy attached to the 1st virtual server will apply to ALL the virtual servers automatically. 
 
