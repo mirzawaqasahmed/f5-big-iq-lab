@@ -24,11 +24,11 @@ List of Virtual Servers and Applications Servers where various type of traffic i
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Virtual IP addresses where the traffic generator sends HTTP bad traffic                   | ``10.1.10.110`` to ``10.1.10.136``                                                       |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Virtual IP addresse(es) where the traffic generator sends access traffic (class 9)         | ``10.1.10.222``                                                                          |
+| Virtual IP addresse(es) where the traffic generator sends access traffic (class 9)        | ``10.1.10.222``                                                                          |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Virtual IP addresses (listeners) where the traffic generator sends DNS traffic (class 10) | ``10.1.10.203``, ``10.1.10.204``                                                         |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Virtual IP addresse(es) where the traffic generator sends DDOS attack (class 11)           | ``10.1.10.136``                                                                          |
+| Virtual IP addresse(es) where the traffic generator sends DDOS attack (class 11)          | ``10.1.10.136``                                                                          |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Servers Applications (running in docker containers)                                       | ``10.1.20.110`` to ``10.1.20.145``                                                       |
 |                                                                                           |                                                                                          |
