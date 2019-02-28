@@ -54,7 +54,7 @@
         versioned_conflict_policy: "{{ bigip2versioned_conflict }}"
         statistics:
           enable: "{{ bigip2device_statistics_enable }}"
-          interval: "{{ big2p1device_statistics_interval }}"
+          interval: "{{ bigip2device_statistics_interval }}"
           zone: "{{ bigip2device_statistics_zone }}"
           stat_modules:
             - "{{ bigip2device_statistics_module1 }}"

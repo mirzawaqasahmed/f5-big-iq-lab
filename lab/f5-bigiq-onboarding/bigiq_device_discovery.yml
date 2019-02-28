@@ -30,6 +30,9 @@
             - "{{ bigip1device_statistics_module2 }}"
             - "{{ bigip1device_statistics_module3 }}"
         ha_name: "{{ bigip1cluster }}"
+        access_conflict_policy: "{{ bigip1access_conflict_policy }}"
+        access_group_first_device: "{{  bigip1access_group_first_device }}"
+        access_group_name: "{{ bigip1access_group_name }}"
         modules: "{{ bigip1modules }}"
       register: result
       delegate_to: localhost
@@ -45,7 +48,20 @@
         device_username: "{{ bigip2user }}"
         device_password: "{{ bigip2pass }}"
         conflict_policy: "{{ bigip2conflict }}"
+        device_conflict_policy: "{{ bigip2device_conflict }}"
+        versioned_conflict_policy: "{{ bigip2versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip2device_statistics_enable }}"
+          interval: "{{ bigip2device_statistics_interval }}"
+          zone: "{{ bigip2device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip2device_statistics_module1 }}"
+            - "{{ bigip2device_statistics_module2 }}"
+            - "{{ bigip2device_statistics_module3 }}"
         ha_name: "{{ bigip2cluster }}"
+        access_conflict_policy: "{{ bigip2access_conflict_policy }}"
+        access_group_first_device: "{{  bigip2access_group_first_device }}"
+        access_group_name: "{{ bigip2access_group_name }}"
         modules: "{{ bigip2modules }}"
       register: result
       delegate_to: localhost
@@ -61,7 +77,16 @@
         device_username: "{{ bigip3user }}"
         device_password: "{{ bigip3pass }}"
         conflict_policy: "{{ bigip3conflict }}"
-        ha_name: "{{ bigip3cluster }}"
+        device_conflict_policy: "{{ bigip3device_conflict }}"
+        versioned_conflict_policy: "{{ bigip3versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip3device_statistics_enable }}"
+          interval: "{{ bigip3device_statistics_interval }}"
+          zone: "{{ bigip3device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip3device_statistics_module1 }}"
+            - "{{ bigip3device_statistics_module2 }}"
+            - "{{ bigip3device_statistics_module3 }}"
         modules: "{{ bigip3modules }}"
       register: result
       delegate_to: localhost
@@ -77,7 +102,15 @@
         device_username: "{{ bigip4user }}"
         device_password: "{{ bigip4pass }}"
         conflict_policy: "{{ bigip4conflict }}"
-        ha_name: "{{ bigip4cluster }}"
+        device_conflict_policy: "{{ bigip4device_conflict }}"
+        versioned_conflict_policy: "{{ bigip4versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip4device_statistics_enable }}"
+          interval: "{{ bigip4device_statistics_interval }}"
+          zone: "{{ bigip4device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip4device_statistics_module1 }}"
+            - "{{ bigip4device_statistics_module2 }}"
         modules: "{{ bigip4modules }}"
       register: result
       delegate_to: localhost
