@@ -152,7 +152,9 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            }
        }
 
-.. note:: You can use any JSON formatter/Validator available. A specific AS3 plugin to validate the JSON against AS3 schema will be available soon.
+.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+
+.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
 3. Make sure the Declaration is valid!
 
@@ -224,7 +226,9 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
         ]
     }
 
-.. note:: You can use any JSON formatter/Validator available. A specific AS3 plugin to validate the JSON against AS3 schema will be available soon.
+.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+
+.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
 3. Make sure the Declaration is valid!
 
