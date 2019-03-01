@@ -17,9 +17,9 @@ This automation scenario is composed of 4 parts:
 
 * Add BIG-IPs to the BIG-IQ
 
-    - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 5.4, 6.0.x)**.
-
     - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 6.1 and above)**.
+    
+    - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 5.4, 6.0.x)**.
 
 * Create Application Services
 
