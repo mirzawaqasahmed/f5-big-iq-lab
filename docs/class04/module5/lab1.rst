@@ -52,19 +52,22 @@ This automation scenario is composed of 4 parts:
     ::
 
         # cd /home/f5/f5-bigiq-onboarding
-        # ./cmd_bigiq_onboard_reset.sh pause
+        # ./cmd_bigiq_onboard_reset.sh nopause
 
     The script will do in this order:
     
     1. Delete existing applications (BIG-IQ and AS3)
     2. Execute the ``clear-rest-storage -d`` command on both BIG-IQ CM and DCD
+    3. Reboot
 
-4. Execute the script
+4. Wait both BIG-IQ CM and DCD come back up.
+
+5. Execute the script
 
     ::
 
         # cd /home/f5/f5-bigiq-onboarding
-        # ./cmd_bigiq_onboard.sh pause
+        # ./cmd_bigiq_onboard.sh nopause
 
 | 
 
