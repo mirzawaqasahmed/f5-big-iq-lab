@@ -37,6 +37,9 @@ if [[ -z $1 ]]; then
     exit 1;
 fi
 
+# SECONDS used for total execution time (see end of the script)
+SECONDS=0
+
 echo -e "\nEnvironement:${RED} $env ${NC}"
 
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
@@ -49,52 +52,17 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-# Delete apps only for UDF/Ravello BP
-if [[  $env == "udf" ]]; then
-  touch delete_default_bigiq_apps.retry
-  touch delete_default_as3_app_waf_site15_boston.yml.retry
-  touch delete_default_as3_app_waf_site40_seattle.yml.retry
-  touch delete_default_as3_app_https_site38_sanjose.yml.retry
-
-  # run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
-  echo -e "\n${RED}Delete BIG-IQ Applications${NC}"
-  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  while [ -f delete_default_bigiq_apps.retry ]
-  do
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-    rm *.retry
-    ansible-playbook -i notahost, delete_default_bigiq_apps.yml $DEBUG_arg
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  done
-
-  echo -e "\n${RED}Delete AS3 Applications${NC}"
-  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  while [ -f delete_default_as3_app_waf_site15_boston.yml.retry ]
-  do
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-    rm *.retry
-    ansible-playbook -i notahost, delete_default_as3_app_waf_site15_boston.yml $DEBUG_arg
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  done
-
-  while [ -f delete_default_as3_app_waf_site40_seattle.yml.retry ]
-  do
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-    rm *.retry
-    ansible-playbook -i notahost, delete_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  done
-
-  while [ -f delete_default_as3_app_https_site38_sanjose.yml.retry ]
-  do
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-    rm *.retry
-    ansible-playbook -i notahost, delete_default_as3_app_https_site38_sanjose.yml $DEBUG_arg
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  done
-fi
-
-echo -e "\n${RED} /!\ CHECK IF THE APPLICATIONS ARE CORRECTLY DELETED IN BIG-IQ. MAY NEED TO RETRY. /!\ ${NC}"
+#touch delete_default_bigiq_apps.retry
+# run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
+#echo -e "\n${RED}Delete BIG-IQ Applications${NC}"
+#[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+#while [ -f delete_default_bigiq_apps.retry ]
+#do
+#  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+#  rm *.retry
+#  ansible-playbook -i notahost, delete_default_bigiq_apps.yml $DEBUG_arg
+#  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+#done
 
 echo -e "\n${RED}=>>> clear-rest-storage -d${NC} on both BIG-IQ CM and DCD"
 
@@ -104,30 +72,6 @@ for ip in "${ips[@]}"; do
   echo "clear-rest-storag"
   ssh -o StrictHostKeyChecking=no root@$ip clear-rest-storage -d
 done
-
-### CUSTOMIZATION - UDF ONLY
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-if [[ $env == "udf" ]]; then
-  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  echo -e "\n${RED}Waiting 5 min ... ${NC}"
-  sleep 300
-  # copy custom scripts udf
-  mkdir udf
-  sshpass -p purple123 scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/.udf* udf
-  sshpass -p purple123 scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/startup udf
-  ls -lrta udf
-  for ip in "${ips[@]}"; do
-    echo -e "\n---- ${RED} $ip ${NC} ----"
-    echo "copy custom scripts udf"
-    sshpass -p default scp -rp -o StrictHostKeyChecking=no udf/.udf* udf/startup root@$ip:/config
-  done
-  for ip in "${ips[@]}"; do
-    echo -e "\n---- ${RED} $ip ${NC} ----"
-    echo "reboot"
-    ssh -o StrictHostKeyChecking=no root@$ip reboot
-  done
-fi
 
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
 if [[  $env != "udf" ]]; then
@@ -156,3 +100,6 @@ if [[  $env != "udf" ]]; then
 fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+# total script execution time
+echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"
