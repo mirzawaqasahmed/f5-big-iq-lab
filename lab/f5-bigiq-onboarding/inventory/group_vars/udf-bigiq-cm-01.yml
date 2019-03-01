@@ -78,7 +78,7 @@ bigip3device_statistics_module3: dns
 bigip3modules:
   - ltm
   - asm
-  - fps
+  - websafe
   - dns
   - afm
   - security_shared

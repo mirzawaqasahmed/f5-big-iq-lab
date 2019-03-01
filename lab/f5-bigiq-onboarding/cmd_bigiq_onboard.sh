@@ -209,9 +209,6 @@ echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 #EOF
 
 ## Using Ansible Role (to use for BIG-IQ 6.1 and above)
-## clone devel branch until module published to Ansible version 2.8 (using ansible.cfg)
-rm -rf f5-ansible > /dev/null 2>&1
-git clone https://github.com/F5Networks/f5-ansible.git --branch devel
 ansible-galaxy install f5devcentral.f5ansible,master --force
 if [[  $env == "udf" ]]; then
   ansible-playbook -i notahost, bigiq_device_discovery.yml $DEBUG_arg
