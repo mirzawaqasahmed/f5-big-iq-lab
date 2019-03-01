@@ -71,7 +71,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
    #. Do not forget to tear down your AWS & Azure SSG if any.
    #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
-.. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev license and might need to be re-activated.
+.. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev licenses and might need to be re-activated.
 
 ------------
 

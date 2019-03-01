@@ -1,5 +1,8 @@
 Lab 2.3: Create Application
 ---------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+
 Connect as **paula** to create a new application, and click on *Create*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
 
 Type in a Name for the application you are creating.
@@ -16,7 +19,7 @@ Type  the domain of your application (then the ASM policy will always be transpa
 
 For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
 
-- BIG-IP: Select ``SEA-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
+- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
   :align: center

@@ -1,11 +1,14 @@
 Lab 2.4: Security workflows
 ---------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+
 Connect as **larry**
 
 1. Larry check the Firewall policy.
 
 Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and select
-*vs_site18.example.com_https* SEA-vBIGIP01.termmarc.com
+*vs_site18.example.com_https* BOS-vBIGIP01.termmarc.com
 
 .. image:: ../pictures/module2/img_module2_lab4_1.png
   :align: center
@@ -29,7 +32,7 @@ Click on Suggestions, then **Accept** the Learning.
 
 3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
-Under Deployments, click on **Create**. Name your Deployment, select SEA-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
+Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
 
 .. image:: ../pictures/module2/img_module2_lab4_3b.png
   :align: center

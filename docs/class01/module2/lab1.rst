@@ -29,5 +29,3 @@ Look through the different default templates.
     For these two templates, ports 443 and 80 (for HTTP redirect) are hard-coded in an iRule, which enable this functionality.
 
 .. note:: Check Access Built-in templates in class 9 available from 6.0.1
-
-.. warning:: There will be no default AFM or DoS policies delivered in BIG-IQ 6.0. **Larry** will need to manually define them and link them to the custom templates.

@@ -1,7 +1,9 @@
 Lab 3.2: Delete Application via API with Ansible (6.0.x only)
 -------------------------------------------------------------
 
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
+
+.. _here: ../module5/module5.html
 
 In this lab, we are going to delete an application using Ansible.
 

@@ -257,6 +257,9 @@ Task 3a - HTTPS Application with Web Application Firewall
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template, a WAF policy and a security Log Profile.
 
+.. note:: The ASM policy & Log Profiles need to be deployed first in BIG-IP if it exists only on BIG-IQ.
+             Attached the policy to the ``inactive`` virtual server under the Web Application Security Configuration menu, then deploy it.
+
 Update the WAF policy section below with the policy available on BIG-IP::
 
  "policyWAF": {

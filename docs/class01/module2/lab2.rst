@@ -1,5 +1,8 @@
 Lab 2.2: Create custom security policies & Application Service Template
 -----------------------------------------------------------------------
+
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+
 Connect as **larry**
 
 1. Create the custom ASM policy, go to *Configuration* > *SECURITY* > *Web Application Security* > *policies*.
@@ -22,15 +25,13 @@ Edit the Policy ``f5-asm-policy1``, notice the leaning mode is set to ``manual``
 
 .. note:: ``Trust XFF Header`` is set to ``Yes`` if you want the client IP/Country visible in the Security Analytics
 
-Go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central`` and switch to ``Manual`` Learning Mode, click Save & Close.
+Go to *POLICY BUILDING* > *Settings* and set *Policy Building Mode* to ``Central``, click Save & Close.
 
 .. image:: ../pictures/module2/img_module2_lab2_4b.png
   :align: center
   :scale: 50%
 
 .. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy. However, if you want to use learning/blocking mode, you will need a dedicated app template per application.
-
-.. warning:: Ignore the unauthorized error when saving the policy.
 
 2. Create the AFM Policy, go to *Configuration* > *SECURITY* > *Network Security* > *Firewall Policies*, click Create.
 Then enter the name of your policy: ``f5-afm-policy1``. Make sure the box ``Make available in Application Templates`` is checked. Click Save.
@@ -54,12 +55,10 @@ Click Save & Close.
 
 |
 
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
-
 Connect as **david** or **marco**
 
 1. Create a Clone of the *Default-f5-HTTPS-WAF-lb-template* policy, go to *Applications* > *SERVICE CATALOG*, and click on *Clone*.
-Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``
+Enter the name of your cloned template: ``f5-HTTPS-WAF-lb-template-custom1``.
 
 .. image:: ../pictures/module2/img_module2_lab2_7.png
   :align: center
@@ -101,7 +100,3 @@ and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* r
 |
 
 Click on *Save & Close*
-
-.. note:: A DoS Profile could also be assign to the template but we are not using it for this lab.
-
-.. warning:: Application DOS is only supported on Standalone device. The Network DOS is supported on Standalone and Tier 1 device (in a context of SSG)

@@ -1,7 +1,10 @@
 Module 3: BIG-IQ Application Deployment via API (6.0.x only)
 ============================================================
 
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
+
+.. _here: ../module5/module5.html
+
 
 - Create and Delete Application from Default-f5-HTTP-lb-template: **bigiq_application_http**
 - Create and Delete Application from Default-f5-HTTPS-offload-lb-template: **bigiq_application_https_offload**
