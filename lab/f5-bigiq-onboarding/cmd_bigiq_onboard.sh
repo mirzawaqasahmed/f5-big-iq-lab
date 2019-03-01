@@ -214,7 +214,7 @@ rm -rf f5-ansible > /dev/null 2>&1
 git clone https://github.com/F5Networks/f5-ansible.git --branch devel
 ansible-galaxy install f5devcentral.f5ansible,master --force
 if [[  $env == "udf" ]]; then
-  ansible-playbook -i notahost, bigiq_device_discovery $DEBUG_arg
+  ansible-playbook -i notahost, bigiq_device_discovery.yml $DEBUG_arg
 else
   ansible-playbook -i notahost, .bigiq_device_discovery_$env.yml $DEBUG_arg
 fi
