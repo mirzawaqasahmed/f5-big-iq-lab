@@ -83,13 +83,6 @@ else
     echo "Fixing permissions..."
     chmod +x *py *sh scripts/asm-brute-force/*sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py AZURE*/*sh AZURE*/*py ALIBABA*/*sh GCP*/*sh vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
-    echo "Installing new crontab"
-    if [ "$(whoami)" == "$user" ]; then
-        crontab < crontab.txt
-    else
-        # as root
-        su - $user -c "crontab < crontab.txt"
-    fi
 
     # Cleanup Clouds credentials
     rm -f /home/$user/.aws/*
@@ -99,11 +92,21 @@ else
         # for SCJ - DCD lab IP
         sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
         sed -i 's/10.1.10.4/10.192.75.180/g' /home/$user/scripts/*sh
+        sed -i '13,$d' /home/$user/crontab.txt
     fi
     if [[  $env == "sjc2" ]]; then
         # for SCJ - DCD lab IP
         sed -i 's/10.1.10.6/10.192.75.186/g' /home/$user/scripts/*sh
         sed -i 's/10.1.10.4/10.192.75.185/g' /home/$user/scripts/*sh
+        sed -i '13,$d' /home/$user/crontab.txt
+    fi
+
+    echo "Installing new crontab"
+    if [ "$(whoami)" == "$user" ]; then
+        crontab < crontab.txt
+    else
+        # as root
+        su - $user -c "crontab < crontab.txt"
     fi
  
     touch udf_auto_update_git
