@@ -15,8 +15,6 @@ In this class, we will review the various analytics available for the applicatio
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check ``crontab`` config for more details).
 
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Descriptions                                                                              | IP addresses/ports                                                                       |
-+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Virtual IP addresses where the traffic generator sends HTTP clean traffic                 | ``10.1.10.110`` to ``10.1.10.142``                                                       |
 |                                                                                           |                                                                                          |
 |                                                                                           | Except ``10.1.10.117``, ``10.1.10.119`` and ``10.1.10.121`` (used for access in class 9) |
