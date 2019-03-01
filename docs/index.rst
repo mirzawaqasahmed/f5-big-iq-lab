@@ -1,5 +1,5 @@
-F5 BIG-IQ & Cloud Edition Lab
-=============================
+F5 BIG-IQ v6.1 and BIG-IP Cloud Edition
+=======================================
 
 Welcome
 -------

@@ -73,6 +73,20 @@ for ip in "${ips[@]}"; do
   ssh -o StrictHostKeyChecking=no root@$ip clear-rest-storage -d
 done
 
+
+### CUSTOMIZATION - UDF ONLY (otherwise, the licensing doesn't work)
+if [[ $env == "udf" ]]; then
+  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+  echo -e "\n${RED}Waiting 5 min ... ${NC}"
+  sleep 300
+  for ip in "${ips[@]}"; do
+    echo -e "\n---- ${RED} $ip ${NC} ----"
+    echo "reboot"
+    ssh -o StrictHostKeyChecking=no root@$ip reboot
+  done
+fi
+
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
 if [[  $env != "udf" ]]; then
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
