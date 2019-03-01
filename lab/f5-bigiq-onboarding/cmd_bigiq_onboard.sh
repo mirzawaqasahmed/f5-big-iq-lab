@@ -78,7 +78,7 @@ if [[  $env != "udf" ]]; then
       read -s f5pass
     fi
     
-    echo -e "F5 domain:"
+    echo -e "\nF5 domain:"
     read f5domain
     
     if [[ -z $3 ]]; then
