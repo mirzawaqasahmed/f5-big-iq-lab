@@ -47,7 +47,7 @@ After few minutes, the VM is created in UDF. Click on the new VM, go to the Subn
 
 |
 
-Finally, start the new BIG-
+Finally, start the new BIG-IQ.
 
 .. image:: ../pictures/module4/img_module4_lab1_1d.png
   :align: center
@@ -57,7 +57,31 @@ Finally, start the new BIG-
 
 - In Ravello:
 
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+In the top left, click on the **+** sign and search for BIG-IQ 6.1 CM VM image.
+
+.. image:: ../pictures/module4/img_module4_lab1_2a.png
+  :align: center
+  :scale: 70%
+
+|
+
+Add the image into the deployment.
+
+.. image:: ../pictures/module4/img_module4_lab1_2b.png
+  :align: center
+  :scale: 70%
+
+|
+
+Got to the network tab and fix the IP addresses using ``10.1.1.12``, ``10.1.10.12`` and ``10.1.20.12``. Click on **Update**
+
+.. image:: ../pictures/module4/img_module4_lab1_2c.png
+  :align: center
+  :scale: 70%
+
+|
+
+Then, start the new BIG-IQ CM VM.
 
 2. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 

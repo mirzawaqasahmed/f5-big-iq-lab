@@ -22,6 +22,8 @@ Open Chrome and Postman.
 
 For Postman, click right and click on execute (wait ~2 minutes).
 
+.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
+
 .. image:: ../../pictures/postman.png
     :align: center
     :scale: 100%
