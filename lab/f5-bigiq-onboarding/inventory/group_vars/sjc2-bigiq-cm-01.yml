@@ -46,8 +46,10 @@ bigip2device_statistics_interval: 60
 bigip2device_statistics_zone: default
 bigip2device_statistics_module1: device
 bigip2device_statistics_module2: ltm
+bigip2device_statistics_module3: dns
 bigip2modules:
   - ltm
   - asm
   - afm
+  - dns
   - security_shared

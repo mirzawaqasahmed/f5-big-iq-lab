@@ -59,6 +59,7 @@
           stat_modules:
             - "{{ bigip2device_statistics_module1 }}"
             - "{{ bigip2device_statistics_module2 }}"
+            - "{{ bigip2device_statistics_module3 }}"
         modules: "{{ bigip2modules }}"
       register: result
       delegate_to: localhost
