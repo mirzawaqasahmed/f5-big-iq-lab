@@ -94,7 +94,7 @@ fi
 # enable ssh for admin and set-basic-auth on
 for ip in "${ips[@]}"; do
   echo -e "\n---- ${RED} $ip ${NC} ----"
-  echo -e "tmsh modify auth user admin shell bash"
+  echo -e "tmsh modify auth user admin shell bash and set-basic-auth on"
   ssh -o StrictHostKeyChecking=no root@$ip tmsh modify auth user admin shell bash
   ssh -o StrictHostKeyChecking=no root@$ip set-basic-auth on
 done

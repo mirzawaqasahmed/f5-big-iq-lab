@@ -8,8 +8,6 @@ In this lab, we will show 2 use cases.
 - Task 5a will show an example of updating a tenant/application by re-posting the entire declaration using POST. In this case, user A and user B need to know the full content of the Tenant.
 - Task 5b will show an example of updating a tenant/application by posting only what's new to an existing declaration using PATCH. In this case, user A and user B don't need to know the full content of the Tenant but 1 single tenant can be shared.
 
-.. warning:: Currently, PATCH is not supported when using BIG-IQ and AS3 with the target field
-
 Task 5a - Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -175,9 +173,9 @@ Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
 
 .. warning:: This isn't the recommended way of adding an application to an existing Tenant. Method described in Task 5a is preferred.
 
-.. warning:: Currently, PATCH is not supported when using BIG-IQ and AS3 with the target field
+This declaration will create add a HTTP application to a exssting Tenant. In this task, we will submit only the new application using the PATCH.
 
-This declaration will create add a HTTP application to a exsisting Tenant. In this task, we will submit only the new application using the PATCH.
+.. note:: The target from the previous declaration is preserved when building the new declaration with the patch.
 
 1. Add the below application service to the existing AS3 declaration in the validator.
 
@@ -188,9 +186,6 @@ This declaration will create add a HTTP application to a exsisting Tenant. In th
     {
         "class": "AS3",
         "action": "patch",
-        "target": {
-            "hostname": "BOS-vBIGIP01.termmarc.com"
-        },
         "patchBody": [
             {
                 "path": "/Task1/MyWebApp7http",
