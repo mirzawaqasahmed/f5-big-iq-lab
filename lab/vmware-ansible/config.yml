@@ -1,0 +1,14 @@
+##################################################################################################
+###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
+##################################################################################################
+bigip_rest_user: "admin"
+bigip_rest_password: "purple123"
+
+CLOUD_ENV_DEFAULT_ID: "TO FILL"
+
+BIGIQ_HOST: localhost:8100
+BIGIQ_URI: http://{{BIGIQ_HOST}}
+BIGIQ_USER: admin
+BIGIQ_PWD: "purple123"
+
+SSG_NAME: "vmware-ssg"
