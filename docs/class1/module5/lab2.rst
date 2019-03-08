@@ -239,8 +239,8 @@ This declaration will create add a HTTP application to a exssting Tenant. In thi
 
 6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-.. |lab-2-1| image:: images/lab-2-1.png
+.. |lab-2-1| image:: ../pictures/module5/lab-2-1.png
    :scale: 80%
-.. |lab-1-5| image:: images/lab-1-5.png
+.. |lab-1-5| image:: ../pictures/module5/lab-1-5.png
    :scale: 40%
 

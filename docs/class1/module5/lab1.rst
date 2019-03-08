@@ -453,13 +453,13 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-.. |lab-1-1| image:: images/lab-1-1.png
+.. |lab-1-1| image:: ../pictures/module5/lab-1-1.png
    :scale: 60%
-.. |lab-1-2| image:: images/lab-1-2.png
+.. |lab-1-2| image:: ../pictures/module5/lab-1-2.png
    :scale: 80%
-.. |lab-1-3| image:: images/lab-1-3.png
+.. |lab-1-3| image:: ../pictures/module5/lab-1-3.png
    :scale: 60%
-.. |lab-1-4| image:: images/lab-1-4.png
+.. |lab-1-4| image:: ../pictures/module5/lab-1-4.png
    :scale: 60%
-.. |lab-1-5| image:: images/lab-1-5.png
+.. |lab-1-5| image:: ../pictures/module5/lab-1-5.png
    :scale: 40%

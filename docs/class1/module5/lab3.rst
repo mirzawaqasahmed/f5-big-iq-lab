@@ -327,11 +327,11 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 |lab-3-4|
 
 
-.. |lab-3-1| image:: images/lab-3-1.png
+.. |lab-3-1| image:: ../pictures/module5/lab-3-1.png
    :scale: 60%
-.. |lab-3-2| image:: images/lab-3-2.png
+.. |lab-3-2| image:: ../pictures/module5/lab-3-2.png
    :scale: 60%
-.. |lab-3-3| image:: images/lab-3-3.png
+.. |lab-3-3| image:: ../pictures/module5/lab-3-3.png
    :scale: 60%
-.. |lab-3-4| image:: images/lab-3-4.png
+.. |lab-3-4| image:: ../pictures/module5/lab-3-4.png
    :scale: 60%

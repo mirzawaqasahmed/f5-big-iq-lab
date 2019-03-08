@@ -59,5 +59,5 @@ Or turn it on/off directly within your AS3 declaration:
     }
 
 
-.. |lab-6-1| image:: images/lab-6-1.png
+.. |lab-6-1| image:: ../pictures/module5/lab-6-1.png
    :scale: 60%

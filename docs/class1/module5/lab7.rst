@@ -101,11 +101,11 @@ Connect as **david** on BIG-IQ.
 Here, we empty the tenant/partition Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
 should also disappear from BIG-IQ. 
 
-.. |lab-3-1| image:: images/lab-3-1.png
+.. |lab-3-1| image:: ../pictures/module5/lab-3-1.png
    :scale: 60%
-.. |lab-3-2| image:: images/lab-3-2.png
+.. |lab-3-2| image:: ../pictures/module5/lab-3-2.png
    :scale: 60%
-.. |lab-3-3| image:: images/lab-3-3.png
+.. |lab-3-3| image:: ../pictures/module5/lab-3-3.png
    :scale: 60%
-.. |lab-3-4| image:: images/lab-3-4.png
+.. |lab-3-4| image:: ../pictures/module5/lab-3-4.png
    :scale: 60%

@@ -72,5 +72,5 @@ integrated directly into the relevant CI/CD toolchains and workflows.
    lab*
 
 
-.. |diagram_as3_bigiq| image:: images/diagram_as3_bigiq.png
+.. |diagram_as3_bigiq| image:: ../pictures/module5/diagram_as3_bigiq.png
    :scale: 70%

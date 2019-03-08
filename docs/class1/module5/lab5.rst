@@ -19,9 +19,9 @@ Connect on the BIG-IP and look at the **fqdn_pool**:
 |lab-5-2|
 
 
-.. |lab-5-1| image:: images/lab-5-1.png
+.. |lab-5-1| image:: ../pictures/module5/lab-5-1.png
    :scale: 80%
 
-.. |lab-5-2| image:: images/lab-5-2.png
+.. |lab-5-2| image:: ../pictures/module5/lab-5-2.png
    :scale: 80%
 
