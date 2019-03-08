@@ -16,7 +16,7 @@ function pause(){
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
 
-cd /home/f5/AWS-Cloud-Edition
+cd /home/f5/f5-aws-vpn-ssg
 
 # Pre-requisits
 #sudo apt-get install python-setuptools

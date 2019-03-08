@@ -24,7 +24,7 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 3. Let's generate some 404 error, connect on the *Ubuntu Lamp Server* and launch the following command:
 
-``# /home/f5/demo-app-troubleshooting/404.sh``
+``# /home/f5/f5-demo-app-troubleshooting/404.sh``
 
 4. After few seconds, the 10 404 errors are showing on the chart.
 

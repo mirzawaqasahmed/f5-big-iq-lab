@@ -15,9 +15,9 @@ To setup ``BIG-IQ`` and ``Azure`` automatically, open a ``SSH`` connection on th
 
 |
 
-Once connected via ``SSH``, go into the folder: **AZURE-Cloud-Edition**: 
+Once connected via ``SSH``, go into the folder: **f5-azure-vpn-ssg**: 
 
-    ``cd AZURE-Cloud-Edition/``
+    ``cd f5-azure-vpn-ssg/``
 
 we will need to edit the following files: 
 

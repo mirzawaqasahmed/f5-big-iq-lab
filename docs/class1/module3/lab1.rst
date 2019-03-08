@@ -21,7 +21,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbook::
 
-    # cd /home/f5/f5-ansible-demo
+    # cd /home/f5/f5-ansible-bigiq-demo
     # ansible-playbook -i notahost, create_http_bigiq_app.yaml -vvvv
 
 .. warning :: If the ansible playbook run successfully but the app doesn't show up, please, review david's role.

@@ -13,7 +13,7 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AWS-Cloud-Edition
+cd /home/f5/f5-aws-vpn-ssg
 
 # Pre-requisits
 #sudo apt-get install python-setuptools

@@ -28,8 +28,8 @@ If you want to review those, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd AZURE-Cloud-Edition
-    f5@03a920f8b4c0410d8f:~/AZURE-Cloud-Edition$  ls -l
+    f5@03a920f8b4c0410d8f:~$ cd f5-azure-vpn-ssg
+    f5@03a920f8b4c0410d8f:~/f5-azure-vpn-ssg$  ls -l
     -rwxrwxr-x 1 f5student f5student  6736 Dec  8 11:54 000-RUN_ALL.sh
     -rwxrwxr-x 1 f5student f5student  3205 Dec  8 11:54 000-RUN_ALL_VNET_VPN.sh
     -rwxrwxr-x 1 f5student f5student  1653 Dec  8 11:54 01-install_azure_cli.sh

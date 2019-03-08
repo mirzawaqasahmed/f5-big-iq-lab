@@ -15,9 +15,9 @@ To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the 
 
 |
 
-Once connected via ``SSH``, go into the folder: **AWS-Cloud-Edition**: 
+Once connected via ``SSH``, go into the folder: **f5-aws-vpn-ssg**: 
 
-    ``cd AWS-Cloud-Edition/``
+    ``cd f5-aws-vpn-ssg/``
 
 we will need to edit the following files: 
 
@@ -202,8 +202,8 @@ You should see something like this:
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition$ nohup ./000-RUN_ALL.sh nopause &
-    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition$ tail -f nohup.out
+    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg$ nohup ./000-RUN_ALL.sh nopause &
+    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg$ tail -f nohup.out
 
     Did you subscribed and agreed to the software terms in AWS Marketplace?
 

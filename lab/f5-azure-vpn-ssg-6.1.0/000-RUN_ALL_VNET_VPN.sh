@@ -13,7 +13,7 @@ function pause(){
    read -p "$*"
 }
 
-cd /home/f5/AZURE-Cloud-Edition
+cd /home/f5/f5-azure-vpn-ssg
 
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 if [[ ! -z $getPublicIP ]]; then

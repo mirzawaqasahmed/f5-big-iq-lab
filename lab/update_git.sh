@@ -41,25 +41,21 @@ if [ -f /home/$user/udf_auto_update_git ]; then
 else
     # create default BIG-IQ version file
     if [ ! -f /home/$user/bigiq_version_aws ]; then
-        echo "6.0.1" > /home/$user/bigiq_version_aws
+        echo "6.1.0" > /home/$user/bigiq_version_aws
     fi
     if [ ! -f /home/$user/bigiq_version_azure ]; then
         echo "6.1.0" > /home/$user/bigiq_version_azure
     fi
-    if [ ! -f /home/$user/bigiq_version_gcp ]; then
-        echo "6.1.0" > /home/$user/bigiq_version_gcp
-    fi
-    if [ ! -f /home/$user/bigiq_version_alibaba ]; then
-        echo "6.1.0" > /home/$user/bigiq_version_alibaba
+    if [ ! -f /home/$user/bigiq_version_vmware ]; then
+        echo "6.1.0" > /home/$user/bigiq_version_vmware
     fi
 
     bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
     bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
-    bigiq_version_gcp=$(cat /home/$user/bigiq_version_gcp)
-    bigiq_version_alibaba=$(cat /home/$user/bigiq_version_alibaba)
+    bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
 
     echo "Cleanup previous files..."
-    rm -rf build* AWS* AZURE* GCP* ALIBABA* f5-ansi* f5-bigiq-onboarding f5-ansible-bigiq-as3-demo scripts* class1* Common* crontab* f5-big-iq-lab vmware-ansible demo-app-troubleshooting > /dev/null 2>&1
+    rm -rf build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -71,17 +67,16 @@ else
     fi
 
     echo "AWS scripts"
-    mv AWS-Cloud-Edition-$bigiq_version_aws AWS-Cloud-Edition > /dev/null 2>&1
+    mv f5-aws-vpn-ssg-$bigiq_version_aws f5-aws-vpn-ssg > /dev/null 2>&1
     echo "Azure scripts"
-    mv AZURE-Cloud-Edition-$bigiq_version_azure AZURE-Cloud-Edition > /dev/null 2>&1
-    echo "Google scripts"
-    mv GCP-Cloud-Edition-$bigiq_version_gcp GCP-Cloud-Edition > /dev/null 2>&1
-    echo "Alibaba scripts"
-    mv ALIBABA-Cloud-Edition-$bigiq_version_alibaba ALIBABA-Cloud-Edition > /dev/null 2>&1
+    mv f5-azure-vpn-ssg-$bigiq_version_azure f5-azure-vpn-ssg > /dev/null 2>&1
+    echo "Vmware scripts"
+    mv f5-vmware-ssg-$bigiq_version_vmware f5-vmware-ssg > /dev/null 2>&1
+
     # cleanup other versions
-    rm -rf AWS-Cloud-Edition-* AZURE-Cloud-Edition-* GCP-Cloud-Edition-* ALIBABA-Cloud-Edition-* > /dev/null 2>&1
+    rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* > /dev/null 2>&1
     echo "Fixing permissions..."
-    chmod +x *py *sh scripts/asm-brute-force/*sh scripts/*sh scripts/*py scripts/*/*sh scripts/*/*py f5-*/*sh f5-*/*pl AWS*/*sh AWS*/*py AZURE*/*sh AZURE*/*py ALIBABA*/*sh GCP*/*sh vmware-ansible/*sh demo-app-troubleshooting/*sh > /dev/null 2>&1
+    chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*pl > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
 
     # Cleanup Clouds credentials
@@ -136,10 +131,10 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
 
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
-    docker cp demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
-    docker cp demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     docker images
@@ -149,8 +144,8 @@ if [[  $currentuser == "root" ]]; then
     # Restart VM in case any are powered off (for VMware SSG if deployment was shutdown)
     # wait for ESX to boot
     echo "Restart VM in case any are powered off"
-    sleep 900 && /home/$user/vmware-ansible/cmd_power_on_vm.sh > /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
-    sleep 1100 && sudo chown -R $user:$user /home/$user/vmware-ansible/cmd_power_on_vm.log 2> /dev/null &
+    sleep 900 && /home/$user/f5-vmware-ssg/cmd_power_on_vm.sh > /home/$user/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
+    sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
 fi
 
 exit 0

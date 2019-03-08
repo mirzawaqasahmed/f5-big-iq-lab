@@ -456,7 +456,7 @@ echo -e "\nInstall AWS CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install python-pip -y
 pip --version
-cd /home/f5student/AWS-Cloud-Edition
+cd /home/f5student/f5-aws-vpn-ssg
 ansible-playbook 01a-install-pip.yml
 
 echo -e "\nInstall PyVmomi for VMware ansible playbooks"

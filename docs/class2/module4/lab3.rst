@@ -32,8 +32,8 @@ If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd AWS-Cloud-Edition/cft/
-    f5@03a920f8b4c0410d8f:~/AWS-Cloud-Edition/cft$ ls -l
+    f5@03a920f8b4c0410d8f:~$ cd f5-aws-vpn-ssg/cft/
+    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg/cft$ ls -l
     -rw-r--r-- 1 f5 f5 7148 May  3 06:49 Servers-Setup.template
     -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
     -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template

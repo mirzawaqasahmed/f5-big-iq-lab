@@ -16,7 +16,7 @@ function pause(){
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
 
-cd /home/f5/AZURE-Cloud-Edition
+cd /home/f5/f5-azure-vpn-ssg
 
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 if [[ ! -z $getPublicIP ]]; then
