@@ -52,6 +52,8 @@ Connect as **paula** and check on BIG-IQ the application has been correctly crea
     # cd /home/f5/f5-ansible-bigiq-as3-demo
     # ./cmd_playbook.sh as3_bigiq_task05b_modify_patch_http_app.yml paula
 
+.. warning:: The PATCH operation will be fully supported started AS3.10 (currently having issues in some cases)
+
 Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
 - Task 6: Create custom HTTP AS3 Template on BIG-IQ::

@@ -5,6 +5,8 @@
 #DEBUG_arg="-vvvv"
 
 
-ansible-playbook -i inventory/hosts create_vmware-auto-scaling.yml $DEBUG_arg
+ansible-playbook $DEBUG_arg create_vmware-auto-scaling.yml -i inventory/hosts
 
-ansible-playbook -i notahost, create_http_bigiq_app_ssg.yaml $DEBUG_arg
+ansible-playbook $DEBUG_arg -i notahost, create_http_bigiq_app_ssg.yaml
+
+./cmd_get_status_vm.sh

@@ -4,7 +4,7 @@
 bigip_rest_user: "admin"
 bigip_rest_password: "purple123"
 
-CLOUD_ENV_DEFAULT_ID: "TO FILL"
+CLOUD_ENV_DEFAULT_ID: "4aebc2cf-79a4-335a-98cb-782de1117e55"
 
 BIGIQ_HOST: localhost:8100
 BIGIQ_URI: http://{{BIGIQ_HOST}}

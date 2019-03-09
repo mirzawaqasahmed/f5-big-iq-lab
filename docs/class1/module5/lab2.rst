@@ -177,6 +177,8 @@ This declaration will create add a HTTP application to a exssting Tenant. In thi
 
 .. note:: The target from the previous declaration is preserved when building the new declaration with the patch.
 
+.. warning:: The PATCH operation will be fully supported started AS3.10 (currently having issues in some cases)
+
 1. Add the below application service to the existing AS3 declaration in the validator.
 
 .. code-block:: yaml
