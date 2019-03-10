@@ -1,10 +1,9 @@
 ##################################################################################################
 ###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
 ##################################################################################################
-bigip_rest_user: "admin"
-bigip_rest_password: "purple123"
-
-CLOUD_ENV_DEFAULT_ID: "4aebc2cf-79a4-335a-98cb-782de1117e55"
+# For Ansible SSH BIG-IP and BIG-IQ
+ansible_ssh_user: "admin"
+ansible_ssh_pass: "purple123"
 
 BIGIQ_HOST: localhost:8100
 BIGIQ_URI: http://{{BIGIQ_HOST}}

@@ -15,8 +15,15 @@
                 "name": "{{SSG_NAME}}",
                 "description": "VMware scaling group",
                 "environmentReference": {
-                    "link": "https://localhost/mgmt/cm/cloud/environments/{{CLOUD_ENV_DEFAULT_ID}}"
+                    "link": "https://localhost/mgmt/cm/cloud/environments/4aebc2cf-79a4-335a-98cb-782de1117e55"
                 },
+                "loadBalancerDeviceReferences": [
+                {
+                    "link": "https://localhost/mgmt/shared/resolver/device-groups/cm-bigip-allBigIpDevices/devices/ba7382a4-7564-4647-b65d-17d6f2a73a16"
+                },
+                {
+                    "link": "https://localhost/mgmt/shared/resolver/device-groups/cm-bigip-allBigIpDevices/devices/57dfa09f-019d-478e-bac3-50a20e55cd20"
+                }],
                 "minSize": 1,
                 "maxSize": 3,
                 "maxSupportedApplications": 3,

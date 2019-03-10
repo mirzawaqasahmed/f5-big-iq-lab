@@ -67,7 +67,7 @@ ELB_SCHEME: internet-facing
 ELB_NAME: "{{PREFIX}}-elb"
 APP_NAME: "{{PREFIX}}-app-aws"
 
-# BIG-IP Customer Gateway Config
+# For Ansible SSH BIG-IP and BIG-IQ
 ansible_ssh_user: "admin"
 ansible_ssh_pass: "purple123"
 
