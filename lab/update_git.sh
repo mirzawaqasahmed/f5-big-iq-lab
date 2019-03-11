@@ -55,7 +55,7 @@ else
     bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
 
     echo "Cleanup previous files..."
-    rm -rf build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
+    rm -rf AWS* AZURE* GCP* ALIBABA* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
