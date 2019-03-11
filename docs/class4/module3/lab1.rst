@@ -7,7 +7,7 @@ Lab 3.1: BIG-IQ Configuration Management (CM)
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding
+        # cd /home/f5/f5-ansible-bigiq-onboarding
         # ./cmd_bigiq_onboard_reset.sh pause
 
     The script will do in this order:

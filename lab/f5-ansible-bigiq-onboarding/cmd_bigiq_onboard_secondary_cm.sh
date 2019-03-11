@@ -43,7 +43,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 for ip in "${ips[@]}"; do
   echo "$ip"
-  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip > /dev/null 2>&1
+  sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip
 done
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
@@ -65,27 +65,17 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ### CUSTOMIZATION - UDF ONLY
-if [[ $env == "udf" ]]; then
-  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  echo -e "\n${RED}Waiting 5 min ... ${NC}"
-  sleep 300
-  # copy custom scripts udf
-  mkdir udf
-  sshpass -p purple123 scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/.udf* udf
-  sshpass -p purple123 scp -rp -o StrictHostKeyChecking=no admin@10.1.1.7:/config/startup udf
-  ls -lrta udf
-  for ip in "${ips[@]}"; do
-    echo -e "\n---- ${RED} $ip ${NC} ----"
-    echo "copy custom scripts udf"
-    sshpass -p default scp -rp -o StrictHostKeyChecking=no udf/.udf* udf/startup root@$ip:/config
-  done
-  for ip in "${ips[@]}"; do
-    echo -e "\n---- ${RED} $ip ${NC} ----"
-    echo "reboot"
-    ssh -o StrictHostKeyChecking=no root@$ip reboot
-  done
-fi
+#if [[ $env == "udf" ]]; then
+#  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+#  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+#  echo -e "\n${RED}Waiting 5 min ... ${NC}"
+#  sleep 300
+#  for ip in "${ips[@]}"; do
+#    echo -e "\n---- ${RED} $ip ${NC} ----"
+#    echo "reboot"
+#    ssh -o StrictHostKeyChecking=no root@$ip reboot
+#  done
+#fi
 
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"

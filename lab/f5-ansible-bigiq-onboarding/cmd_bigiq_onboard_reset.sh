@@ -46,7 +46,7 @@ echo -e "Exchange ssh keys with BIG-IQ & DCD:"
 if [[  $env == "udf" ]]; then
   for ip in "${ips[@]}"; do
     echo "$ip"
-    sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip > /dev/null 2>&1
+    sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub root@$ip
   done
 fi
 

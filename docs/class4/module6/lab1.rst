@@ -86,7 +86,7 @@ Then, start the new BIG-IQ DCD VM.
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding 
+        # cd /home/f5/f5-ansible-bigiq-onboarding 
         # vi inventory/group_vars/udf-bigiq-dcd-02.yml
 
 .. note:: Double check the IP address of the new secondary BIG-IQ and update it in ``udf-bigiq-dcd-02.yml`` if necessary (``bigiq_onboard_server``)
@@ -95,11 +95,11 @@ Then, start the new BIG-IQ DCD VM.
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding
+        # cd /home/f5/f5-ansible-bigiq-onboarding
         # ./cmd_bigiq_onboard_secondary_dcd.sh nopause
 
 
-5. Verify the new secondary BIG-IQ DCD has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)
+5. Verify the new secondary BIG-IQ DCD has been correclty added to the BIG-IQ Data Colletion Devices list.
 
 .. image:: ../pictures/module6/img_module6_lab1_3.png
   :align: center
@@ -111,21 +111,43 @@ Then, start the new BIG-IQ DCD VM.
 
 .. note:: In order to avoid error messages complaining about the lack of a default zone, you must at minimum have the default zone.
 
-7. Let's define the  new zone ``westcoast`` on the new BIG-IQ DCD 02 added earlier.
+7. Let's define the new zone ``westcoast`` on the new BIG-IQ DCD 02 added earlier. Login on the BIG-IQ CM serverm Go to the **System** tab, 
+   under **BIG-IQ DATA COLLECTION** > **BIG-IQ Data Collection Devices**, select the new BIG-IQ DCD 02. In **Properties**, and click **Edit**, select the Zone box, click **Create New**.
 
-Go to the **General Properties** tab of the DCD configuration menu, and click **Edit**, select the Zone box, click **Create New**.
-Enter the name ``westcoast`` as the name of the new Zone.
+   Enter the name ``westcoast`` as the name of the new Zone.
 
-On BIG-IQ CM, go to the menu to add the new DCD to the BIG-IQ cluster.
+.. image:: ../pictures/module6/img_module6_lab1_4.png
+  :align: center
+  :scale: 50%
 
-When adding the DCD, select the Zone box, click **Create New**, and enter the name ``westcoast``.
-The BIG-IQ management console will then add the DCD to its BIG-IQ cluster.
+|
 
+It might takes few minutes for the new zone to be set.
+
+.. image:: ../pictures/module6/img_module6_lab1_5.png
+  :align: center
+  :scale: 50%
+
+|
 
 8. Change the Zone of the ``SEA-vBIGIP01.termmarc.com`` and ``SJC-vBIGIP01.termmarc.com`` BIG-IP to ``westcoast``.
 
-select the BIG-IP device from the **Devices** menu, and select **STATISTICS COLLECTION**. 
+Select the BIG-IP device from the **Devices** menu, and select **STATISTICS COLLECTION**. 
 
 Once selected, select ``westcoast`` from the Zone drop down menu.
 
+It might takes few minutes for the new zone to be set.
+
+.. image:: ../pictures/module6/img_module6_lab1_6.png
+  :align: center
+  :scale: 50%
+
+|
+
 9. Check on the Device tab the statistic collection is happening as expected.
+
+.. image:: ../pictures/module6/img_module6_lab1_7.png
+  :align: center
+  :scale: 50%
+
+|

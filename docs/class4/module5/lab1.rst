@@ -43,7 +43,7 @@ This automation scenario is composed of 4 parts:
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding 
+        # cd /home/f5/f5-ansible-bigiq-onboarding 
         # vi inventory/group_vars/udf-bigiq-dcd-01.yml
         # vi inventory/group_vars/udf-bigiq-cm-01.yml
 
@@ -51,7 +51,7 @@ This automation scenario is composed of 4 parts:
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding
+        # cd /home/f5/f5-ansible-bigiq-onboarding
         # ./cmd_bigiq_onboard_reset.sh nopause
 
     The script will do in this order:
@@ -66,7 +66,7 @@ This automation scenario is composed of 4 parts:
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding
+        # cd /home/f5/f5-ansible-bigiq-onboarding
         # ./cmd_bigiq_onboard.sh nopause
 
 | 

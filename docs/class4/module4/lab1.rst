@@ -89,7 +89,7 @@ Then, start the new BIG-IQ CM VM.
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding 
+        # cd /home/f5/f5-ansible-bigiq-onboarding 
         # vi inventory/group_vars/udf-bigiq-cm-02.yml
 
 .. note:: Double check the IP address of the new secondary BIG-IQ and update it in ``udf-bigiq-cm-02.yml`` if necessary (``bigiq_onboard_server``)
@@ -98,7 +98,7 @@ Then, start the new BIG-IQ CM VM.
 
     ::
 
-        # cd /home/f5/f5-bigiq-onboarding
+        # cd /home/f5/f5-ansible-bigiq-onboarding
         # ./cmd_bigiq_onboard_secondary_cm.sh nopause
 
 
