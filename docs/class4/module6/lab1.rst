@@ -6,7 +6,7 @@ The DCD2 at the other location will be in zone ``westcoast``. The BIG-IPs will b
 
 .. image:: ../pictures/module6/img_module6_lab1_diagram.png
   :align: center
-  :scale: 70%
+  :scale: 50%
 
 |
 
@@ -103,7 +103,7 @@ Then, start the new BIG-IQ DCD VM.
 
 .. image:: ../pictures/module6/img_module6_lab1_3.png
   :align: center
-  :scale: 50%
+  :scale: 70%
 
 |
 
@@ -118,7 +118,7 @@ Then, start the new BIG-IQ DCD VM.
 
 .. image:: ../pictures/module6/img_module6_lab1_4.png
   :align: center
-  :scale: 50%
+  :scale: 70%
 
 |
 
@@ -126,7 +126,7 @@ It might takes few minutes for the new zone to be set.
 
 .. image:: ../pictures/module6/img_module6_lab1_5.png
   :align: center
-  :scale: 50%
+  :scale: 70%
 
 |
 
@@ -140,7 +140,7 @@ It might takes few minutes for the new zone to be set.
 
 .. image:: ../pictures/module6/img_module6_lab1_6.png
   :align: center
-  :scale: 50%
+  :scale: 70%
 
 |
 
@@ -148,6 +148,6 @@ It might takes few minutes for the new zone to be set.
 
 .. image:: ../pictures/module6/img_module6_lab1_7.png
   :align: center
-  :scale: 50%
+  :scale: 70%
 
 |
