@@ -58,6 +58,13 @@ done
 ################################################## ONLY FOR PME LAB START ########################################################
 if [[  $env != "udf" ]]; then
   echo -e "\n${RED}INTERNAL USE --- ONLY F5 LAB --- START ${NC}"
+
+
+  echo -e "\n${BLUE} HELP:"
+  echo -e "1. Stop currently running command: ${RED}Ctrl+Z${NC}"
+  echo -e "2. To move stopped process to background execute command: ${RED}bg${NC}"
+  echo -e "3. To make sure command will run after you close the ssh session execute command: ${RED}disown -h${NC}"
+
   if [ -z "$4" ]; then
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     # if no iso specified download the image from build server  
