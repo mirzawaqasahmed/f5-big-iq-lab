@@ -86,6 +86,9 @@ if [[  $env != "udf" ]]; then
     
     echo -e "\nF5 domain:"
     read f5domain
+
+    # to fix DNS and NTP servers
+    sed -i "s/f5.com/$f5domain/g" inventory/group_vars/*
     
     if [[ -z $3 ]]; then
       build="current"
