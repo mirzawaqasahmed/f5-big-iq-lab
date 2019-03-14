@@ -33,7 +33,7 @@ NC='\033[0m' # No Color
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> <internal> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
@@ -52,6 +52,8 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+## If 3rd parameter is empty, run clea-rest-storage on the BIG-IQ/DCD + Reboot (UDF)
+
 #touch delete_default_bigiq_apps.retry
 # run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
 #echo -e "\n${RED}Delete BIG-IQ Applications${NC}"
@@ -64,37 +66,34 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 #  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 #done
 
-echo -e "\n${RED}=>>> clear-rest-storage -d${NC} on both BIG-IQ CM and DCD"
+if [[ -z $3 ]]; then
+  echo -e "\n${RED}=>>> clear-rest-storage -d${NC} on both BIG-IQ CM and DCD"
 
-for ip in "${ips[@]}"; do
-  echo -e "\n---- ${RED} $ip ${NC} ----"
-  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  echo "clear-rest-storag"
-  ssh -o StrictHostKeyChecking=no root@$ip clear-rest-storage -d
-done
-
-
-### CUSTOMIZATION - UDF ONLY (otherwise, the licensing doesn't work)
-if [[ $env == "udf" ]]; then
-  [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-  echo -e "\n${RED}Waiting 5 min ... ${NC}"
-  sleep 300
   for ip in "${ips[@]}"; do
     echo -e "\n---- ${RED} $ip ${NC} ----"
-    echo "reboot"
-    ssh -o StrictHostKeyChecking=no root@$ip reboot
+    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    echo "clear-rest-storag"
+    ssh -o StrictHostKeyChecking=no root@$ip clear-rest-storage -d
   done
+
+  ### CUSTOMIZATION - UDF ONLY (otherwise, the licensing doesn't work)
+  if [[ $env == "udf" ]]; then
+    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+    echo -e "\n${RED}Waiting 5 min ... ${NC}"
+    sleep 300
+    for ip in "${ips[@]}"; do
+      echo -e "\n---- ${RED} $ip ${NC} ----"
+      echo "reboot"
+      ssh -o StrictHostKeyChecking=no root@$ip reboot
+    done
+  fi
+else
+  echo -e "\n${RED}Skipping clear-rest-storage"
 fi
 
 ### CUSTOMIZATION - F5 INTERNAL LAB ONLY
 if [[  $env != "udf" ]]; then
-    echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-    echo -e "\n${RED}Uninstall ansible-galaxy roles${NC}"
-    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    ansible-galaxy remove f5devcentral.bigiq_onboard
-    ansible-galaxy remove f5devcentral.register_dcd
-
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     # Cleanup AS3 on the BIG-IP
     while IFS="," read -r a b c;
@@ -104,12 +103,44 @@ if [[  $env != "udf" ]]; then
         sshpass -p $c ssh-copy-id -o StrictHostKeyChecking=no -i /home/f5/.ssh/id_rsa.pub $b@$a > /dev/null 2>&1
 
         echo "Cleanup AS3 on $a"
-        ssh -o StrictHostKeyChecking=no $b@$a bigstart stop restjavad restnoded < /dev/null
-        ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/storage < /dev/null
-        ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/index < /dev/null
-        ssh -o StrictHostKeyChecking=no $b@$a bigstart start restjavad restnoded < /dev/null
-        ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/downloads/*.rpm < /dev/null
-        ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/iapps/RPMS/*.rpm < /dev/null
+
+        CREDS="admin:$c"
+        CURL_FLAGS="--silent -k -u $CREDS"
+
+        poll_task () {
+          STATUS="STARTED"
+          while [ $STATUS != "FINISHED" ]; do
+              sleep 1
+              RESULT=$(curl ${CURL_FLAGS} "https://$a/mgmt/shared/iapp/package-management-tasks/$1")
+              STATUS=$(echo $RESULT | jq -r .status)
+              if [ $STATUS = "FAILED" ]; then
+                  echo "Failed to" $(echo $RESULT | jq -r .operation) "package:" \
+                      $(echo $RESULT | jq -r .errorMessage)
+                  exit 1
+              fi
+          done
+        }
+
+        TASK=$(curl $CURL_FLAGS -H "Content-Type: application/json" \
+            -X POST https://$a/mgmt/shared/iapp/package-management-tasks -d "{operation: 'QUERY'}")
+        poll_task $(echo $TASK | jq -r .id)
+        AS3RPMS=$(echo $RESULT | jq -r '.queryResponse[].packageName | select(. | startswith("f5-"))')
+
+        #Uninstall existing f5-appsvcs packages on target
+        for PKG in $AS3RPMS; do
+            echo "Uninstalling $PKG on $a"
+            DATA="{\"operation\":\"UNINSTALL\",\"packageName\":\"$PKG\"}"
+            TASK=$(curl ${CURL_FLAGS} "https://$a/mgmt/shared/iapp/package-management-tasks" \
+                --data $DATA -H "Origin: https://$a" -H "Content-Type: application/json;charset=UTF-8")
+            poll_task $(echo $TASK | jq -r .id)
+        done
+
+        #ssh -o StrictHostKeyChecking=no $b@$a bigstart stop restjavad restnoded < /dev/null
+        #ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/storage < /dev/null
+        #ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/index < /dev/null
+        #ssh -o StrictHostKeyChecking=no $b@$a bigstart start restjavad restnoded < /dev/null
+        #ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/downloads/*.rpm < /dev/null
+        #ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/iapps/RPMS/*.rpm < /dev/null
     done < inventory/$env-bigip.csv
 fi
 

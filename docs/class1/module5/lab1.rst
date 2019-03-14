@@ -46,6 +46,10 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE.
 
+.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+
+.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+
 .. code-block:: yaml
    :linenos:
    :emphasize-lines: 12,33,49,50
@@ -110,13 +114,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
-
-.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
-
-2. Make sure the Declaration is valid!
-
-3. Now that the JSON is validated, let's add the target (BIG-IP device)::
+2. Now that the AS3 declation is validated, let's add the target (BIG-IP device)::
 
     "target": {
         "hostname": "BOS-vBIGIP01.termmarc.com"
@@ -128,26 +126,27 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
-4. Click on  ``Format JSON``, ``Validate JSON`` and ``Validate AS3 Declaration``. Make sure the Declaration is valid!
+3. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-.. note:: Ignore the schemaVersion error. Note the schema validator is using AS3.6 and we are using AS3.7.
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-5. Using Postman, use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
+4. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the AS3 declaration from the validator to the declaration body into Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
-6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
    
 .. note:: Notice that the app deployment may take a few minutes.
 
-7. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
+6. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
 
-8. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+7. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 |lab-1-3|
 
@@ -249,15 +248,22 @@ Copy/Paste the below AS3 declaration into the body (Postman):
        }
    }
 
-2. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+2. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+
+4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 
 Task 3a - HTTPS Application with Web Application Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This declaration will create an HTTP application on BIG-IQ using an HTTP template, a WAF policy and a security Log Profile.
+This declaration will create an HTTPS application on BIG-IQ using an HTTPS template, a WAF policy and a security Log Profile.
 
 .. note:: The ASM policy & Log Profiles need to be deployed first in BIG-IP if it exists only on BIG-IQ.
              Attached the policy to the ``inactive`` virtual server under the Web Application Security Configuration menu, then deploy it.
@@ -358,17 +364,23 @@ Update the WAF policy section below with the policy available on BIG-IP::
        }
    }
 
-1. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
+1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the above AS3 declaration into the declaration body into Postman (DON'T FORGET TO UPDATE THE WAF Policy):
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
-2. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
+4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 Task 4 - Generic Services
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -442,16 +454,24 @@ Modify the Generic virtual with something other than <generic_virtual>.
        }
    }
 
-1. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
+1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   
+2. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
-2. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
    GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+
+
+4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. |lab-1-1| image:: ../pictures/module5/lab-1-1.png
    :scale: 60%

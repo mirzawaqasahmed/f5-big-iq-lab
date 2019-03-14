@@ -116,7 +116,12 @@ To allow just 1 or 2 classes, use an if-then construct within additionalProperti
 
 In this task, we will create a template which require a Service_HTTP object, force the service port to 8080, and prevent WAF (ASM) and IAM (APM) configuration.
 
-1. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
+1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
 It will create a new template in BIG-IQ AS3 Service Catalogue:
 
     POST https://10.1.1.4/mgmt/cm/global/appsvcs-templates
@@ -203,7 +208,7 @@ It will create a new template in BIG-IQ AS3 Service Catalogue:
     }
 
 
-2. Logon on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
+3. Logon on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
 
 |lab-3-1|
 
@@ -234,7 +239,10 @@ Task 8 - Deploy the HTTP Application Service using a Custom Template
 Now, let's deploy an application as Olivia using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
-1. Using Postman, update the user to olivia/olivia in the **BIG-IQ Token (olivia)** call (body).
+1. Using Postman, use the **BIG-IQ Token (olivia)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia)``.
+
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 

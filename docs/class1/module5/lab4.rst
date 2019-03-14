@@ -9,7 +9,10 @@ should also disappear from BIG-IQ.
 
 .. note :: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
 
-1. Using Postman, update the user to david/david in the **BIG-IQ Token (david)** call (body).
+1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 

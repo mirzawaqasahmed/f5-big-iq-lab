@@ -11,7 +11,7 @@ In this lab, we will show 2 use cases.
 Task 5a - Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This declaration will create add a HTTPS application to a exsisting HTTP application. In this task, we will re-submit the entire declaration.
+This declaration will add a HTTPS application to a existing HTTP application. In this task, we will re-submit the entire declaration.
 
 1. Start with the previous AS3 Declaration from **lab 1 - Task 1**
 
@@ -38,14 +38,10 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
                    "template": "http",
                    "statsProfile": {
                        "class": "Analytics_Profile",
-                       "collectedStatsInternalLogging": true,
-                       "collectedStatsExternalLogging": false,
-                       "capturedTrafficInternalLogging": false,
-                       "capturedTrafficExternalLogging": false,
-                       "collectPageLoadTime": true,
-                       "collectClientSideStatistics": true,
-                       "collectResponseCode": true,
-                       "sessionCookieSecurity": "ssl-only"
+                        "collectedStatsInternalLogging": true,
+                        "collectPageLoadTime": true,
+                        "collectClientSideStatistics": true,
+                        "collectResponseCode": true
                    },
                    "serviceMain": {
                        "class": "Service_HTTP",
@@ -78,11 +74,14 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
        }
    }
 
-2. Add the below application service to the existing AS3 declaration in the JSON validator.
+2. Add the below application service to the existing AS3 declaration in the JSON validator. The validator is your IDE.
+
+.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+
+.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
 .. note:: Add a **","** at the end of the MyWebApp1 statement.
     If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
-
 
 
 |lab-2-1|
@@ -150,13 +149,12 @@ This declaration will create add a HTTPS application to a exsisting HTTP applica
            }
        }
 
-.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+3. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-3. Make sure the Declaration is valid!
-
-4. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
+4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
@@ -172,14 +170,17 @@ Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning:: This isn't the recommended way of adding an application to an existing Tenant. Method described in Task 5a is preferred.
+            The PATCH operation will be fully supported started AS3.10 (currently having issues in some cases)
 
-This declaration will create add a HTTP application to a exssting Tenant. In this task, we will submit only the new application using the PATCH.
+This declaration will create add a HTTP application to a existing Tenant. In this task, we will submit only the new application using the PATCH.
 
 .. note:: The target from the previous declaration is preserved when building the new declaration with the patch.
 
-.. warning:: The PATCH operation will be fully supported started AS3.10 (currently having issues in some cases)
+1. Add the below application service to the existing AS3 declaration in the validator. The validator is your IDE.
 
-1. Add the below application service to the existing AS3 declaration in the validator.
+.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+
+.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
 .. code-block:: yaml
    :linenos:
@@ -223,13 +224,12 @@ This declaration will create add a HTTP application to a exssting Tenant. In thi
         ]
     }
 
-.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+3. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-3. Make sure the Declaration is valid!
-
-4. Using Postman, use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
+4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
    POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
