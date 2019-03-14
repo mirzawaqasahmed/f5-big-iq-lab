@@ -74,14 +74,9 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
                    "template": "http",
                    "statsProfile": {
                        "class": "Analytics_Profile",
-                       "collectedStatsInternalLogging": true,
-                       "collectedStatsExternalLogging": false,
-                       "capturedTrafficInternalLogging": false,
-                       "capturedTrafficExternalLogging": false,
-                       "collectPageLoadTime": true,
                        "collectClientSideStatistics": true,
-                       "collectResponseCode": true,
-                       "sessionCookieSecurity": "ssl-only"
+                       "collectOsAndBrowser": false,
+                       "collectMethod": false
                    },
                    "serviceMain": {
                        "class": "Service_HTTP",
@@ -190,14 +185,9 @@ Copy/Paste the below AS3 declaration into the body (Postman):
                    "template": "https",
                    "statsProfile": {
                        "class": "Analytics_Profile",
-                       "collectedStatsInternalLogging": true,
-                       "collectedStatsExternalLogging": false,
-                       "capturedTrafficInternalLogging": false,
-                       "capturedTrafficExternalLogging": false,
-                       "collectPageLoadTime": true,
                        "collectClientSideStatistics": true,
-                       "collectResponseCode": true,
-                       "sessionCookieSecurity": "ssl-only"
+                       "collectOsAndBrowser": false,
+                       "collectMethod": false
                    },
                    "serviceMain": {
                        "class": "Service_HTTPS",
@@ -298,14 +288,9 @@ Update the WAF policy section below with the policy available on BIG-IP::
                    "template": "https",
                    "statsProfile": {
                        "class": "Analytics_Profile",
-                       "collectedStatsInternalLogging": true,
-                       "collectedStatsExternalLogging": false,
-                       "capturedTrafficInternalLogging": false,
-                       "capturedTrafficExternalLogging": false,
-                       "collectPageLoadTime": true,
                        "collectClientSideStatistics": true,
-                       "collectResponseCode": true,
-                       "sessionCookieSecurity": "ssl-only"
+                       "collectOsAndBrowser": false,
+                       "collectMethod": false
                    },
                    "serviceMain": {
                        "class": "Service_HTTPS",
@@ -413,14 +398,9 @@ Modify the Generic virtual with something other than <generic_virtual>.
                    "template": "generic",
                    "statsProfile": {
                        "class": "Analytics_Profile",
-                       "collectedStatsInternalLogging": true,
-                       "collectedStatsExternalLogging": false,
-                       "capturedTrafficInternalLogging": false,
-                       "capturedTrafficExternalLogging": false,
-                       "collectPageLoadTime": true,
                        "collectClientSideStatistics": true,
-                       "collectResponseCode": true,
-                       "sessionCookieSecurity": "ssl-only"
+                       "collectOsAndBrowser": false,
+                       "collectMethod": false
                    },
                    "<generic_virtual>": {
                        "class": "Service_Generic",

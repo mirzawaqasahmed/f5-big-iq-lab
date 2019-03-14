@@ -54,7 +54,14 @@ Or turn it on/off directly within your AS3 declaration:
 
     "statsProfile": {
          "class": "Analytics_Profile",
-         "collectedStatsInternalLogging": true/false,
+         "collectClientSideStatistics": true/false,
+         "collectGeo": true/false,
+         "collectMethod": true/false,
+         "collectOsAndBrowser": true/false,
+         "collectSubnet": true/false,
+         "collectUrl": true/false,
+         "collectIp": true/false,
+
           ...
     }
 

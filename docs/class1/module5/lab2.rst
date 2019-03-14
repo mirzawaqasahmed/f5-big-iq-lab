@@ -94,14 +94,9 @@ This declaration will add a HTTPS application to a existing HTTP application. In
            "template": "https",
            "statsProfile": {
                "class": "Analytics_Profile",
-               "collectedStatsInternalLogging": true,
-               "collectedStatsExternalLogging": false,
-               "capturedTrafficInternalLogging": false,
-               "capturedTrafficExternalLogging": false,
-               "collectPageLoadTime": true,
                "collectClientSideStatistics": true,
-               "collectResponseCode": true,
-               "sessionCookieSecurity": "ssl-only"
+               "collectOsAndBrowser": false,
+               "collectMethod": false
            },
            "serviceMain": {
                "class": "Service_HTTPS",

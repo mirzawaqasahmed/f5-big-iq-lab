@@ -44,14 +44,9 @@
                 template: https
                 statsProfile:
                   class: Analytics_Profile
-                  collectedStatsInternalLogging: true
-                  collectedStatsExternalLogging: false
-                  capturedTrafficInternalLogging: true
-                  capturedTrafficExternalLogging: false
-                  collectPageLoadTime: true
                   collectClientSideStatistics: true
-                  collectResponseCode: true
-                  sessionCookieSecurity: ssl-only
+                  collectOsAndBrowser: false
+                  collectMethod: false
                 serviceMain:
                   class: Service_HTTPS
                   virtualAddresses:
