@@ -9,7 +9,7 @@ SSG_URL = '/mgmt/cm/cloud/service-scaling-groups' # lists BIG-IP devices
 
 # Change as needed
 HOST = 'https://10.1.1.4'
-APP_NAME = "site24ssg.example.com"
+APP_NAME = "game.site24ssg.example.com"
 
 pretty_print = pprint.PrettyPrinter(indent=2, depth=4).pprint
 
