@@ -15,7 +15,8 @@ else
     # Below playbook works only with vmwareUDFdefault cloud environement pre-created in the BIG-IQ Blueprint
     ansible-playbook $DEBUG_arg -i inventory/hosts create_vmware-auto-scaling.yml 
 
-    sleep 10
+    echo -e "\n${GREEN}Sleep 25 min (to allow time for the SSG to come up)${NC}"
+    sleep 1500
 
     # create defauilt app on the SSG
     python create_http_bigiq_app_ssg.py

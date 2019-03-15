@@ -26,8 +26,6 @@ if [ -z "$1" ]; then
   env="udf"
   user="f5student"
 else
-  #env="sjc"
-  #env="sjc2"
   env=$1
   user="f5"
 fi
@@ -76,7 +74,7 @@ else
     # cleanup other versions
     rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* > /dev/null 2>&1
     echo "Fixing permissions..."
-    chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*pl > /dev/null 2>&1
+    chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
 
     # Cleanup Clouds credentials
