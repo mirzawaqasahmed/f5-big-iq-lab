@@ -53,19 +53,6 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ## If 3rd parameter is empty, run clea-rest-storage on the BIG-IQ/DCD + Reboot (UDF)
-
-#touch delete_default_bigiq_apps.retry
-# run delete playbook, if fails, a .retry file is created, so re-try forever until the apps deletion are successful
-#echo -e "\n${RED}Delete BIG-IQ Applications${NC}"
-#[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-#while [ -f delete_default_bigiq_apps.retry ]
-#do
-#  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-#  rm *.retry
-#  ansible-playbook -i notahost, delete_default_bigiq_apps.yml $DEBUG_arg
-#  echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-#done
-
 if [[ -z $3 ]]; then
   echo -e "\n${RED}=>>> clear-rest-storage -d${NC} on both BIG-IQ CM and DCD"
 

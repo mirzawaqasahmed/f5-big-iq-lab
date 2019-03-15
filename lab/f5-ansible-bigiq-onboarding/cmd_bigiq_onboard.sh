@@ -202,8 +202,8 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Waiting 15 min ... ${NC}"
-sleep 900
+echo -e "\n${RED}Waiting 5 min ... ${NC}"
+sleep 300
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -237,8 +237,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 if [[  $env == "udf" ]]; then
   echo -e "\n${GREEN}Create AS3 Applications${NC}"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-  #ansible-playbook -i notahost, create_default_bigiq_apps.yml $DEBUG_arg
-  #sleep 15
+
   sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site15_boston.yml
   sed -i 's/auth_bigiq_paul.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site40_seattle.yml 
   sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_https_site38_sanjose.yml

@@ -15,8 +15,10 @@ else
     # Below playbook works only with vmwareUDFdefault cloud environement pre-created in the BIG-IQ Blueprint
     ansible-playbook $DEBUG_arg -i inventory/hosts create_vmware-auto-scaling.yml 
 
-    # create defauilt app
-    ansible-playbook $DEBUG_arg -i notahost, create_http_bigiq_app_ssg.yaml
+    sleep 10
+
+    # create defauilt app on the SSG
+    python create_http_bigiq_app_ssg.py
 
     # get VM status
     ./cmd_get_status_vm.sh

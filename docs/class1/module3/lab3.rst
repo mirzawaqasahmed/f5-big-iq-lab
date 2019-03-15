@@ -1,5 +1,5 @@
-Lab 3.3: Create Application via API with Python (6.0.x only)
-------------------------------------------------------------
+Lab 3.3: Create Application via API with Python
+-----------------------------------------------
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
 
@@ -7,7 +7,7 @@ Lab 3.3: Create Application via API with Python (6.0.x only)
 
 In this lab, we are going to create an application using Python script and BIG-IQ API.
 
-On BIG-IQ, connect as **olivia** (select Auth Provider local) to create a new application, click on **Create**, select the template previously created ``Default-f5-HTTP-lb-template``.
+On BIG-IQ, connect as **david** to create a new application, click on **Create**, select the template previously created ``Default-f5-HTTP-lb-template``.
 
 - BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
 - Application Name: ``site20.example.com``
@@ -26,7 +26,7 @@ On BIG-IQ, connect as **olivia** (select Auth Provider local) to create a new ap
 
 Open a SSH session to *Ubuntu Lamp Server* in UDF.
 
-Look at the file ``/home/f5/class1mod3.py``
+Look at the file ``/home/f5/f5-ansible-bigiq-service-catalog-demo/class1mod3.py``
 
 - The application name was set: APP_NAME = "``site20.example.com``"
 - Template name configured in ``templates`` variable (e.g. Default-f5-HTTP-lb-template)
@@ -35,7 +35,7 @@ Look at the file ``/home/f5/class1mod3.py``
 
 Execute the Python script::
 
-    # /home/f5/class1mod3.py
+    # /home/f5/f5-ansible-bigiq-service-catalog-demo/class1mod3.py
 
 Output::
 
@@ -46,4 +46,4 @@ Output::
     u'Polling task, Status: STARTED'
     u'Polling task, Status: FINISHED'
 
-Connect as **olivia** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.
+Connect as **david** and check on BIG-IQ the application has been correctly created.
