@@ -69,6 +69,10 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $PYTHON_PATH/python 11-delete-aws-ssg-resources-check.py
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 12-delete-aws-ssg-resources.yml -i inventory/hosts
+echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "${RED}/!\ IS YOUR SSG COMPLETLY REMOVED FROM YOUR AWS ACCOUNT? /!\ \n"

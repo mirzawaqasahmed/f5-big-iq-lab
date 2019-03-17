@@ -1,6 +1,6 @@
 ---
 # Delete all auto scaling resources from BIG-IQ
-- name: Tear down SSG resources (SSG itself)
+- name: Tear down SSG resources (Cloud Environment)
   hosts: bigiq-01
   vars_files:
     - ./config.yml
@@ -12,15 +12,15 @@
     # Teardown errors are usually from trying to delete an item that's already gone
     - ignore_errors: yes
       block:
-        - name: Get SSG to delete
+        - name: Get SSG cloud env to delete
           uri:
-            url: "{{BIGIQ_URI}}/cm/cloud/service-scaling-groups"
+            url: "{{BIGIQ_URI}}/cm/cloud/environments/"
             method: GET
           register: ssg_result
 
         - name: Save JQ Command
           set_fact:
-            jq_command: "json.items[?name=='{{SSG_NAME}}'].id"
+            jq_command: "json.items[?name=='{{CLOUD_ENVIRONMENT_NAME}}'].id"
 
         - set_fact:
             ssg_ids: "{{ssg_result|json_query(jq_command)}}"
@@ -29,11 +29,8 @@
           set_fact:
             ssg_id: "{{ssg_ids[0]}}"
 
-        - name: Deleting service scaling group
+        - name: Deleting SSG Cloud Environment
           uri:
-            url: "{{BIGIQ_URI}}/cm/cloud/service-scaling-groups/{{ssg_id}}"
-            method: PATCH
-            body_format: json
-            body: '{ "status": "DELETING" }'
-
+            url: "{{BIGIQ_URI}}/cm/cloud/environments/{{ssg_id}}"
+            method: DELETE
 ...
