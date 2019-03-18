@@ -53,3 +53,20 @@ bigip2modules:
   - afm
   - dns
   - security_shared
+bigip3: 10.192.75.187
+bigip3user: admin
+bigip3pass: "@dmin1356"
+bigip3conflict: use_bigip
+bigip3device_conflict: use_bigip
+bigip3versioned_conflict: keep_version
+bigip3device_statistics_enable: yes
+bigip3device_statistics_interval: 60
+bigip3device_statistics_zone: default
+bigip3device_statistics_module1: device
+bigip3device_statistics_module2: ltm
+bigip3device_statistics_module3: dns
+bigip3modules:
+  - ltm
+  - asm
+  - afm
+  - security_shared

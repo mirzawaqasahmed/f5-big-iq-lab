@@ -84,7 +84,7 @@ if [[  $env != "udf" ]]; then
       read -s f5pass
     fi
     
-    echo -e "\nF5 domain:"
+    echo -e "\nF5 internal domain:"
     read f5domain
 
     # to fix DNS and NTP servers
