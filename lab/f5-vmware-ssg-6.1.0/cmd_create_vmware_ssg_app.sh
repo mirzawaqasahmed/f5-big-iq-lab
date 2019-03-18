@@ -12,17 +12,27 @@ if [ -f /home/f5/ssg_created ]; then
     echo -e "SSG already created.\n"
     ./cmd_power_on_vm.sh
 else
-    # Below playbook works only with vmwareUDFdefault cloud environement pre-created in the BIG-IQ Blueprint
-    ansible-playbook $DEBUG_arg -i inventory/hosts create_vmware-auto-scaling.yml 
+    # check if ESXi is up
+    ip=$(ping -c 1 -w 1 10.1.1.90 | grep PING | awk '{ print $3 }')
+    timeout 1 bash -c "cat < /dev/null > /dev/tcp/$ip/443"
+    if [  $? == 0 ]; then
+        # Below playbook works only with vmwareUDFdefault cloud environement pre-created in the BIG-IQ Blueprint
+        ansible-playbook $DEBUG_arg -i inventory/hosts create_vmware-auto-scaling.yml
 
-    echo -e "\n${GREEN}Sleep 25 min (to allow time for the SSG to come up)${NC}"
-    sleep 1500
+        echo -e "\n${GREEN}Sleep 25 min (to allow time for the SSG to come up)${NC}"
+        sleep 1500
+        # check if ESXi is up
+        ip=$(ping -c 1 -w 1 10.1.1.90 | grep PING | awk '{ print $3 }')
+        timeout 1 bash -c "cat < /dev/null > /dev/tcp/$ip/443"
+        if [  $? == 0 ]; then
+            # create defauilt app on the SSG
+            python create_http_bigiq_app_ssg.py
+        fi
+        # get VM status
+        ./cmd_get_status_vm.sh
 
-    # create defauilt app on the SSG
-    python create_http_bigiq_app_ssg.py
-
-    # get VM status
-    ./cmd_get_status_vm.sh
-
-    touch ssg_created
+        touch ssg_created
+    else
+        echo -e "ESXi shutdown"
+    fi
 fi
