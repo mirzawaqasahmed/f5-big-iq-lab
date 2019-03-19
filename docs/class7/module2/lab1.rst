@@ -53,7 +53,7 @@ In the steps below, we are going to attach our newly created firewall policies t
 
 With the objects we created available for use with templates, we will now create a new template to use which references these objects.
 
-For the steps below, we will use the *Marco* account to manipulate application templates
+For the steps below, we will use the **david** (or **marco**) account to manipulate application templates
 
 #. Under *Applications* > *Service Catalog* 
 #. Check the box next to the ``Default-f5-HTTPS-WAF-lb-template``, click the dropdown box on the *More* button and select *Clone*
@@ -70,7 +70,7 @@ Lab 2.1.3: Update Existing Application To Use New Application Template:
 *************************************************************************
 In previous labs, we have created and deployed a new application using a fresh template.  In this exercise, we are going to update an existing application to use a new template.
 
-Complete the steps below logged in as *Marco*
+Complete the steps below logged in as **david** (or **marco**)
 
 #. Click the *Applications* tab, and click the *Applications* button.
 #. Click the application ``site36.example.com``

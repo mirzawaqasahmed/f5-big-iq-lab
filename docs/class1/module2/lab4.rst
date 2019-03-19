@@ -5,18 +5,7 @@ Lab 2.4: Security workflows
 
 Connect as **larry**
 
-1. Larry check the Firewall policy.
-
-Go to Monitoring > REPORTS > Security > Network Security > Rule statistics and select
-*vs_site18.example.com_https* BOS-vBIGIP01.termmarc.com
-
-.. image:: ../pictures/module2/img_module2_lab4_1.png
-  :align: center
-  :scale: 50%
-
-|
-
-2. Larry check the Web Application Security for ``f5-asm-policy1`` ASM Policy.
+1. Larry check the Web Application Security for ``f5-asm-policy1`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies
 
@@ -30,7 +19,7 @@ Click on Suggestions, then **Accept** the Learning.
 
 .. note:: in case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
 
-3. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
+2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
 
 Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
 
@@ -40,7 +29,7 @@ Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP0
 
 |
 
-4. Go back to Configuration > SECURITY > Web Application Security > Policies
+3. Go back to Configuration > SECURITY > Web Application Security > Policies
 
 Update the Enforcement Mode to ``Blocking`` (this might be already set to Blocking in the BP, if the case, move on).
 
@@ -80,7 +69,7 @@ After Blocking is turned on:
 
 2. Let's generate some bad traffic, connect on the *Ubuntu Lamp Server* server and launch the following script:
 
-``# /home/f5/scripts/generate_http_bad_traffic``
+``# /home/f5/scripts/generate_http_bad_traffic.sh``
 
 3. In Application Dashboard, navigate to the Security Statistics and notice the Malicious Transactions.
 

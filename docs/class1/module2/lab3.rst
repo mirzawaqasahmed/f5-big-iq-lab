@@ -25,8 +25,6 @@ For Device, select the name of the device you want to deploy this application to
   :align: center
   :scale: 50%
 
-|
-
 Determine the objects that you want to deploy in this application.
 To omit any of the objects defined in this template, click the  (X) icon that corresponds to that object.
 To create additional copies of any of the objects defined in this template, click the  (+) icon that corresponds to that object.
@@ -48,13 +46,9 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
 - Destination Network Mask: ``255.255.255.255``
 - Service Port: ``80``
 
-It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
-
 .. image:: ../pictures/module2/img_module2_lab3_2.png
   :align: center
   :scale: 50%
-
-|
 
 Then Click on Create (bottom right of the window).
 The Application is deployed.
@@ -63,9 +57,7 @@ The Application is deployed.
   :align: center
   :scale: 50%
 
-|
-
-.. note:: In case the Application fails, connect as **Marco** and go to Applications > Application Deployments to have more details on the failure. You try retry in case of failure.
+.. note:: In case the Application fails, connect as **david** (or **marco**) and go to Applications > Application Deployments to have more details on the failure. You try retry in case of failure.
 
 .. note:: You can tail the logs: /var/log/restjavad.0.log
 

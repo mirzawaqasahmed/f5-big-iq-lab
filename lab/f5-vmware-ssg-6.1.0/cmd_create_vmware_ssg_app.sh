@@ -4,6 +4,9 @@
 # Uncomment set command below for code debugging ansible
 #DEBUG_arg="-vvvv"
 
+# ESXi IP address
+ip="10.1.1.90"
+
 echo -e "\nTIME: $(date +"%H:%M")"
 
 cd /home/f5/f5-vmware-ssg
@@ -13,7 +16,6 @@ if [ -f /home/f5/ssg_created ]; then
     ./cmd_power_on_vm.sh
 else
     # check if ESXi is up
-    ip=$(ping -c 1 -w 1 10.1.1.90 | grep PING | awk '{ print $3 }')
     timeout 1 bash -c "cat < /dev/null > /dev/tcp/$ip/443"
     if [  $? == 0 ]; then
         # Below playbook works only with vmwareUDFdefault cloud environement pre-created in the BIG-IQ Blueprint
@@ -22,7 +24,6 @@ else
         echo -e "\n${GREEN}Sleep 25 min (to allow time for the SSG to come up)${NC}"
         sleep 1500
         # check if ESXi is up
-        ip=$(ping -c 1 -w 1 10.1.1.90 | grep PING | awk '{ print $3 }')
         timeout 1 bash -c "cat < /dev/null > /dev/tcp/$ip/443"
         if [  $? == 0 ]; then
             # create defauilt app on the SSG
