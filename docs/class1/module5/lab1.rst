@@ -46,11 +46,11 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment) or you can use an `online tool`_.
 
-.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+   .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
-.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+   .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
-.. _online tool: https://www.jsonschemavalidator.net/
+   .. _online tool: https://www.jsonschemavalidator.net/
 
 .. code-block:: yaml
    :linenos:

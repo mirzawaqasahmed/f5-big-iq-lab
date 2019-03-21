@@ -10,6 +10,8 @@ Administrators will employ the BIG-IQ Service Catalog to construct and manage a 
 - Restrict specific AS3 properties and/or classes
 - Override specific AS3 default property values
 
+.. note:: BIG-IQ 7.0 will bring a User Interface to create and manage the AS3 templates.
+
 The following examples demonstrate how these goals can be met with JSON Schema.
 
 1. Enforcing Changes to AS3 Classes

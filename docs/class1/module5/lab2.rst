@@ -76,11 +76,11 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
 2. Add the below application service to the existing AS3 declaration in the JSON validator. The validator is your IDE (Integrated development environment) or you can use an `online tool`_.
 
-.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+   .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
-.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+   .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
-.. _online tool: https://www.jsonschemavalidator.net/
+   .. _online tool: https://www.jsonschemavalidator.net/
 
 .. note:: Add a **","** at the end of the MyWebApp1 statement.
     If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
