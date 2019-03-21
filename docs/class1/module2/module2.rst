@@ -27,6 +27,7 @@ Workflows WAF service deployement with **BIG-IQ Service Catalog Template**
 --------------------------------------------------------------------------
 
 Larry create the ASM Policy in *transparent* mode (**workflow used in module 2**)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 1. Paula uses a WAF template to deploy her application service using the ASM policy created by larry.
        
@@ -45,6 +46,7 @@ Larry create the ASM Policy in *transparent* mode (**workflow used in module 2**
 5. Paula can turn on blocking for her application, this will remove the Domain Names in the ASM policy and enforment will be applied.
 
 Larry create the ASM Policy in *blocking* mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Paula use a WAF template to deploy her application service using the ASM policy created by larry.
       
@@ -60,7 +62,7 @@ Larry create the ASM Policy in *blocking* mode
     
 5. Paula can turn on blocking for her application, this will remove the Domain Names in the ASM policy and enforment will be applied.
 
-.. note:: For more information about ASM enforcement mode, read following article https://support.f5.com/csp/article/K67438310
+For more information about ASM enforcement mode, read following article https://support.f5.com/csp/article/K67438310
 
 .. toctree::
    :maxdepth: 1
