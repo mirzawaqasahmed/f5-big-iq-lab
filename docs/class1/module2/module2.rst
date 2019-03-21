@@ -28,35 +28,41 @@ Finally, we will simulate "bad" traffic to show the security policy blocking it.
 Workflows WAF service deployement with **BIG-IQ Service Catalog Template**
 --------------------------------------------------------------------------
 
-1. Larry create the ASM Policy in transparent mode (**workflow used in module 2**)
+1. Larry create the ASM Policy in *transparent* mode (**workflow used in module 2**)
     
+    1. Paula uses a WAF template to deploy her application service using the ASM policy created by larry.
+       
+       .. note:: The Domain Names she sets will be added to the hostname properties of the ASM policy (where the Policy will always be transparent for).
+       
+                 At this point, because the policy is in transparent mode, Paula cannot turn on/off blocking for her application.
+    
+    2. Traffic go through the Application Service and ASM learning builds up.
+    
+    3. After some time (days or weeks), Larry reviews the learning with Paula (or without) and accepts/rejects the learning.
+    
+    4. Once learning has been approved, Larry can update the policy and let know Paula about it.
+
+       .. note:: In order to allow Paula to turn on/off blocking for her application, Larry needs to change the learning mode to blocking.
+    
+    5. Paula can turn on blocking for her application, this will remove the Domain Names in the ASM policy and enforment will be applied.
+
+2. Larry create the ASM Policy in *blocking* mode
+
     1. Paula use a WAF template to deploy her application service using the ASM policy created by larry.
-       The Domain Names she set will be added to the hostname properties of the ASM policy (where the Policy will always transparent for that host).
-       At this point, because the policy is in transparent mode, Paula cannot turn on/off blocking for her application.
+      
+       .. note:: The Domain Names she sets will be added to the hostname properties of the ASM policy (where the Policy will always be transparent for).
+       
+                 At this point, because the policy is in blocking mode, Paula have already the option to turn on/off blocking for her application.
     
-    2. Traffic go through the Application Service and ASM learning builds up
+    2. Traffic go through the Application Service and ASM learning builds up.
     
     3. After some time (days or weeks), Larry review the learning with Paula (or without) and accepts/rejects the learning.
     
     4. Once learning has been approved, Larry can update the policy with the learning and let know Paula about it.
-       In order to allow Paula to turn on/off blocking for her application, Larry needs to change the learning mode to blocking.
     
-    5. Paula can turn on blocking for her application, this will remove the hostname of her app and policy will then applies for her app.
+    5. Paula can turn on blocking for her application, this will remove the Domain Names in the ASM policy and enforment will be applied.
 
-2. Larry create the ASM Policy in blocking mode
-
-    1. Paula use a WAF template to deploy her application service using the ASM policy created by larry.
-       The Domain Names she set will be added to the hostname properties of the ASM policy (where the Policy will always transparent for that host).
-       At this point, because the policy is in blocking mode, Paula have already the option to turn on/off blocking for her application.
-    
-    2. Traffic go through the Application Service and ASM learning builds up
-    
-    3. After some time (days or weeks), Larry review the learning with Paula (or without) and accepts/rejects the learning.
-    
-    4. Once learning has been approved, Larry can update the policy with the learning and let know Paula about it.
-    
-    5. Paula can turn on blocking for her application, this will remove the hostname of her app and policy will then applies for her app.
-
+.. note:: For more information about ASM enforcement mode, read following article https://support.f5.com/csp/article/K67438310
 
 .. toctree::
    :maxdepth: 1
