@@ -1,6 +1,5 @@
 Lab 3.3: Create Application via API with Python
 -----------------------------------------------
-
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
 
 .. _here: ../module5/module5.html

@@ -1,9 +1,8 @@
 Module 2: BIG-IQ Application Templates & Deployment (Service Catalog)
 =====================================================================
-
 In this module, we will learn how to use BIG-IQ Service Catalog Templates and how to deploy an **Application** wtih it.
 
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
 
 The Application Service Catalog Templates will be created by **david** (or **marco**), the Administrator.
 **larry** will create the security policies and let David know about the ones to associate with the templates.

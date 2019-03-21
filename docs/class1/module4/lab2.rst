@@ -1,5 +1,7 @@
-Lab 4.2: Create Application
----------------------------
+Lab 4.2: Create Application using Service Catalog Template
+----------------------------------------------------------
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
+
 Connect as **paula** to create a new application. Click on the *Create* button
 and select the template previously created ``f5-HTTP-lb-custom-template``.
 

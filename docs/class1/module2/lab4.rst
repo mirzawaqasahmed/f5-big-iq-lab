@@ -1,7 +1,6 @@
 Lab 2.4: Security workflow (Service Catalog Templates)
 ------------------------------------------------------
-
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
 
 Connect as **larry**
 

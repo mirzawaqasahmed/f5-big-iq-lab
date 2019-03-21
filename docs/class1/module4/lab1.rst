@@ -1,5 +1,7 @@
-Lab 4.1: Custom Service Template
---------------------------------
+Lab 4.1: Custom Service Catalog Template
+----------------------------------------
+.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
+
 An application template allows you to specify a set of objects that define
 an application that you can then deploy to your BIG-IP device(s).
 
