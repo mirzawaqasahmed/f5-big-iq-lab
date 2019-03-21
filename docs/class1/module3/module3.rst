@@ -1,5 +1,5 @@
-Module 3: BIG-IQ Application Deployment via API (6.0.x only)
-============================================================
+Module 3: BIG-IQ Application Deployment via API (v6.0 only)
+===========================================================
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
 
