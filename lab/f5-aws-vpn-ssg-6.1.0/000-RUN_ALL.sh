@@ -31,7 +31,7 @@ if [[ ! -z $getPublicIP ]]; then
 fi
 
 # Use UDF Cloud Account (under developement, only for AWS)
-./01-configure-cloud-udf.sh
+#./01-configure-cloud-udf.sh
 
 # [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
