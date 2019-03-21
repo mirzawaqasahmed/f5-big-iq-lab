@@ -16,9 +16,9 @@ Do the following:
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd f5-aws-vpn-ssg/
-    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg$ nohup ./111-DELETE_ALL.sh nopause &
-    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg$ tail -f nohup.out
+    f5student@xjumpbox:~$ cd f5-aws-vpn-ssg/
+    f5student@xjumpbox:~/f5-aws-vpn-ssg$ nohup ./111-DELETE_ALL.sh nopause &
+    f5student@xjumpbox:~/f5-aws-vpn-ssg$ tail -f nohup.out
 
 Follow all the steps as explained:
 

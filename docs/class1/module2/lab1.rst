@@ -1,5 +1,5 @@
-Lab 2.1: Built-in templates
----------------------------
+Lab 2.1: Service Catalog Built-in templates
+-------------------------------------------
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 

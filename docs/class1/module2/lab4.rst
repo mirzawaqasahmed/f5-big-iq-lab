@@ -1,5 +1,5 @@
-Lab 2.4: Security workflows
----------------------------
+Lab 2.4: Security workflow (Service Catalog Templates)
+------------------------------------------------------
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 
@@ -59,7 +59,9 @@ After Blocking is turned on:
 
 |
 
-.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy to enforce it (or not)
+.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy. For more information, visit following article https://support.f5.com/csp/article/K67438310
+
+.. note:: The BIG-IQ Web Application Security module does not support changes to ASM Blocking Mode when managing BIG-IP devices running 14.1.0. The issue is tracked as ID 750683 (BIG-IP).
 
 .. image:: ../pictures/module2/img_module2_lab4_6a.png
   :align: center

@@ -191,6 +191,8 @@ Go here to **subscribe** to the right F5 instance we will use in this lab:
 
 `F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) <https://aws.amazon.com/marketplace/pp/B07G5MT2KT/>`_
 
+`F5 BIG-IQ Virtual Edition - (BYOL) <https://aws.amazon.com/marketplace/pp/B00KIZG6KA/>`_
+
 Once you've subscribed, you should see something like this: 
 
 .. image:: ../pictures/module4/img_module4_lab1_14.png

@@ -4,7 +4,7 @@ Lab 4.3: Review our ``SSG`` deployment in ``AWS``
 ``AWS`` configuration review
 ****************************
 
-Connect to your ``AWS Console`` to review what has been created already.
+Connect to your ``AWS Console`` to review what has been created already (the AWS console URL, login, password are in the Cloud Accounts tab if using UDF).
 
 Go to **Services** > **CloudFormation**
 
@@ -32,8 +32,8 @@ If you want to review those stacks, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd f5-aws-vpn-ssg/cft/
-    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg/cft$ ls -l
+    f5student@xjumpbox:~/$ cd f5-aws-vpn-ssg/cft/
+    f5student@xjumpbox:~/f5-aws-vpn-ssg$ ls -l
     -rw-r--r-- 1 f5 f5 7148 May  3 06:49 Servers-Setup.template
     -rw-r--r-- 1 f5 f5 5367 Jun 11 00:27 Setup-Ubuntu.template
     -rw-r--r-- 1 f5 f5 8425 May  9 11:02 Setup-VPC.template

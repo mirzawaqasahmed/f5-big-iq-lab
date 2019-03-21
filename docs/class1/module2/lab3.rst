@@ -1,5 +1,5 @@
-Lab 2.3: Create Application
----------------------------
+Lab 2.3: Create Application using Service Catalog Template
+----------------------------------------------------------
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 

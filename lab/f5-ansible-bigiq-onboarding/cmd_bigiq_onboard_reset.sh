@@ -33,7 +33,7 @@ NC='\033[0m' # No Color
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> <internal> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> <rmAS3rpmBigipOnly> ${NC} (1st parameter mandatory)\n"
     exit 1;
 fi
 
@@ -79,7 +79,7 @@ else
   echo -e "\n${RED}Skipping clear-rest-storage"
 fi
 
-### CUSTOMIZATION - F5 INTERNAL LAB ONLY
+### CUSTOMIZATION - F5 INTERNAL LAB ONLY =>>>>> rmAS3rpmBigipOnly below un-install AS3 LX packages from BIG-IPs
 if [[  $env != "udf" ]]; then
     echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
     # Cleanup AS3 on the BIG-IP

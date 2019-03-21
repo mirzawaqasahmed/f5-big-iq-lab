@@ -1,5 +1,5 @@
-Lab 2.2: Create custom security policies & Application Service Template
------------------------------------------------------------------------
+Lab 2.2: Create custom security policy & Application Service Catalog Template
+-----------------------------------------------------------------------------
 
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ.
 

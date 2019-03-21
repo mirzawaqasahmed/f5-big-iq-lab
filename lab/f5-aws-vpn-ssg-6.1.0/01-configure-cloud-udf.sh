@@ -12,6 +12,9 @@ NC='\033[0m' # No Color
 UDF_CLOUD="$(cat config.yml | grep UDF_CLOUD | awk '{print $2}')"
 UDF_METADATA_URL="$(cat config.yml | grep UDF_METADATA_URL | awk '{print $2}')"
 BIGIP_RELEASE="$(cat config.yml | grep BIGIP_RELEASE | awk '{print $2}')"
+
+# Create random number to make the PREFIX uniq
+sed -i "s/udf-demo/demo-$((RANDOM%9999))/g" ./config.yml
 PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 
 cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')
@@ -52,8 +55,8 @@ if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
       bigipami=${bigipami:1:${#bigipami}-2}
 
       echo -e "\n- BIG-IP AMI ($BIGIP_RELEASE - AllOneBootLocation):${GREEN} $bigipami ${NC}"
-      # ami-04e893bab1e8b9b10 is the default value in the config.yml file
-      sed -i "s/ami-04e893bab1e8b9b10/$bigipami/g" ./config.yml
+      # ami-58c3d327 is the default value in the config.yml file
+      sed -i "s/ami-58c3d327/$bigipami/g" ./config.yml
 
       echo -e "\n\nAWS console Credentials:${GREEN} https://console.aws.amazon.com/ ${NC}"
       echo -e "\t- accountId:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .accountId) ${NC}"

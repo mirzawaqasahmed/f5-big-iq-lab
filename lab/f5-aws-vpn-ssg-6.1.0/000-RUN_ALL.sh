@@ -31,7 +31,7 @@ if [[ ! -z $getPublicIP ]]; then
 fi
 
 # Use UDF Cloud Account (under developement, only for AWS)
-#./01-configure-cloud-udf.sh
+./01-configure-cloud-udf.sh
 
 # [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
@@ -42,6 +42,8 @@ PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 nPREFIX="$(echo $PREFIX | wc -m)"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
+UDF_METADATA_URL="$(cat config.yml | grep UDF_METADATA_URL | awk '{print $2}')"
+UDF_CLOUD="$(cat config.yml | grep UDF_CLOUD | awk '{print $2}')"
 
 if [[ $c1 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
@@ -57,8 +59,21 @@ fi
 clear
 
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
-echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?\n\n"
-echo -e "https://aws.amazon.com/marketplace/pp/B07G5MT2KT\n\n${NC}"
+echo -e "\n${GREEN1}Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:"
+echo -e "- F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) https://aws.amazon.com/marketplace/pp/B07G5MT2KT/"
+echo -e "- F5 BIG-IQ Virtual Edition - (BYOL) https://aws.amazon.com/marketplace/pp/B00KIZG6KA/\n\n${NC}"
+
+cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')
+cloudProvider=${cloudProvider:1:${#cloudProvider}-2}
+if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
+   echo -e "AWS console Credentials:${GREEN} https://console.aws.amazon.com/ ${NC}"
+   echo -e "\t- accountId:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .accountId) ${NC}"
+   echo -e "\t- consoleUsername:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .consoleUsername) ${NC}"
+   echo -e "\t- consolePassword:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .consolePassword) ${NC} \n"
+fi
+
+# Force pause to accept the terms under UDF account (to be removed later when terms can be accepted programmatically or by default on the AWS F5 account)
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 

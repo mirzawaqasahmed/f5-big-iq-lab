@@ -31,7 +31,10 @@ we will need to edit the following files:
 Launch our ``SSG`` - Update config.yml
 ***************************************
 
-Use your favorite editor to update this file. 
+.. warning:: For UDF lab, the UDF Cloud Account is used, if you want to use your own AWS account, 
+             comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
+
+In the case you are **NOT** using the UDF Cloud account, use your favorite editor to update this file. 
 
     ``vi config.yml``
 
@@ -51,8 +54,6 @@ Here are the settings you will need to change to deploy everything successfully:
         other student's env. If your name is 'common', pick something else that should be unique or append 
         your first name to it. 
 
-        Use udf- in the prefix or your ``SSG`` deployment will fail
-        
         Remember that the PREFIX must be 10 CHARACTERS MAX
   
 
@@ -84,9 +85,8 @@ Here is an example of the updated **config.yml** file:
     # Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
     AWS_SSH_KEY: CE-Lab-MENANT
 
-
-    BYOL_BIGIP_AMI: "ami-04e893bab1e8b9b10" # us-east-1 F5 Networks BIGIP-14.0.0.1-0.0.2 BYOL - All Modules 1 Boot Location
-
+    BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
+    
 
 .. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Region
 
@@ -101,12 +101,13 @@ Here is an example of the updated **config.yml** file:
 
     MAKE SURE TO NOTE IT SOMEWHERE
 
+In case want to use your own AWS account, comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
 
 Launch our ``SSG`` - Update our SSG configuration
 *************************************************
 
 To update configuration pushed by the orchestrator, we will update the file called 
-**08-create-aws-auto-scaling.yml**. Use your favorite editor to update it 
+**08-create-aws-auto-scaling.yml**. Use your favorite editor to update it.
 
 Look for this section in the file: 
 
@@ -196,18 +197,30 @@ To trigger the deployment, run the following command:
  ``./000-RUN_ALL.sh nopause``
 
 It will ask you to press Enter to confirm that you subscribed and agreed to 
-the EULA in the marketplace. Press enter to start the deployment. 
+the EULA in the marketplace. Make sure you subscribed, then press enter to start the deployment. 
+
+.. warning:: The AWS console URL, login, password are in the Cloud Accounts tab if using UDF.
+ 
+   .. image:: ../pictures/module4/img_module4_lab2_2a.png
+      :scale: 50%
+
 
 You should see something like this: 
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg$ nohup ./000-RUN_ALL.sh nopause &
-    f5@03a920f8b4c0410d8f:~/f5-aws-vpn-ssg$ tail -f nohup.out
+    f5student@xjumpbox:~/f5-aws-vpn-ssg$ ./000-RUN_ALL.sh nopause 
 
-    Did you subscribed and agreed to the software terms in AWS Marketplace?
+    Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:
+    - F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
+    - F5 BIG-IQ Virtual Edition - (BYOL) https://aws.amazon.com/marketplace/pp/B00KIZG6KA/
 
-    https://aws.amazon.com/marketplace/pp/B07G5MT2KT
+    AWS console Credentials: https://console.aws.amazon.com/
+            - accountId: "12345678908"
+            - consoleUsername: "udf"
+            - consolePassword: "423BeMhe23iLt23weazkas2"
+
+    Press [Enter] key to continue... CTRL+C to Cancel
 
 
     [DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
