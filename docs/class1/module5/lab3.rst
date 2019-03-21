@@ -251,7 +251,7 @@ POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 34
+   :emphasize-lines: 29
 
     {
         "class": "AS3",

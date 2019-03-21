@@ -44,15 +44,17 @@ Task 1 - HTTP Application Service
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistance, etc...
 
-1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE.
+1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment) or you can use an `online tool`_.
 
 .. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
 .. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
+.. _online tool: https://www.jsonschemavalidator.net/
+
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 12,33,49,50
+   :emphasize-lines: 12,28,44,45
 
    {
        "class": "AS3",
@@ -266,7 +268,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 41
+   :emphasize-lines: 36
 
    {
        "class": "AS3",
@@ -376,7 +378,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 30
+   :emphasize-lines: 25
 
    {
        "class": "AS3",
