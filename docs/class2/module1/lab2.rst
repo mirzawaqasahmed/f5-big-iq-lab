@@ -48,16 +48,18 @@ VMWare Properties:
 * Folder: Purple
 * User: administrator@vsphere.local
 * Password: Purpl3$lab
-* VM Image: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template or 13.1.1-0.0.4.ALL_1SLOT_ASM_template
+* VM Image: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_ASM_template or BIGIP-13.1.1-0.0.4.ALL_1SLOT_ASM_template
 * Network Interface Mappings
 
-  ========================== ===================
-      Network Interface            Network
-  ========================== ===================
-          nic0                    VM Network
-          nic1                      external
-          nic2                      internal
-  ========================== ===================
++------------+
+|  Networks  |
++------------+
+| VM Network |
++------------+
+|  external  |
++------------+
+|  internal  |
++------------+
 
 .. note :: **[New 6.0.1]** the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
 

@@ -10,6 +10,14 @@ of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
 |
 
+You can also directly using Postman on your laptop and use the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
+
+.. image:: ../../pictures/udf_bigiq_api.png
+    :align: center
+    :scale: 80%
+
+|
+
 If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
 
 .. image:: ../../pictures/ravello_ubuntu.png
