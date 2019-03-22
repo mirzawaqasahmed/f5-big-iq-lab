@@ -17,11 +17,15 @@ This screen displays information about active licenses.
 - To reactivate a license, select the check box next to the license and click the Reactivate button.
 - To delete a license from BIG-IQ, select the check box next to the license and click the Delete button.
 - To assign a license or view details about a license (including current license assignments), click the license name.
-- There are 4 types of licence pools:
+
+There are 4 types of licence pools:
 
     - ``Purchased pool`` - Prepaid pool of a specific number of concurrent license grants for a single BIG-IP service, such as LTM. For example, a purchased pool of 25 licenses for BIG-IP LTM allows you to license up to 25 concurrent BIG-IP VE systems for LTM.
+    
     - ``Utility pool`` - Designed for service providers, utility pools contain licenses for BIG-IP services you grant for a specific unit of measure (hourly, daily, monthly, or yearly). This means you can pay for licenses as needed with no limit to the number of licenses you can grant. From BIG-IQ, you can automatically submit a license usage report. F5 uses that report to calculate billing based on the licensed services, duration of the license grant, and the unit-of-measure pricing. To purchase a utility pool license, you must have a master service agreement.
+    
     - ``Volume pool`` - Prepaid subscription (1 and 3 year terms) for a fixed number of concurrent license grants for multiple BIG-IP services. To purchase a volume pool, you must have a master service agreement.
+    
     - ``Registration key pool`` - A pool of single standalone BIG-IP VE registration keys for one or more BIG-IP services. Because you are managing these registration keys from BIG-IQ (instead of directly from the BIG-IP device), you can revoke and reassign a license to BIG-IP VE systems without having to contact F5 to allow the license to be moved.
 
 The **Add License** option is to add a License Pool (e.g. Purchases, Utility or Volume pool).
