@@ -29,15 +29,16 @@ bigip1device_statistics_zone: default
 bigip1device_statistics_module1: device
 bigip1device_statistics_module2: ltm
 bigip1device_statistics_module3: dns
+bigip1cluster: SeatteCluster
 bigip1modules:
   - ltm
   - asm
   - afm
   - dns
   - security_shared
-bigip2: 10.192.75.184
+bigip2: 10.192.75.188
 bigip2user: admin
-bigip2pass: "@dmin1356"
+bigip2pass: admin
 bigip2conflict: use_bigip
 bigip2device_conflict: use_bigip
 bigip2versioned_conflict: keep_version
@@ -47,13 +48,14 @@ bigip2device_statistics_zone: default
 bigip2device_statistics_module1: device
 bigip2device_statistics_module2: ltm
 bigip2device_statistics_module3: dns
+bigip2cluster: SeatteCluster
 bigip2modules:
   - ltm
   - asm
   - afm
   - dns
   - security_shared
-bigip3: 10.192.75.187
+bigip3: 10.192.75.184
 bigip3user: admin
 bigip3pass: "@dmin1356"
 bigip3conflict: use_bigip
@@ -65,8 +67,29 @@ bigip3device_statistics_zone: default
 bigip3device_statistics_module1: device
 bigip3device_statistics_module2: ltm
 bigip3device_statistics_module3: dns
+bigip3cluster: BostonCluster
 bigip3modules:
   - ltm
   - asm
   - afm
+  - dns
+  - security_shared
+bigip4: 10.192.75.187
+bigip4user: admin
+bigip4pass: "@dmin1356"
+bigip4conflict: use_bigip
+bigip4device_conflict: use_bigip
+bigip4versioned_conflict: keep_version
+bigip4device_statistics_enable: yes
+bigip4device_statistics_interval: 60
+bigip4device_statistics_zone: default
+bigip4device_statistics_module1: device
+bigip4device_statistics_module2: ltm
+bigip4device_statistics_module3: dns
+bigip4cluster: BostonCluster
+bigip4modules:
+  - ltm
+  - asm
+  - afm
+  - dns
   - security_shared
