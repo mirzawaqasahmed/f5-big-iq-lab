@@ -29,7 +29,7 @@ bigip1device_statistics_zone: default
 bigip1device_statistics_module1: device
 bigip1device_statistics_module2: ltm
 bigip1device_statistics_module3: dns
-bigip1cluster: SeatteCluster
+bigip1cluster: SeattleCluster
 bigip1modules:
   - ltm
   - asm
@@ -48,7 +48,7 @@ bigip2device_statistics_zone: default
 bigip2device_statistics_module1: device
 bigip2device_statistics_module2: ltm
 bigip2device_statistics_module3: dns
-bigip2cluster: SeatteCluster
+bigip2cluster: SeattleCluster
 bigip2modules:
   - ltm
   - asm
