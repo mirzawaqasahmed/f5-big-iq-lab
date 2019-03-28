@@ -40,7 +40,7 @@ NC='\033[0m' # No Color
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> <build number> <iso> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> [<udf/sjc/sjc2> <build number> <iso>] ${NC}([] = optional)\n"
     exit 1;
 fi
 

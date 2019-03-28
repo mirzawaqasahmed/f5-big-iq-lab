@@ -33,7 +33,7 @@ NC='\033[0m' # No Color
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 <pause/nopause> <udf/sjc/sjc2> <rmAS3rpmBigipOnly> ${NC} (1st parameter mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <pause/nopause> [<udf/sjc/sjc2> <rmAS3rpmBigipOnly>] ${NC}([] = optional)\n"
     exit 1;
 fi
 
