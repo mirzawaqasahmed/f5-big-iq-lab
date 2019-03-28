@@ -34,7 +34,6 @@ bigip1modules:
   - ltm
   - asm
   - afm
-  - dns
   - security_shared
 bigip2: 10.192.75.188
 bigip2user: admin
@@ -53,7 +52,6 @@ bigip2modules:
   - ltm
   - asm
   - afm
-  - dns
   - security_shared
 bigip3: 10.192.75.184
 bigip3user: admin
