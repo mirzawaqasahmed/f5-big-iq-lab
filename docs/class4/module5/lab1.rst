@@ -23,17 +23,16 @@ This automation scenario is composed of 4 parts:
 
 * Create Application Services
 
-    - `Ansible`_ **playbook**: Use BIG-IQ Ansible Modules to deploy appplication services (see class 1, module 3, lab 1)
+    - `Ansible using AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 5, lab 7) **(BIG-IQ 6.1 and above)**.
 
-    - `Ansible AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy appplication services (see class 1, module 5, lab 7)
-
+    - `Ansible using Service Catalog`_ **playbook**: Use BIG-IQ Ansible Modules to deploy application services (see class 1, module 3, lab 1) **(BIG-IQ 6.0.x)**.
 
 .. _bigiq_onboard: https://galaxy.ansible.com/f5devcentral/bigiq_onboard
 .. _register_dcd: https://galaxy.ansible.com/f5devcentral/register_dcd
 .. _bulkDiscovery.pl: https://downloads.f5.com/esd/eula.sv?sw=BIG-IQ&pro=big-iq_CM&ver=6.0.1&container=v6.0.1.1&path=&file=&B1=I+Accept
 .. _bigiq_device_discovery: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigiq_device_discovery_module.html
-.. _Ansible: ../../class01/module3/module3.html
-.. _Ansible AS3: ../../class01/module5/module5.html
+.. _Ansible using Service Catalog: ../../class01/module3/module3.html
+.. _Ansible using AS3: ../../class01/module5/module5.html
 
 **Lab:**
 
@@ -77,22 +76,23 @@ This automation scenario is composed of 4 parts:
 
 |
 
-    The script will perform in this order:
-        1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).
-        2. Install ansible-galaxy roles
-        3. Onboarding BIG-IQ CM and DCD:
+The script will perform in this order:
 
-            - Using bigiq_onboard role: setup hostname, role, dns, ntp, self-ip, master key, passwords (DCD first, then CM)
-            - Using register_dcd role: add DCD to CM, activate necessary services (asm, afm, ...)
-            
-        4. Add & discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl or Ansible module bigiq_device_discovery.
-        5. Create Applications using Ansible playbook (AS3 or none AS3).
+    1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).
+    2. Install ansible-galaxy roles
+    3. Onboarding BIG-IQ CM and DCD:
 
-    Ignore the following errors:
+        - Using bigiq_onboard role: setup hostname, role, dns, ntp, self-ip, master key, passwords (DCD first, then CM)
+        - Using register_dcd role: add DCD to CM, activate necessary services (asm, afm, ...)
+        
+    4. Add & discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl or Ansible module bigiq_device_discovery.
+    5. Create Applications using Ansible playbook (AS3 or none AS3).
 
-        ``TASK [f5devcentral.bigiq_onboard : Test authentication - old credentials] ***********************************************************
-        fatal: [udf-bigiq-dcd-01]: FAILED! => {"cache_control": "no-store, no-cache, must-revalidate", "changed": false, "connection": "close", "content": "{\"code\":401,\"message\":\"Authentication failed.\",\"originalRequestBody\":\"{\\\"username\\\":\\\"admin\\\",\\\"generation\\\":0,\\\"lastUpdateMicros\\\":0}\",\"restOperationId\":1067315,\"errorStack\":[],\"kind\":\":resterrorresponse\"}", "content_length": "206", "content_type": "application/json; charset=UTF-8", "date": "Mon, 15 Oct 2018 21:15:41 GMT", "expires": "-1", "json": {"code": 401, "errorStack": [], "kind": ":resterrorresponse", "message": "Authentication failed.", "originalRequestBody": "{\"username\":\"admin\",\"generation\":0,\"lastUpdateMicros\":0}", "restOperationId": 1067315}, "msg": "Status code was 401 and not [200]: HTTP Error 401: Unauthorized", "pragma": "no-cache", "redirected": false, "server": "webd", "status": 401, "url": "https://10.1.1.6:443/mgmt/shared/authn/login"}
-        ...ignoring``
+Ignore the following errors:
+
+    ``TASK [f5devcentral.bigiq_onboard : Test authentication - old credentials] ***********************************************************
+    fatal: [udf-bigiq-dcd-01]: FAILED! => {"cache_control": "no-store, no-cache, must-revalidate", "changed": false, "connection": "close", "content": "{\"code\":401,\"message\":\"Authentication failed.\",\"originalRequestBody\":\"{\\\"username\\\":\\\"admin\\\",\\\"generation\\\":0,\\\"lastUpdateMicros\\\":0}\",\"restOperationId\":1067315,\"errorStack\":[],\"kind\":\":resterrorresponse\"}", "content_length": "206", "content_type": "application/json; charset=UTF-8", "date": "Mon, 15 Oct 2018 21:15:41 GMT", "expires": "-1", "json": {"code": 401, "errorStack": [], "kind": ":resterrorresponse", "message": "Authentication failed.", "originalRequestBody": "{\"username\":\"admin\",\"generation\":0,\"lastUpdateMicros\":0}", "restOperationId": 1067315}, "msg": "Status code was 401 and not [200]: HTTP Error 401: Unauthorized", "pragma": "no-cache", "redirected": false, "server": "webd", "status": 401, "url": "https://10.1.1.6:443/mgmt/shared/authn/login"}
+    ...ignoring``
 
 5. At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
 
