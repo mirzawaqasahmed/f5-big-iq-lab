@@ -29,6 +29,7 @@
             - "{{ bigip1device_statistics_module1 }}"
             - "{{ bigip1device_statistics_module2 }}"
             - "{{ bigip1device_statistics_module3 }}"
+        ha_name: "{{ bigip1cluster }}"
         modules: "{{ bigip1modules }}"
       register: result
       delegate_to: localhost
@@ -54,6 +55,7 @@
             - "{{ bigip2device_statistics_module1 }}"
             - "{{ bigip2device_statistics_module2 }}"
             - "{{ bigip2device_statistics_module3 }}"
+        ha_name: "{{ bigip2cluster }}"
         modules: "{{ bigip2modules }}"
       register: result
       delegate_to: localhost
@@ -79,6 +81,33 @@
             - "{{ bigip3device_statistics_module1 }}"
             - "{{ bigip3device_statistics_module2 }}"
             - "{{ bigip3device_statistics_module3 }}"
+        ha_name: "{{ bigip3cluster }}"
         modules: "{{ bigip3modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Discover BIG-IP 4 device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip4 }}"
+        device_username: "{{ bigip4user }}"
+        device_password: "{{ bigip4pass }}"
+        conflict_policy: "{{ bigip4conflict }}"
+        device_conflict_policy: "{{ bigip4device_conflict }}"
+        versioned_conflict_policy: "{{ bigip4versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip4device_statistics_enable }}"
+          interval: "{{ bigip4device_statistics_interval }}"
+          zone: "{{ bigip4device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip4device_statistics_module1 }}"
+            - "{{ bigip4device_statistics_module2 }}"
+            - "{{ bigip4device_statistics_module3 }}"
+        ha_name: "{{ bigip4cluster }}"
+        modules: "{{ bigip4modules }}"
       register: result
       delegate_to: localhost
