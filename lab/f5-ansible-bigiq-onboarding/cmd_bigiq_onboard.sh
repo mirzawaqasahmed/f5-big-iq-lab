@@ -227,12 +227,6 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-## Work Around bug app deployment failing when ASM signature task running while deploying the task, to be removed in 6.1
-echo -e "\n${RED}Waiting 5 min ... ${NC}"
-sleep 300
-
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
 # Create apps only for UDF/Ravello BP
 if [[  $env == "udf" ]]; then
   echo -e "\n${GREEN}Create AS3 Applications${NC}"
