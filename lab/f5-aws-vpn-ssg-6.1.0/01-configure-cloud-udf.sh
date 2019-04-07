@@ -41,7 +41,7 @@ if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
       sed -i "s/us-east-1/$region/g" ./config.yml
 
       # Configure AWS cli
-      echo -e "Run AWS CLI config:\n"
+      echo -e "Run AWS CLI config.\n"
       ansible-playbook $DEBUG_arg 01b-install-aws-creds.yml
 
       # Create a pair of SSH key

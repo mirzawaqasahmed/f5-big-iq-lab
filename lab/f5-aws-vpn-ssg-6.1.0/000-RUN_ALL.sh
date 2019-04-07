@@ -31,9 +31,9 @@ if [[ ! -z $getPublicIP ]]; then
 fi
 
 # Use UDF Cloud Account (under developement, only for AWS)
-#./01-configure-cloud-udf.sh
+./01-configure-cloud-udf.sh
 
-# [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 c1=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
@@ -60,8 +60,8 @@ clear
 
 ## if any variables are passed to the script ./000-RUN_ALL.sh (e.g. 000-RUN_ALL.sh nopause), no pause will happen during the execution of the script
 echo -e "\n${GREEN1}Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:"
-echo -e "- F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) https://aws.amazon.com/marketplace/pp/B07G5MT2KT/"
-echo -e "- F5 BIG-IQ Virtual Edition - (BYOL) https://aws.amazon.com/marketplace/pp/B00KIZG6KA/\n\n${NC}"
+echo -e "- F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) ${RED}https://aws.amazon.com/marketplace/pp/B07G5MT2KT/${NC}"
+echo -e "- F5 BIG-IQ Virtual Edition - (BYOL) ${RED}https://aws.amazon.com/marketplace/pp/B00KIZG6KA/\n\n${NC}"
 
 cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')
 cloudProvider=${cloudProvider:1:${#cloudProvider}-2}
@@ -75,7 +75,7 @@ fi
 # Force pause to accept the terms under UDF account (to be removed later when terms can be accepted programmatically or by default on the AWS F5 account)
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
+echo -e "\n${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 ## If AWS UDF account is used, no need to run this
 if [[ $c3 == 0 || $c4 == 0 ]]; then

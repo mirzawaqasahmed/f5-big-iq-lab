@@ -28,9 +28,9 @@ if [[ ! -z $getPublicIP ]]; then
 fi
 
 # Use UDF Cloud Account (under developement, only for AWS)
-#./01-configure-cloud-udf.sh
+./01-configure-cloud-udf.sh
 
- [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 c1=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
