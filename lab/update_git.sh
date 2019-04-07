@@ -47,10 +47,14 @@ else
     if [ ! -f /home/$user/bigiq_version_vmware ]; then
         echo "6.1.0" > /home/$user/bigiq_version_vmware
     fi
+    if [ ! -f /home/$user/bigiq_version_as3 ]; then
+        echo "6.1.0" > /home/$user/bigiq_version_as3
+    fi
 
     bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
     bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
     bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
+    bigiq_version_vmware=$(cat /home/$user/bigiq_version_as3)
 
     echo "Cleanup previous files..."
     rm -rf AWS* AZURE* GCP* ALIBABA* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
@@ -70,6 +74,8 @@ else
     mv f5-azure-vpn-ssg-$bigiq_version_azure f5-azure-vpn-ssg > /dev/null 2>&1
     echo "Vmware scripts"
     mv f5-vmware-ssg-$bigiq_version_vmware f5-vmware-ssg > /dev/null 2>&1
+    echo "AS3 playbooks"
+    mv f5-ansible-bigiq-as3-demo-$bigiq_version_as3 f5-ansible-bigiq-as3-demo > /dev/null 2>&1
 
     # cleanup other versions
     rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* > /dev/null 2>&1
