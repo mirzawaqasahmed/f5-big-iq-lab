@@ -54,7 +54,7 @@ else
     bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
     bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
     bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
-    bigiq_version_vmware=$(cat /home/$user/bigiq_version_as3)
+    bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
     echo "Cleanup previous files..."
     rm -rf AWS* AZURE* GCP* ALIBABA* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
@@ -87,13 +87,13 @@ else
     rm -f /home/$user/.aws/*
     rm -fr /home/$user/.azure/*
 
-    if [[  $env == "sjc" ]]; then
+    if [[ $env == "sjc" ]]; then
         # for SCJ - DCD lab IP
         sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
         sed -i 's/10.1.10.4/10.192.75.180/g' /home/$user/scripts/*sh
         sed -i '13,$d' /home/$user/crontab.txt
     fi
-    if [[  $env == "sjc2" ]]; then
+    if [[ $env == "sjc2" ]]; then
         # for SCJ - DCD lab IP
         sed -i 's/10.1.10.6/10.192.75.186/g' /home/$user/scripts/*sh
         sed -i 's/10.1.10.4/10.192.75.185/g' /home/$user/scripts/*sh
