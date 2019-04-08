@@ -16,7 +16,6 @@ fi
 ############################################################################################
 # CONFIGURATION
 ip_cm1="$(cat inventory/group_vars/$env-bigiq-cm-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
-ip_cm2="$(cat inventory/group_vars/$env-bigiq-cm-02.yml| grep bigiq_onboard_server | awk '{print $2}')"
 ip_dcd1="$(cat inventory/group_vars/$env-bigiq-dcd-01.yml| grep bigiq_onboard_server | awk '{print $2}')"
 
 declare -a ips=("$ip_cm1" "$ip_dcd1")
@@ -59,7 +58,7 @@ if [[ -z $3 ]]; then
   for ip in "${ips[@]}"; do
     echo -e "\n---- ${RED} $ip ${NC} ----"
     [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    echo "clear-rest-storag"
+    echo "clear-rest-storage"
     ssh -o StrictHostKeyChecking=no root@$ip clear-rest-storage -d
   done
 
