@@ -91,6 +91,8 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 - `F5 BIG-IQ API 6.1.0`_
 - `BIG-IP Cloud Edition FAQ`_
 - `BIG-IP Cloud Edition Solution Guide`_
+- `Light Product Demo`_ 
+- `Troubleshoot Your Application Health and Performance with F5`_
 - `AS3 Documentation`_
 - `AS3 on GitHub`_
 
@@ -98,6 +100,8 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 .. _F5 BIG-IQ API 6.1.0: https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270?tag=big-iq
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373
+.. _Light Product Demo: http://engage.f5.com/BIG-IP-demo/landing-44Q7-376Q1.html
+.. _Troubleshoot Your Application Health and Performance with F5: https://interact.f5.com/troubleshooting-your-application-health-webinar.html
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
 .. _AS3 on GitHub: https://github.com/F5Networks/f5-appsvcs-extension
 
