@@ -115,6 +115,8 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
+
 # WA Tunnel
 sleep 20
 ./wa_aws_vpn_down_bigip.sh
@@ -125,15 +127,9 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 06-docker-on-ubuntu-aws.yml > 06-docker-on-ubuntu-aws.log 2>&1 &
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-#[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-# Not needed, this playbook creates a service catalog template (custom)
-#ansible-playbook $DEBUG_arg 07-create-aws-ssg-templates.yml -i inventory/hosts
-
-echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
 ./check_vpn_aws.sh
 
-echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook -i inventory/hosts 05-restart-bigip-services.yml\nYou can also run ./wa_aws_vpn_down_bigip.sh\n"
+echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n${RED}# ansible-playbook -i inventory/hosts 05-restart-bigip-services.yml${NC}\nYou can also run ${RED}./wa_aws_vpn_down_bigip.sh${NC}\n"
 echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/racoon.log${NC}\n\n"
 
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_aws.sh${NC}"
@@ -153,13 +149,13 @@ aws ec2 describe-instances --query 'Reservations[].Instances[].[PrivateIpAddress
 echo
 exit 0" > check_cft_ec2_aws.sh
 chmod +x check_cft_ec2_aws.sh
-echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# ./check_cft_ec2_aws.sh ${NC}"
+echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# ./check_cft_ec2_aws.sh${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${GREEN}In order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"
+echo -e "\n${GREEN}In order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n${RED}/var/log/restjavad.0.log${NC} and ${RED}/var/log/orchestrator.log${NC}\n"
 
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
@@ -171,7 +167,8 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 echo -e "\n${GREEN}Application Creation: (it will start once AWS SSG creation is completed)\n${NC}"
 python 09a-create-aws-waf-app.py
 
-echo -e "${RED}\nIn case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: # python 09b-create-aws-https-app.py ${NC}"
+echo -e "${RED}\nIn case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: ${RED}# python 09b-create-aws-https-app.py${NC}"
+#python 09b-create-aws-https-app.py
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -191,12 +188,13 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}NEXT STEPS ON BIG-IQ:\n\n1. Allow Paul to manage the Application previously created:\n  - Connect as admin in BIG-IQ and go to : System > User Management > Users and select Paul.\n  - Select the Role udf-<yourname>-elb, drag it to the right\n  - Save & Close.\n"
 
-echo -e "2. Allow Paul to use the AWS SSG previously  created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator AWS role.\n  - Select the Service Scaling Groups udf-<yourname>-aws-ssg, drag it to the right\n  - Save & Close.\n"
+echo -e "2. Allow Paul to use the AWS SSG previously created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator AWS role.\n  - Select the Service Scaling Groups udf-<yourname>-aws-ssg, drag it to the right\n  - Save & Close.\n"
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh\n\n or\n\n# nohup ./111-DELETE_ALL.sh nopause &\n\n"
-echo -e "/!\ The objects created in AWS will be automatically delete 23h after the deployment was started. /!\ "
+echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh${NC}\n\n or\n\n${RED}# nohup ./111-DELETE_ALL.sh nopause &${NC}\n\n"
+echo -e "${RED}/!\ The objects created in AWS will be automatically delete 23h after the deployment was started. /!\ "
+echo -e "\n/!\ If the UDF Cloud Account is used, the UDF AWS account will be deleted with everything in it when the deployment stops or deleted. /!\ "
 
-echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
+echo -e "\n/!\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.shscript and start a new fresh UDF deployment.${NC} \n\n"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
