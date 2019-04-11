@@ -13,6 +13,9 @@ function pause(){
    read -p "$*"
 }
 
+# SECONDS used for total execution time (see end of the script)
+SECONDS=0
+
 cd /home/f5/f5-aws-vpn-ssg
 
 # Pre-requisits
@@ -53,7 +56,7 @@ fi
 
 clear
 
-echo -e "${BLUE}EXPECTED TIME: ~25 min${NC}\n"
+echo -e "${BLUE}EXPECTED TIME: ${RED}~25 min${NC}\n"
 
 ## If AWS UDF account is used, no need to run this
 if [[ $c3 == 0 || $c4 == 0 ]]; then
@@ -94,12 +97,10 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
 # WA Tunnel
 sleep 20
 ./wa_aws_vpn_down_bigip.sh
-
-echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
-./check_vpn_aws.sh
 
 echo -e "\n${GREEN}If the VPN is not UP, check previous playbooks execution are ALL successfull.\nIf they are, try to restart the ipsec services:\n\n# ansible-playbook -i inventory/hosts 05-restart-bigip-services.yml\nYou can also run ./wa_aws_vpn_down_bigip.sh\n"
 echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_UDF tail -100 /var/log/racoon.log${NC}\n\n"
@@ -108,11 +109,15 @@ echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_aws.sh${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh\n\n or\n\n# nohup ./111-DELETE_ALL.sh nopause &\n\n"
-echo -e "/!\ The objects created in AWS will be automatically delete 23h after the deployment was started. /!\ "
+eecho -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# ./111-DELETE_ALL.sh${NC}\n\n or\n\n${RED}# nohup ./111-DELETE_ALL.sh nopause &${NC}\n\n"
+echo -e "${RED}/!\ The objects created in AWS will be automatically delete 23h after the deployment was started. /!\ "
+echo -e "\n/!\ If the UDF Cloud Account is used, the UDF AWS account will be deleted with everything in it when the deployment stops or deleted. /!\ "
 
-echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
+echo -e "\n/!\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.shscript and start a new fresh UDF deployment.${NC} \n\n"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+# total script execution time
+echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"
 
 exit 0
