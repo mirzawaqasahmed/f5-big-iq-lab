@@ -23,7 +23,7 @@ we will need to edit the following files:
 
 * **config.yml**: This file will contains all the information needed to 
     deploy the ``Azure`` environment successfully. 
-* **08-create-Azure-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
+* **08a-create-Azure-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
     that gets deployed. we want to deploy 2 instances to review how it is setup as 
     part of a ``SSG`` group. 
 
@@ -117,7 +117,7 @@ Launch our ``SSG`` - Update our SSG configuration - Azure
 *********************************************************
 
 To update configuration pushed by the orchestrator, we will update the file called 
-**08-create-azure-auto-scaling.yml**. Use your favorite editor to update it.
+**08a-create-azure-auto-scaling.yml**. Use your favorite editor to update it.
 
 Look for this section in the file: 
 

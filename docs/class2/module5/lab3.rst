@@ -31,14 +31,12 @@ If you want to review those, connect to this system and go to :
     f5@03a920f8b4c0410d8f:~$ cd f5-azure-vpn-ssg
     f5@03a920f8b4c0410d8f:~/f5-azure-vpn-ssg$  ls -l
     -rwxrwxr-x 1 f5student f5student  6736 Dec  8 11:54 000-RUN_ALL.sh
-    -rwxrwxr-x 1 f5student f5student  3205 Dec  8 11:54 000-RUN_ALL_VNET_VPN.sh
     -rwxrwxr-x 1 f5student f5student  1653 Dec  8 11:54 01-install_azure_cli.sh
     -rwxrwxr-x 1 f5student f5student  5703 Dec  8 11:54 02-create-vpn-azure_cli.sh
     -rwxrwxr-x 1 f5student f5student  4905 Dec  8 11:54 03-configure-bigip.sh
     -rw-rw-r-- 1 f5student f5student   868 Dec  8 12:38 04-docker-on-ubuntu-azure.log
     -rw-rw-r-- 1 f5student f5student  4757 Dec  8 11:54 04-docker-on-ubuntu-azure.yml
-    -rw-rw-r-- 1 f5student f5student     9 Dec  8 12:36 08-create-azure-auto-scaling.retry
-    -rw-rw-r-- 1 f5student f5student 14896 Dec  8 12:01 08-create-azure-auto-scaling.yml
+    -rw-rw-r-- 1 f5student f5student 14896 Dec  8 12:01 08a-create-azure-auto-scaling.yml
     -rwxrwxr-x 1 f5student f5student  6357 Dec  8 11:54 09a-create-azure-waf-app.py
     -rwxrwxr-x 1 f5student f5student  6463 Dec  8 11:54 09b-create-azure-https-app.py
     -rw-rw-r-- 1 f5student f5student  1045 Dec  8 11:54 10-delete-azure-app.yml

@@ -202,14 +202,36 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Waiting 5 min ... ${NC}"
-sleep 300
+### CUSTOMIZATION - F5 INTERNAL LAB ONLY BEGIN
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+
+# loop around the BIG-IQ CM/DCD
+# enable ssh for admin and set-basic-auth on
+for ip in "${ips[@]}"; do
+  echo -e "\n---- ${RED} $ip ${NC} ----"
+  echo -e "tmsh modify auth user admin shell bash and set-basic-auth on"
+  ssh -o StrictHostKeyChecking=no root@$ip tmsh modify auth user admin shell bash
+  ssh -o StrictHostKeyChecking=no root@$ip set-basic-auth on
+done
+
+# disable ssl check for VMware SSG on the CM
+ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
+  echo >> /var/config/orchestrator/orchestrator.conf
+  echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
+  bigstart restart gunicorn
+EOF
+  
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+### CUSTOMIZATION - F5 INTERNAL LAB ONLY END
+
+echo -e "\n${RED}Waiting 2 min ... ${NC}"
+sleep 120
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Add & discover BIG-IPs to BIG-IQ CM${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-# Add devices using the old script bulkDiscovery.pl (THIS WORKS ONLY FOR BIG-IQ 5.x and 6.0)
+# Add devices using the old script bulkDiscovery.pl (ONLY FOR BIG-IQ 5.x and 6.0)
 #scp -o StrictHostKeyChecking=no -rp bulkDiscovery.pl inventory/$env-bigip.csv root@$ip_cm1:/root
 #echo -e "Using bulkDiscovery.pl to add BIG-IP in BIG-IQ."
 #ssh root@$ip_cm1 << EOF
@@ -243,27 +265,6 @@ if [[  $env == "udf" ]]; then
   ansible-playbook -i notahost, create_default_as3_app_https_site38_sanjose.yml $DEBUG_arg
 fi
 
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-### CUSTOMIZATION - F5 INTERNAL LAB ONLY
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
-# loop around the BIG-IQ CM/DCD
-# enable ssh for admin and set-basic-auth on
-for ip in "${ips[@]}"; do
-  echo -e "\n---- ${RED} $ip ${NC} ----"
-  echo -e "tmsh modify auth user admin shell bash and set-basic-auth on"
-  ssh -o StrictHostKeyChecking=no root@$ip tmsh modify auth user admin shell bash
-  ssh -o StrictHostKeyChecking=no root@$ip set-basic-auth on
-done
-
-# disable ssl check for VMware SSG on the CM
-ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
-  echo >> /var/config/orchestrator/orchestrator.conf
-  echo 'VALIDATE_CERTS = "no"' >> /var/config/orchestrator/orchestrator.conf
-  bigstart restart gunicorn
-EOF
-  
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # total script execution time

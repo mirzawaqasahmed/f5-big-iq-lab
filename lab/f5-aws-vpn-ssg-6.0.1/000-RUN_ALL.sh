@@ -138,7 +138,7 @@ chmod +x check_cft_ec2_aws.sh
 echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# ./check_cft_ec2_aws.sh ${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 08-create-aws-auto-scaling.yml -i inventory/hosts
+ansible-playbook $DEBUG_arg 08a-create-aws-auto-scaling.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}In order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"
