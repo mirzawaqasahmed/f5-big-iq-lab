@@ -11,7 +11,7 @@
   <description>Fundamental Policy</description>
   <case_insensitive>true</case_insensitive>
   <owa>false</owa>
-  <protocol_free>true</protocol_free>
+  <protocol_free>false</protocol_free>
   <general>
     <path_parameter_handling>as parameters</path_parameter_handling>
     <mask_sensitive>true</mask_sensitive>

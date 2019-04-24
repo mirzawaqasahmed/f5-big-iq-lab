@@ -78,7 +78,7 @@ else
     mv f5-ansible-bigiq-as3-demo-$bigiq_version_as3 f5-ansible-bigiq-as3-demo > /dev/null 2>&1
 
     # cleanup other versions
-    rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* > /dev/null 2>&1
+    rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
     echo "Fixing permissions..."
     chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
