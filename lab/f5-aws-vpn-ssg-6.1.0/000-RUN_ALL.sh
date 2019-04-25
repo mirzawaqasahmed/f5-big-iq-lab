@@ -13,6 +13,12 @@ function pause(){
    read -p "$*"
 }
 
+# Usage
+if [[ -z $1 ]]; then
+    echo -e "\nUsage: ${RED} $0 <ssg/do/vpn>${NC} (ssg and do include creation of the vpn. If vpn specified, no ssg/do will be created)\n"
+    exit 1;
+fi
+
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
 
@@ -33,7 +39,7 @@ fi
 # Use UDF Cloud Account (only for AWS)
 ./01-configure-cloud-udf.sh
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+
 
 c1=$(grep CUSTOMER_GATEWAY_IP ./config.yml | grep '0.0.0.0' | wc -l)
 c3=$(grep '<name_of_the_aws_key>' ./config.yml | wc -l)
@@ -47,7 +53,7 @@ UDF_CLOUD="$(cat config.yml | grep UDF_CLOUD | awk '{print $2}')"
 
 if [[ $c1 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
-	    echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+	echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh <ssg/do/vpn> & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -57,14 +63,6 @@ if (( $nPREFIX > 11 )); then
 fi
 
 clear
-
-## OPTIONS:
-# - if any variables are passed to the script, e.g. 000-RUN_ALL.sh nopause
-#   no pause will happen during the execution of the script
-# - if vpn is passed to the script in 2nd variable, e.g. 000-RUN_ALL.sh nopause vpn
-#   the ssg won't be created, so only the VPN
-# - if do is passed to the script in 2nd variable, e.g. 000-RUN_ALL.sh nopause do
-#   the ssg won't be created, so only the VPN and Cloud Provider and Cloud Environeent
 
 echo -e "\n${GREEN1}Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:"
 echo -e "- F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) ${RED}https://aws.amazon.com/marketplace/pp/B07G5MT2KT/${NC}"
@@ -86,32 +84,27 @@ echo -e "\n${BLUE}EXPECTED TIME: ${RED}~45 min${NC}\n"
 
 ## If AWS UDF account is used, no need to run this
 if [[ $c3 == 0 || $c4 == 0 ]]; then
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+       
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
        ansible-playbook $DEBUG_arg 01b-install-aws-creds.yml
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 fi
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 02-vpc-elb.yml
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 03-vpn.yml
+
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-customerGatewayConfigExport.sh
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./04a-configure-bigip.sh
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
+echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 04b-configure-bigip.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
@@ -120,7 +113,6 @@ sleep 10
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 05-restart-bigip-services.yml -i inventory/hosts
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
 
@@ -128,11 +120,9 @@ echo -e "\nVPN Expected time: ${GREEN}10 min${NC}"
 sleep 20
 ./wa_aws_vpn_down_bigip.sh
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ansible-playbook $DEBUG_arg 06-docker-on-ubuntu-aws.yml > 06-docker-on-ubuntu-aws.log 2>&1 &
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 ./check_vpn_aws.sh
 
@@ -142,8 +132,6 @@ echo -e "You can check also the BIG-IP logs:\n\n${RED}# ssh admin@$MGT_NETWORK_U
 echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_aws.sh${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo "
 #!/bin/bash
@@ -158,25 +146,16 @@ exit 0" > check_cft_ec2_aws.sh
 chmod +x check_cft_ec2_aws.sh
 echo -e "${GREEN}Check the CFT status by running this script on a separate terminal: ${RED}# ./check_cft_ec2_aws.sh${NC}"
 
-if [[ $2 == "do" ]]; then
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-       
+if [[ $1 == "do" ]]; then
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
        ansible-playbook $DEBUG_arg 08b-create-aws-cloud-provider-environment.yml -i inventory/hosts
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-fi
-
-if [[ $2 == "vpn" ]]; then
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-       
+elif [[ $1 == "ssg" ]]; then
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
        ansible-playbook $DEBUG_arg 08a-create-aws-auto-scaling.yml -i inventory/hosts
-       echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
        echo -e "\n${GREEN}In order to follow the AWS SSG creation, tail the following logs in BIG-IQ:\n${RED}/var/log/restjavad.0.log${NC} and ${RED}/var/log/orchestrator.log${NC}\n"
-
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
+     
        echo -e "\n${GREEN}Sleep 5 min (to allow time for the SSG to come up)${NC}"
        sleep 300
 
@@ -194,12 +173,12 @@ if [[ $2 == "vpn" ]]; then
        echo -e "\n${GREEN}Adding traffic generator in crontab.${NC}"
 
        if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
-       ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
-       # write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
-       echo $ELB_DNS >> /home/f5/scripts/ssg-apps
-       echo -e "\nAplication URL:${RED} https://$ELB_DNS"
+              ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
+              # write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
+              echo $ELB_DNS >> /home/f5/scripts/ssg-apps
+              echo -e "\nAplication URL:${RED} https://$ELB_DNS"
        else
-       echo "${RED}Something wrong happen, no ./cache/$PREFIX/1-vpc.yml${NC}"
+              echo "${RED}Something wrong happen, no ./cache/$PREFIX/1-vpc.yml${NC}"
        fi
 
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
@@ -207,9 +186,11 @@ if [[ $2 == "vpn" ]]; then
        echo -e "\n${GREEN}NEXT STEPS ON BIG-IQ:\n\n1. Allow Paul to manage the Application previously created:\n  - Connect as admin in BIG-IQ and go to : System > User Management > Users and select Paul.\n  - Select the Role udf-<yourname>-elb, drag it to the right\n  - Save & Close.\n"
 
        echo -e "2. Allow Paul to use the AWS SSG previously created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator AWS role.\n  - Select the Service Scaling Groups udf-<yourname>-aws-ssg, drag it to the right\n  - Save & Close.\n"
+else
+       echo -e "\nVPN only - no SSG or cloud provider/environement will be created."
 fi
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh nopause &${NC}\n\n"
+echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &${NC}\n\n"
 echo -e "${RED}/!\ The objects created in AWS will be automatically delete 23h after the deployment was started. /!\ "
 echo -e "\n/!\ If the UDF Cloud Account is used, the UDF AWS account will be deleted with everything in it when the deployment stops or deleted. /!\ "
 

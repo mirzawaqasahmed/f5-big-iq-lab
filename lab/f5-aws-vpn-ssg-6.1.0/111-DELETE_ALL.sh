@@ -41,8 +41,6 @@ sleep 60
 
 echo -e "\n\n${RED}/!\ DELETION OF ALL AWS OBJECTS (Application/SSG/VPN/VPC) /!\ ${NC} \n"
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
 clear
 
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
@@ -59,8 +57,6 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AWS SSG BEFORE PROCEEDING ${NC}\n\n"
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-aws-ssg-resources.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
@@ -73,12 +69,8 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 12-delete-aws-ssg-resources.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
 echo -e "${RED}/!\ IS YOUR SSG COMPLETLY REMOVED FROM YOUR AWS ACCOUNT? /!\ \n"
 echo -e "MAKE SURE THE AWS SSG HAS BEEN REMOVED COMPLETLY BEFORE PROCEEDING${NC}\n"
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 $ANSIBLE_PATH/ansible-playbook $DEBUG_arg 12-teardown-aws-vpn-vpc-ubuntu.yml

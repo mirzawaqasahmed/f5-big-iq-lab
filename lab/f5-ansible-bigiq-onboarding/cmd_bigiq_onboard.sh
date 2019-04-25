@@ -73,18 +73,18 @@ if [[  $env != "udf" ]]; then
     rm -f *iso *iso.md5 *iso.md5.verify activeVolume status
     # remove cookie if older than 1 day
     if [[ $(find "./.cookie" -mmin +120 -print 2> /dev/null) ]]; then
-      echo "Deleted .cookie older than 2 hours"
+      echo "${GREEN}Deleted .cookie older than 2 hours"
       rm -f ./.cookie
     fi
     if [ ! -f ./.cookie ]; then
       # Corporate user/password to download the latest iso
-      echo -e "Corporate F5 username:"
+      echo -e "${GREEN}Corporate F5 username:${NC}"
       read f5user
-      echo -e "Corporate F5 password:"
+      echo -e "${GREEN}Corporate F5 password:${NC}"
       read -s f5pass
     fi
     
-    echo -e "\nF5 internal domain:"
+    echo -e "\n${GREEN}F5 internal domain:${NC}"
     read f5domain
 
     # to fix DNS and NTP servers

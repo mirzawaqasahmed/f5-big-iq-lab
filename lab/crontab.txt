@@ -41,8 +41,8 @@
 */5 * * * * /home/f5/scripts/eth0_lamp_monitor.sh > /dev/null 2>&1
 
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
-@reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh nopause > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log
-@reboot sleep 82800 && /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.sh nopause > /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.log
+@reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log
+@reboot sleep 82800 && /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.log
 
 ## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 20 MIN DEPLOYMENT STARTS
 @reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/reactivate_licenses.log 2>&1

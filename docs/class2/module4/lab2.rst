@@ -194,7 +194,7 @@ Now that the relevant files have been updated, we can trigger the deployment.
 
 To trigger the deployment, run the following command: 
 
- ``./000-RUN_ALL.sh nopause``
+ ``./000-RUN_ALL.sh ssg``
 
 It will ask you to press Enter to confirm that you subscribed and agreed to 
 the EULA in the marketplace. Make sure you subscribed, then press enter to start the deployment. 
@@ -209,7 +209,7 @@ You should see something like this:
 
 .. code::
 
-    f5student@xjumpbox:~/f5-aws-vpn-ssg$ ./000-RUN_ALL.sh nopause 
+    f5student@xjumpbox:~/f5-aws-vpn-ssg$ ./000-RUN_ALL.sh ssg
 
     Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:
     - F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) https://aws.amazon.com/marketplace/pp/B07G5MT2KT/

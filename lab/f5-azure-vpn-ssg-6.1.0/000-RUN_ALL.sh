@@ -13,6 +13,12 @@ function pause(){
    read -p "$*"
 }
 
+# Usage
+if [[ -z $1 ]]; then
+    echo -e "\nUsage: ${RED} $0 <ssg/do/vpn>${NC} (ssg and do include creation of the vpn. If vpn specified, no ssg/do will be created)\n"
+    exit 1;
+fi
+
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
 
@@ -37,7 +43,7 @@ BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
 if [[ $c1 == 1 || $c2  == 1 || $c4  == 1 || $c5  == 1 || $c6  == 1 || $c7  == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - Credentials\n - Azure Location\n - Prefix (optional)"
-       echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh nopause & (the script will be executed with no breaks between the steps)${NC}\n\n"
+       echo -e "\nOption to run the script:\n\n# ./000-RUN_ALL.sh\n\n or\n\n# nohup ./000-RUN_ALL.sh <ssg/do/vpn> & (the script will be executed with no breaks between the steps)${NC}\n\n"
        exit 1
 fi
 
@@ -47,14 +53,6 @@ if (( $nPREFIX > 16 )); then
 fi
 
 clear
-
-## OPTIONS:
-# - if any variables are passed to the script, e.g. 000-RUN_ALL.sh nopause
-#   no pause will happen during the execution of the script
-# - if vpn is passed to the script in 2nd variable, e.g. 000-RUN_ALL.sh nopause vpn
-#   the ssg won't be created, so only the VPN
-# - if do is passed to the script in 2nd variable, e.g. 000-RUN_ALL.sh nopause do
-#   the ssg won't be created, so only the VPN and Cloud Provider and Cloud Environeent
 
 echo -e "\n${GREEN}Did you subscribed and agreed to the software terms for 'F5 BIG-IP Virtual Edition - BEST - BYOL' in Azure Marketplace?\n"
 echo -e "Enabling Azure Marketplace images for programmatic access:
@@ -67,29 +65,18 @@ echo -e "Enabling Azure Marketplace images for programmatic access:
 
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./01-install_azure_cli.sh
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./02-create-vpn-azure_cli.sh
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./03-configure-bigip.sh
-echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # WA Tunnel
 sleep 20
 ./wa_azure_vpn_down_bigip.sh
-
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ## additional packages needed for this playbook
@@ -107,24 +94,15 @@ echo -e "${GREEN}Note: check if the VPN is up ${RED}# ./check_vpn_azure.sh${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-if [[ $2 == "do" ]]; then
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-       
+if [[ $1 == "do" ]]; then     
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
        ansible-playbook $DEBUG_arg 08b-create-azure-cloud-provider-environment.yml -i inventory/hosts
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-fi
-
-if [[ $2 == "vpn" ]]; then
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-
+elif [[ $1 == "ssg" ]]; then
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
        ansible-playbook $DEBUG_arg 08a-create-azure-auto-scaling.yml -i inventory/hosts
-       echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
        echo -e "\n${GREEN}In order to follow the  SSG creation, tail the following logs in BIG-IQ:\n/var/log/restjavad.0.log and /var/log/orchestrator.log${NC}\n"
-
-       [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
        echo -e "\n${GREEN}Sleep 5 min (to allow time for the SSG to come up)${NC}"
        sleep 300
@@ -135,7 +113,6 @@ if [[ $2 == "vpn" ]]; then
        python 09a-create-azure-waf-app.py
 
        echo -e "${RED}\nIn case the WAF app creation failed with 'Failed to get the module device', you can deploy a app without ASM: # python 09b-create-azure-https-app.py ${NC}"
-
        echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
        # add ab in crontab to simulate traffic
@@ -155,9 +132,11 @@ if [[ $2 == "vpn" ]]; then
        echo -e "\n${GREEN}NEXT STEPS ON BIG-IQ:\n\n1. Allow Paul to manage the Application previously created:\n  - Connect as admin in BIG-IQ and go to : System > User Management > Users and select Paul.\n  - Select the Role udf-<yourname>-elb, drag it to the right\n  - Save & Close.\n"
 
        echo -e "2. Allow Paul to use the  SSG previously  created:\n  - Connect as admin in BIG-IQ and go to : System > Role Management > Roles and\n  select CUSTOM ROLES > Application Roles > Application Creator  role.\n  - Select the Service Scaling Groups udf-<yourname>-azure-ssg, drag it to the right\n  - Save & Close.\n"
+else
+       echo -e "\nVPN only - no SSG or cloud provider/environement will be created."
 fi
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh nopause &\n\n"
+echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &\n\n"
 echo -e "/!\ The objects created in  will be automatically delete 23h after the deployment was started. /!\ "
 
 echo -e "\n${GREEN}\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the 111-DELETE_ALL.sh script and start a new fresh UDF deployment.${NC}\n\n"
