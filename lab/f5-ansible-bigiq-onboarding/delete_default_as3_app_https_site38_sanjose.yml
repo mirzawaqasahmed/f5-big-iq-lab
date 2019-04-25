@@ -75,7 +75,7 @@
         status_code: 200, 202, 207
         validate_certs: false
       register: json_response_task
-      until: "json_response_task.json[0].results != 'pending'"
+      until: "json_response_task.json[0].results[0].message == 'success'"
       retries: 90
       delay: 10
       ignore_errors: yes
