@@ -77,6 +77,11 @@ if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
    echo -e "\t- consolePassword:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .consolePassword) ${NC} \n"
 fi
 
+echo -e "\nSET PID IN BACKGROUND:"
+echo -e "1. Stop currently running command: ${RED}Ctrl+Z${NC}"
+echo -e "2. To move stopped process to background execute command: ${RED}bg${NC}"
+echo -e "3. To make sure command will run after you close the ssh session execute command: ${RED}disown -h${NC}"
+
 # Force pause to accept the terms under UDF account (to be removed later when terms can be accepted programmatically or by default on the AWS F5 account)
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 

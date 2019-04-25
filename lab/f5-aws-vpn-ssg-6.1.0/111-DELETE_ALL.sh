@@ -43,6 +43,11 @@ echo -e "\n\n${RED}/!\ DELETION OF ALL AWS OBJECTS (Application/SSG/VPN/VPC) /!\
 
 clear
 
+echo -e "\nSET PID IN BACKGROUND:"
+echo -e "1. Stop currently running command: ${RED}Ctrl+Z${NC}"
+echo -e "2. To move stopped process to background execute command: ${RED}bg${NC}"
+echo -e "3. To make sure command will run after you close the ssh session execute command: ${RED}disown -h${NC}"
+
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
 echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"

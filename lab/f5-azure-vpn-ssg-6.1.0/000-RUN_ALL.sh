@@ -63,6 +63,11 @@ echo -e "Enabling Azure Marketplace images for programmatic access:
   - Click on the 'Want to deploy programmatically?'  link on the right
   - Click on 'Enable, then Save.'\n\n${NC}"
 
+echo -e "\nSET PID IN BACKGROUND:"
+echo -e "1. Stop currently running command: ${RED}Ctrl+Z${NC}"
+echo -e "2. To move stopped process to background execute command: ${RED}bg${NC}"
+echo -e "3. To make sure command will run after you close the ssh session execute command: ${RED}disown -h${NC}"
+
 echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

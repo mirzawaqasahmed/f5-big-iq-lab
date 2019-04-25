@@ -51,9 +51,12 @@ sleep 60
 
 echo -e "\n\n${RED}/!\ DELETION OF ALL AZURE OBJECTS (Application/SSG/VPN/VNET) /!\ ${NC} \n"
 
-
-
 clear
+
+echo -e "\nSET PID IN BACKGROUND:"
+echo -e "1. Stop currently running command: ${RED}Ctrl+Z${NC}"
+echo -e "2. To move stopped process to background execute command: ${RED}bg${NC}"
+echo -e "3. To make sure command will run after you close the ssh session execute command: ${RED}disown -h${NC}"
 
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
@@ -63,8 +66,6 @@ echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AZURE SSG BEFORE PROCEEDING ${NC}\n\n"
-
-
 
 sleep 300
 
