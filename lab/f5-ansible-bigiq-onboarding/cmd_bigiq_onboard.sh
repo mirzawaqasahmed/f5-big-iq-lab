@@ -256,11 +256,14 @@ if [[  $env == "udf" ]]; then
 
   sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site15_boston.yml
   sed -i 's/auth_bigiq_paul.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site40_seattle.yml 
+  sed -i 's/auth_bigiq_paul.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site41_seattle.yml
   sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_https_site38_sanjose.yml
 
   ansible-playbook -i notahost, create_default_as3_app_waf_site15_boston.yml $DEBUG_arg
   sleep 15
   ansible-playbook -i notahost, create_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
+  sleep 15
+  ansible-playbook -i notahost, create_default_as3_app_waf_site41_seattle.yml $DEBUG_arg
   sleep 15
   ansible-playbook -i notahost, create_default_as3_app_https_site38_sanjose.yml $DEBUG_arg
 fi
