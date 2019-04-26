@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="92353250ad3eb40d27f1b86093b8178a" bigip_version="14.1.0" name="/Common/asm-lab-2019">
+<policy integrity_check="92353250ad3eb40d27f1b86093b8178a" bigip_version="14.1.0" name="/Common/asm-lab3-2019">
   <type>Security</type>
   <policy_version>
     <timestamp>2019-02-28T07:13:30Z</timestamp>
